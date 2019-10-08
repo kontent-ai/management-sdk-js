@@ -3,9 +3,9 @@
 > Javascript SDK for the [Kontent Management](https://developer.kenticocloud.com/v1/reference#content-management-api-v2). Helps you manage content in your [Kentico Kontent](https://kontent.ai/) projects. Supports both `node.js` and `browsers`.
 
 [![npm version](https://badge.fury.io/js/%40kentico%2Fkontent-management.svg)](https://badge.fury.io/js/%40kentico%2Fkontent-management)
-[![Build Status](https://api.travis-ci.com/Kentico/kontent-management-sdk-js.svg?branch=master)](https://travis-ci.com/Kentico/kontent--management-js)
+[![Build Status](https://api.travis-ci.com/Kentico/kontent-management-sdk-js.svg?branch=master)](https://travis-ci.com/Kentico/kontent-management-sdk-js)
 [![CircleCI](https://circleci.com/gh/Kentico/kontent-management-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/Kentico/kontent-management-sdk-js/tree/master)
-[![npm](https://img.shields.io/npm/dt/@kentico/kontent-management.svg)](https://www.npmjs.com/package/@kentico/kontent-delivery)
+[![npm](https://img.shields.io/npm/dt/@kentico/kontent-management.svg)](https://www.npmjs.com/package/@kentico/kontent-management)
 [![Known Vulnerabilities](https://snyk.io/test/github/Kentico/kontent-management-sdk-js/badge.svg)](https://snyk.io/test/github/kentico/kontent-management-sdk-js)
 [![GitHub license](https://img.shields.io/github/license/Kentico/kontent-management-sdk-js.svg)](https://github.com/Kentico/kontent-management-sdk-js)
 ![Gzip bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kentico/kontent-management/_bundles/kontent-management.umd.min.js?compression=gzip)
