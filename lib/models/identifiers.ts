@@ -33,7 +33,7 @@ export namespace Identifiers {
         ExternalId = 'externalId',
     }
 
-    export enum WebhookdentifierEnum {
+    export enum WebhookIdentifierEnum {
         Id = 'id'
     }
 
@@ -151,12 +151,12 @@ export namespace Identifiers {
 
     export class WebhookIdentifier {
         constructor(
-            public identifier: WebhookdentifierEnum,
+            public identifier: WebhookIdentifierEnum,
             public value: string) {
         }
 
         getParamValue(): string {
-            if (this.identifier === WebhookdentifierEnum.Id) {
+            if (this.identifier === WebhookIdentifierEnum.Id) {
                 return `${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);

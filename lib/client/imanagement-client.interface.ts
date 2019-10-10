@@ -281,7 +281,7 @@ export interface IManagementClient {
     modifyLanguage(): LanguageIdentifierQuery<DataQuery<ModifyLanguageQuery, LanguageModels.IModifyLanguageData[]>>;
 
     /**
-     * Delete a webhook specified by its internal ID.
+     * Delete a webhook
      */
     deleteWebhook(): WebhookIdentifierQuery<DeleteWebhookQuery>;
 }

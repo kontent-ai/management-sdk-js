@@ -48,7 +48,7 @@ import {
     LanguageResponses,
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
-import { webhookResponseMapper } from '../mappers/webhook-reponse-mapper';
+import { webhookResponseMapper } from '../mappers/webhook-response-mapper';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService {
 

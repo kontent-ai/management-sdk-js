@@ -9,4 +9,5 @@ export * from './language-variant-response-mapper';
 export * from './content-type-snippet-mapper';
 export * from './workflow-response-mapper';
 export * from './language-response-mapper';
+export * from './webhook-response-mapper';
 
