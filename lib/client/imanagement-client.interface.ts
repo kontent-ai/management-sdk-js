@@ -60,6 +60,8 @@ import {
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
 } from '../queries';
+import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
+import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
 
 export interface IManagementClient {
     /**
@@ -277,4 +279,9 @@ export interface IManagementClient {
      * Modifies existing language
      */
     modifyLanguage(): LanguageIdentifierQuery<DataQuery<ModifyLanguageQuery, LanguageModels.IModifyLanguageData[]>>;
+
+    /**
+     * Delete a webhook specified by its internal ID.
+     */
+    deleteWebhook(): WebhookIdentifierQuery<DeleteWebhookQuery>;
 }
