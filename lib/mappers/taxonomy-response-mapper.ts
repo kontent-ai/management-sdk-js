@@ -30,13 +30,6 @@ export class TaxonomyResponseMapper extends BaseMapper {
         });
     }
 
-    mapDeleteTaxonomyResponse(
-        response: IBaseResponse<TaxonomyContracts.IDeleteTaxonomyResponseContract>
-    ): TaxonomyResponses.DeleteTaxonomyResponse {
-
-        return new TaxonomyResponses.DeleteTaxonomyResponse(super.mapResponseDebug(response), response.data, undefined);
-    }
-
     mapAddTaxonomyResponse(
         response: IBaseResponse<TaxonomyContracts.IAddTaxonomyResponseContract>
     ): TaxonomyResponses.AddTaxonomyResponse {

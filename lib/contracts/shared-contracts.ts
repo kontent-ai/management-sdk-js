@@ -14,4 +14,7 @@ export namespace SharedContracts {
     export interface IValidationErrorContract {
         message: string;
     }
+
+    export interface IEmptyResponseContract {
+    }
 }

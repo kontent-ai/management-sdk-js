@@ -8,3 +8,4 @@ export * from './language-variants/language-variant-responses';
 export * from './content-type-snippets/content-type-snippet-responses';
 export * from './workflow/workflow-responses';
 export * from './languages/language-responses';
+export * from './webhook/webhook-responses';

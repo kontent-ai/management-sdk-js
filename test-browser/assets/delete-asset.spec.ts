@@ -1,12 +1,14 @@
-import { AssetResponses } from '../../lib';
+import { BaseResponses } from '../../lib';
 import * as deleteAssetJson from '../fake-responses/assets/fake-delete-asset.json';
 import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Delete asset', () => {
-    let response: AssetResponses.DeleteAssetResponse;
+    let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(deleteAssetJson).deleteAsset().byAssetExternalId('xxx')
+    beforeAll(done => {
+        getTestClientWithJson(deleteAssetJson)
+            .deleteAsset()
+            .byAssetExternalId('xxx')
             .toObservable()
             .subscribe(result => {
                 response = result;
@@ -15,15 +17,23 @@ describe('Delete asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const internalIdUrl = cmTestClient.deleteAsset().byAssetId('xInternalId').getUrl();
-        const externalIdUrl = cmTestClient.deleteAsset().byAssetExternalId('xExternalId').getUrl();
+        const internalIdUrl = cmTestClient
+            .deleteAsset()
+            .byAssetId('xInternalId')
+            .getUrl();
+        const externalIdUrl = cmTestClient
+            .deleteAsset()
+            .byAssetExternalId('xExternalId')
+            .getUrl();
 
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/xInternalId`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/xExternalId`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/xExternalId`
+        );
     });
 
-    it(`response should be instance of DeleteAssetResponse class`, () => {
-        expect(response).toEqual(jasmine.any(AssetResponses.DeleteAssetResponse));
+    it(`response should be instance of EmptyContentManagementResponse class`, () => {
+        expect(response).toEqual(jasmine.any(BaseResponses.EmptyContentManagementResponse));
     });
 
     it(`response should contain debug data`, () => {
@@ -34,4 +44,3 @@ describe('Delete asset', () => {
         expect(response.data).toBeUndefined();
     });
 });
-

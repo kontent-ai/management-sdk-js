@@ -44,12 +44,6 @@ export class ContentItemsResponseMapper extends BaseMapper {
         return new ContentItemResponses.UpsertContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
     }
 
-    mapDeleteContentItemResponse(
-        response: IBaseResponse<ContentItemContracts.IDeleteContentItemResponseContract>
-    ): ContentItemResponses.DeleteContentItemResponse {
-        return new ContentItemResponses.DeleteContentItemResponse(super.mapResponseDebug(response), response.data);
-    }
-
     private mapContentItem(rawItem: ContentItemContracts.IContentItemModelContract): ContentItemModels.ContentItem {
         return new ContentItemModels.ContentItem({
             codename: rawItem.codename,

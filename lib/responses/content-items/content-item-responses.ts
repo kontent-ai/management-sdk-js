@@ -61,17 +61,5 @@ export namespace ContentItemResponses {
             super(debug, rawData, data);
         }
     }
-
-    export class DeleteContentItemResponse extends BaseResponses.BaseContentManagementResponse<ContentItemContracts.IDeleteContentItemResponseContract, undefined> {
-
-        data: undefined;
-
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: ContentItemContracts.IDeleteContentItemResponseContract,
-        ) {
-            super(debug, rawData, undefined);
-        }
-    }
 }
 

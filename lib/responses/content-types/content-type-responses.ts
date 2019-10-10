@@ -40,15 +40,5 @@ export namespace ContentTypeResponses {
             super(debug, rawData, data);
         }
     }
-
-    export class DeleteContentTypeResponse extends BaseResponses.BaseContentManagementResponse<ContentTypeContracts.IDeleteContentTypeResponseContract, undefined>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: ContentTypeContracts.IDeleteContentTypeResponseContract,
-            data: undefined
-        ) {
-            super(debug, rawData, data);
-        }
-    }
 }
 

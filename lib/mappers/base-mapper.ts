@@ -31,9 +31,6 @@ export abstract class BaseMapper {
     }
 
     mapEmptyResponse(response: IBaseResponse<void | any>): BaseResponses.EmptyContentManagementResponse {
-        if (response.data) {
-            throw Error(`Expected response to be empty`);
-        }
         return new BaseResponses.EmptyContentManagementResponse(this.mapResponseDebug(response), undefined, undefined);
     }
 }
