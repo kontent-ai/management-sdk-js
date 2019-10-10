@@ -48,6 +48,7 @@ import {
     LanguageResponses,
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
+import { webhookResponseMapper } from '../mappers/webhook-reponse-mapper';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService {
 
@@ -706,6 +707,21 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         ).pipe(
             map(response => {
                 return languageResponseMapper.mapModifyLanguageResponse(response);
+            })
+        );
+    }
+
+    deleteWebhook(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
+        return this.deleteResponse<BaseResponses.EmptyContentManagementResponse>(
+            url,
+            {},
+            config,
+        ).pipe(
+            map(response => {
+                return webhookResponseMapper.mapEmptyResponse(response);
             })
         );
     }

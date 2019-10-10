@@ -154,6 +154,10 @@ export class ContentManagementApiEndpoints {
     listLanguages(): string {
         return `languages`;
     }
+
+    deleteWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `webhooks/${identifier.getParamValue()}`;
+    }
 }
 
 export const contentManagementApiEndpoints = new ContentManagementApiEndpoints();

@@ -59,6 +59,8 @@ import {
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
+import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
+import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
 
 export class ManagementClient implements IManagementClient {
     private queryService: ContentManagementQueryService;
@@ -396,4 +398,11 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
+    deleteWebhook(): WebhookIdentifierQuery<DeleteWebhookQuery> {
+        return new WebhookIdentifierQuery<DeleteWebhookQuery>(
+            this.config, this.queryService, (
+                (config, queryService, identifier) => new DeleteWebhookQuery(config, queryService, identifier)
+            )
+        );
+    }
 }

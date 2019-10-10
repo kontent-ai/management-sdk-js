@@ -33,6 +33,10 @@ export namespace Identifiers {
         ExternalId = 'externalId',
     }
 
+    export enum WebhookdentifierEnum {
+        Id = 'id'
+    }
+
     export class AssetIdentifier {
         constructor(
             public identifier: AssetIdentifierEnum,
@@ -140,6 +144,20 @@ export namespace Identifiers {
             }
             if (this.identifier === LanguageIdentifierEnum.ExternalId) {
                 return `external-id/${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
+    export class WebhookIdentifier {
+        constructor(
+            public identifier: WebhookdentifierEnum,
+            public value: string) {
+        }
+
+        getParamValue(): string {
+            if (this.identifier === WebhookdentifierEnum.Id) {
+                return `${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
