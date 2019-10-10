@@ -70,15 +70,5 @@ export namespace AssetResponses {
             super(debug, rawData, data);
         }
     }
-
-    export class DeleteAssetResponse extends BaseResponses.BaseContentManagementResponse<AssetContracts.IDeleteAssetResponseContract, void>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: AssetContracts.IDeleteAssetResponseContract,
-            data: void
-        ) {
-            super(debug, rawData, data);
-        }
-    }
 }
 

@@ -29,14 +29,4 @@ export namespace TaxonomyResponses {
             super(debug, rawData, data);
         }
     }
-
-    export class DeleteTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IDeleteTaxonomyResponseContract, void>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: TaxonomyContracts.IDeleteTaxonomyResponseContract,
-            data: void
-        ) {
-            super(debug, rawData, data);
-        }
-    }
 }

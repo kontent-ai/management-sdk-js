@@ -1,29 +1,25 @@
 import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../../config';
-import { Identifiers, contentManagementApiEndpoints } from '../../models';
-import { AssetResponses } from '../../responses';
+import { contentManagementApiEndpoints, Identifiers } from '../../models';
+import { BaseResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
-export class DeleteAssetQuery extends BaseQuery<AssetResponses.DeleteAssetResponse> {
+export class DeleteAssetQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {
+    constructor(
+        protected config: IManagementClientConfig,
+        protected queryService: ContentManagementQueryService,
+        public identifier: Identifiers.AssetIdentifier
+    ) {
+        super(config, queryService);
+    }
 
-  constructor(
-    protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService,
-    public identifier: Identifiers.AssetIdentifier,
-  ) {
-    super(config, queryService);
-  }
+    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+        return this.queryService.deleteAsset(this.getUrl(), this.queryConfig);
+    }
 
-  toObservable(): Observable<AssetResponses.DeleteAssetResponse> {
-    return this.queryService.deleteAsset(this.getUrl(), this.queryConfig);
-  }
-
-  protected getAction(): string {
-    return contentManagementApiEndpoints.deleteAsset(this.identifier);
-  }
+    protected getAction(): string {
+        return contentManagementApiEndpoints.deleteAsset(this.identifier);
+    }
 }
-
-
-

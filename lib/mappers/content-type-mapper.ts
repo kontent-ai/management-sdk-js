@@ -17,12 +17,6 @@ export class ContentTypeMapper extends BaseMapper {
         );
     }
 
-    mapDeleteContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IDeleteContentTypeResponseContract>): ContentTypeResponses.DeleteContentTypeResponse {
-        return new ContentTypeResponses.DeleteContentTypeResponse(
-            super.mapResponseDebug(response), response.data, undefined
-        );
-    }
-
     mapViewContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IViewContentTypeResponseContract>): ContentTypeResponses.ViewContentTypeResponse {
         return new ContentTypeResponses.ViewContentTypeResponse(
             super.mapResponseDebug(response), response.data, this.mapContentType(response.data)

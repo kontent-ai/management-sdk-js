@@ -191,14 +191,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     deleteContentTypeSnippet(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeSnippetResponses.DeleteContentTypeSnippetResponse> {
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<ContentTypeSnippetContracts.IDeleteContentTypeSnippetResponseContract>(
             url,
             {},
             config
         ).pipe(
             map(response => {
-                return contentTypeSnippetMapper.mapDeleteContentTypeSnippetRespose(response);
+                return contentTypeSnippetMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -257,14 +257,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     deleteContentType(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeResponses.DeleteContentTypeResponse> {
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<ContentTypeContracts.IDeleteContentTypeResponseContract>(
             url,
             {},
             config
         ).pipe(
             map(response => {
-                return contentTypeMapper.mapDeleteContentTypeResponse(response);
+                return contentTypeMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -323,14 +323,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     deleteTaxonomy(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<TaxonomyResponses.DeleteTaxonomyResponse> {
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<TaxonomyContracts.IDeleteTaxonomyResponseContract>(
             url,
             {},
             config,
         ).pipe(
             map(response => {
-                return taxonomyResponseMapper.mapDeleteTaxonomyResponse(response);
+                return taxonomyResponseMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -353,14 +353,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     deleteAsset(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<AssetResponses.DeleteAssetResponse> {
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<AssetContracts.IDeleteAssetResponseContract>(
             url,
             {},
             config,
         ).pipe(
             map(response => {
-                return assetsResponseMapper.mapDeleteAssetResponse(response);
+                return assetsResponseMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -571,14 +571,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     deleteContentItem(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentItemResponses.DeleteContentItemResponse> {
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<ContentItemContracts.IDeleteContentItemResponseContract>(
             url,
             {},
             config
         ).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapDeleteContentItemResponse(response);
+                return contentItemsResponseMapper.mapEmptyResponse(response);
             })
         );
     }
