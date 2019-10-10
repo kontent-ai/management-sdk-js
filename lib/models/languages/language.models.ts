@@ -48,7 +48,7 @@ export namespace LanguageModels {
 
     export interface IAddLanguageData {
         name: string;
-        codname: string;
+        codename: string;
         is_active?: boolean;
         fallback_language?: SharedModels.IReferenceObject;
         external_id?: string;

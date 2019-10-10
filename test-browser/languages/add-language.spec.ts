@@ -9,7 +9,7 @@ describe('Add language', () => {
         getTestClientWithJson(responseJson)
             .addLanguage()
             .withData({
-                codname: 'x',
+                codename: 'x',
                 external_id: undefined,
                 fallback_language: undefined,
                 is_active: true,
