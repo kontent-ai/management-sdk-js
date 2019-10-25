@@ -35,6 +35,7 @@
     }
   },
   "scripts": {
+    "release": "standard-version",
     "tsc-local": "./node_modules/.bin/tsc",
     "webpack-local": "./node_modules/.bin/webpack",
     "karma-local": "node --max_old_space_size=8192 ./node_modules/karma/bin/karma",
