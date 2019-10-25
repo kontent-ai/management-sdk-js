@@ -59,6 +59,7 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
+    ModifyContentTypeQuery,
 } from '../queries';
 import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
 import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
@@ -126,6 +127,11 @@ export interface IManagementClient {
      * Query to add new content type snippet
      */
     addContentTypeSnippet(): DataQuery<AddContentTypeSnippetQuery, ContentTypeSnippetModels.IAddContentTypeSnippetData>;
+
+    /**
+     * Query to modify content type
+     */
+    modifyContentType(): ContentTypeIdentifierQuery<DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>>;
 
     /**
      * Query to view language variant

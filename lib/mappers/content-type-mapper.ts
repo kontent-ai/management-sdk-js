@@ -23,6 +23,12 @@ export class ContentTypeMapper extends BaseMapper {
         );
     }
 
+    mapModifyContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IModifyContentTypeResponseContract>): ContentTypeResponses.ModifyContentTypeResponse {
+        return new ContentTypeResponses.ModifyContentTypeResponse(
+            super.mapResponseDebug(response), response.data, this.mapContentType(response.data)
+        );
+    }
+
     mapAddContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IAddContentTypeResponseContract>): ContentTypeResponses.AddContentTypeResponse {
         return new ContentTypeResponses.AddContentTypeResponse(
             super.mapResponseDebug(response), response.data, this.mapContentType(response.data)

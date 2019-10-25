@@ -15,36 +15,22 @@ import { catchError } from 'rxjs/operators';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { SharedContracts } from '../contracts';
-import { IContentManagementQueryConfig, SharedModels, IContentManagementInternalQueryConfig } from '../models';
+import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
 
 export abstract class BaseContentManagementQueryService {
-
     /**
      * Default base url for content management API
      */
     private readonly defaultBaseCMUrl: string = 'https://manage.kontent.ai/v2/projects';
 
-    /**
-     * Default number of retry attempts when user did not set any
-     */
-    private readonly defaultRetryAttempts: number = 3;
-
-    /**
-     * Default retry status codes
-     */
-    private readonly defaultRetryStatusCodes: number[] = [500];
-
     constructor(
         protected config: IManagementClientConfig,
         protected httpService: IHttpService,
         protected sdkInfo: ISDKInfo
-    ) { }
+    ) {}
 
     retryPromise<T>(promise: Promise<T>): Promise<T> {
-        return this.httpService.retryPromise<T>(promise, {
-            maxRetryAttempts: this.getRetryAttempts(),
-            useRetryForResponseCodes: this.getRetryStatusCodes()
-        }, 1);
+        return this.httpService.retryPromise<T>(promise, this.config.retryStrategy);
     }
 
     /**
@@ -79,6 +65,52 @@ export abstract class BaseContentManagementQueryService {
     }
 
     /**
+     * Http PATCH response
+     * @param url Url of request
+     * @param config Query configuration
+     */
+    protected patchResponse<TRawData>(
+        url: string,
+        body: any,
+        internalConfig: IContentManagementInternalQueryConfig,
+        config: IContentManagementQueryConfig
+    ): Observable<IBaseResponse<TRawData>> {
+        if (!config) {
+            config = {};
+        }
+
+        return this.httpService
+            .patch<BaseKontentError | any, TRawData>(
+                {
+                    url: url,
+                    mapError: error => mapBaseKontentError(error),
+                    body: body
+                },
+                {
+                    headers: this.getHeaders(),
+                    useRetryForResponseCodes: this.config.retryStrategy
+                        ? this.config.retryStrategy.useRetryForResponseCodes
+                        : undefined,
+                    addJitterToRetryAttempts: this.config.retryStrategy
+                        ? this.config.retryStrategy.addJitter
+                        : undefined,
+                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
+                    maxCumulativeWaitTimeMs: this.config.retryStrategy
+                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
+                        : undefined,
+                    logErrorToConsole: true,
+                    responseType:
+                        internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
+                }
+            )
+            .pipe(
+                catchError((error: IBaseResponseError<BaseKontentError>) => {
+                    return throwError(this.mapContentManagementError(error.mappedError));
+                })
+            );
+    }
+
+    /**
      * Http GET response
      * @param url Url of request
      * @param config Query configuration
@@ -86,29 +118,40 @@ export abstract class BaseContentManagementQueryService {
     protected getResponse<TRawData>(
         url: string,
         internalConfig: IContentManagementInternalQueryConfig,
-        config: IContentManagementQueryConfig,
+        config: IContentManagementQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
         if (!config) {
             config = {};
         }
 
-        return this.httpService.get<BaseKontentError | any, TRawData>(
-            {
-                url: url,
-                mapError: error => mapBaseKontentError(error)
-            },
-            {
-                headers: this.getHeaders(),
-                maxRetryAttempts: this.getRetryAttempts(),
-                useRetryForResponseCodes: this.defaultRetryStatusCodes,
-                logErrorToConsole: true,
-                responseType: internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
-            }
-        ).pipe(
-            catchError((error: IBaseResponseError<BaseKontentError>) => {
-                return throwError(this.mapContentManagementError(error.mappedError));
-            })
-        );
+        return this.httpService
+            .get<BaseKontentError | any, TRawData>(
+                {
+                    url: url,
+                    mapError: error => mapBaseKontentError(error)
+                },
+                {
+                    headers: this.getHeaders(),
+                    useRetryForResponseCodes: this.config.retryStrategy
+                        ? this.config.retryStrategy.useRetryForResponseCodes
+                        : undefined,
+                    addJitterToRetryAttempts: this.config.retryStrategy
+                        ? this.config.retryStrategy.addJitter
+                        : undefined,
+                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
+                    maxCumulativeWaitTimeMs: this.config.retryStrategy
+                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
+                        : undefined,
+                    logErrorToConsole: true,
+                    responseType:
+                        internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
+                }
+            )
+            .pipe(
+                catchError((error: IBaseResponseError<BaseKontentError>) => {
+                    return throwError(this.mapContentManagementError(error.mappedError));
+                })
+            );
     }
 
     /**
@@ -129,33 +172,44 @@ export abstract class BaseContentManagementQueryService {
             config = {};
         }
 
-        return this.httpService.post<BaseKontentError | any, TRawData>(
-            {
-                url: url,
-                body: body,
-                mapError: error => mapBaseKontentError(error)
-            },
-            {
-                headers: this.getHeaders(extraHeaders),
-                maxRetryAttempts: this.getRetryAttempts(),
-                useRetryForResponseCodes: this.defaultRetryStatusCodes,
-                logErrorToConsole: true,
-                responseType: internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
-            }
-        ).pipe(
-            catchError((error: IBaseResponseError<BaseKontentError>) => {
-                return throwError(this.mapContentManagementError(error.mappedError));
-            })
-        );
+        return this.httpService
+            .post<BaseKontentError | any, TRawData>(
+                {
+                    url: url,
+                    body: body,
+                    mapError: error => mapBaseKontentError(error)
+                },
+                {
+                    headers: this.getHeaders(extraHeaders),
+                    useRetryForResponseCodes: this.config.retryStrategy
+                        ? this.config.retryStrategy.useRetryForResponseCodes
+                        : undefined,
+                    addJitterToRetryAttempts: this.config.retryStrategy
+                        ? this.config.retryStrategy.addJitter
+                        : undefined,
+                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
+                    maxCumulativeWaitTimeMs: this.config.retryStrategy
+                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
+                        : undefined,
+                    logErrorToConsole: true,
+                    responseType:
+                        internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
+                }
+            )
+            .pipe(
+                catchError((error: IBaseResponseError<BaseKontentError>) => {
+                    return throwError(this.mapContentManagementError(error.mappedError));
+                })
+            );
     }
 
     /**
-    * Http PUT response
-    * @param url Url of request
-    * @param body Body of the request (names and values)
-    * @param config Query configuration
-    * @param extraHeaders Extra headers
-    */
+     * Http PUT response
+     * @param url Url of request
+     * @param body Body of the request (names and values)
+     * @param config Query configuration
+     * @param extraHeaders Extra headers
+     */
     protected putResponse<TRawData>(
         url: string,
         body: any,
@@ -167,33 +221,44 @@ export abstract class BaseContentManagementQueryService {
             config = {};
         }
 
-        return this.httpService.put<BaseKontentError | any, TRawData>(
-            {
-                url: url,
-                body: body,
-                mapError: error => mapBaseKontentError(error)
-            },
-            {
-                headers: this.getHeaders(extraHeaders),
-                maxRetryAttempts: this.getRetryAttempts(),
-                useRetryForResponseCodes: this.getRetryStatusCodes(),
-                logErrorToConsole: true,
-                responseType: internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
-            }
-        ).pipe(
-            catchError((error: IBaseResponseError<BaseKontentError>) => {
-                return throwError(this.mapContentManagementError(error.mappedError));
-            })
-        );
+        return this.httpService
+            .put<BaseKontentError | any, TRawData>(
+                {
+                    url: url,
+                    body: body,
+                    mapError: error => mapBaseKontentError(error)
+                },
+                {
+                    headers: this.getHeaders(extraHeaders),
+                    useRetryForResponseCodes: this.config.retryStrategy
+                        ? this.config.retryStrategy.useRetryForResponseCodes
+                        : undefined,
+                    addJitterToRetryAttempts: this.config.retryStrategy
+                        ? this.config.retryStrategy.addJitter
+                        : undefined,
+                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
+                    maxCumulativeWaitTimeMs: this.config.retryStrategy
+                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
+                        : undefined,
+                    logErrorToConsole: true,
+                    responseType:
+                        internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
+                }
+            )
+            .pipe(
+                catchError((error: IBaseResponseError<BaseKontentError>) => {
+                    return throwError(this.mapContentManagementError(error.mappedError));
+                })
+            );
     }
 
     /**
-    * Http Delete response
-    * @param url Url of request
-    * @param body Body of the request (names and values)
-    * @param config Query configuration
-    * @param extraHeaders Extra headers
-    */
+     * Http Delete response
+     * @param url Url of request
+     * @param body Body of the request (names and values)
+     * @param config Query configuration
+     * @param extraHeaders Extra headers
+     */
     protected deleteResponse<TRawData>(
         url: string,
         internalConfig: IContentManagementInternalQueryConfig,
@@ -204,33 +269,55 @@ export abstract class BaseContentManagementQueryService {
             config = {};
         }
 
-        return this.httpService.delete<BaseKontentError | any, TRawData>(
-            {
-                url: url,
-                mapError: error => mapBaseKontentError(error)
-            },
-            {
-                headers: this.getHeaders(extraHeaders),
-                maxRetryAttempts: this.getRetryAttempts(),
-                useRetryForResponseCodes: this.getRetryStatusCodes(),
-                logErrorToConsole: true,
-                responseType: internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
-            }
-        ).pipe(
-            catchError((error: IBaseResponseError<BaseKontentError>) => {
-                return throwError(this.mapContentManagementError(error.mappedError));
-            })
-        );
+        return this.httpService
+            .delete<BaseKontentError | any, TRawData>(
+                {
+                    url: url,
+                    mapError: error => mapBaseKontentError(error)
+                },
+                {
+                    headers: this.getHeaders(extraHeaders),
+                    useRetryForResponseCodes: this.config.retryStrategy
+                        ? this.config.retryStrategy.useRetryForResponseCodes
+                        : undefined,
+                    addJitterToRetryAttempts: this.config.retryStrategy
+                        ? this.config.retryStrategy.addJitter
+                        : undefined,
+                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
+                    maxCumulativeWaitTimeMs: this.config.retryStrategy
+                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
+                        : undefined,
+                    logErrorToConsole: true,
+                    responseType:
+                        internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
+                }
+            )
+            .pipe(
+                catchError((error: IBaseResponseError<BaseKontentError>) => {
+                    return throwError(this.mapContentManagementError(error.mappedError));
+                })
+            );
     }
 
-    private mapContentManagementError(error: BaseKontentError | any): SharedModels.ContentManagementBaseKontentError | any {
+    private mapContentManagementError(
+        error: BaseKontentError | any
+    ): SharedModels.ContentManagementBaseKontentError | any {
         if (error instanceof BaseKontentError) {
             let validationErrors: SharedModels.ValidationError[] = [];
-            if (error.originalError && error.originalError.response && error.originalError.response.data && error.originalError.response.data.validation_errors) {
-                const rawValidationErrors: SharedContracts.IValidationErrorContract[] = error.originalError.response.data.validation_errors;
-                validationErrors = rawValidationErrors.map(m => new SharedModels.ValidationError({
-                    message: m.message
-                }));
+            if (
+                error.originalError &&
+                error.originalError.response &&
+                error.originalError.response.data &&
+                error.originalError.response.data.validation_errors
+            ) {
+                const rawValidationErrors: SharedContracts.IValidationErrorContract[] =
+                    error.originalError.response.data.validation_errors;
+                validationErrors = rawValidationErrors.map(
+                    m =>
+                        new SharedModels.ValidationError({
+                            message: m.message
+                        })
+                );
             }
 
             return new SharedModels.ContentManagementBaseKontentError({
@@ -241,25 +328,13 @@ export abstract class BaseContentManagementQueryService {
                 specificCode: error.specificCode,
                 validationErrors: validationErrors
             });
-
         }
         return error;
     }
 
     /**
-     * Gets retry status code array
+     * Gets authorization header. This is used for 'preview' functionality
      */
-    private getRetryStatusCodes(): number[] {
-        if (this.config.retryStatusCodes) {
-            return this.config.retryStatusCodes;
-        }
-
-        return this.defaultRetryStatusCodes;
-    }
-
-    /**
-    * Gets authorization header. This is used for 'preview' functionality
-    */
     private getAuthorizationHeader(key?: string): IHeader {
         if (!key) {
             throw Error(`Cannot get authorization header because key is undefined`);
@@ -270,25 +345,6 @@ export abstract class BaseContentManagementQueryService {
             value: `bearer ${key}`
         };
     }
-
-    /**
-     * Gets number of retry attempts used by queries
-     */
-    private getRetryAttempts(): number {
-        // get the attempts
-        let attempts: number;
-
-        if (this.config.retryAttempts || this.config.retryAttempts === 0) {
-            // use custom defined number of attempts
-            attempts = this.config.retryAttempts;
-        } else {
-            // use default attempts
-            attempts = this.defaultRetryAttempts;
-        }
-
-        return attempts;
-    }
-
     /**
      * Gets base URL of the request including the project Id
      */

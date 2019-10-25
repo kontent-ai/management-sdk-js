@@ -1,7 +1,19 @@
 import { ElementModels } from '../elements/elements.models';
 import { SharedContracts } from '../../contracts';
+import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentTypeModels {
+
+    export type ModifyContentTypeOperation = 'addInto' | 'remove' | 'replace';
+
+    export interface IModifyContentTypeData {
+        op: ModifyContentTypeOperation;
+        path: string;
+        value: any;
+
+        before?: SharedModels.IReferenceObject;
+        after?: SharedModels.IReferenceObject;
+    }
 
     export class ContentType {
 

@@ -269,6 +269,23 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    modifyContentType(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: ContentTypeModels.IModifyContentTypeData[]
+    ): Observable<ContentTypeResponses.ModifyContentTypeResponse> {
+        return this.patchResponse<ContentTypeContracts.IModifyContentTypeResponseContract>(
+            url,
+            data,
+            {},
+            config
+        ).pipe(
+            map(response => {
+                return contentTypeMapper.mapModifyContentTypeResponse(response);
+            })
+        );
+    }
+
     viewContentType(
         url: string,
         config: IContentManagementQueryConfig

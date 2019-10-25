@@ -1,4 +1,4 @@
-import { IHttpService } from '@kentico/kontent-core';
+import { IHttpService, IRetryStrategyOptions } from '@kentico/kontent-core';
 
 export interface IManagementClientConfig {
     /**
@@ -16,18 +16,13 @@ export interface IManagementClientConfig {
      */
     baseUrl?: string;
 
-    /**
-    * Number of retry attempts when error occures. When not set, default number of attempts (3) are used. To disable set to 0.
-    */
-    retryAttempts?: number;
-
      /**
      * Can be used to inject custom Http service to perform requests
      */
     httpService?: IHttpService;
 
     /**
-    * Array of request status codes that should be retried
-    */
-    retryStatusCodes?: number[];
+     * retry strategy options
+     */
+    retryStrategy?: IRetryStrategyOptions;
 }

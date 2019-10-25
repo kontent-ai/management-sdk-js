@@ -16,6 +16,9 @@ export namespace ContentTypeContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
+    export interface IModifyContentTypeResponseContract extends IContentTypeContract {
+    }
+
     export interface IViewContentTypeResponseContract extends IContentTypeContract {
     }
 

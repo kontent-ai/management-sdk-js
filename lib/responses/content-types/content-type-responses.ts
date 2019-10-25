@@ -21,6 +21,16 @@ export namespace ContentTypeResponses {
         }
     }
 
+    export class ModifyContentTypeResponse extends BaseResponses.BaseContentManagementResponse<ContentTypeContracts.IViewContentTypeResponseContract, ContentTypeModels.ContentType>  {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: ContentTypeContracts.IViewContentTypeResponseContract,
+            data: ContentTypeModels.ContentType
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
     export class ViewContentTypeResponse extends BaseResponses.BaseContentManagementResponse<ContentTypeContracts.IViewContentTypeResponseContract, ContentTypeModels.ContentType>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,

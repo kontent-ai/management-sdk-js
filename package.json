@@ -29,6 +29,11 @@
   },
   "main": "./_commonjs/index.js",
   "types": "./_commonjs/index.d.ts",
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "npm run set-sdk-version"
+    }
+  },
   "scripts": {
     "tsc-local": "./node_modules/.bin/tsc",
     "webpack-local": "./node_modules/.bin/webpack",
@@ -60,12 +65,13 @@
     "bundle-stats:legacy": "npm run build:umd && webpack-bundle-analyzer _bundles/legacy-stats.json"
   },
   "dependencies": {
-    "@kentico/kontent-core": "2.0.0"
+    "@kentico/kontent-core": "4.0.2"
   },
   "peerDependencies": {
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
+    "standard-version": "7.0.0",
     "es6-promise": "4.2.8",
     "typescript": "3.6.3",
     "@types/jasmine": "3.4.0",

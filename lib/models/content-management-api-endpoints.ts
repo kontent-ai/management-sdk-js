@@ -63,6 +63,10 @@ export class ContentManagementApiEndpoints {
         return `types/${identifier.getParamValue()}`;
     }
 
+    modifyContentType(identifier: Identifiers.ContentTypeIdentifier): string {
+        return `types/${identifier.getParamValue()}`;
+    }
+
     addTaxonomy(): string {
         return `taxonomies`;
     }

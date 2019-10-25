@@ -2,12 +2,20 @@ import { HttpService } from '@kentico/kontent-core';
 
 import { IManagementClientConfig } from '../config';
 import { ContentItemContracts } from '../contracts';
-import { AssetModels, ContentTypeModels, ContentTypeSnippetModels, TaxonomyModels, WorkflowModels, LanguageModels } from '../models';
+import {
+    AssetModels,
+    ContentTypeModels,
+    ContentTypeSnippetModels,
+    LanguageModels,
+    TaxonomyModels,
+    WorkflowModels,
+} from '../models';
 import {
     AddAssetQuery,
     AddContentItemQuery,
     AddContentTypeQuery,
     AddContentTypeSnippetQuery,
+    AddLanguageQuery,
     AddTaxonomyQuery,
     AssetIdentifierQueryClass,
     CancelScheduledPublishingOfLanguageVariantQuery,
@@ -24,15 +32,19 @@ import {
     DeleteContentTypeSnippetQuery,
     DeleteTaxonomyQuery,
     LanguageIdAndCodenameIdentifierQuery,
+    LanguageIdentifierQuery,
     LanguageVariantElementsQuery,
     ListAssetsQuery,
     ListContentItemsQuery,
     ListContentTypeSnippetsQuery,
     ListContentTypesQuery,
+    ListLanguagesQuery,
     ListLanguageVariantsOfContentTypeQuery,
     ListLanguageVariantsOfItemQuery,
     ListTaxonomiesQuery,
     ListWorkflowStepsQuery,
+    ModifyContentTypeQuery,
+    ModifyLanguageQuery,
     ProjectIdIdentifierQuery,
     PublishOrScheduleLanguageVariantQuery,
     TaxonomyIdentifierQuery,
@@ -48,19 +60,15 @@ import {
     ViewContentItemQuery,
     ViewContentTypeQuery,
     ViewContentTypeSnippetQuery,
+    ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
-    ListLanguagesQuery,
-    AddLanguageQuery,
-    LanguageIdentifierQuery,
-    ModifyLanguageQuery,
-    ViewLanguageQuery,
 } from '../queries';
+import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
+import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
-import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
-import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
 
 export class ManagementClient implements IManagementClient {
     private queryService: ContentManagementQueryService;
@@ -205,6 +213,15 @@ export class ManagementClient implements IManagementClient {
             this.config,
             this.queryService,
             (config, queryService, data) => new AddContentTypeQuery(config, queryService, data)
+        );
+    }
+
+    modifyContentType(): ContentTypeIdentifierQuery<DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>> {
+        return new ContentTypeIdentifierQuery<DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>>(
+            this.config, this.queryService, (
+                config, queryService, identifier) => new DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>(
+                    config, queryService, (nConfig, nQueryService, data) => new ModifyContentTypeQuery(nConfig, nQueryService, identifier, data)
+                )
         );
     }
 
