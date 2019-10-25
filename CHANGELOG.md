@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* implements 'modifyContentType' endpoint, uses new retry policy & uses standard version
+* implements 'modifyContentType' endpoint, uses new retry policy & uses standard versioning
 
 ### Features
 
-* implements 'modifyContentType' endpoint, uses new retry policy & uses standard version ([75a9e74](https://github.com///commit/75a9e7439b6f87fe71cd6118ec7eb4e57099c210))
+* implements 'modifyContentType' endpoint, uses new retry policy & uses standard versioning ([75a9e74](https://github.com///commit/75a9e7439b6f87fe71cd6118ec7eb4e57099c210))
