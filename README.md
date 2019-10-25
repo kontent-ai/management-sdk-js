@@ -72,7 +72,7 @@ If you are using `UMD` bundles directly in browsers, you can find this library u
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Kontent management | jsdelivr cdn</title>
+    <title>Kontent management | jsdelivr cdn</title>
     <script src="https://cdn.jsdelivr.net/npm/rxjs/bundles/rxjs.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@kentico/kontent-management/_bundles/kontent-management.umd.min.js"></script>
 </head>
@@ -121,9 +121,8 @@ const client = new ManagementClient({
 | `projectId` | N/A | **Required** - Id of your Kentico Kontent project  |
 | `apiKey` | N/A  | **Required** - Content management API Token  |
 | `baseUrl` | https://manage.kontent.ai/v2/projects  | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes |
-| `retryAttempts` | 3 |  Number of retry attempts when error occures. To disable set the value to 0. |
+| `retryStrategy` | undefined |  Retry strategy configuration. If not set, default strategy is used. |
 | `httpService` | HttpService  | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
-| `retryStatusCodes` | [500] | Array of request status codes that should be retried. |
 
 ### Testing
 
