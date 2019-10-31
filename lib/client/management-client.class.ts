@@ -9,6 +9,7 @@ import {
     LanguageModels,
     TaxonomyModels,
     WorkflowModels,
+    ContentTypeElementsBuilder,
 } from '../models';
 import {
     AddAssetQuery,
@@ -208,8 +209,8 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    addContentType(): DataQuery<AddContentTypeQuery, ContentTypeModels.IAddContentTypeData> {
-        return new DataQuery<AddContentTypeQuery, ContentTypeModels.IAddContentTypeData>(
+    addContentType(): DataQuery<AddContentTypeQuery, (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData> {
+        return new DataQuery<AddContentTypeQuery, (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData>(
             this.config,
             this.queryService,
             (config, queryService, data) => new AddContentTypeQuery(config, queryService, data)

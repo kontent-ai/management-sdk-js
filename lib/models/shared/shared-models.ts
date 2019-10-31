@@ -40,7 +40,7 @@ export namespace SharedModels {
 
     }
 
-    export class IReferenceObject {
+    export interface IReferenceObject {
         id?: string;
         codename?: string;
         externalId?: string;

@@ -6,6 +6,7 @@ import {
     LanguageModels,
     TaxonomyModels,
     WorkflowModels,
+    ContentTypeElementsBuilder,
 } from '../models';
 import {
     AddAssetQuery,
@@ -158,7 +159,7 @@ export interface IManagementClient {
     /**
      * Query to add new content type
      */
-    addContentType(): DataQuery<AddContentTypeQuery, ContentTypeModels.IAddContentTypeData>;
+    addContentType(): DataQuery<AddContentTypeQuery, (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData>;
 
     /**
      * Query to view content type

@@ -5,6 +5,7 @@ export * from './shared/shared-models';
 export * from './assets/asset.models';
 export * from './taxonomies/taxonomy.models';
 export * from './content-types/content-type.models';
+export * from './content-types/content-type-elements.builder';
 export * from './projects/project-report.models';
 export * from './language-variants/langauge-variant.models';
 export * from './elements/elements.models';
