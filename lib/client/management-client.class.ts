@@ -10,6 +10,7 @@ import {
     TaxonomyModels,
     WorkflowModels,
     ContentTypeElementsBuilder,
+    ContentTypeSnippetElementsBuilder,
 } from '../models';
 import {
     AddAssetQuery,
@@ -165,8 +166,8 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    addContentTypeSnippet(): DataQuery<AddContentTypeSnippetQuery, ContentTypeSnippetModels.IAddContentTypeSnippetData> {
-        return new DataQuery<AddContentTypeSnippetQuery, ContentTypeSnippetModels.IAddContentTypeSnippetData>(
+    addContentTypeSnippet(): DataQuery<AddContentTypeSnippetQuery, (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData> {
+        return new DataQuery<AddContentTypeSnippetQuery, (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData>(
             this.config,
             this.queryService,
             (config, queryService, data) => new AddContentTypeSnippetQuery(config, queryService, data)

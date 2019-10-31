@@ -1,12 +1,13 @@
 import { ContentItemContracts } from '../contracts';
 import {
     AssetModels,
+    ContentTypeElementsBuilder,
     ContentTypeModels,
+    ContentTypeSnippetElementsBuilder,
     ContentTypeSnippetModels,
     LanguageModels,
     TaxonomyModels,
     WorkflowModels,
-    ContentTypeElementsBuilder,
 } from '../models';
 import {
     AddAssetQuery,
@@ -41,6 +42,7 @@ import {
     ListLanguageVariantsOfItemQuery,
     ListTaxonomiesQuery,
     ListWorkflowStepsQuery,
+    ModifyContentTypeQuery,
     ModifyLanguageQuery,
     ProjectIdIdentifierQuery,
     PublishOrScheduleLanguageVariantQuery,
@@ -60,10 +62,9 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
-    ModifyContentTypeQuery,
 } from '../queries';
-import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
 import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
+import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
 
 export interface IManagementClient {
     /**
@@ -127,12 +128,17 @@ export interface IManagementClient {
     /**
      * Query to add new content type snippet
      */
-    addContentTypeSnippet(): DataQuery<AddContentTypeSnippetQuery, ContentTypeSnippetModels.IAddContentTypeSnippetData>;
+    addContentTypeSnippet(): DataQuery<
+        AddContentTypeSnippetQuery,
+        (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData
+    >;
 
     /**
      * Query to modify content type
      */
-    modifyContentType(): ContentTypeIdentifierQuery<DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>>;
+    modifyContentType(): ContentTypeIdentifierQuery<
+        DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
+    >;
 
     /**
      * Query to view language variant
@@ -159,7 +165,10 @@ export interface IManagementClient {
     /**
      * Query to add new content type
      */
-    addContentType(): DataQuery<AddContentTypeQuery, (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData>;
+    addContentType(): DataQuery<
+        AddContentTypeQuery,
+        (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData
+    >;
 
     /**
      * Query to view content type

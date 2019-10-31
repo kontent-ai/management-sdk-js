@@ -1,20 +1,24 @@
-import { ContentTypeSnippetResponses, ElementModels } from '../../lib';
+import { ContentTypeSnippetResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-type-snippets/fake-add-content-type-snippet.json';
 import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
-
 
 describe('Add content type snippet', () => {
     let response: ContentTypeSnippetResponses.AddContentTypeSnippetResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).addContentTypeSnippet()
-            .withData({
-                external_id: 'exId',
-                name: 'name',
-                elements: [{
-                    name: '',
-                    type: ElementModels.ElementType.number,
-                }]
+    beforeAll(done => {
+        getTestClientWithJson(responseJson)
+            .addContentTypeSnippet()
+            .withData(builder => {
+                return {
+                    external_id: 'exId',
+                    name: 'name',
+                    elements: [
+                        builder.numberElement({
+                            type: 'number',
+                            name: 'xNumber'
+                        })
+                    ]
+                };
             })
             .toObservable()
             .subscribe(result => {
@@ -24,7 +28,10 @@ describe('Add content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.addContentTypeSnippet().withData({} as any).getUrl();
+        const url = cmTestClient
+            .addContentTypeSnippet()
+            .withData({} as any)
+            .getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets`);
     });
 
@@ -51,7 +58,6 @@ describe('Add content type snippet', () => {
         expect(Array.isArray(contentType.elements)).toBeTruthy();
 
         contentType.elements.forEach(element => {
-
             const originalElement = originalItem.elements.find(m => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
@@ -62,8 +68,4 @@ describe('Add content type snippet', () => {
             expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
         });
     });
-
-
 });
-
-

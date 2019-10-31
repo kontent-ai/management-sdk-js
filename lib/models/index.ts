@@ -10,6 +10,7 @@ export * from './projects/project-report.models';
 export * from './language-variants/langauge-variant.models';
 export * from './elements/elements.models';
 export * from './content-type-snippets/content-type-snippets.models';
+export * from './content-type-snippets/content-type-snippet-elements.builder';
 export * from './workflow/workflow.models';
 export * from './languages/language.models';
 export * from './identifiers';
