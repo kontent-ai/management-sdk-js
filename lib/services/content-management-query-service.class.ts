@@ -716,7 +716,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig,
         data: LanguageModels.IModifyLanguageData[]
     ): Observable<LanguageResponses.ModifyLanguageResponse> {
-        return this.postResponse<LanguageContracts.IModifyLanguageResponseContract>(
+        return this.patchResponse<LanguageContracts.IModifyLanguageResponseContract>(
             url,
             data,
             {},
