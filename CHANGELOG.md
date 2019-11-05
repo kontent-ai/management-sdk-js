@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com///compare/v0.2.1...v0.2.2) (2019-11-05)
+
+
+### Features
+
+* adds elements builder for add content type snippet query ([74249a9](https://github.com///commit/74249a9b3f2f7d129cfead97c2f39610b8ae6584))
+* adds elements builder with models for convenient creation of new content types ([6b0128e](https://github.com///commit/6b0128ea5482e23cf310c6c1743e4f7062b226b6))
+
+
+### Bug Fixes
+
+* updates kontent-core package which fixes http retry requests ([5545f10](https://github.com///commit/5545f10f663287a5cea1aff8a87864d250d5bc6e))
+
 ### [0.2.1](https://github.com///compare/v0.2.0...v0.2.1) (2019-10-31)
 
 
