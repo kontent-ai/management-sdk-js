@@ -29,10 +29,6 @@ export abstract class BaseContentManagementQueryService {
         protected sdkInfo: ISDKInfo
     ) {}
 
-    retryPromise<T>(promise: Promise<T>): Promise<T> {
-        return this.httpService.retryPromise<T>(promise, this.config.retryStrategy);
-    }
-
     /**
      * Gets url based on the action, query configuration and options (parameters)
      * @param action Action (= url part) that will be hit
