@@ -25,4 +25,10 @@ export interface IManagementClientConfig {
      * retry strategy options
      */
     retryStrategy?: IRetryStrategyOptions;
+
+    /**
+    * When enabled, additional information are logged in console for certain issues.
+    * Disable in production environments.
+    */
+    isDeveloperMode?: boolean;
 }

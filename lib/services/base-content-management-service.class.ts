@@ -91,7 +91,7 @@ export abstract class BaseContentManagementQueryService {
                     maxCumulativeWaitTimeMs: this.config.retryStrategy
                         ? this.config.retryStrategy.maxCumulativeWaitTimeMs
                         : undefined,
-                    logErrorToConsole: true,
+                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -132,7 +132,7 @@ export abstract class BaseContentManagementQueryService {
                     maxCumulativeWaitTimeMs: this.config.retryStrategy
                         ? this.config.retryStrategy.maxCumulativeWaitTimeMs
                         : undefined,
-                    logErrorToConsole: true,
+                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -175,7 +175,7 @@ export abstract class BaseContentManagementQueryService {
                     maxCumulativeWaitTimeMs: this.config.retryStrategy
                         ? this.config.retryStrategy.maxCumulativeWaitTimeMs
                         : undefined,
-                    logErrorToConsole: true,
+                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -218,7 +218,7 @@ export abstract class BaseContentManagementQueryService {
                     maxCumulativeWaitTimeMs: this.config.retryStrategy
                         ? this.config.retryStrategy.maxCumulativeWaitTimeMs
                         : undefined,
-                    logErrorToConsole: true,
+                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -260,7 +260,7 @@ export abstract class BaseContentManagementQueryService {
                     maxCumulativeWaitTimeMs: this.config.retryStrategy
                         ? this.config.retryStrategy.maxCumulativeWaitTimeMs
                         : undefined,
-                    logErrorToConsole: true,
+                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
