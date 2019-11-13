@@ -12,10 +12,7 @@ describe('Modify language', () => {
             .withData([
                 {
                     op: 'replace',
-                    property_name: 'name',
-                    reference: {
-                        codename: 'x'
-                    },
+                    property_name: 'codename',
                     value: 'y'
                 }
             ])
