@@ -1,6 +1,6 @@
 export * from './base-query';
 export * from './base-listing-query';
-export * from './query-builders';
+export * from '../query-builders';
 export * from './content-items';
 export * from './assets';
 export * from './taxonomies';

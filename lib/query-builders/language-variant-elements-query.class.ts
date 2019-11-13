@@ -1,6 +1,6 @@
-import { IManagementClientConfig } from '../../config';
-import { LanguageVariantModels } from '../../models';
-import { ContentManagementQueryService } from '../../services';
+import { IManagementClientConfig } from '../config';
+import { LanguageVariantModels } from '../models';
+import { ContentManagementQueryService } from '../services';
 
 export class LanguageVariantElementsQuery<TResult> {
 

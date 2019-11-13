@@ -1,5 +1,5 @@
-import { IManagementClientConfig } from '../../config';
-import { ContentManagementQueryService } from '../../services';
+import { IManagementClientConfig } from '../config';
+import { ContentManagementQueryService } from '../services';
 
 export class ProjectIdIdentifierQuery<TResult> {
 

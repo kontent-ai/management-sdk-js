@@ -66,8 +66,8 @@ import {
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
 } from '../queries';
-import { DeleteWebhookQuery } from '../queries/query-builders/webhook/delete-webhook-query.class';
-import { WebhookIdentifierQuery } from '../queries/query-builders/webhook/webhook-identifier-query.class';
+import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
+import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
