@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com///compare/v0.2.2...v0.2.3) (2019-11-13)
+
+
+### Features
+
+* adds 'isDeveloperMode' client configuration option. If this option is enabled, additional errors are logged in console. ([7d64864](https://github.com///commit/7d648648f467e0f356e073e134910c7dd7ebea4c))
+* adds optional data query builder class and uses it for 'publishOrScheduleLanguageVariant' method to allow for skipping data. Fixes https://github.com/Kentico/kontent-management-sdk-js/issues/5 ([e5cb868](https://github.com///commit/e5cb868689b0c9699b344c6ae316d644d9f47ce0))
+* adds support for pagination with x-continuation header token, adds ability to set headers in query config, internally refactors the way headers are retrieved, changes debug response type to include strongly typed properties ([7efafc0](https://github.com///commit/7efafc002dbfba00f218b39377c82b6233b833a4))
+* internal - separates query builders from queries ([513d058](https://github.com///commit/513d05848990b5fbf10b34f0c02750447110ba2e))
+
+
+### Bug Fixes
+
+* removes the ability to set entire query config to prevent overriding headers ([8115e2a](https://github.com///commit/8115e2a4037c0d1f45d289458fb825be80fccc23))
+* sets correct data model for modifying language (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/7) ([ae740e4](https://github.com///commit/ae740e4af92efe1f3ab9897a0cb7236d4a33334d))
+
 ### [0.2.2](https://github.com///compare/v0.2.1...v0.2.2) (2019-11-05)
 
 
