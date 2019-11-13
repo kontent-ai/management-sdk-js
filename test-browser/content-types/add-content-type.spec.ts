@@ -12,6 +12,7 @@ describe('Add content type', () => {
                 return {
                     external_id: 'exId',
                     name: 'name',
+                    codename: 'codename',
                     elements: [
                         builder.assetElement({
                             name: 'image',

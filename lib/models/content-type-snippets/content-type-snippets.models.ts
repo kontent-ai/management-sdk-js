@@ -22,7 +22,9 @@ export namespace ContentTypeSnippetModels {
 
     export interface IAddContentTypeSnippetData {
         name: string;
-        external_id?: string;
         elements: ElementsInContentType.IElementInContentType[];
+
+        external_id?: string;
+        codename?: string;
     }
 }

@@ -33,10 +33,18 @@ export namespace ContentTypeModels {
         }
     }
 
-    export interface IAddContentTypeData {
+    export interface IAddContentTypeContentGroup {
         name: string;
         external_id?: string;
+    }
+
+    export interface IAddContentTypeData {
+        name: string;
         elements: ElementsInContentType.IElementInContentType[];
+
+        external_id?: string;
+        codename?: string;
+        content_groups?: IAddContentTypeContentGroup[];
     }
 
     export interface IAddContentTypeCustomElementData {
