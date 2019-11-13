@@ -3,22 +3,18 @@ import { Observable } from 'rxjs';
 import { IManagementClientConfig } from '../../config';
 import { ContentTypeResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
-import { BaseQuery } from '../base-query';
+import { BaseListingQuery } from '../base-listing-query';
 
-export class ListContentTypesQuery extends BaseQuery<ContentTypeResponses.ContentTypeListResponse> {
+export class ListContentTypesQuery extends BaseListingQuery<ContentTypeResponses.ContentTypeListResponse> {
+    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
+        super(config, queryService);
+    }
 
-  constructor(
-    protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService
-  ) {
-    super(config, queryService);
-  }
+    toObservable(): Observable<ContentTypeResponses.ContentTypeListResponse> {
+        return this.queryService.listContentTypes(this.getUrl(), this.queryConfig);
+    }
 
-  toObservable(): Observable<ContentTypeResponses.ContentTypeListResponse> {
-    return this.queryService.listContentTypes(this.getUrl(), this.queryConfig);
-  }
-
-  protected getAction(): string {
-    return this.apiEndpoints.listContentTypes();
-  }
+    protected getAction(): string {
+        return this.apiEndpoints.listContentTypes();
+    }
 }

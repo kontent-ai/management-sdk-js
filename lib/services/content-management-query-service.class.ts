@@ -1,4 +1,4 @@
-import { IHeader, IHttpService, ISDKInfo } from '@kentico/kontent-core';
+import { IHttpService, ISDKInfo } from '@kentico/kontent-core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,32 +8,33 @@ import {
     ContentItemContracts,
     ContentTypeContracts,
     ContentTypeSnippetContracts,
+    LanguageContracts,
     LanguageVariantContracts,
     ProjectContracts,
     TaxonomyContracts,
     WorkflowContracts,
-    LanguageContracts,
 } from '../contracts';
 import {
     assetsResponseMapper,
     contentItemsResponseMapper,
     contentTypeMapper,
     contentTypeSnippetMapper,
+    languageResponseMapper,
     languageVariantResponseMapper,
     projectMapper,
     taxonomyResponseMapper,
     workflowResponseMapper,
-    languageResponseMapper,
 } from '../mappers';
+import { webhookResponseMapper } from '../mappers/webhook-response-mapper';
 import {
     AssetModels,
     ContentTypeModels,
     ContentTypeSnippetModels,
     IContentManagementQueryConfig,
+    LanguageModels,
     LanguageVariantModels,
     TaxonomyModels,
     WorkflowModels,
-    LanguageModels,
 } from '../models';
 import {
     AssetResponses,
@@ -41,14 +42,13 @@ import {
     ContentItemResponses,
     ContentTypeResponses,
     ContentTypeSnippetResponses,
+    LanguageResponses,
     LanguageVariantResponses,
     ProjectResponses,
     TaxonomyResponses as TaxonomyResponses,
     WorkflowResponses,
-    LanguageResponses,
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
-import { webhookResponseMapper } from '../mappers/webhook-response-mapper';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService {
 
@@ -451,22 +451,11 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Observable<AssetResponses.UploadBinaryFileResponse> {
 
-        const headers: IHeader[] = [
-            { header: 'Content-type', value: data.contentType },
-        ];
-
-        if (data.contentLength) {
-            headers.push(
-                { header: 'Content-length', value: data.contentLength.toString() }
-            );
-        }
-
         return this.postResponse<AssetContracts.IUploadBinaryFileResponseContract>(
             url,
             data.binaryData,
             {},
-            config,
-            headers
+            config
         ).pipe(
             map(response => {
                 return assetsResponseMapper.mapUploadBinaryFileResponse(response);

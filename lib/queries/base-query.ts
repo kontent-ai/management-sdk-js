@@ -1,4 +1,4 @@
-import { IQueryParameter, Parameters } from '@kentico/kontent-core';
+import { IQueryParameter, Parameters, IHeader } from '@kentico/kontent-core';
 import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
@@ -7,7 +7,9 @@ import { BaseResponses } from '../responses';
 import { ContentManagementQueryService } from '../services';
 
 export abstract class BaseQuery<TResponse extends BaseResponses.IContentManagementResponse> {
-    protected queryConfig: IContentManagementQueryConfig = {};
+    protected queryConfig: IContentManagementQueryConfig = {
+        headers: []
+    };
     protected parameters: IQueryParameter[] = [];
     protected apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
     protected customUrl?: string;
@@ -44,6 +46,31 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     withQueryConfig(config: IContentManagementQueryConfig): this {
         this.queryConfig = config;
         return this;
+    }
+
+    /**
+     * Adds header to request
+     * @param header Header to add
+     */
+    withHeader(header: IHeader): this {
+        this.queryConfig.headers.push(header);
+        return this;
+    }
+
+     /**
+     * Adds headers to request
+     * @param headers Headers to add
+     */
+    withHeaders(headers: IHeader[]): this {
+        this.queryConfig.headers.push(...headers);
+        return this;
+    }
+
+    /**
+     * Gets array of currently set headers
+     */
+    getHeaders(): IHeader[] {
+        return this.queryConfig.headers;
     }
 
     /**

@@ -14,7 +14,7 @@ export abstract class BaseMapper {
         }
 
         return {
-            response: baseResponse.response
+            response: baseResponse
         };
     }
 

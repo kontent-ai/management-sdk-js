@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { IManagementClientConfig } from '../../config';
 import { ContentItemResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
-import { BaseQuery } from '../base-query';
+import { BaseListingQuery } from '../base-listing-query';
 
-export class ListContentItemsQuery extends BaseQuery<ContentItemResponses.ContentItemsResponse> {
+export class ListContentItemsQuery extends BaseListingQuery<ContentItemResponses.ContentItemsResponse> {
 
   constructor(
     protected config: IManagementClientConfig,

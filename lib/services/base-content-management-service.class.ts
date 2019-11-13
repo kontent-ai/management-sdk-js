@@ -40,9 +40,10 @@ export abstract class BaseContentManagementQueryService {
 
     /**
      * Gets proper set of headers for given request.
+     * @param config Query config
      */
-    getHeaders(extraHeaders?: IHeader[]): IHeader[] {
-        let headers: IHeader[] = [
+    getHeaders(config: IContentManagementQueryConfig): IHeader[] {
+        const headers: IHeader[] = [
             // sdk tracking header
             headerHelper.getSdkIdHeader({
                 host: this.sdkInfo.host,
@@ -53,9 +54,8 @@ export abstract class BaseContentManagementQueryService {
             this.getAuthorizationHeader(this.config.apiKey)
         ];
 
-        if (extraHeaders) {
-            headers = headers.concat(extraHeaders);
-        }
+        // add query headers
+        headers.push(...config.headers);
 
         return headers;
     }
@@ -71,9 +71,6 @@ export abstract class BaseContentManagementQueryService {
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
-        if (!config) {
-            config = {};
-        }
 
         return this.httpService
             .patch<BaseKontentError | any, TRawData>(
@@ -83,7 +80,7 @@ export abstract class BaseContentManagementQueryService {
                     body: body
                 },
                 {
-                    headers: this.getHeaders(),
+                    headers: this.getHeaders(config),
                     useRetryForResponseCodes: this.config.retryStrategy
                         ? this.config.retryStrategy.useRetryForResponseCodes
                         : undefined,
@@ -116,9 +113,6 @@ export abstract class BaseContentManagementQueryService {
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
-        if (!config) {
-            config = {};
-        }
 
         return this.httpService
             .get<BaseKontentError | any, TRawData>(
@@ -127,7 +121,7 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
-                    headers: this.getHeaders(),
+                    headers: this.getHeaders(config),
                     useRetryForResponseCodes: this.config.retryStrategy
                         ? this.config.retryStrategy.useRetryForResponseCodes
                         : undefined,
@@ -155,19 +149,13 @@ export abstract class BaseContentManagementQueryService {
      * @param url Url of request
      * @param body Body of the request (names and values)
      * @param config Query configuration
-     * @param extraHeaders Extra headers
      */
     protected postResponse<TRawData>(
         url: string,
         body: any,
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig,
-        extraHeaders?: IHeader[]
     ): Observable<IBaseResponse<TRawData>> {
-        if (!config) {
-            config = {};
-        }
-
         return this.httpService
             .post<BaseKontentError | any, TRawData>(
                 {
@@ -176,7 +164,7 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
-                    headers: this.getHeaders(extraHeaders),
+                    headers: this.getHeaders(config),
                     useRetryForResponseCodes: this.config.retryStrategy
                         ? this.config.retryStrategy.useRetryForResponseCodes
                         : undefined,
@@ -204,19 +192,13 @@ export abstract class BaseContentManagementQueryService {
      * @param url Url of request
      * @param body Body of the request (names and values)
      * @param config Query configuration
-     * @param extraHeaders Extra headers
      */
     protected putResponse<TRawData>(
         url: string,
         body: any,
         internalConfig: IContentManagementInternalQueryConfig,
-        config: IContentManagementQueryConfig,
-        extraHeaders?: IHeader[]
+        config: IContentManagementQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
-        if (!config) {
-            config = {};
-        }
-
         return this.httpService
             .put<BaseKontentError | any, TRawData>(
                 {
@@ -225,7 +207,7 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
-                    headers: this.getHeaders(extraHeaders),
+                    headers: this.getHeaders(config),
                     useRetryForResponseCodes: this.config.retryStrategy
                         ? this.config.retryStrategy.useRetryForResponseCodes
                         : undefined,
@@ -253,17 +235,12 @@ export abstract class BaseContentManagementQueryService {
      * @param url Url of request
      * @param body Body of the request (names and values)
      * @param config Query configuration
-     * @param extraHeaders Extra headers
      */
     protected deleteResponse<TRawData>(
         url: string,
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig,
-        extraHeaders?: IHeader[]
     ): Observable<IBaseResponse<TRawData>> {
-        if (!config) {
-            config = {};
-        }
 
         return this.httpService
             .delete<BaseKontentError | any, TRawData>(
@@ -272,7 +249,7 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
-                    headers: this.getHeaders(extraHeaders),
+                    headers: this.getHeaders(config),
                     useRetryForResponseCodes: this.config.retryStrategy
                         ? this.config.retryStrategy.useRetryForResponseCodes
                         : undefined,

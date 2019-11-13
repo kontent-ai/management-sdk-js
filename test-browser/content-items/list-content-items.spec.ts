@@ -1,17 +1,32 @@
 import { ContentItemResponses } from '../../lib';
 import * as listingResponseJson from '../fake-responses/content-items/fake-list-content-items.json';
 import { getTestClientWithJson, cmTestClient, testProjectId } from '../setup';
+import { IHeader } from '@kentico/kontent-core';
 
 describe('List content items', () => {
     let response: ContentItemResponses.ContentItemsResponse;
+    const headers: IHeader[] = [];
 
     beforeAll((done) => {
-        getTestClientWithJson(listingResponseJson).listContentItems()
+
+        const query =  getTestClientWithJson(listingResponseJson).listContentItems()
+        .xContinuationToken('wda');
+
+        headers.push(...query.getHeaders());
+
+        query
             .toObservable()
             .subscribe(result => {
                 response = result;
                 done();
             });
+    });
+
+    it(`x-continuation header should be set`, () => {
+        const continuationHeader = headers.find(m => m.header.toLowerCase() === 'x-continuation'.toLowerCase());
+
+        expect(continuationHeader).toBeDefined();
+        expect(continuationHeader ? continuationHeader.value : '').toEqual('wda');
     });
 
     it(`url should be correct`, () => {

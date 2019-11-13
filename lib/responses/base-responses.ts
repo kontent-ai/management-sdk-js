@@ -1,7 +1,9 @@
+import { IBaseResponse } from '@kentico/kontent-core';
+
 export namespace BaseResponses {
 
     export interface IContentManagementResponseDebug {
-        response: any;
+        response: IBaseResponse<any>;
     }
 
     export interface IContentManagementResponse {
