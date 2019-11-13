@@ -41,9 +41,8 @@ export namespace LanguageModels {
 
     export interface IModifyLanguageData {
         op: ModifyLanguageOperation;
-        property_name: string;
-        reference: SharedModels.IReferenceObject;
-        value: string;
+        property_name: 'name' | 'codename' | 'fallback_language' | 'is_active';
+        value: string | boolean | SharedModels.IReferenceObject;
     }
 
     export interface IAddLanguageData {
