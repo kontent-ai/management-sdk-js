@@ -40,15 +40,6 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     }
 
     /**
-     * Sets query configuration
-     * @param config Query configuration object
-     */
-    withQueryConfig(config: IContentManagementQueryConfig): this {
-        this.queryConfig = config;
-        return this;
-    }
-
-    /**
      * Adds header to request
      * @param header Header to add
      */
