@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com///compare/v0.2.3...v0.2.4) (2019-11-13)
+
+
+### Features
+
+* adds codename property to 'addContentType' and 'addContentTypeSnippet' queries, adds 'content_groups' property to 'addContentType' ([bec6a8c](https://github.com///commit/bec6a8c9b64da104d2066ef10451b549caea87ac))
+
 ### [0.2.3](https://github.com///compare/v0.2.2...v0.2.3) (2019-11-13)
 
 
