@@ -65,6 +65,7 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
+    DataQueryOptional,
 } from '../queries';
 import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
 import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
@@ -126,11 +127,11 @@ export class ManagementClient implements IManagementClient {
                 ));
     }
 
-    publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DataQuery<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>> {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DataQuery<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>>(
+    publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>> {
+        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>>(
             this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<DataQuery<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new DataQuery<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>(nConfig, nQueryService, (
+                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>(
+                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>(nConfig, nQueryService, (
                         pConfig, pQueryService, data) => new PublishOrScheduleLanguageVariantQuery(pConfig, pQueryService, contentItemIdentifier, languageIdentifier, data)
                     ))
         );

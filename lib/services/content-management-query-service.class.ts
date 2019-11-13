@@ -62,7 +62,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
 
     publishOrScheduleLanguageVariant(
         url: string,
-        data: WorkflowModels.IPublishOrSchedulePublishData,
+        data: WorkflowModels.IPublishOrSchedulePublishData | undefined,
         config: IContentManagementQueryConfig
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(

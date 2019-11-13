@@ -12,3 +12,4 @@ export * from './content-type-identifier-query.class';
 export * from './content-item-external-id-identifier.class';
 export * from './language-identifier-query.class';
 export * from './content-type-codename-and-external-id-identifier-query.class';
+export * from './data-query-optional.class';

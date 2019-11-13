@@ -13,7 +13,7 @@ export class PublishOrScheduleLanguageVariantQuery extends BaseQuery<BaseRespons
     protected queryService: ContentManagementQueryService,
     public contentItemIdentifier: Identifiers.ContentItemIdentifier,
     public languageIdentifier: Identifiers.LanguageIdentifier,
-    public data: WorkflowModels.IPublishOrSchedulePublishData
+    public data?: WorkflowModels.IPublishOrSchedulePublishData
   ) {
     super(config, queryService);
   }

@@ -17,7 +17,8 @@ export namespace WorkflowModels {
 
     export interface IPublishOrSchedulePublishData {
         /**
-         * ISO-8601 formatted date/time. Example: 2019-01-31T11:00:00+01:00
+         * ISO-8601 formatted date/time. Example: 2019-01-31T11:00:00+01:00.
+         * If you do not provide this property, the specified language variant is published immediately.
          */
         scheduled_to?: string;
     }

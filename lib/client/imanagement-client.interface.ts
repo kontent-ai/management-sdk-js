@@ -62,6 +62,7 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
+    DataQueryOptional,
 } from '../queries';
 import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
 import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
@@ -101,7 +102,7 @@ export interface IManagementClient {
      */
     publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
-            DataQuery<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
+            DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
         >
     >;
 
