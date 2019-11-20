@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com///compare/v0.2.4...v0.2.5) (2019-11-20)
+
+
+### Bug Fixes
+
+* updates @kentico/kontent-core dep which removes testing warn logging in console ([cf38dbe](https://github.com///commit/cf38dbe307beeaefe5d3e4a96ab3d4ec2aaf0fe3))
+
 ### [0.2.4](https://github.com///compare/v0.2.3...v0.2.4) (2019-11-13)
 
 
