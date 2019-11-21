@@ -1,4 +1,4 @@
-import { SharedModels } from '../shared/shared-models';
+import { SharedContracts } from 'lib/contracts';
 
 export namespace ElementsInContentType {
 
@@ -26,11 +26,11 @@ export namespace ElementsInContentType {
             condition: 'at_most' | 'exactly' | 'at_least'
         };
         is_required?: boolean;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ISnippetInType extends IElementInContentType {
-        snippet: SharedModels.IReferenceObject;
+        snippet: SharedContracts.IReferenceObjectContract;
         type: 'snippet';
         codename: string;
         external_id?: string;
@@ -45,8 +45,8 @@ export namespace ElementsInContentType {
         external_id?: string;
         guidelines?: string;
         is_required?: boolean;
-        allowed_elements?: SharedModels.IReferenceObject[];
-        content_group?: SharedModels.IReferenceObject;
+        allowed_elements?: SharedContracts.IReferenceObjectContract[];
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IDateTimeInType extends IElementInContentType {
@@ -56,7 +56,7 @@ export namespace ElementsInContentType {
         guidelines?: string;
         codename?: string;
         external_id?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IGuidelinesInType extends IElementInContentType {
@@ -64,7 +64,7 @@ export namespace ElementsInContentType {
         type: 'guidelines';
         codename?: string;
         external_id?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ILinkedItemsInType extends IElementInContentType {
@@ -72,13 +72,13 @@ export namespace ElementsInContentType {
             value: number;
             condition: 'at_most' | 'exactly' | 'at_least'
         };
-        allowed_content_types?: SharedModels.IReferenceObject[];
+        allowed_content_types?: SharedContracts.IReferenceObjectContract[];
         name: string;
         guidelines?: string;
         type: 'modular_content';
         codename?: string;
         external_id?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IMultipleChoiceOption {
@@ -93,7 +93,7 @@ export namespace ElementsInContentType {
         type: 'multiple_choice';
         is_required?: boolean;
         external_id?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
         guidelines?: string;
     }
 
@@ -103,7 +103,7 @@ export namespace ElementsInContentType {
         is_required?: boolean;
         codename?: string;
         external_id?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
         guidelines?: string;
     }
 
@@ -113,7 +113,7 @@ export namespace ElementsInContentType {
             applied_to: 'words' | 'characters'
         };
         maximum_image_size?: number;
-        allowed_content_types?: SharedModels.IReferenceObject[];
+        allowed_content_types?: SharedContracts.IReferenceObjectContract[];
         image_width_limit?: {
             value: number;
             condition: 'at_most' | 'exactly' | 'at_least'
@@ -129,16 +129,16 @@ export namespace ElementsInContentType {
         codename?: string;
         external_id?: string;
         guidelines?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ITaxonomyChoiceInType extends IElementInContentType {
-        taxonomy_group: SharedModels.IReferenceObject;
+        taxonomy_group: SharedContracts.IReferenceObjectContract;
         type: 'taxonomy';
         is_required?: boolean;
         codename?: string;
         external_id?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ITextInType extends IElementInContentType {
@@ -148,7 +148,7 @@ export namespace ElementsInContentType {
         codename?: string;
         external_id?: string;
         guidelines?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
         maximum_text_length?: {
             value: number;
             applied_to: 'words' | 'characters'
@@ -157,8 +157,8 @@ export namespace ElementsInContentType {
 
     export interface IUrlSlugType extends IElementInContentType {
         depends_on: {
-            element: SharedModels.IReferenceObject,
-            snippet?: SharedModels.IReferenceObject
+            element: SharedContracts.IReferenceObjectContract,
+            snippet?: SharedContracts.IReferenceObjectContract,
         };
         name: string;
         type: 'url_slug';
@@ -166,7 +166,7 @@ export namespace ElementsInContentType {
         codename: string;
         external_id?: string;
         guidelines?: string;
-        content_group?: SharedModels.IReferenceObject;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 }
 
