@@ -10,7 +10,9 @@ export namespace LanguageVariantModels {
     }
 
     export interface ILanguageVariantElementInfo {
-        codename: string;
+        id?: string;
+        codename?: string;
+        external_id?: string;
     }
 
     export interface ILanguageVariantElement {
