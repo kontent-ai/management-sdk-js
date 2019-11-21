@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com///compare/v0.2.5...v0.2.6) (2019-11-21)
+
+
+### Bug Fixes
+
+* uses reference contract instead of reference object ([5df58b1](https://github.com///commit/5df58b17a196d09c20584207d4ec17455e8f4b86))
+
 ### [0.2.5](https://github.com///compare/v0.2.4...v0.2.5) (2019-11-20)
 
 
