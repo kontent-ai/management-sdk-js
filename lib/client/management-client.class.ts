@@ -66,6 +66,7 @@ import {
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
     DataQueryOptional,
+    ListLanguageVariantsOfContentTypeWithComponentsQuery,
 } from '../queries';
 import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
 import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
@@ -383,6 +384,14 @@ export class ManagementClient implements IManagementClient {
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ListLanguageVariantsOfContentTypeQuery(config, queryService, identifier)
+        );
+    }
+
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
+        return new ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ListLanguageVariantsOfContentTypeWithComponentsQuery(config, queryService, identifier)
         );
     }
 

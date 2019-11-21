@@ -638,6 +638,21 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    listLanguageVariantsOfContentTypeWithComponents(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
+        return this.getResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>(
+            url,
+            {},
+            config
+        ).pipe(
+            map(response => {
+                return languageVariantResponseMapper.mapLanguageVariantsOfContentTypeWithComponentsResponse(response);
+            })
+        );
+    }
+
     listLanguageVariantsOfContentType(
         url: string,
         config: IContentManagementQueryConfig

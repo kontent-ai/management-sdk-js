@@ -19,6 +19,23 @@ export namespace LanguageVariantResponses {
         }
     }
 
+    export class ListLanguageVariantsOfContentTypeWithComponentsResponse extends BaseResponses.BaseContentManagementResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract,
+        {
+            variants: LanguageVariantModels.ContentItemLanguageWithComponentsVariant[],
+            pagination: SharedModels.Pagination
+        }>  {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract,
+            data: {
+                variants: LanguageVariantModels.ContentItemLanguageWithComponentsVariant[],
+                pagination: SharedModels.Pagination
+            }
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
     export class ListLanguageVariantsOfContentTypeResponse extends BaseResponses.BaseContentManagementResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract,
         {
             variants: LanguageVariantModels.ContentItemLanguageVariant[],

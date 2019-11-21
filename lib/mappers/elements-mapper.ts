@@ -33,11 +33,31 @@ export class ElementsMapper extends BaseMapper {
         return elementsRaw.map(m => this.mapElement(m));
     }
 
+    mapElementsWithComponents(elementsRaw: ElementContracts.IContentItemElementWithComponentsContract[]): ElementModels.ContentItemElementWithComponents[] {
+        return elementsRaw.map(m => this.mapElementWithComponents(m));
+    }
+
+    mapElementWithComponents(rawElement: ElementContracts.IContentItemElementWithComponentsContract): ElementModels.ContentItemElementWithComponents {
+        return new ElementModels.ContentItemElementWithComponents({
+            element: super.mapReference(rawElement.element),
+            value: this.mapElementValue(rawElement.value),
+            components: this.mapElementComponents(rawElement.components || [])
+        });
+    }
+
     mapElement(rawElement: ElementContracts.IContentItemElementContract): ElementModels.ContentItemElement {
         return new ElementModels.ContentItemElement({
             element: super.mapReference(rawElement.element),
             value: this.mapElementValue(rawElement.value)
         });
+    }
+
+    private mapElementComponents(components: ElementContracts.IContentItemElementComponent[]): ElementModels.ContentItemElementComponent[] {
+        return components.map(m => new ElementModels.ContentItemElementComponent({
+            elements: this.mapElementsWithComponents(m.elements),
+            id: m.id,
+            type: m.type
+        }));
     }
 
     private mapMultipleChoiceOptions(options?: ElementContracts.IContentTypeElementMultipleChoiceElementOptionsContract[]): ElementModels.MultipleChoiceElementOption[] {

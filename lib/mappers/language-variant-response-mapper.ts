@@ -41,6 +41,27 @@ export class LanguageVariantResponseMapper extends BaseMapper {
         });
     }
 
+    mapLanguageVariantsOfContentTypeWithComponentsResponse(
+        response: IBaseResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>,
+    ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse {
+        const variants = response.data.variants.map(m => this.mapLanguageVariantWithComponents(m));
+        return new LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse(super.mapResponseDebug(response), response.data, {
+            variants: variants,
+            pagination: super.mapPagination(response.data.pagination)
+        });
+    }
+
+    private mapLanguageVariantWithComponents(rawVariant: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract): LanguageVariantModels.ContentItemLanguageWithComponentsVariant {
+        return new LanguageVariantModels.ContentItemLanguageWithComponentsVariant({
+            rawElements: rawVariant.elements,
+            elements: elementsMapper.mapElementsWithComponents(rawVariant.elements),
+            item: super.mapReference(rawVariant.item),
+            language: super.mapReference(rawVariant.language),
+            lastModified: new Date(rawVariant.last_modified),
+            workflowStep: super.mapReference(rawVariant.workflow_step)
+        });
+    }
+
     private mapLanguageVariant(rawVariant: LanguageVariantContracts.ILanguageVariantModelContract): LanguageVariantModels.ContentItemLanguageVariant {
         return new LanguageVariantModels.ContentItemLanguageVariant({
             rawElements: rawVariant.elements,

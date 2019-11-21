@@ -11,7 +11,20 @@ export namespace LanguageVariantContracts {
         workflow_step: SharedContracts.IReferenceObjectContract;
     }
 
+    export interface ILanguageVariantModelWithComponentsContract {
+        item: SharedContracts.IReferenceObjectContract;
+        elements: ElementContracts.IContentItemElementWithComponentsContract[];
+        language: SharedContracts.IReferenceObjectContract;
+        last_modified: string;
+        workflow_step: SharedContracts.IReferenceObjectContract;
+    }
+
     export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {
+    }
+
+    export interface IListLanguageVariantsOfContentTypeWithComponentsResponseContract {
+        variants: ILanguageVariantModelWithComponentsContract[];
+        pagination: SharedContracts.IPaginationModelContract;
     }
 
     export interface IListLanguageVariantsOfContentTypeResponseContract {

@@ -63,6 +63,7 @@ import {
     ViewLanguageVariantQuery,
     WorkflowStepIdentifierQuery,
     DataQueryOptional,
+    ListLanguageVariantsOfContentTypeWithComponentsQuery,
 } from '../queries';
 import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
 import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
@@ -276,6 +277,11 @@ export interface IManagementClient {
     listLanguageVariantsOfContentType(): ContentTypeCodenameAndExternalIdIdentifierQuery<
         ListLanguageVariantsOfContentTypeQuery
     >;
+
+    /**
+     * List language variants of a specific content type with components
+     */
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>;
 
     /**
      * List languages in project

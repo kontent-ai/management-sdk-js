@@ -28,4 +28,16 @@ export namespace ElementContracts {
         value: string | number | SharedContracts.IReferenceObjectContract[];
     }
 
+    export interface IContentItemElementComponent {
+        id: string;
+        type: SharedContracts.IReferenceObjectContract;
+        elements: IContentItemElementWithComponentsContract[];
+    }
+
+    export interface IContentItemElementWithComponentsContract {
+        element: SharedContracts.IReferenceObjectContract;
+        value: string | number | SharedContracts.IReferenceObjectContract[];
+        components?: IContentItemElementComponent[];
+    }
+
 }

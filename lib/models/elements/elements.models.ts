@@ -36,6 +36,38 @@ export namespace ElementModels {
         }
     }
 
+    export class ContentItemElementComponent {
+        public id!: string;
+        public type!: SharedModels.ReferenceObject;
+        public elements!: ContentItemElementWithComponents[];
+
+        constructor(
+            data: {
+                id: string;
+                type: SharedModels.ReferenceObject;
+                elements: ContentItemElementWithComponents[];
+            }
+        ) {
+            Object.assign(this, data);
+        }
+    }
+
+    export class ContentItemElementWithComponents {
+        public element!: SharedModels.ReferenceObject;
+        public value!: string | number | SharedModels.ReferenceObject[];
+        public components!: ContentItemElementComponent[];
+
+        constructor(
+            data: {
+                element: SharedModels.ReferenceObject;
+                value: string | number | SharedModels.ReferenceObject[];
+                components: ContentItemElementComponent[];
+            }
+        ) {
+            Object.assign(this, data);
+        }
+    }
+
     export class MultipleChoiceElementOption {
         public id!: string;
         public name!: string;

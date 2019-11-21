@@ -1,0 +1,77 @@
+{
+    "variants": [
+      {
+        "elements": [
+          {
+            "element": {
+              "id": "49150275-064b-5314-be6e-b93e1d7661e1"
+            },
+            "value": "<p>Content in rich text on level 1</p>\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\"></object>",
+            "components": [
+              {
+                "id": "382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d",
+                "type": {
+                  "id": "f4cb13df-d61d-572e-8f3b-3afe7e3a7ea1"
+                },
+                "elements": [
+                  {
+                    "element": {
+                      "id": "0b9173d6-1c94-5fb0-a010-86eef9013fd4"
+                    },
+                    "value": "<p>Component on level 2</p>\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"7c1ca8b2-2fa8-41d8-be02-bf157d3fa225\"></object>",
+                    "components": [
+                      {
+                        "id": "7c1ca8b2-2fa8-41d8-be02-bf157d3fa225",
+                        "type": {
+                          "id": "37684e4c-9303-589b-a937-c7c165171b38"
+                        },
+                        "elements": [
+                          {
+                            "element": {
+                              "id": "fbb2e76e-d1e7-57af-ab16-9d44d5f179ef"
+                            },
+                            "value": []
+                          },
+                          {
+                            "element": {
+                              "id": "ff50c0e0-226e-5474-b71b-2af194edd7c4"
+                            },
+                            "value": "<p>Nested component on level 3</p>",
+                            "components": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "element": {
+                      "id": "edd22f22-ccd6-56e6-9fe2-676a7e250d8c"
+                    },
+                    "value": [
+                      {
+                        "id": "f206b928-7609-5192-bd31-6eb6aae48096"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "workflow_step": {
+          "id": "1e93d088-1ff4-421c-82ca-0564182746ef"
+        },
+        "item": {
+          "id": "0276f15b-1104-46d8-8e04-29326c58c332"
+        },
+        "language": {
+          "id": "00000000-0000-0000-0000-000000000000"
+        },
+        "last_modified": "2019-11-11T12:56:15.5964Z"
+      }
+    ],
+    "pagination": {
+      "continuation_token": null,
+      "next_page": null
+    }
+  }

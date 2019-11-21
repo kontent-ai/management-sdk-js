@@ -43,4 +43,25 @@ export namespace LanguageVariantModels {
             Object.assign(this, data);
         }
     }
+
+    export class ContentItemLanguageWithComponentsVariant {
+        public item!: SharedModels.ReferenceObject;
+        public elements!: ElementModels.ContentItemElementWithComponents[];
+        public language!: SharedModels.ReferenceObject;
+        public lastModified!: Date;
+        public workflowStep!: SharedModels.ReferenceObject;
+
+        constructor(
+            data: {
+                rawElements: any,
+                item: SharedModels.ReferenceObject,
+                elements: ElementModels.ContentItemElementWithComponents[],
+                language: SharedModels.ReferenceObject,
+                lastModified: Date,
+                workflowStep: SharedModels.ReferenceObject
+            }
+        ) {
+            Object.assign(this, data);
+        }
+    }
 }
