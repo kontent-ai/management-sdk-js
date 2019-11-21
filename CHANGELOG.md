@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.7](https://github.com///compare/v0.2.6...v0.2.7) (2019-11-21)
+
+
+### Features
+
+* add support for 'ListLanguageVariantsOfContentTypeWithVariants' API endpoint ([008f5e5](https://github.com///commit/008f5e5dc5bd3dd9f5d7619b6ca4ed3c32d4d6fd))
+* adds additional language reference properties and fixes filename ([73109ad](https://github.com///commit/73109adc058054ee3eeff3fd82e7cc799ed7ce0a))
+
 ### [0.2.6](https://github.com///compare/v0.2.5...v0.2.6) (2019-11-21)
 
 
