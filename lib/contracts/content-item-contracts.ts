@@ -40,6 +40,7 @@ export namespace ContentItemContracts {
         sitemap_locations: [{
             codename: string
         }] | [];
+        codename?: string;
     }
 
     export interface IUpsertContentItemPostContract {

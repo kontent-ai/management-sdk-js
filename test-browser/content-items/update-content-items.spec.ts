@@ -9,6 +9,7 @@ describe('Update content item', () => {
         getTestClientWithJson(updateContentItemResponseJson).updateContentItem()
             .byItemCodename('x')
             .withData({
+                codename: 'x',
                 name: 'y',
                 sitemap_locations: [],
             })
