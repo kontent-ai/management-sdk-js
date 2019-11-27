@@ -11,6 +11,7 @@ describe('Add content item', () => {
                 {
                     external_id: undefined,
                     name: 'Add article test',
+                    codename: 'xCodename',
                     type: {
                         codename: 'article'
                     },

@@ -58,6 +58,7 @@ export namespace ContentItemContracts {
         sitemap_locations?: [{
             codename: string
         }];
+        codename?: string;
         external_id?: string;
     }
 }
