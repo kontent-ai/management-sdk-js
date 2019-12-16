@@ -24,7 +24,7 @@ import {
     ChangeWorkflowStepOfLanguageOrVariantQuery,
     ContentItemExternalIdIdentifierQuery,
     ContentItemIdentifierQuery,
-    ContentTypeCodenameAndExternalIdIdentifierQuery,
+    ContentTypeCodenameAndIdIdentifierQuery,
     ContentTypeIdentifierQuery,
     CreateNewVersionOfLanguageVariantQuery,
     DataQuery,
@@ -388,16 +388,16 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    listLanguageVariantsOfContentType(): ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery> {
-        return new ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery>(
+    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery> {
+        return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery>(
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ListLanguageVariantsOfContentTypeQuery(config, queryService, identifier)
         );
     }
 
-    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
-        return new ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
+        return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ListLanguageVariantsOfContentTypeWithComponentsQuery(config, queryService, identifier)

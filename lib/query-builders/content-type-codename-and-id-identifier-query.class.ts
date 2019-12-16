@@ -2,7 +2,7 @@ import { IManagementClientConfig } from '../config';
 import { Identifiers } from '../models';
 import { ContentManagementQueryService } from '../services';
 
-export class ContentTypeCodenameAndExternalIdIdentifierQuery<TResult> {
+export class ContentTypeCodenameAndIdIdentifierQuery<TResult> {
 
     constructor(
         protected config: IManagementClientConfig,
@@ -15,11 +15,11 @@ export class ContentTypeCodenameAndExternalIdIdentifierQuery<TResult> {
     }
 
     /**
-    * Gets query using external Id
-    * @param id External Id of content item
+    * Gets query using internal Id
+    * @param id Internal Id of content item
     */
-    byTypeExternalId(id: string): TResult {
-        return this.buildResult(this.config, this.queryService, new Identifiers.ContentTypeIdentifier(Identifiers.ContentTypeIdentifierEnum.ExternalId, id));
+    byTypeId(id: string): TResult {
+        return this.buildResult(this.config, this.queryService, new Identifiers.ContentTypeIdentifier(Identifiers.ContentTypeIdentifierEnum.InternalId, id));
     }
 
     /**

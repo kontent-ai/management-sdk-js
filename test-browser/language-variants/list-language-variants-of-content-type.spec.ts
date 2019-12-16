@@ -18,10 +18,10 @@ describe('List language variants of content type', () => {
 
     it(`url should be correct`, () => {
         const codenameUrl = cmTestClient.listLanguageVariantsOfContentType().byTypeCodename('xCodename').getUrl();
-        const externalIdUrl = cmTestClient.listLanguageVariantsOfContentType().byTypeExternalId('xExternalId').getUrl();
+        const idUrl = cmTestClient.listLanguageVariantsOfContentType().byTypeId('xId').getUrl();
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/xCodename/variants`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/external-id/xExternalId/variants`);
+        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/xId/variants`);
     });
 
     it(`response should be instance of ListLanguageVariantsOfContentTypeResponse class`, () => {

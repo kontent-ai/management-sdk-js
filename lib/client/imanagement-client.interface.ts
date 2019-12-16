@@ -21,7 +21,7 @@ import {
     ChangeWorkflowStepOfLanguageOrVariantQuery,
     ContentItemExternalIdIdentifierQuery,
     ContentItemIdentifierQuery,
-    ContentTypeCodenameAndExternalIdIdentifierQuery,
+    ContentTypeCodenameAndIdIdentifierQuery,
     ContentTypeIdentifierQuery,
     CreateNewVersionOfLanguageVariantQuery,
     DataQuery,
@@ -280,14 +280,14 @@ export interface IManagementClient {
     /**
      * List language variants of a specific content type query
      */
-    listLanguageVariantsOfContentType(): ContentTypeCodenameAndExternalIdIdentifierQuery<
+    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<
         ListLanguageVariantsOfContentTypeQuery
     >;
 
     /**
      * List language variants of a specific content type with components
      */
-    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndExternalIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>;
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>;
 
     /**
      * List languages in project
