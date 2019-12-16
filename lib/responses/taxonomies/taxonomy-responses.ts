@@ -20,6 +20,16 @@ export namespace TaxonomyResponses {
         }
     }
 
+    export class GetTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IGetTaxonomyResponseContract, TaxonomyModels.Taxonomy>  {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: TaxonomyContracts.IGetTaxonomyResponseContract,
+            data: TaxonomyModels.Taxonomy
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
     export class AddTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IAddTaxonomyResponseContract, TaxonomyModels.Taxonomy>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,

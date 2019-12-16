@@ -79,6 +79,10 @@ export class ContentManagementApiEndpoints {
         return `taxonomies`;
     }
 
+    getTaxonomy(identifier: Identifiers.TaxonomyIdentifier): string {
+        return `taxonomies/${identifier.getParamValue()}`;
+    }
+
     addAsset(): string {
         return `assets`;
     }

@@ -352,6 +352,21 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    getTaxonomy(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<TaxonomyResponses.GetTaxonomyResponse> {
+        return this.getResponse<TaxonomyContracts.IGetTaxonomyResponseContract>(
+            url,
+            {},
+            config
+        ).pipe(
+            map(response => {
+                return taxonomyResponseMapper.mapGetTaxonomyResponse(response);
+            })
+        );
+    }
+
     listTaxonomies(
         url: string,
         config: IContentManagementQueryConfig

@@ -67,6 +67,7 @@ import {
     WorkflowStepIdentifierQuery,
     DataQueryOptional,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
+    GetTaxonomyQuery,
 } from '../queries';
 import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
 import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
@@ -264,6 +265,14 @@ export class ManagementClient implements IManagementClient {
         return new ListTaxonomiesQuery(
             this.config,
             this.queryService
+        );
+    }
+
+    getTaxonomy(): TaxonomyIdentifierQuery<GetTaxonomyQuery> {
+        return new TaxonomyIdentifierQuery<GetTaxonomyQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new GetTaxonomyQuery(config, queryService, identifier)
         );
     }
 

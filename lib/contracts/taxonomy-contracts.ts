@@ -8,6 +8,7 @@ export namespace TaxonomyContracts {
         id: string;
         codename: string;
         terms: ITaxonomyContract[];
+        external_id?: string;
     }
 
     export type ITemporaryTaxonomyListResponse = ITaxonomyContract[] | IListTaxonomyResponse;
@@ -22,6 +23,10 @@ export namespace TaxonomyContracts {
 
     export interface IAddTaxonomyResponseContract extends ITaxonomyContract {
     }
+
+    export interface IGetTaxonomyResponseContract extends ITaxonomyContract {
+    }
+
 
     export interface IDeleteTaxonomyResponseContract {
     }

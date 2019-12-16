@@ -64,6 +64,7 @@ import {
     WorkflowStepIdentifierQuery,
     DataQueryOptional,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
+    GetTaxonomyQuery,
 } from '../queries';
 import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
 import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
@@ -196,6 +197,11 @@ export interface IManagementClient {
      * Query to list taxonomies
      */
     listTaxonomies(): ListTaxonomiesQuery;
+
+    /**
+     * Query to view taxonomy
+     */
+    getTaxonomy(): TaxonomyIdentifierQuery<GetTaxonomyQuery>;
 
     /**
      * Query to delete an asset

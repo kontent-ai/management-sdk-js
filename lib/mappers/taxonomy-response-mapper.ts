@@ -30,6 +30,15 @@ export class TaxonomyResponseMapper extends BaseMapper {
         });
     }
 
+    mapGetTaxonomyResponse(
+        response: IBaseResponse<TaxonomyContracts.IGetTaxonomyResponseContract>
+    ): TaxonomyResponses.GetTaxonomyResponse {
+
+        const taxonomy = this.mapTaxonomy(response.data);
+
+        return new TaxonomyResponses.GetTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
+    }
+
     mapAddTaxonomyResponse(
         response: IBaseResponse<TaxonomyContracts.IAddTaxonomyResponseContract>
     ): TaxonomyResponses.AddTaxonomyResponse {
