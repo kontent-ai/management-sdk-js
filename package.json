@@ -3,7 +3,7 @@
   "version": "0.2.8",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kentico/kontent-management-sdk-js/tree/master"
+    "url": "https://github.com/Kentico/kontent-management-sdk-js"
   },
   "private": false,
   "author": "richard sustek",
