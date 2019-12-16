@@ -13,6 +13,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     protected parameters: IQueryParameter[] = [];
     protected apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
     protected customUrl?: string;
+    protected addSlashToUrl: boolean = true;
 
     constructor(
         protected config: IManagementClientConfig,
@@ -29,7 +30,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
         }
 
         // use original url
-        return this.queryService.getFullUrl(this.getAction(), this.getParameters());
+        return this.queryService.getFullUrl(this.getAction(), this.getParameters(), this.addSlashToUrl);
     }
 
     /**

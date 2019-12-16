@@ -33,9 +33,10 @@ export abstract class BaseContentManagementQueryService {
      * Gets url based on the action, query configuration and options (parameters)
      * @param action Action (= url part) that will be hit
      * @param options Query options
+     * @param addSlash Indicates if slash is added to query
      */
-    getFullUrl(action: string, options?: IQueryParameter[]): string {
-        return urlHelper.addOptionsToUrl(this.getBaseUrl() + '/' + action, options);
+    getFullUrl(action: string, options?: IQueryParameter[], addSlash: boolean = true): string {
+        return urlHelper.addOptionsToUrl(this.getBaseUrl() + (addSlash ? '/' : '') + action, options);
     }
 
     /**
