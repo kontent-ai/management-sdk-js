@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.8](https://github.com///compare/v0.2.7...v0.2.8) (2019-12-16)
+
+
+### Features
+
+* adds codename to add taxonomy data model ([7bb118b](https://github.com///commit/7bb118b8ea429856f50de6095488744e0a554486))
+* adds support for add/get/list webhooks endpoints ([5744e94](https://github.com///commit/5744e943fd44e13dc10bd173f290e2eeb33dcd0e))
+* adds support for project information endpoint ([234f175](https://github.com///commit/234f175865ea3dcf0e4852c91cbec19e1f2119e1))
+* adds support for retrieving single taxonomy items ([0cdb48f](https://github.com///commit/0cdb48fc54e43d95f7c029d9e8dca8c46d4f1e1c))
+* adds support for setting content item codename during  creation ([94c1f94](https://github.com///commit/94c1f940fb9bf99b43ca69a2c49a48c8ac6e8753))
+* adds support for updating conten item codename ([9c7786e](https://github.com///commit/9c7786e6cf6904c065a77ca06f77b0938ee78f1a))
+
+
+### Bug Fixes
+
+* uses internal id for content type identifier instead of external id ([bb6d46b](https://github.com///commit/bb6d46b0233d1951bc0931a699b70fd3ee629caa))
+
 ### [0.2.7](https://github.com///compare/v0.2.6...v0.2.7) (2019-11-21)
 
 
