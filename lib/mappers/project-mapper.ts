@@ -1,7 +1,7 @@
 import { IBaseResponse } from '@kentico/kontent-core';
 
 import { ProjectContracts } from '../contracts';
-import { ProjectModels } from '../models/projects/project-report.models';
+import { ProjectModels } from '../models/projects/project.models';
 import { ProjectResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
@@ -15,6 +15,15 @@ export class ProjectMapper extends BaseMapper {
             project: this.mapProjectModel(response.data.project),
             typeIssues: response.data.type_issues.map(m => this.mapTypeIssue(m)),
             variantIssues: response.data.variant_issues.map(m => this.mapVariantIssue(m))
+        });
+    }
+
+    mapProjectInformationResponse(
+        response: IBaseResponse<ProjectContracts.IProjectInformationResponseContract>
+    ): ProjectResponses.ProjectInformationResponse {
+
+        return new ProjectResponses.ProjectInformationResponse(super.mapResponseDebug(response), response.data, {
+            project: new ProjectModels.ProjectInformationModel(response.data.id, response.data.name)
         });
     }
 

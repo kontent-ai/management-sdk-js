@@ -73,7 +73,8 @@ import {
     WebhookIdentifierQuery,
     AddWebhookQuery,
     GetWebhookQuery,
-    ListWebhooksQuery
+    ListWebhooksQuery,
+    ProjectInformationQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService } from '../services';
@@ -466,6 +467,13 @@ export class ManagementClient implements IManagementClient {
 
     listWebhooks(): ListWebhooksQuery {
         return new ListWebhooksQuery(
+            this.config,
+            this.queryService,
+        );
+    }
+
+    projectInformation(): ProjectInformationQuery {
+        return new ProjectInformationQuery(
             this.config,
             this.queryService,
         );

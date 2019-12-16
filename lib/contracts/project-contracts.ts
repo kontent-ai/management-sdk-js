@@ -1,5 +1,10 @@
 export namespace ProjectContracts {
 
+    export interface IProjectInformationResponseContract {
+        id: string;
+        name: string;
+    }
+
     export interface IProjectReportResponseContract {
         project: IProjectReportModelContract;
         variant_issues: IProjectVariantIssueContract[];

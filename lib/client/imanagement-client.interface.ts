@@ -70,7 +70,8 @@ import {
     WebhookIdentifierQuery,
     AddWebhookQuery,
     GetWebhookQuery,
-    ListWebhooksQuery
+    ListWebhooksQuery,
+    ProjectInformationQuery
 } from '../queries';
 
 export interface IManagementClient {
@@ -328,8 +329,13 @@ export interface IManagementClient {
      */
     getWebhook(): WebhookIdentifierQuery<GetWebhookQuery>;
 
-    /*
+    /**
     * Gets all webhooks
     */
     listWebhooks(): ListWebhooksQuery;
+
+    /**
+     * Query to get project information
+     */
+    projectInformation(): ProjectInformationQuery;
 }

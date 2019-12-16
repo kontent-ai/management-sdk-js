@@ -47,6 +47,10 @@ export class ContentManagementApiEndpoints {
         return `validate`;
     }
 
+    projectInformation(): string {
+        return ``;
+    }
+
     listContentTypes(): string {
         return `types`;
     }

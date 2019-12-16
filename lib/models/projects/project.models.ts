@@ -7,6 +7,13 @@ export namespace ProjectModels {
         ) { }
     }
 
+    export class ProjectInformationModel {
+        constructor(
+            public id: string,
+            public name: string,
+        ) { }
+    }
+
     export class ProjectVariantContentItemModel {
         constructor(
             public id: string,

@@ -238,6 +238,21 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    projectInformation(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<ProjectResponses.ProjectInformationResponse> {
+        return this.getResponse<ProjectContracts.IProjectInformationResponseContract>(
+            url,
+            {},
+            config,
+        ).pipe(
+            map(response => {
+                return projectMapper.mapProjectInformationResponse(response);
+            })
+        );
+    }
+
     validateProjectContent(
         url: string,
         data: {
