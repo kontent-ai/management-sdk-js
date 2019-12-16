@@ -21,7 +21,8 @@ export namespace TaxonomyModels {
 
     export interface IAddTaxonomyRequestModel {
         name: string;
-        externalId?: string;
         terms: IAddTaxonomyRequestModel[];
+        externalId?: string;
+        codename?: string;
     }
 }
