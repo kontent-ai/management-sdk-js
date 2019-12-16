@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { BaseQuery } from '../../queries/base-query';
+import { BaseQuery } from '../base-query';
 import { ContentManagementQueryService } from '../../services';
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';

@@ -170,6 +170,19 @@ export class ContentManagementApiEndpoints {
     deleteWebhook(identifier: Identifiers.WebhookIdentifier): string {
         return `webhooks/${identifier.getParamValue()}`;
     }
+
+    getWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `webhooks/${identifier.getParamValue()}`;
+    }
+
+    addWebhook(): string {
+        return `webhooks`;
+    }
+
+    listWebhooks(): string {
+        return `webhooks`;
+    }
+
 }
 
 export const contentManagementApiEndpoints = new ContentManagementApiEndpoints();

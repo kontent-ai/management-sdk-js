@@ -8,6 +8,7 @@ import {
     LanguageModels,
     TaxonomyModels,
     WorkflowModels,
+    WebhookModels,
 } from '../models';
 import {
     AddAssetQuery,
@@ -65,9 +66,12 @@ import {
     DataQueryOptional,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
     GetTaxonomyQuery,
+    DeleteWebhookQuery,
+    WebhookIdentifierQuery,
+    AddWebhookQuery,
+    GetWebhookQuery,
+    ListWebhooksQuery
 } from '../queries';
-import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
-import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
 
 export interface IManagementClient {
     /**
@@ -313,4 +317,19 @@ export interface IManagementClient {
      * Delete a webhook
      */
     deleteWebhook(): WebhookIdentifierQuery<DeleteWebhookQuery>;
+
+    /**
+     * Adds new webhook
+     */
+    addWebhook(): DataQuery<AddWebhookQuery, WebhookModels.IAddWebhookData>;
+
+    /**
+     * Gets single webhook
+     */
+    getWebhook(): WebhookIdentifierQuery<GetWebhookQuery>;
+
+    /*
+    * Gets all webhooks
+    */
+    listWebhooks(): ListWebhooksQuery;
 }

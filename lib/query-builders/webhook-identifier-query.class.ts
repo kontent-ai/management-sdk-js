@@ -1,6 +1,6 @@
-import { IManagementClientConfig } from '../../config';
-import { Identifiers } from '../../models';
-import { ContentManagementQueryService } from '../../services';
+import { IManagementClientConfig } from '../config';
+import { Identifiers } from '../models';
+import { ContentManagementQueryService } from '../services';
 
 export class WebhookIdentifierQuery<TResult> {
     constructor(

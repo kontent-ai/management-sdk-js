@@ -10,4 +10,5 @@ export * from './language-variant-contracts';
 export * from './content-type-snippet-contracts';
 export * from './workflow-contracts';
 export * from './language-contracts';
+export * from './webhook-contracts';
 

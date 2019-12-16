@@ -13,6 +13,7 @@ import {
     ProjectContracts,
     TaxonomyContracts,
     WorkflowContracts,
+    WebhookContracts,
 } from '../contracts';
 import {
     assetsResponseMapper,
@@ -35,6 +36,7 @@ import {
     LanguageVariantModels,
     TaxonomyModels,
     WorkflowModels,
+    WebhookModels,
 } from '../models';
 import {
     AssetResponses,
@@ -47,6 +49,7 @@ import {
     ProjectResponses,
     TaxonomyResponses as TaxonomyResponses,
     WorkflowResponses,
+    WebhookResponses,
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
@@ -743,6 +746,53 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         ).pipe(
             map(response => {
                 return languageResponseMapper.mapModifyLanguageResponse(response);
+            })
+        );
+    }
+
+    listWebhooks(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<WebhookResponses.WebhookListResponse> {
+        return this.getResponse<WebhookContracts.IWebhookListContract>(
+            url,
+            {},
+            config,
+        ).pipe(
+            map(response => {
+                return webhookResponseMapper.mapWebhooksListResponse(response);
+            })
+        );
+    }
+
+    getWebhook(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<WebhookResponses.GetWebhookResponse> {
+        return this.getResponse<WebhookContracts.IGetWebhookContract>(
+            url,
+            {},
+            config,
+        ).pipe(
+            map(response => {
+                return webhookResponseMapper.mapGetWebhookResponse(response);
+            })
+        );
+    }
+
+    addWebhook(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: WebhookModels.IAddWebhookData
+    ): Observable<WebhookResponses.AddWebhookResponse> {
+        return this.postResponse<WebhookContracts.IAddWebhookContract>(
+            url,
+            data,
+            {},
+            config,
+        ).pipe(
+            map(response => {
+                return webhookResponseMapper.mapAddWebhookResponse(response);
             })
         );
     }

@@ -14,3 +14,4 @@ export * from './content-type-snippets/content-type-snippet-elements.builder';
 export * from './workflow/workflow.models';
 export * from './languages/language.models';
 export * from './identifiers';
+export * from './webhook/webhook.models';

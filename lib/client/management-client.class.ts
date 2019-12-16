@@ -11,6 +11,7 @@ import {
     WorkflowModels,
     ContentTypeElementsBuilder,
     ContentTypeSnippetElementsBuilder,
+    WebhookModels,
 } from '../models';
 import {
     AddAssetQuery,
@@ -68,9 +69,12 @@ import {
     DataQueryOptional,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
     GetTaxonomyQuery,
+    DeleteWebhookQuery,
+    WebhookIdentifierQuery,
+    AddWebhookQuery,
+    GetWebhookQuery,
+    ListWebhooksQuery
 } from '../queries';
-import { DeleteWebhookQuery } from '../query-builders/webhook/delete-webhook-query.class';
-import { WebhookIdentifierQuery } from '../query-builders/webhook/webhook-identifier-query.class';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
@@ -441,6 +445,29 @@ export class ManagementClient implements IManagementClient {
             this.config, this.queryService, (
                 (config, queryService, identifier) => new DeleteWebhookQuery(config, queryService, identifier)
             )
+        );
+    }
+
+    addWebhook(): DataQuery<AddWebhookQuery, WebhookModels.IAddWebhookData> {
+        return new DataQuery<AddWebhookQuery, WebhookModels.IAddWebhookData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new AddWebhookQuery(config, queryService, data)
+        );
+    }
+
+    getWebhook(): WebhookIdentifierQuery<GetWebhookQuery> {
+        return new WebhookIdentifierQuery<GetWebhookQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new GetWebhookQuery(config, queryService, identifier)
+        );
+    }
+
+    listWebhooks(): ListWebhooksQuery {
+        return new ListWebhooksQuery(
+            this.config,
+            this.queryService,
         );
     }
 }
