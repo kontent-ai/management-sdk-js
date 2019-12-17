@@ -41,7 +41,7 @@ If you'd like to use this library directly in browser, place following script ta
 The following code example shows how to create new content item in your Kentico Kontent project.
 
 ```javascript
-import { ManagementClient } from '@kentico/kontent-core';
+import { ManagementClient } from '@kentico/kontent-management';
 
 const client = new ManagementClient({
         projectId: 'xxx', // id of your Kentico Kontent project
