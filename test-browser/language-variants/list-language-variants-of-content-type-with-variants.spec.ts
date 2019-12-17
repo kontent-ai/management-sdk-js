@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../lib';
 import * as responseJson from '../fake-responses/language-variants/fake-list-language-variants-of-content-type-with-components.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('List language variants of content type with components', () => {
@@ -17,8 +17,8 @@ describe('List language variants of content type with components', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmTestClient.listLanguageVariantsOfContentTypeWithComponents().byTypeCodename('xCodename').getUrl();
-        const idUrl = cmTestClient.listLanguageVariantsOfContentTypeWithComponents().byTypeId('xId').getUrl();
+        const codenameUrl = cmLiveClient.listLanguageVariantsOfContentTypeWithComponents().byTypeCodename('xCodename').getUrl();
+        const idUrl = cmLiveClient.listLanguageVariantsOfContentTypeWithComponents().byTypeId('xId').getUrl();
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/xCodename/components`);
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/xId/components`);
@@ -34,18 +34,18 @@ describe('List language variants of content type with components', () => {
 
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
-        expect(response.data.variants).toBeDefined();
+        expect(response.data.items).toBeDefined();
     });
 
     it(`item properties should be mapped`, () => {
         let componentsChecked: boolean = false;
         let nestedElementChecked: boolean = false;
 
-        expect(response.data.variants).toBeDefined();
-        expect(response.data.variants.length).toEqual(responseJson.variants.length);
+        expect(response.data.items).toBeDefined();
+        expect(response.data.items.length).toEqual(responseJson.variants.length);
         expect(response.data.pagination).toEqual(jasmine.any(SharedModels.Pagination));
 
-        response.data.variants.forEach(variant => {
+        response.data.items.forEach(variant => {
 
             const originalItem = responseJson.variants.find(m => m.item.id === variant.item.id);
 

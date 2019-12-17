@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../lib';
 import * as addAssetResponseJson from '../fake-responses/assets/fake-add-asset.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Add asset', () => {
     let response: AssetResponses.AddAssetResponse;
@@ -22,7 +22,7 @@ describe('Add asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.addAsset()
+        const url = cmLiveClient.addAsset()
             .withData({
                 descriptions: [],
                 fileReference: {

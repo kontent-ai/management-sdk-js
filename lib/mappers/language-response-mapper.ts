@@ -32,7 +32,7 @@ export class LanguageResponseMapper extends BaseMapper {
     ): LanguageResponses.ListLanguagesResponse {
         const languages = response.data.languages.map(m => this.mapLanguage(m));
         return new LanguageResponses.ListLanguagesResponse(super.mapResponseDebug(response), response.data, {
-            languages: languages,
+            items: languages,
             pagination: super.mapPagination(response.data.pagination)
         });
     }

@@ -1,6 +1,6 @@
 import { ContentTypeResponses, SharedModels } from '../../lib';
 import * as listContentTypesJson from '../fake-responses/content-types/fake-list-content-types.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('List content types', () => {
@@ -16,7 +16,7 @@ describe('List content types', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.listContentTypes().getUrl();
+        const url = cmLiveClient.listContentTypes().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types`);
     });
@@ -37,13 +37,13 @@ describe('List content types', () => {
 
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
-        expect(Array.isArray(response.data.types)).toBeTruthy();
-        expect(response.data.types.length).toEqual(listContentTypesJson.types.length);
-        expect(response.data.types).toBeTruthy();
+        expect(Array.isArray(response.data.items)).toBeTruthy();
+        expect(response.data.items.length).toEqual(listContentTypesJson.types.length);
+        expect(response.data.items).toBeTruthy();
     });
 
     it(`content type properties should be mapped`, () => {
-        const contentTypes = response.data.types;
+        const contentTypes = response.data.items;
 
         contentTypes.forEach(contentType => {
             const originalItem = listContentTypesJson.types.find(m => m.id === contentType.id);

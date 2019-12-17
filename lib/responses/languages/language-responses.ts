@@ -4,19 +4,27 @@ import { BaseResponses } from '../base-responses';
 
 export namespace LanguageResponses {
 
-    export class ListLanguagesResponse extends BaseResponses.BaseContentManagementResponse<LanguageContracts.IListLanguagesResponseContract, {
-        languages: LanguageModels.LanguageModel[],
-        pagination: SharedModels.Pagination
-    }>  {
+    export class ListLanguagesResponse extends BaseResponses.BaseContentManagementListResponse<LanguageContracts.IListLanguagesResponseContract, LanguageModels.LanguageModel>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: LanguageContracts.IListLanguagesResponseContract,
             data: {
-                languages: LanguageModels.LanguageModel[],
+                items: LanguageModels.LanguageModel[],
                 pagination: SharedModels.Pagination
             }
         ) {
             super(debug, rawData, data);
+        }
+    }
+
+    export class ListAllLanguagesResponse extends BaseResponses.ContentManagementListAllResponse<ListLanguagesResponse, LanguageModels.LanguageModel> {
+        constructor(
+            data: {
+                items: LanguageModels.LanguageModel[],
+                responses: ListLanguagesResponse[]
+            }
+        ) {
+            super(data);
         }
     }
 

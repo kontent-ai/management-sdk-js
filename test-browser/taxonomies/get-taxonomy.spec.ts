@@ -1,6 +1,6 @@
 import { TaxonomyModels, TaxonomyResponses } from '../../lib';
 import * as responseJson from '../fake-responses/taxonomies/fake-get-taxonomy.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Get taxonomy', () => {
     let response: TaxonomyResponses.GetTaxonomyResponse;
@@ -15,9 +15,9 @@ describe('Get taxonomy', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlCodename = cmTestClient.getTaxonomy().byTaxonomyCodename('x').getUrl();
-        const urlId = cmTestClient.getTaxonomy().byTaxonomyId('x').getUrl();
-        const urlExternalId = cmTestClient.getTaxonomy().byTaxonomyExternalId('x').getUrl();
+        const urlCodename = cmLiveClient.getTaxonomy().byTaxonomyCodename('x').getUrl();
+        const urlId = cmLiveClient.getTaxonomy().byTaxonomyId('x').getUrl();
+        const urlExternalId = cmLiveClient.getTaxonomy().byTaxonomyExternalId('x').getUrl();
 
         expect(urlCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/codename/x`);
         expect(urlId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/x`);

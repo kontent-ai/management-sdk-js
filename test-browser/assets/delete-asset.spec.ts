@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../lib';
 import * as deleteAssetJson from '../fake-responses/assets/fake-delete-asset.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Delete asset', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -17,11 +17,11 @@ describe('Delete asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const internalIdUrl = cmTestClient
+        const internalIdUrl = cmLiveClient
             .deleteAsset()
             .byAssetId('xInternalId')
             .getUrl();
-        const externalIdUrl = cmTestClient
+        const externalIdUrl = cmLiveClient
             .deleteAsset()
             .byAssetExternalId('xExternalId')
             .getUrl();

@@ -1,6 +1,6 @@
 import { ContentTypeSnippetResponses, SharedModels } from '../../lib';
 import * as listContentTypesJson from '../fake-responses/content-type-snippets/fake-list-content-type-snippets.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('List content type snippets', () => {
     let response: ContentTypeSnippetResponses.ContentTypeSnippetListResponse;
@@ -15,7 +15,7 @@ describe('List content type snippets', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.listContentTypeSnippets().getUrl();
+        const url = cmLiveClient.listContentTypeSnippets().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets`);
     });
@@ -36,13 +36,13 @@ describe('List content type snippets', () => {
 
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
-        expect(Array.isArray(response.data.types)).toBeTruthy();
-        expect(response.data.types.length).toEqual(listContentTypesJson.snippets.length);
-        expect(response.data.types).toBeTruthy();
+        expect(Array.isArray(response.data.items)).toBeTruthy();
+        expect(response.data.items.length).toEqual(listContentTypesJson.snippets.length);
+        expect(response.data.items).toBeTruthy();
     });
 
     it(`content type snippet properties should be mapped`, () => {
-        const contentTypeSnippets = response.data.types;
+        const contentTypeSnippets = response.data.items;
 
         contentTypeSnippets.forEach(contentTypeSnippet => {
             const originalItem = listContentTypesJson.snippets.find(m => m.id === contentTypeSnippet.id);

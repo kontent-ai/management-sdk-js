@@ -1,6 +1,6 @@
 import { LanguageModels, LanguageResponses } from '../../lib';
 import * as responseJson from '../fake-responses/languages/fake-add-language.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Add language', () => {
     let response: LanguageResponses.AddLanguageResponse;
@@ -23,7 +23,7 @@ describe('Add language', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient
+        const url = cmLiveClient
             .addLanguage()
             .withData({} as any)
             .getUrl();

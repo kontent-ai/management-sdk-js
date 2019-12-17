@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../lib';
 import * as deleteContentTypeJson from '../fake-responses/content-types/fake-delete-content-type.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Delete content type', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -17,15 +17,15 @@ describe('Delete content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmTestClient
+        const codenameUrl = cmLiveClient
             .deleteContentType()
             .byTypeCodename('xCodename')
             .getUrl();
-        const internalIdUrl = cmTestClient
+        const internalIdUrl = cmLiveClient
             .deleteContentType()
             .byTypeId('xInternalId')
             .getUrl();
-        const externalIdUrl = cmTestClient
+        const externalIdUrl = cmLiveClient
             .deleteContentType()
             .byTypeExternalId('xExternalId')
             .getUrl();

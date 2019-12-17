@@ -11,7 +11,7 @@ export class ContentTypeMapper extends BaseMapper {
     mapListingResponse(response: IBaseResponse<ContentTypeContracts.IContentTypeListResponseContract>): ContentTypeResponses.ContentTypeListResponse {
         return new ContentTypeResponses.ContentTypeListResponse(
             super.mapResponseDebug(response), response.data, {
-                types: response.data.types.map(m => this.mapContentType(m)),
+                items: response.data.types.map(m => this.mapContentType(m)),
                 pagination: super.mapPagination(response.data.pagination)
             }
         );

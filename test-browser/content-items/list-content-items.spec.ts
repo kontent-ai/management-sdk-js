@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../lib';
 import * as listingResponseJson from '../fake-responses/content-items/fake-list-content-items.json';
-import { getTestClientWithJson, cmTestClient, testProjectId } from '../setup';
+import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
 import { IHeader } from '@kentico/kontent-core';
 
 describe('List content items', () => {
@@ -30,7 +30,7 @@ describe('List content items', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmTestClient.listContentItems().getUrl();
+        const listUrl = cmLiveClient.listContentItems().getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items`);
     });

@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../lib';
 import * as jsonResponse from '../fake-responses/content-type-snippets/fake-delete-content-type-snippet.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Delete content type snippet', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -17,15 +17,15 @@ describe('Delete content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmTestClient
+        const codenameUrl = cmLiveClient
             .deleteContentTypeSnippet()
             .byTypeCodename('xCodename')
             .getUrl();
-        const idUrl = cmTestClient
+        const idUrl = cmLiveClient
             .deleteContentTypeSnippet()
             .byTypeId('xInternalId')
             .getUrl();
-        const externalIdUrl = cmTestClient
+        const externalIdUrl = cmLiveClient
             .deleteContentTypeSnippet()
             .byTypeExternalId('xExternal')
             .getUrl();

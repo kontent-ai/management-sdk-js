@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../lib';
 import * as jsonResponse from '../fake-responses/language-variants/fake-upsert-language-variant.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('Upsert language variant', () => {
@@ -19,13 +19,13 @@ describe('Upsert language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrlWithCodenameLanguage = cmTestClient.upsertLanguageVariant().byItemCodename('xCodename').byLanguageCodename('xLanguageCodename').withElements([]).getUrl();
-        const internalIdUrlWithCodenameLanguage = cmTestClient.upsertLanguageVariant().byItemId('xItemId').byLanguageCodename('xLanguageCodename').withElements([]).getUrl();
-        const externalIdUrlWithCodenameLanguage = cmTestClient.upsertLanguageVariant().byItemExternalId('XItemExternal').byLanguageCodename('xLanguageCodename').withElements([]).getUrl();
+        const codenameUrlWithCodenameLanguage = cmLiveClient.upsertLanguageVariant().byItemCodename('xCodename').byLanguageCodename('xLanguageCodename').withElements([]).getUrl();
+        const internalIdUrlWithCodenameLanguage = cmLiveClient.upsertLanguageVariant().byItemId('xItemId').byLanguageCodename('xLanguageCodename').withElements([]).getUrl();
+        const externalIdUrlWithCodenameLanguage = cmLiveClient.upsertLanguageVariant().byItemExternalId('XItemExternal').byLanguageCodename('xLanguageCodename').withElements([]).getUrl();
 
-        const codenameUrlWithIdLanguage = cmTestClient.upsertLanguageVariant().byItemCodename('xCodename').byLanguageId('xLanguageId').withElements([]).getUrl();
-        const internalIdUrlWithIdLanguage = cmTestClient.upsertLanguageVariant().byItemId('xItemId').byLanguageId('xLanguageId').withElements([]).getUrl();
-        const externalIdUrlWithIdLanguage = cmTestClient.upsertLanguageVariant().byItemExternalId('XItemExternal').byLanguageId('xLanguageId').withElements([]).getUrl();
+        const codenameUrlWithIdLanguage = cmLiveClient.upsertLanguageVariant().byItemCodename('xCodename').byLanguageId('xLanguageId').withElements([]).getUrl();
+        const internalIdUrlWithIdLanguage = cmLiveClient.upsertLanguageVariant().byItemId('xItemId').byLanguageId('xLanguageId').withElements([]).getUrl();
+        const externalIdUrlWithIdLanguage = cmLiveClient.upsertLanguageVariant().byItemExternalId('XItemExternal').byLanguageId('xLanguageId').withElements([]).getUrl();
 
         expect(codenameUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants/codename/xLanguageCodename`);
         expect(internalIdUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xItemId/variants/codename/xLanguageCodename`);

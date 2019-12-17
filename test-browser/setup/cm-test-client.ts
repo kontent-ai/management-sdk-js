@@ -1,12 +1,12 @@
 import { IManagementClient, ManagementClient } from '../../lib';
 import { TestHttpService } from '@kentico/kontent-core';
 
-export const testProjectId: string = 'fb11eb58-5b77-01b1-2343-a1b57cccc4e1';
+export const testProjectId: string = 'b259760f-81c5-013a-05e7-69efb4b954e5';
 
 // tslint:disable-next-line:max-line-length
 export const testProjectIdApiKey: string = '';
 
-export const cmTestClient: IManagementClient = new ManagementClient({
+export const cmLiveClient: IManagementClient = new ManagementClient({
     projectId: testProjectId,
     // tslint:disable-next-line:max-line-length
     apiKey: testProjectIdApiKey

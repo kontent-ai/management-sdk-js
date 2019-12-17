@@ -1,6 +1,6 @@
 import { ContentTypeResponses, ElementModels } from '../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-modify-content-type.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('Modify content type', () => {
@@ -18,9 +18,9 @@ describe('Modify content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmTestClient.modifyContentType().byTypeCodename('x').withData([]).getUrl();
-        const urlByInternalId = cmTestClient.modifyContentType().byTypeId('y').withData([]).getUrl();
-        const urlByExternalId = cmTestClient.modifyContentType().byTypeExternalId('c').withData([]).getUrl();
+        const urlByCodename = cmLiveClient.modifyContentType().byTypeCodename('x').withData([]).getUrl();
+        const urlByInternalId = cmLiveClient.modifyContentType().byTypeId('y').withData([]).getUrl();
+        const urlByExternalId = cmLiveClient.modifyContentType().byTypeExternalId('c').withData([]).getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/y`);

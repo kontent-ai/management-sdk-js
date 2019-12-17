@@ -4,11 +4,7 @@ import { BaseResponses } from '../base-responses';
 
 export namespace AssetResponses {
 
-    export class AssetsListResponse extends BaseResponses.BaseContentManagementResponse<AssetContracts.IAssetsListingResponseContract,
-        {
-            items: AssetModels.Asset[],
-            pagination: SharedModels.Pagination
-        }>  {
+    export class AssetsListResponse extends BaseResponses.BaseContentManagementListResponse<AssetContracts.IAssetsListingResponseContract, AssetModels.Asset>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: AssetContracts.IAssetsListingResponseContract,
@@ -18,6 +14,17 @@ export namespace AssetResponses {
             }
         ) {
             super(debug, rawData, data);
+        }
+    }
+
+    export class AssetsListAllResponse extends BaseResponses.ContentManagementListAllResponse<AssetsListResponse, AssetModels.Asset> {
+        constructor(
+            data: {
+                items: AssetModels.Asset[],
+                responses: AssetsListResponse[]
+            }
+        ) {
+            super(data);
         }
     }
 

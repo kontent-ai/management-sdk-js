@@ -1,5 +1,5 @@
 import { BaseResponses, PublishOrScheduleLanguageVariantQuery } from '../../lib';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Publish or schedule language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -37,7 +37,7 @@ describe('Publish or schedule language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmTestClient
+        const w1Url = cmLiveClient
             .publishOrScheduleLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')

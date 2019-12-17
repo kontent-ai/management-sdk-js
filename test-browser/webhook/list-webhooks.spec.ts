@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-list-webhooks.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('List webhooks', () => {
     let response: WebhookResponses.WebhookListResponse;
@@ -16,7 +16,7 @@ describe('List webhooks', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.listWebhooks().getUrl();
+        const url = cmLiveClient.listWebhooks().getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/webhooks`);
     });
 

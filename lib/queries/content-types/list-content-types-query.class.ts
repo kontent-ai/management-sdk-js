@@ -5,7 +5,10 @@ import { ContentTypeResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
-export class ListContentTypesQuery extends BaseListingQuery<ContentTypeResponses.ContentTypeListResponse> {
+export class ListContentTypesQuery extends BaseListingQuery<
+    ContentTypeResponses.ContentTypeListResponse,
+    ContentTypeResponses.ContentTypeListAllResponse
+> {
     constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
         super(config, queryService);
     }
@@ -16,5 +19,15 @@ export class ListContentTypesQuery extends BaseListingQuery<ContentTypeResponses
 
     protected getAction(): string {
         return this.apiEndpoints.listContentTypes();
+    }
+
+    protected allResponseFactory(
+        items: any[],
+        responses: ContentTypeResponses.ContentTypeListResponse[]
+    ): ContentTypeResponses.ContentTypeListAllResponse {
+        return new ContentTypeResponses.ContentTypeListAllResponse({
+            items: items,
+            responses: responses
+        });
     }
 }

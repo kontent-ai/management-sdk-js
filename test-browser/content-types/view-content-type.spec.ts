@@ -1,6 +1,6 @@
 import { ContentTypeResponses, ElementModels } from '../../lib';
 import * as viewContentTypeJson from '../fake-responses/content-types/fake-view-content-type.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('View content type', () => {
@@ -17,9 +17,9 @@ describe('View content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmTestClient.viewContentType().byTypeCodename('x').getUrl();
-        const urlByInternalId = cmTestClient.viewContentType().byTypeId('y').getUrl();
-        const urlByExternalId = cmTestClient.viewContentType().byTypeExternalId('c').getUrl();
+        const urlByCodename = cmLiveClient.viewContentType().byTypeCodename('x').getUrl();
+        const urlByInternalId = cmLiveClient.viewContentType().byTypeId('y').getUrl();
+        const urlByExternalId = cmLiveClient.viewContentType().byTypeExternalId('c').getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/y`);

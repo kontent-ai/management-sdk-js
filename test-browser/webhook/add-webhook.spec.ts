@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-add-webhook.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Add webhook', () => {
     let response: WebhookResponses.AddWebhookResponse;
@@ -39,7 +39,7 @@ describe('Add webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient
+        const url = cmLiveClient
             .addWebhook()
             .withData({} as any)
             .getUrl();

@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../lib';
 import * as jsonResponse from '../fake-responses/language-variants/fake-upsert-language-variant.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('View language variant', () => {
@@ -18,13 +18,13 @@ describe('View language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrlWithCodenameLanguage = cmTestClient.viewLanguageVariant().byItemCodename('xCodename').byLanguageCodename('xLanguageCodename').getUrl();
-        const internalIdUrlWithCodenameLanguage = cmTestClient.viewLanguageVariant().byItemId('xItemId').byLanguageCodename('xLanguageCodename').getUrl();
-        const externalIdUrlWithCodenameLanguage = cmTestClient.viewLanguageVariant().byItemExternalId('XItemExternal').byLanguageCodename('xLanguageCodename').getUrl();
+        const codenameUrlWithCodenameLanguage = cmLiveClient.viewLanguageVariant().byItemCodename('xCodename').byLanguageCodename('xLanguageCodename').getUrl();
+        const internalIdUrlWithCodenameLanguage = cmLiveClient.viewLanguageVariant().byItemId('xItemId').byLanguageCodename('xLanguageCodename').getUrl();
+        const externalIdUrlWithCodenameLanguage = cmLiveClient.viewLanguageVariant().byItemExternalId('XItemExternal').byLanguageCodename('xLanguageCodename').getUrl();
 
-        const codenameUrlWithIdLanguage = cmTestClient.viewLanguageVariant().byItemCodename('xCodename').byLanguageId('xLanguageId').getUrl();
-        const internalIdUrlWithIdLanguage = cmTestClient.viewLanguageVariant().byItemId('xItemId').byLanguageId('xLanguageId').getUrl();
-        const externalIdUrlWithIdLanguage = cmTestClient.viewLanguageVariant().byItemExternalId('XItemExternal').byLanguageId('xLanguageId').getUrl();
+        const codenameUrlWithIdLanguage = cmLiveClient.viewLanguageVariant().byItemCodename('xCodename').byLanguageId('xLanguageId').getUrl();
+        const internalIdUrlWithIdLanguage = cmLiveClient.viewLanguageVariant().byItemId('xItemId').byLanguageId('xLanguageId').getUrl();
+        const externalIdUrlWithIdLanguage = cmLiveClient.viewLanguageVariant().byItemExternalId('XItemExternal').byLanguageId('xLanguageId').getUrl();
 
         expect(codenameUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants/codename/xLanguageCodename`);
         expect(internalIdUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xItemId/variants/codename/xLanguageCodename`);

@@ -1,6 +1,6 @@
 import { ContentTypeSnippetResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-type-snippets/fake-add-content-type-snippet.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Add content type snippet', () => {
     let response: ContentTypeSnippetResponses.AddContentTypeSnippetResponse;
@@ -28,7 +28,7 @@ describe('Add content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient
+        const url = cmLiveClient
             .addContentTypeSnippet()
             .withData({} as any)
             .getUrl();

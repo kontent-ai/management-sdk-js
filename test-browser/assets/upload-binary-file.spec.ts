@@ -1,6 +1,6 @@
 import { AssetResponses } from '../../lib';
 import * as uploadBinaryResponseJson from '../fake-responses/assets/fake-upload-binary-file.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 import { IHeader } from '@kentico/kontent-core';
 
 describe('Upload binary file', () => {
@@ -26,7 +26,7 @@ describe('Upload binary file', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.uploadBinaryFile().withData({
+        const url = cmLiveClient.uploadBinaryFile().withData({
             binaryData: 'c',
             contentLength: 9,
             contentType: 'x',

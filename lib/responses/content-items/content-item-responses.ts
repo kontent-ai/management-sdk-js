@@ -4,11 +4,7 @@ import { BaseResponses } from '../base-responses';
 
 export namespace ContentItemResponses {
 
-    export class ContentItemsResponse extends BaseResponses.BaseContentManagementResponse<ContentItemContracts.IContentItemsListingResponseContract,
-        {
-            items: ContentItemModels.ContentItem[],
-            pagination: SharedModels.Pagination
-        }>  {
+    export class ContentItemsResponse extends BaseResponses.BaseContentManagementListResponse<ContentItemContracts.IContentItemsListingResponseContract, ContentItemModels.ContentItem>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: ContentItemContracts.IContentItemsListingResponseContract,
@@ -18,6 +14,17 @@ export namespace ContentItemResponses {
             }
         ) {
             super(debug, rawData, data);
+        }
+    }
+
+    export class ContentItemsListAllResponse extends BaseResponses.ContentManagementListAllResponse<ContentItemsResponse, ContentItemModels.ContentItem> {
+        constructor(
+            data: {
+                items: ContentItemModels.ContentItem[],
+                responses: ContentItemsResponse[]
+            }
+        ) {
+            super(data);
         }
     }
 

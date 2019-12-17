@@ -1,6 +1,6 @@
 import { ContentTypeResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-add-content-type.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Add content type', () => {
     let response: ContentTypeResponses.AddContentTypeResponse;
@@ -33,7 +33,7 @@ describe('Add content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient
+        const url = cmLiveClient
             .addContentType()
             .withData({} as any)
             .getUrl();

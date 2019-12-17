@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../lib';
 import * as deleteTaxonomyJson from '../fake-responses/taxonomies/fake-delete-taxonomy.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Delete taxonomy', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -17,15 +17,15 @@ describe('Delete taxonomy', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmTestClient
+        const codenameUrl = cmLiveClient
             .deleteTaxonomy()
             .byTaxonomyCodename('xCodename')
             .getUrl();
-        const internalIdUrl = cmTestClient
+        const internalIdUrl = cmLiveClient
             .deleteTaxonomy()
             .byTaxonomyId('xInternalId')
             .getUrl();
-        const externalIdUrl = cmTestClient
+        const externalIdUrl = cmLiveClient
             .deleteTaxonomy()
             .byTaxonomyExternalId('xExternalId')
             .getUrl();

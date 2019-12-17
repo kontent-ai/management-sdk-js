@@ -5,7 +5,10 @@ import { AssetResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
-export class ListAssetsQuery extends BaseListingQuery<AssetResponses.AssetsListResponse> {
+export class ListAssetsQuery extends BaseListingQuery<
+    AssetResponses.AssetsListResponse,
+    AssetResponses.AssetsListAllResponse
+> {
     constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
         super(config, queryService);
     }
@@ -16,5 +19,15 @@ export class ListAssetsQuery extends BaseListingQuery<AssetResponses.AssetsListR
 
     protected getAction(): string {
         return this.apiEndpoints.listAssets();
+    }
+
+    protected allResponseFactory(
+        items: any[],
+        responses: AssetResponses.AssetsListResponse[]
+    ): AssetResponses.AssetsListAllResponse {
+        return new AssetResponses.AssetsListAllResponse({
+            items: items,
+            responses: responses
+        });
     }
 }

@@ -27,7 +27,7 @@ export class LanguageVariantResponseMapper extends BaseMapper {
     ): LanguageVariantResponses.ListLanguageVariantsOfItemResponse {
         const variants = response.data.map(m => this.mapLanguageVariant(m));
         return new LanguageVariantResponses.ListLanguageVariantsOfItemResponse(super.mapResponseDebug(response), response.data, {
-            variants: variants
+            items: variants
         });
     }
 
@@ -36,7 +36,7 @@ export class LanguageVariantResponseMapper extends BaseMapper {
     ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse {
         const variants = response.data.variants.map(m => this.mapLanguageVariant(m));
         return new LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse(super.mapResponseDebug(response), response.data, {
-            variants: variants,
+            items: variants,
             pagination: super.mapPagination(response.data.pagination)
         });
     }
@@ -46,7 +46,7 @@ export class LanguageVariantResponseMapper extends BaseMapper {
     ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse {
         const variants = response.data.variants.map(m => this.mapLanguageVariantWithComponents(m));
         return new LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse(super.mapResponseDebug(response), response.data, {
-            variants: variants,
+            items: variants,
             pagination: super.mapPagination(response.data.pagination)
         });
     }

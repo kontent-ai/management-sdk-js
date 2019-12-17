@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../lib';
 import * as listLanguageVariantsJson from '../fake-responses/language-variants/fake-list-language-variants-of-item.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('List language variants of item', () => {
@@ -17,9 +17,9 @@ describe('List language variants of item', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmTestClient.listLanguageVariantsOfItem().byItemCodename('xCodename').getUrl();
-        const internalIdUrl = cmTestClient.listLanguageVariantsOfItem().byItemId('xInternalId').getUrl();
-        const externalIdUrl = cmTestClient.listLanguageVariantsOfItem().byItemExternalId('xExternalId').getUrl();
+        const codenameUrl = cmLiveClient.listLanguageVariantsOfItem().byItemCodename('xCodename').getUrl();
+        const internalIdUrl = cmLiveClient.listLanguageVariantsOfItem().byItemId('xInternalId').getUrl();
+        const externalIdUrl = cmLiveClient.listLanguageVariantsOfItem().byItemExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants`);
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId/variants`);
@@ -36,14 +36,14 @@ describe('List language variants of item', () => {
 
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
-        expect(response.data.variants).toBeDefined();
+        expect(response.data.items).toBeDefined();
     });
 
     it(`item properties should be mapped`, () => {
-        expect(response.data.variants).toBeDefined();
-        expect(response.data.variants.length).toEqual(listLanguageVariantsJson.length);
+        expect(response.data.items).toBeDefined();
+        expect(response.data.items.length).toEqual(listLanguageVariantsJson.length);
 
-        response.data.variants.forEach(variant => {
+        response.data.items.forEach(variant => {
 
             const originalItem = listLanguageVariantsJson.find(m => m.item.id === variant.item.id);
 

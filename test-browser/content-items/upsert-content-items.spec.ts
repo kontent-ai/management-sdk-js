@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../lib';
 import * as upsertContentItemResponseJson from '../fake-responses/content-items/fake-update-content-item.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Upsert content item', () => {
     let response: ContentItemResponses.UpsertContentItemResponse;
@@ -21,7 +21,7 @@ describe('Upsert content item', () => {
     });
 
     it(`url should be correct`, () => {
-        const externalIdUrl = cmTestClient.upsertContentItem().byItemExternalId('xExternalId').withData({} as any).getUrl();
+        const externalIdUrl = cmLiveClient.upsertContentItem().byItemExternalId('xExternalId').withData({} as any).getUrl();
 
         expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`);
     });

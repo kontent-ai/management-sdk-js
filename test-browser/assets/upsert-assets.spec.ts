@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../lib';
 import * as upsertAssetResponseJson from '../fake-responses/assets/fake-upsert-asset.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Upsert asset', () => {
     let response: AssetResponses.UpsertAssertResponse;
@@ -18,7 +18,7 @@ describe('Upsert asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmTestClient.upsertAsset().withData({
+        const listUrl = cmLiveClient.upsertAsset().withData({
             descriptions: [],
             assetExternalId: 'x'
         }).getUrl();

@@ -11,7 +11,7 @@ export class ContentTypeSnippetMapper extends BaseMapper {
     mapListingResponse(response: IBaseResponse<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract>): ContentTypeSnippetResponses.ContentTypeSnippetListResponse {
         return new ContentTypeSnippetResponses.ContentTypeSnippetListResponse(
             super.mapResponseDebug(response), response.data, {
-                types: response.data.snippets.map(m => this.mapContentTypeSnippet(m)),
+                items: response.data.snippets.map(m => this.mapContentTypeSnippet(m)),
                 pagination: super.mapPagination(response.data.pagination)
             }
         );

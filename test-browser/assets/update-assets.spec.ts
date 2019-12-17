@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../lib';
 import * as updateAssetResponseJson from '../fake-responses/assets/fake-update-asset.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Update asset', () => {
     let response: AssetResponses.UpdateAssetResponse;
@@ -19,7 +19,7 @@ describe('Update asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmTestClient.updateAsset().withData({
+        const listUrl = cmLiveClient.updateAsset().withData({
             descriptions: [],
             assetId: 'x'
         }).getUrl();

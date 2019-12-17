@@ -4,20 +4,27 @@ import { BaseResponses } from '../base-responses';
 
 export namespace ContentTypeResponses {
 
-    export class ContentTypeListResponse extends BaseResponses.BaseContentManagementResponse<ContentTypeContracts.IContentTypeListResponseContract,
-        {
-            types: ContentTypeModels.ContentType[],
-            pagination: SharedModels.Pagination
-        }>  {
+    export class ContentTypeListResponse extends BaseResponses.BaseContentManagementListResponse<ContentTypeContracts.IContentTypeListResponseContract, ContentTypeModels.ContentType>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: ContentTypeContracts.IContentTypeListResponseContract,
             data: {
-                types: ContentTypeModels.ContentType[],
+                items: ContentTypeModels.ContentType[],
                 pagination: SharedModels.Pagination
             }
         ) {
             super(debug, rawData, data);
+        }
+    }
+
+    export class ContentTypeListAllResponse extends BaseResponses.ContentManagementListAllResponse<ContentTypeListResponse, ContentTypeModels.ContentType> {
+        constructor(
+            data: {
+                items: ContentTypeModels.ContentType[],
+                responses: ContentTypeListResponse[]
+            }
+        ) {
+            super(data);
         }
     }
 

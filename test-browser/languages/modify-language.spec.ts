@@ -1,6 +1,6 @@
 import { LanguageModels, LanguageResponses } from '../../lib';
 import * as responseJson from '../fake-responses/languages/fake-modify-language.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Modify language', () => {
     let response: LanguageResponses.ModifyLanguageResponse;
@@ -24,19 +24,19 @@ describe('Modify language', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmTestClient
+        const idUrl = cmLiveClient
             .modifyLanguage()
             .byLanguageId('xId')
             .withData({} as any)
             .getUrl();
 
-        const codenameUrl = cmTestClient
+        const codenameUrl = cmLiveClient
             .modifyLanguage()
             .byLanguageCodename('xCodename')
             .withData({} as any)
             .getUrl();
 
-        const externalIdUrl = cmTestClient
+        const externalIdUrl = cmLiveClient
             .modifyLanguage()
             .byExternalId('xExternalId')
             .withData({} as any)

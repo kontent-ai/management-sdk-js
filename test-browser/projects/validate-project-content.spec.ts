@@ -1,6 +1,6 @@
 import { ProjectModels, ProjectResponses } from '../../lib';
 import * as validateProjectContentJson from '../fake-responses/projects/fake-validate-project-content.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('Validate project content', () => {
@@ -17,7 +17,7 @@ describe('Validate project content', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.validateProjectContent().forProjectId('xxx').getUrl();
+        const url = cmLiveClient.validateProjectContent().forProjectId('xxx').getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/validate`);
     });

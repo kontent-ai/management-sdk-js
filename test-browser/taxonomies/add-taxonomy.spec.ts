@@ -1,6 +1,6 @@
 import { TaxonomyModels, TaxonomyResponses } from '../../lib';
 import * as addTaxonomyResponseJson from '../fake-responses/taxonomies/fake-add-taxonomy.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Add taxonomy', () => {
     let response: TaxonomyResponses.AddTaxonomyResponse;
@@ -19,7 +19,7 @@ describe('Add taxonomy', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.addTaxonomy()
+        const url = cmLiveClient.addTaxonomy()
             .withData({
                 name: 'x',
                 terms: []

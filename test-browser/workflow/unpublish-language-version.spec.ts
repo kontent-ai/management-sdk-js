@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../lib';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Unpublish language version', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -16,7 +16,7 @@ describe('Unpublish language version', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmTestClient.unpublishLanguageVariant().byItemCodename('x').byLanguageCodename('y').getUrl();
+        const w1Url = cmLiveClient.unpublishLanguageVariant().byItemCodename('x').byLanguageCodename('y').getUrl();
 
         expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/unpublish`);
     });

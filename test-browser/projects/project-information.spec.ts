@@ -1,6 +1,6 @@
 import { ProjectModels, ProjectResponses } from '../../lib';
 import * as responseJson from '../fake-responses/projects/fake-project-information.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('Project information', () => {
@@ -16,7 +16,7 @@ describe('Project information', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmTestClient.projectInformation().getUrl();
+        const url = cmLiveClient.projectInformation().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}`);
     });

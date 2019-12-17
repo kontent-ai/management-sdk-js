@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../lib';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('Change workflow step of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -17,7 +17,7 @@ describe('Change workflow step of language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmTestClient.changeWorkflowStepOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').byWorkflowStepId('b').getUrl();
+        const w1Url = cmLiveClient.changeWorkflowStepOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').byWorkflowStepId('b').getUrl();
 
         expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/workflow/b`);
     });

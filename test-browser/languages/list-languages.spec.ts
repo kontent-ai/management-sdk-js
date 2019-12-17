@@ -1,6 +1,6 @@
 import { LanguageModels, LanguageResponses, SharedModels } from '../../lib';
 import * as responseJson from '../fake-responses/languages/fake-list-languages.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('List languages', () => {
     let response: LanguageResponses.ListLanguagesResponse;
@@ -16,7 +16,7 @@ describe('List languages', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmTestClient.listLanguages().getUrl();
+        const listUrl = cmLiveClient.listLanguages().getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/languages`);
     });
@@ -40,10 +40,10 @@ describe('List languages', () => {
     });
 
     it(`properties should be mapped`, () => {
-        expect(Array.isArray(response.data.languages)).toBeTruthy();
-        expect(response.data.languages.length).toEqual(responseJson.languages.length);
+        expect(Array.isArray(response.data.items)).toBeTruthy();
+        expect(response.data.items.length).toEqual(responseJson.languages.length);
 
-        response.data.languages.forEach(language => {
+        response.data.items.forEach(language => {
             // find original item
             const originalItem = responseJson.languages.find(s => s.id === language.id);
 

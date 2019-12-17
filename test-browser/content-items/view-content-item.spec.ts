@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../lib';
 import * as viewContentItemJson from '../fake-responses/content-items/view-content-item.json';
-import { getTestClientWithJson, cmTestClient, testProjectId } from '../setup';
+import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
 
 describe('View content item', () => {
     let response: ContentItemResponses.ViewContentItemResponse;
@@ -15,9 +15,9 @@ describe('View content item', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmTestClient.viewContentItem().byItemCodename('xCodename').getUrl();
-        const internalIdUrl = cmTestClient.viewContentItem().byItemId('xInternalId').getUrl();
-        const externalIdUrl = cmTestClient.viewContentItem().byItemExternalId('xExternalId').getUrl();
+        const codenameUrl = cmLiveClient.viewContentItem().byItemCodename('xCodename').getUrl();
+        const internalIdUrl = cmLiveClient.viewContentItem().byItemId('xInternalId').getUrl();
+        const externalIdUrl = cmLiveClient.viewContentItem().byItemExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId`);

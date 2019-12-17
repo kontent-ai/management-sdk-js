@@ -1,6 +1,6 @@
 import { ContentTypeSnippetResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-view-content-type.json';
-import { cmTestClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 
 describe('View content type snippet', () => {
@@ -17,9 +17,9 @@ describe('View content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmTestClient.viewContentTypeSnippet().byTypeCodename('x').getUrl();
-        const urlByInternalId = cmTestClient.viewContentTypeSnippet().byTypeId('y').getUrl();
-        const urlByExternalId = cmTestClient.viewContentTypeSnippet().byTypeExternalId('c').getUrl();
+        const urlByCodename = cmLiveClient.viewContentTypeSnippet().byTypeCodename('x').getUrl();
+        const urlByInternalId = cmLiveClient.viewContentTypeSnippet().byTypeId('y').getUrl();
+        const urlByExternalId = cmLiveClient.viewContentTypeSnippet().byTypeExternalId('c').getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/y`);
