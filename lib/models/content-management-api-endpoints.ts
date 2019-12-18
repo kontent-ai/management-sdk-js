@@ -187,6 +187,18 @@ export class ContentManagementApiEndpoints {
         return `webhooks`;
     }
 
+    listAssetFolders(): string {
+        return 'folders';
+    }
+
+    addAssetFolders(): string {
+        return 'folders';
+    }
+
+    modifyAssetFolders(): string {
+        return 'folders';
+    }
+
 }
 
 export const contentManagementApiEndpoints = new ContentManagementApiEndpoints();

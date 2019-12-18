@@ -3,23 +3,26 @@ import { HttpService } from '@kentico/kontent-core';
 import { IManagementClientConfig } from '../config';
 import { ContentItemContracts } from '../contracts';
 import {
+    AssetFolderModels,
     AssetModels,
+    ContentTypeElementsBuilder,
     ContentTypeModels,
+    ContentTypeSnippetElementsBuilder,
     ContentTypeSnippetModels,
     LanguageModels,
     TaxonomyModels,
-    WorkflowModels,
-    ContentTypeElementsBuilder,
-    ContentTypeSnippetElementsBuilder,
     WebhookModels,
+    WorkflowModels,
 } from '../models';
 import {
+    AddAssetFoldersQuery,
     AddAssetQuery,
     AddContentItemQuery,
     AddContentTypeQuery,
     AddContentTypeSnippetQuery,
     AddLanguageQuery,
     AddTaxonomyQuery,
+    AddWebhookQuery,
     AssetIdentifierQueryClass,
     CancelScheduledPublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
@@ -29,26 +32,35 @@ import {
     ContentTypeIdentifierQuery,
     CreateNewVersionOfLanguageVariantQuery,
     DataQuery,
+    DataQueryOptional,
     DeleteAssetQuery,
     DeleteContentItemQuery,
     DeleteContentTypeQuery,
     DeleteContentTypeSnippetQuery,
     DeleteTaxonomyQuery,
+    DeleteWebhookQuery,
+    GetTaxonomyQuery,
+    GetWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
     LanguageIdentifierQuery,
     LanguageVariantElementsQuery,
+    ListAssetFoldersQuery,
     ListAssetsQuery,
     ListContentItemsQuery,
     ListContentTypeSnippetsQuery,
     ListContentTypesQuery,
     ListLanguagesQuery,
     ListLanguageVariantsOfContentTypeQuery,
+    ListLanguageVariantsOfContentTypeWithComponentsQuery,
     ListLanguageVariantsOfItemQuery,
     ListTaxonomiesQuery,
+    ListWebhooksQuery,
     ListWorkflowStepsQuery,
+    ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
     ModifyLanguageQuery,
     ProjectIdIdentifierQuery,
+    ProjectInformationQuery,
     PublishOrScheduleLanguageVariantQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
@@ -65,16 +77,8 @@ import {
     ViewContentTypeSnippetQuery,
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
-    WorkflowStepIdentifierQuery,
-    DataQueryOptional,
-    ListLanguageVariantsOfContentTypeWithComponentsQuery,
-    GetTaxonomyQuery,
-    DeleteWebhookQuery,
     WebhookIdentifierQuery,
-    AddWebhookQuery,
-    GetWebhookQuery,
-    ListWebhooksQuery,
-    ProjectInformationQuery
+    WorkflowStepIdentifierQuery,
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService } from '../services';
@@ -83,9 +87,7 @@ import { IManagementClient } from './imanagement-client.interface';
 export class ManagementClient implements IManagementClient {
     private queryService: ContentManagementQueryService;
 
-    constructor(
-        protected config: IManagementClientConfig
-    ) {
+    constructor(protected config: IManagementClientConfig) {
         this.queryService = new ContentManagementQueryService(
             config,
             config.httpService ? config.httpService : new HttpService(),
@@ -93,69 +95,158 @@ export class ManagementClient implements IManagementClient {
                 host: sdkInfo.host,
                 name: sdkInfo.name,
                 version: sdkInfo.version
-            });
+            }
+        );
     }
 
-    createNewVersionOfLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<CreateNewVersionOfLanguageVariantQuery>> {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<CreateNewVersionOfLanguageVariantQuery>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<CreateNewVersionOfLanguageVariantQuery>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new CreateNewVersionOfLanguageVariantQuery(nConfig, nQueryService, contentItemIdentifier, languageIdentifier)
+    createNewVersionOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<CreateNewVersionOfLanguageVariantQuery>
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<CreateNewVersionOfLanguageVariantQuery>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<CreateNewVersionOfLanguageVariantQuery>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new CreateNewVersionOfLanguageVariantQuery(
+                            nConfig,
+                            nQueryService,
+                            contentItemIdentifier,
+                            languageIdentifier
+                        )
                 )
         );
     }
 
-    unpublishLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>> {
+    unpublishLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>
+    > {
         return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new UnpublishLanguageVariantQuery(nConfig, nQueryService, contentItemIdentifier, languageIdentifier)
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new UnpublishLanguageVariantQuery(
+                            nConfig,
+                            nQueryService,
+                            contentItemIdentifier,
+                            languageIdentifier
+                        )
                 )
         );
     }
 
-    cancelSheduledPublishingOfLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<CancelScheduledPublishingOfLanguageVariantQuery>> {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<CancelScheduledPublishingOfLanguageVariantQuery>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<CancelScheduledPublishingOfLanguageVariantQuery>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new CancelScheduledPublishingOfLanguageVariantQuery(nConfig, nQueryService, contentItemIdentifier, languageIdentifier)
+    cancelSheduledPublishingOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<CancelScheduledPublishingOfLanguageVariantQuery>
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<CancelScheduledPublishingOfLanguageVariantQuery>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<CancelScheduledPublishingOfLanguageVariantQuery>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new CancelScheduledPublishingOfLanguageVariantQuery(
+                            nConfig,
+                            nQueryService,
+                            contentItemIdentifier,
+                            languageIdentifier
+                        )
                 )
         );
     }
 
-    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>> {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>(nConfig, nQueryService, (mConfig, mQueryservice, workflowIdentifier) => {
-                        return new ChangeWorkflowStepOfLanguageOrVariantQuery(config, queryService, contentItemIdentifier, languageIdentifier, workflowIdentifier);
-                    }
-                    )
-                ));
+    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<
+                WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>
+            >
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<
+                    WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>
+                >(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>(
+                            nConfig,
+                            nQueryService,
+                            (mConfig, mQueryservice, workflowIdentifier) => {
+                                return new ChangeWorkflowStepOfLanguageOrVariantQuery(
+                                    config,
+                                    queryService,
+                                    contentItemIdentifier,
+                                    languageIdentifier,
+                                    workflowIdentifier
+                                );
+                            }
+                        )
+                )
+        );
     }
 
-    publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>> {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>(nConfig, nQueryService, (
-                        pConfig, pQueryService, data) => new PublishOrScheduleLanguageVariantQuery(pConfig, pQueryService, contentItemIdentifier, languageIdentifier, data)
-                    ))
+    publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
+        >
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<
+                DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
+            >
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<
+                    DataQueryOptional<
+                        PublishOrScheduleLanguageVariantQuery,
+                        WorkflowModels.IPublishOrSchedulePublishData
+                    >
+                >(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new DataQueryOptional<
+                            PublishOrScheduleLanguageVariantQuery,
+                            WorkflowModels.IPublishOrSchedulePublishData
+                        >(
+                            nConfig,
+                            nQueryService,
+                            (pConfig, pQueryService, data) =>
+                                new PublishOrScheduleLanguageVariantQuery(
+                                    pConfig,
+                                    pQueryService,
+                                    contentItemIdentifier,
+                                    languageIdentifier,
+                                    data
+                                )
+                        )
+                )
         );
     }
 
     listWorkflowSteps(): ListWorkflowStepsQuery {
-        return new ListWorkflowStepsQuery(
-            this.config,
-            this.queryService,
-        );
+        return new ListWorkflowStepsQuery(this.config, this.queryService);
     }
 
     listContentTypeSnippets(): ListContentTypeSnippetsQuery {
-        return new ListContentTypeSnippetsQuery(
-            this.config,
-            this.queryService,
-        );
+        return new ListContentTypeSnippetsQuery(this.config, this.queryService);
     }
 
     viewContentTypeSnippet(): ContentTypeIdentifierQuery<ViewContentTypeSnippetQuery> {
@@ -174,8 +265,14 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    addContentTypeSnippet(): DataQuery<AddContentTypeSnippetQuery, (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData> {
-        return new DataQuery<AddContentTypeSnippetQuery, (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData>(
+    addContentTypeSnippet(): DataQuery<
+        AddContentTypeSnippetQuery,
+        (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData
+    > {
+        return new DataQuery<
+            AddContentTypeSnippetQuery,
+            (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData
+        >(
             this.config,
             this.queryService,
             (config, queryService, data) => new AddContentTypeSnippetQuery(config, queryService, data)
@@ -184,20 +281,43 @@ export class ManagementClient implements IManagementClient {
 
     viewLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<ViewLanguageVariantQuery>> {
         return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<ViewLanguageVariantQuery>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<ViewLanguageVariantQuery>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new ViewLanguageVariantQuery(nConfig, nQueryService, contentItemIdentifier, languageIdentifier)
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<ViewLanguageVariantQuery>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new ViewLanguageVariantQuery(nConfig, nQueryService, contentItemIdentifier, languageIdentifier)
                 )
         );
     }
 
-    upsertLanguageVariant(): ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>> {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>>(
-            this.config, this.queryService, (
-                config, queryService, contentItemIdentifier) => new LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>(
-                    config, queryService, (nConfig, nQueryService, languageIdentifier) => new LanguageVariantElementsQuery(nConfig, nQueryService, (
-                        mConfig, mQueryService, elements) => new UpsertLanguageVariantQuery(mConfig, mQueryService, contentItemIdentifier, languageIdentifier, elements)
-                    )
+    upsertLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new LanguageVariantElementsQuery(
+                            nConfig,
+                            nQueryService,
+                            (mConfig, mQueryService, elements) =>
+                                new UpsertLanguageVariantQuery(
+                                    mConfig,
+                                    mQueryService,
+                                    contentItemIdentifier,
+                                    languageIdentifier,
+                                    elements
+                                )
+                        )
                 )
         );
     }
@@ -218,19 +338,34 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    addContentType(): DataQuery<AddContentTypeQuery, (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData> {
-        return new DataQuery<AddContentTypeQuery, (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData>(
+    addContentType(): DataQuery<
+        AddContentTypeQuery,
+        (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData
+    > {
+        return new DataQuery<
+            AddContentTypeQuery,
+            (builder: ContentTypeElementsBuilder) => ContentTypeModels.IAddContentTypeData
+        >(
             this.config,
             this.queryService,
             (config, queryService, data) => new AddContentTypeQuery(config, queryService, data)
         );
     }
 
-    modifyContentType(): ContentTypeIdentifierQuery<DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>> {
-        return new ContentTypeIdentifierQuery<DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>>(
-            this.config, this.queryService, (
-                config, queryService, identifier) => new DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>(
-                    config, queryService, (nConfig, nQueryService, data) => new ModifyContentTypeQuery(nConfig, nQueryService, identifier, data)
+    modifyContentType(): ContentTypeIdentifierQuery<
+        DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
+    > {
+        return new ContentTypeIdentifierQuery<
+            DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new ModifyContentTypeQuery(nConfig, nQueryService, identifier, data)
                 )
         );
     }
@@ -244,10 +379,7 @@ export class ManagementClient implements IManagementClient {
     }
 
     listContentTypes(): ListContentTypesQuery {
-        return new ListContentTypesQuery(
-            this.config,
-            this.queryService
-        );
+        return new ListContentTypesQuery(this.config, this.queryService);
     }
 
     deleteTaxonomy(): TaxonomyIdentifierQuery<DeleteTaxonomyQuery> {
@@ -267,10 +399,7 @@ export class ManagementClient implements IManagementClient {
     }
 
     listTaxonomies(): ListTaxonomiesQuery {
-        return new ListTaxonomiesQuery(
-            this.config,
-            this.queryService
-        );
+        return new ListTaxonomiesQuery(this.config, this.queryService);
     }
 
     getTaxonomy(): TaxonomyIdentifierQuery<GetTaxonomyQuery> {
@@ -330,17 +459,11 @@ export class ManagementClient implements IManagementClient {
     }
 
     listAssets(): ListAssetsQuery {
-        return new ListAssetsQuery(
-            this.config,
-            this.queryService
-        );
+        return new ListAssetsQuery(this.config, this.queryService);
     }
 
     listContentItems(): ListContentItemsQuery {
-        return new ListContentItemsQuery(
-            this.config,
-            this.queryService,
-        );
+        return new ListContentItemsQuery(this.config, this.queryService);
     }
 
     viewContentItem(): ContentItemIdentifierQuery<ViewContentItemQuery> {
@@ -359,20 +482,38 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    updateContentItem(): ContentItemIdentifierQuery<DataQuery<UpdateContentItemQuery, ContentItemContracts.IUpdateContentItemPostContract>> {
-        return new ContentItemIdentifierQuery<DataQuery<UpdateContentItemQuery, ContentItemContracts.IUpdateContentItemPostContract>>(
-            this.config, this.queryService, (
-                config, queryService, identifier) => new DataQuery<UpdateContentItemQuery, ContentItemContracts.IUpdateContentItemPostContract>(
-                    config, queryService, (nConfig, nQueryService, data) => new UpdateContentItemQuery(nConfig, nQueryService, data, identifier)
+    updateContentItem(): ContentItemIdentifierQuery<
+        DataQuery<UpdateContentItemQuery, ContentItemContracts.IUpdateContentItemPostContract>
+    > {
+        return new ContentItemIdentifierQuery<
+            DataQuery<UpdateContentItemQuery, ContentItemContracts.IUpdateContentItemPostContract>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<UpdateContentItemQuery, ContentItemContracts.IUpdateContentItemPostContract>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new UpdateContentItemQuery(nConfig, nQueryService, data, identifier)
                 )
         );
     }
 
-    upsertContentItem(): ContentItemExternalIdIdentifierQuery<DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>> {
-        return new ContentItemExternalIdIdentifierQuery<DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>>(
-            this.config, this.queryService, (
-                config, queryService, identifier) => new DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>(
-                    config, queryService, (nConfig, nQueryService, data) => new UpsertContentItemQuery(nConfig, nQueryService, data, identifier)
+    upsertContentItem(): ContentItemExternalIdIdentifierQuery<
+        DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>
+    > {
+        return new ContentItemExternalIdIdentifierQuery<
+            DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new UpsertContentItemQuery(nConfig, nQueryService, data, identifier)
                 )
         );
     }
@@ -393,27 +534,30 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery> {
+    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<
+        ListLanguageVariantsOfContentTypeQuery
+    > {
         return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery>(
             this.config,
             this.queryService,
-            (config, queryService, identifier) => new ListLanguageVariantsOfContentTypeQuery(config, queryService, identifier)
+            (config, queryService, identifier) =>
+                new ListLanguageVariantsOfContentTypeQuery(config, queryService, identifier)
         );
     }
 
-    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<
+        ListLanguageVariantsOfContentTypeWithComponentsQuery
+    > {
         return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
             this.config,
             this.queryService,
-            (config, queryService, identifier) => new ListLanguageVariantsOfContentTypeWithComponentsQuery(config, queryService, identifier)
+            (config, queryService, identifier) =>
+                new ListLanguageVariantsOfContentTypeWithComponentsQuery(config, queryService, identifier)
         );
     }
 
     listLanguages(): ListLanguagesQuery {
-        return new ListLanguagesQuery(
-            this.config,
-            this.queryService,
-        );
+        return new ListLanguagesQuery(this.config, this.queryService);
     }
 
     viewLanguage(): LanguageIdentifierQuery<ViewLanguageQuery> {
@@ -434,18 +578,22 @@ export class ManagementClient implements IManagementClient {
 
     modifyLanguage(): LanguageIdentifierQuery<DataQuery<ModifyLanguageQuery, LanguageModels.IModifyLanguageData[]>> {
         return new LanguageIdentifierQuery<DataQuery<ModifyLanguageQuery, LanguageModels.IModifyLanguageData[]>>(
-            this.config, this.queryService, (
-                config, queryService, identifier) => new DataQuery<ModifyLanguageQuery, LanguageModels.IModifyLanguageData[]>(
-                    config, queryService, (nConfig, nQueryService, data) => new ModifyLanguageQuery(nConfig, nQueryService, identifier, data)
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ModifyLanguageQuery, LanguageModels.IModifyLanguageData[]>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new ModifyLanguageQuery(nConfig, nQueryService, identifier, data)
                 )
         );
     }
 
     deleteWebhook(): WebhookIdentifierQuery<DeleteWebhookQuery> {
         return new WebhookIdentifierQuery<DeleteWebhookQuery>(
-            this.config, this.queryService, (
-                (config, queryService, identifier) => new DeleteWebhookQuery(config, queryService, identifier)
-            )
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new DeleteWebhookQuery(config, queryService, identifier)
         );
     }
 
@@ -466,16 +614,30 @@ export class ManagementClient implements IManagementClient {
     }
 
     listWebhooks(): ListWebhooksQuery {
-        return new ListWebhooksQuery(
-            this.config,
-            this.queryService,
-        );
+        return new ListWebhooksQuery(this.config, this.queryService);
     }
 
     projectInformation(): ProjectInformationQuery {
-        return new ProjectInformationQuery(
+        return new ProjectInformationQuery(this.config, this.queryService);
+    }
+
+    listAssetFolders(): ListAssetFoldersQuery {
+        return new ListAssetFoldersQuery(this.config, this.queryService);
+    }
+
+    addAssetFolders(): DataQuery<AddAssetFoldersQuery, AssetFolderModels.IAddAssetFoldersData> {
+        return new DataQuery<AddAssetFoldersQuery, AssetFolderModels.IAddAssetFoldersData>(
             this.config,
             this.queryService,
+            (config, queryService, data) => new AddAssetFoldersQuery(config, queryService, data)
+        );
+    }
+
+    modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]> {
+        return new DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new ModifyAssetFoldersQuery(config, queryService, data)
         );
     }
 }

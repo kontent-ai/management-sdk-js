@@ -1,5 +1,6 @@
 import { ContentItemContracts } from '../contracts';
 import {
+    AssetFolderModels,
     AssetModels,
     ContentTypeElementsBuilder,
     ContentTypeModels,
@@ -7,16 +8,18 @@ import {
     ContentTypeSnippetModels,
     LanguageModels,
     TaxonomyModels,
-    WorkflowModels,
     WebhookModels,
+    WorkflowModels,
 } from '../models';
 import {
+    AddAssetFoldersQuery,
     AddAssetQuery,
     AddContentItemQuery,
     AddContentTypeQuery,
     AddContentTypeSnippetQuery,
     AddLanguageQuery,
     AddTaxonomyQuery,
+    AddWebhookQuery,
     AssetIdentifierQueryClass,
     CancelScheduledPublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
@@ -26,26 +29,35 @@ import {
     ContentTypeIdentifierQuery,
     CreateNewVersionOfLanguageVariantQuery,
     DataQuery,
+    DataQueryOptional,
     DeleteAssetQuery,
     DeleteContentItemQuery,
     DeleteContentTypeQuery,
     DeleteContentTypeSnippetQuery,
     DeleteTaxonomyQuery,
+    DeleteWebhookQuery,
+    GetTaxonomyQuery,
+    GetWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
     LanguageIdentifierQuery,
     LanguageVariantElementsQuery,
+    ListAssetFoldersQuery,
     ListAssetsQuery,
     ListContentItemsQuery,
     ListContentTypeSnippetsQuery,
     ListContentTypesQuery,
     ListLanguagesQuery,
     ListLanguageVariantsOfContentTypeQuery,
+    ListLanguageVariantsOfContentTypeWithComponentsQuery,
     ListLanguageVariantsOfItemQuery,
     ListTaxonomiesQuery,
+    ListWebhooksQuery,
     ListWorkflowStepsQuery,
+    ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
     ModifyLanguageQuery,
     ProjectIdIdentifierQuery,
+    ProjectInformationQuery,
     PublishOrScheduleLanguageVariantQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
@@ -62,16 +74,8 @@ import {
     ViewContentTypeSnippetQuery,
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
-    WorkflowStepIdentifierQuery,
-    DataQueryOptional,
-    ListLanguageVariantsOfContentTypeWithComponentsQuery,
-    GetTaxonomyQuery,
-    DeleteWebhookQuery,
     WebhookIdentifierQuery,
-    AddWebhookQuery,
-    GetWebhookQuery,
-    ListWebhooksQuery,
-    ProjectInformationQuery
+    WorkflowStepIdentifierQuery,
 } from '../queries';
 
 export interface IManagementClient {
@@ -292,7 +296,9 @@ export interface IManagementClient {
     /**
      * List language variants of a specific content type with components
      */
-    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>;
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<
+        ListLanguageVariantsOfContentTypeWithComponentsQuery
+    >;
 
     /**
      * List languages in project
@@ -330,12 +336,27 @@ export interface IManagementClient {
     getWebhook(): WebhookIdentifierQuery<GetWebhookQuery>;
 
     /**
-    * Gets all webhooks
-    */
+     * Gets all webhooks
+     */
     listWebhooks(): ListWebhooksQuery;
 
     /**
      * Query to get project information
      */
     projectInformation(): ProjectInformationQuery;
+
+    /**
+     * Query to list asset folders
+     */
+    listAssetFolders(): ListAssetFoldersQuery;
+
+    /**
+     * Query to add asset folders
+     */
+    addAssetFolders(): DataQuery<AddAssetFoldersQuery, AssetFolderModels.IAddAssetFoldersData>;
+
+    /**
+     * Query to modify asset folders
+     */
+    modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]>;
 }

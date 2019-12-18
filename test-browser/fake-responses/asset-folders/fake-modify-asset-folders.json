@@ -1,0 +1,24 @@
+{
+    "last_modified": "2019-11-07T09:46:52.7735578Z",
+    "folders": [
+      {
+        "id": "82fdeb78-e60a-5236-878f-f3673508b513",
+        "external_id": "top-folder",
+        "name": "Top level folder",
+        "folders": [
+          {
+            "id": "3db723f5-2197-5df5-8da3-943c46956616",
+            "external_id": "second-folder",
+            "name": "A new name",
+            "folders": []
+          },
+          {
+            "id": "6b7a4d43-56a3-5617-bb5e-4236e8ba2b27",
+            "external_id": "another-folder",
+            "name": "Another second level folder",
+            "folders": []
+          }
+        ]
+      }
+    ]
+  }

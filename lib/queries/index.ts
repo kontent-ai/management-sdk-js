@@ -11,4 +11,5 @@ export * from './content-type-snippets';
 export * from './languages';
 export * from './workflow';
 export * from './webhooks';
+export * from './asset-folders';
 

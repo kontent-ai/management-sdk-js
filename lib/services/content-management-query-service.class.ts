@@ -5,6 +5,7 @@ import { flatMap, map } from 'rxjs/operators';
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import {
     AssetContracts,
+    AssetFolderContracts,
     ContentItemContracts,
     ContentTypeContracts,
     ContentTypeSnippetContracts,
@@ -16,6 +17,7 @@ import {
     WorkflowContracts,
 } from '../contracts';
 import {
+    assetFolderMapper,
     assetsResponseMapper,
     contentItemsResponseMapper,
     contentTypeMapper,
@@ -37,8 +39,10 @@ import {
     TaxonomyModels,
     WebhookModels,
     WorkflowModels,
+    AssetFolderModels,
 } from '../models';
 import {
+    AssetFolderResponses,
     AssetResponses,
     BaseResponses,
     ContentItemResponses,
@@ -62,20 +66,25 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         super(config, httpService, sdkInfo);
     }
 
-    getListAllResponse<TResponse extends BaseResponses.IContentManagementListResponse, TAllResponse extends BaseResponses.IContentManagementListAllResponse>(data: {
+    getListAllResponse<
+        TResponse extends BaseResponses.IContentManagementListResponse,
+        TAllResponse extends BaseResponses.IContentManagementListAllResponse
+    >(data: {
         getResponse: (xContinuationToken?: string) => Observable<TResponse>;
-        allResponseFactory: (items: any[], responses: TResponse[]) => TAllResponse
+        allResponseFactory: (items: any[], responses: TResponse[]) => TAllResponse;
     }): Observable<TAllResponse> {
         return this.getListAllResponseInternal({
             resolvedResponses: [],
             getResponse: data.getResponse,
-            xContinuationToken: undefined,
+            xContinuationToken: undefined
         }).pipe(
             map(responses => {
-                return data.allResponseFactory(responses.reduce((prev: any[], current) => {
+                return data.allResponseFactory(
+                    responses.reduce((prev: any[], current) => {
                         prev.push(...current.data.items);
                         return prev;
-                    }, []), responses
+                    }, []),
+                    responses
                 );
             })
         );
@@ -673,6 +682,46 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return this.deleteResponse<BaseResponses.EmptyContentManagementResponse>(url, {}, config).pipe(
             map(response => {
                 return webhookResponseMapper.mapEmptyResponse(response);
+            })
+        );
+    }
+
+    listAssetFolders(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<AssetFolderResponses.AssetFoldersListResponse> {
+        return this.getResponse<AssetFolderContracts.IListAssetFoldersResponseContract>(url, {}, config).pipe(
+            map(response => {
+                return assetFolderMapper.mapListAssetFoldersResponse(response);
+            })
+        );
+    }
+
+    addAssetFolders(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: AssetFolderModels.IAddAssetFoldersData
+    ): Observable<AssetFolderResponses.AddAssetFoldersResponse> {
+        return this.postResponse<AssetFolderContracts.IAddAssetFoldersResponseContract>(url, data, {}, config).pipe(
+            map(response => {
+                return assetFolderMapper.mapAddAssetFoldersResponse(response);
+            })
+        );
+    }
+
+    modifyAssetFolders(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: AssetFolderModels.IModifyAssetFoldersData[]
+    ): Observable<AssetFolderResponses.ModifyAssetFoldersResponse> {
+        return this.patchResponse<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>(
+            url,
+            data,
+            {},
+            config
+        ).pipe(
+            map(response => {
+                return assetFolderMapper.mapModifyAssetFoldersResponse(response);
             })
         );
     }

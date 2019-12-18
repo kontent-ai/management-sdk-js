@@ -3,6 +3,7 @@ export * from './content-management-api-endpoints';
 export * from './content-items/content-item.models';
 export * from './shared/shared-models';
 export * from './assets/asset.models';
+export * from './asset-folders/asset-folder.models';
 export * from './taxonomies/taxonomy.models';
 export * from './content-types/content-type.models';
 export * from './content-types/content-type-elements.builder';
