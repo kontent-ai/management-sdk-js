@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.2.8...v0.3.0) (2019-12-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* implements ability to get all items with automatic paging using `toAllObservable` and `toAllPromise` extension methods. This commit changes names of some responses and also changes name of property holding paged items to 'items'.
+
+### Features
+
+* adds support for list/add/modify asset folders endpoints ([b35b08d](https://github.com/Kentico/kontent-management-sdk-js/commit/b35b08d6391f0ae6cbfb988499ec6bbe05213a0e))
+* implements ability to get all items with automatic paging using `toAllObservable` and `toAllPromise` extension methods. This commit changes names of some responses and also changes name of property holding paged items to 'items'. ([c77353f](https://github.com/Kentico/kontent-management-sdk-js/commit/c77353f460cfe8a6f85f8e4a02a14fbaaf9eed3e))
+
+
+### Bug Fixes
+
+* fixes incorrect import source in readme ([5642343](https://github.com/Kentico/kontent-management-sdk-js/commit/5642343dbdbfec2b0347cfab627cc3195b22a16b))
+* uses base github url in package.json to fix automatic commit url generation ([38b243e](https://github.com/Kentico/kontent-management-sdk-js/commit/38b243ec1f7e2079f40ead553254e611d45b4084))
+
 ### [0.2.8](https://github.com///compare/v0.2.7...v0.2.8) (2019-12-16)
 
 
