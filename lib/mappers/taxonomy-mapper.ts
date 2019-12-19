@@ -5,7 +5,7 @@ import { TaxonomyModels, SharedModels } from '../models';
 import { TaxonomyResponses as TaxonomyResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
-export class TaxonomyResponseMapper extends BaseMapper {
+export class TaxonomyMapper extends BaseMapper {
 
     mapListingTaxonomysResponse(
         response: IBaseResponse<TaxonomyContracts.ITemporaryTaxonomyListResponse>
@@ -59,4 +59,4 @@ export class TaxonomyResponseMapper extends BaseMapper {
     }
 }
 
-export const taxonomyResponseMapper = new TaxonomyResponseMapper();
+export const taxonomyMappper = new TaxonomyMapper();

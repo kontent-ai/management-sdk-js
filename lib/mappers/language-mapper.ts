@@ -5,7 +5,7 @@ import { LanguageModels } from '../models';
 import { LanguageResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
-export class LanguageResponseMapper extends BaseMapper {
+export class LanguageMapper extends BaseMapper {
     mapViewLanguageResponse(
         response: IBaseResponse<LanguageContracts.IViewLanguageResponseContract>
     ): LanguageResponses.ViewLanguageResponse {
@@ -54,4 +54,4 @@ export class LanguageResponseMapper extends BaseMapper {
     }
 }
 
-export const languageResponseMapper = new LanguageResponseMapper();
+export const languageMapper = new LanguageMapper();

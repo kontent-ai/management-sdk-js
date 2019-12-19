@@ -6,7 +6,7 @@ import { LanguageVariantResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 import { elementsMapper } from './elements-mapper';
 
-export class LanguageVariantResponseMapper extends BaseMapper {
+export class LanguageVariantMapper extends BaseMapper {
 
     mapUpsertLanguageVariantResponse(
         response: IBaseResponse<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>,
@@ -74,4 +74,4 @@ export class LanguageVariantResponseMapper extends BaseMapper {
     }
 }
 
-export const languageVariantResponseMapper = new LanguageVariantResponseMapper();
+export const languageVariantMapper = new LanguageVariantMapper();

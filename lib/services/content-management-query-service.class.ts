@@ -18,17 +18,17 @@ import {
 } from '../contracts';
 import {
     assetFolderMapper,
-    assetsResponseMapper,
-    contentItemsResponseMapper,
+    assetsMapper,
+    contentItemsMapper,
     contentTypeMapper,
     contentTypeSnippetMapper,
-    languageResponseMapper,
-    languageVariantResponseMapper,
+    languageMapper,
+    languageVariantMapper,
     projectMapper,
-    taxonomyResponseMapper,
-    workflowResponseMapper,
+    taxonomyMappper,
+    workflowMapper,
 } from '../mappers';
-import { webhookResponseMapper } from '../mappers/webhook-response-mapper';
+import { webhookMapper } from '../mappers/webhook-mapper';
 import {
     AssetModels,
     ContentTypeModels,
@@ -111,7 +111,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, data, {}, config).pipe(
             map(response => {
-                return workflowResponseMapper.mapEmptyResponse(response);
+                return workflowMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -122,7 +122,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, undefined, {}, config).pipe(
             map(response => {
-                return workflowResponseMapper.mapEmptyResponse(response);
+                return workflowMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -133,7 +133,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, undefined, {}, config).pipe(
             map(response => {
-                return workflowResponseMapper.mapEmptyResponse(response);
+                return workflowMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -144,7 +144,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, undefined, {}, config).pipe(
             map(response => {
-                return workflowResponseMapper.mapEmptyResponse(response);
+                return workflowMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -155,7 +155,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, undefined, {}, config).pipe(
             map(response => {
-                return workflowResponseMapper.mapEmptyResponse(response);
+                return workflowMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -166,7 +166,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<WorkflowResponses.ListWorkflowStepsResponse> {
         return this.getResponse<WorkflowContracts.IListWorkflowStepsResponseContract>(url, {}, config).pipe(
             map(response => {
-                return workflowResponseMapper.mapListWorkflowStepsResponse(response);
+                return workflowMapper.mapListWorkflowStepsResponse(response);
             })
         );
     }
@@ -331,7 +331,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return taxonomyResponseMapper.mapAddTaxonomyResponse(response);
+                return taxonomyMappper.mapAddTaxonomyResponse(response);
             })
         );
     }
@@ -342,7 +342,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<TaxonomyContracts.IDeleteTaxonomyResponseContract>(url, {}, config).pipe(
             map(response => {
-                return taxonomyResponseMapper.mapEmptyResponse(response);
+                return taxonomyMappper.mapEmptyResponse(response);
             })
         );
     }
@@ -350,7 +350,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     getTaxonomy(url: string, config: IContentManagementQueryConfig): Observable<TaxonomyResponses.GetTaxonomyResponse> {
         return this.getResponse<TaxonomyContracts.IGetTaxonomyResponseContract>(url, {}, config).pipe(
             map(response => {
-                return taxonomyResponseMapper.mapGetTaxonomyResponse(response);
+                return taxonomyMappper.mapGetTaxonomyResponse(response);
             })
         );
     }
@@ -361,7 +361,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<TaxonomyResponses.TaxonomyListResponse> {
         return this.getResponse<TaxonomyContracts.ITaxonomyContract[]>(url, {}, config).pipe(
             map(response => {
-                return taxonomyResponseMapper.mapListingTaxonomysResponse(response);
+                return taxonomyMappper.mapListingTaxonomysResponse(response);
             })
         );
     }
@@ -372,7 +372,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<AssetContracts.IDeleteAssetResponseContract>(url, {}, config).pipe(
             map(response => {
-                return assetsResponseMapper.mapEmptyResponse(response);
+                return assetsMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -393,7 +393,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return assetsResponseMapper.mapUpsertAssetResponse(response);
+                return assetsMapper.mapUpsertAssetResponse(response);
             })
         );
     }
@@ -413,7 +413,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return assetsResponseMapper.mapUpdateAssetResponse(response);
+                return assetsMapper.mapUpdateAssetResponse(response);
             })
         );
     }
@@ -435,7 +435,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return assetsResponseMapper.mapAddAssetResponse(response);
+                return assetsMapper.mapAddAssetResponse(response);
             })
         );
     }
@@ -452,7 +452,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return assetsResponseMapper.mapUploadBinaryFileResponse(response);
+                return assetsMapper.mapUploadBinaryFileResponse(response);
             })
         );
     }
@@ -460,7 +460,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     viewAsset(url: string, config: IContentManagementQueryConfig): Observable<AssetResponses.ViewAssetResponse> {
         return this.getResponse<AssetContracts.IAssetModelContract>(url, {}, config).pipe(
             map(response => {
-                return assetsResponseMapper.mapViewAssetResponse(response);
+                return assetsMapper.mapViewAssetResponse(response);
             })
         );
     }
@@ -468,7 +468,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     listAssets(url: string, config: IContentManagementQueryConfig): Observable<AssetResponses.AssetsListResponse> {
         return this.getResponse<AssetContracts.IAssetsListingResponseContract>(url, {}, config).pipe(
             map(response => {
-                return assetsResponseMapper.mapListingAssetsResponse(response);
+                return assetsMapper.mapListingAssetsResponse(response);
             })
         );
     }
@@ -479,7 +479,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<ContentItemResponses.ContentItemsResponse> {
         return this.getResponse<ContentItemContracts.IContentItemsListingResponseContract>(url, {}, config).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapListingItemsResponse(response);
+                return contentItemsMapper.mapListingItemsResponse(response);
             })
         );
     }
@@ -490,7 +490,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<ContentItemResponses.ViewContentItemResponse> {
         return this.getResponse<ContentItemContracts.IViewContentItemResponseContract>(url, {}, config).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapViewContentItemResponse(response);
+                return contentItemsMapper.mapViewContentItemResponse(response);
             })
         );
     }
@@ -502,7 +502,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<ContentItemResponses.AddContentItemResponse> {
         return this.postResponse<ContentItemContracts.IAddContentItemResponseContract>(url, data, {}, config).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapAddContentItemResponse(response);
+                return contentItemsMapper.mapAddContentItemResponse(response);
             })
         );
     }
@@ -514,7 +514,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<ContentItemResponses.UpsertContentItemResponse> {
         return this.putResponse<ContentItemContracts.IUpsertContentItemResponseContract>(url, data, {}, config).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapUpsertContentItemResponse(response);
+                return contentItemsMapper.mapUpsertContentItemResponse(response);
             })
         );
     }
@@ -526,7 +526,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<ContentItemResponses.AddContentItemResponse> {
         return this.putResponse<ContentItemContracts.IUpdateContentItemResponseContract>(url, data, {}, config).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapUpdateContentItemResponse(response);
+                return contentItemsMapper.mapUpdateContentItemResponse(response);
             })
         );
     }
@@ -537,7 +537,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config).pipe(
             map(response => {
-                return contentItemsResponseMapper.mapEmptyResponse(response);
+                return contentItemsMapper.mapEmptyResponse(response);
             })
         );
     }
@@ -556,7 +556,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return languageVariantResponseMapper.mapUpsertLanguageVariantResponse(response);
+                return languageVariantMapper.mapUpsertLanguageVariantResponse(response);
             })
         );
     }
@@ -567,7 +567,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<LanguageVariantResponses.ViewLanguageVariantResponse> {
         return this.getResponse<LanguageVariantContracts.IViewLanguageVariantResponseContract>(url, {}, config).pipe(
             map(response => {
-                return languageVariantResponseMapper.mapViewLanguageVariantResponse(response);
+                return languageVariantMapper.mapViewLanguageVariantResponse(response);
             })
         );
     }
@@ -582,7 +582,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return languageVariantResponseMapper.mapLanguageVariantsOfItemResponse(response);
+                return languageVariantMapper.mapLanguageVariantsOfItemResponse(response);
             })
         );
     }
@@ -595,7 +595,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract
         >(url, {}, config).pipe(
             map(response => {
-                return languageVariantResponseMapper.mapLanguageVariantsOfContentTypeWithComponentsResponse(response);
+                return languageVariantMapper.mapLanguageVariantsOfContentTypeWithComponentsResponse(response);
             })
         );
     }
@@ -610,7 +610,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             config
         ).pipe(
             map(response => {
-                return languageVariantResponseMapper.mapLanguageVariantsOfContentTypeResponse(response);
+                return languageVariantMapper.mapLanguageVariantsOfContentTypeResponse(response);
             })
         );
     }
@@ -621,7 +621,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<LanguageResponses.ListLanguagesResponse> {
         return this.getResponse<LanguageContracts.IListLanguagesResponseContract>(url, {}, config).pipe(
             map(response => {
-                return languageResponseMapper.mapListLanguagesResponse(response);
+                return languageMapper.mapListLanguagesResponse(response);
             })
         );
     }
@@ -632,7 +632,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<LanguageResponses.ViewLanguageResponse> {
         return this.getResponse<LanguageContracts.IViewLanguageResponseContract>(url, {}, config).pipe(
             map(response => {
-                return languageResponseMapper.mapViewLanguageResponse(response);
+                return languageMapper.mapViewLanguageResponse(response);
             })
         );
     }
@@ -644,7 +644,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<LanguageResponses.AddLanguageResponse> {
         return this.postResponse<LanguageContracts.IAddLanguageResponseContract>(url, data, {}, config).pipe(
             map(response => {
-                return languageResponseMapper.mapAddLanguageResponse(response);
+                return languageMapper.mapAddLanguageResponse(response);
             })
         );
     }
@@ -656,7 +656,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<LanguageResponses.ModifyLanguageResponse> {
         return this.patchResponse<LanguageContracts.IModifyLanguageResponseContract>(url, data, {}, config).pipe(
             map(response => {
-                return languageResponseMapper.mapModifyLanguageResponse(response);
+                return languageMapper.mapModifyLanguageResponse(response);
             })
         );
     }
@@ -664,7 +664,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     listWebhooks(url: string, config: IContentManagementQueryConfig): Observable<WebhookResponses.WebhookListResponse> {
         return this.getResponse<WebhookContracts.IWebhookListContract>(url, {}, config).pipe(
             map(response => {
-                return webhookResponseMapper.mapWebhooksListResponse(response);
+                return webhookMapper.mapWebhooksListResponse(response);
             })
         );
     }
@@ -672,7 +672,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     getWebhook(url: string, config: IContentManagementQueryConfig): Observable<WebhookResponses.GetWebhookResponse> {
         return this.getResponse<WebhookContracts.IGetWebhookContract>(url, {}, config).pipe(
             map(response => {
-                return webhookResponseMapper.mapGetWebhookResponse(response);
+                return webhookMapper.mapGetWebhookResponse(response);
             })
         );
     }
@@ -684,7 +684,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<WebhookResponses.AddWebhookResponse> {
         return this.postResponse<WebhookContracts.IAddWebhookContract>(url, data, {}, config).pipe(
             map(response => {
-                return webhookResponseMapper.mapAddWebhookResponse(response);
+                return webhookMapper.mapAddWebhookResponse(response);
             })
         );
     }
@@ -695,7 +695,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.deleteResponse<BaseResponses.EmptyContentManagementResponse>(url, {}, config).pipe(
             map(response => {
-                return webhookResponseMapper.mapEmptyResponse(response);
+                return webhookMapper.mapEmptyResponse(response);
             })
         );
     }

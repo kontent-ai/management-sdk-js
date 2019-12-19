@@ -5,7 +5,7 @@ import { ContentItemModels } from '../models';
 import { ContentItemResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
-export class ContentItemsResponseMapper extends BaseMapper {
+export class ContentItemsMapper extends BaseMapper {
 
     mapListingItemsResponse(
         response: IBaseResponse<ContentItemContracts.IContentItemsListingResponseContract>
@@ -57,4 +57,4 @@ export class ContentItemsResponseMapper extends BaseMapper {
     }
 }
 
-export const contentItemsResponseMapper = new ContentItemsResponseMapper();
+export const contentItemsMapper = new ContentItemsMapper();

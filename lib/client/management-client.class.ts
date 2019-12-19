@@ -81,11 +81,13 @@ import {
     WorkflowStepIdentifierQuery,
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
-import { ContentManagementQueryService } from '../services';
+import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
 
 export class ManagementClient implements IManagementClient {
     private queryService: ContentManagementQueryService;
+
+    public mappingService: IMappingService = new MappingService();
 
     constructor(protected config: IManagementClientConfig) {
         this.queryService = new ContentManagementQueryService(

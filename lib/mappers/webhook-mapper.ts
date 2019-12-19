@@ -5,7 +5,7 @@ import { WebhookResponses } from '../responses';
 
 import { BaseMapper } from './base-mapper';
 
-export class WebhookResponseMapper extends BaseMapper {
+export class WebhookMapper extends BaseMapper {
     mapGetWebhookResponse(
         response: IBaseResponse<WebhookContracts.IGetWebhookContract>
     ): WebhookResponses.GetWebhookResponse {
@@ -66,4 +66,4 @@ export class WebhookResponseMapper extends BaseMapper {
     }
 }
 
-export const webhookResponseMapper = new WebhookResponseMapper();
+export const webhookMapper = new WebhookMapper();

@@ -5,7 +5,7 @@ import { AssetModels } from '../models';
 import { AssetResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
-export class AssetsResponseMapper extends BaseMapper {
+export class AssetsMapper extends BaseMapper {
     mapListingAssetsResponse(
         response: IBaseResponse<AssetContracts.IAssetsListingResponseContract>
     ): AssetResponses.AssetsListResponse {
@@ -100,4 +100,4 @@ export class AssetsResponseMapper extends BaseMapper {
     }
 }
 
-export const assetsResponseMapper = new AssetsResponseMapper();
+export const assetsMapper = new AssetsMapper();

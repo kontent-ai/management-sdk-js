@@ -5,7 +5,7 @@ import { WorkflowModels } from '../models';
 import { WorkflowResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
-export class WorkflowResponseMapper extends BaseMapper {
+export class WorkflowMapper extends BaseMapper {
 
     mapListWorkflowStepsResponse(
         response: IBaseResponse<WorkflowContracts.IListWorkflowStepsResponseContract>
@@ -25,4 +25,4 @@ export class WorkflowResponseMapper extends BaseMapper {
     }
 }
 
-export const workflowResponseMapper = new WorkflowResponseMapper();
+export const workflowMapper = new WorkflowMapper();
