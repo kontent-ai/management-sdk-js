@@ -6,6 +6,13 @@ export const testProjectId: string = 'b259760f-81c5-013a-05e7-69efb4b954e5';
 // tslint:disable-next-line:max-line-length
 export const testProjectIdApiKey: string = '';
 
+export function useLiveTesting(): boolean {
+    if (this.testProjectIdApiKey) {
+        return true;
+    }
+    return false;
+}
+
 export const cmLiveClient: IManagementClient = new ManagementClient({
     projectId: testProjectId,
     // tslint:disable-next-line:max-line-length

@@ -7,3 +7,10 @@ export interface IContentManagementQueryConfig {
 export interface IContentManagementInternalQueryConfig {
     responseType?: HttpResponseType;
 }
+
+export interface IContentManagementListQueryConfig {
+    /**
+     * Delay between each HTTP requests. Helps being rate limited by number of calls towards CM API.
+     */
+    delayBetweenRequests: number;
+}

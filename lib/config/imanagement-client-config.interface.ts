@@ -1,4 +1,5 @@
 import { IHttpService, IRetryStrategyOptions } from '@kentico/kontent-core';
+import { IContentManagementListQueryConfig } from '../models';
 
 export interface IManagementClientConfig {
     /**
@@ -31,4 +32,10 @@ export interface IManagementClientConfig {
     * Disable in production environments.
     */
     isDeveloperMode?: boolean;
+
+    /**
+     * Custom default list query config. Applied to all list query configs unless overriden by query.
+     */
+    listQueryConfig?: IContentManagementListQueryConfig;
+
 }

@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
+import { IContentManagementListQueryConfig } from '../models';
 import { BaseResponses } from '../responses';
 import { ContentManagementQueryService } from '../services';
 import { BaseQuery } from './base-query';
@@ -10,9 +11,19 @@ export abstract class BaseListingQuery<
     TAllResponse extends BaseResponses.IContentManagementListAllResponse
 > extends BaseQuery<TResponse> {
     protected readonly xContinuationHeaderName: string = 'x-continuation';
+    protected listQueryConfig?: IContentManagementListQueryConfig;
 
     constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
         super(config, queryService);
+    }
+
+    /**
+     * Configuration for list queries
+     * @param config List configuration
+     */
+    withListQueryConfig(config?: IContentManagementListQueryConfig): this {
+        this.listQueryConfig = config;
+        return this;
     }
 
     /**
@@ -32,14 +43,15 @@ export abstract class BaseListingQuery<
      */
     toAllObservable(): Observable<TAllResponse> {
         return this.queryService.getListAllResponse<TResponse, TAllResponse>({
+            listQueryConfig: this.listQueryConfig,
             allResponseFactory: (items, responses) => this.allResponseFactory(items, responses),
-            getResponse: (token) => {
+            getResponse: token => {
                 if (token) {
                     this.xContinuationToken(token).toObservable();
                 }
 
                 return this.toObservable();
-            },
+            }
         });
     }
 
@@ -51,5 +63,4 @@ export abstract class BaseListingQuery<
     }
 
     protected abstract allResponseFactory(items: any[], responses: TResponse[]): TAllResponse;
-
 }

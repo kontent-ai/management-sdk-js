@@ -1,6 +1,6 @@
 import { IHttpService, ISDKInfo } from '@kentico/kontent-core';
 import { Observable, of } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
+import { flatMap, map, delay } from 'rxjs/operators';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import {
@@ -40,6 +40,7 @@ import {
     WebhookModels,
     WorkflowModels,
     AssetFolderModels,
+    IContentManagementListQueryConfig,
 } from '../models';
 import {
     AssetFolderResponses,
@@ -58,12 +59,23 @@ import {
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService {
+
+    private readonly defaultListQueryConfig: IContentManagementListQueryConfig;
+
     constructor(
         protected config: IManagementClientConfig,
         protected httpService: IHttpService,
         protected sdkInfo: ISDKInfo
     ) {
         super(config, httpService, sdkInfo);
+
+        if (config.listQueryConfig) {
+            this.defaultListQueryConfig = config.listQueryConfig;
+        } else {
+            this.defaultListQueryConfig = {
+                delayBetweenRequests: 250
+            };
+        }
     }
 
     getListAllResponse<
@@ -72,11 +84,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     >(data: {
         getResponse: (xContinuationToken?: string) => Observable<TResponse>;
         allResponseFactory: (items: any[], responses: TResponse[]) => TAllResponse;
+        listQueryConfig?: IContentManagementListQueryConfig
     }): Observable<TAllResponse> {
         return this.getListAllResponseInternal({
             resolvedResponses: [],
             getResponse: data.getResponse,
-            xContinuationToken: undefined
+            xContinuationToken: undefined,
+            listQueryConfig: data.listQueryConfig
         }).pipe(
             map(responses => {
                 return data.allResponseFactory(
@@ -730,8 +744,12 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         xContinuationToken?: string;
         getResponse: (xContinuationToken?: string) => Observable<TResponse>;
         resolvedResponses: TResponse[];
+        listQueryConfig?: IContentManagementListQueryConfig
     }): Observable<TResponse[]> {
         return data.getResponse(data.xContinuationToken).pipe(
+            delay(data.listQueryConfig
+                ? data.listQueryConfig.delayBetweenRequests
+                : this.defaultListQueryConfig.delayBetweenRequests),
             flatMap(response => {
                 data.resolvedResponses.push(response);
 
