@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.0...v0.3.1) (2019-12-19)
+
+
+### Features
+
+* adds ability to set delay between requests made by listing queries to prevent being rate limited by CM API ([b561d10](https://github.com/Kentico/kontent-management-sdk-js/commit/b561d102c1feff443d42ffdba3274cddc06f5209))
+
 ## [0.3.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.2.8...v0.3.0) (2019-12-18)
 
 
