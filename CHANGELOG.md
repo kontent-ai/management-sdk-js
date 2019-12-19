@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.1...v0.3.2) (2019-12-19)
+
+
+### Features
+
+* creates MappingService and exposes it via ManagementClient. This service can be used for mapping raw data to SDK models. ([146b4b7](https://github.com/Kentico/kontent-management-sdk-js/commit/146b4b72b502f3047d56e15b330398a896789cc0))
+
 ### [0.3.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.0...v0.3.1) (2019-12-19)
 
 
