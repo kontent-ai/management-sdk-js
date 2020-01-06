@@ -1,4 +1,4 @@
-import { ContentTypeSnippetResponses, SharedModels } from '../../lib';
+import { ContentTypeSnippetResponses, SharedModels, ContentTypeSnippetModels } from '../../lib';
 import * as listContentTypesJson from '../fake-responses/content-type-snippets/fake-list-content-type-snippets.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
@@ -51,6 +51,7 @@ describe('List content type snippets', () => {
                 throw Error(`Invalid content type snippet with id '${contentTypeSnippet.id}'`);
             }
 
+            expect(contentTypeSnippet).toEqual(jasmine.any(ContentTypeSnippetModels.ContentTypeSnippet));
             expect(contentTypeSnippet.codename).toEqual(originalItem.codename);
             expect(contentTypeSnippet.name).toEqual(originalItem.name);
             expect(contentTypeSnippet.lastModified).toEqual(new Date(originalItem.last_modified));

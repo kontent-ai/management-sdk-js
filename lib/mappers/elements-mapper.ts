@@ -48,7 +48,8 @@ export class ElementsMapper extends BaseMapper {
     mapElement(rawElement: ElementContracts.IContentItemElementContract): ElementModels.ContentItemElement {
         return new ElementModels.ContentItemElement({
             element: super.mapReference(rawElement.element),
-            value: this.mapElementValue(rawElement.value)
+            value: this.mapElementValue(rawElement.value),
+            _raw: rawElement
         });
     }
 
@@ -56,7 +57,8 @@ export class ElementsMapper extends BaseMapper {
         return components.map(m => new ElementModels.ContentItemElementComponent({
             elements: this.mapElementsWithComponents(m.elements),
             id: m.id,
-            type: m.type
+            type: m.type,
+            _raw: m
         }));
     }
 

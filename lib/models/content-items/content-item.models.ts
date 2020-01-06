@@ -1,7 +1,9 @@
+import { ContentItemContracts } from '../../contracts';
+import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentItemModels {
 
-    export class ContentItem {
+    export class ContentItem implements SharedModels.IBaseModel<ContentItemContracts.IContentItemModelContract> {
 
         public id!: string;
         public name!: string;
@@ -14,6 +16,7 @@ export namespace ContentItemModels {
         }];
         public externalId?: string;
         public lastModified!: Date;
+        public _raw!: ContentItemContracts.IContentItemModelContract;
 
 
         constructor(
@@ -28,7 +31,8 @@ export namespace ContentItemModels {
                     id: string
                 }],
                 externalId?: string,
-                lastModified: Date
+                lastModified: Date,
+                _raw: ContentItemContracts.IContentItemModelContract
             }
         ) {
             Object.assign(this, data);

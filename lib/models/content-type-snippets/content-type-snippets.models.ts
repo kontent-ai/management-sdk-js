@@ -1,13 +1,17 @@
+import { ContentTypeSnippetContracts } from '../../contracts';
 import { ElementsInContentType } from '../content-types/content-type-elements.builder';
 import { ElementModels } from '../elements/elements.models';
+import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentTypeSnippetModels {
-    export class ContentTypeSnippet {
+    export class ContentTypeSnippet
+        implements SharedModels.IBaseModel<ContentTypeSnippetContracts.IContentTypeSnippetContract> {
         public id!: string;
         public name!: string;
         public codename!: string;
         public lastModified!: Date;
         public elements!: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+        public _raw!: ContentTypeSnippetContracts.IContentTypeSnippetContract;
 
         constructor(data: {
             id: string;
@@ -15,6 +19,7 @@ export namespace ContentTypeSnippetModels {
             codename: string;
             lastModified: Date;
             elements: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+            _raw: ContentTypeSnippetContracts.IContentTypeSnippetContract;
         }) {
             Object.assign(this, data);
         }

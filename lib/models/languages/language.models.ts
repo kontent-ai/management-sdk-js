@@ -1,7 +1,8 @@
 import { SharedModels } from '../shared/shared-models';
+import { LanguageContracts } from '../../contracts';
 
 export namespace LanguageModels {
-    export class LanguageModel {
+    export class LanguageModel implements SharedModels.IBaseModel<LanguageContracts.ILanguageModelContract> {
         public name: string;
         public id: string;
         public codename: string;
@@ -9,6 +10,7 @@ export namespace LanguageModels {
         public isActive: boolean;
         public isDefault: boolean;
         public fallbackLanguage?: FallbackLanguageModel;
+        public _raw!: LanguageContracts.ILanguageModelContract;
 
         constructor(data: {
             name: string;
@@ -18,6 +20,7 @@ export namespace LanguageModels {
             isActive: boolean;
             isDefault: boolean;
             fallbackLanguage?: FallbackLanguageModel;
+            _raw: LanguageContracts.ILanguageModelContract;
         }) {
             this.name = data.name;
             this.id = data.id;

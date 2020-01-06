@@ -49,7 +49,8 @@ export class LanguageMapper extends BaseMapper {
                 ? new LanguageModels.FallbackLanguageModel({
                       id: rawModel.fallback_language.id
                   })
-                : undefined
+                : undefined,
+            _raw: rawModel
         });
     }
 }

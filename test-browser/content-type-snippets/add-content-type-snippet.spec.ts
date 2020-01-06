@@ -1,4 +1,4 @@
-import { ContentTypeSnippetResponses } from '../../lib';
+import { ContentTypeSnippetResponses, ContentTypeSnippetModels } from '../../lib';
 import * as responseJson from '../fake-responses/content-type-snippets/fake-add-content-type-snippet.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
@@ -49,15 +49,16 @@ describe('Add content type snippet', () => {
 
     it(`content type properties should be mapped`, () => {
         const originalItem = responseJson;
-        const contentType = response.data;
+        const contentTypeSnippet = response.data;
 
-        expect(contentType.codename).toEqual(originalItem.codename);
-        expect(contentType.name).toEqual(originalItem.name);
-        expect(contentType.lastModified).toEqual(new Date(originalItem.last_modified));
-        expect(contentType.elements.length).toEqual(originalItem.elements.length);
-        expect(Array.isArray(contentType.elements)).toBeTruthy();
+        expect(contentTypeSnippet).toEqual(jasmine.any(ContentTypeSnippetModels.ContentTypeSnippet));
+        expect(contentTypeSnippet.codename).toEqual(originalItem.codename);
+        expect(contentTypeSnippet.name).toEqual(originalItem.name);
+        expect(contentTypeSnippet.lastModified).toEqual(new Date(originalItem.last_modified));
+        expect(contentTypeSnippet.elements.length).toEqual(originalItem.elements.length);
+        expect(Array.isArray(contentTypeSnippet.elements)).toBeTruthy();
 
-        contentType.elements.forEach(element => {
+        contentTypeSnippet.elements.forEach(element => {
             const originalElement = originalItem.elements.find(m => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);

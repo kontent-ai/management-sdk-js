@@ -2,6 +2,10 @@ import { BaseKontentError } from '@kentico/kontent-core';
 
 export namespace SharedModels {
 
+    export interface IBaseModel<TContract> {
+        _raw: TContract;
+    }
+
     export class Pagination {
         constructor(
             public continuationToken: string | null,

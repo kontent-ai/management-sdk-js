@@ -1,15 +1,20 @@
+import { SharedModels } from '../shared/shared-models';
+import { WorkflowContracts } from '../../contracts';
+
 export namespace WorkflowModels {
 
-    export class WorkflowStep {
+    export class WorkflowStep implements SharedModels.IBaseModel<WorkflowContracts.IWorkflowStepContract> {
 
         public id!: string;
         public name!: string;
         public transitionsTo!: string[];
+        public _raw!: WorkflowContracts.IWorkflowStepContract;
 
         constructor(data: {
             id: string,
             name: string,
-            transitionsTo: string[]
+            transitionsTo: string[],
+            _raw: WorkflowContracts.IWorkflowStepContract
         }) {
             Object.assign(this, data);
         }

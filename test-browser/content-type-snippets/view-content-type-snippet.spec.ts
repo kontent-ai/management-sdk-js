@@ -1,13 +1,13 @@
-import { ContentTypeSnippetResponses } from '../../lib';
+import { ContentTypeSnippetModels, ContentTypeSnippetResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-view-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
-
 
 describe('View content type snippet', () => {
     let response: ContentTypeSnippetResponses.ViewContentTypeSnippetResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).viewContentTypeSnippet()
+    beforeAll(done => {
+        getTestClientWithJson(responseJson)
+            .viewContentTypeSnippet()
             .byTypeCodename('xxx')
             .toObservable()
             .subscribe(result => {
@@ -17,13 +17,24 @@ describe('View content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient.viewContentTypeSnippet().byTypeCodename('x').getUrl();
-        const urlByInternalId = cmLiveClient.viewContentTypeSnippet().byTypeId('y').getUrl();
-        const urlByExternalId = cmLiveClient.viewContentTypeSnippet().byTypeExternalId('c').getUrl();
+        const urlByCodename = cmLiveClient
+            .viewContentTypeSnippet()
+            .byTypeCodename('x')
+            .getUrl();
+        const urlByInternalId = cmLiveClient
+            .viewContentTypeSnippet()
+            .byTypeId('y')
+            .getUrl();
+        const urlByExternalId = cmLiveClient
+            .viewContentTypeSnippet()
+            .byTypeExternalId('c')
+            .getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/y`);
-        expect(urlByExternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/external-id/c`);
+        expect(urlByExternalId).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/external-id/c`
+        );
     });
 
     it(`response should be instance of ViewContentTypeSnippetResponse class`, () => {
@@ -42,6 +53,7 @@ describe('View content type snippet', () => {
         const originalItem = responseJson;
         const contentTypeSnippet = response.data;
 
+        expect(contentTypeSnippet).toEqual(jasmine.any(ContentTypeSnippetModels.ContentTypeSnippet));
         expect(contentTypeSnippet.codename).toEqual(originalItem.codename);
         expect(contentTypeSnippet.name).toEqual(originalItem.name);
         expect(contentTypeSnippet.lastModified).toEqual(new Date(originalItem.last_modified));
@@ -49,7 +61,6 @@ describe('View content type snippet', () => {
         expect(Array.isArray(contentTypeSnippet.elements)).toBeTruthy();
 
         contentTypeSnippet.elements.forEach(element => {
-
             const originalElement = originalItem.elements.find(m => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
@@ -60,8 +71,4 @@ describe('View content type snippet', () => {
             expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
         });
     });
-
-
 });
-
-

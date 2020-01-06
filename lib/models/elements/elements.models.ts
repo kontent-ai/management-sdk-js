@@ -1,4 +1,5 @@
 import { SharedModels } from '../shared/shared-models';
+import { ElementContracts } from '../../contracts';
 
 export namespace ElementModels {
 
@@ -22,30 +23,34 @@ export namespace ElementModels {
         custom = 'custom'
     }
 
-    export class ContentItemElement {
+    export class ContentItemElement implements SharedModels.IBaseModel<ElementContracts.IContentTypeElementContract> {
         public element!: SharedModels.ReferenceObject;
         public value!: string | number | SharedModels.ReferenceObject[];
+        public _raw!: ElementContracts.IContentTypeElementContract;
 
         constructor(
             data: {
                 element: SharedModels.ReferenceObject;
                 value: string | number | SharedModels.ReferenceObject[];
+                _raw: ElementContracts.IContentItemElementContract;
             }
         ) {
             Object.assign(this, data);
         }
     }
 
-    export class ContentItemElementComponent {
+    export class ContentItemElementComponent implements SharedModels.IBaseModel<ElementContracts.IContentItemElementComponent> {
         public id!: string;
         public type!: SharedModels.ReferenceObject;
         public elements!: ContentItemElementWithComponents[];
+        public _raw!: ElementContracts.IContentItemElementComponent;
 
         constructor(
             data: {
                 id: string;
                 type: SharedModels.ReferenceObject;
                 elements: ContentItemElementWithComponents[];
+                _raw: ElementContracts.IContentItemElementComponent;
             }
         ) {
             Object.assign(this, data);

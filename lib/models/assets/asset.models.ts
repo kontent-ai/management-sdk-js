@@ -1,9 +1,9 @@
 import { SharedModels } from '../shared/shared-models';
-import { SharedContracts } from '../../contracts';
+import { SharedContracts, AssetContracts } from '../../contracts';
 
 export namespace AssetModels {
 
-    export class Asset {
+    export class Asset implements SharedModels.IBaseModel<AssetContracts.IAssetModelContract> {
         public id!: string;
         public fileName!: string;
         public title!: string | null;
@@ -15,6 +15,7 @@ export namespace AssetModels {
         public descriptions!: AssetFileDescription[];
         public externalId?: string;
         public lastModified!: Date;
+        public _raw!: AssetContracts.IAssetModelContract;
 
         constructor(
             data: {
@@ -29,6 +30,7 @@ export namespace AssetModels {
                 descriptions: AssetFileDescription[];
                 externalId?: string;
                 lastModified: Date;
+                _raw: AssetContracts.IAssetModelContract
             }
         ) {
             Object.assign(this, data);

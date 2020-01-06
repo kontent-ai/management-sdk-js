@@ -1,5 +1,6 @@
 import { ElementModels } from '../elements/elements.models';
 import { SharedModels } from '../shared/shared-models';
+import { LanguageVariantContracts } from '../../contracts';
 
 export namespace LanguageVariantModels {
 
@@ -25,12 +26,13 @@ export namespace LanguageVariantModels {
         value: string | number | undefined | ILangaugeVariantReference[];
     }
 
-    export class ContentItemLanguageVariant {
+    export class ContentItemLanguageVariant implements SharedModels.IBaseModel<LanguageVariantContracts.ILanguageVariantModelContract> {
         public item!: SharedModels.ReferenceObject;
         public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
         public workflowStep!: SharedModels.ReferenceObject;
+        public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
         constructor(
             data: {
@@ -39,7 +41,8 @@ export namespace LanguageVariantModels {
                 elements: ElementModels.ContentItemElement[],
                 language: SharedModels.ReferenceObject,
                 lastModified: Date,
-                workflowStep: SharedModels.ReferenceObject
+                workflowStep: SharedModels.ReferenceObject,
+                _raw: LanguageVariantContracts.ILanguageVariantModelContract
             }
         ) {
             Object.assign(this, data);

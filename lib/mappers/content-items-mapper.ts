@@ -52,7 +52,8 @@ export class ContentItemsMapper extends BaseMapper {
             lastModified: new Date(rawItem.last_modified),
             name: rawItem.name,
             sitemapLocations: rawItem.sitemap_locations,
-            type: rawItem.type
+            type: rawItem.type,
+            _raw: rawItem
         });
     }
 }

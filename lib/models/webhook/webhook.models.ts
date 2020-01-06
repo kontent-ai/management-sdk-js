@@ -1,4 +1,5 @@
 import { WebhookContracts } from '../../contracts/webhook-contracts';
+import { SharedModels } from '../shared/shared-models';
 
 export namespace WebhookModels {
     export interface IAddWebhookData {
@@ -41,7 +42,7 @@ export namespace WebhookModels {
         }
     }
 
-    export class Webhook {
+    export class Webhook implements SharedModels.IBaseModel<WebhookContracts.IWebhookContract> {
         public id: string;
         public name: string;
         public secret: string;
@@ -51,6 +52,7 @@ export namespace WebhookModels {
             deliveryApiContentChanges: WebhookDeliveryApiContentChanges[];
             workflowStepChanges: WebhookWorkflowStepChanges[];
         };
+        public _raw!: WebhookContracts.IWebhookContract;
 
         constructor(data: {
             id: string;
@@ -62,6 +64,7 @@ export namespace WebhookModels {
                 deliveryApiContentChanges: WebhookDeliveryApiContentChanges[];
                 workflowStepChanges: WebhookWorkflowStepChanges[];
             };
+            _raw: WebhookContracts.IWebhookContract
         }) {
             this.id = data.id;
             this.name = data.name;

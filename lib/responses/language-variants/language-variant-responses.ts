@@ -36,7 +36,7 @@ export namespace LanguageVariantResponses {
         }
     }
 
-    export class ListAllLanguageVariantsOfContentTypeWithComponentsResponse extends BaseResponses.ContentManagementListAllResponse<ListLanguageVariantsOfContentTypeResponse, LanguageVariantModels.ContentItemLanguageVariant> {
+    export class ListAllLanguageVariantsOfContentTypeWithComponentsResponse extends BaseResponses.ContentManagementListAllResponse<ListLanguageVariantsOfContentTypeWithComponentsResponse, LanguageVariantModels.ContentItemLanguageVariant> {
         constructor(
             data: {
                 items: LanguageVariantModels.ContentItemLanguageVariant[],

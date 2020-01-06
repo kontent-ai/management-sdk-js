@@ -1,51 +1,59 @@
 import { ContentTypeSnippetContracts } from '../../contracts';
-import { ContentTypeModels, SharedModels } from '../../models';
+import { ContentTypeSnippetModels, SharedModels } from '../../models';
 import { BaseResponses } from '../base-responses';
 
 export namespace ContentTypeSnippetResponses {
-
-    export class ContentTypeSnippetListResponse extends BaseResponses.BaseContentManagementListResponse<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract, ContentTypeModels.ContentType>  {
+    export class ContentTypeSnippetListResponse extends BaseResponses.BaseContentManagementListResponse<
+        ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract,
+        ContentTypeSnippetModels.ContentTypeSnippet
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract,
             data: {
-                items: ContentTypeModels.ContentType[],
-                pagination: SharedModels.Pagination
+                items: ContentTypeSnippetModels.ContentTypeSnippet[];
+                pagination: SharedModels.Pagination;
             }
         ) {
             super(debug, rawData, data);
         }
     }
 
-    export class ContentTypeSnippetListAllResponse extends BaseResponses.ContentManagementListAllResponse<ContentTypeSnippetListResponse, ContentTypeModels.ContentType> {
-        constructor(
-            data: {
-                items: ContentTypeModels.ContentType[],
-                responses: ContentTypeSnippetListResponse[]
-            }
-        ) {
+    export class ContentTypeSnippetListAllResponse extends BaseResponses.ContentManagementListAllResponse<
+        ContentTypeSnippetListResponse,
+        ContentTypeSnippetModels.ContentTypeSnippet
+    > {
+        constructor(data: {
+            items: ContentTypeSnippetModels.ContentTypeSnippet[];
+            responses: ContentTypeSnippetListResponse[];
+        }) {
             super(data);
         }
     }
 
-    export class ViewContentTypeSnippetResponse extends BaseResponses.BaseContentManagementResponse<ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract, ContentTypeModels.ContentType>  {
+    export class ViewContentTypeSnippetResponse extends BaseResponses.BaseContentManagementResponse<
+        ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract,
+        ContentTypeSnippetModels.ContentTypeSnippet
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract,
-            data: ContentTypeModels.ContentType
+            data: ContentTypeSnippetModels.ContentTypeSnippet
         ) {
             super(debug, rawData, data);
         }
     }
 
-    export class AddContentTypeSnippetResponse extends BaseResponses.BaseContentManagementResponse<ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract, ContentTypeModels.ContentType>  {
+    export class AddContentTypeSnippetResponse extends BaseResponses.BaseContentManagementResponse<
+        ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract,
+        ContentTypeSnippetModels.ContentTypeSnippet
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract,
-            data: ContentTypeModels.ContentType
+            data: ContentTypeSnippetModels.ContentTypeSnippet
         ) {
             super(debug, rawData, data);
         }
     }
 }
-

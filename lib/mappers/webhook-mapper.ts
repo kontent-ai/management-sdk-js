@@ -61,7 +61,8 @@ export class WebhookMapper extends BaseMapper {
                         })
                 )
             },
-            url: rawWebhook.url
+            url: rawWebhook.url,
+            _raw: rawWebhook
         });
     }
 }

@@ -20,7 +20,8 @@ export class WorkflowMapper extends BaseMapper {
         return new WorkflowModels.WorkflowStep({
             id: rawStep.id,
             name: rawStep.name,
-            transitionsTo: rawStep.transitions_to
+            transitionsTo: rawStep.transitions_to,
+            _raw: rawStep
         });
     }
 }

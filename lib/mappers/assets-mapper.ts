@@ -95,7 +95,8 @@ export class AssetsMapper extends BaseMapper {
             lastModified: new Date(rawAsset.last_modified),
             size: rawAsset.size,
             title: rawAsset.title,
-            type: rawAsset.type
+            type: rawAsset.type,
+            _raw: rawAsset
         });
     }
 }
