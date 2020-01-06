@@ -35,7 +35,7 @@ export class ContentTypeMapper extends BaseMapper {
         );
     }
 
-    private mapContentType(rawContentType: ContentTypeContracts.IContentTypeContract): ContentTypeModels.ContentType {
+    mapContentType(rawContentType: ContentTypeContracts.IContentTypeContract): ContentTypeModels.ContentType {
         return new ContentTypeModels.ContentType({
             codename: rawContentType.codename,
             id: rawContentType.id,

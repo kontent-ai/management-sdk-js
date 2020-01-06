@@ -44,7 +44,7 @@ export class ContentItemsMapper extends BaseMapper {
         return new ContentItemResponses.UpsertContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
     }
 
-    private mapContentItem(rawItem: ContentItemContracts.IContentItemModelContract): ContentItemModels.ContentItem {
+    mapContentItem(rawItem: ContentItemContracts.IContentItemModelContract): ContentItemModels.ContentItem {
         return new ContentItemModels.ContentItem({
             codename: rawItem.codename,
             externalId: rawItem.external_id,

@@ -34,7 +34,7 @@ export class WebhookMapper extends BaseMapper {
         });
     }
 
-    private mapWebhook(rawWebhook: WebhookContracts.IWebhookContract): WebhookModels.Webhook {
+    mapWebhook(rawWebhook: WebhookContracts.IWebhookContract): WebhookModels.Webhook {
         return new WebhookModels.Webhook({
             id: rawWebhook.id,
             name: rawWebhook.name,

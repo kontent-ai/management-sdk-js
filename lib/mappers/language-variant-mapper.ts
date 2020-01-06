@@ -51,7 +51,7 @@ export class LanguageVariantMapper extends BaseMapper {
         });
     }
 
-    private mapLanguageVariantWithComponents(rawVariant: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract): LanguageVariantModels.ContentItemLanguageWithComponentsVariant {
+    mapLanguageVariantWithComponents(rawVariant: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract): LanguageVariantModels.ContentItemLanguageWithComponentsVariant {
         return new LanguageVariantModels.ContentItemLanguageWithComponentsVariant({
             rawElements: rawVariant.elements,
             elements: elementsMapper.mapElementsWithComponents(rawVariant.elements),
@@ -62,7 +62,7 @@ export class LanguageVariantMapper extends BaseMapper {
         });
     }
 
-    private mapLanguageVariant(rawVariant: LanguageVariantContracts.ILanguageVariantModelContract): LanguageVariantModels.ContentItemLanguageVariant {
+    mapLanguageVariant(rawVariant: LanguageVariantContracts.ILanguageVariantModelContract): LanguageVariantModels.ContentItemLanguageVariant {
         return new LanguageVariantModels.ContentItemLanguageVariant({
             rawElements: rawVariant.elements,
             elements: elementsMapper.mapElements(rawVariant.elements),

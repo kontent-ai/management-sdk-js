@@ -29,7 +29,7 @@ export class ContentTypeSnippetMapper extends BaseMapper {
         );
     }
 
-    private mapContentTypeSnippet(rawContentType: ContentTypeSnippetContracts.IContentTypeSnippetContract): ContentTypeSnippetModels.ContentTypeSnippet {
+    mapContentTypeSnippet(rawContentType: ContentTypeSnippetContracts.IContentTypeSnippetContract): ContentTypeSnippetModels.ContentTypeSnippet {
         return new ContentTypeSnippetModels.ContentTypeSnippet({
             codename: rawContentType.codename,
             id: rawContentType.id,

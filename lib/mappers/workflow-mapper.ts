@@ -16,7 +16,7 @@ export class WorkflowMapper extends BaseMapper {
         return new WorkflowResponses.ListWorkflowStepsResponse(super.mapResponseDebug(response), response.data, workflowSteps);
     }
 
-    private mapWorkflowStep(rawStep: WorkflowContracts.IWorkflowStepContract): WorkflowModels.WorkflowStep {
+    mapWorkflowStep(rawStep: WorkflowContracts.IWorkflowStepContract): WorkflowModels.WorkflowStep {
         return new WorkflowModels.WorkflowStep({
             id: rawStep.id,
             name: rawStep.name,

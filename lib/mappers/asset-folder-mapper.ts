@@ -39,7 +39,7 @@ export class AssetFolderMapper extends BaseMapper {
         });
     }
 
-    private mapAssetFolder(rawFolder: AssetFolderContracts.IAssetFolderContract): AssetFolderModels.AssetFolder {
+    mapAssetFolder(rawFolder: AssetFolderContracts.IAssetFolderContract): AssetFolderModels.AssetFolder {
         return new AssetFolderModels.AssetFolder({
             externalId: rawFolder.external_id,
             id: rawFolder.id,

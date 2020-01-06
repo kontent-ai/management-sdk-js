@@ -48,7 +48,7 @@ export class TaxonomyMapper extends BaseMapper {
         return new TaxonomyResponses.AddTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
     }
 
-    private mapTaxonomy(rawTaxonomy: TaxonomyContracts.ITaxonomyContract): TaxonomyModels.Taxonomy {
+    mapTaxonomy(rawTaxonomy: TaxonomyContracts.ITaxonomyContract): TaxonomyModels.Taxonomy {
         return new TaxonomyModels.Taxonomy({
             codename: rawTaxonomy.codename,
             id: rawTaxonomy.id,

@@ -68,7 +68,7 @@ export class AssetsMapper extends BaseMapper {
         );
     }
 
-    private mapAssetReference(
+    mapAssetReference(
         rawFileReference: AssetContracts.IAssetFileReferenceContract
     ): AssetModels.AssetFileReference {
         return new AssetModels.AssetFileReference({
@@ -77,7 +77,7 @@ export class AssetsMapper extends BaseMapper {
         });
     }
 
-    private mapAsset(rawAsset: AssetContracts.IAssetModelContract): AssetModels.Asset {
+    mapAsset(rawAsset: AssetContracts.IAssetModelContract): AssetModels.Asset {
         return new AssetModels.Asset({
             descriptions: rawAsset.descriptions.map(
                 m =>

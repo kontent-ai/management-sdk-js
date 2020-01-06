@@ -37,7 +37,7 @@ export class LanguageMapper extends BaseMapper {
         });
     }
 
-    private mapLanguage(rawModel: LanguageContracts.ILanguageModelContract): LanguageModels.LanguageModel {
+    mapLanguage(rawModel: LanguageContracts.ILanguageModelContract): LanguageModels.LanguageModel {
         return new LanguageModels.LanguageModel({
             codename: rawModel.codename,
             externalId: rawModel.external_id,

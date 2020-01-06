@@ -53,7 +53,7 @@ export class ElementsMapper extends BaseMapper {
         });
     }
 
-    private mapElementComponents(components: ElementContracts.IContentItemElementComponent[]): ElementModels.ContentItemElementComponent[] {
+    mapElementComponents(components: ElementContracts.IContentItemElementComponent[]): ElementModels.ContentItemElementComponent[] {
         return components.map(m => new ElementModels.ContentItemElementComponent({
             elements: this.mapElementsWithComponents(m.elements),
             id: m.id,
@@ -62,7 +62,7 @@ export class ElementsMapper extends BaseMapper {
         }));
     }
 
-    private mapMultipleChoiceOptions(options?: ElementContracts.IContentTypeElementMultipleChoiceElementOptionsContract[]): ElementModels.MultipleChoiceElementOption[] {
+    mapMultipleChoiceOptions(options?: ElementContracts.IContentTypeElementMultipleChoiceElementOptionsContract[]): ElementModels.MultipleChoiceElementOption[] {
         if (!options) {
             throw Error(`No value provided for mapping multiple choice options`);
         }
@@ -74,7 +74,7 @@ export class ElementsMapper extends BaseMapper {
         }));
     }
 
-    private mapMultipleChoiceMode(mode: string | undefined): ElementModels.ElementMode {
+    mapMultipleChoiceMode(mode: string | undefined): ElementModels.ElementMode {
         if (!mode) {
             throw Error(`No value provided for multiple choice mode`);
         }
@@ -88,7 +88,7 @@ export class ElementsMapper extends BaseMapper {
         return mappedMode;
     }
 
-    private mapElementValue(rawValue: string | number | SharedContracts.IReferenceObjectContract[]): string | number | SharedModels.ReferenceObject[] {
+    mapElementValue(rawValue: string | number | SharedContracts.IReferenceObjectContract[]): string | number | SharedModels.ReferenceObject[] {
         if (Array.isArray(rawValue)) {
             return rawValue.map(m => super.mapReference(m));
         }
@@ -96,7 +96,7 @@ export class ElementsMapper extends BaseMapper {
         return rawValue;
     }
 
-    private mapElementType(type: string): ElementModels.ElementType {
+    mapElementType(type: string): ElementModels.ElementType {
         const mappedType = enumHelper.getEnumFromValue<ElementModels.ElementType>(ElementModels.ElementType, type);
 
         if (!mappedType) {
