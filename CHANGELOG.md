@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.3...v0.3.4) (2020-01-06)
+
+
+### Features
+
+* adds '_raw' property with original data to base models & fixes incorrect model for content type snippes responses ([c4606c8](https://github.com/Kentico/kontent-management-sdk-js/commit/c4606c82e7ed8c84e3a7a012413d5c638d8eacce))
+
 ### [0.3.3](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.2...v0.3.3) (2020-01-06)
 
 
