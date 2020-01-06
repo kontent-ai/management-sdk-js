@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.2...v0.3.3) (2020-01-06)
+
+
+### Bug Fixes
+
+* fixes return type of 'toAllPromise' so that it matched original 'toAllObservable'. Adds type check test for items in listing query. ([212829e](https://github.com/Kentico/kontent-management-sdk-js/commit/212829e3da730b37486265034fc5a42aa730c2c5))
+
 ### [0.3.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.1...v0.3.2) (2019-12-19)
 
 
