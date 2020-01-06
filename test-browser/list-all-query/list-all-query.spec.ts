@@ -1,4 +1,4 @@
-import { ContentItemResponses } from '../../lib';
+import { ContentItemResponses, ContentItemModels } from '../../lib';
 import * as listingResponseJson from '../fake-responses/list-all-query/fake-list-all-query.json';
 import { getTestClientWithJson } from '../setup';
 
@@ -30,6 +30,12 @@ describe('List all query', () => {
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
         expect(response.data.items).toBeDefined();
+    });
+
+    it(`items should be mapped to proper type`, () => {
+        for (const item of response.data.items) {
+            expect(item).toEqual(jasmine.any(ContentItemModels.ContentItem));
+        }
     });
 
     it(`items from responses should be joined`, () => {

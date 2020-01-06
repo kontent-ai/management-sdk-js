@@ -58,7 +58,7 @@ export abstract class BaseListingQuery<
     /**
      * Query to get all items. Uses paging data and may execute multiple HTTP requests depending on number of items
      */
-    toAllPromise(): Promise<BaseResponses.ContentManagementListAllResponse<TResponse, TAllResponse>> {
+    toAllPromise(): Promise<TAllResponse> {
         return this.toAllObservable().toPromise();
     }
 
