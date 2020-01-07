@@ -81,17 +81,8 @@ export abstract class BaseContentManagementQueryService {
                     body: body
                 },
                 {
+                    retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    useRetryForResponseCodes: this.config.retryStrategy
-                        ? this.config.retryStrategy.useRetryForResponseCodes
-                        : undefined,
-                    addJitterToRetryAttempts: this.config.retryStrategy
-                        ? this.config.retryStrategy.addJitter
-                        : undefined,
-                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
-                    maxCumulativeWaitTimeMs: this.config.retryStrategy
-                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
-                        : undefined,
                     logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
@@ -122,17 +113,8 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
+                    retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    useRetryForResponseCodes: this.config.retryStrategy
-                        ? this.config.retryStrategy.useRetryForResponseCodes
-                        : undefined,
-                    addJitterToRetryAttempts: this.config.retryStrategy
-                        ? this.config.retryStrategy.addJitter
-                        : undefined,
-                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
-                    maxCumulativeWaitTimeMs: this.config.retryStrategy
-                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
-                        : undefined,
                     logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
@@ -165,17 +147,8 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
+                    retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    useRetryForResponseCodes: this.config.retryStrategy
-                        ? this.config.retryStrategy.useRetryForResponseCodes
-                        : undefined,
-                    addJitterToRetryAttempts: this.config.retryStrategy
-                        ? this.config.retryStrategy.addJitter
-                        : undefined,
-                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
-                    maxCumulativeWaitTimeMs: this.config.retryStrategy
-                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
-                        : undefined,
                     logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
@@ -208,17 +181,8 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
+                    retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    useRetryForResponseCodes: this.config.retryStrategy
-                        ? this.config.retryStrategy.useRetryForResponseCodes
-                        : undefined,
-                    addJitterToRetryAttempts: this.config.retryStrategy
-                        ? this.config.retryStrategy.addJitter
-                        : undefined,
-                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
-                    maxCumulativeWaitTimeMs: this.config.retryStrategy
-                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
-                        : undefined,
                     logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
@@ -250,17 +214,8 @@ export abstract class BaseContentManagementQueryService {
                     mapError: error => mapBaseKontentError(error)
                 },
                 {
+                    retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    useRetryForResponseCodes: this.config.retryStrategy
-                        ? this.config.retryStrategy.useRetryForResponseCodes
-                        : undefined,
-                    addJitterToRetryAttempts: this.config.retryStrategy
-                        ? this.config.retryStrategy.addJitter
-                        : undefined,
-                    deltaBackoffMs: this.config.retryStrategy ? this.config.retryStrategy.deltaBackoffMs : undefined,
-                    maxCumulativeWaitTimeMs: this.config.retryStrategy
-                        ? this.config.retryStrategy.maxCumulativeWaitTimeMs
-                        : undefined,
                     logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
