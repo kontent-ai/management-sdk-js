@@ -37,6 +37,7 @@ import {
     DeleteContentItemQuery,
     DeleteContentTypeQuery,
     DeleteContentTypeSnippetQuery,
+    DeleteLanguageVariantQuery,
     DeleteTaxonomyQuery,
     DeleteWebhookQuery,
     GetTaxonomyQuery,
@@ -318,6 +319,34 @@ export class ManagementClient implements IManagementClient {
                                     contentItemIdentifier,
                                     languageIdentifier,
                                     elements
+                                )
+                        )
+                )
+        );
+    }
+
+    deleteLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new LanguageVariantElementsQuery(
+                            nConfig,
+                            nQueryService,
+                            (mConfig, mQueryService, elements) =>
+                                new DeleteLanguageVariantQuery(
+                                    mConfig,
+                                    mQueryService,
+                                    contentItemIdentifier,
+                                    languageIdentifier
                                 )
                         )
                 )

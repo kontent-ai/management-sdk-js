@@ -76,6 +76,7 @@ import {
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
+    DeleteLanguageVariantQuery,
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -167,6 +168,14 @@ export interface IManagementClient {
     upsertLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>
     >;
+
+    /**
+     * Query to delete language variant
+     */
+    deleteLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>
+    >;
+
 
     /**
      * Query to validate project content

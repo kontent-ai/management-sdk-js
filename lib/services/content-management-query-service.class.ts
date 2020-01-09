@@ -542,6 +542,17 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    deleteLanguageVariant(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
+        return this.deleteResponse<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config).pipe(
+            map(response => {
+                return contentItemsMapper.mapEmptyResponse(response);
+            })
+        );
+    }
+
     upsertLanguageVariant(
         url: string,
         elements: LanguageVariantModels.ILanguageVariantElement[],
