@@ -29,6 +29,7 @@ export namespace LanguageModels {
             this.isActive = data.isActive;
             this.isDefault = data.isDefault;
             this.fallbackLanguage = data.fallbackLanguage;
+            this._raw = data._raw;
         }
     }
 
