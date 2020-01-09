@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.7...v0.3.8) (2020-01-09)
+
+
+### Bug Fixes
+
+* removes elements query data from delete language variant query ([f7cee7a](https://github.com/Kentico/kontent-management-sdk-js/commit/f7cee7ad0a9a7fa4abdd88dc9566621df1510e6e))
+
 ### [0.3.7](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.6...v0.3.7) (2020-01-09)
 
 
