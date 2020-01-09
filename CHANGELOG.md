@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.6...v0.3.7) (2020-01-09)
+
+
+### Features
+
+* adds support delete language variant API endpoint ([90188c7](https://github.com/Kentico/kontent-management-sdk-js/commit/90188c747fd2b3d6c84823116d869be3ca1330ef))
+
 ### [0.3.6](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.5...v0.3.6) (2020-01-07)
 
 
