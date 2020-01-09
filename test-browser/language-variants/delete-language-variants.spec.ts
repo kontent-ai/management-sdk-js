@@ -10,7 +10,6 @@ describe('Delete language variant', () => {
             .deleteLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('x')
-            .withElements([])
             .toObservable()
             .subscribe(result => {
                 response = result;

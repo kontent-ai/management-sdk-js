@@ -12,7 +12,7 @@ import {
     LanguageModels,
     TaxonomyModels,
     WebhookModels,
-    WorkflowModels,
+    WorkflowModels
 } from '../models';
 import {
     AddAssetFoldersQuery,
@@ -79,7 +79,7 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
-    WorkflowStepIdentifierQuery,
+    WorkflowStepIdentifierQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -326,28 +326,21 @@ export class ManagementClient implements IManagementClient {
     }
 
     deleteLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>
+        LanguageIdAndCodenameIdentifierQuery<DeleteLanguageVariantQuery>
     > {
-        return new ContentItemIdentifierQuery<
-            LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>
-        >(
+        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<DeleteLanguageVariantQuery>>(
             this.config,
             this.queryService,
             (config, queryService, contentItemIdentifier) =>
-                new LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>(
+                new LanguageIdAndCodenameIdentifierQuery<DeleteLanguageVariantQuery>(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
-                        new LanguageVariantElementsQuery(
+                        new DeleteLanguageVariantQuery(
                             nConfig,
                             nQueryService,
-                            (mConfig, mQueryService, elements) =>
-                                new DeleteLanguageVariantQuery(
-                                    mConfig,
-                                    mQueryService,
-                                    contentItemIdentifier,
-                                    languageIdentifier
-                                )
+                            contentItemIdentifier,
+                            languageIdentifier
                         )
                 )
         );

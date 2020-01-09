@@ -173,7 +173,7 @@ export interface IManagementClient {
      * Query to delete language variant
      */
     deleteLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<DeleteLanguageVariantQuery>>
+        LanguageIdAndCodenameIdentifierQuery<DeleteLanguageVariantQuery>
     >;
 
 
