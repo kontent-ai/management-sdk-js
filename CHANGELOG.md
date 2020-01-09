@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.9](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.8...v0.3.9) (2020-01-09)
+
+
+### Bug Fixes
+
+* assigns raw data to language model ([e09e7c1](https://github.com/Kentico/kontent-management-sdk-js/commit/e09e7c11703e532f2f89fd0203c947a96c0ce402))
+* fixes model for adding assets ([f938501](https://github.com/Kentico/kontent-management-sdk-js/commit/f938501f895fa56a3cf0f129747be94c5cf2d46d))
+
 ### [0.3.8](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.7...v0.3.8) (2020-01-09)
 
 
