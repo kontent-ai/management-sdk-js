@@ -9,7 +9,7 @@ describe('Add asset', () => {
         getTestClientWithJson(addAssetResponseJson).addAsset()
             .withData({
                 descriptions: [],
-                fileReference: {
+                file_reference: {
                     id: 'x',
                     type: 'y'
                 }
@@ -25,7 +25,7 @@ describe('Add asset', () => {
         const url = cmLiveClient.addAsset()
             .withData({
                 descriptions: [],
-                fileReference: {
+                file_reference: {
                     id: 'x',
                     type: 'y'
                 }
