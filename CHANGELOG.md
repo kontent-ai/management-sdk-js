@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.10](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.9...v0.3.10) (2020-01-13)
+
+
+### Features
+
+* adds new url property to asset contract & models ([fd188c1](https://github.com/Kentico/kontent-management-sdk-js/commit/fd188c1652a488bd836825fcc0472b856bc275ee))
+
 ### [0.3.9](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.8...v0.3.9) (2020-01-09)
 
 
