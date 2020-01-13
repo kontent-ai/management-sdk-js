@@ -56,7 +56,7 @@ describe('List assets', () => {
             expect(m.lastModified).toEqual(new Date(originalItem.last_modified));
             expect(m.imageHeight).toEqual(originalItem.image_height);
             expect(m.title).toEqual(originalItem.title);
-            expect(m.externalId).toEqual(undefined);
+            expect(m.externalId).toEqual(originalItem.external_id);
             expect(m.imageWidth).toEqual(originalItem.image_width);
             expect(m.size).toEqual(originalItem.size);
             expect(m.url).toEqual(originalItem.url);
