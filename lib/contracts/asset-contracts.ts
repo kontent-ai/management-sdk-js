@@ -5,14 +5,15 @@ export namespace AssetContracts {
         id: string;
         file_name: string;
         title: string;
-        image_width: number;
-        image_height: number;
+        image_width: number | null;
+        image_height: number | null;
         size: number;
         type: string;
         file_reference: IAssetFileReferenceContract;
         descriptions: IAssetFileDescriptionContract[];
         external_id: string;
         last_modified: string;
+        url: string;
     }
 
     export interface IAssetFileReferenceContract  {

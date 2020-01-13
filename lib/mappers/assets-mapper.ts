@@ -90,6 +90,7 @@ export class AssetsMapper extends BaseMapper {
             fileName: rawAsset.file_name,
             fileReference: this.mapAssetReference(rawAsset.file_reference),
             id: rawAsset.id,
+            url: rawAsset.url,
             imageHeight: rawAsset.image_height,
             imageWidth: rawAsset.image_width,
             lastModified: new Date(rawAsset.last_modified),

@@ -15,6 +15,7 @@ export namespace AssetModels {
         public descriptions!: AssetFileDescription[];
         public externalId?: string;
         public lastModified!: Date;
+        public url!: string;
         public _raw!: AssetContracts.IAssetModelContract;
 
         constructor(
@@ -30,6 +31,7 @@ export namespace AssetModels {
                 descriptions: AssetFileDescription[];
                 externalId?: string;
                 lastModified: Date;
+                url: string;
                 _raw: AssetContracts.IAssetModelContract
             }
         ) {
