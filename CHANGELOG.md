@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.11](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.10...v0.3.11) (2020-01-14)
+
+
+### Features
+
+* adds '_raw' property to language variant with component ([58fcb6b](https://github.com/Kentico/kontent-management-sdk-js/commit/58fcb6be07f4647112d74c110f7fef347c7198be))
+
 ### [0.3.10](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.9...v0.3.10) (2020-01-13)
 
 
