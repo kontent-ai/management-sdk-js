@@ -55,6 +55,7 @@ export namespace LanguageVariantModels {
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
         public workflowStep!: SharedModels.ReferenceObject;
+        public _raw!: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract;
 
         constructor(
             data: {
@@ -63,7 +64,8 @@ export namespace LanguageVariantModels {
                 elements: ElementModels.ContentItemElementWithComponents[],
                 language: SharedModels.ReferenceObject,
                 lastModified: Date,
-                workflowStep: SharedModels.ReferenceObject
+                workflowStep: SharedModels.ReferenceObject,
+                _raw: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract
             }
         ) {
             Object.assign(this, data);
