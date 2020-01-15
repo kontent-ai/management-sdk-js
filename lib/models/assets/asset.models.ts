@@ -16,6 +16,7 @@ export namespace AssetModels {
         public externalId?: string;
         public lastModified!: Date;
         public url!: string;
+        public folder?: IAssetFolderReference;
         public _raw!: AssetContracts.IAssetModelContract;
 
         constructor(
@@ -32,11 +33,17 @@ export namespace AssetModels {
                 externalId?: string;
                 lastModified: Date;
                 url: string;
+                folder?: IAssetFolderReference
                 _raw: AssetContracts.IAssetModelContract
             }
         ) {
             Object.assign(this, data);
         }
+    }
+
+    export interface IAssetFolderReference {
+        id?: string;
+        external_id?: string;
     }
 
     export interface IAssetFileReference {
@@ -90,18 +97,13 @@ export namespace AssetModels {
         title?: string;
         external_id?: string;
         descriptions: IAssetFileDescription[];
-    }
-
-    export interface IUpdateAssetRequestData {
-        assetId: string;
-        title?: string;
-        descriptions: IAssetFileDescription[];
+        folder?: IAssetFolderReference;
     }
 
     export interface IUpsertAssetRequestData {
-        assetExternalId: string;
         descriptions: IAssetFileDescription[];
         title?: string;
         fileReference?: IAssetFileReference;
+        folder?: IAssetFolderReference;
     }
 }

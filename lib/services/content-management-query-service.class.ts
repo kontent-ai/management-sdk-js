@@ -398,26 +398,6 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    updateAsset(
-        url: string,
-        data: AssetModels.IUpdateAssetRequestData,
-        config: IContentManagementQueryConfig
-    ): Observable<AssetResponses.UpdateAssetResponse> {
-        return this.putResponse<AssetContracts.IUpdateAssetResponseContract>(
-            url,
-            {
-                title: data.title,
-                descriptions: data.descriptions
-            },
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return assetsMapper.mapUpdateAssetResponse(response);
-            })
-        );
-    }
-
     addAsset(
         url: string,
         data: AssetModels.IAddAssetRequestData,

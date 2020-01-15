@@ -65,7 +65,6 @@ import {
     PublishOrScheduleLanguageVariantQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
-    UpdateAssetQuery,
     UpdateContentItemQuery,
     UploadBinaryFileQuery,
     UpsertAssetQuery,
@@ -442,19 +441,16 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    upsertAsset(): DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData> {
-        return new DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>(
+    upsertAsset(): AssetIdentifierQueryClass<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>> {
+        return new AssetIdentifierQueryClass<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>(
             this.config,
             this.queryService,
-            (config, queryService, data) => new UpsertAssetQuery(config, queryService, data)
-        );
-    }
-
-    updateAsset(): DataQuery<UpdateAssetQuery, AssetModels.IUpdateAssetRequestData> {
-        return new DataQuery<UpdateAssetQuery, AssetModels.IUpdateAssetRequestData>(
-            this.config,
-            this.queryService,
-            (config, queryService, data) => new UpdateAssetQuery(config, queryService, data)
+            (config, queryService, identifier) =>
+                new DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>(
+                    this.config,
+                    this.queryService,
+                    (xConfig, xQueryService, data) => new UpsertAssetQuery(config, queryService, identifier, data)
+                )
         );
     }
 

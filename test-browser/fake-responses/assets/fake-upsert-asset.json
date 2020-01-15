@@ -4,6 +4,9 @@
   "title": "Coffee Brewing Techniques",
   "size": 125770,
   "type": "image/jpeg",
+  "folder": {
+    "external_id": "another-folder"
+  },
   "image_width": 1000,
   "image_height": 666,
   "file_reference": {

@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../../config';
-import { AssetModels } from '../../models';
+import { AssetModels, Identifiers } from '../../models';
 import { AssetResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
@@ -11,6 +11,7 @@ export class UpsertAssetQuery extends BaseQuery<AssetResponses.UpdateAssetRespon
   constructor(
     protected config: IManagementClientConfig,
     protected queryService: ContentManagementQueryService,
+    public identifier: Identifiers.AssetIdentifier,
     public data: AssetModels.IUpsertAssetRequestData,
   ) {
     super(config, queryService);
@@ -21,7 +22,7 @@ export class UpsertAssetQuery extends BaseQuery<AssetResponses.UpdateAssetRespon
   }
 
   protected getAction(): string {
-    return this.apiEndpoints.upsertAsset(this.data.assetExternalId);
+    return this.apiEndpoints.upsertAsset(this.identifier);
   }
 }
 

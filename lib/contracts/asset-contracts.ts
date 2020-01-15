@@ -14,11 +14,17 @@ export namespace AssetContracts {
         external_id: string;
         last_modified: string;
         url: string;
+        folder?: IAssetFolderReferenceContract;
     }
 
     export interface IAssetFileReferenceContract  {
         id: string;
         type: string;
+    }
+
+    export interface IAssetFolderReferenceContract {
+        id?: string;
+        external_id?: string;
     }
 
     export interface IAssetFileDescriptionContract {

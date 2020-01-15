@@ -91,16 +91,12 @@ export class ContentManagementApiEndpoints {
         return `assets`;
     }
 
-    updateAsset(assetId: string): string {
-        return `assets/${assetId}`;
-    }
-
     deleteAsset(identifier: Identifiers.AssetIdentifier): string {
         return `assets/${identifier.getParamValue()}`;
     }
 
-    upsertAsset(assetExternalId: string): string {
-        return `assets/external-id/${assetExternalId}`;
+    upsertAsset(assetIdentifier: Identifiers.AssetIdentifier): string {
+        return `assets/${assetIdentifier.getParamValue()}`;
     }
 
     uploadBinaryFile(filename: string): string {

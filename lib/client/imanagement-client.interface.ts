@@ -61,7 +61,6 @@ import {
     PublishOrScheduleLanguageVariantQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
-    UpdateAssetQuery,
     UpdateContentItemQuery,
     UploadBinaryFileQuery,
     UpsertAssetQuery,
@@ -233,12 +232,7 @@ export interface IManagementClient {
     /**
      * Query to upsert an asset from uploaded binary file
      */
-    upsertAsset(): DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>;
-
-    /**
-     * Query to update an asset from uploaded binary file
-     */
-    updateAsset(): DataQuery<UpdateAssetQuery, AssetModels.IUpdateAssetRequestData>;
+    upsertAsset(): AssetIdentifierQueryClass<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>;
 
     /**
      * Query to add an asset from uploaded binary file

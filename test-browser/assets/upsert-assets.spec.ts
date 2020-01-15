@@ -6,9 +6,8 @@ describe('Upsert asset', () => {
     let response: AssetResponses.UpsertAssertResponse;
 
     beforeAll((done) => {
-        getTestClientWithJson(upsertAssetResponseJson).upsertAsset().withData({
+        getTestClientWithJson(upsertAssetResponseJson).upsertAsset().byAssetId('x').withData({
             descriptions: [],
-            assetExternalId: 'x'
         })
             .toObservable()
             .subscribe(result => {
@@ -18,12 +17,16 @@ describe('Upsert asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient.upsertAsset().withData({
+        const idUrl = cmLiveClient.upsertAsset().byAssetId('x').withData({
             descriptions: [],
-            assetExternalId: 'x'
         }).getUrl();
 
-        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x`);
+        const externalIdUrl = cmLiveClient.upsertAsset().byAssetExternalId('x').withData({
+            descriptions: [],
+        }).getUrl();
+
+        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x`);
+        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/x`);
     });
 
     it(`response should be instance of UpsertAssertResponse class`, () => {
@@ -50,6 +53,7 @@ describe('Upsert asset', () => {
         expect(asset.title).toEqual(originalItem.title);
         expect(asset.externalId).toEqual(originalItem.external_id);
         expect(asset.imageWidth).toEqual(originalItem.image_width);
+        expect(asset.folder).toEqual(originalItem.folder);
         expect(asset.size).toEqual(originalItem.size);
         expect(asset.fileReference).toEqual(jasmine.any(AssetModels.AssetFileReference));
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);
