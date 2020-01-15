@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.14](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.13...v0.3.14) (2020-01-15)
+
+
+### Bug Fixes
+
+* assigns raw data to asset folders correctly ([654ef6b](https://github.com/Kentico/kontent-management-sdk-js/commit/654ef6b027dac040219a90f02e58d89208e78395))
+
 ### [0.3.13](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.12...v0.3.13) (2020-01-15)
 
 
