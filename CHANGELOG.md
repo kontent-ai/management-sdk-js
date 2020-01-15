@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.13](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.12...v0.3.13) (2020-01-15)
+
+
+### Bug Fixes
+
+* re-release due to leftover files in dist folder (no code changes) ([eb84a96](https://github.com/Kentico/kontent-management-sdk-js/commit/eb84a96f3750f5b95d33d274fc7619d12b35f692))
+
 ### [0.3.12](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.11...v0.3.12) (2020-01-15)
 
 
