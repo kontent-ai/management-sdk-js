@@ -20,6 +20,7 @@ export namespace AssetFolderModels {
             this.name = data.name;
             this.externalId = data.externalId;
             this.folders = data.folders;
+            this._raw = data._raw;
         }
     }
 
