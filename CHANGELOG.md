@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.11...v0.3.12) (2020-01-15)
+
+
+### Bug Fixes
+
+* fixes typo in 'ILinkedITemsInType' elements builder interface ([fc36157](https://github.com/Kentico/kontent-management-sdk-js/commit/fc361577082bfe9ceb2f8ddb775a6434ec6776cb))
+* removes obsolete update asset query in favor of upsert query which is now in sync with other endpoints and use proper input data and indentifiers ([9308880](https://github.com/Kentico/kontent-management-sdk-js/commit/93088802df6a4312e5586ff4413ad2837d304971))
+
 ### [0.3.11](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.10...v0.3.11) (2020-01-14)
 
 
