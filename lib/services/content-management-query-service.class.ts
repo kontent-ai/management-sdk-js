@@ -740,7 +740,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
                 data.resolvedResponses.push(response);
 
                 if (response.data.pagination.continuationToken) {
-                    // recursively get next page data
+                    // recursively fetch next page data
                     return this.getListAllResponseInternal({
                         xContinuationToken: response.data.pagination.continuationToken,
                         getResponse: data.getResponse,
