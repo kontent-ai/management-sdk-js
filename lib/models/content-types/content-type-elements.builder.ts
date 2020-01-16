@@ -76,6 +76,7 @@ export namespace ElementsInContentType {
         name: string;
         guidelines?: string;
         type: 'modular_content';
+        is_required?: boolean;
         codename?: string;
         external_id?: string;
         content_group?: SharedContracts.IReferenceObjectContract;
