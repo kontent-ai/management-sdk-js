@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.16](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.15...v0.3.16) (2020-01-22)
+
+
+### Features
+
+* adds support for 'modifyContentTypeSnippet' endpoint ([a326689](https://github.com/Kentico/kontent-management-sdk-js/commit/a3266892e391aadb1d6ae9da8f6fa6d67b5974fe))
+
 ### [0.3.15](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.14...v0.3.15) (2020-01-21)
 
 ### Features
