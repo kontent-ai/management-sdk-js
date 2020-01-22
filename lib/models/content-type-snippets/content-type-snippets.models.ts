@@ -4,6 +4,9 @@ import { ElementModels } from '../elements/elements.models';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentTypeSnippetModels {
+
+    export type ModifyContentTypeSnippetOperation = 'addInto' | 'remove' | 'replace';
+
     export class ContentTypeSnippet
         implements SharedModels.IBaseModel<ContentTypeSnippetContracts.IContentTypeSnippetContract> {
         public id!: string;
@@ -31,5 +34,14 @@ export namespace ContentTypeSnippetModels {
 
         external_id?: string;
         codename?: string;
+    }
+
+    export interface IModifyContentTypeSnippetData {
+        op: ModifyContentTypeSnippetOperation;
+        path: string;
+        value?: any;
+
+        before?: SharedModels.IReferenceObject;
+        after?: SharedModels.IReferenceObject;
     }
 }

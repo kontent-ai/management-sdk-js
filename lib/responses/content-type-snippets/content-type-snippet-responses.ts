@@ -56,4 +56,17 @@ export namespace ContentTypeSnippetResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class ModifyContentTypeSnippetResponse extends BaseResponses.BaseContentManagementResponse<
+        ContentTypeSnippetContracts.IModifyContentTypeSnippetResponseContract,
+        ContentTypeSnippetModels.ContentTypeSnippet
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: ContentTypeSnippetContracts.IModifyContentTypeSnippetResponseContract,
+            data: ContentTypeSnippetModels.ContentTypeSnippet
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

@@ -76,6 +76,7 @@ import {
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
     DeleteLanguageVariantQuery,
+    ModifyContentTypeSnippetQuery,
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -155,6 +156,13 @@ export interface IManagementClient {
     modifyContentType(): ContentTypeIdentifierQuery<
         DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
     >;
+
+    /**
+     * Query to modify content type snippet
+     */
+    modifyContentTypeSnippet(): ContentTypeIdentifierQuery<
+    DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
+>;
 
     /**
      * Query to view language variant

@@ -43,6 +43,10 @@ export class ContentManagementApiEndpoints {
         return `snippets/${identifier.getParamValue()}`;
     }
 
+    modifyContentTypeSnippet(identifier: Identifiers.ContentTypeIdentifier): string {
+        return `snippets/${identifier.getParamValue()}`;
+    }
+
     validateProjectContent(): string {
         return `validate`;
     }

@@ -1,0 +1,53 @@
+{
+    "id": "c8fcc464-b937-4558-a386-c1e25aa93813",
+    "codename": "my_metadata_snippet",
+    "last_modified": "2019-08-06T09:19:12.241774Z",
+    "external_id": "my-metadata-snippet-id",
+    "name": "A new snippet name",
+    "elements": [
+      {
+        "maximum_text_length": null,
+        "name": "My meta title",
+        "guidelines": "Length: 30–60 characters.",
+        "is_required": false,
+        "type": "text",
+        "external_id": "my-meta-title-id",
+        "id": "0eb2bcda-5b9f-4425-b9e1-c7679356e456",
+        "codename": "my_metadata_snippet__my_meta_title"
+      },
+      {
+        "maximum_text_length": {
+          "value": 150,
+          "applies_to": "characters"
+        },
+        "name": "My meta description",
+        "guidelines": "Length: 70-150 characters.",
+        "is_required": false,
+        "type": "text",
+        "id": "f79ad793-b01d-42b0-b06c-7043cd9b6f31",
+        "codename": "my_metadata_snippet__my_meta_description"
+      },
+      {
+        "mode": "single",
+        "options": [
+          {
+            "id": "6bfe5a60-5cc2-4303-8f72-9cc53431046b",
+            "codename": "my_other_multiple_choice_option",
+            "name": "My other multiple choice option"
+          },
+          {
+            "id": "8e6ec8b1-6510-4b9b-b4be-6c977f4bdfbc",
+            "codename": "another_multiple_choice_option",
+            "name": "Another multiple choice option"
+          }
+        ],
+        "name": "My multiple choice",
+        "guidelines": null,
+        "is_required": false,
+        "id": "fcc30f1e-9abf-41da-8693-ed89f3be438d",
+        "codename": "my_metadata_snippet__my_multiple_choice",
+        "type": "multiple_choice",
+        "external_id": "my-multiple-choice-id"
+      }
+    ]
+  }

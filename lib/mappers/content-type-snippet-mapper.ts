@@ -29,6 +29,12 @@ export class ContentTypeSnippetMapper extends BaseMapper {
         );
     }
 
+    mapModifyContentTypeSnippetResponse(response: IBaseResponse<ContentTypeSnippetContracts.IModifyContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.AddContentTypeSnippetResponse {
+        return new ContentTypeSnippetResponses.ModifyContentTypeSnippetResponse(
+            super.mapResponseDebug(response), response.data, this.mapContentTypeSnippet(response.data)
+        );
+    }
+
     mapContentTypeSnippet(rawContentType: ContentTypeSnippetContracts.IContentTypeSnippetContract): ContentTypeSnippetModels.ContentTypeSnippet {
         return new ContentTypeSnippetModels.ContentTypeSnippet({
             codename: rawContentType.codename,

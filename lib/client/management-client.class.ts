@@ -78,7 +78,8 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
-    WorkflowStepIdentifierQuery
+    WorkflowStepIdentifierQuery,
+    ModifyContentTypeSnippetQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -374,6 +375,24 @@ export class ManagementClient implements IManagementClient {
             (config, queryService, data) => new AddContentTypeQuery(config, queryService, data)
         );
     }
+
+    modifyContentTypeSnippet(): ContentTypeIdentifierQuery<
+    DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
+> {
+    return new ContentTypeIdentifierQuery<
+        DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
+    >(
+        this.config,
+        this.queryService,
+        (config, queryService, identifier) =>
+            new DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>(
+                config,
+                queryService,
+                (nConfig, nQueryService, data) =>
+                    new ModifyContentTypeSnippetQuery(nConfig, nQueryService, identifier, data)
+            )
+    );
+}
 
     modifyContentType(): ContentTypeIdentifierQuery<
         DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
