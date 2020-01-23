@@ -64,7 +64,6 @@ describe('List content items', () => {
             expect(m.lastModified).toBeDefined();
             expect(m.name).toBeDefined();
             expect(m.type).toBeDefined();
-            expect(m.sitemapLocations).toBeDefined();
             expect(m.type.id).toBeDefined();
             expect(m.lastModified).toEqual(jasmine.any(Date));
         });

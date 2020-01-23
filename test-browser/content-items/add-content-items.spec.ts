@@ -15,7 +15,6 @@ describe('Add content item', () => {
                     type: {
                         codename: 'article'
                     },
-                    sitemap_locations: undefined
                 }
             )
             .toObservable()

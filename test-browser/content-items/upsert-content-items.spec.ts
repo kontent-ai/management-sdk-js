@@ -11,7 +11,6 @@ describe('Upsert content item', () => {
             .withData({
                 name: 'y',
                 type: 'xType',
-                sitemap_locations: undefined,
             })
             .toObservable()
             .subscribe(result => {

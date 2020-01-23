@@ -11,9 +11,6 @@ export namespace ContentItemModels {
         public type!: {
             id: string
         };
-        public sitemapLocations!: [{
-            id: string
-        }];
         public externalId?: string;
         public lastModified!: Date;
         public _raw!: ContentItemContracts.IContentItemModelContract;
@@ -27,9 +24,6 @@ export namespace ContentItemModels {
                 type: {
                     id: string
                 },
-                sitemapLocations: [{
-                    id: string
-                }],
                 externalId?: string,
                 lastModified: Date,
                 _raw: ContentItemContracts.IContentItemModelContract

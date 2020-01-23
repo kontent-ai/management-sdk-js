@@ -11,7 +11,6 @@ describe('Update content item', () => {
             .withData({
                 codename: 'x',
                 name: 'y',
-                sitemap_locations: [],
             })
             .toObservable()
             .subscribe(result => {

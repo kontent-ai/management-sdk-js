@@ -51,7 +51,6 @@ export class ContentItemsMapper extends BaseMapper {
             id: rawItem.id,
             lastModified: new Date(rawItem.last_modified),
             name: rawItem.name,
-            sitemapLocations: rawItem.sitemap_locations,
             type: rawItem.type,
             _raw: rawItem
         });

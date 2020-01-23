@@ -8,9 +8,6 @@ export namespace ContentItemContracts {
         type: {
             id: string
         };
-        sitemap_locations: [{
-            id: string
-        }];
         external_id?: string;
         last_modified: Date;
     }
@@ -37,18 +34,12 @@ export namespace ContentItemContracts {
 
     export interface IUpdateContentItemPostContract {
         name: string;
-        sitemap_locations: [{
-            codename: string
-        }] | [];
         codename?: string;
     }
 
     export interface IUpsertContentItemPostContract {
         name: string;
         type: string;
-        sitemap_locations?: [{
-            codename: string
-        }];
     }
 
     export interface IAddContentItemPostContract {
@@ -56,9 +47,6 @@ export namespace ContentItemContracts {
         type: {
             codename: string
         };
-        sitemap_locations?: [{
-            codename: string
-        }];
         codename?: string;
         external_id?: string;
     }
