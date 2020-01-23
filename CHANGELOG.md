@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.17](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.16...v0.3.17) (2020-01-23)
+
+
+### Features
+
+* adds support for content groups in content types and adds missing external id props to content type & snippet ([20a71fd](https://github.com/Kentico/kontent-management-sdk-js/commit/20a71fde570acb072e107ad9f00d5ae2ef1fba70))
+
 ### [0.3.16](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.15...v0.3.16) (2020-01-22)
 
 
