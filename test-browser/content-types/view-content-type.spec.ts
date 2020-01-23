@@ -1,4 +1,4 @@
-import { ContentTypeResponses, ElementModels } from '../../lib';
+import { ContentTypeResponses, ElementModels, ContentTypeModels } from '../../lib';
 import * as viewContentTypeJson from '../fake-responses/content-types/fake-view-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
@@ -52,11 +52,26 @@ describe('View content type', () => {
         const originalItem = viewContentTypeJson;
         const contentType = response.data;
 
+        expect(contentType).toEqual(jasmine.any(ContentTypeModels.ContentType));
         expect(contentType.codename).toEqual(originalItem.codename);
+        expect(contentType.externalId).toEqual(originalItem.external_id);
         expect(contentType.name).toEqual(originalItem.name);
         expect(contentType.lastModified).toEqual(new Date(originalItem.last_modified));
         expect(contentType.elements.length).toEqual(originalItem.elements.length);
         expect(Array.isArray(contentType.elements)).toBeTruthy();
+        expect(contentType.contentGroups?.length).toEqual(originalItem.content_groups.length);
+
+        for (const contentGroup of contentType.contentGroups ?? []) {
+            const originalGroup = originalItem.content_groups.find(m => m.id === contentGroup.id);
+            if (!originalGroup) {
+                throw Error(`Invalid content group with id '${contentGroup.id}'`);
+            }
+
+            expect(contentGroup).toEqual(jasmine.any(ContentTypeModels.ContentTypeGroup));
+            expect(contentGroup.codename).toEqual(originalGroup.codename);
+            expect(contentGroup.externalId).toEqual(originalGroup.external_id);
+            expect(contentGroup.name).toEqual(originalGroup.name);
+        }
 
         contentType.elements.forEach(element => {
 

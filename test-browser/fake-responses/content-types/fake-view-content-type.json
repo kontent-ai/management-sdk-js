@@ -3,6 +3,13 @@
     "codename": "hosted_video",
     "last_modified": "2017-06-27T12:55:39.054Z",
     "name": "Hosted video",
+    "external_id": "xyz",
+    "content_groups": [{
+        "id": "325107f6-5dfb-21a1-b24e-fa13be1fef1c",
+        "name": "My first group",
+        "codename": "my_first_group",
+        "external_id": "first-group"
+    }],
     "elements": [
       {
         "name": "Video ID",

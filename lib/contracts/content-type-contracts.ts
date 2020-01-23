@@ -9,6 +9,8 @@ export namespace ContentTypeContracts {
         codename: string;
         last_modified: string;
         elements: ElementContracts.IContentTypeElementContract[];
+        external_id?: string;
+        content_groups?: IContentTypeGroup[];
     }
 
     export interface IContentTypeListResponseContract {
@@ -26,5 +28,12 @@ export namespace ContentTypeContracts {
     }
 
     export interface IAddContentTypeResponseContract extends IContentTypeContract {
+    }
+
+    export interface IContentTypeGroup {
+        name: string;
+        codename?: string;
+        external_id?: string;
+        id?: string;
     }
 }

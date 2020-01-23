@@ -5,6 +5,11 @@ export namespace ElementsInContentType {
     export interface IElementInContentType {
     }
 
+    export interface IContentGroup extends IElementInContentType {
+        name: string;
+        external_id?: string;
+    }
+
     export interface IAssetElement extends IElementInContentType {
         name: string;
         type: 'asset';
@@ -172,6 +177,10 @@ export namespace ElementsInContentType {
 }
 
 export class ContentTypeElementsBuilder {
+
+    contentGroup(contentGroup: ElementsInContentType.IContentGroup): ElementsInContentType.IElementInContentType {
+        return contentGroup;
+    }
 
     assetElement(element: ElementsInContentType.IAssetElement): ElementsInContentType.IElementInContentType {
         return element;

@@ -15,12 +15,32 @@ export namespace ContentTypeModels {
         after?: SharedModels.IReferenceObject;
     }
 
+    export class ContentTypeGroup {
+
+        public name!: string;
+        public codename?: string;
+        public externalId?: string;
+        public id?: string;
+
+        constructor(data: {
+             name: string;
+             codename?: string;
+             externalId?: string;
+             id?: string;
+        }) {
+            Object.assign(this, data);
+        }
+    }
+
     export class ContentType implements SharedModels.IBaseModel<ContentTypeContracts.IContentTypeContract> {
         public id!: string;
         public name!: string;
         public codename!: string;
         public lastModified!: Date;
         public elements!: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+        public contentGroups?: ContentTypeGroup[];
+        public externalId?: string;
+
         public _raw!: ContentTypeContracts.IContentTypeContract;
 
         constructor(data: {
@@ -29,6 +49,8 @@ export namespace ContentTypeModels {
             codename: string;
             lastModified: Date;
             elements: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+            externalId?: string;
+            contentGroups?: ContentTypeGroup[];
             _raw: ContentTypeContracts.IContentTypeContract;
         }) {
             Object.assign(this, data);

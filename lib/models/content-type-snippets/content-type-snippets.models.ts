@@ -14,6 +14,7 @@ export namespace ContentTypeSnippetModels {
         public codename!: string;
         public lastModified!: Date;
         public elements!: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+        public externalId?: string;
         public _raw!: ContentTypeSnippetContracts.IContentTypeSnippetContract;
 
         constructor(data: {
@@ -22,6 +23,7 @@ export namespace ContentTypeSnippetModels {
             codename: string;
             lastModified: Date;
             elements: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+            externalId?: string;
             _raw: ContentTypeSnippetContracts.IContentTypeSnippetContract;
         }) {
             Object.assign(this, data);

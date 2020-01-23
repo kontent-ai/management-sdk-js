@@ -42,7 +42,18 @@ export class ContentTypeMapper extends BaseMapper {
             name: rawContentType.name,
             elements: elementsMapper.mapTypeElements(rawContentType.elements),
             lastModified: new Date(rawContentType.last_modified),
+            externalId: rawContentType.external_id,
+            contentGroups: rawContentType.content_groups ? rawContentType.content_groups.map(m => this.mapContentTypeGroup(m)) : undefined,
             _raw: rawContentType
+        });
+    }
+
+    mapContentTypeGroup(rawContentTypeGroup: ContentTypeContracts.IContentTypeGroup): ContentTypeModels.ContentTypeGroup {
+        return new ContentTypeModels.ContentTypeGroup({
+            name: rawContentTypeGroup.name,
+            codename: rawContentTypeGroup.codename,
+            externalId: rawContentTypeGroup.external_id,
+            id: rawContentTypeGroup.id
         });
     }
 

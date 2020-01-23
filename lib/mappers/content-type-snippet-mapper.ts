@@ -42,6 +42,7 @@ export class ContentTypeSnippetMapper extends BaseMapper {
             name: rawContentType.name,
             elements: elementsMapper.mapTypeElements(rawContentType.elements),
             lastModified: new Date(rawContentType.last_modified),
+            externalId: rawContentType.external_id,
             _raw: rawContentType
         });
     }

@@ -8,6 +8,7 @@ export namespace ContentTypeSnippetContracts {
         name: string;
         codename: string;
         last_modified: string;
+        external_id?: string;
         elements: ElementContracts.IContentTypeElementContract[];
     }
 
