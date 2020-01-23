@@ -39,7 +39,8 @@ export namespace ContentItemContracts {
 
     export interface IUpsertContentItemPostContract {
         name: string;
-        type: string;
+        type?: string;
+        codename?: string;
     }
 
     export interface IAddContentItemPostContract {

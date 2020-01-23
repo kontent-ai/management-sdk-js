@@ -11,6 +11,7 @@ describe('Upsert content item', () => {
             .withData({
                 name: 'y',
                 type: 'xType',
+                codename: 'xyz'
             })
             .toObservable()
             .subscribe(result => {
