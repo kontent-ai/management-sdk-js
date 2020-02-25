@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.18](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.17...v0.3.18) (2020-02-25)
+
+
+### Features
+
+* adds 'codename' to content item upsert model & makes 'type' optional ([2c2b4fa](https://github.com/Kentico/kontent-management-sdk-js/commit/2c2b4fa16ad7eef077b2217259816ce8eca6f024))
+* removes deprecated sitemap locations ([71bda7e](https://github.com/Kentico/kontent-management-sdk-js/commit/71bda7e5132413abcfb03aa96b3df3974d70af64))
+
+
+### Bug Fixes
+
+* removes data processing in asset update request data ([7898689](https://github.com/Kentico/kontent-management-sdk-js/commit/78986895f9068cda6b8e6dc9a8161c9ef62adf36))
+* uses proper model without additional processing for adding taxonomies ([585fd4e](https://github.com/Kentico/kontent-management-sdk-js/commit/585fd4e6860c849f3ed3d69e1d50fb9299150a3c))
+
 ### [0.3.17](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.16...v0.3.17) (2020-01-23)
 
 
