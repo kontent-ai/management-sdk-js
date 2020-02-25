@@ -392,11 +392,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<AssetResponses.UpdateAssetResponse> {
         return this.putResponse<AssetContracts.IUpsertAssetResponseContract>(
             url,
-            {
-                file_reference: data.fileReference,
-                title: data.title,
-                descriptions: data.descriptions
-            },
+            data,
             {},
             config
         ).pipe(

@@ -103,7 +103,7 @@ export namespace AssetModels {
     export interface IUpsertAssetRequestData {
         descriptions: IAssetFileDescription[];
         title?: string;
-        fileReference?: IAssetFileReference;
+        file_reference?: IAssetFileReference;
         folder?: IAssetFolderReference;
     }
 }
