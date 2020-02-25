@@ -334,11 +334,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Observable<TaxonomyResponses.AddTaxonomyResponse> {
         return this.postResponse<TaxonomyContracts.IAddTaxonomyResponseContract>(
             url,
-            {
-                name: data.name,
-                external_id: data.externalId,
-                terms: data.terms
-            },
+            data,
             {},
             config
         ).pipe(
