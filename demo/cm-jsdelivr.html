@@ -13,7 +13,9 @@
 
 		var client = new KontentManagement.ManagementClient({
 			projectId: 'xxx',
-			apiKey: 'yyy'
+			// using CM API key in browser is NOT safe. If you need to use SDK in browsers
+			// you should use proxy server and set authorization header there rather than here
+			apiKey: 'yyy' 
 		});
 
 		client.addContentItem()
