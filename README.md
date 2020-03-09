@@ -82,6 +82,8 @@ If you are using `UMD` bundles directly in browsers, you can find this library u
 
 		var client = new KontentManagement.ManagementClient({
 			projectId: 'xxx',
+	                // using CM API key in browser is NOT safe. If you need to use SDK in browsers
+			// you should use proxy server and set authorization header there rather than here
 			apiKey: 'yyy'
 		});
 
