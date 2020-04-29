@@ -101,6 +101,7 @@ export namespace ElementsInContentType {
         external_id?: string;
         content_group?: SharedContracts.IReferenceObjectContract;
         guidelines?: string;
+        codename?: string;
     }
 
     export interface INumberInType extends IElementInContentType {
