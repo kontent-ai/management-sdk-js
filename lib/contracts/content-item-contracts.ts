@@ -6,7 +6,9 @@ export namespace ContentItemContracts {
         name: string;
         codename: string;
         type: {
-            id: string
+            id?: string,
+            codename?: string;
+            external_id?: string;
         };
         external_id?: string;
         last_modified: Date;
