@@ -39,4 +39,14 @@ export namespace TaxonomyResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class ModifyTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IModifyTaxonomyResponseContract, TaxonomyModels.Taxonomy>  {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: TaxonomyContracts.IModifyTaxonomyResponseContract,
+            data: TaxonomyModels.Taxonomy
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

@@ -77,6 +77,7 @@ import {
     WorkflowStepIdentifierQuery,
     DeleteLanguageVariantQuery,
     ModifyContentTypeSnippetQuery,
+    ModifyTaxonomyQuery,
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -155,6 +156,13 @@ export interface IManagementClient {
      */
     modifyContentType(): ContentTypeIdentifierQuery<
         DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
+    >;
+
+    /**
+     * Query to modify taxonomy
+     */
+    modifyTaxonomy(): TaxonomyIdentifierQuery<
+        DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>
     >;
 
     /**

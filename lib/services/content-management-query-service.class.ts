@@ -293,6 +293,18 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    modifyTaxonomy(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: TaxonomyModels.IModifyTaxonomyData[]
+    ): Observable<TaxonomyResponses.ModifyTaxonomyResponse> {
+        return this.patchResponse<TaxonomyContracts.IModifyTaxonomyResponseContract>(url, data, {}, config).pipe(
+            map(response => {
+                return taxonomyMappper.mapModifyTaxonomyResponse(response);
+            })
+        );
+    }
+
     modifyContentTypeSnippet(
         url: string,
         config: IContentManagementQueryConfig,

@@ -79,6 +79,10 @@ export class ContentManagementApiEndpoints {
         return `taxonomies`;
     }
 
+    modifyTaxonomy(identifier: Identifiers.TaxonomyIdentifier): string {
+        return `taxonomies/${identifier.getParamValue()}`;
+    }
+
     deleteTaxonomy(identifier: Identifiers.TaxonomyIdentifier): string {
         return `taxonomies/${identifier.getParamValue()}`;
     }

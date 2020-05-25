@@ -1,0 +1,36 @@
+{
+  "last_modified": "2019-04-02T08:08:40.3083064Z",
+  "id": "f30c7f72-e9ab-8832-2a57-62944a038809",
+  "external_id": "my-little-taxopony",
+  "name": "Categories",
+  "codename": "category",
+  "terms": [
+    {
+      "id": "012a94e4-76b4-5a5d-95ce-164577c9b5e5",
+      "name": "First-level taxonomy term",
+      "codename": "first_term",
+      "terms": [
+        {
+          "id": "9b897d7b-ded7-5de1-aee1-1e90e43db747",
+          "name": "Second-level taxonomy term",
+          "codename": "second_term",
+          "terms": [
+            {
+              "id": "9bee9779-a9c6-5d66-875b-aaf7093b4ac2",
+              "name": "Third-level taxonomy term",
+              "codename": "third_level_taxonomy_term",
+              "terms": []
+            },
+            {
+              "id": "146c5e35-dffe-5977-b943-16f0e862af2e",
+              "name": "New taxonomy term",
+              "codename": "new_taxonomy_term",
+              "external_id": "my-new-term",
+              "terms": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

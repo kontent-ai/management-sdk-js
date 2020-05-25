@@ -27,6 +27,8 @@ export namespace TaxonomyContracts {
     export interface IGetTaxonomyResponseContract extends ITaxonomyContract {
     }
 
+    export interface IModifyTaxonomyResponseContract extends ITaxonomyContract {
+    }
 
     export interface IDeleteTaxonomyResponseContract {
     }

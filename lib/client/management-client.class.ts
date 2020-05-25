@@ -12,7 +12,7 @@ import {
     LanguageModels,
     TaxonomyModels,
     WebhookModels,
-    WorkflowModels
+    WorkflowModels,
 } from '../models';
 import {
     AddAssetFoldersQuery,
@@ -59,6 +59,7 @@ import {
     ListWorkflowStepsQuery,
     ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
+    ModifyContentTypeSnippetQuery,
     ModifyLanguageQuery,
     ProjectIdIdentifierQuery,
     ProjectInformationQuery,
@@ -79,7 +80,7 @@ import {
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
-    ModifyContentTypeSnippetQuery
+    ModifyTaxonomyQuery,
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -377,22 +378,22 @@ export class ManagementClient implements IManagementClient {
     }
 
     modifyContentTypeSnippet(): ContentTypeIdentifierQuery<
-    DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
-> {
-    return new ContentTypeIdentifierQuery<
         DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
-    >(
-        this.config,
-        this.queryService,
-        (config, queryService, identifier) =>
-            new DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>(
-                config,
-                queryService,
-                (nConfig, nQueryService, data) =>
-                    new ModifyContentTypeSnippetQuery(nConfig, nQueryService, identifier, data)
-            )
-    );
-}
+    > {
+        return new ContentTypeIdentifierQuery<
+            DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new ModifyContentTypeSnippetQuery(nConfig, nQueryService, identifier, data)
+                )
+        );
+    }
 
     modifyContentType(): ContentTypeIdentifierQuery<
         DataQuery<ModifyContentTypeQuery, ContentTypeModels.IModifyContentTypeData[]>
@@ -408,6 +409,24 @@ export class ManagementClient implements IManagementClient {
                     queryService,
                     (nConfig, nQueryService, data) =>
                         new ModifyContentTypeQuery(nConfig, nQueryService, identifier, data)
+                )
+        );
+    }
+
+    modifyTaxonomy(): TaxonomyIdentifierQuery<
+        DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>
+    > {
+        return new TaxonomyIdentifierQuery<
+            DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new ModifyTaxonomyQuery(nConfig, nQueryService, identifier, data)
                 )
         );
     }

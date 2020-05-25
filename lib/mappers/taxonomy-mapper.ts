@@ -39,6 +39,15 @@ export class TaxonomyMapper extends BaseMapper {
         return new TaxonomyResponses.GetTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
     }
 
+    mapModifyTaxonomyResponse(
+        response: IBaseResponse<TaxonomyContracts.IModifyTaxonomyResponseContract>
+    ): TaxonomyResponses.ModifyTaxonomyResponse {
+
+        const taxonomy = this.mapTaxonomy(response.data);
+
+        return new TaxonomyResponses.ModifyTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
+    }
+
     mapAddTaxonomyResponse(
         response: IBaseResponse<TaxonomyContracts.IAddTaxonomyResponseContract>
     ): TaxonomyResponses.AddTaxonomyResponse {
@@ -55,6 +64,7 @@ export class TaxonomyMapper extends BaseMapper {
             lastModified: new Date(rawTaxonomy.last_modified),
             name: rawTaxonomy.name,
             terms: rawTaxonomy.terms.map(m => this.mapTaxonomy(m)),
+            externalId: rawTaxonomy.external_id,
             _raw: rawTaxonomy
         });
     }

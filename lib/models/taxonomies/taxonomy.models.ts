@@ -2,14 +2,25 @@ import { SharedModels } from '../shared/shared-models';
 import { TaxonomyContracts } from '../../contracts';
 
 export namespace TaxonomyModels {
+    export type ModifyTaxonomyTypeOperation = 'addInto' | 'remove' | 'replace';
+
+    export interface IModifyTaxonomyData {
+        op: ModifyTaxonomyTypeOperation;
+        reference?: SharedModels.IReferenceObject;
+        property_name?: string;
+        value?: IAddTaxonomyRequestModel | string | IAddTaxonomyRequestModel[];
+
+        before?: SharedModels.IReferenceObject;
+        after?: SharedModels.IReferenceObject;
+    }
 
     export class Taxonomy implements SharedModels.IBaseModel<TaxonomyContracts.ITaxonomyContract> {
-
         public lastModified!: Date;
         public name!: string;
         public id!: string;
         public codename!: string;
         public terms!: Taxonomy[];
+        public externalId?: string;
         public _raw!: TaxonomyContracts.ITaxonomyContract;
 
         constructor(data: {
@@ -18,7 +29,8 @@ export namespace TaxonomyModels {
             id: string;
             codename: string;
             terms: Taxonomy[];
-            _raw: TaxonomyContracts.ITaxonomyContract
+            externalId?: string;
+            _raw: TaxonomyContracts.ITaxonomyContract;
         }) {
             Object.assign(this, data);
         }
