@@ -7,11 +7,11 @@ import { BaseResponses } from '../responses';
 import { ContentManagementQueryService } from '../services';
 
 export abstract class BaseQuery<TResponse extends BaseResponses.IContentManagementResponse> {
-    protected queryConfig: IContentManagementQueryConfig = {
+    protected readonly queryConfig: IContentManagementQueryConfig = {
         headers: []
     };
-    protected parameters: IQueryParameter[] = [];
-    protected apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
+    protected readonly parameters: IQueryParameter[] = [];
+    protected readonly apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
     protected customUrl?: string;
     protected addSlashToUrl: boolean = true;
 

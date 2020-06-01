@@ -12,4 +12,5 @@ export * from './languages';
 export * from './workflow';
 export * from './webhooks';
 export * from './asset-folders';
+export * from './generic';
 

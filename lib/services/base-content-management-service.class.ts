@@ -24,9 +24,9 @@ export abstract class BaseContentManagementQueryService {
     private readonly defaultBaseCMUrl: string = 'https://manage.kontent.ai/v2/projects';
 
     constructor(
-        protected config: IManagementClientConfig,
-        protected httpService: IHttpService,
-        protected sdkInfo: ISDKInfo
+        protected readonly config: IManagementClientConfig,
+        protected readonly httpService: IHttpService,
+        protected readonly sdkInfo: ISDKInfo
     ) {}
 
     /**

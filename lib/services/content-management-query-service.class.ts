@@ -27,6 +27,7 @@ import {
     projectMapper,
     taxonomyMappper,
     workflowMapper,
+    genericMapper,
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -55,6 +56,7 @@ import {
     TaxonomyResponses,
     WebhookResponses,
     WorkflowResponses,
+    GenericResponses,
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
@@ -76,6 +78,64 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
                 delayBetweenRequests: 250
             };
         }
+    }
+
+    genericPostResponse(
+        url: string,
+        data: any,
+        config: IContentManagementQueryConfig
+    ): Observable<GenericResponses.GenericResponse> {
+        return this.postResponse<void>(url, data, {}, config).pipe(
+            map(response => {
+                return genericMapper.mapGenericResponse(response);
+            })
+        );
+    }
+
+    genericPatchResponse(
+        url: string,
+        data: any,
+        config: IContentManagementQueryConfig
+    ): Observable<GenericResponses.GenericResponse> {
+        return this.patchResponse<void>(url, data, {}, config).pipe(
+            map(response => {
+                return genericMapper.mapGenericResponse(response);
+            })
+        );
+    }
+
+    genericDeleteResponse(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<GenericResponses.GenericResponse> {
+        return this.deleteResponse<void>(url, {}, config).pipe(
+            map(response => {
+                return genericMapper.mapGenericResponse(response);
+            })
+        );
+    }
+
+    genericGetResponse(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<GenericResponses.GenericResponse> {
+        return this.getResponse<void>(url, {}, config).pipe(
+            map(response => {
+                return genericMapper.mapGenericResponse(response);
+            })
+        );
+    }
+
+    genericPutResponse(
+        url: string,
+        data: any,
+        config: IContentManagementQueryConfig
+    ): Observable<GenericResponses.GenericResponse> {
+        return this.putResponse<void>(url, data, {}, config).pipe(
+            map(response => {
+                return genericMapper.mapGenericResponse(response);
+            })
+        );
     }
 
     getListAllResponse<

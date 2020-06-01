@@ -81,17 +81,23 @@ import {
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
     ModifyTaxonomyQuery,
+    PostQuery,
+    ActionQuery,
+    PatchQuery,
+    PutQuery,
+    DeleteQuery,
+    GetQuery,
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
 
 export class ManagementClient implements IManagementClient {
-    private queryService: ContentManagementQueryService;
+    private readonly queryService: ContentManagementQueryService;
 
-    public mappingService: IMappingService = new MappingService();
+    public readonly mappingService: IMappingService = new MappingService();
 
-    constructor(protected config: IManagementClientConfig) {
+    constructor(protected readonly config: IManagementClientConfig) {
         this.queryService = new ContentManagementQueryService(
             config,
             config.httpService ? config.httpService : new HttpService(),
@@ -100,6 +106,50 @@ export class ManagementClient implements IManagementClient {
                 name: sdkInfo.name,
                 version: sdkInfo.version
             }
+        );
+    }
+
+    post(): ActionQuery<DataQuery<PostQuery, any>> {
+        return new ActionQuery<DataQuery<PostQuery, any>>(
+            this.config,
+            this.queryService,
+            (config, queryService, action) => new DataQuery<PostQuery, any>(
+                config, queryService, (nConfig, nQueryService, data) => new PostQuery(nConfig, nQueryService, action, data)
+            )
+        );
+    }
+
+    patch(): ActionQuery<DataQuery<PatchQuery, any>> {
+        return new ActionQuery<DataQuery<PatchQuery, any>>(
+            this.config,
+            this.queryService,
+            (config, queryService, action) => new DataQuery<PatchQuery, any>(
+                config, queryService, (nConfig, nQueryService, data) => new PatchQuery(nConfig, nQueryService, action, data)
+            )
+        );
+    }
+
+    put(): ActionQuery<DataQuery<PutQuery, any>> {
+        return new ActionQuery<DataQuery<PutQuery, any>>(
+            this.config,
+            this.queryService,
+            (config, queryService, action) => new DataQuery<PutQuery, any>(
+                config, queryService, (nConfig, nQueryService, data) => new PutQuery(nConfig, nQueryService, action, data)
+            )
+        );
+    }
+
+    delete(): ActionQuery<DeleteQuery> {
+        return new ActionQuery<DeleteQuery>(
+            this.config,
+            this.queryService, (config, queryService, action) => new DeleteQuery(config, queryService, action)
+        );
+    }
+
+    get(): ActionQuery<GetQuery> {
+        return new ActionQuery<GetQuery>(
+            this.config,
+            this.queryService, (config, queryService, action) => new GetQuery(config, queryService, action)
         );
     }
 

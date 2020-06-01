@@ -78,12 +78,43 @@ import {
     DeleteLanguageVariantQuery,
     ModifyContentTypeSnippetQuery,
     ModifyTaxonomyQuery,
+    PostQuery,
+    PatchQuery,
+    DeleteQuery,
+    GetQuery,
+    ActionQuery,
+    PutQuery,
 } from '../queries';
 import { IMappingService } from '../services';
 
 export interface IManagementClient {
 
     mappingService: IMappingService;
+
+    /**
+     * Custom post query
+     */
+    post(): ActionQuery<DataQuery<PostQuery, any>>;
+
+    /**
+     * Custom post query
+     */
+    patch(): ActionQuery<DataQuery<PatchQuery, any>>;
+
+    /**
+     * Custom post query
+     */
+    delete(): ActionQuery<DeleteQuery>;
+
+    /**
+     * Custom get query
+     */
+    get(): ActionQuery<GetQuery>;
+
+    /**
+     * Custom put query
+     */
+    put(): ActionQuery<DataQuery<PutQuery, any>>;
 
     /**
      * Create a new version of a published language variant while keeping the original version published and available through Delivery API. Equivalent to the UI action of creating new versions of content.

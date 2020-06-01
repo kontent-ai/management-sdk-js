@@ -11,4 +11,4 @@ export * from './workflow-mapper';
 export * from './language-mapper';
 export * from './webhook-mapper';
 export * from './asset-folder-mapper';
-
+export * from './generic-mapper';
