@@ -1,4 +1,4 @@
-# Kontent management javascript SDK
+# Kontent Management Javascript SDK
 
 > Javascript SDK for the [Kontent Management](https://developer.kenticocloud.com/v1/reference#content-management-api-v2). Helps you manage content in your [Kentico Kontent](https://kontent.ai/) projects. Supports both `node.js` and `browsers`.
 
