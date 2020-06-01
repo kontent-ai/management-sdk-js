@@ -48,21 +48,22 @@ export namespace AssetModels {
 
     export interface IAssetFileReference {
         id: string;
-        type: string;
+        type: 'internal';
     }
 
     export class AssetFileReference implements IAssetFileReference {
 
-        public id!: string;
-        public type!: string;
+        public id: string;
+        public type: 'internal';
 
         constructor(
             data: {
                 id: string;
-                type: string;
+                type: 'internal'
             }
         ) {
-            Object.assign(this, data);
+            this.id = data.id;
+            this.type = data.type;
         }
     }
 
@@ -72,8 +73,8 @@ export namespace AssetModels {
     }
 
     export class AssetFileDescription {
-        public language!: SharedModels.ReferenceObject;
-        public description!: string | null;
+        public language: SharedModels.ReferenceObject;
+        public description: string | null;
 
         constructor(
             data: {
@@ -81,7 +82,8 @@ export namespace AssetModels {
                 description: string | null
             }
         ) {
-            Object.assign(this, data);
+            this.language = data.language;
+            this.description = data.description;
         }
     }
 

@@ -19,7 +19,7 @@ export namespace AssetContracts {
 
     export interface IAssetFileReferenceContract  {
         id: string;
-        type: string;
+        type: 'internal';
     }
 
     export interface IAssetFolderReferenceContract {

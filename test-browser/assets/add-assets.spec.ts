@@ -11,7 +11,7 @@ describe('Add asset', () => {
                 descriptions: [],
                 file_reference: {
                     id: 'x',
-                    type: 'y'
+                    type: 'internal'
                 }
             })
             .toObservable()
@@ -27,7 +27,7 @@ describe('Add asset', () => {
                 descriptions: [],
                 file_reference: {
                     id: 'x',
-                    type: 'y'
+                    type: 'internal'
                 }
             }).getUrl();
 

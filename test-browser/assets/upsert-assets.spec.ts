@@ -6,24 +6,39 @@ describe('Upsert asset', () => {
     let response: AssetResponses.UpsertAssertResponse;
 
     beforeAll((done) => {
-        getTestClientWithJson(upsertAssetResponseJson).upsertAsset().byAssetId('x').withData({
-            descriptions: [],
-        })
+        getTestClientWithJson(upsertAssetResponseJson)
+            .upsertAsset()
+            .byAssetId('x')
+            .withData({
+                descriptions: [],
+                file_reference: {
+                    id: 'xId',
+                    type: 'internal'
+                }
+            })
             .toObservable()
-            .subscribe(result => {
+            .subscribe((result) => {
                 response = result;
                 done();
             });
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.upsertAsset().byAssetId('x').withData({
-            descriptions: [],
-        }).getUrl();
+        const idUrl = cmLiveClient
+            .upsertAsset()
+            .byAssetId('x')
+            .withData({
+                descriptions: []
+            })
+            .getUrl();
 
-        const externalIdUrl = cmLiveClient.upsertAsset().byAssetExternalId('x').withData({
-            descriptions: [],
-        }).getUrl();
+        const externalIdUrl = cmLiveClient
+            .upsertAsset()
+            .byAssetExternalId('x')
+            .withData({
+                descriptions: []
+            })
+            .getUrl();
 
         expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x`);
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/x`);
@@ -59,12 +74,9 @@ describe('Upsert asset', () => {
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);
         expect(asset.fileReference.type).toEqual(originalItem.file_reference.type);
 
-        asset.descriptions.forEach(s => {
+        asset.descriptions.forEach((s) => {
             expect(s.description).toBeDefined();
             expect(s.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
         });
     });
-
-
 });
-
