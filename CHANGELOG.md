@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.20](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.19...v0.3.20) (2020-06-24)
+
+
+### Features
+
+* adds missing type properties to content item contract (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/12) ([022e267](https://github.com/Kentico/kontent-management-sdk-js/commit/022e2679864fcce6dde36f2da34a48f98198196f))
+* adds support for generic queries (POST, PATCH, GET, PUT & PATCH) ([ce00b49](https://github.com/Kentico/kontent-management-sdk-js/commit/ce00b4946963855ae0016da2e9514bfb248ddfd7))
+* adds support for modify taxonomy query (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/15) ([fd96edc](https://github.com/Kentico/kontent-management-sdk-js/commit/fd96edc0ef6412cef48a45f6f2723c30158ffc46))
+* hints file reference 'intenral' type ([0ad6476](https://github.com/Kentico/kontent-management-sdk-js/commit/0ad6476ac14bce06f4449d60263e1cdb69a96482))
+* updates deps ([db94674](https://github.com/Kentico/kontent-management-sdk-js/commit/db946746593ddf4f0c2c89107de3a53154c27a6b))
+
+
+### Bug Fixes
+
+* uses correct url property for add taxonomy query ([7ba17dc](https://github.com/Kentico/kontent-management-sdk-js/commit/7ba17dc18e8d265356d529e18ff44abd3081b719))
+
 ### [0.3.19](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.18...v0.3.19) (2020-04-08)
 
 
