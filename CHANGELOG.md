@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file. See [standa
 * adds missing type properties to content item contract (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/12) ([022e267](https://github.com/Kentico/kontent-management-sdk-js/commit/022e2679864fcce6dde36f2da34a48f98198196f))
 * adds support for generic queries (POST, PATCH, GET, PUT & PATCH) ([ce00b49](https://github.com/Kentico/kontent-management-sdk-js/commit/ce00b4946963855ae0016da2e9514bfb248ddfd7))
 * adds support for modify taxonomy query (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/15) ([fd96edc](https://github.com/Kentico/kontent-management-sdk-js/commit/fd96edc0ef6412cef48a45f6f2723c30158ffc46))
-* hints file reference 'intenral' type ([0ad6476](https://github.com/Kentico/kontent-management-sdk-js/commit/0ad6476ac14bce06f4449d60263e1cdb69a96482))
+* hints file reference 'internal' type ([0ad6476](https://github.com/Kentico/kontent-management-sdk-js/commit/0ad6476ac14bce06f4449d60263e1cdb69a96482))
 * updates deps ([db94674](https://github.com/Kentico/kontent-management-sdk-js/commit/db946746593ddf4f0c2c89107de3a53154c27a6b))
 
 
