@@ -72,7 +72,7 @@
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
-    "standard-version": "8.0.0",
+    "standard-version": "8.0.1",
     "es6-promise": "4.2.8",
     "typescript": "3.9.3",
     "@types/jasmine": "3.5.10",
