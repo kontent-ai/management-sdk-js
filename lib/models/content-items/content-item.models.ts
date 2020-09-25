@@ -13,8 +13,8 @@ export namespace ContentItemModels {
         };
         public externalId?: string;
         public lastModified!: Date;
+        public collection!: SharedModels.ReferenceObject;
         public _raw!: ContentItemContracts.IContentItemModelContract;
-
 
         constructor(
             data: {
@@ -23,11 +23,12 @@ export namespace ContentItemModels {
                 codename: string,
                 type: {
                     id?: string,
-                    codename?: string;
-                    external_id?: string;
+                    codename?: string,
+                    external_id?: string
                 },
                 externalId?: string,
                 lastModified: Date,
+                collection: SharedModels.ReferenceObject,
                 _raw: ContentItemContracts.IContentItemModelContract
             }
         ) {

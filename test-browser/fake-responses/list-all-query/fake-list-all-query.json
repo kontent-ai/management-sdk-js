@@ -7,7 +7,10 @@
             "type": {
                 "id": "e097306b-3893-4a42-9973-2525fad14d66"
             },
-            "last_modified": "2016-10-20T10:50:51.0110853Z"
+            "last_modified": "2016-10-20T10:50:51.0110853Z",
+            "collection": {
+                "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
+              }
         },
         {
             "id": "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc",
@@ -16,7 +19,10 @@
             "type": {
                 "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
             },
-            "last_modified": "2016-09-01T08:36:30.1564913Z"
+            "last_modified": "2016-09-01T08:36:30.1564913Z",
+            "collection": {
+                "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
+              }
         },
         {
             "id": "e844a6aa-4dc4-464f-8ae9-f9f66cc6ab61",
@@ -25,7 +31,10 @@
             "type": {
                 "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
             },
-            "last_modified": "2016-09-01T08:25:04.4666023Z"
+            "last_modified": "2016-09-01T08:25:04.4666023Z",
+            "collection": {
+                "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
+              }
         }
     ],
     "pagination": {

@@ -11,7 +11,10 @@ describe('Upsert content item', () => {
             .withData({
                 name: 'y',
                 type: 'xType',
-                codename: 'xyz'
+                codename: 'xyz',
+                collection: {
+                    codename: 'xCollection'
+                }
             })
             .toObservable()
             .subscribe(result => {
@@ -46,6 +49,7 @@ describe('Upsert content item', () => {
         expect(response.data.lastModified).toEqual(new Date(upsertContentItemResponseJson.last_modified));
         expect(response.data.name).toEqual(upsertContentItemResponseJson.name);
         expect(response.data.type).toEqual(upsertContentItemResponseJson.type);
+        expect(response.data.collection.id).toEqual(upsertContentItemResponseJson.collection.id);
     });
 
 

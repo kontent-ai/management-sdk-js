@@ -52,6 +52,7 @@ export class ContentItemsMapper extends BaseMapper {
             lastModified: new Date(rawItem.last_modified),
             name: rawItem.name,
             type: rawItem.type,
+            collection: super.mapReference(rawItem.collection),
             _raw: rawItem
         });
     }

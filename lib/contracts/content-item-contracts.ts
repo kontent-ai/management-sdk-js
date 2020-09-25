@@ -12,6 +12,7 @@ export namespace ContentItemContracts {
         };
         external_id?: string;
         last_modified: Date;
+        collection: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IContentItemsListingResponseContract {
@@ -43,6 +44,7 @@ export namespace ContentItemContracts {
         name: string;
         type?: string;
         codename?: string;
+        collection?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IAddContentItemPostContract {
@@ -52,6 +54,7 @@ export namespace ContentItemContracts {
         };
         codename?: string;
         external_id?: string;
+        collection?: SharedContracts.IReferenceObjectContract;
     }
 }
 

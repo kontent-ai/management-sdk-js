@@ -15,6 +15,9 @@ describe('Add content item', () => {
                     type: {
                         codename: 'article'
                     },
+                    collection: {
+                        codename: 'xCollection'
+                    }
                 }
             )
             .toObservable()
@@ -50,6 +53,7 @@ describe('Add content item', () => {
         expect(response.data.lastModified).toEqual(new Date(addContentItemResponseJson.last_modified));
         expect(response.data.name).toEqual(addContentItemResponseJson.name);
         expect(response.data.type).toEqual(addContentItemResponseJson.type);
+        expect(response.data.collection.id).toEqual(addContentItemResponseJson.collection.id);
     });
 
 

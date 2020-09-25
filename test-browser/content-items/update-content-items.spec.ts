@@ -49,6 +49,7 @@ describe('Update content item', () => {
         expect(response.data.lastModified).toEqual(new Date(updateContentItemResponseJson.last_modified));
         expect(response.data.name).toEqual(updateContentItemResponseJson.name);
         expect(response.data.type).toEqual(updateContentItemResponseJson.type);
+        expect(response.data.collection.id).toEqual(updateContentItemResponseJson.collection.id);
     });
 
 
