@@ -36,7 +36,8 @@ export const getTestClientWithBaseKontentError: (errorJson: any) => IManagementC
     httpService: new TestHttpService({
         fakeResponseJson: undefined,
         throwError: true,
-        errorJson: errorJson
+        errorJson: errorJson,
+        isAxiosError: true
     })
 });
 

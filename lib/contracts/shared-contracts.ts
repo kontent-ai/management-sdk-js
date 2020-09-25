@@ -15,6 +15,13 @@ export namespace SharedContracts {
         message: string;
     }
 
+    export interface IContentManagementError {
+        message: string;
+        request_id: string;
+        error_code: number;
+        validation_errors?: IValidationErrorContract[];
+    }
+
     export interface IEmptyResponseContract {
     }
 }

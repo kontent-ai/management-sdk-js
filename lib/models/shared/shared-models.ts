@@ -1,4 +1,3 @@
-import { BaseKontentError } from '@kentico/kontent-core';
 
 export namespace SharedModels {
 
@@ -25,21 +24,28 @@ export namespace SharedModels {
         }
     }
 
-    export class ContentManagementBaseKontentError extends BaseKontentError {
+    export class ContentManagementBaseKontentError {
 
-        public validationErrors!: ValidationError[];
+        public validationErrors: ValidationError[];
+        public message: string;
+        public requestId: string;
+        public errorCode: number;
+        public originalError: any;
 
         constructor(data:
             {
                 message: string;
                 requestId: string;
                 errorCode: number;
-                specificCode: number;
                 originalError: any;
                 validationErrors: ValidationError[]
             }
         ) {
-            super(data);
+            this.validationErrors = data.validationErrors;
+            this.message = data.message;
+            this.requestId = data.requestId;
+            this.errorCode = data.errorCode;
+            this.originalError = data.originalError;
         }
 
     }

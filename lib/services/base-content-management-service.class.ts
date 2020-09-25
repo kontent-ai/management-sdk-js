@@ -1,17 +1,15 @@
 import {
-    BaseKontentError,
     headerHelper,
     IBaseResponse,
-    IBaseResponseError,
     IHeader,
     IHttpService,
     IQueryParameter,
     ISDKInfo,
-    mapBaseKontentError,
     urlHelper,
 } from '@kentico/kontent-core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AxiosError } from 'axios';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { SharedContracts } from '../contracts';
@@ -74,10 +72,9 @@ export abstract class BaseContentManagementQueryService {
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
-            .patch<BaseKontentError | any, TRawData>(
+            .patch<TRawData>(
                 {
                     url: url,
-                    mapError: error => mapBaseKontentError(error),
                     body: body
                 },
                 {
@@ -89,8 +86,8 @@ export abstract class BaseContentManagementQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapContentManagementError(error));
                 })
             );
     }
@@ -107,10 +104,9 @@ export abstract class BaseContentManagementQueryService {
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
-            .get<BaseKontentError | any, TRawData>(
+            .get<TRawData>(
                 {
                     url: url,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -121,8 +117,8 @@ export abstract class BaseContentManagementQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapContentManagementError(error));
                 })
             );
     }
@@ -140,11 +136,10 @@ export abstract class BaseContentManagementQueryService {
         config: IContentManagementQueryConfig,
     ): Observable<IBaseResponse<TRawData>> {
         return this.httpService
-            .post<BaseKontentError | any, TRawData>(
+            .post<TRawData>(
                 {
                     url: url,
                     body: body,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -155,8 +150,8 @@ export abstract class BaseContentManagementQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapContentManagementError(error));
                 })
             );
     }
@@ -174,11 +169,10 @@ export abstract class BaseContentManagementQueryService {
         config: IContentManagementQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
         return this.httpService
-            .put<BaseKontentError | any, TRawData>(
+            .put<TRawData>(
                 {
                     url: url,
                     body: body,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -189,8 +183,8 @@ export abstract class BaseContentManagementQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapContentManagementError(error));
                 })
             );
     }
@@ -208,10 +202,9 @@ export abstract class BaseContentManagementQueryService {
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
-            .delete<BaseKontentError | any, TRawData>(
+            .delete<TRawData>(
                 {
                     url: url,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -222,43 +215,49 @@ export abstract class BaseContentManagementQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapContentManagementError(error));
                 })
             );
     }
 
     private mapContentManagementError(
-        error: BaseKontentError | any
+        error: any
     ): SharedModels.ContentManagementBaseKontentError | any {
-        if (error instanceof BaseKontentError) {
-            let validationErrors: SharedModels.ValidationError[] = [];
-            if (
-                error.originalError &&
-                error.originalError.response &&
-                error.originalError.response.data &&
-                error.originalError.response.data.validation_errors
-            ) {
-                const rawValidationErrors: SharedContracts.IValidationErrorContract[] =
-                    error.originalError.response.data.validation_errors;
-                validationErrors = rawValidationErrors.map(
-                    m =>
-                        new SharedModels.ValidationError({
-                            message: m.message
-                        })
-                );
-            }
 
-            return new SharedModels.ContentManagementBaseKontentError({
-                errorCode: error.errorCode,
-                message: error.message,
-                originalError: error.originalError,
-                requestId: error.requestId,
-                specificCode: error.specificCode,
-                validationErrors: validationErrors
-            });
+        let axiosError: AxiosError | undefined;
+
+        if (error.error) {
+            axiosError = error.error;
+        } else {
+            axiosError = error;
         }
-        return error;
+
+        if (!axiosError || !axiosError.isAxiosError) {
+            return error;
+        }
+
+        const cmError = axiosError.response?.data as SharedContracts.IContentManagementError;
+
+        if (!cmError || !cmError.error_code) {
+            return error;
+        }
+
+        const validationErrors: SharedModels.ValidationError[] = [];
+
+        if (cmError.validation_errors) {
+            validationErrors.push(...cmError.validation_errors.map(validationErrorRaw => new SharedModels.ValidationError({
+                message: validationErrorRaw.message
+            })));
+        }
+
+        return new SharedModels.ContentManagementBaseKontentError({
+            errorCode: cmError.error_code,
+            message: cmError.message,
+            originalError: error,
+            requestId: cmError.request_id,
+            validationErrors: validationErrors
+        });
     }
 
     /**

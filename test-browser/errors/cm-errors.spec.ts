@@ -1,8 +1,8 @@
 import { SharedModels } from '../../lib';
-import * as fakeErrorJson from '../fake-responses/errors/fake-error.json';
+import * as fakeErrorJson from '../fake-responses/errors/cm-error-with-validation-errors.json';
 import { getTestClientWithBaseKontentError } from '../setup';
 
-describe('Error handling', () => {
+describe('Content management error with validation errors', () => {
 
     let succeeded: boolean;
     let error: any | SharedModels.ContentManagementBaseKontentError;
@@ -34,7 +34,14 @@ describe('Error handling', () => {
         expect(contentManagementError.errorCode).toEqual(fakeErrorJson.error_code);
         expect(contentManagementError.message).toEqual(fakeErrorJson.message);
         expect(contentManagementError.requestId).toEqual(fakeErrorJson.request_id);
-        expect(contentManagementError.specificCode).toEqual(fakeErrorJson.specific_code);
+
+        expect(contentManagementError.validationErrors.length).toEqual(fakeErrorJson.validation_errors.length);
+
+        for (const originalErrorMessage of fakeErrorJson.validation_errors) {
+            const mappedValidationError = contentManagementError.validationErrors.find(m => m.message === originalErrorMessage.message);
+            expect(mappedValidationError).toBeDefined();
+            expect(mappedValidationError).toEqual(jasmine.any(SharedModels.ValidationError));
+        }
     });
 });
 
