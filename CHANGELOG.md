@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.20...v0.4.0) (2020-09-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* adds new rich text element properties and removes class mapping of content type element properties. Reason for this removal is that the model class was missing many of existing properties (e.g. rich text element & text element properties are very different) and there was no benefit in using this class.
+* refactors language variants query - adds builder similar to addContentType query which gives developers intellisense and better control over creating variants
+
+### Features
+
+* adds new rich text element properties and removes class mapping of content type element properties. Reason for this removal is that the model class was missing many of existing properties (e.g. rich text element & text element properties are very different) and there was no benefit in using this class. ([fec3fc4](https://github.com/Kentico/kontent-management-sdk-js/commit/fec3fc4b84180da2078b22931afcda408467d0f7))
+* adds support for collections (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/26) ([9f653b0](https://github.com/Kentico/kontent-management-sdk-js/commit/9f653b0ac8084ea1488838ff76a512f7fc32078e))
+* refactors language variants query - adds builder similar to addContentType query which gives developers intellisense and better control over creating variants ([e4c003e](https://github.com/Kentico/kontent-management-sdk-js/commit/e4c003edf9dcf191d23ca17a289b1fed0a2d45f2))
+* updates deps + refactors content management error handling ([9b5ca5b](https://github.com/Kentico/kontent-management-sdk-js/commit/9b5ca5bba36d328549ebe9fa28325bedcb9d1ffc))
+
 ### [0.3.20](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.19...v0.3.20) (2020-06-24)
 
 
