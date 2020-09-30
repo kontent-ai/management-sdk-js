@@ -6,27 +6,12 @@ import { BaseMapper } from './base-mapper';
 
 export class ElementsMapper extends BaseMapper {
 
-    mapTypeElements(elementsRaw: ElementContracts.IContentTypeElementContract[]): ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[] {
+    mapTypeElements(elementsRaw: ElementContracts.IContentTypeElementContract[]): ElementModels.IContentTypeElementModel[] {
         return elementsRaw.map(m => this.mapTypeElement(m));
     }
 
-    mapTypeElement(rawElement: ElementContracts.IContentTypeElementContract): ElementModels.ElementModel | ElementModels.MultipleChoiceElementModel {
-        const defaultElementModel =  new ElementModels.ElementModel({
-            codename: rawElement.codename,
-            guidelines: rawElement.guidelines,
-            id: rawElement.id,
-            name: rawElement.name,
-            type: this.mapElementType(rawElement.type)
-        });
-
-        if (rawElement.type.toLowerCase() === ElementModels.ElementType.multipleChoice.toLowerCase()) {
-            return new ElementModels.MultipleChoiceElementModel(defaultElementModel, {
-                mode: this.mapMultipleChoiceMode(rawElement.mode),
-                options: this.mapMultipleChoiceOptions(rawElement.options)
-            });
-        }
-
-        return defaultElementModel;
+    mapTypeElement(rawElement: ElementContracts.IContentTypeElementContract): ElementModels.IContentTypeElementModel {
+        return rawElement;
     }
 
     mapElements(elementsRaw: ElementContracts.IContentItemElementContract[]): ElementModels.ContentItemElement[] {
@@ -59,18 +44,6 @@ export class ElementsMapper extends BaseMapper {
             id: m.id,
             type: m.type,
             _raw: m
-        }));
-    }
-
-    mapMultipleChoiceOptions(options?: ElementContracts.IContentTypeElementMultipleChoiceElementOptionsContract[]): ElementModels.MultipleChoiceElementOption[] {
-        if (!options) {
-            throw Error(`No value provided for mapping multiple choice options`);
-        }
-
-        return options.map(m => new ElementModels.MultipleChoiceElementOption({
-            codename: m.codename,
-            id: m.id,
-            name: m.name
         }));
     }
 

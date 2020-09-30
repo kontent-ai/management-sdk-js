@@ -1,4 +1,4 @@
-import { ContentTypeResponses, ElementModels } from '../../lib';
+import { ContentTypeResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-modify-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
@@ -54,12 +54,6 @@ describe('Modify content type', () => {
             const originalElement = originalItem.elements.find(m => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
-            }
-
-            if (element.type === ElementModels.ElementType.multipleChoice) {
-                expect(element).toEqual(jasmine.any(ElementModels.MultipleChoiceElementModel));
-            } else {
-                expect(element).toEqual(jasmine.any(ElementModels.ElementModel));
             }
 
             expect(element.codename).toEqual(originalElement.codename);

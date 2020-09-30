@@ -14,13 +14,12 @@ export namespace ElementContracts {
     }
 
     export interface IContentTypeElementContract {
-        id: string;
-        name?: string;
-        codename: string;
+        name: string;
         type: string;
-        guidelines: string;
-        options?: IContentTypeElementMultipleChoiceElementOptionsContract[];
-        mode?: IContentTypeElementModeTypeContract;
+
+        id?: string;
+        external_id?: string;
+        codename?: string;
     }
 
     export interface IContentItemElementContract {

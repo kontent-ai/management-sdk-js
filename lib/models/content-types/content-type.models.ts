@@ -37,7 +37,7 @@ export namespace ContentTypeModels {
         public name!: string;
         public codename!: string;
         public lastModified!: Date;
-        public elements!: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+        public elements!: ElementModels.IContentTypeElementModel[];
         public contentGroups?: ContentTypeGroup[];
         public externalId?: string;
 
@@ -48,7 +48,7 @@ export namespace ContentTypeModels {
             name: string;
             codename: string;
             lastModified: Date;
-            elements: ElementModels.ElementModel[] | ElementModels.MultipleChoiceElementModel[];
+            elements: ElementModels.IContentTypeElementModel[];
             externalId?: string;
             contentGroups?: ContentTypeGroup[];
             _raw: ContentTypeContracts.IContentTypeContract;
@@ -84,4 +84,12 @@ export namespace ContentTypeModels {
     export interface IAddContentTypeElementMultipleChoiceElementOptionsData {
         name: string;
     }
+
+    export type RichTextAllowedBlock = 'images' | 'text' | 'tables' | 'components-and-items';
+    export type RichTextAllowedTextBlock = 'paragraph' | 'heading-one' | 'heading-two' | 'heading-three' | 'heading-four' | 'ordered-list' | 'unordered-list';
+    export type RichTextAllowedFormatting = 'unstyled' | 'bold' | 'italic' | 'code' | 'link' | 'subscript' | 'superscript';
+    export type RichTextAllowedTableBlock = 'images' | 'text';
+    export type RichTextImageCondition = 'at_most' | 'exactly' | 'at_least';
+    export type RichTextallowedImageType = 'adjustable' | 'any';
+    export type RichTextMaximumLengthAppliedTo = 'words' | 'characters';
 }

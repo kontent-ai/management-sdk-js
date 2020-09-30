@@ -25,13 +25,13 @@ export namespace ElementModels {
 
     export class ContentItemElement implements SharedModels.IBaseModel<ElementContracts.IContentTypeElementContract> {
         public element!: SharedModels.ReferenceObject;
-        public value!: string | number | SharedModels.ReferenceObject[];
+        public value?: string | number | SharedModels.ReferenceObject[];
         public _raw!: ElementContracts.IContentTypeElementContract;
 
         constructor(
             data: {
                 element: SharedModels.ReferenceObject;
-                value: string | number | SharedModels.ReferenceObject[];
+                value?: string | number | SharedModels.ReferenceObject[];
                 _raw: ElementContracts.IContentItemElementContract;
             }
         ) {
@@ -73,54 +73,8 @@ export namespace ElementModels {
         }
     }
 
-    export class MultipleChoiceElementOption {
-        public id!: string;
-        public name!: string;
-        public codename!: string;
-
-        constructor(data: {
-            id: string,
-            name: string,
-            codename: string,
-        }) {
-            Object.assign(this, data);
-        }
-    }
-
-    export class ElementModel {
-
-        public id!: string;
-        public name?: string;
-        public codename!: string;
-        public type!: ElementType;
-        public guidelines!: string;
-
-        constructor(data: {
-            id: string,
-            name?: string,
-            codename: string,
-            type: ElementType,
-            guidelines: string
-        }) {
-            Object.assign(this, data);
-        }
-    }
-
-    export class MultipleChoiceElementModel extends ElementModel {
-
-        public options!: MultipleChoiceElementOption[];
-        public mode!: ElementMode;
-
-        constructor(data: ElementModel, multipleElemData: {
-            options: MultipleChoiceElementOption[];
-            mode: ElementMode;
-        }) {
-            super(data);
-
-            this.options = multipleElemData.options;
-            this.mode = multipleElemData.mode;
-        }
-    }
+  export interface IContentTypeElementModel extends ElementContracts.IContentTypeElementContract {
+  }
 
     export interface IElementData {
         id: string;

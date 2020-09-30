@@ -1,4 +1,5 @@
 import { SharedContracts } from '../../contracts';
+import { ContentTypeModels } from './content-type.models';
 
 export namespace ContentTypeElements {
 
@@ -117,19 +118,19 @@ export namespace ContentTypeElements {
     export interface IRichTextInType extends IElementInContentType {
         maximum_text_length?: {
             value: number;
-            applied_to: 'words' | 'characters'
+            applied_to: ContentTypeModels.RichTextMaximumLengthAppliedTo;
         };
         maximum_image_size?: number;
         allowed_content_types?: SharedContracts.IReferenceObjectContract[];
         image_width_limit?: {
             value: number;
-            condition: 'at_most' | 'exactly' | 'at_least'
+            condition: ContentTypeModels.RichTextImageCondition
         };
         image_height_limit?: {
             value: number;
-            condition: 'at_most' | 'exactly' | 'at_least'
+            condition: ContentTypeModels.RichTextImageCondition
         };
-        allowed_image_types?: 'adjustable' | 'any';
+        allowed_image_types?: ContentTypeModels.RichTextallowedImageType;
         name: string;
         type: 'rich_text';
         is_required?: boolean;
@@ -137,6 +138,12 @@ export namespace ContentTypeElements {
         external_id?: string;
         guidelines?: string;
         content_group?: SharedContracts.IReferenceObjectContract;
+        allowed_blocks?: ContentTypeModels.RichTextAllowedBlock[];
+        allowed_text_blocks?: ContentTypeModels.RichTextAllowedTextBlock[];
+        allowed_formatting?: ContentTypeModels.RichTextAllowedFormatting[];
+        allowed_table_blocks?: ContentTypeModels.RichTextAllowedTableBlock[];
+        allowed_table_text_blocks?: ContentTypeModels.RichTextAllowedTextBlock[];
+        allowed_table_formatting?: ContentTypeModels.RichTextAllowedFormatting[];
     }
 
     export interface ITaxonomyChoiceInType extends IElementInContentType {

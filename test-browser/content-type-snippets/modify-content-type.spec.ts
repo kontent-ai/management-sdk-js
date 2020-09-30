@@ -1,4 +1,4 @@
-import { ElementModels, ContentTypeSnippetResponses } from '../../lib';
+import { ContentTypeSnippetResponses } from '../../lib';
 import * as responseJson from '../fake-responses/content-type-snippets/fake-modify-content-type-snippet.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
@@ -67,12 +67,6 @@ describe('Modify content type snippet', () => {
             const originalElement = originalItem.elements.find(m => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
-            }
-
-            if (element.type === ElementModels.ElementType.multipleChoice) {
-                expect(element).toEqual(jasmine.any(ElementModels.MultipleChoiceElementModel));
-            } else {
-                expect(element).toEqual(jasmine.any(ElementModels.ElementModel));
             }
 
             expect(element.codename).toEqual(originalElement.codename);

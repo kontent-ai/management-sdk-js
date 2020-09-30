@@ -1,4 +1,4 @@
-import { ContentTypeResponses, ElementModels, ContentTypeModels } from '../../lib';
+import { ContentTypeResponses, ContentTypeModels } from '../../lib';
 import * as viewContentTypeJson from '../fake-responses/content-types/fake-view-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
@@ -38,16 +38,6 @@ describe('View content type', () => {
         expect(response.data).toBeDefined();
     });
 
-    it(`response should contain mapped multiple choice element model`, () => {
-        const multipleChoiceField = response.data.elements.find(m => m.codename === 'video_host');
-
-        if (!multipleChoiceField) {
-            throw Error(`Missing multiple choice field`);
-        }
-
-        expect(multipleChoiceField).toEqual(jasmine.any(ElementModels.MultipleChoiceElementModel));
-    });
-
     it(`content type properties should be mapped`, () => {
         const originalItem = viewContentTypeJson;
         const contentType = response.data;
@@ -78,12 +68,6 @@ describe('View content type', () => {
             const originalElement = originalItem.elements.find(m => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
-            }
-
-            if (element.type === ElementModels.ElementType.multipleChoice) {
-                expect(element).toEqual(jasmine.any(ElementModels.MultipleChoiceElementModel));
-            } else {
-                expect(element).toEqual(jasmine.any(ElementModels.ElementModel));
             }
 
             expect(element.codename).toEqual(originalElement.codename);
