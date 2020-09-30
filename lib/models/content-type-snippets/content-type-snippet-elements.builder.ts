@@ -1,47 +1,50 @@
-import { ElementsInContentType } from '../content-types/content-type-elements.builder';
+import { ContentTypeElements } from '../content-types/content-type-elements.builder';
 
-export class ContentTypeSnippetElementsBuilder {
+export class ContentTypeSnippetElements {
 
-    assetElement(element: ElementsInContentType.IAssetElement): ElementsInContentType.IElementInContentType {
+    assetElement(element: ContentTypeElements.IAssetElement): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    customElement(element: ElementsInContentType.ICustomElementInType): ElementsInContentType.IElementInContentType {
+    customElement(element: ContentTypeElements.ICustomElementInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    dateTimeElement(element: ElementsInContentType.IDateTimeInType): ElementsInContentType.IElementInContentType {
+    dateTimeElement(element: ContentTypeElements.IDateTimeInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    guidelinesElement(element: ElementsInContentType.IGuidelinesInType): ElementsInContentType.IElementInContentType {
+    guidelinesElement(element: ContentTypeElements.IGuidelinesInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    linkedItemsElement(element: ElementsInContentType.ILinkedItemsInType): ElementsInContentType.IElementInContentType {
+    linkedItemsElement(element: ContentTypeElements.ILinkedItemsInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    multipleChoiceElement(element: ElementsInContentType.IMultipleChoiceInType): ElementsInContentType.IElementInContentType {
+    multipleChoiceElement(element: ContentTypeElements.IMultipleChoiceInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    numberElement(element: ElementsInContentType.INumberInType): ElementsInContentType.IElementInContentType {
+    numberElement(element: ContentTypeElements.INumberInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    richTextElement(element: ElementsInContentType.IRichTextInType): ElementsInContentType.IElementInContentType {
+    richTextElement(element: ContentTypeElements.IRichTextInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    taxonomyElement(element: ElementsInContentType.ITaxonomyChoiceInType): ElementsInContentType.IElementInContentType {
+    taxonomyElement(element: ContentTypeElements.ITaxonomyChoiceInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
-    textElement(element: ElementsInContentType.ITextInType): ElementsInContentType.IElementInContentType {
+    textElement(element: ContentTypeElements.ITextInType): ContentTypeElements.IElementInContentType {
         return element;
     }
 
+    any(element: any): ContentTypeElements.IElementInContentType {
+        return element;
+    }
 }
 
-export const contentTypeSnippetElementsBuilder = new ContentTypeSnippetElementsBuilder();
+export const contentTypeSnippetElementsBuilder = new ContentTypeSnippetElements();

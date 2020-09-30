@@ -19,41 +19,35 @@ describe('Delete language variant', () => {
 
     it(`url should be correct`, () => {
         const codenameUrlWithCodenameLanguage = cmLiveClient
-            .upsertLanguageVariant()
+            .deleteLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageCodename('xLanguageCodename')
-            .withElements([])
             .getUrl();
         const internalIdUrlWithCodenameLanguage = cmLiveClient
-            .upsertLanguageVariant()
+            .deleteLanguageVariant()
             .byItemId('xItemId')
             .byLanguageCodename('xLanguageCodename')
-            .withElements([])
             .getUrl();
         const externalIdUrlWithCodenameLanguage = cmLiveClient
-            .upsertLanguageVariant()
+            .deleteLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageCodename('xLanguageCodename')
-            .withElements([])
             .getUrl();
 
         const codenameUrlWithIdLanguage = cmLiveClient
-            .upsertLanguageVariant()
+            .deleteLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageId('xLanguageId')
-            .withElements([])
             .getUrl();
         const internalIdUrlWithIdLanguage = cmLiveClient
-            .upsertLanguageVariant()
+            .deleteLanguageVariant()
             .byItemId('xItemId')
             .byLanguageId('xLanguageId')
-            .withElements([])
             .getUrl();
         const externalIdUrlWithIdLanguage = cmLiveClient
-            .upsertLanguageVariant()
+            .deleteLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageId('xLanguageId')
-            .withElements([])
             .getUrl();
 
         expect(codenameUrlWithCodenameLanguage).toEqual(

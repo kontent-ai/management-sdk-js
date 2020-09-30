@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../../config';
-import { ContentTypeModels, ContentTypeElementsBuilder, contentTypeElementsBuilder } from '../../models';
+import { ContentTypeModels, contentTypeElementsBuilder, ContentTypeElementsBuilder } from '../../models';
 import { ContentTypeResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';

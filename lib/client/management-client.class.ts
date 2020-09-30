@@ -1,4 +1,5 @@
 import { HttpService } from '@kentico/kontent-core';
+import { LanguageVariantElements, LanguageVariantElementsBuilder } from '../models';
 
 import { IManagementClientConfig } from '../config';
 import { ContentItemContracts } from '../contracts';
@@ -7,7 +8,7 @@ import {
     AssetModels,
     ContentTypeElementsBuilder,
     ContentTypeModels,
-    ContentTypeSnippetElementsBuilder,
+    ContentTypeSnippetElements,
     ContentTypeSnippetModels,
     LanguageModels,
     TaxonomyModels,
@@ -44,7 +45,6 @@ import {
     GetWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
     LanguageIdentifierQuery,
-    LanguageVariantElementsQuery,
     ListAssetFoldersQuery,
     ListAssetsQuery,
     ListContentItemsQuery,
@@ -321,11 +321,11 @@ export class ManagementClient implements IManagementClient {
 
     addContentTypeSnippet(): DataQuery<
         AddContentTypeSnippetQuery,
-        (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData
+        (builder: ContentTypeSnippetElements) => ContentTypeSnippetModels.IAddContentTypeSnippetData
     > {
         return new DataQuery<
             AddContentTypeSnippetQuery,
-            (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData
+            (builder: ContentTypeSnippetElements) => ContentTypeSnippetModels.IAddContentTypeSnippetData
         >(
             this.config,
             this.queryService,
@@ -348,19 +348,19 @@ export class ManagementClient implements IManagementClient {
     }
 
     upsertLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>
+        LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>
     > {
         return new ContentItemIdentifierQuery<
-            LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>
+            LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>
         >(
             this.config,
             this.queryService,
             (config, queryService, contentItemIdentifier) =>
-                new LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>(
+                new LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
-                        new LanguageVariantElementsQuery(
+                        new DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>(
                             nConfig,
                             nQueryService,
                             (mConfig, mQueryService, elements) =>

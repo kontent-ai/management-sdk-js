@@ -1,7 +1,7 @@
 import { SharedContracts, ContentTypeContracts } from '../../contracts';
 import { ElementModels } from '../elements/elements.models';
 import { SharedModels } from '../shared/shared-models';
-import { ElementsInContentType } from './content-type-elements.builder';
+import { ContentTypeElements } from './content-type-elements.builder';
 
 export namespace ContentTypeModels {
     export type ModifyContentTypeOperation = 'addInto' | 'remove' | 'replace';
@@ -64,7 +64,7 @@ export namespace ContentTypeModels {
 
     export interface IAddContentTypeData {
         name: string;
-        elements: ElementsInContentType.IElementInContentType[];
+        elements: ContentTypeElements.IElementInContentType[];
 
         external_id?: string;
         codename?: string;

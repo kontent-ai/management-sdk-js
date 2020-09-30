@@ -4,9 +4,11 @@ import {
     AssetModels,
     ContentTypeElementsBuilder,
     ContentTypeModels,
-    ContentTypeSnippetElementsBuilder,
+    ContentTypeSnippetElements,
     ContentTypeSnippetModels,
     LanguageModels,
+    LanguageVariantElements,
+    LanguageVariantElementsBuilder,
     TaxonomyModels,
     WebhookModels,
     WorkflowModels,
@@ -40,7 +42,6 @@ import {
     GetWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
     LanguageIdentifierQuery,
-    LanguageVariantElementsQuery,
     ListAssetFoldersQuery,
     ListAssetsQuery,
     ListContentItemsQuery,
@@ -179,7 +180,7 @@ export interface IManagementClient {
      */
     addContentTypeSnippet(): DataQuery<
         AddContentTypeSnippetQuery,
-        (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData
+        (builder: ContentTypeSnippetElements) => ContentTypeSnippetModels.IAddContentTypeSnippetData
     >;
 
     /**
@@ -212,8 +213,7 @@ export interface IManagementClient {
      * Query to upsert language variant
      */
     upsertLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<LanguageVariantElementsQuery<UpsertLanguageVariantQuery>>
-    >;
+    LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>>;
 
     /**
      * Query to delete language variant

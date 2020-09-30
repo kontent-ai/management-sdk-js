@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../../config';
-import { ContentTypeSnippetModels, ContentTypeSnippetElementsBuilder, contentTypeSnippetElementsBuilder } from '../../models';
+import { ContentTypeSnippetModels, ContentTypeSnippetElements, contentTypeSnippetElementsBuilder } from '../../models';
 import { ContentTypeSnippetResponses } from '../../responses';
 import { ContentManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
@@ -11,7 +11,7 @@ export class AddContentTypeSnippetQuery extends BaseQuery<ContentTypeSnippetResp
   constructor(
     protected config: IManagementClientConfig,
     protected queryService: ContentManagementQueryService,
-    public data: (builder: ContentTypeSnippetElementsBuilder) => ContentTypeSnippetModels.IAddContentTypeSnippetData,
+    public data: (builder: ContentTypeSnippetElements) => ContentTypeSnippetModels.IAddContentTypeSnippetData,
   ) {
     super(config, queryService);
   }

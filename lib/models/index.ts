@@ -9,6 +9,7 @@ export * from './content-types/content-type.models';
 export * from './content-types/content-type-elements.builder';
 export * from './projects/project.models';
 export * from './language-variants/language-variant.models';
+export * from './language-variants/language-variant-elements-builder';
 export * from './elements/elements.models';
 export * from './content-type-snippets/content-type-snippets.models';
 export * from './content-type-snippets/content-type-snippet-elements.builder';

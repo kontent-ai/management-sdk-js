@@ -1,4 +1,5 @@
 import { IHttpService, ISDKInfo } from '@kentico/kontent-core';
+import { LanguageVariantElements } from '../models/language-variants/language-variant-elements-builder';
 import { Observable, of } from 'rxjs';
 import { flatMap, map, delay } from 'rxjs/operators';
 
@@ -36,7 +37,6 @@ import {
     ContentTypeSnippetModels,
     IContentManagementQueryConfig,
     LanguageModels,
-    LanguageVariantModels,
     TaxonomyModels,
     WebhookModels,
     WorkflowModels,
@@ -606,7 +606,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
 
     upsertLanguageVariant(
         url: string,
-        elements: LanguageVariantModels.ILanguageVariantElement[],
+        elements: LanguageVariantElements.ILanguageVariantElementBase[],
         config: IContentManagementQueryConfig
     ): Observable<LanguageVariantResponses.UpsertLanguageVariantResponse> {
         return this.putResponse<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>(

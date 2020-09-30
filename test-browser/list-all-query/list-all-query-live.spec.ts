@@ -65,7 +65,7 @@ export function createSampleData(): void {
                         .upsertLanguageVariant()
                         .byItemId(responseA.data.id)
                         .byLanguageCodename('en')
-                        .withElements([
+                        .withData(builder => [
                             {
                                 element: {
                                     codename: 'title'

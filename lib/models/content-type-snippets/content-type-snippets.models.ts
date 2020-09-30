@@ -1,5 +1,5 @@
 import { ContentTypeSnippetContracts } from '../../contracts';
-import { ElementsInContentType } from '../content-types/content-type-elements.builder';
+import { ContentTypeElements } from '../content-types/content-type-elements.builder';
 import { ElementModels } from '../elements/elements.models';
 import { SharedModels } from '../shared/shared-models';
 
@@ -32,7 +32,7 @@ export namespace ContentTypeSnippetModels {
 
     export interface IAddContentTypeSnippetData {
         name: string;
-        elements: ElementsInContentType.IElementInContentType[];
+        elements: ContentTypeElements.IElementInContentType[];
 
         external_id?: string;
         codename?: string;
