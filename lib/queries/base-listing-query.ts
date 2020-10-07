@@ -11,7 +11,7 @@ export abstract class BaseListingQuery<
     TAllResponse extends BaseResponses.IContentManagementListAllResponse
 > extends BaseQuery<TResponse> {
     protected readonly xContinuationHeaderName: string = 'x-continuation';
-    protected listQueryConfig?: IContentManagementListQueryConfig;
+    protected listQueryConfig?: IContentManagementListQueryConfig<TResponse>;
 
     constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
         super(config, queryService);
@@ -21,7 +21,7 @@ export abstract class BaseListingQuery<
      * Configuration for list queries
      * @param config List configuration
      */
-    withListQueryConfig(config?: IContentManagementListQueryConfig): this {
+    withListQueryConfig(config?: IContentManagementListQueryConfig<TResponse>): this {
         this.listQueryConfig = config;
         return this;
     }

@@ -36,6 +36,6 @@ export interface IManagementClientConfig {
     /**
      * Custom default list query config. Applied to all list query configs unless overriden by query.
      */
-    listQueryConfig?: IContentManagementListQueryConfig;
+    listQueryConfig?: IContentManagementListQueryConfig<any>;
 
 }

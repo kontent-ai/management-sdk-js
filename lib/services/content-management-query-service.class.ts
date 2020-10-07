@@ -62,7 +62,7 @@ import { BaseContentManagementQueryService } from './base-content-management-ser
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService {
 
-    private readonly defaultListQueryConfig: IContentManagementListQueryConfig;
+    private readonly defaultDelayBetweenRequests: number = 250;
 
     constructor(
         protected config: IManagementClientConfig,
@@ -70,14 +70,6 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         protected sdkInfo: ISDKInfo
     ) {
         super(config, httpService, sdkInfo);
-
-        if (config.listQueryConfig) {
-            this.defaultListQueryConfig = config.listQueryConfig;
-        } else {
-            this.defaultListQueryConfig = {
-                delayBetweenRequests: 250
-            };
-        }
     }
 
     genericPostResponse(
@@ -144,7 +136,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     >(data: {
         getResponse: (xContinuationToken?: string) => Observable<TResponse>;
         allResponseFactory: (items: any[], responses: TResponse[]) => TAllResponse;
-        listQueryConfig?: IContentManagementListQueryConfig
+        listQueryConfig?: IContentManagementListQueryConfig<TResponse>
     }): Observable<TAllResponse> {
         return this.getListAllResponseInternal({
             resolvedResponses: [],
@@ -806,14 +798,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         xContinuationToken?: string;
         getResponse: (xContinuationToken?: string) => Observable<TResponse>;
         resolvedResponses: TResponse[];
-        listQueryConfig?: IContentManagementListQueryConfig
+        listQueryConfig?: IContentManagementListQueryConfig<TResponse>
     }): Observable<TResponse[]> {
         return data.getResponse(data.xContinuationToken).pipe(
-            delay(data.listQueryConfig
-                ? data.listQueryConfig.delayBetweenRequests
-                : this.defaultListQueryConfig.delayBetweenRequests),
+            delay(data.listQueryConfig?.delayBetweenRequests ?? this.defaultDelayBetweenRequests),
             flatMap(response => {
                 data.resolvedResponses.push(response);
+
+                if (data.listQueryConfig?.responseFetched) {
+                    data.listQueryConfig.responseFetched(response, data.xContinuationToken);
+                }
 
                 if (response.data.pagination.continuationToken) {
                     // recursively fetch next page data

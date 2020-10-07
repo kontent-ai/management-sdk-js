@@ -9,7 +9,9 @@ if (useLiveTesting()) {
 
         beforeAll(done => {
             const query = cmLiveClient.listContentItems().withListQueryConfig({
-                delayBetweenRequests: 500
+                delayBetweenRequests: 500,
+                responseFetched: (listResponse, token) => {
+                }
             });
 
             query.toAllObservable().subscribe(result => {
