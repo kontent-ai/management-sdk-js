@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.0...v0.4.1) (2020-10-07)
+
+
+### Features
+
+* adds 'responseFetched' callback configuration property to IContentManagementListQueryConfig ([f2371f8](https://github.com/Kentico/kontent-management-sdk-js/commit/f2371f886b4eb1eb5c3f07dcd823dbfcd675707a))
+
 ## [0.4.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.20...v0.4.0) (2020-09-30)
 
 
