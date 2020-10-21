@@ -30,7 +30,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
         }
 
         // use original url
-        return this.queryService.getFullUrl(this.getAction(), this.getParameters(), this.addSlashToUrl);
+        return encodeURI(this.queryService.getFullUrl(this.getAction(), this.getParameters(), this.addSlashToUrl));
     }
 
     /**

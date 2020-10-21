@@ -36,6 +36,17 @@ describe('Upload binary file', () => {
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/files/y`);
     });
 
+    it(`url should be encoded using filename`, () => {
+        const url = cmLiveClient.uploadBinaryFile().withData({
+            binaryData: 'c',
+            contentLength: 9,
+            contentType: 'x',
+            filename: 'name with spaces'
+        }).getUrl();
+
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/files/name%20with%20spaces`);
+    });
+
     it(`response headers should contain required items`, () => {
         const contentTypeHeader = binaryFileHeaders.find(m => m.header.toLowerCase() === 'Content-type'.toLowerCase());
         const contentLengthHeader = binaryFileHeaders.find(m => m.header.toLowerCase() === 'Content-length'.toLowerCase());
