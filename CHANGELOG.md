@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.1...v0.4.2) (2020-10-21)
+
+
+### Bug Fixes
+
+* encodes url by default. Fixes errors when url contained special characters (such as space in filename within uploadBinaryFile method) ([7c318f5](https://github.com/Kentico/kontent-management-sdk-js/commit/7c318f5f33d00b3f4b5bf142e29877fb234d3df4))
+
 ### [0.4.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.0...v0.4.1) (2020-10-07)
 
 
