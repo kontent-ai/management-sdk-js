@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.2...v0.4.3) (2020-10-23)
+
+
+### Bug Fixes
+
+* fixes interface typo (applied_to -> applies_to) in content type elements builder ([b019338](https://github.com/Kentico/kontent-management-sdk-js/commit/b0193384edc7179d09ed424a2e721a11297d0184))
+
 ### [0.4.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.1...v0.4.2) (2020-10-21)
 
 
