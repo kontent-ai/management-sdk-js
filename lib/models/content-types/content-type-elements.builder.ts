@@ -118,7 +118,7 @@ export namespace ContentTypeElements {
     export interface IRichTextInType extends IElementInContentType {
         maximum_text_length?: {
             value: number;
-            applied_to: ContentTypeModels.RichTextMaximumLengthAppliedTo;
+            applies_to: ContentTypeModels.RichTextMaximumLengthAppliesTo;
         };
         maximum_image_size?: number;
         allowed_content_types?: SharedContracts.IReferenceObjectContract[];
@@ -165,7 +165,7 @@ export namespace ContentTypeElements {
         content_group?: SharedContracts.IReferenceObjectContract;
         maximum_text_length?: {
             value: number;
-            applied_to: 'words' | 'characters'
+            applies_to: 'words' | 'characters'
         };
     }
 

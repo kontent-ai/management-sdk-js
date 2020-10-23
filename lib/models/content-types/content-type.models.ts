@@ -91,5 +91,5 @@ export namespace ContentTypeModels {
     export type RichTextAllowedTableBlock = 'images' | 'text';
     export type RichTextImageCondition = 'at_most' | 'exactly' | 'at_least';
     export type RichTextallowedImageType = 'adjustable' | 'any';
-    export type RichTextMaximumLengthAppliedTo = 'words' | 'characters';
+    export type RichTextMaximumLengthAppliesTo = 'words' | 'characters';
 }
