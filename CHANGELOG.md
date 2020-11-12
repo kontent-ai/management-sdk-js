@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.3...v0.4.4) (2020-11-12)
+
+
+### Bug Fixes
+
+* uses correct query identifier for upsert content item query ([6079c04](https://github.com/Kentico/kontent-management-sdk-js/commit/6079c0496f5088ef510afc9aa2f47dd3b2ef057f))
+
 ### [0.4.3](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.2...v0.4.3) (2020-10-23)
 
 
