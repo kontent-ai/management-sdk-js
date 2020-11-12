@@ -27,7 +27,6 @@ import {
     AssetIdentifierQueryClass,
     CancelScheduledPublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
-    ContentItemExternalIdIdentifierQuery,
     ContentItemIdentifierQuery,
     ContentTypeCodenameAndIdIdentifierQuery,
     ContentTypeIdentifierQuery,
@@ -608,10 +607,10 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    upsertContentItem(): ContentItemExternalIdIdentifierQuery<
+    upsertContentItem(): ContentItemIdentifierQuery<
         DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>
     > {
-        return new ContentItemExternalIdIdentifierQuery<
+        return new ContentItemIdentifierQuery<
             DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>
         >(
             this.config,

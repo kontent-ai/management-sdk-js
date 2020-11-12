@@ -25,7 +25,6 @@ import {
     AssetIdentifierQueryClass,
     CancelScheduledPublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
-    ContentItemExternalIdIdentifierQuery,
     ContentItemIdentifierQuery,
     ContentTypeCodenameAndIdIdentifierQuery,
     ContentTypeIdentifierQuery,
@@ -326,7 +325,7 @@ export interface IManagementClient {
     /**
      * Upsert content item query
      */
-    upsertContentItem(): ContentItemExternalIdIdentifierQuery<
+    upsertContentItem(): ContentItemIdentifierQuery<
         DataQuery<UpsertContentItemQuery, ContentItemContracts.IUpsertContentItemPostContract>
     >;
 
