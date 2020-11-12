@@ -25,8 +25,12 @@ describe('Upsert content item', () => {
 
     it(`url should be correct`, () => {
         const externalIdUrl = cmLiveClient.upsertContentItem().byItemExternalId('xExternalId').withData({} as any).getUrl();
+        const internalIdUrl = cmLiveClient.upsertContentItem().byItemId('xId').withData({} as any).getUrl();
+        const codenameUrl = cmLiveClient.upsertContentItem().byItemCodename('xCodename').withData({} as any).getUrl();
 
         expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xId`);
+        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
     });
 
     it(`response should be instance of UpsertContentItemResponse class`, () => {
