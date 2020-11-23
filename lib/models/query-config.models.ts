@@ -1,4 +1,6 @@
-import { HttpResponseType, IHeader } from '@kentico/kontent-core';
+import { IHeader } from '@kentico/kontent-core';
+import { ResponseType } from 'axios';
+
 import { BaseResponses } from '../responses/base-responses';
 
 export interface IContentManagementQueryConfig {
@@ -6,7 +8,7 @@ export interface IContentManagementQueryConfig {
 }
 
 export interface IContentManagementInternalQueryConfig {
-    responseType?: HttpResponseType;
+    responseType?: ResponseType;
 }
 
 export interface IContentManagementListQueryConfig<TResponse extends BaseResponses.IContentManagementListResponse> {
