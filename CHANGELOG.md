@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.4...v0.4.5) (2020-11-23)
+
+
+### Features
+
+* updates all dependencies, uses axios models directly instead of proxy models ([53837e1](https://github.com/Kentico/kontent-management-sdk-js/commit/53837e1cf64635d827b0407af6f5e5892cb35925))
+
 ### [0.4.4](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.3...v0.4.4) (2020-11-12)
 
 
