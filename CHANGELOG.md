@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.6](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.5...v0.4.6) (2020-12-14)
+
+
+### Features
+
+* adds support for new unpublish / schedule unpublish endpoint & removes deprecated unpublish endpoint (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/28) ([4da0b6b](https://github.com/Kentico/kontent-management-sdk-js/commit/4da0b6b646e21899cc19c892e40e5f23474d487b))
+* unifies publish / unpublish naming convention, removes unsused query models ([cc78e90](https://github.com/Kentico/kontent-management-sdk-js/commit/cc78e90829e0e7b9b378ced4e4684908230ff510))
+* updates all dependencies ([6b2e7c1](https://github.com/Kentico/kontent-management-sdk-js/commit/6b2e7c14721131a0e917faba7d7962e234856f4d))
+
+
+### Bug Fixes
+
+* makes 'item_count_limit' optional (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/29) ([826a0eb](https://github.com/Kentico/kontent-management-sdk-js/commit/826a0ebfc4156f99d64c961e9edc3bcf35b3f21f))
+
 ### [0.4.5](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.4...v0.4.5) (2020-11-23)
 
 
