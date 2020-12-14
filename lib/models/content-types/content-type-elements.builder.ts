@@ -74,7 +74,7 @@ export namespace ContentTypeElements {
     }
 
     export interface ILinkedItemsInType extends IElementInContentType {
-        item_count_limit: {
+        item_count_limit?: {
             value: number;
             condition: 'at_most' | 'exactly' | 'at_least'
         };
