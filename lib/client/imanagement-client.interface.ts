@@ -14,6 +14,7 @@ import {
     WorkflowModels,
 } from '../models';
 import {
+    ActionQuery,
     AddAssetFoldersQuery,
     AddAssetQuery,
     AddContentItemQuery,
@@ -35,8 +36,11 @@ import {
     DeleteContentItemQuery,
     DeleteContentTypeQuery,
     DeleteContentTypeSnippetQuery,
+    DeleteLanguageVariantQuery,
+    DeleteQuery,
     DeleteTaxonomyQuery,
     DeleteWebhookQuery,
+    GetQuery,
     GetTaxonomyQuery,
     GetWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
@@ -55,10 +59,15 @@ import {
     ListWorkflowStepsQuery,
     ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
+    ModifyContentTypeSnippetQuery,
     ModifyLanguageQuery,
+    ModifyTaxonomyQuery,
+    PatchQuery,
+    PostQuery,
     ProjectIdIdentifierQuery,
     ProjectInformationQuery,
     PublishOrScheduleLanguageVariantQuery,
+    PutQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
     UpdateContentItemQuery,
@@ -75,20 +84,10 @@ import {
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
-    DeleteLanguageVariantQuery,
-    ModifyContentTypeSnippetQuery,
-    ModifyTaxonomyQuery,
-    PostQuery,
-    PatchQuery,
-    DeleteQuery,
-    GetQuery,
-    ActionQuery,
-    PutQuery,
 } from '../queries';
 import { IMappingService } from '../services';
 
 export interface IManagementClient {
-
     mappingService: IMappingService;
 
     /**
@@ -128,7 +127,9 @@ export interface IManagementClient {
      * You can only unpublish language variants that are published and don't already have a Draft (unpublished) version.
      */
     unpublishLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+        >
     >;
 
     /**
@@ -192,16 +193,14 @@ export interface IManagementClient {
     /**
      * Query to modify taxonomy
      */
-    modifyTaxonomy(): TaxonomyIdentifierQuery<
-        DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>
-    >;
+    modifyTaxonomy(): TaxonomyIdentifierQuery<DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>>;
 
     /**
      * Query to modify content type snippet
      */
     modifyContentTypeSnippet(): ContentTypeIdentifierQuery<
-    DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
->;
+        DataQuery<ModifyContentTypeSnippetQuery, ContentTypeSnippetModels.IModifyContentTypeSnippetData[]>
+    >;
 
     /**
      * Query to view language variant
@@ -212,7 +211,13 @@ export interface IManagementClient {
      * Query to upsert language variant
      */
     upsertLanguageVariant(): ContentItemIdentifierQuery<
-    LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>>;
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQuery<
+                UpsertLanguageVariantQuery,
+                (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+            >
+        >
+    >;
 
     /**
      * Query to delete language variant
@@ -220,7 +225,6 @@ export interface IManagementClient {
     deleteLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<DeleteLanguageVariantQuery>
     >;
-
 
     /**
      * Query to validate project content
@@ -342,16 +346,12 @@ export interface IManagementClient {
     /**
      * List language variants of a specific content type query
      */
-    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<
-        ListLanguageVariantsOfContentTypeQuery
-    >;
+    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery>;
 
     /**
      * List language variants of a specific content type with components
      */
-    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<
-        ListLanguageVariantsOfContentTypeWithComponentsQuery
-    >;
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>;
 
     /**
      * List languages in project

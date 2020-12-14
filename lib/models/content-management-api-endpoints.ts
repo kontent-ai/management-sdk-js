@@ -16,7 +16,7 @@ export class ContentManagementApiEndpoints {
     }
 
     unpublishLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/unpublish`;
+        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/unpublish-and-archive`;
     }
 
     cancelScheduledPublishingOfLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {

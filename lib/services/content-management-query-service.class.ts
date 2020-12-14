@@ -181,9 +181,10 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
 
     unpublishLanguageVariant(
         url: string,
+        data: WorkflowModels.IUnpublishOrScheduleUnpublishData | undefined,
         config: IContentManagementQueryConfig
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, undefined, {}, config).pipe(
+        return this.putResponse<void>(url, data, {}, config).pipe(
             map(response => {
                 return workflowMapper.mapEmptyResponse(response);
             })

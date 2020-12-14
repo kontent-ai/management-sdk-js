@@ -28,4 +28,12 @@ export namespace WorkflowModels {
         scheduled_to?: string;
     }
 
+    export interface IUnpublishOrScheduleUnpublishData {
+        /**
+         * ISO-8601 formatted date/time. Example: 2019-01-31T11:00:00+01:00.
+         * If you do not provide this property, the specified language variant is published immediately.
+         */
+        scheduled_to?: string;
+    }
+
 }

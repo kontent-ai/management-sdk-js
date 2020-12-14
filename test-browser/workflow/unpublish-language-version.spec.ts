@@ -1,24 +1,36 @@
-import { BaseResponses } from '../../lib';
+import { BaseResponses, UnpublishLanguageVariantQuery } from '../../lib';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-describe('Unpublish language version', () => {
+describe('Unpublish a language version', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
+    let query: UnpublishLanguageVariantQuery;
 
     beforeAll((done) => {
-        getTestClientWithJson(undefined).unpublishLanguageVariant()
+        query = getTestClientWithJson(undefined)
+            .unpublishLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
+            .withData({
+                scheduled_to: '2019-01-31T11:00:00+01:00'
             });
+
+        query.toObservable().subscribe((result) => {
+            response = result;
+            done();
+        });
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient.unpublishLanguageVariant().byItemCodename('x').byLanguageCodename('y').getUrl();
+        const w1Url = cmLiveClient
+            .unpublishLanguageVariant()
+            .byItemCodename('x')
+            .byLanguageCodename('y')
+            .withoutData()
+            .getUrl();
 
-        expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/unpublish`);
+        expect(w1Url).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/unpublish-and-archive`
+        );
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {
@@ -33,5 +45,7 @@ describe('Unpublish language version', () => {
         expect(response.data).toBeUndefined();
     });
 
+    it(`query data should be set`, () => {
+        expect(query.data ? query.data.scheduled_to : '').toEqual(`2019-01-31T11:00:00+01:00`);
+    });
 });
-

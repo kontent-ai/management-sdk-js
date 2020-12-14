@@ -13,7 +13,7 @@ import {
     LanguageModels,
     TaxonomyModels,
     WebhookModels,
-    WorkflowModels,
+    WorkflowModels
 } from '../models';
 import {
     AddAssetFoldersQuery,
@@ -85,7 +85,7 @@ import {
     PatchQuery,
     PutQuery,
     DeleteQuery,
-    GetQuery,
+    GetQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -112,9 +112,12 @@ export class ManagementClient implements IManagementClient {
         return new ActionQuery<DataQuery<PostQuery, any>>(
             this.config,
             this.queryService,
-            (config, queryService, action) => new DataQuery<PostQuery, any>(
-                config, queryService, (nConfig, nQueryService, data) => new PostQuery(nConfig, nQueryService, action, data)
-            )
+            (config, queryService, action) =>
+                new DataQuery<PostQuery, any>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new PostQuery(nConfig, nQueryService, action, data)
+                )
         );
     }
 
@@ -122,9 +125,12 @@ export class ManagementClient implements IManagementClient {
         return new ActionQuery<DataQuery<PatchQuery, any>>(
             this.config,
             this.queryService,
-            (config, queryService, action) => new DataQuery<PatchQuery, any>(
-                config, queryService, (nConfig, nQueryService, data) => new PatchQuery(nConfig, nQueryService, action, data)
-            )
+            (config, queryService, action) =>
+                new DataQuery<PatchQuery, any>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new PatchQuery(nConfig, nQueryService, action, data)
+                )
         );
     }
 
@@ -132,23 +138,28 @@ export class ManagementClient implements IManagementClient {
         return new ActionQuery<DataQuery<PutQuery, any>>(
             this.config,
             this.queryService,
-            (config, queryService, action) => new DataQuery<PutQuery, any>(
-                config, queryService, (nConfig, nQueryService, data) => new PutQuery(nConfig, nQueryService, action, data)
-            )
+            (config, queryService, action) =>
+                new DataQuery<PutQuery, any>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new PutQuery(nConfig, nQueryService, action, data)
+                )
         );
     }
 
     delete(): ActionQuery<DeleteQuery> {
         return new ActionQuery<DeleteQuery>(
             this.config,
-            this.queryService, (config, queryService, action) => new DeleteQuery(config, queryService, action)
+            this.queryService,
+            (config, queryService, action) => new DeleteQuery(config, queryService, action)
         );
     }
 
     get(): ActionQuery<GetQuery> {
         return new ActionQuery<GetQuery>(
             this.config,
-            this.queryService, (config, queryService, action) => new GetQuery(config, queryService, action)
+            this.queryService,
+            (config, queryService, action) => new GetQuery(config, queryService, action)
         );
     }
 
@@ -176,21 +187,38 @@ export class ManagementClient implements IManagementClient {
     }
 
     unpublishLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+        >
     > {
-        return new ContentItemIdentifierQuery<LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>>(
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<
+                DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+            >
+        >(
             this.config,
             this.queryService,
             (config, queryService, contentItemIdentifier) =>
-                new LanguageIdAndCodenameIdentifierQuery<UnpublishLanguageVariantQuery>(
+                new LanguageIdAndCodenameIdentifierQuery<
+                    DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+                >(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
-                        new UnpublishLanguageVariantQuery(
+                        new DataQueryOptional<
+                            UnpublishLanguageVariantQuery,
+                            WorkflowModels.IUnpublishOrScheduleUnpublishData
+                        >(
                             nConfig,
                             nQueryService,
-                            contentItemIdentifier,
-                            languageIdentifier
+                            (pConfig, pQueryService, data) =>
+                                new UnpublishLanguageVariantQuery(
+                                    pConfig,
+                                    pQueryService,
+                                    contentItemIdentifier,
+                                    languageIdentifier,
+                                    data
+                                )
                         )
                 )
         );
@@ -347,19 +375,41 @@ export class ManagementClient implements IManagementClient {
     }
 
     upsertLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQuery<
+                UpsertLanguageVariantQuery,
+                (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+            >
+        >
     > {
         return new ContentItemIdentifierQuery<
-            LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>
+            LanguageIdAndCodenameIdentifierQuery<
+                DataQuery<
+                    UpsertLanguageVariantQuery,
+                    (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                >
+            >
         >(
             this.config,
             this.queryService,
             (config, queryService, contentItemIdentifier) =>
-                new LanguageIdAndCodenameIdentifierQuery<DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>>(
+                new LanguageIdAndCodenameIdentifierQuery<
+                    DataQuery<
+                        UpsertLanguageVariantQuery,
+                        (
+                            builder: LanguageVariantElementsBuilder
+                        ) => LanguageVariantElements.ILanguageVariantElementBase[]
+                    >
+                >(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
-                        new DataQuery<UpsertLanguageVariantQuery, (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]>(
+                        new DataQuery<
+                            UpsertLanguageVariantQuery,
+                            (
+                                builder: LanguageVariantElementsBuilder
+                            ) => LanguageVariantElements.ILanguageVariantElementBase[]
+                        >(
                             nConfig,
                             nQueryService,
                             (mConfig, mQueryService, elements) =>
@@ -462,20 +512,15 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    modifyTaxonomy(): TaxonomyIdentifierQuery<
-        DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>
-    > {
-        return new TaxonomyIdentifierQuery<
-            DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>
-        >(
+    modifyTaxonomy(): TaxonomyIdentifierQuery<DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>> {
+        return new TaxonomyIdentifierQuery<DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>>(
             this.config,
             this.queryService,
             (config, queryService, identifier) =>
                 new DataQuery<ModifyTaxonomyQuery, TaxonomyModels.IModifyTaxonomyData[]>(
                     config,
                     queryService,
-                    (nConfig, nQueryService, data) =>
-                        new ModifyTaxonomyQuery(nConfig, nQueryService, identifier, data)
+                    (nConfig, nQueryService, data) => new ModifyTaxonomyQuery(nConfig, nQueryService, identifier, data)
                 )
         );
     }
@@ -641,9 +686,7 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<
-        ListLanguageVariantsOfContentTypeQuery
-    > {
+    listLanguageVariantsOfContentType(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery> {
         return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeQuery>(
             this.config,
             this.queryService,
@@ -652,9 +695,7 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<
-        ListLanguageVariantsOfContentTypeWithComponentsQuery
-    > {
+    listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
         return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
             this.config,
             this.queryService,
