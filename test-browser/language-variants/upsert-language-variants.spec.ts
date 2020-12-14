@@ -17,6 +17,23 @@ describe('Upsert language variant', () => {
                     },
                     value: 'xText'
                 }),
+                builder.richTextElement({
+                    element: {
+                        codename: 'x'
+                    },
+                    value: '<p>yyy<p>',
+                    components: [{
+                        type: {
+                            codename: 'y'
+                        },
+                        elements: [{
+                            element: {
+                                codename: 'y',
+                            },
+                            value: 'y'
+                        }]
+                    }]
+                }),
                 builder.numberElement({
                     element: {
                         codename: 'zElementCodename'
@@ -42,8 +59,8 @@ describe('Upsert language variant', () => {
                             codename: 'coffee_blogger'
                         }
                     ]
-                }
-            ])
+                },
+            ], )
             .toObservable()
             .subscribe((result) => {
                 response = result;
