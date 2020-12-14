@@ -13,44 +13,4 @@ export namespace WorkflowResponses {
             super(debug, rawData, data);
         }
     }
-
-    export class PublishOrScheduleLanguageVariant extends BaseResponses.BaseContentManagementResponse<void, void>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: void,
-            data: void
-        ) {
-            super(debug, rawData, data);
-        }
-    }
-
-    export class CreateNewVersionOfLanguageVariant extends BaseResponses.BaseContentManagementResponse<void, void>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: void,
-            data: void
-        ) {
-            super(debug, rawData, data);
-        }
-    }
-
-    export class UnpublishLanguageVariant extends BaseResponses.BaseContentManagementResponse<void, void>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: void,
-            data: void
-        ) {
-            super(debug, rawData, data);
-        }
-    }
-
-    export class CancelScheduledPublishingOrLanguageVariant extends BaseResponses.BaseContentManagementResponse<void, void>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: void,
-            data: void
-        ) {
-            super(debug, rawData, data);
-        }
-    }
 }

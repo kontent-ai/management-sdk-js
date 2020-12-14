@@ -156,9 +156,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    publishOrScheduleLanguageVariant(
+    publishLanguageVariant(
         url: string,
-        data: WorkflowModels.IPublishOrSchedulePublishData | undefined,
+        data: WorkflowModels.IPublishLanguageVariantData | undefined,
         config: IContentManagementQueryConfig
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, data, {}, config).pipe(
@@ -181,7 +181,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
 
     unpublishLanguageVariant(
         url: string,
-        data: WorkflowModels.IUnpublishOrScheduleUnpublishData | undefined,
+        data: WorkflowModels.IUnpublishLanguageVarianthData | undefined,
         config: IContentManagementQueryConfig
     ): Observable<BaseResponses.EmptyContentManagementResponse> {
         return this.putResponse<void>(url, data, {}, config).pipe(

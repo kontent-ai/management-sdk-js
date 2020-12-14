@@ -7,7 +7,7 @@ export class ContentManagementApiEndpoints {
         return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/workflow/${workflowIdentifier.getParamValue()}`;
     }
 
-    publishOrScheduleLaguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
+    publishLaguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
         return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/publish`;
     }
 

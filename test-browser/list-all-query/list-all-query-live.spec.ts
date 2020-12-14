@@ -83,7 +83,7 @@ export function createSampleData(): void {
                         throw Error(`Invalid id`);
                     }
                     return cmLiveClient
-                        .publishOrScheduleLanguageVariant()
+                        .publishLanguageVariant()
                         .byItemId(responseB.data.item.id)
                         .byLanguageCodename('en')
                         .withoutData()

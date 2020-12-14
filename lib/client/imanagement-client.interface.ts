@@ -66,7 +66,7 @@ import {
     PostQuery,
     ProjectIdIdentifierQuery,
     ProjectInformationQuery,
-    PublishOrScheduleLanguageVariantQuery,
+    PublishLanguageVariantQuery,
     PutQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
@@ -128,7 +128,7 @@ export interface IManagementClient {
      */
     unpublishLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
-            DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+            DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishLanguageVarianthData>
         >
     >;
 
@@ -149,9 +149,9 @@ export interface IManagementClient {
     /**
      * Change the workflow step of the specified language variant to "Published" or schedule publishing at the specified time.
      */
-    publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<
+    publishLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
-            DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
+            DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>
         >
     >;
 

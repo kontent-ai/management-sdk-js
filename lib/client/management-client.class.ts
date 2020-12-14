@@ -62,7 +62,7 @@ import {
     ModifyLanguageQuery,
     ProjectIdIdentifierQuery,
     ProjectInformationQuery,
-    PublishOrScheduleLanguageVariantQuery,
+    PublishLanguageVariantQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
     UpdateContentItemQuery,
@@ -188,26 +188,26 @@ export class ManagementClient implements IManagementClient {
 
     unpublishLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
-            DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+            DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishLanguageVarianthData>
         >
     > {
         return new ContentItemIdentifierQuery<
             LanguageIdAndCodenameIdentifierQuery<
-                DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+                DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishLanguageVarianthData>
             >
         >(
             this.config,
             this.queryService,
             (config, queryService, contentItemIdentifier) =>
                 new LanguageIdAndCodenameIdentifierQuery<
-                    DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishOrScheduleUnpublishData>
+                    DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishLanguageVarianthData>
                 >(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
                         new DataQueryOptional<
                             UnpublishLanguageVariantQuery,
-                            WorkflowModels.IUnpublishOrScheduleUnpublishData
+                            WorkflowModels.IUnpublishLanguageVarianthData
                         >(
                             nConfig,
                             nQueryService,
@@ -281,14 +281,14 @@ export class ManagementClient implements IManagementClient {
         );
     }
 
-    publishOrScheduleLanguageVariant(): ContentItemIdentifierQuery<
+    publishLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
-            DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
+            DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>
         >
     > {
         return new ContentItemIdentifierQuery<
             LanguageIdAndCodenameIdentifierQuery<
-                DataQueryOptional<PublishOrScheduleLanguageVariantQuery, WorkflowModels.IPublishOrSchedulePublishData>
+                DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>
             >
         >(
             this.config,
@@ -296,21 +296,21 @@ export class ManagementClient implements IManagementClient {
             (config, queryService, contentItemIdentifier) =>
                 new LanguageIdAndCodenameIdentifierQuery<
                     DataQueryOptional<
-                        PublishOrScheduleLanguageVariantQuery,
-                        WorkflowModels.IPublishOrSchedulePublishData
+                        PublishLanguageVariantQuery,
+                        WorkflowModels.IPublishLanguageVariantData
                     >
                 >(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
                         new DataQueryOptional<
-                            PublishOrScheduleLanguageVariantQuery,
-                            WorkflowModels.IPublishOrSchedulePublishData
+                            PublishLanguageVariantQuery,
+                            WorkflowModels.IPublishLanguageVariantData
                         >(
                             nConfig,
                             nQueryService,
                             (pConfig, pQueryService, data) =>
-                                new PublishOrScheduleLanguageVariantQuery(
+                                new PublishLanguageVariantQuery(
                                     pConfig,
                                     pQueryService,
                                     contentItemIdentifier,

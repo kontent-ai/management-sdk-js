@@ -1,20 +1,20 @@
-import { BaseResponses, PublishOrScheduleLanguageVariantQuery } from '../../lib';
+import { BaseResponses, PublishLanguageVariantQuery } from '../../lib';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-describe('Publish or schedule language variant', () => {
+describe('Publish language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
-    let query: PublishOrScheduleLanguageVariantQuery;
-    let queryWithoutData: PublishOrScheduleLanguageVariantQuery;
+    let query: PublishLanguageVariantQuery;
+    let queryWithoutData: PublishLanguageVariantQuery;
 
     beforeAll(done => {
         queryWithoutData = getTestClientWithJson(undefined)
-            .publishOrScheduleLanguageVariant()
+            .publishLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withoutData();
 
         query = getTestClientWithJson(undefined)
-            .publishOrScheduleLanguageVariant()
+            .publishLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withData({
@@ -28,7 +28,7 @@ describe('Publish or schedule language variant', () => {
     });
 
     it(`query without data should have undefined data and use proper query`, () => {
-        expect(queryWithoutData).toEqual(jasmine.any(PublishOrScheduleLanguageVariantQuery));
+        expect(queryWithoutData).toEqual(jasmine.any(PublishLanguageVariantQuery));
         expect(queryWithoutData.data).toBeUndefined();
     });
 
@@ -38,7 +38,7 @@ describe('Publish or schedule language variant', () => {
 
     it(`url should be correct`, () => {
         const w1Url = cmLiveClient
-            .publishOrScheduleLanguageVariant()
+            .publishLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withData({})

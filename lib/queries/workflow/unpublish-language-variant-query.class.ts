@@ -12,7 +12,7 @@ export class UnpublishLanguageVariantQuery extends BaseQuery<BaseResponses.Empty
         protected queryService: ContentManagementQueryService,
         public contentItemIdentifier: Identifiers.ContentItemIdentifier,
         public languageIdentifier: Identifiers.LanguageIdentifier,
-        public data?: WorkflowModels.IUnpublishOrScheduleUnpublishData
+        public data?: WorkflowModels.IUnpublishLanguageVarianthData
     ) {
         super(config, queryService);
     }
