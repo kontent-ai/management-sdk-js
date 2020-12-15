@@ -202,6 +202,17 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    cancelScheduledUnpublishingOfLanguageVariant(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<BaseResponses.EmptyContentManagementResponse> {
+        return this.putResponse<void>(url, undefined, {}, config).pipe(
+            map(response => {
+                return workflowMapper.mapEmptyResponse(response);
+            })
+        );
+    }
+
     changeWorkflowStepOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig

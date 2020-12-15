@@ -4,4 +4,5 @@ export * from './publish-language-variant-query.class';
 export * from './create-new-version-of-language-variant-query.class';
 export * from './unpublish-language-variant-query.class';
 export * from './cancel-scheduled-publishing-of-language-variant-query.class';
+export * from './cancel-scheduled-unpublishing-of-language-variant-query.class';
 

@@ -85,7 +85,8 @@ import {
     PatchQuery,
     PutQuery,
     DeleteQuery,
-    GetQuery
+    GetQuery,
+    CancelScheduledUnpublishingOfLanguageVariantQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -238,6 +239,29 @@ export class ManagementClient implements IManagementClient {
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
                         new CancelScheduledPublishingOfLanguageVariantQuery(
+                            nConfig,
+                            nQueryService,
+                            contentItemIdentifier,
+                            languageIdentifier
+                        )
+                )
+        );
+    }
+
+    cancelSheduledUnpublishingOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<CancelScheduledUnpublishingOfLanguageVariantQuery>
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<CancelScheduledUnpublishingOfLanguageVariantQuery>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<CancelScheduledUnpublishingOfLanguageVariantQuery>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new CancelScheduledUnpublishingOfLanguageVariantQuery(
                             nConfig,
                             nQueryService,
                             contentItemIdentifier,

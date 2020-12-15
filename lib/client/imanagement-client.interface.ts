@@ -25,6 +25,7 @@ import {
     AddWebhookQuery,
     AssetIdentifierQueryClass,
     CancelScheduledPublishingOfLanguageVariantQuery,
+    CancelScheduledUnpublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
     ContentItemIdentifierQuery,
     ContentTypeCodenameAndIdIdentifierQuery,
@@ -130,6 +131,13 @@ export interface IManagementClient {
         LanguageIdAndCodenameIdentifierQuery<
             DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishLanguageVarianthData>
         >
+    >;
+
+    /**
+     * Cancel scheduled unpublishing of the specified language variant.
+     */
+    cancelSheduledUnpublishingOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<CancelScheduledUnpublishingOfLanguageVariantQuery>
     >;
 
     /**

@@ -23,6 +23,10 @@ export class ContentManagementApiEndpoints {
         return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/cancel-scheduled-publish`;
     }
 
+    cancelScheduledUnpublishingOfLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
+        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/cancel-scheduled-unpublish`;
+    }
+
     listWorkflowSteps(): string {
         return `workflow`;
     }
