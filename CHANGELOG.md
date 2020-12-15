@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.7](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.6...v0.4.7) (2020-12-15)
+
+
+### Features
+
+* adds 'cancel scheduled unpublish' endpoint support ([9860c1b](https://github.com/Kentico/kontent-management-sdk-js/commit/9860c1bd346ac7b52d46deafcd5abf4502474716))
+
 ### [0.4.6](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.5...v0.4.6) (2020-12-14)
 
 
