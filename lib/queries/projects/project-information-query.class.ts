@@ -13,7 +13,7 @@ export class ProjectInformationQuery extends BaseQuery<ProjectResponses.ProjectI
   ) {
     super(config, queryService);
 
-    this.addSlashToUrl = false;
+    this._addSlashToUrl = false;
   }
 
   toObservable(): Observable<ProjectResponses.ProjectInformationResponse> {

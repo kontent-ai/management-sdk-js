@@ -12,8 +12,9 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     };
     protected readonly parameters: IQueryParameter[] = [];
     protected readonly apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
-    protected customUrl?: string;
-    protected addSlashToUrl: boolean = true;
+
+    private _customUrl?: string;
+    protected _addSlashToUrl: boolean = true;
 
     constructor(
         protected config: IManagementClientConfig,
@@ -25,12 +26,11 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
      */
     getUrl(): string {
         // use custom URL if user specified it
-        if (this.customUrl) {
-            return this.customUrl;
+        if (this._customUrl) {
+            return this._customUrl;
         }
 
-        // use original url
-        return encodeURI(this.queryService.getFullUrl(this.getAction(), this.getParameters(), this.addSlashToUrl));
+        return encodeURI(this.queryService.getFullUrl(this.getAction(), this.getParameters(), this._addSlashToUrl));
     }
 
     /**
@@ -80,7 +80,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
      * @param url Custom url to resolve query
      */
     withUrl(url: string): this {
-        this.customUrl = url;
+        this._customUrl = url;
         return this;
     }
 
