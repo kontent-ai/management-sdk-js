@@ -137,5 +137,3 @@ If you have any issues or want to share your feedback, please feel free to [crea
 ### Contributions
 
 Contributions are welcomed. If you have an idea of what you would like to implement, let us know and lets discuss details of your PR.
-
-![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/kontent-management-sdk-js?pixel)
