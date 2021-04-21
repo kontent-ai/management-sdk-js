@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.10](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.9...v0.4.10) (2021-04-21)
+
+
+### Features
+
+* adds support for enabling / disabling webhooks ([485cfe0](https://github.com/Kentico/kontent-management-sdk-js/commit/485cfe0da81c435958fc39359a4485261a1285d3))
+
 ### [0.4.9](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.8...v0.4.9) (2021-04-21)
 
 
