@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.9](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.8...v0.4.9) (2021-04-21)
+
+
+### Features
+
+* adds support for codename in workflow related endpoints & queries (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/35) ([98f1ddf](https://github.com/Kentico/kontent-management-sdk-js/commit/98f1ddf020663beb325759fba10ed9f175c0dda8))
+* adds url encoding tests & changes name of internal base query props ([6413d3f](https://github.com/Kentico/kontent-management-sdk-js/commit/6413d3f8696d2ff2008b6f916557abd5e9deb1e3))
+* simplifies scripts & update dependencies ([b948be5](https://github.com/Kentico/kontent-management-sdk-js/commit/b948be5dab88398dc1f9b7bed9e40ff307e2ff19))
+
+
+### Bug Fixes
+
+* fixes contract for 'type' in 'UpsertContentItem' query (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/39) ([a9e72ab](https://github.com/Kentico/kontent-management-sdk-js/commit/a9e72abfdff7d7c6ec08637216e29563ea7aff5a))
+
 ### [0.4.8](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.7...v0.4.8) (2021-01-08)
 
 
