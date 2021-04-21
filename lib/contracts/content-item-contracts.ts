@@ -42,7 +42,7 @@ export namespace ContentItemContracts {
 
     export interface IUpsertContentItemPostContract {
         name: string;
-        type?: string;
+        type?: SharedContracts.IReferenceObjectContract;
         codename?: string;
         collection?: SharedContracts.IReferenceObjectContract;
     }

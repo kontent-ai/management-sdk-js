@@ -10,7 +10,9 @@ describe('Upsert content item', () => {
             .byItemExternalId('x')
             .withData({
                 name: 'y',
-                type: 'xType',
+                type: {
+                    codename: 'xType'
+                },
                 codename: 'xyz',
                 collection: {
                     codename: 'xCollection'
