@@ -7,12 +7,14 @@ export namespace WorkflowModels {
 
         public id!: string;
         public name!: string;
+        public codename!: string;
         public transitionsTo!: string[];
         public _raw!: WorkflowContracts.IWorkflowStepContract;
 
         constructor(data: {
             id: string,
             name: string,
+            codename: string;
             transitionsTo: string[],
             _raw: WorkflowContracts.IWorkflowStepContract
         }) {

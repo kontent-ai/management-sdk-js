@@ -46,6 +46,7 @@ describe('List workflow steps', () => {
 
             expect(m.id).toEqual(originalItem.id);
             expect(m.name).toEqual(originalItem.name);
+            expect(m.codename).toEqual(originalItem.codename);
             expect(Array.isArray(m.transitionsTo)).toBeTruthy();
         });
     });

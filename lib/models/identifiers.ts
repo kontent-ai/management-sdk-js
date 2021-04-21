@@ -19,7 +19,8 @@ export namespace Identifiers {
     }
 
     export enum WorkflowIdentifierEnum {
-        Id = 'id'
+        Id = 'id',
+        Codename = 'codename'
     }
 
     export enum TaxonomyIdentifierEnum {
@@ -103,6 +104,9 @@ export namespace Identifiers {
         getParamValue(): string {
             if (this.identifier === WorkflowIdentifierEnum.Id) {
                 return `${this.value}`;
+            }
+            if (this.identifier === WorkflowIdentifierEnum.Codename) {
+                return `codename/${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }

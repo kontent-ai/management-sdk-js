@@ -8,7 +8,7 @@ describe('Change workflow step of language variant', () => {
         getTestClientWithJson(undefined).changeWorkflowStepOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
-            .byWorkflowStepId('b')
+            .byWorkflowStepCodename('b')
             .toObservable()
             .subscribe(result => {
                 response = result;
@@ -18,8 +18,10 @@ describe('Change workflow step of language variant', () => {
 
     it(`url should be correct`, () => {
         const w1Url = cmLiveClient.changeWorkflowStepOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').byWorkflowStepId('b').getUrl();
+        const w2Url = cmLiveClient.changeWorkflowStepOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').byWorkflowStepCodename('b').getUrl();
 
         expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/workflow/b`);
+        expect(w2Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/workflow/codename/b`);
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {
