@@ -11,7 +11,7 @@ import {
     LanguageVariantElementsBuilder,
     TaxonomyModels,
     WebhookModels,
-    WorkflowModels,
+    WorkflowModels
 } from '../models';
 import {
     ActionQuery,
@@ -85,6 +85,8 @@ import {
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
+    EnableWebhookQuery,
+    DisableWebhookQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -395,6 +397,16 @@ export interface IManagementClient {
      * Gets single webhook
      */
     getWebhook(): WebhookIdentifierQuery<GetWebhookQuery>;
+
+    /**
+     * Enables webhook
+     */
+    enableWebhook(): WebhookIdentifierQuery<EnableWebhookQuery>;
+
+    /**
+     * Disables webhook
+     */
+    disableWebhook(): WebhookIdentifierQuery<DisableWebhookQuery>;
 
     /**
      * Gets all webhooks

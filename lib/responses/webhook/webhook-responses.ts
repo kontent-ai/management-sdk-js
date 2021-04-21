@@ -23,6 +23,26 @@ export namespace WebhookResponses {
         }
     }
 
+    export class EnableWebhookResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IEnableWebhookContract, WebhookModels.Webhook>  {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: WebhookContracts.IEnableWebhookContract,
+            data: WebhookModels.Webhook
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class DisableWebhookResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IEnableWebhookContract, WebhookModels.Webhook>  {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: WebhookContracts.IDisableWebhookContract,
+            data: WebhookModels.Webhook
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
     export class WebhookListResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IWebhookListContract,
     {
         webhooks: WebhookModels.Webhook[],

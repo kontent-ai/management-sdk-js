@@ -86,7 +86,9 @@ import {
     PutQuery,
     DeleteQuery,
     GetQuery,
-    CancelScheduledUnpublishingOfLanguageVariantQuery
+    CancelScheduledUnpublishingOfLanguageVariantQuery,
+    EnableWebhookQuery,
+    DisableWebhookQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -774,6 +776,22 @@ export class ManagementClient implements IManagementClient {
             this.config,
             this.queryService,
             (config, queryService, data) => new AddWebhookQuery(config, queryService, data)
+        );
+    }
+
+    enableWebhook(): WebhookIdentifierQuery<EnableWebhookQuery> {
+        return new WebhookIdentifierQuery<EnableWebhookQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new EnableWebhookQuery(config, queryService, identifier)
+        );
+    }
+
+    disableWebhook(): WebhookIdentifierQuery<DisableWebhookQuery> {
+        return new WebhookIdentifierQuery<DisableWebhookQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new DisableWebhookQuery(config, queryService, identifier)
         );
     }
 

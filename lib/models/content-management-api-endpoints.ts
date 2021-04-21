@@ -195,6 +195,14 @@ export class ContentManagementApiEndpoints {
         return `webhooks`;
     }
 
+    enableWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `webhooks/${identifier.getParamValue()}/enable`;
+    }
+
+    disableWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `webhooks/${identifier.getParamValue()}/disable`;
+    }
+
     listWebhooks(): string {
         return `webhooks`;
     }

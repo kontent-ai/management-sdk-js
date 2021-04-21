@@ -26,6 +26,26 @@ export class WebhookMapper extends BaseMapper {
         );
     }
 
+    mapEnableWebhookResponse(
+        response: IBaseResponse<WebhookContracts.IEnableWebhookContract>
+    ): WebhookResponses.EnableWebhookResponse {
+        return new WebhookResponses.EnableWebhookResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapWebhook(response.data)
+        );
+    }
+
+    mapDisableWebhookResponse(
+        response: IBaseResponse<WebhookContracts.IDisableWebhookContract>
+    ): WebhookResponses.DisableWebhookResponse {
+        return new WebhookResponses.DisableWebhookResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapWebhook(response.data)
+        );
+    }
+
     mapWebhooksListResponse(
         response: IBaseResponse<WebhookContracts.IWebhookListContract>
     ): WebhookResponses.WebhookListResponse {

@@ -755,6 +755,28 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    enableWebhook(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<WebhookResponses.AddWebhookResponse> {
+        return this.putResponse<WebhookContracts.IEnableWebhookContract>(url, {}, {}, config).pipe(
+            map(response => {
+                return webhookMapper.mapEnableWebhookResponse(response);
+            })
+        );
+    }
+
+    disableWebhook(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Observable<WebhookResponses.DisableWebhookResponse> {
+        return this.putResponse<WebhookContracts.IDisableWebhookContract>(url, {}, {}, config).pipe(
+            map(response => {
+                return webhookMapper.mapDisableWebhookResponse(response);
+            })
+        );
+    }
+
     deleteWebhook(
         url: string,
         config: IContentManagementQueryConfig
