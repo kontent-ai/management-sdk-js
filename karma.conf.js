@@ -9,13 +9,13 @@ module.exports = function (config) {
         ],
         files: [
             { pattern: "lib/**/*.ts" },
-            { pattern: "test-browser/**/*.ts" }
+            { pattern: "test/browser/**/*.ts" }
         ],
         exclude: [
         ],
         preprocessors: {
             "lib/**/*.ts": ["karma-typescript"],
-            "test-browser/**/*.ts": ["karma-typescript"]
+            "test/browser/**/*.ts": ["karma-typescript"]
         },
         reporters: ["kjhtml", "progress", "karma-typescript"],
         browsers: ["Chrome"],

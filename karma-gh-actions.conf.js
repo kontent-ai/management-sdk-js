@@ -9,13 +9,13 @@ module.exports = function (config) {
         ],
         files: [
             { pattern: "lib/**/*.ts" },
-            { pattern: "test-browser/**/*.ts" }
+            { pattern: "test/browser/**/*.ts" }
         ],
         exclude: [
         ],
         preprocessors: {
             "lib/**/*.ts": ["karma-typescript"],
-            "test-browser/**/*.ts": ["karma-typescript"]
+            "test/browser/**/*.ts": ["karma-typescript"]
         },
         reporters: ["kjhtml", "progress", "karma-typescript"],
         browsers: ["Chrome"],
@@ -24,7 +24,6 @@ module.exports = function (config) {
                 emitDecoratorMetadata: true,
                 experimentalDecorators: true,
                 resolveJsonModule: true,
-                jsx: "react",
                 module: "commonjs",
                 sourceMap: true,
                 target: "ES5"
@@ -52,6 +51,6 @@ module.exports = function (config) {
         },
         logLevel: config.DEBUG,
         browserDisconnectTolerance: 2,
-        browserNoActivityTimeout: 50000
+        browserNoActivityTimeout: 5000000
     });
 };
