@@ -23,10 +23,10 @@ export namespace ElementModels {
         custom = 'custom'
     }
 
-    export class ContentItemElement implements SharedModels.IBaseModel<ElementContracts.IContentTypeElementContract> {
+    export class ContentItemElement implements SharedModels.IBaseModel<ElementContracts.IContentItemElementContract> {
         public element!: SharedModels.ReferenceObject;
         public value?: string | number | SharedModels.ReferenceObject[];
-        public _raw!: ElementContracts.IContentTypeElementContract;
+        public _raw!: ElementContracts.IContentItemElementContract;
 
         constructor(
             data: {
