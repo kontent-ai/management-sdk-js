@@ -28,7 +28,6 @@ npm i @kentico/kontent-management --save
 If you'd like to use this library directly in browser, place following script tags to your html page. You may of course download it and refer to local versions of scripts.
 
 ```javascript
-<script src="https://cdn.jsdelivr.net/npm/rxjs/bundles/rxjs.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@kentico/kontent-management/_bundles/kontent-management.umd.min.js"></script>
 ```
 
