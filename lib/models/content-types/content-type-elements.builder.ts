@@ -2,8 +2,9 @@ import { SharedContracts } from '../../contracts';
 import { ContentTypeModels } from './content-type.models';
 
 export namespace ContentTypeElements {
-
     export interface IElementInContentType {
+        type: string;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IContentGroup extends IElementInContentType {
@@ -19,20 +20,19 @@ export namespace ContentTypeElements {
         guidelines?: string;
         asset_count_limit?: {
             value: number;
-            condition: 'at_most' | 'exactly' | 'at_least'
+            condition: 'at_most' | 'exactly' | 'at_least';
         };
         maximum_file_size?: number;
         allowed_file_types?: 'adjustable' | 'any';
         image_width_limit?: {
             value: number;
-            condition: 'at_most' | 'exactly' | 'at_least'
+            condition: 'at_most' | 'exactly' | 'at_least';
         };
         image_height_limit?: {
             value: number;
-            condition: 'at_most' | 'exactly' | 'at_least'
+            condition: 'at_most' | 'exactly' | 'at_least';
         };
         is_required?: boolean;
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ISnippetInType extends IElementInContentType {
@@ -52,7 +52,6 @@ export namespace ContentTypeElements {
         guidelines?: string;
         is_required?: boolean;
         allowed_elements?: SharedContracts.IReferenceObjectContract[];
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IDateTimeInType extends IElementInContentType {
@@ -62,7 +61,6 @@ export namespace ContentTypeElements {
         guidelines?: string;
         codename?: string;
         external_id?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IGuidelinesInType extends IElementInContentType {
@@ -70,13 +68,12 @@ export namespace ContentTypeElements {
         type: 'guidelines';
         codename?: string;
         external_id?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ILinkedItemsInType extends IElementInContentType {
         item_count_limit?: {
             value: number;
-            condition: 'at_most' | 'exactly' | 'at_least'
+            condition: 'at_most' | 'exactly' | 'at_least';
         };
         allowed_content_types?: SharedContracts.IReferenceObjectContract[];
         name: string;
@@ -85,7 +82,6 @@ export namespace ContentTypeElements {
         is_required?: boolean;
         codename?: string;
         external_id?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IMultipleChoiceOption {
@@ -100,7 +96,6 @@ export namespace ContentTypeElements {
         type: 'multiple_choice';
         is_required?: boolean;
         external_id?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
         guidelines?: string;
         codename?: string;
     }
@@ -111,7 +106,6 @@ export namespace ContentTypeElements {
         is_required?: boolean;
         codename?: string;
         external_id?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
         guidelines?: string;
     }
 
@@ -124,11 +118,11 @@ export namespace ContentTypeElements {
         allowed_content_types?: SharedContracts.IReferenceObjectContract[];
         image_width_limit?: {
             value: number;
-            condition: ContentTypeModels.RichTextImageCondition
+            condition: ContentTypeModels.RichTextImageCondition;
         };
         image_height_limit?: {
             value: number;
-            condition: ContentTypeModels.RichTextImageCondition
+            condition: ContentTypeModels.RichTextImageCondition;
         };
         allowed_image_types?: ContentTypeModels.RichTextallowedImageType;
         name: string;
@@ -137,7 +131,6 @@ export namespace ContentTypeElements {
         codename?: string;
         external_id?: string;
         guidelines?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
         allowed_blocks?: ContentTypeModels.RichTextAllowedBlock[];
         allowed_text_blocks?: ContentTypeModels.RichTextAllowedTextBlock[];
         allowed_formatting?: ContentTypeModels.RichTextAllowedFormatting[];
@@ -152,7 +145,6 @@ export namespace ContentTypeElements {
         is_required?: boolean;
         codename?: string;
         external_id?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ITextInType extends IElementInContentType {
@@ -162,17 +154,16 @@ export namespace ContentTypeElements {
         codename?: string;
         external_id?: string;
         guidelines?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
         maximum_text_length?: {
             value: number;
-            applies_to: 'words' | 'characters'
+            applies_to: 'words' | 'characters';
         };
     }
 
     export interface IUrlSlugType extends IElementInContentType {
         depends_on: {
-            element: SharedContracts.IReferenceObjectContract,
-            snippet?: SharedContracts.IReferenceObjectContract,
+            element: SharedContracts.IReferenceObjectContract;
+            snippet?: SharedContracts.IReferenceObjectContract;
         };
         name: string;
         type: 'url_slug';
@@ -180,12 +171,10 @@ export namespace ContentTypeElements {
         codename: string;
         external_id?: string;
         guidelines?: string;
-        content_group?: SharedContracts.IReferenceObjectContract;
     }
 }
 
 export class ContentTypeElementsBuilder {
-
     contentGroup(contentGroup: ContentTypeElements.IContentGroup): ContentTypeElements.IElementInContentType {
         return contentGroup;
     }
@@ -214,7 +203,9 @@ export class ContentTypeElementsBuilder {
         return element;
     }
 
-    multipleChoiceElement(element: ContentTypeElements.IMultipleChoiceInType): ContentTypeElements.IElementInContentType {
+    multipleChoiceElement(
+        element: ContentTypeElements.IMultipleChoiceInType
+    ): ContentTypeElements.IElementInContentType {
         return element;
     }
 

@@ -20,8 +20,8 @@ describe('Add content type', () => {
                         }),
                         builder.textElement({
                             name: 'title',
-                            type: 'text'
-                        })
+                            type: 'text',
+                        }),
                     ]
                 };
             })
