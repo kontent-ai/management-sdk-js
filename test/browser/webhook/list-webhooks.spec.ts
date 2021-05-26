@@ -5,14 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List webhooks', () => {
     let response: WebhookResponses.WebhookListResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
-            .listWebhooks()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).listWebhooks().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -36,7 +30,7 @@ describe('List webhooks', () => {
         expect(response.data.webhooks.length).toBeGreaterThan(0);
 
         for (const webhook of response.data.webhooks) {
-            const originalItem = responseJson.find(m => m.id === webhook.id);
+            const originalItem = responseJson.find((m) => m.id === webhook.id);
 
             if (!originalItem) {
                 throw Error(`Original webhook with id '${webhook.id}' was not found`);
@@ -44,7 +38,9 @@ describe('List webhooks', () => {
 
             expect(webhook.secret).toEqual(originalItem.secret);
             expect(webhook.name).toEqual(originalItem.name);
-            expect(webhook.lastModified).toEqual(originalItem.last_modified ? new Date(originalItem.last_modified) : undefined);
+            expect(webhook.lastModified).toEqual(
+                originalItem.last_modified ? new Date(originalItem.last_modified) : undefined
+            );
             expect(webhook.url).toEqual(originalItem.url);
 
             expect(webhook.triggers.deliveryApiContentChanges).toEqual(jasmine.any(Array));

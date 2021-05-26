@@ -1,10 +1,10 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { SharedModels } from '../models';
 
 export namespace BaseResponses {
     export interface IContentManagementResponseDebug {
-        response: IBaseResponse<any>;
+        response: IResponse<any>;
     }
 
     export interface IContentManagementResponse {
@@ -16,7 +16,7 @@ export namespace BaseResponses {
     export interface IContentManagementListResponse {
         data: {
             items: any[];
-            pagination: SharedModels.Pagination
+            pagination: SharedModels.Pagination;
         };
         rawData: any;
         debug: IContentManagementResponseDebug;
@@ -25,20 +25,21 @@ export namespace BaseResponses {
     export interface IContentManagementListAllResponse {
         responses: any[];
         data: {
-            items: any[]
+            items: any[];
         };
     }
 
     export abstract class ContentManagementListAllResponse<
         TResponse extends IContentManagementListResponse,
         TData extends any
-    > implements IContentManagementListAllResponse {
+    > implements IContentManagementListAllResponse
+    {
         public responses: TResponse[];
         public data: {
             items: TData[];
         };
 
-        constructor(obj: { responses: TResponse[]; items: TData[]; }) {
+        constructor(obj: { responses: TResponse[]; items: TData[] }) {
             this.responses = obj.responses;
             this.data = {
                 items: obj.items
@@ -46,26 +47,29 @@ export namespace BaseResponses {
         }
     }
 
-    export abstract class BaseContentManagementListResponse<
-        TRawData extends any,
-        TItem extends any,
-    > implements IContentManagementResponse {
-
+    export abstract class BaseContentManagementListResponse<TRawData extends any, TItem extends any>
+        implements IContentManagementResponse
+    {
         public data: {
-            items: TItem[],
-            pagination: SharedModels.Pagination
+            items: TItem[];
+            pagination: SharedModels.Pagination;
         };
 
-        constructor(public debug: IContentManagementResponseDebug, public rawData: TRawData, data: {
-            items: TItem[],
-            pagination: SharedModels.Pagination
-        }) {
+        constructor(
+            public debug: IContentManagementResponseDebug,
+            public rawData: TRawData,
+            data: {
+                items: TItem[];
+                pagination: SharedModels.Pagination;
+            }
+        ) {
             this.data = data;
         }
     }
 
     export abstract class BaseContentManagementResponse<TRawData extends any, TData extends any>
-        implements IContentManagementResponse {
+        implements IContentManagementResponse
+    {
         constructor(public debug: IContentManagementResponseDebug, public rawData: TRawData, public data: TData) {}
     }
 

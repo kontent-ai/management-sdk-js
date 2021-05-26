@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { AssetContracts } from '../contracts';
 import { AssetModels } from '../models';
@@ -7,7 +7,7 @@ import { BaseMapper } from './base-mapper';
 
 export class AssetsMapper extends BaseMapper {
     mapListingAssetsResponse(
-        response: IBaseResponse<AssetContracts.IAssetsListingResponseContract>
+        response: IResponse<AssetContracts.IAssetsListingResponseContract>
     ): AssetResponses.AssetsListResponse {
         const pagination = super.mapPagination(response.data.pagination);
         const items = response.data.assets.map(m => this.mapAsset(m));
@@ -19,7 +19,7 @@ export class AssetsMapper extends BaseMapper {
     }
 
     mapViewAssetResponse(
-        response: IBaseResponse<AssetContracts.IAssetModelContract>
+        response: IResponse<AssetContracts.IAssetModelContract>
     ): AssetResponses.ViewAssetResponse {
         return new AssetResponses.ViewAssetResponse(
             super.mapResponseDebug(response),
@@ -29,7 +29,7 @@ export class AssetsMapper extends BaseMapper {
     }
 
     mapUploadBinaryFileResponse(
-        response: IBaseResponse<AssetContracts.IUploadBinaryFileResponseContract>
+        response: IResponse<AssetContracts.IUploadBinaryFileResponseContract>
     ): AssetResponses.UploadBinaryFileResponse {
         return new AssetResponses.UploadBinaryFileResponse(
             super.mapResponseDebug(response),
@@ -39,7 +39,7 @@ export class AssetsMapper extends BaseMapper {
     }
 
     mapAddAssetResponse(
-        response: IBaseResponse<AssetContracts.IAddAssetResponseContract>
+        response: IResponse<AssetContracts.IAddAssetResponseContract>
     ): AssetResponses.AddAssetResponse {
         return new AssetResponses.AddAssetResponse(
             super.mapResponseDebug(response),
@@ -49,7 +49,7 @@ export class AssetsMapper extends BaseMapper {
     }
 
     mapUpdateAssetResponse(
-        response: IBaseResponse<AssetContracts.IUpdateAssetResponseContract>
+        response: IResponse<AssetContracts.IUpdateAssetResponseContract>
     ): AssetResponses.UpdateAssetResponse {
         return new AssetResponses.UpdateAssetResponse(
             super.mapResponseDebug(response),
@@ -59,7 +59,7 @@ export class AssetsMapper extends BaseMapper {
     }
 
     mapUpsertAssetResponse(
-        response: IBaseResponse<AssetContracts.IUpsertAssetResponseContract>
+        response: IResponse<AssetContracts.IUpsertAssetResponseContract>
     ): AssetResponses.UpsertAssertResponse {
         return new AssetResponses.UpsertAssertResponse(
             super.mapResponseDebug(response),

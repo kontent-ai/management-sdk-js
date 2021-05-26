@@ -5,34 +5,18 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Modify content type snippet', () => {
     let response: ContentTypeSnippetResponses.ModifyContentTypeSnippetResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .modifyContentTypeSnippet()
             .byTypeCodename('x')
             .withData([])
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient
-            .modifyContentTypeSnippet()
-            .byTypeCodename('x')
-            .withData([])
-            .getUrl();
-        const urlByInternalId = cmLiveClient
-            .modifyContentTypeSnippet()
-            .byTypeId('y')
-            .withData([])
-            .getUrl();
-        const urlByExternalId = cmLiveClient
-            .modifyContentTypeSnippet()
-            .byTypeExternalId('c')
-            .withData([])
-            .getUrl();
+        const urlByCodename = cmLiveClient.modifyContentTypeSnippet().byTypeCodename('x').withData([]).getUrl();
+        const urlByInternalId = cmLiveClient.modifyContentTypeSnippet().byTypeId('y').withData([]).getUrl();
+        const urlByExternalId = cmLiveClient.modifyContentTypeSnippet().byTypeExternalId('c').withData([]).getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/y`);
@@ -63,8 +47,8 @@ describe('Modify content type snippet', () => {
         expect(contentType.elements.length).toEqual(originalItem.elements.length);
         expect(Array.isArray(contentType.elements)).toBeTruthy();
 
-        contentType.elements.forEach(element => {
-            const originalElement = originalItem.elements.find(m => m.id === element.id);
+        contentType.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
             }

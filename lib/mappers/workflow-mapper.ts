@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { WorkflowContracts } from '../contracts/workflow-contracts';
 import { WorkflowModels } from '../models';
@@ -8,7 +8,7 @@ import { BaseMapper } from './base-mapper';
 export class WorkflowMapper extends BaseMapper {
 
     mapListWorkflowStepsResponse(
-        response: IBaseResponse<WorkflowContracts.IListWorkflowStepsResponseContract>
+        response: IResponse<WorkflowContracts.IListWorkflowStepsResponseContract>
     ): WorkflowResponses.ListWorkflowStepsResponse {
 
         const workflowSteps = response.data.map(m => this.mapWorkflowStep(m));

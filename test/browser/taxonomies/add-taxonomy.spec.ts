@@ -5,25 +5,24 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Add taxonomy', () => {
     let response: TaxonomyResponses.AddTaxonomyResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(addTaxonomyResponseJson).addTaxonomy()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(addTaxonomyResponseJson)
+            .addTaxonomy()
             .withData({
                 name: 'x',
                 terms: []
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.addTaxonomy()
+        const url = cmLiveClient
+            .addTaxonomy()
             .withData({
                 name: 'x',
                 terms: []
-            }).getUrl();
+            })
+            .getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies`);
     });
@@ -52,11 +51,8 @@ describe('Add taxonomy', () => {
         expect(taxonomy.name).toEqual(originalItem.name);
         expect(Array.isArray(taxonomy.terms)).toBeTruthy();
 
-        taxonomy.terms.forEach(s => {
+        taxonomy.terms.forEach((s) => {
             expect(s).toEqual(jasmine.any(TaxonomyModels.Taxonomy));
         });
     });
-
-
 });
-

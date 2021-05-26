@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { IContentManagementListQueryConfig } from '../models';
@@ -41,25 +40,18 @@ export abstract class BaseListingQuery<
     /**
      * Query to get all items. Uses paging data and may execute multiple HTTP requests depending on number of items
      */
-    toAllObservable(): Observable<TAllResponse> {
+     toAllPromise(): Promise<TAllResponse> {
         return this.queryService.getListAllResponse<TResponse, TAllResponse>({
             listQueryConfig: this.listQueryConfig,
             allResponseFactory: (items, responses) => this.allResponseFactory(items, responses),
             getResponse: token => {
                 if (token) {
-                    this.xContinuationToken(token).toObservable();
+                    this.xContinuationToken(token).toPromise();
                 }
 
-                return this.toObservable();
+                return this.toPromise();
             }
         });
-    }
-
-    /**
-     * Query to get all items. Uses paging data and may execute multiple HTTP requests depending on number of items
-     */
-    toAllPromise(): Promise<TAllResponse> {
-        return this.toAllObservable().toPromise();
     }
 
     protected abstract allResponseFactory(items: any[], responses: TResponse[]): TAllResponse;

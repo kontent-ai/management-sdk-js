@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { SharedContracts } from '../contracts';
 import { SharedModels } from '../models';
@@ -7,7 +7,7 @@ import { BaseResponses } from '../responses';
 export abstract class BaseMapper {
 
     mapResponseDebug(
-        baseResponse: IBaseResponse<any>
+        baseResponse: IResponse<any>
     ): BaseResponses.IContentManagementResponseDebug {
         if (!baseResponse) {
             throw Error(`Cannot map debug model from the response`);
@@ -30,7 +30,7 @@ export abstract class BaseMapper {
         });
     }
 
-    mapEmptyResponse(response: IBaseResponse<void | any>): BaseResponses.EmptyContentManagementResponse {
+    mapEmptyResponse(response: IResponse<void | any>): BaseResponses.EmptyContentManagementResponse {
         return new BaseResponses.EmptyContentManagementResponse(this.mapResponseDebug(response), undefined, undefined);
     }
 }

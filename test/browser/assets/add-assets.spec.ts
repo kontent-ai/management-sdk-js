@@ -5,8 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Add asset', () => {
     let response: AssetResponses.AddAssetResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(addAssetResponseJson).addAsset()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(addAssetResponseJson).addAsset()
             .withData({
                 descriptions: [],
                 file_reference: {
@@ -14,11 +14,7 @@ describe('Add asset', () => {
                     type: 'internal'
                 }
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {

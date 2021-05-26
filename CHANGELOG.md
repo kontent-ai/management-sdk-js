@@ -242,7 +242,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* fixes return type of 'toAllPromise' so that it matched original 'toAllObservable'. Adds type check test for items in listing query. ([212829e](https://github.com/Kentico/kontent-management-sdk-js/commit/212829e3da730b37486265034fc5a42aa730c2c5))
+* fixes return type of 'toAllPromise' so that it matched original 'toAllPromise'. Adds type check test for items in listing query. ([212829e](https://github.com/Kentico/kontent-management-sdk-js/commit/212829e3da730b37486265034fc5a42aa730c2c5))
 
 ### [0.3.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.3.1...v0.3.2) (2019-12-19)
 
@@ -263,12 +263,12 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* implements ability to get all items with automatic paging using `toAllObservable` and `toAllPromise` extension methods. This commit changes names of some responses and also changes name of property holding paged items to 'items'.
+* implements ability to get all items with automatic paging using `toAllPromise` and `toAllPromise` extension methods. This commit changes names of some responses and also changes name of property holding paged items to 'items'.
 
 ### Features
 
 * adds support for list/add/modify asset folders endpoints ([b35b08d](https://github.com/Kentico/kontent-management-sdk-js/commit/b35b08d6391f0ae6cbfb988499ec6bbe05213a0e))
-* implements ability to get all items with automatic paging using `toAllObservable` and `toAllPromise` extension methods. This commit changes names of some responses and also changes name of property holding paged items to 'items'. ([c77353f](https://github.com/Kentico/kontent-management-sdk-js/commit/c77353f460cfe8a6f85f8e4a02a14fbaaf9eed3e))
+* implements ability to get all items with automatic paging using `toAllPromise` and `toAllPromise` extension methods. This commit changes names of some responses and also changes name of property holding paged items to 'items'. ([c77353f](https://github.com/Kentico/kontent-management-sdk-js/commit/c77353f460cfe8a6f85f8e4a02a14fbaaf9eed3e))
 
 
 ### Bug Fixes

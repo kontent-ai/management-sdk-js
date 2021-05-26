@@ -5,32 +5,16 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('View language', () => {
     let response: LanguageResponses.ViewLanguageResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
-            .viewLanguage()
-            .byLanguageCodename('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).viewLanguage().byLanguageCodename('x').toPromise();
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient
-            .viewLanguage()
-            .byLanguageId('xId')
-            .getUrl();
+        const idUrl = cmLiveClient.viewLanguage().byLanguageId('xId').getUrl();
 
-        const codenameUrl = cmLiveClient
-            .viewLanguage()
-            .byLanguageCodename('xCodename')
-            .getUrl();
+        const codenameUrl = cmLiveClient.viewLanguage().byLanguageCodename('xCodename').getUrl();
 
-        const externalIdUrl = cmLiveClient
-            .viewLanguage()
-            .byExternalId('xExternalId')
-            .getUrl();
+        const externalIdUrl = cmLiveClient.viewLanguage().byExternalId('xExternalId').getUrl();
 
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/languages/xId`);
         expect(codenameUrl).toEqual(

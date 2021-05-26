@@ -5,8 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Modify language', () => {
     let response: LanguageResponses.ModifyLanguageResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .modifyLanguage()
             .byLanguageCodename('x')
             .withData([
@@ -16,11 +16,7 @@ describe('Modify language', () => {
                     value: 'y'
                 }
             ])
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -16,7 +16,7 @@ export class DeleteLanguageVariantQuery extends BaseQuery<BaseResponses.EmptyCon
         super(config, queryService);
     }
 
-    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.deleteLanguageVariant(this.getUrl(), this.queryConfig);
     }
 

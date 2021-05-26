@@ -6,7 +6,7 @@ describe('Publish language variant', () => {
     let query: PublishLanguageVariantQuery;
     let queryWithoutData: PublishLanguageVariantQuery;
 
-    beforeAll(done => {
+    beforeAll(async () => {
         queryWithoutData = getTestClientWithJson(undefined)
             .publishLanguageVariant()
             .byItemCodename('x')
@@ -21,10 +21,7 @@ describe('Publish language variant', () => {
                 scheduled_to: '2019-01-31T11:00:00+01:00'
             });
 
-        query.toObservable().subscribe(result => {
-            response = result;
-            done();
-        });
+        response = await query.toPromise();
     });
 
     it(`query without data should have undefined data and use proper query`, () => {

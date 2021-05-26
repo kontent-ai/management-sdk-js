@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentItemContracts } from '../../contracts';
@@ -16,7 +16,7 @@ export class AddContentItemQuery extends BaseQuery<ContentItemResponses.AddConte
     super(config, queryService);
   }
 
-  toObservable(): Observable<ContentItemResponses.AddContentItemResponse> {
+  toPromise(): Promise<ContentItemResponses.AddContentItemResponse> {
     return this.queryService.addContentItem(this.getUrl(), this.data, this.queryConfig);
   }
 

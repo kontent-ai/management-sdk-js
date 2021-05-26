@@ -5,10 +5,10 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Add content type snippet', () => {
     let response: ContentTypeSnippetResponses.AddContentTypeSnippetResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .addContentTypeSnippet()
-            .withData(builder => {
+            .withData((builder) => {
                 return {
                     external_id: 'exId',
                     name: 'name',
@@ -20,11 +20,7 @@ describe('Add content type snippet', () => {
                     ]
                 };
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -58,8 +54,8 @@ describe('Add content type snippet', () => {
         expect(contentTypeSnippet.elements.length).toEqual(originalItem.elements.length);
         expect(Array.isArray(contentTypeSnippet.elements)).toBeTruthy();
 
-        contentTypeSnippet.elements.forEach(element => {
-            const originalElement = originalItem.elements.find(m => m.id === element.id);
+        contentTypeSnippet.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
             }

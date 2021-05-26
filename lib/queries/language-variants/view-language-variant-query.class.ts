@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -17,7 +17,7 @@ export class ViewLanguageVariantQuery extends BaseQuery<LanguageVariantResponses
     super(config, queryService);
   }
 
-  toObservable(): Observable<LanguageVariantResponses.ViewLanguageVariantResponse> {
+  toPromise(): Promise<LanguageVariantResponses.ViewLanguageVariantResponse> {
     return this.queryService.viewLanguageVariant(this.getUrl(), this.queryConfig);
   }
 

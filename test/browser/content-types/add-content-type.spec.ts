@@ -5,10 +5,10 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Add content type', () => {
     let response: ContentTypeResponses.AddContentTypeResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .addContentType()
-            .withData(builder => {
+            .withData((builder) => {
                 return {
                     external_id: 'exId',
                     name: 'name',
@@ -25,11 +25,7 @@ describe('Add content type', () => {
                     ]
                 };
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -62,8 +58,8 @@ describe('Add content type', () => {
         expect(contentType.elements.length).toEqual(originalItem.elements.length);
         expect(Array.isArray(contentType.elements)).toBeTruthy();
 
-        contentType.elements.forEach(element => {
-            const originalElement = originalItem.elements.find(m => m.id === element.id);
+        contentType.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
             }

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentTypeSnippetResponses } from '../../responses';
@@ -13,7 +13,7 @@ export class ListContentTypeSnippetsQuery extends BaseListingQuery<
         super(config, queryService);
     }
 
-    toObservable(): Observable<ContentTypeSnippetResponses.ContentTypeSnippetListResponse> {
+    toPromise(): Promise<ContentTypeSnippetResponses.ContentTypeSnippetListResponse> {
         return this.queryService.listContentTypeSnippets(this.getUrl(), this.queryConfig);
     }
 

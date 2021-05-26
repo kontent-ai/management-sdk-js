@@ -4,14 +4,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Delete webhook', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(undefined).deleteWebhook()
-            .byId('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(undefined).deleteWebhook().byId('x').toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -30,6 +24,4 @@ describe('Delete webhook', () => {
     it(`response should NOT contain data`, () => {
         expect(response.data).toBeUndefined();
     });
-
 });
-

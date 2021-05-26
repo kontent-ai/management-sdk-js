@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -18,7 +18,7 @@ export class ListLanguageVariantsOfContentTypeQuery extends BaseListingQuery<
         super(config, queryService);
     }
 
-    toObservable(): Observable<LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse> {
+    toPromise(): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse> {
         return this.queryService.listLanguageVariantsOfContentType(this.getUrl(), this.queryConfig);
     }
 

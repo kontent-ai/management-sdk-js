@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { GenericResponses } from '../../responses';
@@ -15,7 +15,7 @@ export class PutQuery extends BaseQuery<GenericResponses.GenericResponse> {
         super(config, queryService);
     }
 
-    toObservable(): Observable<GenericResponses.GenericResponse> {
+    toPromise(): Promise<GenericResponses.GenericResponse> {
         return this.queryService.genericPutResponse(this.getUrl(), this.data, this.queryConfig);
     }
 

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentItemContracts } from '../../contracts';
@@ -18,7 +18,7 @@ export class UpsertContentItemQuery extends BaseQuery<ContentItemResponses.Upser
     super(config, queryService);
   }
 
-  toObservable(): Observable<ContentItemResponses.UpsertContentItemResponse> {
+  toPromise(): Promise<ContentItemResponses.UpsertContentItemResponse> {
     return this.queryService.upsertContentItem(this.getUrl(), this.data, this.queryConfig);
   }
 

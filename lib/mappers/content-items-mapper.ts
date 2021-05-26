@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { ContentItemContracts } from '../contracts';
 import { ContentItemModels } from '../models';
@@ -8,7 +8,7 @@ import { BaseMapper } from './base-mapper';
 export class ContentItemsMapper extends BaseMapper {
 
     mapListingItemsResponse(
-        response: IBaseResponse<ContentItemContracts.IContentItemsListingResponseContract>
+        response: IResponse<ContentItemContracts.IContentItemsListingResponseContract>
     ): ContentItemResponses.ContentItemsResponse {
 
         const pagination = super.mapPagination(response.data.pagination);
@@ -21,25 +21,25 @@ export class ContentItemsMapper extends BaseMapper {
     }
 
     mapViewContentItemResponse(
-        response: IBaseResponse<ContentItemContracts.IContentItemModelContract>
+        response: IResponse<ContentItemContracts.IContentItemModelContract>
     ): ContentItemResponses.ViewContentItemResponse {
         return new ContentItemResponses.ViewContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
     }
 
     mapAddContentItemResponse(
-        response: IBaseResponse<ContentItemContracts.IAddContentItemResponseContract>
+        response: IResponse<ContentItemContracts.IAddContentItemResponseContract>
     ): ContentItemResponses.AddContentItemResponse {
         return new ContentItemResponses.AddContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
     }
 
     mapUpdateContentItemResponse(
-        response: IBaseResponse<ContentItemContracts.IUpdateContentItemResponseContract>
+        response: IResponse<ContentItemContracts.IUpdateContentItemResponseContract>
     ): ContentItemResponses.UpdateContentItemResponse {
         return new ContentItemResponses.UpdateContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
     }
 
     mapUpsertContentItemResponse(
-        response: IBaseResponse<ContentItemContracts.IUpsertContentItemResponseContract>
+        response: IResponse<ContentItemContracts.IUpsertContentItemResponseContract>
     ): ContentItemResponses.UpsertContentItemResponse {
         return new ContentItemResponses.UpsertContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
     }

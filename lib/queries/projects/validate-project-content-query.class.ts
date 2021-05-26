@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ProjectResponses } from '../../responses';
@@ -15,7 +15,7 @@ export class ValidateProjectContentQuery extends BaseQuery<ProjectResponses.Vali
     super(config, queryService);
   }
 
-  toObservable(): Observable<ProjectResponses.ValidateProjectContentResponse> {
+  toPromise(): Promise<ProjectResponses.ValidateProjectContentResponse> {
     return this.queryService.validateProjectContent(this.getUrl(), {
       projectId: this.projectId
     }, this.queryConfig);

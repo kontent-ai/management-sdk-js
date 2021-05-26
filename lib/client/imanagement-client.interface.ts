@@ -1,3 +1,4 @@
+import { IHttpCancelRequestToken } from '@kentico/kontent-core';
 import { ContentItemContracts } from '../contracts';
 import {
     AssetFolderModels,
@@ -90,8 +91,13 @@ import {
 } from '../queries';
 import { IMappingService } from '../services';
 
-export interface IManagementClient {
+export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
+
+    /**
+     * Creates cancel token
+     */
+    createCancelToken(): IHttpCancelRequestToken<TCancelToken>;
 
     /**
      * Custom post query

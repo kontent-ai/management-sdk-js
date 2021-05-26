@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentTypeSnippetModels, ContentTypeSnippetElements, contentTypeSnippetElementsBuilder } from '../../models';
@@ -16,7 +16,7 @@ export class AddContentTypeSnippetQuery extends BaseQuery<ContentTypeSnippetResp
     super(config, queryService);
   }
 
-  toObservable(): Observable<ContentTypeSnippetResponses.ViewContentTypeSnippetResponse> {
+  toPromise(): Promise<ContentTypeSnippetResponses.ViewContentTypeSnippetResponse> {
     return this.queryService.addContentTypeSnippet(this.getUrl(), this.data(contentTypeSnippetElementsBuilder), this.queryConfig);
   }
 

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -15,7 +15,7 @@ export class DeleteContentItemQuery extends BaseQuery<BaseResponses.EmptyContent
         super(config, queryService);
     }
 
-    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.deleteContentItem(this.getUrl(), this.queryConfig);
     }
 

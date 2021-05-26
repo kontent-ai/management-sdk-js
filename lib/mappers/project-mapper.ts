@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { ProjectContracts } from '../contracts';
 import { ProjectModels } from '../models/projects/project.models';
@@ -8,7 +8,7 @@ import { BaseMapper } from './base-mapper';
 export class ProjectMapper extends BaseMapper {
 
     mapValidateProjectContentResponse(
-        response: IBaseResponse<ProjectContracts.IProjectReportResponseContract>
+        response: IResponse<ProjectContracts.IProjectReportResponseContract>
     ): ProjectResponses.ValidateProjectContentResponse {
 
         return new ProjectResponses.ValidateProjectContentResponse(super.mapResponseDebug(response), response.data, {
@@ -19,7 +19,7 @@ export class ProjectMapper extends BaseMapper {
     }
 
     mapProjectInformationResponse(
-        response: IBaseResponse<ProjectContracts.IProjectInformationResponseContract>
+        response: IResponse<ProjectContracts.IProjectInformationResponseContract>
     ): ProjectResponses.ProjectInformationResponse {
 
         return new ProjectResponses.ProjectInformationResponse(super.mapResponseDebug(response), response.data, {

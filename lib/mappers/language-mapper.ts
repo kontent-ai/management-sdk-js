@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { LanguageContracts } from '../contracts';
 import { LanguageModels } from '../models';
@@ -7,28 +7,28 @@ import { BaseMapper } from './base-mapper';
 
 export class LanguageMapper extends BaseMapper {
     mapViewLanguageResponse(
-        response: IBaseResponse<LanguageContracts.IViewLanguageResponseContract>
+        response: IResponse<LanguageContracts.IViewLanguageResponseContract>
     ): LanguageResponses.ViewLanguageResponse {
         const language = this.mapLanguage(response.data);
         return new LanguageResponses.ViewLanguageResponse(super.mapResponseDebug(response), response.data, language);
     }
 
     mapModifyLanguageResponse(
-        response: IBaseResponse<LanguageContracts.IModifyLanguageResponseContract>
+        response: IResponse<LanguageContracts.IModifyLanguageResponseContract>
     ): LanguageResponses.ModifyLanguageResponse {
         const language = this.mapLanguage(response.data);
         return new LanguageResponses.ModifyLanguageResponse(super.mapResponseDebug(response), response.data, language);
     }
 
     mapAddLanguageResponse(
-        response: IBaseResponse<LanguageContracts.IAddLanguageResponseContract>
+        response: IResponse<LanguageContracts.IAddLanguageResponseContract>
     ): LanguageResponses.AddLanguageResponse {
         const language = this.mapLanguage(response.data);
         return new LanguageResponses.AddLanguageResponse(super.mapResponseDebug(response), response.data, language);
     }
 
     mapListLanguagesResponse(
-        response: IBaseResponse<LanguageContracts.IListLanguagesResponseContract>
+        response: IResponse<LanguageContracts.IListLanguagesResponseContract>
     ): LanguageResponses.ListLanguagesResponse {
         const languages = response.data.languages.map(m => this.mapLanguage(m));
         return new LanguageResponses.ListLanguagesResponse(super.mapResponseDebug(response), response.data, {

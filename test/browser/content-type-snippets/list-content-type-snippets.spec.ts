@@ -5,13 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List content type snippets', () => {
     let response: ContentTypeSnippetResponses.ContentTypeSnippetListResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(listContentTypesJson).listContentTypeSnippets()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(listContentTypesJson).listContentTypeSnippets().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -44,8 +39,8 @@ describe('List content type snippets', () => {
     it(`content type snippet properties should be mapped`, () => {
         const contentTypeSnippets = response.data.items;
 
-        contentTypeSnippets.forEach(contentTypeSnippet => {
-            const originalItem = listContentTypesJson.snippets.find(m => m.id === contentTypeSnippet.id);
+        contentTypeSnippets.forEach((contentTypeSnippet) => {
+            const originalItem = listContentTypesJson.snippets.find((m) => m.id === contentTypeSnippet.id);
 
             if (!originalItem) {
                 throw Error(`Invalid content type snippet with id '${contentTypeSnippet.id}'`);
@@ -58,9 +53,8 @@ describe('List content type snippets', () => {
             expect(contentTypeSnippet.elements.length).toEqual(originalItem.elements.length);
             expect(Array.isArray(contentTypeSnippet.elements)).toBeTruthy();
 
-            contentTypeSnippet.elements.forEach(element => {
-
-                const originalElement = originalItem.elements.find(m => m.id === element.id);
+            contentTypeSnippet.elements.forEach((element) => {
+                const originalElement = originalItem.elements.find((m) => m.id === element.id);
                 if (!originalElement) {
                     throw Error(`Invalid element with id '${element.id}'`);
                 }
@@ -73,8 +67,5 @@ describe('List content type snippets', () => {
                 expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
             });
         });
-
     });
-
-
 });

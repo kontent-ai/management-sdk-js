@@ -2,19 +2,15 @@ import { ContentTypeResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-modify-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('Modify content type', () => {
     let response: ContentTypeResponses.ModifyContentTypeResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).modifyContentType()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .modifyContentType()
             .byTypeCodename('x')
             .withData([])
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -49,9 +45,8 @@ describe('Modify content type', () => {
         expect(contentType.elements.length).toEqual(originalItem.elements.length);
         expect(Array.isArray(contentType.elements)).toBeTruthy();
 
-        contentType.elements.forEach(element => {
-
-            const originalElement = originalItem.elements.find(m => m.id === element.id);
+        contentType.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
             }
@@ -61,8 +56,4 @@ describe('Modify content type', () => {
             expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
         });
     });
-
-
 });
-
-

@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { ContentTypeContracts } from '../contracts';
 import { ContentTypeModels } from '../models';
@@ -8,7 +8,7 @@ import { elementsMapper } from './elements-mapper';
 
 export class ContentTypeMapper extends BaseMapper {
 
-    mapListingResponse(response: IBaseResponse<ContentTypeContracts.IContentTypeListResponseContract>): ContentTypeResponses.ContentTypeListResponse {
+    mapListingResponse(response: IResponse<ContentTypeContracts.IContentTypeListResponseContract>): ContentTypeResponses.ContentTypeListResponse {
         return new ContentTypeResponses.ContentTypeListResponse(
             super.mapResponseDebug(response), response.data, {
                 items: response.data.types.map(m => this.mapContentType(m)),
@@ -17,19 +17,19 @@ export class ContentTypeMapper extends BaseMapper {
         );
     }
 
-    mapViewContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IViewContentTypeResponseContract>): ContentTypeResponses.ViewContentTypeResponse {
+    mapViewContentTypeResponse(response: IResponse<ContentTypeContracts.IViewContentTypeResponseContract>): ContentTypeResponses.ViewContentTypeResponse {
         return new ContentTypeResponses.ViewContentTypeResponse(
             super.mapResponseDebug(response), response.data, this.mapContentType(response.data)
         );
     }
 
-    mapModifyContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IModifyContentTypeResponseContract>): ContentTypeResponses.ModifyContentTypeResponse {
+    mapModifyContentTypeResponse(response: IResponse<ContentTypeContracts.IModifyContentTypeResponseContract>): ContentTypeResponses.ModifyContentTypeResponse {
         return new ContentTypeResponses.ModifyContentTypeResponse(
             super.mapResponseDebug(response), response.data, this.mapContentType(response.data)
         );
     }
 
-    mapAddContentTypeResponse(response: IBaseResponse<ContentTypeContracts.IAddContentTypeResponseContract>): ContentTypeResponses.AddContentTypeResponse {
+    mapAddContentTypeResponse(response: IResponse<ContentTypeContracts.IAddContentTypeResponseContract>): ContentTypeResponses.AddContentTypeResponse {
         return new ContentTypeResponses.AddContentTypeResponse(
             super.mapResponseDebug(response), response.data, this.mapContentType(response.data)
         );

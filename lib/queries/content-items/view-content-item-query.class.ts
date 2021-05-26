@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -16,7 +16,7 @@ export class ViewContentItemQuery extends BaseQuery<ContentItemResponses.ViewCon
     super(config, queryService);
   }
 
-  toObservable(): Observable<ContentItemResponses.ViewContentItemResponse> {
+  toPromise(): Promise<ContentItemResponses.ViewContentItemResponse> {
     return this.queryService.viewContentItem(this.getUrl(), this.queryConfig);
   }
 

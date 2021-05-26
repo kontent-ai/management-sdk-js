@@ -2,17 +2,11 @@ import { ProjectModels, ProjectResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/projects/fake-project-information.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('Project information', () => {
     let response: ProjectResponses.ProjectInformationResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).projectInformation()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).projectInformation().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -39,6 +33,4 @@ describe('Project information', () => {
         expect(response.data.project.id).toEqual(responseJson.id);
         expect(response.data.project.name).toEqual(responseJson.name);
     });
-
 });
-

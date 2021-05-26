@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { AssetModels } from '../../models';
@@ -30,7 +30,7 @@ export class UploadBinaryFileQuery extends BaseQuery<AssetResponses.UploadBinary
     this.queryConfig.headers.push(...uploadBinaryQueryHeaders);
   }
 
-  toObservable(): Observable<AssetResponses.UploadBinaryFileResponse> {
+  toPromise(): Promise<AssetResponses.UploadBinaryFileResponse> {
     return this.queryService.uploadBinaryFile(this.getUrl(), this.data, this.queryConfig);
   }
 

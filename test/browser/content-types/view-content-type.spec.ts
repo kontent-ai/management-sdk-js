@@ -2,18 +2,11 @@ import { ContentTypeResponses, ContentTypeModels } from '../../../lib';
 import * as viewContentTypeJson from '../fake-responses/content-types/fake-view-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('View content type', () => {
     let response: ContentTypeResponses.ViewContentTypeResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(viewContentTypeJson).viewContentType()
-            .byTypeCodename('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(viewContentTypeJson).viewContentType().byTypeCodename('x').toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -52,7 +45,7 @@ describe('View content type', () => {
         expect(contentType.contentGroups?.length).toEqual(originalItem.content_groups.length);
 
         for (const contentGroup of contentType.contentGroups ?? []) {
-            const originalGroup = originalItem.content_groups.find(m => m.id === contentGroup.id);
+            const originalGroup = originalItem.content_groups.find((m) => m.id === contentGroup.id);
             if (!originalGroup) {
                 throw Error(`Invalid content group with id '${contentGroup.id}'`);
             }
@@ -63,9 +56,8 @@ describe('View content type', () => {
             expect(contentGroup.name).toEqual(originalGroup.name);
         }
 
-        contentType.elements.forEach(element => {
-
-            const originalElement = originalItem.elements.find(m => m.id === element.id);
+        contentType.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
             }
@@ -75,8 +67,4 @@ describe('View content type', () => {
             expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
         });
     });
-
-
 });
-
-

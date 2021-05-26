@@ -5,8 +5,9 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Upsert content item', () => {
     let response: ContentItemResponses.UpsertContentItemResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(upsertContentItemResponseJson).upsertContentItem()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(upsertContentItemResponseJson)
+            .upsertContentItem()
             .byItemExternalId('x')
             .withData({
                 name: 'y',
@@ -18,19 +19,29 @@ describe('Upsert content item', () => {
                     codename: 'xCollection'
                 }
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const externalIdUrl = cmLiveClient.upsertContentItem().byItemExternalId('xExternalId').withData({} as any).getUrl();
-        const internalIdUrl = cmLiveClient.upsertContentItem().byItemId('xId').withData({} as any).getUrl();
-        const codenameUrl = cmLiveClient.upsertContentItem().byItemCodename('xCodename').withData({} as any).getUrl();
+        const externalIdUrl = cmLiveClient
+            .upsertContentItem()
+            .byItemExternalId('xExternalId')
+            .withData({} as any)
+            .getUrl();
+        const internalIdUrl = cmLiveClient
+            .upsertContentItem()
+            .byItemId('xId')
+            .withData({} as any)
+            .getUrl();
+        const codenameUrl = cmLiveClient
+            .upsertContentItem()
+            .byItemCodename('xCodename')
+            .withData({} as any)
+            .getUrl();
 
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`
+        );
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xId`);
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
     });
@@ -57,7 +68,4 @@ describe('Upsert content item', () => {
         expect(response.data.type).toEqual(upsertContentItemResponseJson.type);
         expect(response.data.collection.id).toEqual(upsertContentItemResponseJson.collection.id);
     });
-
-
 });
-

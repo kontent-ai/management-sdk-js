@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 import { WebhookContracts } from '../contracts/webhook-contracts';
 import { WebhookModels } from '../models/webhook/webhook.models';
 import { WebhookResponses } from '../responses';
@@ -7,7 +7,7 @@ import { BaseMapper } from './base-mapper';
 
 export class WebhookMapper extends BaseMapper {
     mapGetWebhookResponse(
-        response: IBaseResponse<WebhookContracts.IGetWebhookContract>
+        response: IResponse<WebhookContracts.IGetWebhookContract>
     ): WebhookResponses.GetWebhookResponse {
         return new WebhookResponses.GetWebhookResponse(
             super.mapResponseDebug(response),
@@ -17,7 +17,7 @@ export class WebhookMapper extends BaseMapper {
     }
 
     mapAddWebhookResponse(
-        response: IBaseResponse<WebhookContracts.IGetWebhookContract>
+        response: IResponse<WebhookContracts.IGetWebhookContract>
     ): WebhookResponses.AddWebhookResponse {
         return new WebhookResponses.AddWebhookResponse(
             super.mapResponseDebug(response),
@@ -27,7 +27,7 @@ export class WebhookMapper extends BaseMapper {
     }
 
     mapEnableWebhookResponse(
-        response: IBaseResponse<WebhookContracts.IEnableWebhookContract>
+        response: IResponse<WebhookContracts.IEnableWebhookContract>
     ): WebhookResponses.EnableWebhookResponse {
         return new WebhookResponses.EnableWebhookResponse(
             super.mapResponseDebug(response),
@@ -37,7 +37,7 @@ export class WebhookMapper extends BaseMapper {
     }
 
     mapDisableWebhookResponse(
-        response: IBaseResponse<WebhookContracts.IDisableWebhookContract>
+        response: IResponse<WebhookContracts.IDisableWebhookContract>
     ): WebhookResponses.DisableWebhookResponse {
         return new WebhookResponses.DisableWebhookResponse(
             super.mapResponseDebug(response),
@@ -47,7 +47,7 @@ export class WebhookMapper extends BaseMapper {
     }
 
     mapWebhooksListResponse(
-        response: IBaseResponse<WebhookContracts.IWebhookListContract>
+        response: IResponse<WebhookContracts.IWebhookListContract>
     ): WebhookResponses.WebhookListResponse {
         return new WebhookResponses.WebhookListResponse(super.mapResponseDebug(response), response.data, {
             webhooks: response.data.map(m => this.mapWebhook(m))

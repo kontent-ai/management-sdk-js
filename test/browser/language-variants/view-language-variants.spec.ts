@@ -2,37 +2,69 @@ import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../
 import * as jsonResponse from '../fake-responses/language-variants/fake-upsert-language-variant.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('View language variant', () => {
     let response: LanguageVariantResponses.ViewLanguageVariantResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(jsonResponse).viewLanguageVariant()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(jsonResponse)
+            .viewLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrlWithCodenameLanguage = cmLiveClient.viewLanguageVariant().byItemCodename('xCodename').byLanguageCodename('xLanguageCodename').getUrl();
-        const internalIdUrlWithCodenameLanguage = cmLiveClient.viewLanguageVariant().byItemId('xItemId').byLanguageCodename('xLanguageCodename').getUrl();
-        const externalIdUrlWithCodenameLanguage = cmLiveClient.viewLanguageVariant().byItemExternalId('XItemExternal').byLanguageCodename('xLanguageCodename').getUrl();
+        const codenameUrlWithCodenameLanguage = cmLiveClient
+            .viewLanguageVariant()
+            .byItemCodename('xCodename')
+            .byLanguageCodename('xLanguageCodename')
+            .getUrl();
+        const internalIdUrlWithCodenameLanguage = cmLiveClient
+            .viewLanguageVariant()
+            .byItemId('xItemId')
+            .byLanguageCodename('xLanguageCodename')
+            .getUrl();
+        const externalIdUrlWithCodenameLanguage = cmLiveClient
+            .viewLanguageVariant()
+            .byItemExternalId('XItemExternal')
+            .byLanguageCodename('xLanguageCodename')
+            .getUrl();
 
-        const codenameUrlWithIdLanguage = cmLiveClient.viewLanguageVariant().byItemCodename('xCodename').byLanguageId('xLanguageId').getUrl();
-        const internalIdUrlWithIdLanguage = cmLiveClient.viewLanguageVariant().byItemId('xItemId').byLanguageId('xLanguageId').getUrl();
-        const externalIdUrlWithIdLanguage = cmLiveClient.viewLanguageVariant().byItemExternalId('XItemExternal').byLanguageId('xLanguageId').getUrl();
+        const codenameUrlWithIdLanguage = cmLiveClient
+            .viewLanguageVariant()
+            .byItemCodename('xCodename')
+            .byLanguageId('xLanguageId')
+            .getUrl();
+        const internalIdUrlWithIdLanguage = cmLiveClient
+            .viewLanguageVariant()
+            .byItemId('xItemId')
+            .byLanguageId('xLanguageId')
+            .getUrl();
+        const externalIdUrlWithIdLanguage = cmLiveClient
+            .viewLanguageVariant()
+            .byItemExternalId('XItemExternal')
+            .byLanguageId('xLanguageId')
+            .getUrl();
 
-        expect(codenameUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants/codename/xLanguageCodename`);
-        expect(internalIdUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xItemId/variants/codename/xLanguageCodename`);
-        expect(externalIdUrlWithCodenameLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/XItemExternal/variants/codename/xLanguageCodename`);
+        expect(codenameUrlWithCodenameLanguage).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants/codename/xLanguageCodename`
+        );
+        expect(internalIdUrlWithCodenameLanguage).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/xItemId/variants/codename/xLanguageCodename`
+        );
+        expect(externalIdUrlWithCodenameLanguage).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/XItemExternal/variants/codename/xLanguageCodename`
+        );
 
-        expect(codenameUrlWithIdLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants/xLanguageId`);
-        expect(internalIdUrlWithIdLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xItemId/variants/xLanguageId`);
-        expect(externalIdUrlWithIdLanguage).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/XItemExternal/variants/xLanguageId`);
+        expect(codenameUrlWithIdLanguage).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants/xLanguageId`
+        );
+        expect(internalIdUrlWithIdLanguage).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/xItemId/variants/xLanguageId`
+        );
+        expect(externalIdUrlWithIdLanguage).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/XItemExternal/variants/xLanguageId`
+        );
     });
 
     it(`response should be instance of ViewLanguageVariantResponse class`, () => {
@@ -67,8 +99,8 @@ describe('View language variant', () => {
         expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
 
-        variant.elements.forEach(element => {
-            const originalElement = originalItem.elements.find(m => m.element.id === element.element.id);
+        variant.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);
 
             expect(element).toEqual(jasmine.any(ElementModels.ContentItemElement));
 
@@ -77,7 +109,7 @@ describe('View language variant', () => {
             }
 
             if (Array.isArray(element.value)) {
-                element.value.forEach(elementReference => {
+                element.value.forEach((elementReference) => {
                     expect(elementReference).toEqual(jasmine.any(SharedModels.ReferenceObject));
                 });
             } else {
@@ -85,5 +117,4 @@ describe('View language variant', () => {
             }
         });
     });
-
 });

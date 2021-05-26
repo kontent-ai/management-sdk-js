@@ -7,23 +7,16 @@ describe('List content items', () => {
     let response: ContentItemResponses.ContentItemsResponse;
     const headers: IHeader[] = [];
 
-    beforeAll((done) => {
-
-        const query =  getTestClientWithJson(listingResponseJson).listContentItems()
-        .xContinuationToken('wda');
+    beforeAll(async () => {
+        const query = getTestClientWithJson(listingResponseJson).listContentItems().xContinuationToken('wda');
 
         headers.push(...query.getHeaders());
 
-        query
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+        response = await query.toPromise();
     });
 
     it(`x-continuation header should be set`, () => {
-        const continuationHeader = headers.find(m => m.header.toLowerCase() === 'x-continuation'.toLowerCase());
+        const continuationHeader = headers.find((m) => m.header.toLowerCase() === 'x-continuation'.toLowerCase());
 
         expect(continuationHeader).toBeDefined();
         expect(continuationHeader ? continuationHeader.value : '').toEqual('wda');
@@ -58,7 +51,7 @@ describe('List content items', () => {
         expect(Array.isArray(response.data.items)).toBeTruthy();
         expect(response.data.items.length).toBeGreaterThan(0);
 
-        response.data.items.forEach(m => {
+        response.data.items.forEach((m) => {
             expect(m.codename).toBeDefined();
             expect(m.id).toBeDefined();
             expect(m.lastModified).toBeDefined();
@@ -69,7 +62,4 @@ describe('List content items', () => {
             expect(m.collection.id).toBeDefined();
         });
     });
-
-
 });
-

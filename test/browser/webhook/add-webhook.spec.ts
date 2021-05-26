@@ -5,8 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Add webhook', () => {
     let response: WebhookResponses.AddWebhookResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .addWebhook()
             .withData({
                 name: 'x',
@@ -31,11 +31,7 @@ describe('Add webhook', () => {
                 },
                 url: 's'
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -71,9 +67,7 @@ describe('Add webhook', () => {
         expect(webhook.triggers.workflowStepChanges).toEqual(jasmine.any(Array));
 
         for (const trigger of webhook.triggers.deliveryApiContentChanges) {
-            expect(trigger).toEqual(
-                jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges)
-            );
+            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges));
             expect(trigger.type).toBeDefined();
         }
 

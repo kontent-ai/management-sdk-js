@@ -5,30 +5,17 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Delete content type snippet', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(jsonResponse)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(jsonResponse)
             .deleteContentTypeSnippet()
             .byTypeCodename('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient
-            .deleteContentTypeSnippet()
-            .byTypeCodename('xCodename')
-            .getUrl();
-        const idUrl = cmLiveClient
-            .deleteContentTypeSnippet()
-            .byTypeId('xInternalId')
-            .getUrl();
-        const externalIdUrl = cmLiveClient
-            .deleteContentTypeSnippet()
-            .byTypeExternalId('xExternal')
-            .getUrl();
+        const codenameUrl = cmLiveClient.deleteContentTypeSnippet().byTypeCodename('xCodename').getUrl();
+        const idUrl = cmLiveClient.deleteContentTypeSnippet().byTypeId('xInternalId').getUrl();
+        const externalIdUrl = cmLiveClient.deleteContentTypeSnippet().byTypeExternalId('xExternal').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/xCodename`

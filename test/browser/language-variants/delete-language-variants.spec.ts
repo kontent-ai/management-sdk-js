@@ -5,16 +5,12 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Delete language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(jsonResponse)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(jsonResponse)
             .deleteLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {

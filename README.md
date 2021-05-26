@@ -16,18 +16,14 @@
 
 To get started, you'll first need to have access to your [Kentico Kontent](https://kontent.ai/) project where you need to enable Content management API and generate `access token` that will be used to authenticate all requests made by this library.
 
-### Installation
 
-This library has a peer dependency on `rxjs`which means you need to install it as well. You install it using `npm` or use it directly in browser using one of the `cdn` bundles. 
-
-#### npm
+## Installation
 
 ```
-npm i rxjs --save
 npm i @kentico/kontent-management --save
 ```
 
-#### Using a standalone version in browsers
+### Using a standalone version in browsers
 
 If you'd like to use this library directly in browser, place following script tags to your html page. You may of course download it and refer to local versions of scripts.
 
@@ -57,7 +53,7 @@ const client = new ManagementClient({
                 }
             }
         )
-        .toObservable()
+        .toPromise()
         .subscribe((response) => {
             // work with response
         },
@@ -96,7 +92,7 @@ If you are using `UMD` bundles directly in browsers, you can find this library u
                     },
                 }
             )
-            .toObservable()
+            .toPromise()
             .subscribe((response) => {
                 // work with response
             },
@@ -125,6 +121,52 @@ const client = new ManagementClient({
 | `baseUrl` | https://manage.kontent.ai/v2/projects  | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes |
 | `retryStrategy` | undefined |  Retry strategy configuration. If not set, default strategy is used. |
 | `httpService` | HttpService  | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
+
+### Handling Managemeng Errors
+
+```typescript
+try {
+    const client = await new ManagementClient({
+        projectId: 'x',
+        apiKey: 'y'
+    });
+    await client.viewContentItem().byItemCodename('invalid codename').toPromise();
+} catch (err) {
+    if (err instanceof SharedModels.ContentManagementBaseKontentError) {
+        // Error message provided by API response and mapped by SDK
+        const message = err.message;
+    } else {
+        // handle generic error however you need
+    }
+}
+```
+
+### Cancelling Requests
+
+```typescript
+const client = await new ManagementClient({
+    projectId: 'x',
+    apiKey: 'y'
+});
+
+// prepare cancel token
+const cancelTokenRequest = client.createCancelToken();
+
+client
+    .listContentItems()
+    .withCancelToken(cancelTokenRequest)
+    .toPromise()
+    .then((x) => {
+        // will not be executed as request was cancelled before network
+        // request got a chance to finish
+    })
+    .catch((err) => {
+        // error with your custom message 'Request manually cancelled'
+    });
+
+// cancel request right away
+cancelTokenRequest.cancel('Request manually cancelled');
+```
 
 ### Testing
 

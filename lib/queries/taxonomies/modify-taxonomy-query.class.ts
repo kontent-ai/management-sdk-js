@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, TaxonomyModels } from '../../models';
@@ -16,7 +16,7 @@ export class ModifyTaxonomyQuery extends BaseQuery<TaxonomyResponses.ModifyTaxon
         super(config, queryService);
     }
 
-    toObservable(): Observable<TaxonomyResponses.ModifyTaxonomyResponse> {
+    toPromise(): Promise<TaxonomyResponses.ModifyTaxonomyResponse> {
         return this.queryService.modifyTaxonomy(this.getUrl(), this.queryConfig, this.data);
     }
 

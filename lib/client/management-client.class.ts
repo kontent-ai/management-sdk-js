@@ -1,4 +1,4 @@
-import { HttpService } from '@kentico/kontent-core';
+import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kentico/kontent-core';
 import { LanguageVariantElements, LanguageVariantElementsBuilder } from '../models';
 
 import { IManagementClientConfig } from '../config';
@@ -93,22 +93,27 @@ import {
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
+import { CancelToken } from 'axios';
 
-export class ManagementClient implements IManagementClient {
+export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
+    private httpService: IHttpService<CancelToken>;
 
     public readonly mappingService: IMappingService = new MappingService();
 
     constructor(protected readonly config: IManagementClientConfig) {
-        this.queryService = new ContentManagementQueryService(
-            config,
-            config.httpService ? config.httpService : new HttpService(),
-            {
-                host: sdkInfo.host,
-                name: sdkInfo.name,
-                version: sdkInfo.version
-            }
-        );
+        const httpService = config.httpService ? config.httpService : new HttpService();
+        this.queryService = new ContentManagementQueryService(config, httpService, {
+            host: sdkInfo.host,
+            name: sdkInfo.name,
+            version: sdkInfo.version
+        });
+
+        this.httpService = httpService;
+    }
+
+    createCancelToken(): IHttpCancelRequestToken<CancelToken> {
+        return this.httpService.createCancelToken();
     }
 
     post(): ActionQuery<DataQuery<PostQuery, any>> {
@@ -321,18 +326,12 @@ export class ManagementClient implements IManagementClient {
             this.queryService,
             (config, queryService, contentItemIdentifier) =>
                 new LanguageIdAndCodenameIdentifierQuery<
-                    DataQueryOptional<
-                        PublishLanguageVariantQuery,
-                        WorkflowModels.IPublishLanguageVariantData
-                    >
+                    DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>
                 >(
                     config,
                     queryService,
                     (nConfig, nQueryService, languageIdentifier) =>
-                        new DataQueryOptional<
-                            PublishLanguageVariantQuery,
-                            WorkflowModels.IPublishLanguageVariantData
-                        >(
+                        new DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>(
                             nConfig,
                             nQueryService,
                             (pConfig, pQueryService, data) =>

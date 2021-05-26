@@ -5,14 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('View assets', () => {
     let response: AssetResponses.ViewAssetResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(viewAssetResponseJson).viewAsset()
-            .byAssetId('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(viewAssetResponseJson).viewAsset().byAssetId('xxx').toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -20,7 +14,9 @@ describe('View assets', () => {
         const externalIdUrl = cmLiveClient.viewAsset().byAssetExternalId('xExternalId').getUrl();
 
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/xInternalId`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/xExternalId`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/xExternalId`
+        );
     });
 
     it(`response should be instance of ViewAssetResponse class`, () => {
@@ -51,12 +47,9 @@ describe('View assets', () => {
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);
         expect(asset.fileReference.type).toEqual(originalItem.file_reference.type);
 
-        asset.descriptions.forEach(s => {
+        asset.descriptions.forEach((s) => {
             expect(s.description).toBeDefined();
             expect(s.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
         });
     });
-
-
 });
-

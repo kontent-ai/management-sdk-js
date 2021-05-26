@@ -5,13 +5,11 @@ import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
 describe('View content item', () => {
     let response: ContentItemResponses.ViewContentItemResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(viewContentItemJson).viewContentItem().byItemCodename(viewContentItemJson.codename)
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(viewContentItemJson)
+            .viewContentItem()
+            .byItemCodename(viewContentItemJson.codename)
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -21,7 +19,9 @@ describe('View content item', () => {
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`
+        );
     });
 
     it(`response should be instance of ViewContentItemResponse class`, () => {
@@ -47,6 +47,4 @@ describe('View content item', () => {
         expect(response.data.collection).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(response.data.collection.id).toEqual(viewContentItemJson.collection.id);
     });
-
 });
-

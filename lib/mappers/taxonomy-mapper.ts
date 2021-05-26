@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { TaxonomyContracts } from '../contracts';
 import { TaxonomyModels, SharedModels } from '../models';
@@ -8,7 +8,7 @@ import { BaseMapper } from './base-mapper';
 export class TaxonomyMapper extends BaseMapper {
 
     mapListingTaxonomysResponse(
-        response: IBaseResponse<TaxonomyContracts.ITemporaryTaxonomyListResponse>
+        response: IResponse<TaxonomyContracts.ITemporaryTaxonomyListResponse>
     ): TaxonomyResponses.TaxonomyListResponse {
 
         let taxonomies: TaxonomyModels.Taxonomy[];
@@ -31,7 +31,7 @@ export class TaxonomyMapper extends BaseMapper {
     }
 
     mapGetTaxonomyResponse(
-        response: IBaseResponse<TaxonomyContracts.IGetTaxonomyResponseContract>
+        response: IResponse<TaxonomyContracts.IGetTaxonomyResponseContract>
     ): TaxonomyResponses.GetTaxonomyResponse {
 
         const taxonomy = this.mapTaxonomy(response.data);
@@ -40,7 +40,7 @@ export class TaxonomyMapper extends BaseMapper {
     }
 
     mapModifyTaxonomyResponse(
-        response: IBaseResponse<TaxonomyContracts.IModifyTaxonomyResponseContract>
+        response: IResponse<TaxonomyContracts.IModifyTaxonomyResponseContract>
     ): TaxonomyResponses.ModifyTaxonomyResponse {
 
         const taxonomy = this.mapTaxonomy(response.data);
@@ -49,7 +49,7 @@ export class TaxonomyMapper extends BaseMapper {
     }
 
     mapAddTaxonomyResponse(
-        response: IBaseResponse<TaxonomyContracts.IAddTaxonomyResponseContract>
+        response: IResponse<TaxonomyContracts.IAddTaxonomyResponseContract>
     ): TaxonomyResponses.AddTaxonomyResponse {
 
         const taxonomy = this.mapTaxonomy(response.data);

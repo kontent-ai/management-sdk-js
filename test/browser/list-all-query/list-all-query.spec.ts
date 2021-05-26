@@ -5,13 +5,10 @@ import { getTestClientWithJson } from '../setup';
 describe('List all query', () => {
     let response: ContentItemResponses.ContentItemsListAllResponse;
 
-    beforeAll(done => {
+    beforeAll(async () => {
         const query = getTestClientWithJson(listingResponseJson).listContentItems();
 
-        query.toAllObservable().subscribe(result => {
-            response = result;
-            done();
-        });
+        response = await query.toAllPromise();
     });
 
     it(`response should be instance of ContentItemsListAllResponse class`, () => {

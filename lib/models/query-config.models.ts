@@ -1,10 +1,11 @@
-import { IHeader } from '@kentico/kontent-core';
+import { IHeader, IHttpCancelRequestToken } from '@kentico/kontent-core';
 import { ResponseType } from 'axios';
 
 import { BaseResponses } from '../responses/base-responses';
 
 export interface IContentManagementQueryConfig {
     headers: IHeader[];
+    cancelTokenRequest?: IHttpCancelRequestToken<any>;
 }
 
 export interface IContentManagementInternalQueryConfig {

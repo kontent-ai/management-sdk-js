@@ -5,13 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List taxonomies original (before API breaking change)', () => {
     let response: TaxonomyResponses.TaxonomyListResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(listingTaxonomyResponseJson).listTaxonomies()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(listingTaxonomyResponseJson).listTaxonomies().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -36,9 +31,9 @@ describe('List taxonomies original (before API breaking change)', () => {
         expect(Array.isArray(response.data.taxonomies)).toBeTruthy();
         expect(response.data.taxonomies.length).toEqual(listingTaxonomyResponseJson.length);
 
-        response.data.taxonomies.forEach(m => {
+        response.data.taxonomies.forEach((m) => {
             // find original item
-            const originalItem = listingTaxonomyResponseJson.find(s => s.id === m.id);
+            const originalItem = listingTaxonomyResponseJson.find((s) => s.id === m.id);
 
             if (!originalItem) {
                 throw Error(`Taxonomy with id '${m.id}' was not found in fake response`);
@@ -50,12 +45,9 @@ describe('List taxonomies original (before API breaking change)', () => {
             expect(m.name).toEqual(originalItem.name);
             expect(Array.isArray(m.terms)).toBeTruthy();
 
-            m.terms.forEach(s => {
+            m.terms.forEach((s) => {
                 expect(s).toEqual(jasmine.any(TaxonomyModels.Taxonomy));
             });
         });
     });
-
-
 });
-

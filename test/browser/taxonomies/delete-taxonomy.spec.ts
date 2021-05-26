@@ -5,30 +5,17 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Delete taxonomy', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(deleteTaxonomyJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(deleteTaxonomyJson)
             .deleteTaxonomy()
             .byTaxonomyCodename('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient
-            .deleteTaxonomy()
-            .byTaxonomyCodename('xCodename')
-            .getUrl();
-        const internalIdUrl = cmLiveClient
-            .deleteTaxonomy()
-            .byTaxonomyId('xInternalId')
-            .getUrl();
-        const externalIdUrl = cmLiveClient
-            .deleteTaxonomy()
-            .byTaxonomyExternalId('xExternalId')
-            .getUrl();
+        const codenameUrl = cmLiveClient.deleteTaxonomy().byTaxonomyCodename('xCodename').getUrl();
+        const internalIdUrl = cmLiveClient.deleteTaxonomy().byTaxonomyId('xInternalId').getUrl();
+        const externalIdUrl = cmLiveClient.deleteTaxonomy().byTaxonomyExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/codename/xCodename`

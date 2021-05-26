@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -18,7 +18,7 @@ export class ChangeWorkflowStepOfLanguageOrVariantQuery extends BaseQuery<BaseRe
     super(config, queryService);
   }
 
-  toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+  toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
     return this.queryService.changeWorkflowStepOfLanguageVariant(this.getUrl(), this.queryConfig);
   }
 

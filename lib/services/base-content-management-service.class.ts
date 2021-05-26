@@ -1,21 +1,19 @@
 import {
     headerHelper,
-    IBaseResponse,
+    IResponse,
     IHeader,
     IHttpService,
     IQueryParameter,
     ISDKInfo,
-    urlHelper,
+    urlHelper
 } from '@kentico/kontent-core';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AxiosError } from 'axios';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { SharedContracts } from '../contracts';
 import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
 
-export abstract class BaseContentManagementQueryService {
+export abstract class BaseContentManagementQueryService<TCancelToken> {
     /**
      * Default base url for content management API
      */
@@ -23,7 +21,7 @@ export abstract class BaseContentManagementQueryService {
 
     constructor(
         protected readonly config: IManagementClientConfig,
-        protected readonly httpService: IHttpService,
+        protected readonly httpService: IHttpService<TCancelToken>,
         protected readonly sdkInfo: ISDKInfo
     ) {}
 
@@ -64,32 +62,29 @@ export abstract class BaseContentManagementQueryService {
      * @param url Url of request
      * @param config Query configuration
      */
-    protected patchResponse<TRawData>(
+    protected async patchResponseAsync<TRawData>(
         url: string,
         body: any,
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig
-    ): Observable<IBaseResponse<TRawData>> {
-
-        return this.httpService
-            .patch<TRawData>(
+    ): Promise<IResponse<TRawData>> {
+        try {
+            return await this.httpService.patchAsync<TRawData>(
                 {
                     url: url,
                     body: body
                 },
                 {
+                    cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
-            )
-            .pipe(
-                catchError((error: any) => {
-                    return throwError(this.mapContentManagementError(error));
-                })
             );
+        } catch (error) {
+            throw this.mapContentManagementError(error);
+        }
     }
 
     /**
@@ -97,30 +92,27 @@ export abstract class BaseContentManagementQueryService {
      * @param url Url of request
      * @param config Query configuration
      */
-    protected getResponse<TRawData>(
+    protected async getResponseAsync<TRawData>(
         url: string,
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig
-    ): Observable<IBaseResponse<TRawData>> {
-
-        return this.httpService
-            .get<TRawData>(
+    ): Promise<IResponse<TRawData>> {
+        try {
+            return await this.httpService.getAsync<TRawData>(
                 {
-                    url: url,
+                    url: url
                 },
                 {
+                    cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
-            )
-            .pipe(
-                catchError((error: any) => {
-                    return throwError(this.mapContentManagementError(error));
-                })
             );
+        } catch (err) {
+            throw this.mapContentManagementError(err);
+        }
     }
 
     /**
@@ -129,31 +121,29 @@ export abstract class BaseContentManagementQueryService {
      * @param body Body of the request (names and values)
      * @param config Query configuration
      */
-    protected postResponse<TRawData>(
+    protected async postResponseAsync<TRawData>(
         url: string,
         body: any,
         internalConfig: IContentManagementInternalQueryConfig,
-        config: IContentManagementQueryConfig,
-    ): Observable<IBaseResponse<TRawData>> {
-        return this.httpService
-            .post<TRawData>(
+        config: IContentManagementQueryConfig
+    ): Promise<IResponse<TRawData>> {
+        try {
+            return this.httpService.postAsync<TRawData>(
                 {
                     url: url,
-                    body: body,
+                    body: body
                 },
                 {
+                    cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
-            )
-            .pipe(
-                catchError((error: any) => {
-                    return throwError(this.mapContentManagementError(error));
-                })
             );
+        } catch (err) {
+            throw this.mapContentManagementError(err);
+        }
     }
 
     /**
@@ -162,31 +152,29 @@ export abstract class BaseContentManagementQueryService {
      * @param body Body of the request (names and values)
      * @param config Query configuration
      */
-    protected putResponse<TRawData>(
+    protected async putResponseAsync<TRawData>(
         url: string,
         body: any,
         internalConfig: IContentManagementInternalQueryConfig,
         config: IContentManagementQueryConfig
-    ): Observable<IBaseResponse<TRawData>> {
-        return this.httpService
-            .put<TRawData>(
+    ): Promise<IResponse<TRawData>> {
+        try {
+            return await this.httpService.putAsync<TRawData>(
                 {
                     url: url,
-                    body: body,
+                    body: body
                 },
                 {
+                    cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
-            )
-            .pipe(
-                catchError((error: any) => {
-                    return throwError(this.mapContentManagementError(error));
-                })
             );
+        } catch (err) {
+            throw this.mapContentManagementError(err);
+        }
     }
 
     /**
@@ -195,36 +183,30 @@ export abstract class BaseContentManagementQueryService {
      * @param body Body of the request (names and values)
      * @param config Query configuration
      */
-    protected deleteResponse<TRawData>(
+    protected async deleteResponseAsync<TRawData>(
         url: string,
         internalConfig: IContentManagementInternalQueryConfig,
-        config: IContentManagementQueryConfig,
-    ): Observable<IBaseResponse<TRawData>> {
-
-        return this.httpService
-            .delete<TRawData>(
+        config: IContentManagementQueryConfig
+    ): Promise<IResponse<TRawData>> {
+        try {
+            return await this.httpService.deleteAsync<TRawData>(
                 {
-                    url: url,
+                    url: url
                 },
                 {
+                    cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
                     headers: this.getHeaders(config),
-                    logErrorToConsole: this.config.isDeveloperMode,
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
-            )
-            .pipe(
-                catchError((error: any) => {
-                    return throwError(this.mapContentManagementError(error));
-                })
             );
+        } catch (err) {
+            throw this.mapContentManagementError(err);
+        }
     }
 
-    private mapContentManagementError(
-        error: any
-    ): SharedModels.ContentManagementBaseKontentError | any {
-
+    private mapContentManagementError(error: any): SharedModels.ContentManagementBaseKontentError | any {
         let axiosError: AxiosError | undefined;
 
         if (error.error) {
@@ -246,9 +228,14 @@ export abstract class BaseContentManagementQueryService {
         const validationErrors: SharedModels.ValidationError[] = [];
 
         if (cmError.validation_errors) {
-            validationErrors.push(...cmError.validation_errors.map(validationErrorRaw => new SharedModels.ValidationError({
-                message: validationErrorRaw.message
-            })));
+            validationErrors.push(
+                ...cmError.validation_errors.map(
+                    (validationErrorRaw) =>
+                        new SharedModels.ValidationError({
+                            message: validationErrorRaw.message
+                        })
+                )
+            );
         }
 
         return new SharedModels.ContentManagementBaseKontentError({

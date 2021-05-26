@@ -1,5 +1,5 @@
 import { LanguageVariantElements, LanguageVariantElementsBuilder, languageVariantElementsBuilder } from '../../models/language-variants/language-variant-elements-builder';
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -19,7 +19,7 @@ export class UpsertLanguageVariantQuery extends BaseQuery<LanguageVariantRespons
     super(config, queryService);
   }
 
-  toObservable(): Observable<LanguageVariantResponses.UpsertLanguageVariantResponse> {
+  toPromise(): Promise<LanguageVariantResponses.UpsertLanguageVariantResponse> {
     return this.queryService.upsertLanguageVariant(this.getUrl(), this.data(languageVariantElementsBuilder), this.queryConfig);
   }
 

@@ -1,7 +1,5 @@
 import { IHttpService, ISDKInfo } from '@kentico/kontent-core';
 import { LanguageVariantElements } from '../models/language-variants/language-variant-elements-builder';
-import { Observable, of } from 'rxjs';
-import { flatMap, map, delay } from 'rxjs/operators';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import {
@@ -15,7 +13,7 @@ import {
     ProjectContracts,
     TaxonomyContracts,
     WebhookContracts,
-    WorkflowContracts,
+    WorkflowContracts
 } from '../contracts';
 import {
     assetFolderMapper,
@@ -28,7 +26,7 @@ import {
     projectMapper,
     taxonomyMappper,
     workflowMapper,
-    genericMapper,
+    genericMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -41,7 +39,7 @@ import {
     WebhookModels,
     WorkflowModels,
     AssetFolderModels,
-    IContentManagementListQueryConfig,
+    IContentManagementListQueryConfig
 } from '../models';
 import {
     AssetFolderResponses,
@@ -56,807 +54,667 @@ import {
     TaxonomyResponses,
     WebhookResponses,
     WorkflowResponses,
-    GenericResponses,
+    GenericResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
-export class ContentManagementQueryService extends BaseContentManagementQueryService {
-
-    private readonly defaultDelayBetweenRequests: number = 250;
-
+export class ContentManagementQueryService extends BaseContentManagementQueryService<any> {
     constructor(
         protected config: IManagementClientConfig,
-        protected httpService: IHttpService,
+        protected httpService: IHttpService<any>,
         protected sdkInfo: ISDKInfo
     ) {
         super(config, httpService, sdkInfo);
     }
 
-    genericPostResponse(
+    async genericPostResponse(
         url: string,
         data: any,
         config: IContentManagementQueryConfig
-    ): Observable<GenericResponses.GenericResponse> {
-        return this.postResponse<void>(url, data, {}, config).pipe(
-            map(response => {
-                return genericMapper.mapGenericResponse(response);
-            })
-        );
+    ): Promise<GenericResponses.GenericResponse> {
+        return genericMapper.mapGenericResponse(await super.postResponseAsync<void>(url, data, {}, config));
     }
 
-    genericPatchResponse(
+    async genericPatchResponse(
         url: string,
         data: any,
         config: IContentManagementQueryConfig
-    ): Observable<GenericResponses.GenericResponse> {
-        return this.patchResponse<void>(url, data, {}, config).pipe(
-            map(response => {
-                return genericMapper.mapGenericResponse(response);
-            })
-        );
+    ): Promise<GenericResponses.GenericResponse> {
+        return genericMapper.mapGenericResponse(await super.patchResponseAsync<void>(url, data, {}, config));
     }
 
-    genericDeleteResponse(
+    async genericDeleteResponse(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<GenericResponses.GenericResponse> {
-        return this.deleteResponse<void>(url, {}, config).pipe(
-            map(response => {
-                return genericMapper.mapGenericResponse(response);
-            })
-        );
+    ): Promise<GenericResponses.GenericResponse> {
+        return genericMapper.mapGenericResponse(await super.deleteResponseAsync<void>(url, {}, config));
     }
 
-    genericGetResponse(
+    async genericGetResponse(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<GenericResponses.GenericResponse> {
-        return this.getResponse<void>(url, {}, config).pipe(
-            map(response => {
-                return genericMapper.mapGenericResponse(response);
-            })
-        );
+    ): Promise<GenericResponses.GenericResponse> {
+        return genericMapper.mapGenericResponse(await super.getResponseAsync<void>(url, {}, config));
     }
 
-    genericPutResponse(
+    async genericPutResponse(
         url: string,
         data: any,
         config: IContentManagementQueryConfig
-    ): Observable<GenericResponses.GenericResponse> {
-        return this.putResponse<void>(url, data, {}, config).pipe(
-            map(response => {
-                return genericMapper.mapGenericResponse(response);
-            })
-        );
+    ): Promise<GenericResponses.GenericResponse> {
+        return genericMapper.mapGenericResponse(await super.putResponseAsync<void>(url, data, {}, config));
     }
 
-    getListAllResponse<
+    async getListAllResponse<
         TResponse extends BaseResponses.IContentManagementListResponse,
         TAllResponse extends BaseResponses.IContentManagementListAllResponse
     >(data: {
-        getResponse: (xContinuationToken?: string) => Observable<TResponse>;
+        getResponse: (xContinuationToken?: string) => Promise<TResponse>;
         allResponseFactory: (items: any[], responses: TResponse[]) => TAllResponse;
-        listQueryConfig?: IContentManagementListQueryConfig<TResponse>
-    }): Observable<TAllResponse> {
-        return this.getListAllResponseInternal({
+        listQueryConfig?: IContentManagementListQueryConfig<TResponse>;
+    }): Promise<TAllResponse> {
+        const responses = await this.getListAllResponseInternalAsync({
             resolvedResponses: [],
             getResponse: data.getResponse,
             xContinuationToken: undefined,
             listQueryConfig: data.listQueryConfig
-        }).pipe(
-            map(responses => {
-                return data.allResponseFactory(
-                    responses.reduce((prev: any[], current) => {
-                        prev.push(...current.data.items);
-                        return prev;
-                    }, []),
-                    responses
-                );
-            })
+        });
+
+        return data.allResponseFactory(
+            responses.reduce((prev: any[], current) => {
+                prev.push(...current.data.items);
+                return prev;
+            }, []),
+            responses
         );
     }
 
-    publishLanguageVariant(
+    async publishLanguageVariant(
         url: string,
         data: WorkflowModels.IPublishLanguageVariantData | undefined,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, data, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapEmptyResponse(response);
-            })
-        );
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
     }
 
-    createNewVersionOfLanguageVariant(
+    async createNewVersionOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, undefined, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapEmptyResponse(response);
-            })
-        );
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    unpublishLanguageVariant(
+    async unpublishLanguageVariant(
         url: string,
         data: WorkflowModels.IUnpublishLanguageVarianthData | undefined,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, data, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapEmptyResponse(response);
-            })
-        );
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
     }
 
-    cancelScheduledPublishingOfLanguageVariant(
+    async cancelScheduledPublishingOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, undefined, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapEmptyResponse(response);
-            })
-        );
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    cancelScheduledUnpublishingOfLanguageVariant(
+    async cancelScheduledUnpublishingOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, undefined, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapEmptyResponse(response);
-            })
-        );
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    changeWorkflowStepOfLanguageVariant(
+    async changeWorkflowStepOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.putResponse<void>(url, undefined, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapEmptyResponse(response);
-            })
-        );
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    listWorkflowSteps(
+    async listWorkflowSteps(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<WorkflowResponses.ListWorkflowStepsResponse> {
-        return this.getResponse<WorkflowContracts.IListWorkflowStepsResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return workflowMapper.mapListWorkflowStepsResponse(response);
-            })
+    ): Promise<WorkflowResponses.ListWorkflowStepsResponse> {
+        return workflowMapper.mapListWorkflowStepsResponse(
+            await this.getResponseAsync<WorkflowContracts.IListWorkflowStepsResponseContract>(url, {}, config)
         );
     }
 
-    addContentType(
+    async addContentType(
         url: string,
         data: ContentTypeModels.IAddContentTypeData,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeResponses.AddContentTypeResponse> {
-        return this.postResponse<ContentTypeContracts.IAddContentTypeResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return contentTypeMapper.mapAddContentTypeResponse(response);
-            })
+    ): Promise<ContentTypeResponses.AddContentTypeResponse> {
+        return contentTypeMapper.mapAddContentTypeResponse(
+            await this.postResponseAsync<ContentTypeContracts.IAddContentTypeResponseContract>(url, data, {}, config)
         );
     }
 
-    viewContentTypeSnippet(
+    async viewContentTypeSnippet(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeSnippetResponses.ViewContentTypeSnippetResponse> {
-        return this.getResponse<ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract>(
-            url,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return contentTypeSnippetMapper.mapViewContentTypeSnippetResponse(response);
-            })
+    ): Promise<ContentTypeSnippetResponses.ViewContentTypeSnippetResponse> {
+        return contentTypeSnippetMapper.mapViewContentTypeSnippetResponse(
+            await this.getResponseAsync<ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
-    deleteContentTypeSnippet(
+    async deleteContentTypeSnippet(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<ContentTypeSnippetContracts.IDeleteContentTypeSnippetResponseContract>(
-            url,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return contentTypeSnippetMapper.mapEmptyResponse(response);
-            })
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentTypeSnippetMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<ContentTypeSnippetContracts.IDeleteContentTypeSnippetResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
-    addContentTypeSnippet(
+    async addContentTypeSnippet(
         url: string,
         data: ContentTypeSnippetModels.IAddContentTypeSnippetData,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeSnippetResponses.AddContentTypeSnippetResponse> {
-        return this.postResponse<ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract>(
-            url,
-            data,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return contentTypeSnippetMapper.mapAddContentTypeSnippetResponse(response);
-            })
+    ): Promise<ContentTypeSnippetResponses.AddContentTypeSnippetResponse> {
+        return contentTypeSnippetMapper.mapAddContentTypeSnippetResponse(
+            await this.postResponseAsync<ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 
-    listContentTypeSnippets(
+    async listContentTypeSnippets(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeSnippetResponses.ContentTypeSnippetListResponse> {
-        return this.getResponse<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract>(
-            url,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return contentTypeSnippetMapper.mapListingResponse(response);
-            })
+    ): Promise<ContentTypeSnippetResponses.ContentTypeSnippetListResponse> {
+        return contentTypeSnippetMapper.mapListingResponse(
+            await this.getResponseAsync<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
-    projectInformation(
+    async projectInformation(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ProjectResponses.ProjectInformationResponse> {
-        return this.getResponse<ProjectContracts.IProjectInformationResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return projectMapper.mapProjectInformationResponse(response);
-            })
+    ): Promise<ProjectResponses.ProjectInformationResponse> {
+        return projectMapper.mapProjectInformationResponse(
+            await this.getResponseAsync<ProjectContracts.IProjectInformationResponseContract>(url, {}, config)
         );
     }
 
-    validateProjectContent(
+    async validateProjectContent(
         url: string,
         data: {
             projectId: string;
         },
         config: IContentManagementQueryConfig
-    ): Observable<ProjectResponses.ValidateProjectContentResponse> {
-        return this.postResponse<ProjectContracts.IProjectReportResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return projectMapper.mapValidateProjectContentResponse(response);
-            })
+    ): Promise<ProjectResponses.ValidateProjectContentResponse> {
+        return projectMapper.mapValidateProjectContentResponse(
+            await this.postResponseAsync<ProjectContracts.IProjectReportResponseContract>(url, data, {}, config)
         );
     }
 
-    deleteContentType(
+    async deleteContentType(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<ContentTypeContracts.IDeleteContentTypeResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentTypeMapper.mapEmptyResponse(response);
-            })
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentTypeMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<ContentTypeContracts.IDeleteContentTypeResponseContract>(url, {}, config)
         );
     }
 
-    modifyContentType(
+    async modifyContentType(
         url: string,
         config: IContentManagementQueryConfig,
         data: ContentTypeModels.IModifyContentTypeData[]
-    ): Observable<ContentTypeResponses.ModifyContentTypeResponse> {
-        return this.patchResponse<ContentTypeContracts.IModifyContentTypeResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return contentTypeMapper.mapModifyContentTypeResponse(response);
-            })
+    ): Promise<ContentTypeResponses.ModifyContentTypeResponse> {
+        return contentTypeMapper.mapModifyContentTypeResponse(
+            await this.patchResponseAsync<ContentTypeContracts.IModifyContentTypeResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 
-    modifyTaxonomy(
+    async modifyTaxonomy(
         url: string,
         config: IContentManagementQueryConfig,
         data: TaxonomyModels.IModifyTaxonomyData[]
-    ): Observable<TaxonomyResponses.ModifyTaxonomyResponse> {
-        return this.patchResponse<TaxonomyContracts.IModifyTaxonomyResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return taxonomyMappper.mapModifyTaxonomyResponse(response);
-            })
+    ): Promise<TaxonomyResponses.ModifyTaxonomyResponse> {
+        return taxonomyMappper.mapModifyTaxonomyResponse(
+            await this.patchResponseAsync<TaxonomyContracts.IModifyTaxonomyResponseContract>(url, data, {}, config)
         );
     }
 
-    modifyContentTypeSnippet(
+    async modifyContentTypeSnippet(
         url: string,
         config: IContentManagementQueryConfig,
         data: ContentTypeSnippetModels.IModifyContentTypeSnippetData[]
-    ): Observable<ContentTypeSnippetResponses.ModifyContentTypeSnippetResponse> {
-        return this.patchResponse<ContentTypeContracts.IModifyContentTypeResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return contentTypeSnippetMapper.mapModifyContentTypeSnippetResponse(response);
-            })
+    ): Promise<ContentTypeSnippetResponses.ModifyContentTypeSnippetResponse> {
+        return contentTypeSnippetMapper.mapModifyContentTypeSnippetResponse(
+            await this.patchResponseAsync<ContentTypeContracts.IModifyContentTypeResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 
-    viewContentType(
+    async viewContentType(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeResponses.ViewContentTypeResponse> {
-        return this.getResponse<ContentTypeContracts.IViewContentTypeResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentTypeMapper.mapViewContentTypeResponse(response);
-            })
+    ): Promise<ContentTypeResponses.ViewContentTypeResponse> {
+        return contentTypeMapper.mapViewContentTypeResponse(
+            await this.getResponseAsync<ContentTypeContracts.IViewContentTypeResponseContract>(url, {}, config)
         );
     }
 
-    listContentTypes(
+    async listContentTypes(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentTypeResponses.ContentTypeListResponse> {
-        return this.getResponse<ContentTypeContracts.IContentTypeListResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentTypeMapper.mapListingResponse(response);
-            })
+    ): Promise<ContentTypeResponses.ContentTypeListResponse> {
+        return contentTypeMapper.mapListingResponse(
+            await this.getResponseAsync<ContentTypeContracts.IContentTypeListResponseContract>(url, {}, config)
         );
     }
 
-    addTaxonomy(
+    async addTaxonomy(
         url: string,
         data: TaxonomyModels.IAddTaxonomyRequestModel,
         config: IContentManagementQueryConfig
-    ): Observable<TaxonomyResponses.AddTaxonomyResponse> {
-        return this.postResponse<TaxonomyContracts.IAddTaxonomyResponseContract>(
-            url,
-            data,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return taxonomyMappper.mapAddTaxonomyResponse(response);
-            })
+    ): Promise<TaxonomyResponses.AddTaxonomyResponse> {
+        return taxonomyMappper.mapAddTaxonomyResponse(
+            await this.postResponseAsync<TaxonomyContracts.IAddTaxonomyResponseContract>(url, data, {}, config)
         );
     }
 
-    deleteTaxonomy(
+    async deleteTaxonomy(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<TaxonomyContracts.IDeleteTaxonomyResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return taxonomyMappper.mapEmptyResponse(response);
-            })
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return taxonomyMappper.mapEmptyResponse(
+            await this.deleteResponseAsync<TaxonomyContracts.IDeleteTaxonomyResponseContract>(url, {}, config)
         );
     }
 
-    getTaxonomy(url: string, config: IContentManagementQueryConfig): Observable<TaxonomyResponses.GetTaxonomyResponse> {
-        return this.getResponse<TaxonomyContracts.IGetTaxonomyResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return taxonomyMappper.mapGetTaxonomyResponse(response);
-            })
-        );
-    }
-
-    listTaxonomies(
+    async getTaxonomy(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<TaxonomyResponses.TaxonomyListResponse> {
-        return this.getResponse<TaxonomyContracts.ITaxonomyContract[]>(url, {}, config).pipe(
-            map(response => {
-                return taxonomyMappper.mapListingTaxonomysResponse(response);
-            })
+    ): Promise<TaxonomyResponses.GetTaxonomyResponse> {
+        return taxonomyMappper.mapGetTaxonomyResponse(
+            await this.getResponseAsync<TaxonomyContracts.IGetTaxonomyResponseContract>(url, {}, config)
         );
     }
 
-    deleteAsset(
+    async listTaxonomies(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<AssetContracts.IDeleteAssetResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return assetsMapper.mapEmptyResponse(response);
-            })
+    ): Promise<TaxonomyResponses.TaxonomyListResponse> {
+        return taxonomyMappper.mapListingTaxonomysResponse(
+            await this.getResponseAsync<TaxonomyContracts.ITaxonomyContract[]>(url, {}, config)
         );
     }
 
-    upsertAsset(
+    async deleteAsset(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return assetsMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<AssetContracts.IDeleteAssetResponseContract>(url, {}, config)
+        );
+    }
+
+    async upsertAsset(
         url: string,
         data: AssetModels.IUpsertAssetRequestData,
         config: IContentManagementQueryConfig
-    ): Observable<AssetResponses.UpdateAssetResponse> {
-        return this.putResponse<AssetContracts.IUpsertAssetResponseContract>(
-            url,
-            data,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return assetsMapper.mapUpsertAssetResponse(response);
-            })
+    ): Promise<AssetResponses.UpdateAssetResponse> {
+        return assetsMapper.mapUpsertAssetResponse(
+            await this.putResponseAsync<AssetContracts.IUpsertAssetResponseContract>(url, data, {}, config)
         );
     }
 
-    addAsset(
+    async addAsset(
         url: string,
         data: AssetModels.IAddAssetRequestData,
         config: IContentManagementQueryConfig
-    ): Observable<AssetResponses.AddAssetResponse> {
-        return this.postResponse<AssetContracts.IAddAssetResponseContract>(
-            url,
-            data,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return assetsMapper.mapAddAssetResponse(response);
-            })
+    ): Promise<AssetResponses.AddAssetResponse> {
+        return assetsMapper.mapAddAssetResponse(
+            await this.postResponseAsync<AssetContracts.IAddAssetResponseContract>(url, data, {}, config)
         );
     }
 
-    uploadBinaryFile(
+    async uploadBinaryFile(
         url: string,
         data: AssetModels.IUploadBinaryFileRequestData,
         config: IContentManagementQueryConfig
-    ): Observable<AssetResponses.UploadBinaryFileResponse> {
-        return this.postResponse<AssetContracts.IUploadBinaryFileResponseContract>(
-            url,
-            data.binaryData,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return assetsMapper.mapUploadBinaryFileResponse(response);
-            })
+    ): Promise<AssetResponses.UploadBinaryFileResponse> {
+        return assetsMapper.mapUploadBinaryFileResponse(
+            await this.postResponseAsync<AssetContracts.IUploadBinaryFileResponseContract>(
+                url,
+                data.binaryData,
+                {},
+                config
+            )
         );
     }
 
-    viewAsset(url: string, config: IContentManagementQueryConfig): Observable<AssetResponses.ViewAssetResponse> {
-        return this.getResponse<AssetContracts.IAssetModelContract>(url, {}, config).pipe(
-            map(response => {
-                return assetsMapper.mapViewAssetResponse(response);
-            })
+    async viewAsset(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.ViewAssetResponse> {
+        return assetsMapper.mapViewAssetResponse(
+            await this.getResponseAsync<AssetContracts.IAssetModelContract>(url, {}, config)
         );
     }
 
-    listAssets(url: string, config: IContentManagementQueryConfig): Observable<AssetResponses.AssetsListResponse> {
-        return this.getResponse<AssetContracts.IAssetsListingResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return assetsMapper.mapListingAssetsResponse(response);
-            })
+    async listAssets(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.AssetsListResponse> {
+        return assetsMapper.mapListingAssetsResponse(
+            await this.getResponseAsync<AssetContracts.IAssetsListingResponseContract>(url, {}, config)
         );
     }
 
-    listContentItems(
+    async listContentItems(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentItemResponses.ContentItemsResponse> {
-        return this.getResponse<ContentItemContracts.IContentItemsListingResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapListingItemsResponse(response);
-            })
+    ): Promise<ContentItemResponses.ContentItemsResponse> {
+        return contentItemsMapper.mapListingItemsResponse(
+            await this.getResponseAsync<ContentItemContracts.IContentItemsListingResponseContract>(url, {}, config)
         );
     }
 
-    viewContentItem(
+    async viewContentItem(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<ContentItemResponses.ViewContentItemResponse> {
-        return this.getResponse<ContentItemContracts.IViewContentItemResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapViewContentItemResponse(response);
-            })
+    ): Promise<ContentItemResponses.ViewContentItemResponse> {
+        return contentItemsMapper.mapViewContentItemResponse(
+            await this.getResponseAsync<ContentItemContracts.IViewContentItemResponseContract>(url, {}, config)
         );
     }
 
-    addContentItem(
+    async addContentItem(
         url: string,
         data: ContentItemContracts.IAddContentItemPostContract,
         config: IContentManagementQueryConfig
-    ): Observable<ContentItemResponses.AddContentItemResponse> {
-        return this.postResponse<ContentItemContracts.IAddContentItemResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapAddContentItemResponse(response);
-            })
+    ): Promise<ContentItemResponses.AddContentItemResponse> {
+        return contentItemsMapper.mapAddContentItemResponse(
+            await this.postResponseAsync<ContentItemContracts.IAddContentItemResponseContract>(url, data, {}, config)
         );
     }
 
-    upsertContentItem(
+    async upsertContentItem(
         url: string,
         data: ContentItemContracts.IUpsertContentItemPostContract,
         config: IContentManagementQueryConfig
-    ): Observable<ContentItemResponses.UpsertContentItemResponse> {
-        return this.putResponse<ContentItemContracts.IUpsertContentItemResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapUpsertContentItemResponse(response);
-            })
+    ): Promise<ContentItemResponses.UpsertContentItemResponse> {
+        return contentItemsMapper.mapUpsertContentItemResponse(
+            await this.putResponseAsync<ContentItemContracts.IUpsertContentItemResponseContract>(url, data, {}, config)
         );
     }
 
-    updateContentItem(
+    async updateContentItem(
         url: string,
         data: ContentItemContracts.IUpdateContentItemPostContract,
         config: IContentManagementQueryConfig
-    ): Observable<ContentItemResponses.AddContentItemResponse> {
-        return this.putResponse<ContentItemContracts.IUpdateContentItemResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapUpdateContentItemResponse(response);
-            })
+    ): Promise<ContentItemResponses.AddContentItemResponse> {
+        return contentItemsMapper.mapUpdateContentItemResponse(
+            await this.putResponseAsync<ContentItemContracts.IUpdateContentItemResponseContract>(url, data, {}, config)
         );
     }
 
-    deleteContentItem(
+    async deleteContentItem(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapEmptyResponse(response);
-            })
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentItemsMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config)
         );
     }
 
-    deleteLanguageVariant(
+    async deleteLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return contentItemsMapper.mapEmptyResponse(response);
-            })
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentItemsMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config)
         );
     }
 
-    upsertLanguageVariant(
+    async upsertLanguageVariant(
         url: string,
         elements: LanguageVariantElements.ILanguageVariantElementBase[],
         config: IContentManagementQueryConfig
-    ): Observable<LanguageVariantResponses.UpsertLanguageVariantResponse> {
-        return this.putResponse<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>(
-            url,
-            {
-                elements: elements
-            },
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return languageVariantMapper.mapUpsertLanguageVariantResponse(response);
-            })
+    ): Promise<LanguageVariantResponses.UpsertLanguageVariantResponse> {
+        return languageVariantMapper.mapUpsertLanguageVariantResponse(
+            await this.putResponseAsync<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>(
+                url,
+                {
+                    elements: elements
+                },
+                {},
+                config
+            )
         );
     }
 
-    viewLanguageVariant(
+    async viewLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<LanguageVariantResponses.ViewLanguageVariantResponse> {
-        return this.getResponse<LanguageVariantContracts.IViewLanguageVariantResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return languageVariantMapper.mapViewLanguageVariantResponse(response);
-            })
+    ): Promise<LanguageVariantResponses.ViewLanguageVariantResponse> {
+        return languageVariantMapper.mapViewLanguageVariantResponse(
+            await this.getResponseAsync<LanguageVariantContracts.IViewLanguageVariantResponseContract>(url, {}, config)
         );
     }
 
-    listLanguageVariantsOfItem(
+    async listLanguageVariantsOfItem(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<LanguageVariantResponses.ListLanguageVariantsOfItemResponse> {
-        return this.getResponse<LanguageVariantContracts.IListLanguageVariantsOfItemResponseContract[]>(
-            url,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return languageVariantMapper.mapLanguageVariantsOfItemResponse(response);
-            })
+    ): Promise<LanguageVariantResponses.ListLanguageVariantsOfItemResponse> {
+        return languageVariantMapper.mapLanguageVariantsOfItemResponse(
+            await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsOfItemResponseContract[]>(
+                url,
+                {},
+                config
+            )
         );
     }
 
-    listLanguageVariantsOfContentTypeWithComponents(
+    async listLanguageVariantsOfContentTypeWithComponents(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
-        return this.getResponse<
-            LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract
-        >(url, {}, config).pipe(
-            map(response => {
-                return languageVariantMapper.mapLanguageVariantsOfContentTypeWithComponentsResponse(response);
-            })
+    ): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
+        return languageVariantMapper.mapLanguageVariantsOfContentTypeWithComponentsResponse(
+            await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
-    listLanguageVariantsOfContentType(
+    async listLanguageVariantsOfContentType(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse> {
-        return this.getResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>(
-            url,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return languageVariantMapper.mapLanguageVariantsOfContentTypeResponse(response);
-            })
+    ): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse> {
+        return languageVariantMapper.mapLanguageVariantsOfContentTypeResponse(
+            await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
-    listLanguages(
+    async listLanguages(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<LanguageResponses.ListLanguagesResponse> {
-        return this.getResponse<LanguageContracts.IListLanguagesResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return languageMapper.mapListLanguagesResponse(response);
-            })
+    ): Promise<LanguageResponses.ListLanguagesResponse> {
+        return languageMapper.mapListLanguagesResponse(
+            await this.getResponseAsync<LanguageContracts.IListLanguagesResponseContract>(url, {}, config)
         );
     }
 
-    viewLanguage(
+    async viewLanguage(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<LanguageResponses.ViewLanguageResponse> {
-        return this.getResponse<LanguageContracts.IViewLanguageResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return languageMapper.mapViewLanguageResponse(response);
-            })
+    ): Promise<LanguageResponses.ViewLanguageResponse> {
+        return languageMapper.mapViewLanguageResponse(
+            await this.getResponseAsync<LanguageContracts.IViewLanguageResponseContract>(url, {}, config)
         );
     }
 
-    addLanguage(
+    async addLanguage(
         url: string,
         config: IContentManagementQueryConfig,
         data: LanguageModels.IAddLanguageData
-    ): Observable<LanguageResponses.AddLanguageResponse> {
-        return this.postResponse<LanguageContracts.IAddLanguageResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return languageMapper.mapAddLanguageResponse(response);
-            })
+    ): Promise<LanguageResponses.AddLanguageResponse> {
+        return languageMapper.mapAddLanguageResponse(
+            await this.postResponseAsync<LanguageContracts.IAddLanguageResponseContract>(url, data, {}, config)
         );
     }
 
-    modifyLanguage(
+    async modifyLanguage(
         url: string,
         config: IContentManagementQueryConfig,
         data: LanguageModels.IModifyLanguageData[]
-    ): Observable<LanguageResponses.ModifyLanguageResponse> {
-        return this.patchResponse<LanguageContracts.IModifyLanguageResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return languageMapper.mapModifyLanguageResponse(response);
-            })
+    ): Promise<LanguageResponses.ModifyLanguageResponse> {
+        return languageMapper.mapModifyLanguageResponse(
+            await this.patchResponseAsync<LanguageContracts.IModifyLanguageResponseContract>(url, data, {}, config)
         );
     }
 
-    listWebhooks(url: string, config: IContentManagementQueryConfig): Observable<WebhookResponses.WebhookListResponse> {
-        return this.getResponse<WebhookContracts.IWebhookListContract>(url, {}, config).pipe(
-            map(response => {
-                return webhookMapper.mapWebhooksListResponse(response);
-            })
+    async listWebhooks(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<WebhookResponses.WebhookListResponse> {
+        return webhookMapper.mapWebhooksListResponse(
+            await this.getResponseAsync<WebhookContracts.IWebhookListContract>(url, {}, config)
         );
     }
 
-    getWebhook(url: string, config: IContentManagementQueryConfig): Observable<WebhookResponses.GetWebhookResponse> {
-        return this.getResponse<WebhookContracts.IGetWebhookContract>(url, {}, config).pipe(
-            map(response => {
-                return webhookMapper.mapGetWebhookResponse(response);
-            })
+    async getWebhook(url: string, config: IContentManagementQueryConfig): Promise<WebhookResponses.GetWebhookResponse> {
+        return webhookMapper.mapGetWebhookResponse(
+            await this.getResponseAsync<WebhookContracts.IGetWebhookContract>(url, {}, config)
         );
     }
 
-    addWebhook(
+    async addWebhook(
         url: string,
         config: IContentManagementQueryConfig,
         data: WebhookModels.IAddWebhookData
-    ): Observable<WebhookResponses.AddWebhookResponse> {
-        return this.postResponse<WebhookContracts.IAddWebhookContract>(url, data, {}, config).pipe(
-            map(response => {
-                return webhookMapper.mapAddWebhookResponse(response);
-            })
+    ): Promise<WebhookResponses.AddWebhookResponse> {
+        return webhookMapper.mapAddWebhookResponse(
+            await this.postResponseAsync<WebhookContracts.IAddWebhookContract>(url, data, {}, config)
         );
     }
 
-    enableWebhook(
+    async enableWebhook(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<WebhookResponses.AddWebhookResponse> {
-        return this.putResponse<WebhookContracts.IEnableWebhookContract>(url, {}, {}, config).pipe(
-            map(response => {
-                return webhookMapper.mapEnableWebhookResponse(response);
-            })
+    ): Promise<WebhookResponses.AddWebhookResponse> {
+        return webhookMapper.mapEnableWebhookResponse(
+            await this.putResponseAsync<WebhookContracts.IEnableWebhookContract>(url, {}, {}, config)
         );
     }
 
-    disableWebhook(
+    async disableWebhook(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<WebhookResponses.DisableWebhookResponse> {
-        return this.putResponse<WebhookContracts.IDisableWebhookContract>(url, {}, {}, config).pipe(
-            map(response => {
-                return webhookMapper.mapDisableWebhookResponse(response);
-            })
+    ): Promise<WebhookResponses.DisableWebhookResponse> {
+        return webhookMapper.mapDisableWebhookResponse(
+            await this.putResponseAsync<WebhookContracts.IDisableWebhookContract>(url, {}, {}, config)
         );
     }
 
-    deleteWebhook(
+    async deleteWebhook(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<BaseResponses.EmptyContentManagementResponse> {
-        return this.deleteResponse<BaseResponses.EmptyContentManagementResponse>(url, {}, config).pipe(
-            map(response => {
-                return webhookMapper.mapEmptyResponse(response);
-            })
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return webhookMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<BaseResponses.EmptyContentManagementResponse>(url, {}, config)
         );
     }
 
-    listAssetFolders(
+    async listAssetFolders(
         url: string,
         config: IContentManagementQueryConfig
-    ): Observable<AssetFolderResponses.AssetFoldersListResponse> {
-        return this.getResponse<AssetFolderContracts.IListAssetFoldersResponseContract>(url, {}, config).pipe(
-            map(response => {
-                return assetFolderMapper.mapListAssetFoldersResponse(response);
-            })
+    ): Promise<AssetFolderResponses.AssetFoldersListResponse> {
+        return assetFolderMapper.mapListAssetFoldersResponse(
+            await this.getResponseAsync<AssetFolderContracts.IListAssetFoldersResponseContract>(url, {}, config)
         );
     }
 
-    addAssetFolders(
+    async addAssetFolders(
         url: string,
         config: IContentManagementQueryConfig,
         data: AssetFolderModels.IAddAssetFoldersData
-    ): Observable<AssetFolderResponses.AddAssetFoldersResponse> {
-        return this.postResponse<AssetFolderContracts.IAddAssetFoldersResponseContract>(url, data, {}, config).pipe(
-            map(response => {
-                return assetFolderMapper.mapAddAssetFoldersResponse(response);
-            })
+    ): Promise<AssetFolderResponses.AddAssetFoldersResponse> {
+        return assetFolderMapper.mapAddAssetFoldersResponse(
+            await this.postResponseAsync<AssetFolderContracts.IAddAssetFoldersResponseContract>(url, data, {}, config)
         );
     }
 
-    modifyAssetFolders(
+    async modifyAssetFolders(
         url: string,
         config: IContentManagementQueryConfig,
         data: AssetFolderModels.IModifyAssetFoldersData[]
-    ): Observable<AssetFolderResponses.ModifyAssetFoldersResponse> {
-        return this.patchResponse<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>(
-            url,
-            data,
-            {},
-            config
-        ).pipe(
-            map(response => {
-                return assetFolderMapper.mapModifyAssetFoldersResponse(response);
-            })
+    ): Promise<AssetFolderResponses.ModifyAssetFoldersResponse> {
+        return assetFolderMapper.mapModifyAssetFoldersResponse(
+            await this.patchResponseAsync<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 
-    private getListAllResponseInternal<TResponse extends BaseResponses.IContentManagementListResponse>(data: {
+    private async getListAllResponseInternalAsync<
+        TResponse extends BaseResponses.IContentManagementListResponse
+    >(data: {
         xContinuationToken?: string;
-        getResponse: (xContinuationToken?: string) => Observable<TResponse>;
+        getResponse: (xContinuationToken?: string) => Promise<TResponse>;
         resolvedResponses: TResponse[];
-        listQueryConfig?: IContentManagementListQueryConfig<TResponse>
-    }): Observable<TResponse[]> {
-        return data.getResponse(data.xContinuationToken).pipe(
-            delay(data.listQueryConfig?.delayBetweenRequests ?? this.defaultDelayBetweenRequests),
-            flatMap(response => {
-                data.resolvedResponses.push(response);
+        listQueryConfig?: IContentManagementListQueryConfig<TResponse>;
+    }): Promise<TResponse[]> {
+        const response = await data.getResponse(data.xContinuationToken);
 
-                if (data.listQueryConfig?.responseFetched) {
-                    data.listQueryConfig.responseFetched(response, data.xContinuationToken);
-                }
+        if (data.listQueryConfig?.delayBetweenRequests) {
+            await this.sleep(data.listQueryConfig.delayBetweenRequests);
+        }
 
-                if (response.data.pagination.continuationToken) {
-                    // recursively fetch next page data
-                    return this.getListAllResponseInternal({
-                        xContinuationToken: response.data.pagination.continuationToken,
-                        getResponse: data.getResponse,
-                        resolvedResponses: data.resolvedResponses
-                    });
-                }
+        data.resolvedResponses.push(response);
 
-                return of(undefined);
-            }),
-            map(() => {
-                return data.resolvedResponses;
-            })
-        );
+        if (data.listQueryConfig?.responseFetched) {
+            data.listQueryConfig.responseFetched(response, data.xContinuationToken);
+        }
+
+        if (response.data.pagination.continuationToken) {
+            // recursively fetch next page data
+            return await this.getListAllResponseInternalAsync({
+                xContinuationToken: response.data.pagination.continuationToken,
+                getResponse: data.getResponse,
+                resolvedResponses: data.resolvedResponses
+            });
+        }
+
+        return data.resolvedResponses;
+    }
+
+    private sleep(ms: number): Promise<void> {
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 }

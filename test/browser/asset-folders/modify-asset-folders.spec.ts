@@ -5,8 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Modify asset folders', () => {
     let response: AssetFolderResponses.ModifyAssetFoldersResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
+   beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .modifyAssetFolders()
             .withData([{
                 // required
@@ -26,11 +26,8 @@ describe('Modify asset folders', () => {
                     external_id: 'c'
                 },
             }])
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise()
+            ;
     });
 
     it(`url should be correct`, () => {

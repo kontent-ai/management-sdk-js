@@ -4,13 +4,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('List taxonomies', () => {
     let response: TaxonomyResponses.TaxonomyListResponse;
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).listTaxonomies()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).listTaxonomies().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -35,9 +30,9 @@ describe('List taxonomies', () => {
         expect(Array.isArray(response.data.taxonomies)).toBeTruthy();
         expect(response.data.taxonomies.length).toEqual(responseJson.taxonomies.length);
 
-        response.data.taxonomies.forEach(m => {
+        response.data.taxonomies.forEach((m) => {
             // find original item
-            const originalItem = responseJson.taxonomies.find(s => s.id === m.id);
+            const originalItem = responseJson.taxonomies.find((s) => s.id === m.id);
 
             if (!originalItem) {
                 throw Error(`Taxonomy with id '${m.id}' was not found in fake response`);
@@ -49,12 +44,9 @@ describe('List taxonomies', () => {
             expect(m.name).toEqual(originalItem.name);
             expect(Array.isArray(m.terms)).toBeTruthy();
 
-            m.terms.forEach(s => {
+            m.terms.forEach((s) => {
                 expect(s).toEqual(jasmine.any(TaxonomyModels.Taxonomy));
             });
         });
     });
-
-
 });
-

@@ -4,21 +4,24 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Create new version of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(undefined).createNewVersionOfLanguageVariant()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(undefined)
+            .createNewVersionOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient.createNewVersionOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').getUrl();
+        const w1Url = cmLiveClient
+            .createNewVersionOfLanguageVariant()
+            .byItemCodename('x')
+            .byLanguageCodename('y')
+            .getUrl();
 
-        expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/new-version`);
+        expect(w1Url).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/new-version`
+        );
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {
@@ -32,6 +35,4 @@ describe('Create new version of language variant', () => {
     it(`response should NOT contain data`, () => {
         expect(response.data).toBeUndefined();
     });
-
 });
-

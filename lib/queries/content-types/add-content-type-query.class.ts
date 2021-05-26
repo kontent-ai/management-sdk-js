@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentTypeModels, contentTypeElementsBuilder, ContentTypeElementsBuilder } from '../../models';
@@ -16,7 +16,7 @@ export class AddContentTypeQuery extends BaseQuery<ContentTypeResponses.AddConte
     super(config, queryService);
   }
 
-  toObservable(): Observable<ContentTypeResponses.AddContentTypeResponse> {
+  toPromise(): Promise<ContentTypeResponses.AddContentTypeResponse> {
     return this.queryService.addContentType(this.getUrl(), this.data(contentTypeElementsBuilder), this.queryConfig);
   }
 

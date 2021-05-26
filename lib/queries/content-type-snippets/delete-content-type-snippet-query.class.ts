@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -15,7 +15,7 @@ export class DeleteContentTypeSnippetQuery extends BaseQuery<BaseResponses.Empty
         super(config, queryService);
     }
 
-    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.deleteContentTypeSnippet(this.getUrl(), this.queryConfig);
     }
 

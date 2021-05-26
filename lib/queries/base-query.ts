@@ -1,5 +1,4 @@
-import { IQueryParameter, Parameters, IHeader } from '@kentico/kontent-core';
-import { Observable } from 'rxjs';
+import { IQueryParameter, Parameters, IHeader, IHttpCancelRequestToken } from '@kentico/kontent-core';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { ContentManagementApiEndpoints, contentManagementApiEndpoints, IContentManagementQueryConfig } from '../models';
@@ -7,19 +6,17 @@ import { BaseResponses } from '../responses';
 import { ContentManagementQueryService } from '../services';
 
 export abstract class BaseQuery<TResponse extends BaseResponses.IContentManagementResponse> {
+    private _customUrl?: string;
+
     protected readonly queryConfig: IContentManagementQueryConfig = {
-        headers: []
+        headers: [],
+        cancelTokenRequest: undefined
     };
     protected readonly parameters: IQueryParameter[] = [];
     protected readonly apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
-
-    private _customUrl?: string;
     protected _addSlashToUrl: boolean = true;
 
-    constructor(
-        protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService
-    ) {}
+    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {}
 
     /**
      * Gets url for this query
@@ -34,13 +31,6 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     }
 
     /**
-     * Gets Promise to resolve this query
-     */
-    toPromise(): Promise<TResponse> {
-        return this.toObservable().toPromise();
-    }
-
-    /**
      * Adds header to request
      * @param header Header to add
      */
@@ -49,12 +39,20 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
         return this;
     }
 
-     /**
+    /**
      * Adds headers to request
      * @param headers Headers to add
      */
     withHeaders(headers: IHeader[]): this {
         this.queryConfig.headers.push(...headers);
+        return this;
+    }
+
+    /**
+     * Adds cancel token to request
+     */
+    withCancelToken(tokenRequest: IHttpCancelRequestToken<any>): this {
+        this.queryConfig.cancelTokenRequest = tokenRequest;
         return this;
     }
 
@@ -92,9 +90,9 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     }
 
     /**
-     * Gets Observable to resolve this query
+     * Gets promise to resolve this query
      */
-    abstract toObservable(): Observable<TResponse>;
+    abstract toPromise(): Promise<TResponse>;
 
     /**
      * Gets action for this query

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { LanguageResponses } from '../../responses';
@@ -13,7 +13,7 @@ export class ListLanguagesQuery extends BaseListingQuery<
         super(config, queryService);
     }
 
-    toObservable(): Observable<LanguageResponses.ListLanguagesResponse> {
+    toPromise(): Promise<LanguageResponses.ListLanguagesResponse> {
         return this.queryService.listLanguages(this.getUrl(), this.queryConfig);
     }
 

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -18,7 +18,7 @@ export class ListLanguageVariantsOfContentTypeWithComponentsQuery extends BaseLi
         super(config, queryService);
     }
 
-    toObservable(): Observable<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
+    toPromise(): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
         return this.queryService.listLanguageVariantsOfContentTypeWithComponents(this.getUrl(), this.queryConfig);
     }
 

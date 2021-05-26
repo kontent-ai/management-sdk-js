@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { AssetModels, Identifiers } from '../../models';
@@ -17,7 +17,7 @@ export class UpsertAssetQuery extends BaseQuery<AssetResponses.UpdateAssetRespon
     super(config, queryService);
   }
 
-  toObservable(): Observable<AssetResponses.UpsertAssertResponse> {
+  toPromise(): Promise<AssetResponses.UpsertAssertResponse> {
     return this.queryService.upsertAsset(this.getUrl(), this.data, this.queryConfig);
   }
 

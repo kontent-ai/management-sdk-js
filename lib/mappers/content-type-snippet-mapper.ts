@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { ContentTypeSnippetContracts } from '../contracts';
 import { ContentTypeSnippetModels } from '../models';
@@ -8,7 +8,7 @@ import { elementsMapper } from './elements-mapper';
 
 export class ContentTypeSnippetMapper extends BaseMapper {
 
-    mapListingResponse(response: IBaseResponse<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract>): ContentTypeSnippetResponses.ContentTypeSnippetListResponse {
+    mapListingResponse(response: IResponse<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract>): ContentTypeSnippetResponses.ContentTypeSnippetListResponse {
         return new ContentTypeSnippetResponses.ContentTypeSnippetListResponse(
             super.mapResponseDebug(response), response.data, {
                 items: response.data.snippets.map(m => this.mapContentTypeSnippet(m)),
@@ -17,19 +17,19 @@ export class ContentTypeSnippetMapper extends BaseMapper {
         );
     }
 
-    mapViewContentTypeSnippetResponse(response: IBaseResponse<ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.ViewContentTypeSnippetResponse {
+    mapViewContentTypeSnippetResponse(response: IResponse<ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.ViewContentTypeSnippetResponse {
         return new ContentTypeSnippetResponses.ViewContentTypeSnippetResponse(
             super.mapResponseDebug(response), response.data, this.mapContentTypeSnippet(response.data)
         );
     }
 
-    mapAddContentTypeSnippetResponse(response: IBaseResponse<ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.AddContentTypeSnippetResponse {
+    mapAddContentTypeSnippetResponse(response: IResponse<ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.AddContentTypeSnippetResponse {
         return new ContentTypeSnippetResponses.AddContentTypeSnippetResponse(
             super.mapResponseDebug(response), response.data, this.mapContentTypeSnippet(response.data)
         );
     }
 
-    mapModifyContentTypeSnippetResponse(response: IBaseResponse<ContentTypeSnippetContracts.IModifyContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.AddContentTypeSnippetResponse {
+    mapModifyContentTypeSnippetResponse(response: IResponse<ContentTypeSnippetContracts.IModifyContentTypeSnippetResponseContract>): ContentTypeSnippetResponses.AddContentTypeSnippetResponse {
         return new ContentTypeSnippetResponses.ModifyContentTypeSnippetResponse(
             super.mapResponseDebug(response), response.data, this.mapContentTypeSnippet(response.data)
         );

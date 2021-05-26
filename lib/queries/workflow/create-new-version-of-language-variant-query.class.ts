@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -17,7 +17,7 @@ export class CreateNewVersionOfLanguageVariantQuery extends BaseQuery<BaseRespon
     super(config, queryService);
   }
 
-  toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+  toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
     return this.queryService.createNewVersionOfLanguageVariant(this.getUrl(), this.queryConfig);
   }
 

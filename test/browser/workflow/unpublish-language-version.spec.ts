@@ -5,7 +5,7 @@ describe('Unpublish a language version', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
     let query: UnpublishLanguageVariantQuery;
 
-    beforeAll((done) => {
+    beforeAll(async () => {
         query = getTestClientWithJson(undefined)
             .unpublishLanguageVariant()
             .byItemCodename('x')
@@ -14,10 +14,7 @@ describe('Unpublish a language version', () => {
                 scheduled_to: '2019-01-31T11:00:00+01:00'
             });
 
-        query.toObservable().subscribe((result) => {
-            response = result;
-            done();
-        });
+        response = await query.toPromise();
     });
 
     it(`url should be correct`, () => {

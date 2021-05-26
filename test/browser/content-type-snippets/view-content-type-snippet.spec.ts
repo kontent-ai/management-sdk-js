@@ -5,30 +5,14 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('View content type snippet', () => {
     let response: ContentTypeSnippetResponses.ViewContentTypeSnippetResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
-            .viewContentTypeSnippet()
-            .byTypeCodename('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).viewContentTypeSnippet().byTypeCodename('xxx').toPromise();
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient
-            .viewContentTypeSnippet()
-            .byTypeCodename('x')
-            .getUrl();
-        const urlByInternalId = cmLiveClient
-            .viewContentTypeSnippet()
-            .byTypeId('y')
-            .getUrl();
-        const urlByExternalId = cmLiveClient
-            .viewContentTypeSnippet()
-            .byTypeExternalId('c')
-            .getUrl();
+        const urlByCodename = cmLiveClient.viewContentTypeSnippet().byTypeCodename('x').getUrl();
+        const urlByInternalId = cmLiveClient.viewContentTypeSnippet().byTypeId('y').getUrl();
+        const urlByExternalId = cmLiveClient.viewContentTypeSnippet().byTypeExternalId('c').getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/y`);
@@ -60,8 +44,8 @@ describe('View content type snippet', () => {
         expect(contentTypeSnippet.elements.length).toEqual(originalItem.elements.length);
         expect(Array.isArray(contentTypeSnippet.elements)).toBeTruthy();
 
-        contentTypeSnippet.elements.forEach(element => {
-            const originalElement = originalItem.elements.find(m => m.id === element.id);
+        contentTypeSnippet.elements.forEach((element) => {
+            const originalElement = originalItem.elements.find((m) => m.id === element.id);
             if (!originalElement) {
                 throw Error(`Invalid element with id '${element.id}'`);
             }

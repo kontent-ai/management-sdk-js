@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentItemContracts } from '../../contracts';
@@ -18,7 +18,7 @@ export class UpdateContentItemQuery extends BaseQuery<ContentItemResponses.Updat
     super(config, queryService);
   }
 
-  toObservable(): Observable<ContentItemResponses.UpdateContentItemResponse> {
+  toPromise(): Promise<ContentItemResponses.UpdateContentItemResponse> {
     return this.queryService.updateContentItem(this.getUrl(), this.data, this.queryConfig);
   }
 

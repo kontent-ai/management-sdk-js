@@ -5,26 +5,13 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Delete asset', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(deleteAssetJson)
-            .deleteAsset()
-            .byAssetExternalId('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(deleteAssetJson).deleteAsset().byAssetExternalId('xxx').toPromise();
     });
 
     it(`url should be correct`, () => {
-        const internalIdUrl = cmLiveClient
-            .deleteAsset()
-            .byAssetId('xInternalId')
-            .getUrl();
-        const externalIdUrl = cmLiveClient
-            .deleteAsset()
-            .byAssetExternalId('xExternalId')
-            .getUrl();
+        const internalIdUrl = cmLiveClient.deleteAsset().byAssetId('xInternalId').getUrl();
+        const externalIdUrl = cmLiveClient.deleteAsset().byAssetExternalId('xExternalId').getUrl();
 
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/xInternalId`);
         expect(externalIdUrl).toEqual(

@@ -5,14 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List asset folders', () => {
     let response: AssetFolderResponses.AssetFoldersListResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
-            .listAssetFolders()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).listAssetFolders().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -43,9 +37,9 @@ describe('List asset folders', () => {
         expect(Array.isArray(response.data.items)).toBeTruthy();
         expect(response.data.items.length).toBeGreaterThan(0);
 
-        response.data.items.forEach(m => {
+        response.data.items.forEach((m) => {
             // find original item
-            const originalItem = responseJson.folders.find(s => s.id === m.id);
+            const originalItem = responseJson.folders.find((s) => s.id === m.id);
 
             if (!originalItem) {
                 throw Error(`Asset folder with id '${m.id}' was not found in fake response`);
@@ -58,7 +52,7 @@ describe('List asset folders', () => {
             expect(m.folders).toEqual(jasmine.any(Array));
 
             for (const nestedFolder of m.folders) {
-                const originalNestedFolder = originalItem.folders.find(s => s.id === nestedFolder.id);
+                const originalNestedFolder = originalItem.folders.find((s) => s.id === nestedFolder.id);
 
                 if (!originalNestedFolder) {
                     throw Error(`Nested Asset folder with id '${m.id}' was not found in fake response`);

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -16,7 +16,7 @@ export class ViewAssetsQuery extends BaseQuery<AssetResponses.ViewAssetResponse>
     super(config, queryService);
   }
 
-  toObservable(): Observable<AssetResponses.ViewAssetResponse> {
+  toPromise(): Promise<AssetResponses.ViewAssetResponse> {
     return this.queryService.viewAsset(this.getUrl(), this.queryConfig);
   }
 

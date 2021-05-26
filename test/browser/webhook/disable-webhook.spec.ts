@@ -5,15 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Disable webhook', () => {
     let response: WebhookResponses.DisableWebhookResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson)
-            .disableWebhook()
-            .byId('x')
-            .toObservable()
-            .subscribe((result) => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).disableWebhook().byId('x').toPromise();
     });
 
     it(`url should be correct`, () => {

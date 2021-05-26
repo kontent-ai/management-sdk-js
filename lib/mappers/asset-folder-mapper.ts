@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { AssetFolderContracts } from '../contracts';
 import { AssetFolderModels } from '../models';
@@ -7,7 +7,7 @@ import { BaseMapper } from './base-mapper';
 
 export class AssetFolderMapper extends BaseMapper {
     mapListAssetFoldersResponse(
-        response: IBaseResponse<AssetFolderContracts.IListAssetFoldersResponseContract>
+        response: IResponse<AssetFolderContracts.IListAssetFoldersResponseContract>
     ): AssetFolderResponses.AssetFoldersListResponse {
         const items = response.data.folders.map(m => this.mapAssetFolder(m));
 
@@ -18,7 +18,7 @@ export class AssetFolderMapper extends BaseMapper {
     }
 
     mapAddAssetFoldersResponse(
-        response: IBaseResponse<AssetFolderContracts.IAddAssetFoldersResponseContract>
+        response: IResponse<AssetFolderContracts.IAddAssetFoldersResponseContract>
     ): AssetFolderResponses.AddAssetFoldersResponse {
         const items = response.data.folders.map(m => this.mapAssetFolder(m));
 
@@ -29,7 +29,7 @@ export class AssetFolderMapper extends BaseMapper {
     }
 
     mapModifyAssetFoldersResponse(
-        response: IBaseResponse<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>
+        response: IResponse<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>
     ): AssetFolderResponses.ModifyAssetFoldersResponse {
         const items = response.data.folders.map(m => this.mapAssetFolder(m));
 

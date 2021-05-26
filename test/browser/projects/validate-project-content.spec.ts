@@ -2,18 +2,14 @@ import { ProjectModels, ProjectResponses } from '../../../lib';
 import * as validateProjectContentJson from '../fake-responses/projects/fake-validate-project-content.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('Validate project content', () => {
     let response: ProjectResponses.ValidateProjectContentResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(validateProjectContentJson).validateProjectContent()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(validateProjectContentJson)
+            .validateProjectContent()
             .forProjectId('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -42,36 +38,31 @@ describe('Validate project content', () => {
     });
 
     it(`variant issue data should be mapped`, () => {
-        response.data.variantIssues.forEach(variantIssue => {
+        response.data.variantIssues.forEach((variantIssue) => {
             expect(variantIssue).toEqual(jasmine.any(ProjectModels.ProjectVariantIssueModel));
 
-            variantIssue.issues.forEach(issue => {
+            variantIssue.issues.forEach((issue) => {
                 expect(issue).toEqual(jasmine.any(ProjectModels.ProjectIssueModel));
                 expect(issue.element).toEqual(jasmine.any(ProjectModels.ProjectVariantElementModel));
                 expect(issue.messages.length).toBeGreaterThan(0);
-
             });
 
             expect(variantIssue.item).toEqual(jasmine.any(ProjectModels.ProjectVariantContentItemModel));
             expect(variantIssue.language).toEqual(jasmine.any(ProjectModels.ProjectVariantLanguageModel));
         });
-
     });
 
     it(`type issue data should be mapped `, () => {
-        response.data.typeIssues.forEach(typeIssue => {
+        response.data.typeIssues.forEach((typeIssue) => {
             expect(typeIssue).toEqual(jasmine.any(ProjectModels.ProjectTypeIssueModel));
 
-            typeIssue.issues.forEach(issue => {
+            typeIssue.issues.forEach((issue) => {
                 expect(issue).toEqual(jasmine.any(ProjectModels.ProjectIssueModel));
                 expect(issue.element).toEqual(jasmine.any(ProjectModels.ProjectVariantElementModel));
                 expect(issue.messages.length).toBeGreaterThan(0);
-
             });
 
             expect(typeIssue.type).toEqual(jasmine.any(ProjectModels.ProjectTypeModel));
         });
     });
-
 });
-

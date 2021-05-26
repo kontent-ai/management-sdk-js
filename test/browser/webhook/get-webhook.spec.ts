@@ -5,22 +5,12 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Get webhook', () => {
     let response: WebhookResponses.GetWebhookResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
-            .getWebhook()
-            .byId('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).getWebhook().byId('x').toPromise();
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
-            .getWebhook()
-            .byId('x')
-            .getUrl();
+        const url = cmLiveClient.getWebhook().byId('x').getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/webhooks/x`);
     });
 
@@ -49,9 +39,7 @@ describe('Get webhook', () => {
         expect(webhook.triggers.workflowStepChanges).toEqual(jasmine.any(Array));
 
         for (const trigger of webhook.triggers.deliveryApiContentChanges) {
-            expect(trigger).toEqual(
-                jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges)
-            );
+            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges));
             expect(trigger.type).toBeDefined();
         }
 

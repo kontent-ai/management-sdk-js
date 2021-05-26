@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -15,7 +15,7 @@ export class GetWebhookQuery extends BaseQuery<WebhookResponses.GetWebhookRespon
         super(config, queryService);
     }
 
-    toObservable(): Observable<WebhookResponses.GetWebhookResponse> {
+    toPromise(): Promise<WebhookResponses.GetWebhookResponse> {
         return this.queryService.getWebhook(this.getUrl(), this.queryConfig);
     }
 

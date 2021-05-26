@@ -2,30 +2,33 @@ import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../
 import * as responseJson from '../fake-responses/language-variants/fake-list-language-variants-of-content-type-with-components.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('List language variants of content type with components', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).listLanguageVariantsOfContentTypeWithComponents()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .listLanguageVariantsOfContentTypeWithComponents()
             .byTypeCodename('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.listLanguageVariantsOfContentTypeWithComponents().byTypeCodename('xCodename').getUrl();
+        const codenameUrl = cmLiveClient
+            .listLanguageVariantsOfContentTypeWithComponents()
+            .byTypeCodename('xCodename')
+            .getUrl();
         const idUrl = cmLiveClient.listLanguageVariantsOfContentTypeWithComponents().byTypeId('xId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/xCodename/components`);
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/xCodename/components`
+        );
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/xId/components`);
     });
 
     it(`response should be instance of ListLanguageVariantsOfContentTypeWithComponentsResponse class`, () => {
-        expect(response).toEqual(jasmine.any(LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse));
+        expect(response).toEqual(
+            jasmine.any(LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse)
+        );
     });
 
     it(`response should contain debug data`, () => {
@@ -45,9 +48,8 @@ describe('List language variants of content type with components', () => {
         expect(response.data.items.length).toEqual(responseJson.variants.length);
         expect(response.data.pagination).toEqual(jasmine.any(SharedModels.Pagination));
 
-        response.data.items.forEach(variant => {
-
-            const originalItem = responseJson.variants.find(m => m.item.id === variant.item.id);
+        response.data.items.forEach((variant) => {
+            const originalItem = responseJson.variants.find((m) => m.item.id === variant.item.id);
 
             if (!originalItem) {
                 throw Error(`Could not find original item with id '${variant.item.id}'`);
@@ -63,8 +65,8 @@ describe('List language variants of content type with components', () => {
             expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
             expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
 
-            variant.elements.forEach(element => {
-                const originalElement = originalItem.elements.find(m => m.element.id === element.element.id);
+            variant.elements.forEach((element) => {
+                const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);
 
                 expect(element).toEqual(jasmine.any(ElementModels.ContentItemElementWithComponents));
 
@@ -73,7 +75,7 @@ describe('List language variants of content type with components', () => {
                 }
 
                 if (Array.isArray(element.value)) {
-                    element.value.forEach(elementReference => {
+                    element.value.forEach((elementReference) => {
                         expect(elementReference).toEqual(jasmine.any(SharedModels.ReferenceObject));
                     });
                 } else {
@@ -84,7 +86,7 @@ describe('List language variants of content type with components', () => {
                     for (const component of element.components) {
                         componentsChecked = true;
 
-                        const originalComponent = originalElement.components.find(m => m.id === component.id);
+                        const originalComponent = originalElement.components.find((m) => m.id === component.id);
                         expect(originalComponent).toBeDefined();
 
                         if (!originalComponent) {
@@ -107,5 +109,4 @@ describe('List language variants of content type with components', () => {
         expect(componentsChecked).toBeTruthy();
         expect(nestedElementChecked).toBeTruthy();
     });
-
 });

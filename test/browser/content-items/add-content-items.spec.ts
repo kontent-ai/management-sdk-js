@@ -5,30 +5,28 @@ import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
 describe('Add content item', () => {
     let response: ContentItemResponses.AddContentItemResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(addContentItemResponseJson).addContentItem()
-            .withData(
-                {
-                    external_id: undefined,
-                    name: 'Add article test',
-                    codename: 'xCodename',
-                    type: {
-                        codename: 'article'
-                    },
-                    collection: {
-                        codename: 'xCollection'
-                    }
+    beforeAll(async () => {
+        response = await getTestClientWithJson(addContentItemResponseJson)
+            .addContentItem()
+            .withData({
+                external_id: undefined,
+                name: 'Add article test',
+                codename: 'xCodename',
+                type: {
+                    codename: 'article'
+                },
+                collection: {
+                    codename: 'xCollection'
                 }
-            )
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            })
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const addUrl = cmLiveClient.addContentItem().withData({} as any).getUrl();
+        const addUrl = cmLiveClient
+            .addContentItem()
+            .withData({} as any)
+            .getUrl();
 
         expect(addUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items`);
     });
@@ -55,7 +53,4 @@ describe('Add content item', () => {
         expect(response.data.type).toEqual(addContentItemResponseJson.type);
         expect(response.data.collection.id).toEqual(addContentItemResponseJson.collection.id);
     });
-
-
 });
-

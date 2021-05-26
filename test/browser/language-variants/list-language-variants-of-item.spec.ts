@@ -2,18 +2,14 @@ import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../
 import * as listLanguageVariantsJson from '../fake-responses/language-variants/fake-list-language-variants-of-item.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('List language variants of item', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsOfItemResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(listLanguageVariantsJson).listLanguageVariantsOfItem()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(listLanguageVariantsJson)
+            .listLanguageVariantsOfItem()
             .byItemCodename('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -21,9 +17,15 @@ describe('List language variants of item', () => {
         const internalIdUrl = cmLiveClient.listLanguageVariantsOfItem().byItemId('xInternalId').getUrl();
         const externalIdUrl = cmLiveClient.listLanguageVariantsOfItem().byItemExternalId('xExternalId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants`);
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId/variants`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId/variants`);
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename/variants`
+        );
+        expect(internalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId/variants`
+        );
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId/variants`
+        );
     });
 
     it(`response should be instance of ListLanguageVariantsOfItemResponse class`, () => {
@@ -43,9 +45,8 @@ describe('List language variants of item', () => {
         expect(response.data.items).toBeDefined();
         expect(response.data.items.length).toEqual(listLanguageVariantsJson.length);
 
-        response.data.items.forEach(variant => {
-
-            const originalItem = listLanguageVariantsJson.find(m => m.item.id === variant.item.id);
+        response.data.items.forEach((variant) => {
+            const originalItem = listLanguageVariantsJson.find((m) => m.item.id === variant.item.id);
 
             if (!originalItem) {
                 throw Error(`Could not find original item with id '${variant.item.id}'`);
@@ -61,8 +62,8 @@ describe('List language variants of item', () => {
             expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
             expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
 
-            variant.elements.forEach(element => {
-                const originalElement = originalItem.elements.find(m => m.element.id === element.element.id);
+            variant.elements.forEach((element) => {
+                const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);
 
                 expect(element).toEqual(jasmine.any(ElementModels.ContentItemElement));
 
@@ -71,7 +72,7 @@ describe('List language variants of item', () => {
                 }
 
                 if (Array.isArray(element.value)) {
-                    element.value.forEach(elementReference => {
+                    element.value.forEach((elementReference) => {
                         expect(elementReference).toEqual(jasmine.any(SharedModels.ReferenceObject));
                     });
                 } else {
@@ -80,5 +81,4 @@ describe('List language variants of item', () => {
             });
         });
     });
-
 });

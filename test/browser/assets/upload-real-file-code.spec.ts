@@ -28,7 +28,7 @@ describe('Upload real binary file', () => {
                 filename: 'myfile.png'
             };
 
-            cmTestClient.uploadBinaryFile(data).toObservable().pipe(
+            cmTestClient.uploadBinaryFile(data).toPromise().pipe(
                 flatMap(r => {
                     return cmTestClient.addAsset().withData({
                         title: 'my new file',
@@ -37,7 +37,7 @@ describe('Upload real binary file', () => {
                             id: r.data.id,
                             type: r.data.type
                         }
-                    }).toObservable();
+                    }).toPromise();
                 })
             ).subscribe(r => {
                 response = r;

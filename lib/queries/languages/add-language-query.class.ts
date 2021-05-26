@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { LanguageModels } from '../../models';
@@ -16,7 +16,7 @@ export class AddLanguageQuery extends BaseQuery<LanguageResponses.AddLanguageRes
     super(config, queryService);
   }
 
-  toObservable(): Observable<LanguageResponses.AddLanguageResponse> {
+  toPromise(): Promise<LanguageResponses.AddLanguageResponse> {
     return this.queryService.addLanguage(this.getUrl(), this.queryConfig, this.data);
   }
 

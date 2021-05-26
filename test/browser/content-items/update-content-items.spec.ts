@@ -5,28 +5,39 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Update content item', () => {
     let response: ContentItemResponses.UpdateContentItemResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(updateContentItemResponseJson).updateContentItem()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(updateContentItemResponseJson)
+            .updateContentItem()
             .byItemCodename('x')
             .withData({
                 codename: 'x',
-                name: 'y',
+                name: 'y'
             })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.updateContentItem().byItemCodename('xCodename').withData({} as any).getUrl();
-        const internalIdUrl = cmLiveClient.updateContentItem().byItemId('xInternalId').withData({} as any).getUrl();
-        const externalIdUrl = cmLiveClient.updateContentItem().byItemExternalId('xExternalId').withData({} as any).getUrl();
+        const codenameUrl = cmLiveClient
+            .updateContentItem()
+            .byItemCodename('xCodename')
+            .withData({} as any)
+            .getUrl();
+        const internalIdUrl = cmLiveClient
+            .updateContentItem()
+            .byItemId('xInternalId')
+            .withData({} as any)
+            .getUrl();
+        const externalIdUrl = cmLiveClient
+            .updateContentItem()
+            .byItemExternalId('xExternalId')
+            .withData({} as any)
+            .getUrl();
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`
+        );
     });
 
     it(`response should be instance of UpdateContentItemResponse class`, () => {
@@ -51,7 +62,4 @@ describe('Update content item', () => {
         expect(response.data.type).toEqual(updateContentItemResponseJson.type);
         expect(response.data.collection.id).toEqual(updateContentItemResponseJson.collection.id);
     });
-
-
 });
-

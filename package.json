@@ -62,16 +62,13 @@
     "bundle-stats": "npm run build:umd && webpack-bundle-analyzer dist/_bundles/stats.json"
   },
   "dependencies": {
-    "@kentico/kontent-core": "8.1.0"
+    "@kentico/kontent-core": "9.0.0-next.2"
   },
-  "peerDependencies": {
-    "rxjs": "^6.0.0"
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "@types/jasmine": "3.6.2",
-    "@types/node": "14.14.41",
-    "core-js": "3.10.2",
-    "es6-promise": "4.2.8",
+    "@types/jasmine": "3.6.10",
+    "@types/node": "15.0.1",
+    "core-js": "3.11.2",
     "jasmine-core": "3.7.1",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.3.2",
@@ -85,14 +82,12 @@
     "karma-typescript-es6-transform": "5.5.1",
     "lcov-parse": "1.0.0",
     "mocha": "8.3.2",
-    "rxjs": "6.6.7",
     "standard-version": "9.2.0",
-    "ts-loader": "9.0.2",
+    "ts-loader": "9.1.1",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
     "typescript": "4.2.4",
-    "url-parse": "1.5.1",
-    "webpack": "5.35.0",
+    "webpack": "5.36.2",
     "webpack-bundle-analyzer": "4.4.1",
     "webpack-cli": "4.6.0"
   }

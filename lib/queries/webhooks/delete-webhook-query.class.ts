@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 import { BaseQuery } from '../base-query';
 import { ContentManagementQueryService } from '../../services';
 import { IManagementClientConfig } from '../../config';
@@ -15,7 +15,7 @@ export class DeleteWebhookQuery extends BaseQuery<BaseResponses.EmptyContentMana
         super(config, queryService);
     }
 
-    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.deleteWebhook(this.getUrl(), this.queryConfig);
     }
 

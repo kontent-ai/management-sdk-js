@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ProjectResponses } from '../../responses';
@@ -16,7 +16,7 @@ export class ProjectInformationQuery extends BaseQuery<ProjectResponses.ProjectI
     this._addSlashToUrl = false;
   }
 
-  toObservable(): Observable<ProjectResponses.ProjectInformationResponse> {
+  toPromise(): Promise<ProjectResponses.ProjectInformationResponse> {
     return this.queryService.projectInformation(this.getUrl(), this.queryConfig);
   }
 

@@ -5,8 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Upsert language variant', () => {
     let response: LanguageVariantResponses.UpsertLanguageVariantResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(jsonResponse)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(jsonResponse)
             .upsertLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('x')
@@ -22,17 +22,21 @@ describe('Upsert language variant', () => {
                         codename: 'x'
                     },
                     value: '<p>yyy<p>',
-                    components: [{
-                        type: {
-                            codename: 'y'
-                        },
-                        elements: [{
-                            element: {
-                                codename: 'y',
+                    components: [
+                        {
+                            type: {
+                                codename: 'y'
                             },
-                            value: 'y'
-                        }]
-                    }]
+                            elements: [
+                                {
+                                    element: {
+                                        codename: 'y'
+                                    },
+                                    value: 'y'
+                                }
+                            ]
+                        }
+                    ]
                 }),
                 builder.numberElement({
                     element: {
@@ -59,13 +63,9 @@ describe('Upsert language variant', () => {
                             codename: 'coffee_blogger'
                         }
                     ]
-                },
-            ], )
-            .toObservable()
-            .subscribe((result) => {
-                response = result;
-                done();
-            });
+                }
+            ])
+            .toPromise();
     });
 
     it(`url should be correct`, () => {

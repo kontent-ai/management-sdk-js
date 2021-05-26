@@ -5,13 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List workflow steps', () => {
     let response: WorkflowResponses.ListWorkflowStepsResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(jsonResponse).listWorkflowSteps()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(jsonResponse).listWorkflowSteps().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -36,9 +31,9 @@ describe('List workflow steps', () => {
         expect(Array.isArray(response.data)).toBeTruthy();
         expect(response.data.length).toBeGreaterThan(0);
 
-        response.data.forEach(m => {
+        response.data.forEach((m) => {
             // find original item
-            const originalItem = jsonResponse.find(s => s.id === m.id);
+            const originalItem = jsonResponse.find((s) => s.id === m.id);
 
             if (!originalItem) {
                 throw Error(`Workflow step with id '${m.id}' was not found in fake response`);
@@ -50,6 +45,4 @@ describe('List workflow steps', () => {
             expect(Array.isArray(m.transitionsTo)).toBeTruthy();
         });
     });
-
 });
-

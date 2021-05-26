@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, WorkflowModels } from '../../models';
@@ -17,7 +17,7 @@ export class UnpublishLanguageVariantQuery extends BaseQuery<BaseResponses.Empty
         super(config, queryService);
     }
 
-    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.unpublishLanguageVariant(this.getUrl(), this.data, this.queryConfig);
     }
 

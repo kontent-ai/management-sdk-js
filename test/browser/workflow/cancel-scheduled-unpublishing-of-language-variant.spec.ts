@@ -4,21 +4,24 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Cancel scheduled unpublishing of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(undefined).cancelSheduledUnpublishingOfLanguageVariant()
+    beforeAll(async () => {
+        response = await getTestClientWithJson(undefined)
+            .cancelSheduledUnpublishingOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient.cancelSheduledUnpublishingOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').getUrl();
+        const w1Url = cmLiveClient
+            .cancelSheduledUnpublishingOfLanguageVariant()
+            .byItemCodename('x')
+            .byLanguageCodename('y')
+            .getUrl();
 
-        expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/cancel-scheduled-unpublish`);
+        expect(w1Url).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/cancel-scheduled-unpublish`
+        );
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {
@@ -32,6 +35,4 @@ describe('Cancel scheduled unpublishing of language variant', () => {
     it(`response should NOT contain data`, () => {
         expect(response.data).toBeUndefined();
     });
-
 });
-

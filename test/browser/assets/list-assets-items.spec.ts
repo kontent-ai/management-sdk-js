@@ -5,13 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List assets', () => {
     let response: AssetResponses.AssetsListResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(listingAssetsResponseJson).listAssets()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(listingAssetsResponseJson).listAssets().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -34,7 +29,9 @@ describe('List assets', () => {
     });
 
     it(`pagination should be correct`, () => {
-        expect(response.data.pagination.continuationToken).toEqual(listingAssetsResponseJson.pagination.continuation_token);
+        expect(response.data.pagination.continuationToken).toEqual(
+            listingAssetsResponseJson.pagination.continuation_token
+        );
         expect(response.data.pagination.nextPage).toEqual(listingAssetsResponseJson.pagination.next_page);
     });
 
@@ -43,9 +40,9 @@ describe('List assets', () => {
         expect(Array.isArray(response.data.items)).toBeTruthy();
         expect(response.data.items.length).toBeGreaterThan(0);
 
-        response.data.items.forEach(m => {
+        response.data.items.forEach((m) => {
             // find original item
-            const originalItem = listingAssetsResponseJson.assets.find(s => s.id === m.id);
+            const originalItem = listingAssetsResponseJson.assets.find((s) => s.id === m.id);
 
             if (!originalItem) {
                 throw Error(`Asset with id '${m.id}' was not found in fake response`);
@@ -64,13 +61,10 @@ describe('List assets', () => {
             expect(m.fileReference.id).toEqual(originalItem.file_reference.id);
             expect(m.fileReference.type).toEqual(originalItem.file_reference.type);
 
-            m.descriptions.forEach(s => {
+            m.descriptions.forEach((s) => {
                 expect(s.description).toBeDefined();
                 expect(s.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
             });
         });
     });
-
-
 });
-

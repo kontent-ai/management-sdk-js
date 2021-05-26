@@ -5,14 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('List languages', () => {
     let response: LanguageResponses.ListLanguagesResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(responseJson)
-            .listLanguages()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).listLanguages().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -43,9 +37,9 @@ describe('List languages', () => {
         expect(Array.isArray(response.data.items)).toBeTruthy();
         expect(response.data.items.length).toEqual(responseJson.languages.length);
 
-        response.data.items.forEach(language => {
+        response.data.items.forEach((language) => {
             // find original item
-            const originalItem = responseJson.languages.find(s => s.id === language.id);
+            const originalItem = responseJson.languages.find((s) => s.id === language.id);
 
             if (!originalItem) {
                 throw Error(`Langauge with id '${language.id}' was not found in fake response`);

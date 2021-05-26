@@ -5,13 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Get taxonomy', () => {
     let response: TaxonomyResponses.GetTaxonomyResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson).getTaxonomy().byTaxonomyCodename('x')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).getTaxonomy().byTaxonomyCodename('x').toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -21,7 +16,9 @@ describe('Get taxonomy', () => {
 
         expect(urlCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/codename/x`);
         expect(urlId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/x`);
-        expect(urlExternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/external-id/x`);
+        expect(urlExternalId).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/external-id/x`
+        );
     });
 
     it(`response should be instance of GetTaxonomyResponse class`, () => {
@@ -48,11 +45,8 @@ describe('Get taxonomy', () => {
         expect(taxonomy.name).toEqual(originalItem.name);
         expect(Array.isArray(taxonomy.terms)).toBeTruthy();
 
-        taxonomy.terms.forEach(s => {
+        taxonomy.terms.forEach((s) => {
             expect(s).toEqual(jasmine.any(TaxonomyModels.Taxonomy));
         });
     });
-
-
 });
-

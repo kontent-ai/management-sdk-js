@@ -1,4 +1,4 @@
-import { IBaseResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kentico/kontent-core';
 
 import { LanguageVariantContracts } from '../contracts';
 import { LanguageVariantModels } from '../models';
@@ -9,21 +9,21 @@ import { elementsMapper } from './elements-mapper';
 export class LanguageVariantMapper extends BaseMapper {
 
     mapUpsertLanguageVariantResponse(
-        response: IBaseResponse<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>,
+        response: IResponse<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>,
     ): LanguageVariantResponses.UpsertLanguageVariantResponse {
         const variant = this.mapLanguageVariant(response.data);
         return new LanguageVariantResponses.UpsertLanguageVariantResponse(super.mapResponseDebug(response), response.data, variant);
     }
 
     mapViewLanguageVariantResponse(
-        response: IBaseResponse<LanguageVariantContracts.IViewLanguageVariantResponseContract>,
+        response: IResponse<LanguageVariantContracts.IViewLanguageVariantResponseContract>,
     ): LanguageVariantResponses.ViewLanguageVariantResponse {
         const variant = this.mapLanguageVariant(response.data);
         return new LanguageVariantResponses.ViewLanguageVariantResponse(super.mapResponseDebug(response), response.data, variant);
     }
 
     mapLanguageVariantsOfItemResponse(
-        response: IBaseResponse<LanguageVariantContracts.IListLanguageVariantsOfItemResponseContract[]>,
+        response: IResponse<LanguageVariantContracts.IListLanguageVariantsOfItemResponseContract[]>,
     ): LanguageVariantResponses.ListLanguageVariantsOfItemResponse {
         const variants = response.data.map(m => this.mapLanguageVariant(m));
         return new LanguageVariantResponses.ListLanguageVariantsOfItemResponse(super.mapResponseDebug(response), response.data, {
@@ -32,7 +32,7 @@ export class LanguageVariantMapper extends BaseMapper {
     }
 
     mapLanguageVariantsOfContentTypeResponse(
-        response: IBaseResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>,
+        response: IResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>,
     ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse {
         const variants = response.data.variants.map(m => this.mapLanguageVariant(m));
         return new LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse(super.mapResponseDebug(response), response.data, {
@@ -42,7 +42,7 @@ export class LanguageVariantMapper extends BaseMapper {
     }
 
     mapLanguageVariantsOfContentTypeWithComponentsResponse(
-        response: IBaseResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>,
+        response: IResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>,
     ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse {
         const variants = response.data.variants.map(m => this.mapLanguageVariantWithComponents(m));
         return new LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse(super.mapResponseDebug(response), response.data, {

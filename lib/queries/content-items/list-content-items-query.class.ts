@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { ContentItemResponses } from '../../responses';
@@ -13,7 +13,7 @@ export class ListContentItemsQuery extends BaseListingQuery<
         super(config, queryService);
     }
 
-    toObservable(): Observable<ContentItemResponses.ContentItemsResponse> {
+    toPromise(): Promise<ContentItemResponses.ContentItemsResponse> {
         return this.queryService.listContentItems(this.getUrl(), this.queryConfig);
     }
 

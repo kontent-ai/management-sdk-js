@@ -5,30 +5,17 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Delete content item', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
-    beforeAll(done => {
-        getTestClientWithJson(deleteContentItemJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(deleteContentItemJson)
             .deleteContentItem()
             .byItemCodename('xxx')
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient
-            .deleteContentItem()
-            .byItemCodename('xCodename')
-            .getUrl();
-        const internalIdUrl = cmLiveClient
-            .deleteContentItem()
-            .byItemId('xInternalId')
-            .getUrl();
-        const externalIdUrl = cmLiveClient
-            .deleteContentItem()
-            .byItemExternalId('xExternalId')
-            .getUrl();
+        const codenameUrl = cmLiveClient.deleteContentItem().byItemCodename('xCodename').getUrl();
+        const internalIdUrl = cmLiveClient.deleteContentItem().byItemId('xInternalId').getUrl();
+        const externalIdUrl = cmLiveClient.deleteContentItem().byItemExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId`);

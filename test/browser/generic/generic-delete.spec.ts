@@ -5,15 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Generic POST', () => {
     let response: GenericResponses.GenericResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(jsonResponse)
-            .delete()
-            .withAction('path/x')
-            .toObservable()
-            .subscribe((result) => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(jsonResponse).delete().withAction('path/x').toPromise();
     });
 
     it(`url should be correct`, () => {

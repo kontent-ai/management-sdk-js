@@ -5,15 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Enable webhook', () => {
     let response: WebhookResponses.EnableWebhookResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson)
-            .enableWebhook()
-            .byId('x')
-            .toObservable()
-            .subscribe((result) => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson).enableWebhook().byId('x').toPromise();
     });
 
     it(`url should be correct`, () => {

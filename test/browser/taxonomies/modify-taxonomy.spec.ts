@@ -5,8 +5,8 @@ import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 describe('Modify taxonomy', () => {
     let response: TaxonomyResponses.ModifyTaxonomyResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(responseJson)
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
             .modifyTaxonomy()
             .byTaxonomyCodename('x')
             .withData([
@@ -18,11 +18,7 @@ describe('Modify taxonomy', () => {
                     }
                 }
             ])
-            .toObservable()
-            .subscribe((result) => {
-                response = result;
-                done();
-            });
+            .toPromise();
     });
 
     it(`url should be correct`, () => {

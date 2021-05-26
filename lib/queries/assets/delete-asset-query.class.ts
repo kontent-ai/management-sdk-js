@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { contentManagementApiEndpoints, Identifiers } from '../../models';
@@ -15,7 +15,7 @@ export class DeleteAssetQuery extends BaseQuery<BaseResponses.EmptyContentManage
         super(config, queryService);
     }
 
-    toObservable(): Observable<BaseResponses.EmptyContentManagementResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.deleteAsset(this.getUrl(), this.queryConfig);
     }
 

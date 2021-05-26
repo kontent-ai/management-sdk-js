@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 
 import { IManagementClientConfig } from '../../config';
 import { AssetFolderModels } from '../../models';
@@ -15,7 +14,7 @@ export class AddAssetFoldersQuery extends BaseQuery<AssetFolderResponses.AddAsse
         super(config, queryService);
     }
 
-    toObservable(): Observable<AssetFolderResponses.AddAssetFoldersResponse> {
+    toPromise(): Promise<AssetFolderResponses.AddAssetFoldersResponse> {
         return this.queryService.addAssetFolders(this.getUrl(), this.queryConfig, this.data);
     }
 

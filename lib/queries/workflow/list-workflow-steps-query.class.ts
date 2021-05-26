@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+
 
 import { IManagementClientConfig } from '../../config';
 import { WorkflowResponses } from '../../responses';
@@ -14,7 +14,7 @@ export class ListWorkflowStepsQuery extends BaseQuery<WorkflowResponses.ListWork
     super(config, queryService);
   }
 
-  toObservable(): Observable<WorkflowResponses.ListWorkflowStepsResponse> {
+  toPromise(): Promise<WorkflowResponses.ListWorkflowStepsResponse> {
     return this.queryService.listWorkflowSteps(this.getUrl(), this.queryConfig);
   }
 

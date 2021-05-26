@@ -2,17 +2,11 @@ import { ContentTypeResponses, SharedModels } from '../../../lib';
 import * as listContentTypesJson from '../fake-responses/content-types/fake-list-content-types.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-
 describe('List content types', () => {
     let response: ContentTypeResponses.ContentTypeListResponse;
 
-    beforeAll((done) => {
-        getTestClientWithJson(listContentTypesJson).listContentTypes()
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+    beforeAll(async () => {
+        response = await getTestClientWithJson(listContentTypesJson).listContentTypes().toPromise();
     });
 
     it(`url should be correct`, () => {
@@ -45,8 +39,8 @@ describe('List content types', () => {
     it(`content type properties should be mapped`, () => {
         const contentTypes = response.data.items;
 
-        contentTypes.forEach(contentType => {
-            const originalItem = listContentTypesJson.types.find(m => m.id === contentType.id);
+        contentTypes.forEach((contentType) => {
+            const originalItem = listContentTypesJson.types.find((m) => m.id === contentType.id);
 
             if (!originalItem) {
                 throw Error(`Invalid content type with id '${contentType.id}'`);
@@ -58,9 +52,8 @@ describe('List content types', () => {
             expect(contentType.elements.length).toEqual(originalItem.elements.length);
             expect(Array.isArray(contentType.elements)).toBeTruthy();
 
-            contentType.elements.forEach(element => {
-
-                const originalElement = originalItem.elements.find(m => m.id === element.id);
+            contentType.elements.forEach((element) => {
+                const originalElement = originalItem.elements.find((m) => m.id === element.id);
                 if (!originalElement) {
                     throw Error(`Invalid element with id '${element.id}'`);
                 }
@@ -73,8 +66,5 @@ describe('List content types', () => {
                 expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
             });
         });
-
     });
-
-
 });
