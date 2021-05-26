@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.10...v1.0.0) (2021-05-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* refactors library await from rjx (removes all observable related features), adds support for cancelling request via cancel tokens
+
+### Features
+
+* refactors library await from rjx (removes all observable related features), adds support for cancelling request via cancel tokens ([01b0d71](https://github.com/Kentico/kontent-management-sdk-js/commit/01b0d713911a8c784c927c1fb30a3ddf02b9310e))
+* updates deps, refactors build process to use dist folder and more output formats, unifies tests under test folder ([7c5bf5b](https://github.com/Kentico/kontent-management-sdk-js/commit/7c5bf5be3dfbaa00c79d854b00cc97da76f08ea3))
+
+
+### Bug Fixes
+
+* adds 'content_group' to all elements via 'IElementInContentType' data contract (fixes  https://github.com/Kentico/kontent-management-sdk-js/issues/44) ([c5d5deb](https://github.com/Kentico/kontent-management-sdk-js/commit/c5d5deb1279a091d43979906cb0479112d37d07f))
+* adds missing 'codename' to content group contract interface for creating new content type (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/45) ([3930dca](https://github.com/Kentico/kontent-management-sdk-js/commit/3930dcab5ee5e266c99497beff7a9a56544a6ea9))
+* uses proper contract class for ContentItemElement (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/42) ([bf97efb](https://github.com/Kentico/kontent-management-sdk-js/commit/bf97efbe9c235fea6845d9a03884584dcaeecead))
+
 ### [0.4.10](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.9...v0.4.10) (2021-04-21)
 
 
