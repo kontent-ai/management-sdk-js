@@ -60,6 +60,7 @@ export namespace ContentTypeModels {
     export interface IAddContentTypeContentGroup {
         name: string;
         external_id?: string;
+        codename?: string;
     }
 
     export interface IAddContentTypeData {
