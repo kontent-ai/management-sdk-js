@@ -12,6 +12,12 @@ export namespace Identifiers {
         Codename = 'codename'
     }
 
+    export enum CollectionIdentifierEnum {
+        ExternalId = 'externalId',
+        InternalId = 'internalId',
+        Codename = 'codename'
+    }
+
     export enum LanguageIdentifierEnum {
         InternalId = 'internalId',
         Codename = 'codename',
@@ -89,6 +95,26 @@ export namespace Identifiers {
                 return `${this.value}`;
             }
             if (this.identifier === ContentTypeIdentifierEnum.ExternalId) {
+                return `external-id/${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
+    export class CollectionIdentifier {
+        constructor(
+            public identifier: CollectionIdentifierEnum,
+            public value: string) {
+        }
+
+        getParamValue(): string {
+            if (this.identifier === CollectionIdentifierEnum.Codename) {
+                return `codename/${this.value}`;
+            }
+            if (this.identifier === CollectionIdentifierEnum.InternalId) {
+                return `${this.value}`;
+            }
+            if (this.identifier === CollectionIdentifierEnum.ExternalId) {
                 return `external-id/${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);

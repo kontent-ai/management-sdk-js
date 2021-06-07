@@ -4,3 +4,4 @@ export * from './list-language-variants-of-content-type-with-components-query.cl
 export * from './upsert-language-variant-query.class';
 export * from './view-language-variant-query.class';
 export * from './delete-language-variant-query.class';
+export * from './list-language-variants-by-collection-query.class';

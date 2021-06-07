@@ -89,7 +89,9 @@ import {
     CancelScheduledUnpublishingOfLanguageVariantQuery,
     EnableWebhookQuery,
     DisableWebhookQuery,
-    ListCollectionsQuery
+    ListCollectionsQuery,
+    CollectionIdentifierQuery,
+    ListLanguageVariantsByCollectionQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -718,6 +720,15 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.queryService,
             (config, queryService, identifier) =>
                 new ListLanguageVariantsOfContentTypeQuery(config, queryService, identifier)
+        );
+    }
+
+    listLanguageVariantsByCollection(): CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery> {
+        return new CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new ListLanguageVariantsByCollectionQuery(config, queryService, identifier)
         );
     }
 

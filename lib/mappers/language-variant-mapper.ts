@@ -31,6 +31,16 @@ export class LanguageVariantMapper extends BaseMapper {
         });
     }
 
+    mapLanguageVariantsByCollectionResponse(
+        response: IResponse<LanguageVariantContracts.IListLanguageVariantsByCollectionResponseContract>,
+    ): LanguageVariantResponses.ListLanguageVariantsByCollectionResponse {
+        const variants = response.data.variants.map(m => this.mapLanguageVariant(m));
+        return new LanguageVariantResponses.ListLanguageVariantsByCollectionResponse(super.mapResponseDebug(response), response.data, {
+            items: variants,
+            pagination: super.mapPagination(response.data.pagination)
+        });
+    }
+
     mapLanguageVariantsOfContentTypeResponse(
         response: IResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>,
     ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse {

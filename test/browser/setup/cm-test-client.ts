@@ -1,7 +1,7 @@
 import { ManagementClient } from '../../../lib';
 import { IResponse, TestHttpService } from '@kentico/kontent-core';
 
-export const testProjectId: string = 'b259760f-81c5-013a-05e7-69efb4b954e5';
+export const testProjectId: string = 'projectId';
 
 // tslint:disable-next-line:max-line-length
 export const testProjectIdApiKey: string = '';

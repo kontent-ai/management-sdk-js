@@ -561,6 +561,19 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async listLanguageVariantsByCollection(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<LanguageVariantResponses.ListLanguageVariantsByCollectionResponse> {
+        return languageVariantMapper.mapLanguageVariantsByCollectionResponse(
+            await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsByCollectionResponseContract>(
+                url,
+                {},
+                config
+            )
+        );
+    }
+
     async listLanguages(
         url: string,
         config: IContentManagementQueryConfig

@@ -155,6 +155,10 @@ export class ContentManagementApiEndpoints {
         return `types/${identifier.getParamValue()}/variants`;
     }
 
+    listLanguageVariantsByCollection(identifier: Identifiers.CollectionIdentifier): string {
+        return `collections/${identifier.getParamValue()}/variants`;
+    }
+
     listLanguageVariantsOfContentTypeWithComponents(identifier: Identifiers.ContentTypeIdentifier): string {
         return `types/${identifier.getParamValue()}/components`;
     }

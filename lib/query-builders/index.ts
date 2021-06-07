@@ -14,3 +14,4 @@ export * from './content-type-codename-and-id-identifier-query.class';
 export * from './data-query-optional.class';
 export * from './webhook-identifier-query.class';
 export * from './action-query.class';
+export * from './collection-identifier-query.class';

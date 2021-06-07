@@ -88,7 +88,9 @@ import {
     WorkflowStepIdentifierQuery,
     EnableWebhookQuery,
     DisableWebhookQuery,
-    ListCollectionsQuery
+    ListCollectionsQuery,
+    CollectionIdentifierQuery,
+    ListLanguageVariantsByCollectionQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -444,4 +446,9 @@ export interface IManagementClient<TCancelToken> {
      * Query to list collections
      */
     listCollections(): ListCollectionsQuery;
+
+    /**
+     * Query to list language variants of given collection
+     */
+    listLanguageVariantsByCollection(): CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery> ;
 }

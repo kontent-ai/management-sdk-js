@@ -1,0 +1,38 @@
+{
+  "variants": [
+    {
+      "elements": [
+        {
+          "element": {
+            "id": "7117ada8-409f-442c-9d9c-41424980c0a0"
+          },
+          "value": "Compellingly Develop Scalable Scenarios."
+        },
+        {
+          "element": {
+            "id": "3ab5ca51-b317-459b-b34f-401c7cc350cd"
+          },
+          "value": [
+            {
+              "id": "7c0dd64a-239d-4ff8-8e9c-29ee09759160"
+            }
+          ]
+        }
+      ],
+      "workflow_step": {
+        "id": "502a6d13-4e33-4e14-905b-c784217ddc7d"
+      },
+      "item": {
+        "id": "3f4a537b-b755-49b0-bb09-9df63ae92404"
+      },
+      "language": {
+        "id": "00000000-0000-0000-0000-000000000000"
+      },
+      "last_modified": "2021-05-07T08:34:00.7956931Z"
+    }
+  ],
+  "pagination": {
+    "continuation_token": null,
+    "next_page": null
+  }
+}
