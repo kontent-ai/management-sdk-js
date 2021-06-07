@@ -57,7 +57,7 @@
     "build:es6": "tsc -m es6 --outDir dist/_es6 --p tsconfig.prod.json",
     "build:es2020": "tsc -m es2020 --outDir dist/_es2020 --p tsconfig.prod.json",
     "build:esnext": "tsc -m esnext --outDir dist/_esnext --p tsconfig.prod.json",
-    "build:commonjs": "tsc -m commonjs --outDir dist/_commonjs --p tsconfig.prod.json",
+    "build:commonjs": "tsc -m commonjs --outDir dist/_cjs --p tsconfig.prod.json",
     "build:all": "npm run build:umd && npm run build:es6 && npm run build:es2020 && npm run build:esnext && npm run build:commonjs",
     "bundle-stats:min": "npm run build:umd && webpack-bundle-analyzer dist/_bundles/stats.min.json",
     "bundle-stats": "npm run build:umd && webpack-bundle-analyzer dist/_bundles/stats.json"
