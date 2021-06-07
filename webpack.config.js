@@ -5,7 +5,7 @@ const isProd = (args) => {
     return args.mode === 'production'
 }
 
-const outputFolder = (args) => path.resolve(__dirname, 'dist/_bundles');
+const outputFolder = (args) => path.resolve(__dirname, 'dist/bundles');
 const bundleFilename = (args) => {
     return 'kontent-management.umd' + (isProd(args) ? '.min.js' : '.js');
 }
