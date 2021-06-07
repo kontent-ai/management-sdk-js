@@ -1,0 +1,21 @@
+{
+  "last_modified": "2021-05-13T14:44:51.1526626Z",
+  "collections": [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "Default",
+      "codename": "default"
+    },
+    {
+      "id": "8af21c1b-0bf2-4af4-a26d-5010a4a04339",
+      "name": "Development",
+      "codename": "development",
+      "external_id": "custom-external-id"
+    },
+    {
+      "id": "64c2783c-9982-4ee0-affc-59bbb69a4eff",
+      "name": "Marketing",
+      "codename": "marketing"
+    }
+  ]
+}

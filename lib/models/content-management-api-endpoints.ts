@@ -219,6 +219,10 @@ export class ContentManagementApiEndpoints {
         return 'folders';
     }
 
+    listCollections(): string {
+        return 'collections';
+    }
+
 }
 
 export const contentManagementApiEndpoints = new ContentManagementApiEndpoints();

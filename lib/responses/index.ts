@@ -11,3 +11,4 @@ export * from './workflow/workflow-responses';
 export * from './languages/language-responses';
 export * from './webhook/webhook-responses';
 export * from './generic/generic-responses';
+export * from './collections/collection-responses';

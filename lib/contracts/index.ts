@@ -12,4 +12,5 @@ export * from './workflow-contracts';
 export * from './language-contracts';
 export * from './webhook-contracts';
 export * from './asset-folder-contracts';
+export * from './collection-contracts';
 

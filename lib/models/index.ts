@@ -17,3 +17,4 @@ export * from './workflow/workflow.models';
 export * from './languages/language.models';
 export * from './identifiers';
 export * from './webhook/webhook.models';
+export * from './collections/collection.models';

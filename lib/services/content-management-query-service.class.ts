@@ -5,6 +5,7 @@ import { IManagementClientConfig } from '../config/imanagement-client-config.int
 import {
     AssetContracts,
     AssetFolderContracts,
+    CollectionContracts,
     ContentItemContracts,
     ContentTypeContracts,
     ContentTypeSnippetContracts,
@@ -26,7 +27,8 @@ import {
     projectMapper,
     taxonomyMappper,
     workflowMapper,
-    genericMapper
+    genericMapper,
+    collectionsMappers
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -54,7 +56,8 @@ import {
     TaxonomyResponses,
     WebhookResponses,
     WorkflowResponses,
-    GenericResponses
+    GenericResponses,
+    CollectionResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
@@ -679,6 +682,15 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
                 {},
                 config
             )
+        );
+    }
+
+    async listCollections(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<CollectionResponses.CollectionsListResponse> {
+        return collectionsMappers.mapListCollectionsResponse(
+            await this.getResponseAsync<CollectionContracts.ICollectionListResponseContract>(url, {}, config)
         );
     }
 

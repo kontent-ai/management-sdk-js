@@ -88,7 +88,8 @@ import {
     GetQuery,
     CancelScheduledUnpublishingOfLanguageVariantQuery,
     EnableWebhookQuery,
-    DisableWebhookQuery
+    DisableWebhookQuery,
+    ListCollectionsQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -828,5 +829,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.queryService,
             (config, queryService, data) => new ModifyAssetFoldersQuery(config, queryService, data)
         );
+    }
+
+    listCollections(): ListCollectionsQuery {
+        return new ListCollectionsQuery(this.config, this.queryService);
     }
 }

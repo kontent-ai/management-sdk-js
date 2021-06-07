@@ -87,7 +87,8 @@ import {
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
     EnableWebhookQuery,
-    DisableWebhookQuery
+    DisableWebhookQuery,
+    ListCollectionsQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -438,4 +439,9 @@ export interface IManagementClient<TCancelToken> {
      * Query to modify asset folders
      */
     modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]>;
+
+    /**
+     * Query to list collections
+     */
+    listCollections(): ListCollectionsQuery;
 }
