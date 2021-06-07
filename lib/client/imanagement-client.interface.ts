@@ -3,6 +3,7 @@ import { ContentItemContracts } from '../contracts';
 import {
     AssetFolderModels,
     AssetModels,
+    CollectionModels,
     ContentTypeElementsBuilder,
     ContentTypeModels,
     ContentTypeSnippetElements,
@@ -90,7 +91,8 @@ import {
     DisableWebhookQuery,
     ListCollectionsQuery,
     CollectionIdentifierQuery,
-    ListLanguageVariantsByCollectionQuery
+    ListLanguageVariantsByCollectionQuery,
+    SetCollectionsQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -450,5 +452,10 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to list language variants of given collection
      */
-    listLanguageVariantsByCollection(): CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery> ;
+    listLanguageVariantsByCollection(): CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery>;
+
+    /**
+     * Query to set collections
+     */
+    setCollections(): DataQuery<SetCollectionsQuery, CollectionModels.ISetCollectionData[]>;
 }

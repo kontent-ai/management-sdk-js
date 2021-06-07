@@ -1,5 +1,5 @@
 import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kentico/kontent-core';
-import { LanguageVariantElements, LanguageVariantElementsBuilder } from '../models';
+import { CollectionModels, LanguageVariantElements, LanguageVariantElementsBuilder } from '../models';
 
 import { IManagementClientConfig } from '../config';
 import { ContentItemContracts } from '../contracts';
@@ -91,7 +91,8 @@ import {
     DisableWebhookQuery,
     ListCollectionsQuery,
     CollectionIdentifierQuery,
-    ListLanguageVariantsByCollectionQuery
+    ListLanguageVariantsByCollectionQuery,
+    SetCollectionsQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -844,5 +845,13 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     listCollections(): ListCollectionsQuery {
         return new ListCollectionsQuery(this.config, this.queryService);
+    }
+
+    setCollections(): DataQuery<SetCollectionsQuery, CollectionModels.ISetCollectionData[]> {
+        return new DataQuery<SetCollectionsQuery, CollectionModels.ISetCollectionData[]>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new SetCollectionsQuery(config, queryService, data)
+        );
     }
 }

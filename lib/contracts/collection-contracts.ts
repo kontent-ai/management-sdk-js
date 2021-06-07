@@ -9,4 +9,9 @@ export namespace CollectionContracts {
         collections: ICollectionContract[];
         last_modified?: string;
     }
+
+    export interface ISetCollectionsResponseContract {
+        collections: ICollectionContract[];
+        last_modified?: string;
+    }
 }

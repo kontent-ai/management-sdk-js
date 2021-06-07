@@ -21,4 +21,23 @@ export namespace CollectionResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class SetCollectionsResponse extends BaseResponses.BaseContentManagementResponse<
+        CollectionContracts.ICollectionListResponseContract,
+        {
+            collections: CollectionModels.Collection[];
+            lastModified?: Date;
+        }
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: CollectionContracts.ICollectionListResponseContract,
+            data: {
+                collections: CollectionModels.Collection[];
+                lastModified?: Date;
+            }
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

@@ -227,6 +227,10 @@ export class ContentManagementApiEndpoints {
         return 'collections';
     }
 
+    setCollections(): string {
+        return 'collections';
+    }
+
 }
 
 export const contentManagementApiEndpoints = new ContentManagementApiEndpoints();

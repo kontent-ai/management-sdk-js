@@ -17,6 +17,17 @@ export class CollectionsMapper extends BaseMapper {
         });
     }
 
+    mapSetCollectionsResponse(
+        response: IResponse<CollectionContracts.ISetCollectionsResponseContract>
+    ): CollectionResponses.SetCollectionsResponse {
+        const items = response.data.collections.map((m) => this.mapCollection(m));
+
+        return new CollectionResponses.SetCollectionsResponse(super.mapResponseDebug(response), response.data, {
+            lastModified: response.data.last_modified ? new Date(response.data.last_modified) : undefined,
+            collections: items
+        });
+    }
+
     mapCollection(rawCollection: CollectionContracts.ICollectionContract): CollectionModels.Collection {
         return new CollectionModels.Collection({
             id: rawCollection.id,

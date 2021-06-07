@@ -41,7 +41,8 @@ import {
     WebhookModels,
     WorkflowModels,
     AssetFolderModels,
-    IContentManagementListQueryConfig
+    IContentManagementListQueryConfig,
+    CollectionModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -704,6 +705,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Promise<CollectionResponses.CollectionsListResponse> {
         return collectionsMappers.mapListCollectionsResponse(
             await this.getResponseAsync<CollectionContracts.ICollectionListResponseContract>(url, {}, config)
+        );
+    }
+
+    async setCollections(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: CollectionModels.ISetCollectionData[]
+    ): Promise<CollectionResponses.SetCollectionsResponse> {
+        return collectionsMappers.mapSetCollectionsResponse(
+            await this.patchResponseAsync<CollectionContracts.ISetCollectionsResponseContract>(url, data, {}, config)
         );
     }
 
