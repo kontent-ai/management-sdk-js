@@ -863,4 +863,28 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             (config, queryService, data) => new SetCollectionsQuery(config, queryService, data)
         );
     }
+
+    createLanguageVariantEditUrl(data: {
+        variantId: string,
+        languageCodename: string;
+        elementCodename?: string;
+        nestedItemId?: string;
+        nestedItemElementCodename?: string;
+    }): string {
+        let url: string = `https://app.kontent.ai/goto/edit-item/project/${this.config.projectId}/variant-codename/${data.languageCodename}/item/${data.variantId}`;
+
+        if (data.elementCodename) {
+            url += `/element/${data.elementCodename}`;
+        }
+
+        if (data.nestedItemId) {
+            url += `/item/${data.nestedItemId}`;
+
+            if (data.nestedItemElementCodename) {
+                url += `/element/${data.nestedItemElementCodename}`;
+            }
+        }
+
+        return url;
+    }
 }

@@ -464,4 +464,16 @@ export interface IManagementClient<TCancelToken> {
      * Helper methods that uploads file from url, creates binary file & asset in one go
      */
     uploadAssetFromUrl(): DataQuery<UploadAssetFromUrlQuery, AssetModels.IUploadAssetFromUrlRequestData>;
+
+
+    /**
+     * Creates edit urls according to https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-editing-from-preview
+     */
+    createLanguageVariantEditUrl(data: {
+        variantId: string,
+        languageCodename: string;
+        elementCodename?: string;
+        nestedItemId?: string;
+        nestedItemElementCodename?: string;
+    }): string;
 }
