@@ -68,7 +68,6 @@ If you are using `UMD` bundles directly in browsers, you can find this library u
 <html>
 <head>
     <title>Kontent management | jsdelivr cdn</title>
-    <script src="https://cdn.jsdelivr.net/npm/rxjs/bundles/rxjs.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@kentico/kontent-management/_bundles/kontent-management.umd.min.js"></script>
 </head>
 <body>

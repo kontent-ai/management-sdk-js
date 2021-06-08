@@ -25,5 +25,4 @@ jobs:
     - run: npm ci
     - run: npm i -g karma
     - run: npm i -g cat
-    - run: npm i rxjs
     - run: npm run test:all
