@@ -92,7 +92,8 @@ import {
     ListCollectionsQuery,
     CollectionIdentifierQuery,
     ListLanguageVariantsByCollectionQuery,
-    SetCollectionsQuery
+    SetCollectionsQuery,
+    UploadAssetFromUrlQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -628,6 +629,14 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.config,
             this.queryService,
             (config, queryService, data) => new UploadBinaryFileQuery(config, queryService, data)
+        );
+    }
+
+    uploadAssetFromUrl(): DataQuery<UploadAssetFromUrlQuery, AssetModels.IUploadAssetFromUrlRequestData> {
+        return new DataQuery<UploadAssetFromUrlQuery, AssetModels.IUploadAssetFromUrlRequestData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new UploadAssetFromUrlQuery(config, queryService, data)
         );
     }
 

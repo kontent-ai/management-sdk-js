@@ -2,7 +2,6 @@ import { SharedModels } from '../shared/shared-models';
 import { SharedContracts, AssetContracts } from '../../contracts';
 
 export namespace AssetModels {
-
     export class Asset implements SharedModels.IBaseModel<AssetContracts.IAssetModelContract> {
         public id!: string;
         public fileName!: string;
@@ -19,24 +18,22 @@ export namespace AssetModels {
         public folder?: IAssetFolderReference;
         public _raw!: AssetContracts.IAssetModelContract;
 
-        constructor(
-            data: {
-                id: string;
-                fileName: string;
-                title: string | null;
-                imageWidth: number | null;
-                imageHeight: number | null;
-                size: number;
-                type: string;
-                fileReference: AssetFileReference;
-                descriptions: AssetFileDescription[];
-                externalId?: string;
-                lastModified: Date;
-                url: string;
-                folder?: IAssetFolderReference
-                _raw: AssetContracts.IAssetModelContract
-            }
-        ) {
+        constructor(data: {
+            id: string;
+            fileName: string;
+            title: string | null;
+            imageWidth: number | null;
+            imageHeight: number | null;
+            size: number;
+            type: string;
+            fileReference: AssetFileReference;
+            descriptions: AssetFileDescription[];
+            externalId?: string;
+            lastModified: Date;
+            url: string;
+            folder?: IAssetFolderReference;
+            _raw: AssetContracts.IAssetModelContract;
+        }) {
             Object.assign(this, data);
         }
     }
@@ -52,16 +49,10 @@ export namespace AssetModels {
     }
 
     export class AssetFileReference implements IAssetFileReference {
-
         public id: string;
         public type: 'internal';
 
-        constructor(
-            data: {
-                id: string;
-                type: 'internal'
-            }
-        ) {
+        constructor(data: { id: string; type: 'internal' }) {
             this.id = data.id;
             this.type = data.type;
         }
@@ -76,12 +67,7 @@ export namespace AssetModels {
         public language: SharedModels.ReferenceObject;
         public description: string | null;
 
-        constructor(
-            data: {
-                language: SharedModels.ReferenceObject,
-                description: string | null
-            }
-        ) {
+        constructor(data: { language: SharedModels.ReferenceObject; description: string | null }) {
             this.language = data.language;
             this.description = data.description;
         }
@@ -98,7 +84,7 @@ export namespace AssetModels {
         file_reference: IAssetFileReference;
         title?: string;
         external_id?: string;
-        descriptions: IAssetFileDescription[];
+        descriptions?: IAssetFileDescription[];
         folder?: IAssetFolderReference;
     }
 
@@ -107,5 +93,18 @@ export namespace AssetModels {
         title?: string;
         file_reference?: IAssetFileReference;
         folder?: IAssetFolderReference;
+    }
+
+    export interface IUploadAssetFromUrlRequestData {
+        asset: {
+            title?: string;
+            external_id?: string;
+            descriptions?: IAssetFileDescription[];
+            folder?: IAssetFolderReference;
+        };
+        binaryFile: {
+            filename: string;
+        };
+        fileUrl: string;
     }
 }

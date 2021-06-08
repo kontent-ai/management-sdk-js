@@ -12,6 +12,7 @@ import { AxiosError } from 'axios';
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { SharedContracts } from '../contracts';
 import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
+import {lookup} from 'mime-types';
 
 export abstract class BaseContentManagementQueryService<TCancelToken> {
     /**
@@ -204,6 +205,26 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
         } catch (err) {
             throw this.mapContentManagementError(err);
         }
+    }
+
+    protected async getBinaryDataFromUrlAsync(url: string): Promise<ArrayBuffer> {
+        // temp fix for Kontent Repository not validating url
+        url = url.replace('#', '%23');
+
+        const response = await this.httpService.getAsync<ArrayBuffer>(
+            {
+                url: url
+            },
+            {
+                responseType: 'arraybuffer'
+            }
+        );
+
+        return response.data;
+    }
+
+    protected getMimeTypeFromFilename(filename: string): string | false {
+        return lookup(filename);
     }
 
     private mapContentManagementError(error: any): SharedModels.ContentManagementBaseKontentError | any {

@@ -27,7 +27,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
             return this._customUrl;
         }
 
-        return encodeURI(this.queryService.getFullUrl(this.getAction(), this.getParameters(), this._addSlashToUrl));
+        return this.getUrlForAction(this.getAction());
     }
 
     /**
@@ -98,4 +98,8 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
      * Gets action for this query
      */
     protected abstract getAction(): string;
+
+    protected getUrlForAction(action: string): string {
+        return encodeURI(this.queryService.getFullUrl(action, this.getParameters(), this._addSlashToUrl));
+    }
 }

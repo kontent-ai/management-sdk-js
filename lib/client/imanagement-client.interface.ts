@@ -92,7 +92,8 @@ import {
     ListCollectionsQuery,
     CollectionIdentifierQuery,
     ListLanguageVariantsByCollectionQuery,
-    SetCollectionsQuery
+    SetCollectionsQuery,
+    UploadAssetFromUrlQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -458,4 +459,9 @@ export interface IManagementClient<TCancelToken> {
      * Query to set collections
      */
     setCollections(): DataQuery<SetCollectionsQuery, CollectionModels.ISetCollectionData[]>;
+
+    /**
+     * Helper methods that uploads file from url, creates binary file & asset in one go
+     */
+    uploadAssetFromUrl(): DataQuery<UploadAssetFromUrlQuery, AssetModels.IUploadAssetFromUrlRequestData>;
 }

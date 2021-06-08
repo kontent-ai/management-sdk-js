@@ -404,11 +404,68 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async uploadAssetFromUrl(
+        uploadBinaryFileUrl: string,
+        addAssetUrl: string,
+        data: AssetModels.IUploadAssetFromUrlRequestData,
+        config: IContentManagementQueryConfig
+    ): Promise<AssetResponses.AddAssetResponse> {
+        // get binary data from url
+        const binaryData = await super.getBinaryDataFromUrlAsync(data.fileUrl);
+
+        const mimeType = super.getMimeTypeFromFilename(data.binaryFile.filename);
+
+        if (!mimeType) {
+            throw Error(
+                `Could not get MIME type for filename '${data.binaryFile.filename}'. Please include extension in your filename (e.g. myfile.png)`
+            );
+        }
+
+        // upload binary file
+        const uploadedBinaryFileResponse = await this.uploadBinaryFile(
+            uploadBinaryFileUrl,
+            {
+                binaryData: binaryData,
+                contentType: mimeType,
+                filename: data.binaryFile.filename,
+                contentLength: binaryData.byteLength
+            },
+            config
+        );
+
+        // creta asset & assign it to binary file
+        const assetResponse = await this.addAsset(
+            addAssetUrl,
+            {
+                file_reference: {
+                    id: uploadedBinaryFileResponse.data.id,
+                    type: uploadedBinaryFileResponse.data.type
+                },
+                descriptions: data.asset.descriptions,
+                external_id: data.asset.external_id,
+                folder: data.asset.folder,
+                title: data.asset.title
+            },
+            config
+        );
+
+        return assetResponse;
+    }
+
     async uploadBinaryFile(
         url: string,
         data: AssetModels.IUploadBinaryFileRequestData,
         config: IContentManagementQueryConfig
     ): Promise<AssetResponses.UploadBinaryFileResponse> {
+        config.headers.push({
+            header: 'Content-type',
+            value: data.contentType
+        });
+
+        if (data.contentLength) {
+            config.headers.push({ header: 'Content-length', value: data.contentLength.toString() });
+        }
+
         return assetsMapper.mapUploadBinaryFileResponse(
             await this.postResponseAsync<AssetContracts.IUploadBinaryFileResponseContract>(
                 url,
