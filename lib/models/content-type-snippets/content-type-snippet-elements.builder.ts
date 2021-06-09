@@ -1,48 +1,48 @@
-import { ContentTypeElements } from '../content-types/content-type-elements.builder';
+import { ContentTypeElements } from '../elements/content-type-element.models';
 
 export class ContentTypeSnippetElements {
 
-    assetElement(element: ContentTypeElements.IAssetElement): ContentTypeElements.IElementInContentType {
+    assetElement(element: ContentTypeElements.IAssetElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    customElement(element: ContentTypeElements.ICustomElementInType): ContentTypeElements.IElementInContentType {
+    customElement(element: ContentTypeElements.ICustomElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    dateTimeElement(element: ContentTypeElements.IDateTimeInType): ContentTypeElements.IElementInContentType {
+    dateTimeElement(element: ContentTypeElements.IDateTimeElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    guidelinesElement(element: ContentTypeElements.IGuidelinesInType): ContentTypeElements.IElementInContentType {
+    guidelinesElement(element: ContentTypeElements.IGuidelinesElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    linkedItemsElement(element: ContentTypeElements.ILinkedItemsInType): ContentTypeElements.IElementInContentType {
+    linkedItemsElement(element: ContentTypeElements.ILinkedItemsElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    multipleChoiceElement(element: ContentTypeElements.IMultipleChoiceInType): ContentTypeElements.IElementInContentType {
+    multipleChoiceElement(element: ContentTypeElements.IMultipleChoiceElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    numberElement(element: ContentTypeElements.INumberInType): ContentTypeElements.IElementInContentType {
+    numberElement(element: ContentTypeElements.INumberElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    richTextElement(element: ContentTypeElements.IRichTextInType): ContentTypeElements.IElementInContentType {
+    richTextElement(element: ContentTypeElements.IRichTextElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    taxonomyElement(element: ContentTypeElements.ITaxonomyChoiceInType): ContentTypeElements.IElementInContentType {
+    taxonomyElement(element: ContentTypeElements.ITaxonomyElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    textElement(element: ContentTypeElements.ITextInType): ContentTypeElements.IElementInContentType {
+    textElement(element: ContentTypeElements.ITextElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
-    any(element: any): ContentTypeElements.IElementInContentType {
+    any(element: any): ContentTypeElements.IElementShared {
         return element;
     }
 }

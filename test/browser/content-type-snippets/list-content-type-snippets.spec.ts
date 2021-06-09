@@ -59,12 +59,12 @@ describe('List content type snippets', () => {
                     throw Error(`Invalid element with id '${element.id}'`);
                 }
 
-                expect(element.codename).toEqual(originalElement.codename);
-
-                if (originalElement.name) {
-                    expect(element.name).toEqual(originalElement.name);
+                // all element properties should be identical
+                for (const key of Object.keys(element)) {
+                    const mappedElementValue = (element as any)[key];
+                    const originalElementValue = (originalElement as any)[key];
+                    expect(mappedElementValue).toEqual(originalElementValue);
                 }
-                expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
             });
         });
     });

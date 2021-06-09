@@ -53,9 +53,12 @@ describe('Modify content type snippet', () => {
                 throw Error(`Invalid element with id '${element.id}'`);
             }
 
-            expect(element.codename).toEqual(originalElement.codename);
-            expect(element.name).toEqual(originalElement.name);
-            expect(element.type.toString().toLowerCase()).toEqual(originalElement.type.toLowerCase());
+            // all element properties should be identical
+            for (const key of Object.keys(element)) {
+                const mappedElementValue = (element as any)[key];
+                const originalElementValue = (originalElement as any)[key];
+                expect(mappedElementValue).toEqual(originalElementValue);
+            }
         });
     });
 });

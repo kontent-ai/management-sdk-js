@@ -1,7 +1,6 @@
 import { SharedContracts, ContentTypeContracts } from '../../contracts';
-import { ElementModels } from '../elements/elements.models';
+import { ContentTypeElements } from '../elements/content-type-element.models';
 import { SharedModels } from '../shared/shared-models';
-import { ContentTypeElements } from './content-type-elements.builder';
 
 export namespace ContentTypeModels {
     export type ModifyContentTypeOperation = 'addInto' | 'remove' | 'replace';
@@ -37,7 +36,7 @@ export namespace ContentTypeModels {
         public name!: string;
         public codename!: string;
         public lastModified!: Date;
-        public elements!: ElementModels.IContentTypeElementModel[];
+        public elements!: ContentTypeElements.ContentTypeElementModel[];
         public contentGroups?: ContentTypeGroup[];
         public externalId?: string;
 
@@ -48,7 +47,7 @@ export namespace ContentTypeModels {
             name: string;
             codename: string;
             lastModified: Date;
-            elements: ElementModels.IContentTypeElementModel[];
+            elements: ContentTypeElements.ContentTypeElementModel[];
             externalId?: string;
             contentGroups?: ContentTypeGroup[];
             _raw: ContentTypeContracts.IContentTypeContract;
@@ -65,7 +64,7 @@ export namespace ContentTypeModels {
 
     export interface IAddContentTypeData {
         name: string;
-        elements: ContentTypeElements.IElementInContentType[];
+        elements: ContentTypeElements.IElementShared[];
 
         external_id?: string;
         codename?: string;
@@ -86,11 +85,4 @@ export namespace ContentTypeModels {
         name: string;
     }
 
-    export type RichTextAllowedBlock = 'images' | 'text' | 'tables' | 'components-and-items';
-    export type RichTextAllowedTextBlock = 'paragraph' | 'heading-one' | 'heading-two' | 'heading-three' | 'heading-four' | 'ordered-list' | 'unordered-list';
-    export type RichTextAllowedFormatting = 'unstyled' | 'bold' | 'italic' | 'code' | 'link' | 'subscript' | 'superscript';
-    export type RichTextAllowedTableBlock = 'images' | 'text';
-    export type RichTextImageCondition = 'at_most' | 'exactly' | 'at_least';
-    export type RichTextallowedImageType = 'adjustable' | 'any';
-    export type RichTextMaximumLengthAppliesTo = 'words' | 'characters';
 }

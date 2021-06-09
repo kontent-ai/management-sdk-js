@@ -18,3 +18,4 @@ export * from './languages/language.models';
 export * from './identifiers';
 export * from './webhook/webhook.models';
 export * from './collections/collection.models';
+export * from './elements/content-type-element.models';

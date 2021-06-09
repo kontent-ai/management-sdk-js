@@ -1,6 +1,5 @@
 import { ContentTypeSnippetContracts } from '../../contracts';
-import { ContentTypeElements } from '../content-types/content-type-elements.builder';
-import { ElementModels } from '../elements/elements.models';
+import { ContentTypeElements } from '../elements/content-type-element.models';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentTypeSnippetModels {
@@ -13,7 +12,7 @@ export namespace ContentTypeSnippetModels {
         public name!: string;
         public codename!: string;
         public lastModified!: Date;
-        public elements!: ElementModels.IContentTypeElementModel[];
+        public elements!: ContentTypeElements.ContentTypeElementModel[];
         public externalId?: string;
         public _raw!: ContentTypeSnippetContracts.IContentTypeSnippetContract;
 
@@ -22,7 +21,7 @@ export namespace ContentTypeSnippetModels {
             name: string;
             codename: string;
             lastModified: Date;
-            elements: ElementModels.IContentTypeElementModel[];
+            elements: ContentTypeElements.ContentTypeElementModel[];
             externalId?: string;
             _raw: ContentTypeSnippetContracts.IContentTypeSnippetContract;
         }) {
@@ -32,7 +31,7 @@ export namespace ContentTypeSnippetModels {
 
     export interface IAddContentTypeSnippetData {
         name: string;
-        elements: ContentTypeElements.IElementInContentType[];
+        elements: ContentTypeElements.IElementShared[];
 
         external_id?: string;
         codename?: string;

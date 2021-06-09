@@ -72,8 +72,6 @@ export namespace ElementModels {
         }
     }
 
-    export interface IContentTypeElementModel extends ElementContracts.IContentTypeElementContract {}
-
     export interface IElementData {
         id: string;
         name?: string;
