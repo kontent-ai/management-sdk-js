@@ -120,7 +120,7 @@ const client = new ManagementClient({
 | `retryStrategy` | undefined |  Retry strategy configuration. If not set, default strategy is used. |
 | `httpService` | HttpService  | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
 
-### Handling Managemeng Errors
+### Handling API Management Errors
 
 ```typescript
 try {
