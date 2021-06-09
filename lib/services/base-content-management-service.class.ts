@@ -12,7 +12,7 @@ import { AxiosError } from 'axios';
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { SharedContracts } from '../contracts';
 import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
-import {lookup} from 'mime-types';
+import { getType } from 'mime';
 
 export abstract class BaseContentManagementQueryService<TCancelToken> {
     /**
@@ -223,8 +223,8 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
         return response.data;
     }
 
-    protected getMimeTypeFromFilename(filename: string): string | false {
-        return lookup(filename);
+    protected getMimeTypeFromFilename(filename: string): string | null {
+        return getType(filename);
     }
 
     private mapContentManagementError(error: any): SharedModels.ContentManagementBaseKontentError | any {
