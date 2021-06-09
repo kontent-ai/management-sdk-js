@@ -28,12 +28,6 @@ export interface IManagementClientConfig {
     retryStrategy?: IRetryStrategyOptions;
 
     /**
-     * When enabled, additional information are logged in console for certain issues.
-     * Disable in production environments.
-     */
-    isDeveloperMode?: boolean;
-
-    /**
      * Custom default list query config. Applied to all list query configs unless overriden by query.
      */
     listQueryConfig?: IContentManagementListQueryConfig<any>;
