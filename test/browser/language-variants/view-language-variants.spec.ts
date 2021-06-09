@@ -1,5 +1,5 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
-import * as jsonResponse from '../fake-responses/language-variants/fake-upsert-language-variant.json';
+import * as jsonResponse from '../fake-responses/language-variants/fake-view-language-variant.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('View language variant', () => {

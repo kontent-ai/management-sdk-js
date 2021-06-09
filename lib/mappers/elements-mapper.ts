@@ -34,6 +34,8 @@ export class ElementsMapper extends BaseMapper {
         return new ElementModels.ContentItemElement({
             element: super.mapReference(rawElement.element),
             value: this.mapElementValue(rawElement.value),
+            mode: rawElement.mode,
+            searchableValue: rawElement.searchableValue,
             _raw: rawElement
         });
     }
