@@ -166,6 +166,10 @@ export namespace ContentTypeElements {
         is_required?: boolean;
         codename?: string;
         external_id?: string;
+        term_count_limit?: {
+            value: number;
+            condition: 'at_most' | 'exactly' | 'at_least';
+        };
     }
 
     export interface ITextElementData extends IElementShared {

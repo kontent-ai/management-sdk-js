@@ -16,12 +16,23 @@ describe('Add content type', () => {
                     elements: [
                         builder.assetElement({
                             name: 'image',
-                            type: 'asset',
+                            type: 'asset'
                         }),
                         builder.textElement({
                             name: 'title',
-                            type: 'text',
+                            type: 'text'
                         }),
+                        builder.taxonomyElement({
+                            type: 'taxonomy',
+                            taxonomy_group: {
+                                codename: 'xTaxonomyCodename'
+                            },
+                            is_required: true,
+                            term_count_limit: {
+                                condition: 'at_most',
+                                value: 9
+                            }
+                        })
                     ]
                 };
             })

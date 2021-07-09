@@ -1,42 +1,58 @@
 {
-    "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0",
-    "codename": "hosted_video",
-    "last_modified": "2017-06-27T12:55:39.054Z",
-    "name": "Hosted video",
-    "external_id": "xyz",
-    "content_groups": [{
-        "id": "325107f6-5dfb-21a1-b24e-fa13be1fef1c",
-        "name": "My first group",
-        "codename": "my_first_group",
-        "external_id": "first-group"
-    }],
-    "elements": [
-      {
-        "name": "Video ID",
-        "guidelines": "",
-        "type": "text",
-        "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
-        "codename": "video_id"
+  "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0",
+  "codename": "hosted_video",
+  "last_modified": "2017-06-27T12:55:39.054Z",
+  "name": "Hosted video",
+  "external_id": "xyz",
+  "content_groups": [
+    {
+      "id": "325107f6-5dfb-21a1-b24e-fa13be1fef1c",
+      "name": "My first group",
+      "codename": "my_first_group",
+      "external_id": "first-group"
+    }
+  ],
+  "elements": [
+    {
+      "name": "Video ID",
+      "guidelines": "",
+      "type": "text",
+      "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
+      "codename": "video_id"
+    },
+    {
+      "mode": "single",
+      "options": [
+        {
+          "id": "523e6231-8d80-a158-3601-dffde4e64a78",
+          "codename": "youtube",
+          "name": "YouTube"
+        },
+        {
+          "id": "d66ffa49-86ff-eeaa-c33b-e5d9eefe8b81",
+          "codename": "vimeo",
+          "name": "Vimeo"
+        }
+      ],
+      "name": "Video host",
+      "guidelines": "",
+      "type": "multiple_choice",
+      "id": "87924912-4861-aa84-176a-1eae7b22529b",
+      "codename": "video_host"
+    },
+    {
+      "guidelines": null,
+      "taxonomy_group": {
+        "id": "41f013c2-d3a6-4fbf-af1f-466f6326e5c4"
       },
-      {
-        "mode": "single",
-        "options": [
-          {
-            "id": "523e6231-8d80-a158-3601-dffde4e64a78",
-            "codename": "youtube",
-            "name": "YouTube"
-          },
-          {
-            "id": "d66ffa49-86ff-eeaa-c33b-e5d9eefe8b81",
-            "codename": "vimeo",
-            "name": "Vimeo"
-          }
-        ],
-        "name": "Video host",
-        "guidelines": "",
-        "type": "multiple_choice",
-        "id": "87924912-4861-aa84-176a-1eae7b22529b",
-        "codename": "video_host"
-      }
-    ]
-  }
+      "is_required": false,
+      "term_count_limit": {
+        "value": 5,
+        "condition": "at_least"
+      },
+      "type": "taxonomy",
+      "id": "08a922b4-8ba4-4f37-8144-f71e69e81a56",
+      "codename": "untitled_taxonomy_group"
+    }
+  ]
+}
