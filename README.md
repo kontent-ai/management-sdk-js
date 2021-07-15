@@ -55,14 +55,9 @@ client
         }
     })
     .toPromise()
-    .subscribe(
-        (response) => {
-            // work with response
-        },
-        (error) => {
-            // handle error
-        }
-    );
+    .then(response => {
+        console.log(response);
+    });
 ```
 
 If you are using `UMD` bundles directly in browsers, you can find this library under `KontentManagement` global
@@ -95,14 +90,9 @@ variable.
                     }
                 })
                 .toPromise()
-                .subscribe(
-                    (response) => {
-                        // work with response
-                    },
-                    (error) => {
-                        // handle error
-                    }
-                );
+                .then(response => {
+                    console.log(response);
+                });
         </script>
     </body>
 </html>
