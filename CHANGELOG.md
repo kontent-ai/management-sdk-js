@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.1.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.0.0...v1.1.0) (2021-07-19)
 
+### Migration from 0.x.y
+
+There are some notable changes when migrating from `0.x.y` (latest release `0.4.10`) version of sdk:
+
+* `Rxjs` was removed from dependencies and is no longer included with this SDK. One major benefit is reduced complexity & size of this library (about 30-40% size reduction).
+* `toObservable` was removed without replacement in favor of `toPromise`. If you need to keep using `Observable`, use `from` operator that comes with `rxjs` (https://www.learnrxjs.io/learn-rxjs/operators/creation/from)
+* Distributed files, formats and paths were modified. Available outputs: `dist/bundles`, `dist/cjs`, `dist/es6`, `dist/es2020`, `dist/esnext`
+* `isDeveloper` configuration option was removed without replacement
+* `retryStrategy` configuration was updated and simplifies. New options are listed at https://github.com/Kentico/kontent-core-js/blob/7ec7faaa779a4aa55802ade927f296cc3619a720/lib/http/http.models.ts#L16
+* Support for additional endpoints:
+    - Create, update & list of collections
+    - List language variants by collection
+    - Create asset + binary file from external URL
+* Improved typings for content type elements
+* Other minor improvements & bug fixes
 
 ### Features
 
