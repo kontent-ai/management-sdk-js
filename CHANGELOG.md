@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.0.0...v1.1.0) (2021-07-19)
+
+
+### Features
+
+* adds mode & searchableValue to variant element model and contract ([13d9b84](https://github.com/Kentico/kontent-management-sdk-js/commit/13d9b84ac36663a3689dbd9f6ea19c5293d10247))
+* adds support for constructing edit urls (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/10) ([ba2fc2e](https://github.com/Kentico/kontent-management-sdk-js/commit/ba2fc2e5949bcba840b69e72cd928ec3719ea29a))
+* adds support for creating & updating collections ([db2a1d2](https://github.com/Kentico/kontent-management-sdk-js/commit/db2a1d2ea3e2ee7d8a904d64ce4472c32e0d4fc7))
+* adds support for listing collections ([01bcc2b](https://github.com/Kentico/kontent-management-sdk-js/commit/01bcc2b1e38a4554b437cae0505f228b5cbb8538))
+* adds support for listing language variants by collection ([f12a877](https://github.com/Kentico/kontent-management-sdk-js/commit/f12a877d392f984c0e2c3eb1d675581e7706e69b))
+* adds support for taxonomy 'term_count_limit' option (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/48) ([f19aae4](https://github.com/Kentico/kontent-management-sdk-js/commit/f19aae46acfee855d8a3edccd918647685af3cfb))
+* adds support for uploading assets & binary files from url (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/18), adds automatic mime type detection support ([d54a0b8](https://github.com/Kentico/kontent-management-sdk-js/commit/d54a0b8ab94d411056bccb194a87fcd19bf86592))
+* adds types support for content type elements (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/46) ([01f7c82](https://github.com/Kentico/kontent-management-sdk-js/commit/01f7c8225ac318b41a6d40b9acc98bb6733f34e9))
+* removes 'isDeveloperMode' config property as its not utilized anymore ([986cc40](https://github.com/Kentico/kontent-management-sdk-js/commit/986cc408984601da3db4e2cd9dc6c7e480909eab))
+* removes "_" from dist folder names ([079c1f6](https://github.com/Kentico/kontent-management-sdk-js/commit/079c1f6156a1f70a4409a229c8ea4b35680a804f))
+* updates deps ([43e857c](https://github.com/Kentico/kontent-management-sdk-js/commit/43e857c3576930680f46537e160c16e95c43c088))
+* updates deps ([6123ea0](https://github.com/Kentico/kontent-management-sdk-js/commit/6123ea087eda96364b1f4903e1d8c394ec5c9b36))
+* updates deps ([fe0778d](https://github.com/Kentico/kontent-management-sdk-js/commit/fe0778d4a673fa113bdb790965062d1754c5e948))
+* updates deps (fixes retry strategy) ([946f864](https://github.com/Kentico/kontent-management-sdk-js/commit/946f86438a0f4ebce6e3e607ef5237eb189c33ae))
+* updates kontent-core dependency to v9 ([dd25dd4](https://github.com/Kentico/kontent-management-sdk-js/commit/dd25dd431d76f11104eb057b734942ce5a927af3))
+* use 'mime' npm instead of 'mime-type' due to browser compatibility support ([2200b73](https://github.com/Kentico/kontent-management-sdk-js/commit/2200b73155110d21f8d5a1e49d45da8e5f3f58e8))
+
+
+### Bug Fixes
+
+* fixes cjs folder name ([d470214](https://github.com/Kentico/kontent-management-sdk-js/commit/d470214401188a9bc08c851cbe3a839cf6cf5acc))
+* fixes commonjs folder output ([5abf59f](https://github.com/Kentico/kontent-management-sdk-js/commit/5abf59f170b17cd7f5a3a0afbf535f2afb896c6a))
+* fixes package.json entry modules ([0fa0176](https://github.com/Kentico/kontent-management-sdk-js/commit/0fa01762cdda432611be3cff4a36236bfc3e2f20))
+
 ### [0.4.10](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.9...v0.4.10) (2021-04-21)
 
 
