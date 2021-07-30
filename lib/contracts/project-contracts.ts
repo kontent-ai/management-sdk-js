@@ -3,6 +3,7 @@ export namespace ProjectContracts {
     export interface IProjectInformationResponseContract {
         id: string;
         name: string;
+        environment: string;
     }
 
     export interface IProjectReportResponseContract {

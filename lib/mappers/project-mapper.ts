@@ -23,7 +23,7 @@ export class ProjectMapper extends BaseMapper {
     ): ProjectResponses.ProjectInformationResponse {
 
         return new ProjectResponses.ProjectInformationResponse(super.mapResponseDebug(response), response.data, {
-            project: new ProjectModels.ProjectInformationModel(response.data.id, response.data.name)
+            project: new ProjectModels.ProjectInformationModel(response.data.id, response.data.name, response.data.environment)
         });
     }
 

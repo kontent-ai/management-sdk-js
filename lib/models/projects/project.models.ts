@@ -11,6 +11,7 @@ export namespace ProjectModels {
         constructor(
             public id: string,
             public name: string,
+            public environment: string,
         ) { }
     }
 

@@ -32,5 +32,6 @@ describe('Project information', () => {
 
         expect(response.data.project.id).toEqual(responseJson.id);
         expect(response.data.project.name).toEqual(responseJson.name);
+        expect(response.data.project.environment).toEqual(responseJson.environment);
     });
 });
