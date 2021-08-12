@@ -68,11 +68,11 @@ variable.
 <html>
     <head>
         <title>Kontent management | jsdelivr cdn</title>
-        <script src="https://cdn.jsdelivr.net/npm/@kentico/kontent-management/_bundles/kontent-management.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@kentico/kontent-management/dist/bundles/kontent-management.umd.min.js"></script>
     </head>
     <body>
         <script type="text/javascript">
-            var KontentManagement = window['KontentManagement'];
+            var KontentManagement = window['kontentManagement'];
 
             var client = new KontentManagement.ManagementClient({
                 projectId: 'xxx',
