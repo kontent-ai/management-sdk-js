@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.3.0...v1.4.0) (2021-08-25)
+
+
+### Features
+
+* updates deps ([e306ba6](https://github.com/Kentico/kontent-management-sdk-js/commit/e306ba6c80973f90380d51280a39c7d3df4e6f87))
+
+
+### Bug Fixes
+
+* adds 'id' property to component rich text model (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/50) ([e038feb](https://github.com/Kentico/kontent-management-sdk-js/commit/e038feb1467637498307dacf92f55efba500585d))
+
 ## [1.3.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.2.0...v1.3.0) (2021-08-12)
 
 
