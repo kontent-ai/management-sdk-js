@@ -15,13 +15,18 @@ describe('List language variants by collection', () => {
     it(`url should be correct`, () => {
         const codenameUrl = cmLiveClient.listLanguageVariantsByCollection().byCollectionCodename('xCodename').getUrl();
         const idUrl = cmLiveClient.listLanguageVariantsByCollection().byCollectionId('xId').getUrl();
-        const externalIdUrl = cmLiveClient.listLanguageVariantsByCollection().byCollectionExternalId('xExternalId').getUrl();
+        const externalIdUrl = cmLiveClient
+            .listLanguageVariantsByCollection()
+            .byCollectionExternalId('xExternalId')
+            .getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testProjectId}/collections/codename/xCodename/variants`
         );
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/collections/xId/variants`);
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/collections/external-id/xExternalId/variants`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testProjectId}/collections/external-id/xExternalId/variants`
+        );
     });
 
     it(`response should be instance of ListLanguageVariantsByCollectionResponse class`, () => {

@@ -7,6 +7,7 @@ export namespace LanguageVariantElements {
     }
 
     export interface IRichTextComponent {
+        id: string;
         type: SharedContracts.IReferenceObjectContract;
         elements: ILanguageVariantElementBase[];
     }

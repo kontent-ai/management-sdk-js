@@ -24,6 +24,7 @@ describe('Upsert language variant', () => {
                     value: '<p>yyy<p>',
                     components: [
                         {
+                            id: 'xzy',
                             type: {
                                 codename: 'y'
                             },
