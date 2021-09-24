@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.4.0...v1.5.0) (2021-09-24)
+
+
+### Features
+
+* updates dependencies ([93b80c7](https://github.com/Kentico/kontent-management-sdk-js/commit/93b80c719d52750f1bff5f110535b356b7c3179d))
+
 ## [1.4.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.3.0...v1.4.0) (2021-08-25)
 
 
