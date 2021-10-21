@@ -118,6 +118,8 @@ const client = new ManagementClient({
 
 ### Handling API Management Errors
 
+See the [error section in Management API reference](https://docs.kontent.ai/reference/management-api-v2#section/Errors) for more infofmation about status code and errors info.
+
 ```typescript
 try {
     const client = await new ManagementClient({
@@ -129,6 +131,8 @@ try {
     if (err instanceof SharedModels.ContentManagementBaseKontentError) {
         // Error message provided by API response and mapped by SDK
         const message = err.message;
+        // In case you need an Http status code of the request
+        const statusCode = error.originalError.response.status;
     } else {
         // handle generic error however you need
     }
