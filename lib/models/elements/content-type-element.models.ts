@@ -199,6 +199,10 @@ export namespace ContentTypeElements {
             value: number;
             applies_to: 'words' | 'characters';
         };
+        validation_regex?: {
+            regex: string,
+            flags?: string
+        };
     }
 
     export interface IUrlSlugElementData extends IElementShared {
