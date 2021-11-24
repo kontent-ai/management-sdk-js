@@ -1,4 +1,5 @@
 import { SharedContracts } from '../../contracts';
+import { ElementModels } from './elements.models';
 
 export namespace ContentTypeElements {
     export type RichTextAllowedBlock = 'images' | 'text' | 'tables' | 'components-and-items';
@@ -24,7 +25,7 @@ export namespace ContentTypeElements {
     export type RichTextMaximumLengthAppliesTo = 'words' | 'characters';
 
     export interface IElementShared {
-        type: string;
+        type: ElementModels.ElementType;
         content_group?: SharedContracts.IReferenceObjectContract;
     }
 
@@ -100,6 +101,20 @@ export namespace ContentTypeElements {
         name: string;
         guidelines?: string;
         type: 'modular_content';
+        is_required?: boolean;
+        codename?: string;
+        external_id?: string;
+    }
+
+    export interface ISubpagesElementData extends IElementShared {
+        item_count_limit?: {
+            value: number;
+            condition: 'at_most' | 'exactly' | 'at_least';
+        };
+        allowed_content_types?: SharedContracts.IReferenceObjectContract[];
+        name: string;
+        guidelines?: string;
+        type: 'subpages';
         is_required?: boolean;
         codename?: string;
         external_id?: string;
@@ -213,6 +228,8 @@ export namespace ContentTypeElements {
 
     export interface ILinkedItemsElement extends IElementWithId, ILinkedItemsElementData {}
 
+    export interface ISubpagesElement extends IElementWithId, ISubpagesElementData {}
+
     export interface IMultipleChoiceElement extends IElementWithId, IMultipleChoiceElementData {}
 
     export interface INumberElement extends IElementWithId, INumberElementData {}
@@ -232,7 +249,7 @@ export namespace ContentTypeElements {
         | IDateTimeElement
         | IGuidelinesElement
         | ILinkedItemsElement
-        | ILinkedItemsElement
+        | ISubpagesElement
         | IMultipleChoiceElement
         | INumberElement
         | IRichTextElement

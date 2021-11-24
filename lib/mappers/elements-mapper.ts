@@ -1,5 +1,3 @@
-import { enumHelper } from '@kentico/kontent-core';
-
 import { ElementContracts, SharedContracts } from '../contracts';
 import { ContentTypeElements, ElementModels, SharedModels } from '../models';
 import { BaseMapper } from './base-mapper';
@@ -61,20 +59,6 @@ export class ElementsMapper extends BaseMapper {
         );
     }
 
-    mapMultipleChoiceMode(mode: string | undefined): ElementModels.ElementMode {
-        if (!mode) {
-            throw Error(`No value provided for multiple choice mode`);
-        }
-
-        const mappedMode = enumHelper.getEnumFromValue<ElementModels.ElementMode>(ElementModels.ElementMode, mode);
-
-        if (!mappedMode) {
-            throw Error(`Could not map multiple choice element option '${mode}'`);
-        }
-
-        return mappedMode;
-    }
-
     mapElementValue(
         rawValue: string | number | SharedContracts.IReferenceObjectContract[]
     ): string | number | SharedModels.ReferenceObject[] {
@@ -83,16 +67,6 @@ export class ElementsMapper extends BaseMapper {
         }
 
         return rawValue;
-    }
-
-    mapElementType(type: string): ElementModels.ElementType {
-        const mappedType = enumHelper.getEnumFromValue<ElementModels.ElementType>(ElementModels.ElementType, type);
-
-        if (!mappedType) {
-            throw Error(`Invalid element type '${type}'`);
-        }
-
-        return mappedType;
     }
 }
 

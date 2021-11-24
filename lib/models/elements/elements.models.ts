@@ -2,25 +2,22 @@ import { SharedModels } from '../shared/shared-models';
 import { ElementContracts } from '../../contracts';
 
 export namespace ElementModels {
-    export enum ElementMode {
-        single = 'single',
-        multiple = 'multiple'
-    }
+    export type ElementMode = 'single' | 'multiple';
 
-    export enum ElementType {
-        text = 'text',
-        richText = 'rich_text',
-        number = 'number',
-        multipleChoice = 'multiple_choice',
-        dateTime = 'date_time',
-        asset = 'asset',
-        modularContent = 'modular_content',
-        taxonomy = 'taxonomy',
-        urlSlug = 'url_slug',
-        guidelines = 'guidelines',
-        snippet = 'snippet',
-        custom = 'custom'
-    }
+    export type ElementType =
+        | 'text'
+        | 'rich_text'
+        | 'number'
+        | 'multiple_choice'
+        | 'date_time'
+        | 'asset'
+        | 'modular_content'
+        | 'taxonomy'
+        | 'url_slug'
+        | 'guidelines'
+        | 'snippet'
+        | 'custom'
+        | 'subpages';
 
     export class ContentItemElement implements SharedModels.IBaseModel<ElementContracts.IContentItemElementContract> {
         public element!: SharedModels.ReferenceObject;

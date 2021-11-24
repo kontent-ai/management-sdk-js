@@ -1,7 +1,6 @@
 import { ContentTypeElements } from '../elements/content-type-element.models';
 
 export class ContentTypeSnippetElements {
-
     assetElement(element: ContentTypeElements.IAssetElementData): ContentTypeElements.IElementShared {
         return element;
     }
@@ -19,6 +18,10 @@ export class ContentTypeSnippetElements {
     }
 
     linkedItemsElement(element: ContentTypeElements.ILinkedItemsElementData): ContentTypeElements.IElementShared {
+        return element;
+    }
+
+    subpagesElement(element: ContentTypeElements.ISubpagesElementData): ContentTypeElements.IElementShared {
         return element;
     }
 
@@ -42,7 +45,7 @@ export class ContentTypeSnippetElements {
         return element;
     }
 
-    any(element: any): ContentTypeElements.IElementShared {
+    any<TElement extends ContentTypeElements.IElementShared>(element: TElement): ContentTypeElements.IElementShared {
         return element;
     }
 }

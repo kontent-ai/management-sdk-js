@@ -29,6 +29,10 @@ export class ContentTypeElementsBuilder {
         return element;
     }
 
+    subpagesElement(element: ContentTypeElements.ISubpagesElementData): ContentTypeElements.IElementShared {
+        return element;
+    }
+
     multipleChoiceElement(
         element: ContentTypeElements.IMultipleChoiceElementData
     ): ContentTypeElements.IElementShared {
@@ -55,9 +59,10 @@ export class ContentTypeElementsBuilder {
         return element;
     }
 
-    any(element: any): ContentTypeElements.IElementShared {
+    any<TElement extends ContentTypeElements.IElementShared>(element: TElement): ContentTypeElements.IElementShared {
         return element;
     }
 }
 
 export const contentTypeElementsBuilder = new ContentTypeElementsBuilder();
+

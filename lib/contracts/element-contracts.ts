@@ -1,17 +1,13 @@
 import { SharedContracts } from './shared-contracts';
 
 export namespace ElementContracts {
-
     export interface IContentTypeElementMultipleChoiceElementOptionsContract {
         name: string;
         id: string;
         codename: string;
     }
 
-    export enum IContentTypeElementModeTypeContract {
-        single = 'single',
-        multiple = 'multiple'
-    }
+    export type IContentTypeElementModeTypeContract = 'single' | 'multiple';
 
     export interface IContentTypeElementContract {
         name: string;
@@ -40,5 +36,4 @@ export namespace ElementContracts {
         value: string | number | SharedContracts.IReferenceObjectContract[];
         components?: IContentItemElementComponent[];
     }
-
 }
