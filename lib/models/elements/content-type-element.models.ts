@@ -162,6 +162,7 @@ export namespace ContentTypeElements {
 
     export interface ITaxonomyElementData extends IElementShared {
         taxonomy_group: SharedContracts.IReferenceObjectContract;
+        guidelines?: string;
         type: 'taxonomy';
         is_required?: boolean;
         codename?: string;
