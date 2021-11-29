@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.6.0...v1.7.0) (2021-11-29)
+
+
+### Features
+
+* adds guidelines to taxonomy element data model ([9f436cd](https://github.com/Kentico/kontent-management-sdk-js/commit/9f436cd4d2c085acb6b7b83822a4183e76df70ed))
+* adds support for subpages element & uses type in favor of enum for some models ([5713d8f](https://github.com/Kentico/kontent-management-sdk-js/commit/5713d8f5ae75023040dd2d0b60dc7d7b77c0755f))
+* adds validation_regex support for text element ([ac81a48](https://github.com/Kentico/kontent-management-sdk-js/commit/ac81a48e910e8efc74b020540a00fe555397364d))
+* improves types for element builders ([0c076c6](https://github.com/Kentico/kontent-management-sdk-js/commit/0c076c60bf5ce06e2b6e6a874435962b73529d96))
+* removes unnecessary builder code by extending content type snippet builder ([728a5e1](https://github.com/Kentico/kontent-management-sdk-js/commit/728a5e1b37b46314eba7ff04d73bdab53b05a8dc))
+* updates dependencies ([391b29b](https://github.com/Kentico/kontent-management-sdk-js/commit/391b29b610b004bd225d016a70277fa482896688))
+
 ## [1.6.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.5.0...v1.6.0) (2021-11-02)
 
 
