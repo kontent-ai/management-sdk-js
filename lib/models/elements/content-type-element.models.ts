@@ -201,7 +201,8 @@ export namespace ContentTypeElements {
         };
         validation_regex?: {
             regex: string,
-            flags?: string
+            flags?: string,
+            validation_message?: string
         };
     }
 
