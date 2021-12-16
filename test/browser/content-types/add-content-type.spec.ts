@@ -1,6 +1,7 @@
-import { ContentTypeResponses } from '../../../lib';
+import { ContentTypeElements, ContentTypeResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-add-content-type.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import ITextElement = ContentTypeElements.ITextElement;
 
 describe('Add content type', () => {
     let response: ContentTypeResponses.AddContentTypeResponse;
@@ -82,5 +83,15 @@ describe('Add content type', () => {
                 expect(mappedElementValue).toEqual(originalElementValue);
             }
         });
+    });
+
+    it(`text type element should contain validation regex`, () =>
+    {
+        const originalTextElement = responseJson.elements.find(m => m.type === 'text');
+        const textContentType = response.data.elements.find(m => m.type === 'text');
+        expect(Object.keys(textContentType!)).toContain('validation_regex');
+
+        const validationRegex = (textContentType as ITextElement).validation_regex;
+        expect(validationRegex).toEqual((originalTextElement as any).validation_regex);
     });
 });

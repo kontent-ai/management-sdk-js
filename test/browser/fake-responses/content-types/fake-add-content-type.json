@@ -10,7 +10,12 @@
       "guidelines": "",
       "type": "text",
       "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
-      "codename": "video_id"
+      "codename": "video_id",
+      "validation_regex": {
+        "regex": "^[a-z]$",
+        "flags": null,
+        "validation_message": "Type a value matching the pattern required in this element."
+      }
     },
     {
       "mode": "single",
