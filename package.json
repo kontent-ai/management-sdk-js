@@ -1,6 +1,6 @@
 {
   "name": "@kentico/kontent-management",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kentico/kontent-management-sdk-js"
@@ -38,6 +38,9 @@
   },
   "scripts": {
     "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
     "ts-lint:fix": "npm run ts-lint:check -- --fix",
     "ts-lint:check": "tslint --project ./tsconfig.json",
     "test:browser": "karma start karma.conf.js",
