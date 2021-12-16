@@ -87,10 +87,11 @@ describe('Add content type', () => {
 
     it(`text type element should contain validation regex`, () =>
     {
-        const contentType = response.data.elements.find(m => m.type === 'text');
-        expect(Object.keys(contentType!)).toContain('validation_regex');
+        const originalTextElement = responseJson.elements.find(m => m.type === 'text');
+        const textContentType = response.data.elements.find(m => m.type === 'text');
+        expect(Object.keys(textContentType!)).toContain('validation_regex');
 
-        const validationRegex = (contentType as ITextElement).validation_regex;
-        expect(Object.keys(validationRegex!)).toEqual(['regex', 'flags', 'validation_message']);
+        const validationRegex = (textContentType as ITextElement).validation_regex;
+        expect(validationRegex).toEqual((originalTextElement as any).validation_regex);
     });
 });
