@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.8.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.7.0...v1.8.0) (2021-12-16)
 
-### [1.7.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.7.0...v1.7.1) (2021-12-16)
+* Adds validation message to Text element regex property
 
 ## [1.7.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.6.0...v1.7.0) (2021-11-29)
 
