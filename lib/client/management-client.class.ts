@@ -108,7 +108,9 @@ import {
     DeactivateUserInAllProjectsQuery,
     ListRolesQuery,
     InviteProjectUserQuery,
-    ChangeUserRolesQuery
+    ChangeUserRolesQuery,
+    RoleIdentifierQuery,
+    ViewRoleQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -945,6 +947,14 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     listRoles(): ListRolesQuery {
         return new ListRolesQuery(this.config, this.queryService);
+    }
+
+    viewRole(): RoleIdentifierQuery<ViewRoleQuery> {
+        return new RoleIdentifierQuery<ViewRoleQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ViewRoleQuery(config, queryService, identifier)
+        );
     }
 
     inviteUser(): DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData> {

@@ -293,6 +293,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/roles`;
     }
 
+    viewRole(identifier: Identifiers.RoleIdentifier): string {
+        return `${this.getProjectPath()}/roles/${identifier.getParamValue()}`;
+    }
+
     inviteProjectUser(): string {
         return `${this.getProjectPath()}/users`;
     }

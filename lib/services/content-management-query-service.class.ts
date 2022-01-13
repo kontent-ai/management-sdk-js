@@ -839,6 +839,12 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async viewRole(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.ViewRoleResponse> {
+        return roleMapper.mapViewRoleResponse(
+            await this.getResponseAsync<RoleContracts.IRoleContract>(url, {}, config)
+        );
+    }
+
     async setCollections(
         url: string,
         config: IContentManagementQueryConfig,

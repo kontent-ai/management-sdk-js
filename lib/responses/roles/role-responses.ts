@@ -19,4 +19,17 @@ export namespace RoleResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class ViewRoleResponse extends BaseResponses.BaseContentManagementResponse<
+        RoleContracts.IRoleContract,
+        RoleModels.Role
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: RoleContracts.IRoleContract,
+            data: RoleModels.Role
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

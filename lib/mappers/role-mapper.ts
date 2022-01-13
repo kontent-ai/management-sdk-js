@@ -14,6 +14,14 @@ export class RoleMapper extends BaseMapper {
         });
     }
 
+    mapViewRoleResponse(response: IResponse<RoleContracts.IRoleContract>): RoleResponses.ViewRoleResponse {
+        return new RoleResponses.ViewRoleResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapRole(response.data)
+        );
+    }
+
     mapRole(rawItem: RoleContracts.IRoleContract): RoleModels.Role {
         return new RoleModels.Role({
             id: rawItem.id,

@@ -104,7 +104,9 @@ import {
     DeactivateUserInAllProjectsQuery,
     ListRolesQuery,
     InviteProjectUserQuery,
-    ChangeUserRolesQuery
+    ChangeUserRolesQuery,
+    RoleIdentifierQuery,
+    ViewRoleQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -531,4 +533,9 @@ export interface IManagementClient<TCancelToken> {
      * Changes roles of a specified user
      */
     changeUserRoles(): UserIdentifierQuery<DataQuery<ChangeUserRolesQuery, ProjectUserModels.IChangeUserRoleData>>;
+
+    /**
+     * View role
+     */
+    viewRole(): RoleIdentifierQuery<ViewRoleQuery>;
 }

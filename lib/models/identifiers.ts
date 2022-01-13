@@ -1,5 +1,4 @@
 export namespace Identifiers {
-
     export enum ContentItemIdentifierEnum {
         ExternalId = 'externalId',
         InternalId = 'internalId',
@@ -37,7 +36,7 @@ export namespace Identifiers {
 
     export enum AssetIdentifierEnum {
         InternalId = 'internalId',
-        ExternalId = 'externalId',
+        ExternalId = 'externalId'
     }
 
     export enum WebhookIdentifierEnum {
@@ -53,11 +52,13 @@ export namespace Identifiers {
         Email = 'email'
     }
 
+    export enum RoleIdentifierEnum {
+        Id = 'id',
+        Codename = 'codename'
+    }
+
     export class AssetIdentifier {
-        constructor(
-            public identifier: AssetIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: AssetIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === AssetIdentifierEnum.InternalId) {
@@ -71,10 +72,7 @@ export namespace Identifiers {
     }
 
     export class TaxonomyIdentifier {
-        constructor(
-            public identifier: TaxonomyIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: TaxonomyIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === TaxonomyIdentifierEnum.InternalId) {
@@ -91,10 +89,7 @@ export namespace Identifiers {
     }
 
     export class ContentTypeIdentifier {
-        constructor(
-            public identifier: ContentTypeIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: ContentTypeIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === ContentTypeIdentifierEnum.Codename) {
@@ -111,10 +106,7 @@ export namespace Identifiers {
     }
 
     export class CollectionIdentifier {
-        constructor(
-            public identifier: CollectionIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: CollectionIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === CollectionIdentifierEnum.Codename) {
@@ -131,10 +123,7 @@ export namespace Identifiers {
     }
 
     export class WorkflowIdentifier {
-        constructor(
-            public identifier: WorkflowIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: WorkflowIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === WorkflowIdentifierEnum.Id) {
@@ -148,10 +137,7 @@ export namespace Identifiers {
     }
 
     export class ContentItemIdentifier {
-        constructor(
-            public identifier: ContentItemIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: ContentItemIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === ContentItemIdentifierEnum.Codename) {
@@ -168,10 +154,7 @@ export namespace Identifiers {
     }
 
     export class LanguageIdentifier {
-        constructor(
-            public identifier: LanguageIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: LanguageIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === LanguageIdentifierEnum.Codename) {
@@ -189,10 +172,7 @@ export namespace Identifiers {
     }
 
     export class WebhookIdentifier {
-        constructor(
-            public identifier: WebhookIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: WebhookIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === WebhookIdentifierEnum.Id) {
@@ -203,10 +183,7 @@ export namespace Identifiers {
     }
 
     export class ProjectIdentifier {
-        constructor(
-            public identifier: ProjectIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: ProjectIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === ProjectIdentifierEnum.Id) {
@@ -217,10 +194,7 @@ export namespace Identifiers {
     }
 
     export class UserIdentifier {
-        constructor(
-            public identifier: UserIdentifierEnum,
-            public value: string) {
-        }
+        constructor(public identifier: UserIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
             if (this.identifier === UserIdentifierEnum.Id) {
@@ -233,5 +207,17 @@ export namespace Identifiers {
         }
     }
 
-}
+    export class RoleIdentifier {
+        constructor(public identifier: RoleIdentifierEnum, public value: string) {}
 
+        getParamValue(): string {
+            if (this.identifier === RoleIdentifierEnum.Id) {
+                return `${this.value}`;
+            }
+            if (this.identifier === RoleIdentifierEnum.Codename) {
+                return `codename/${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+}
