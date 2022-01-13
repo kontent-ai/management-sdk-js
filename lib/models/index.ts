@@ -21,3 +21,4 @@ export * from './collections/collection.models';
 export * from './elements/content-type-element.models';
 export * from './subscriptions/subscription.models';
 export * from './roles/role.models';
+export * from './project-users/project-users.models';

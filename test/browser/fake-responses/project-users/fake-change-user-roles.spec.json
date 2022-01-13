@@ -1,0 +1,25 @@
+{
+  "user_id": "d94bc87a-c066-48a1-a910-4f991ccc1fb5",
+  "collection_groups": [
+    {
+      "collections": [
+        {
+          "id": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+          "codename": "collection-1"
+        }
+      ],
+      "roles": [
+        {
+          "id": "f58733b9-520b-406b-9d45-eb15a2baee96",
+          "languages": [
+            {
+              "codename": "english"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kentico/kontent-core';
-import { CollectionModels, LanguageVariantElements, LanguageVariantElementsBuilder } from '../models';
+import {
+    CollectionModels,
+    LanguageVariantElements,
+    LanguageVariantElementsBuilder,
+    ProjectUserModels
+} from '../models';
 
 import { IManagementClientConfig } from '../config';
 import { ContentItemContracts } from '../contracts';
@@ -101,7 +106,9 @@ import {
     ViewSubscriptionUserQuery,
     ActivateUserInAllProjectsQuery,
     DeactivateUserInAllProjectsQuery,
-    ListRolesQuery
+    ListRolesQuery,
+    InviteProjectUserQuery,
+    ChangeUserRolesQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -938,5 +945,26 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     listRoles(): ListRolesQuery {
         return new ListRolesQuery(this.config, this.queryService);
+    }
+
+    inviteUser(): DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData> {
+        return new DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new InviteProjectUserQuery(config, queryService, data)
+        );
+    }
+
+    changeUserRoles(): UserIdentifierQuery<DataQuery<ChangeUserRolesQuery, ProjectUserModels.IChangeUserRoleData>> {
+        return new UserIdentifierQuery<DataQuery<ChangeUserRolesQuery, ProjectUserModels.IChangeUserRoleData>>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ChangeUserRolesQuery, ProjectUserModels.IChangeUserRoleData>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new ChangeUserRolesQuery(nConfig, nQueryService, identifier, data)
+                )
+        );
     }
 }

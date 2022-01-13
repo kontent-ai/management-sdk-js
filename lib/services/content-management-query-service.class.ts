@@ -12,6 +12,7 @@ import {
     LanguageContracts,
     LanguageVariantContracts,
     ProjectContracts,
+    ProjectUserContracts,
     RoleContracts,
     SubscriptionContracts,
     TaxonomyContracts,
@@ -32,7 +33,8 @@ import {
     genericMapper,
     collectionsMappers,
     subscriptionMapper,
-    roleMapper
+    roleMapper,
+    projectUserMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -46,7 +48,8 @@ import {
     WorkflowModels,
     AssetFolderModels,
     IContentManagementListQueryConfig,
-    CollectionModels
+    CollectionModels,
+    ProjectUserModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -64,7 +67,8 @@ import {
     GenericResponses,
     CollectionResponses,
     SubscriptionResponses,
-    RoleResponses
+    RoleResponses,
+    ProjectUsersResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
@@ -1252,6 +1256,40 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Promise<CollectionResponses.SetCollectionsResponse> {
         return collectionsMappers.mapSetCollectionsResponse(
             await this.patchResponseAsync<CollectionContracts.ISetCollectionsResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
+    }
+
+    async inviteProjectUser(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: ProjectUserModels.IInviteUserData
+    ): Promise<ProjectUsersResponses.InviteUserResponse> {
+        return projectUserMapper.mapInviteUserResponse(
+            await this.putResponseAsync<ProjectUserContracts.IInviteUserResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
+    }
+
+    async changeUserRoles(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: ProjectUserModels.IChangeUserRoleData
+    ): Promise<ProjectUsersResponses.ChangeUserRolesResponse> {
+        return projectUserMapper.mapChangeUserRolesResponse(
+            await this.putResponseAsync<ProjectUserContracts.IChangeUserRolesResponseContract>(
                 url,
                 data,
                 {

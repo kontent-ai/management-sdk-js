@@ -14,12 +14,12 @@ export class RoleMapper extends BaseMapper {
         });
     }
 
-    mapRole(rawCollection: RoleContracts.IRoleContract): RoleModels.Role {
+    mapRole(rawItem: RoleContracts.IRoleContract): RoleModels.Role {
         return new RoleModels.Role({
-            id: rawCollection.id,
-            name: rawCollection.name,
-            codename: rawCollection.codename,
-            _raw: rawCollection
+            id: rawItem.id,
+            name: rawItem.name,
+            codename: rawItem.codename,
+            _raw: rawItem
         });
     }
 }

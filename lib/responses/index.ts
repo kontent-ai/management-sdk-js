@@ -14,3 +14,4 @@ export * from './generic/generic-responses';
 export * from './collections/collection-responses';
 export * from './subscriptions/subscription-responses';
 export * from './roles/role-responses';
+export * from './project-users/project-users-responses';

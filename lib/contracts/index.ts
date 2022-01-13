@@ -15,4 +15,5 @@ export * from './asset-folder-contracts';
 export * from './collection-contracts';
 export * from './subscription-contracts';
 export * from './role-contracts';
+export * from './project-user-contracts';
 

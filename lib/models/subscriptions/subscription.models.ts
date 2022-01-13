@@ -1,5 +1,5 @@
 import { SharedModels } from '../shared/shared-models';
-import { SubscriptionContracts } from '../../contracts';
+import { SharedContracts, SubscriptionContracts } from '../../contracts';
 
 export namespace SubscriptionModels {
     export interface ISubscriptionEnvironment {
@@ -28,7 +28,7 @@ export namespace SubscriptionModels {
     }
 
     export interface ISubscriptionCollectionGroup {
-        collections: ISubscriptionCollection[];
+        collections: SharedContracts.IReferenceObjectContract[];
         roles: ISubscriptionUserRole[];
     }
 
@@ -45,12 +45,6 @@ export namespace SubscriptionModels {
         name: string;
         codename: string;
         languages: ISubscriptionUserRoleLanguage[];
-    }
-
-    export interface ISubscriptionCollection {
-        id: string;
-        codename: string;
-        externalId?: string;
     }
 
     export interface ISubscriptionUserEnvironment {

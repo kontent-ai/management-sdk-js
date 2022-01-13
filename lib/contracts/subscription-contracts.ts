@@ -24,7 +24,7 @@ export namespace SubscriptionContracts {
     }
 
     export interface ISubscriptionCollectionGroupContract {
-        collections: ISubscriptionCollectionContract[];
+        collections: SharedContracts.IReferenceObjectContract[];
         roles: ISubscriptionUserRoleContract[];
     }
 
@@ -41,12 +41,6 @@ export namespace SubscriptionContracts {
         name: string;
         codename: string;
         languages: ISubscriptionUserRoleLanguageContract[];
-    }
-
-    export interface ISubscriptionCollectionContract {
-        id: string;
-        codename: string;
-        external_id?: string;
     }
 
     export interface ISubscriptionUserEnvironmentContract {

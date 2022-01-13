@@ -293,6 +293,14 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/roles`;
     }
 
+    inviteProjectUser(): string {
+        return `${this.getProjectPath()}/users`;
+    }
+
+    changeProjectUserRoles(identifier: Identifiers.UserIdentifier): string {
+        return `${this.getProjectPath()}/users/${identifier.getParamValue()}/roles`;
+    }
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);

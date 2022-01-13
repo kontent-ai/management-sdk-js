@@ -11,6 +11,7 @@ import {
     LanguageModels,
     LanguageVariantElements,
     LanguageVariantElementsBuilder,
+    ProjectUserModels,
     TaxonomyModels,
     WebhookModels,
     WorkflowModels
@@ -101,7 +102,9 @@ import {
     UserIdentifierQuery,
     ActivateUserInAllProjectsQuery,
     DeactivateUserInAllProjectsQuery,
-    ListRolesQuery
+    ListRolesQuery,
+    InviteProjectUserQuery,
+    ChangeUserRolesQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -518,4 +521,14 @@ export interface IManagementClient<TCancelToken> {
      * List roles
      */
     listRoles(): ListRolesQuery;
+
+    /**
+     * Invites specified user to Kontent project
+     */
+    inviteUser(): DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData>;
+
+    /**
+     * Changes roles of a specified user
+     */
+    changeUserRoles(): UserIdentifierQuery<DataQuery<ChangeUserRolesQuery, ProjectUserModels.IChangeUserRoleData>>;
 }
