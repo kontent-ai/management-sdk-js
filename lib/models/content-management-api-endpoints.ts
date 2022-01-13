@@ -289,6 +289,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getSubscriptionPath()}/users/${identifier.getParamValue()}/deactivate`;
     }
 
+    listRoles(): string {
+        return `${this.getProjectPath()}/roles`;
+    }
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);

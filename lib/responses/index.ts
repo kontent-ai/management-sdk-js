@@ -13,3 +13,4 @@ export * from './webhook/webhook-responses';
 export * from './generic/generic-responses';
 export * from './collections/collection-responses';
 export * from './subscriptions/subscription-responses';
+export * from './roles/role-responses';

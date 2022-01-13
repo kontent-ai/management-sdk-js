@@ -100,7 +100,8 @@ import {
     UserIdentifierQuery,
     ViewSubscriptionUserQuery,
     ActivateUserInAllProjectsQuery,
-    DeactivateUserInAllProjectsQuery
+    DeactivateUserInAllProjectsQuery,
+    ListRolesQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -933,5 +934,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.queryService,
             (config, queryService, identifier) => new DeactivateUserInAllProjectsQuery(config, queryService, identifier)
         );
+    }
+
+    listRoles(): ListRolesQuery {
+        return new ListRolesQuery(this.config, this.queryService);
     }
 }

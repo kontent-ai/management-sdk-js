@@ -1,2 +1,2 @@
-export  * from './list-collections.class';
-export  * from './set-collections.class';
+export  * from './list-collections-query.class';
+export  * from './set-collections-query.class';

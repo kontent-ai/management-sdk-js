@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "id": "7dedb656-aef7-40ae-8158-98bbf3542f4a",
+      "name": "Project manager",
+      "codename": "project-manager"
+    },
+    {
+      "id": "ee483b59-5a24-4010-b277-ae224c34bc71",
+      "name": "Custom role"
+    }
+  ]
+}

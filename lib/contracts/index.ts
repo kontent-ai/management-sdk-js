@@ -14,4 +14,5 @@ export * from './webhook-contracts';
 export * from './asset-folder-contracts';
 export * from './collection-contracts';
 export * from './subscription-contracts';
+export * from './role-contracts';
 

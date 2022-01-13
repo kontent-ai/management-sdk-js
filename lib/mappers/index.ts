@@ -14,3 +14,4 @@ export * from './asset-folder-mapper';
 export * from './generic-mapper';
 export * from './collections-mapper';
 export * from './subscription-mapper';
+export * from './role-mapper';

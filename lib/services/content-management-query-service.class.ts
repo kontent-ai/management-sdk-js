@@ -12,6 +12,7 @@ import {
     LanguageContracts,
     LanguageVariantContracts,
     ProjectContracts,
+    RoleContracts,
     SubscriptionContracts,
     TaxonomyContracts,
     WebhookContracts,
@@ -30,7 +31,8 @@ import {
     workflowMapper,
     genericMapper,
     collectionsMappers,
-    subscriptionMapper
+    subscriptionMapper,
+    roleMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -61,7 +63,8 @@ import {
     WorkflowResponses,
     GenericResponses,
     CollectionResponses,
-    SubscriptionResponses
+    SubscriptionResponses,
+    RoleResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
@@ -1221,6 +1224,18 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Promise<CollectionResponses.CollectionsListResponse> {
         return collectionsMappers.mapListCollectionsResponse(
             await this.getResponseAsync<CollectionContracts.ICollectionListResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
+    }
+
+    async listRoles(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.RoleListResponse> {
+        return roleMapper.mapRoleListResponse(
+            await this.getResponseAsync<RoleContracts.IRoleListResponseContract>(
                 url,
                 {
                     queryType: 'projects'

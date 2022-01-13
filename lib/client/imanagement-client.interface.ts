@@ -100,7 +100,8 @@ import {
     ListSubscriptionUsersQuery,
     UserIdentifierQuery,
     ActivateUserInAllProjectsQuery,
-    DeactivateUserInAllProjectsQuery
+    DeactivateUserInAllProjectsQuery,
+    ListRolesQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -512,4 +513,9 @@ export interface IManagementClient<TCancelToken> {
      * Deactivates user in all projects
      */
     deactivateUserInAllProjects(): UserIdentifierQuery<DeactivateUserInAllProjectsQuery>;
+
+    /**
+     * List roles
+     */
+    listRoles(): ListRolesQuery;
 }
