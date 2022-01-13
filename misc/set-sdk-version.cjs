@@ -1,7 +1,7 @@
 const path = require('path');
 const appVersion = require('../package.json').version;
 const packageName = require('../package.json').name;
-const versionHelper = require('./version-helper');
+const versionHelper = require('./version-helper.cjs');
 
 versionHelper.createSdkVersionFile(
     path.join(__dirname + '/../lib/sdk-info.generated.ts'),

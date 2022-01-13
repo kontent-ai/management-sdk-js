@@ -1,6 +1,6 @@
 {
   "name": "@kentico/kontent-management",
-  "version": "1.8.0",
+  "version": "2.0.0-0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kentico/kontent-management-sdk-js"
@@ -41,7 +41,7 @@
     }
   },
   "scripts": {
-    "prerelease": "npm run release -- --prerelease",
+    "prerelease": "standard-version --prerelease",
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
@@ -56,7 +56,7 @@
     "new-minor": "npm version minor && npm run set-sdk-version && npm run check-version ",
     "new-major": "npm version major && npm run set-sdk-version && npm run check-version ",
     "prepublishOnly": "npm run ts-lint:check && npm run check-version  && npm run build:all && npm run test:all",
-    "set-sdk-version": "node ./misc/set-sdk-version.js",
+    "set-sdk-version": "node ./misc/set-sdk-version.cjs",
     "check-version": "npx ts-node ./misc/verify-sdk-version.ts",
     "webpack:dev": "webpack -- --mode development --config webpack.config.js --progress",
     "webpack:prod": "webpack -- --mode production --config webpack.config.js --progress",
