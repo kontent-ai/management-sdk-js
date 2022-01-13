@@ -29,10 +29,8 @@ export namespace BaseResponses {
         };
     }
 
-    export abstract class ContentManagementListAllResponse<
-        TResponse extends IContentManagementListResponse,
-        TData extends any
-    > implements IContentManagementListAllResponse
+    export abstract class ContentManagementListAllResponse<TResponse extends IContentManagementListResponse, TData>
+        implements IContentManagementListAllResponse
     {
         public responses: TResponse[];
         public data: {
@@ -50,21 +48,14 @@ export namespace BaseResponses {
     export abstract class BaseContentManagementListResponse<TRawData extends any, TItem extends any>
         implements IContentManagementResponse
     {
-        public data: {
-            items: TItem[];
-            pagination: SharedModels.Pagination;
-        };
-
         constructor(
             public debug: IContentManagementResponseDebug,
             public rawData: TRawData,
-            data: {
+            public data: {
                 items: TItem[];
                 pagination: SharedModels.Pagination;
             }
-        ) {
-            this.data = data;
-        }
+        ) {}
     }
 
     export abstract class BaseContentManagementResponse<TRawData extends any, TData extends any>

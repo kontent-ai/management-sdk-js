@@ -44,6 +44,15 @@ export namespace Identifiers {
         Id = 'id'
     }
 
+    export enum ProjectIdentifierEnum {
+        Id = 'id'
+    }
+
+    export enum UserIdentifierEnum {
+        Id = 'id',
+        Email = 'email'
+    }
+
     export class AssetIdentifier {
         constructor(
             public identifier: AssetIdentifierEnum,
@@ -188,6 +197,37 @@ export namespace Identifiers {
         getParamValue(): string {
             if (this.identifier === WebhookIdentifierEnum.Id) {
                 return `${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
+    export class ProjectIdentifier {
+        constructor(
+            public identifier: ProjectIdentifierEnum,
+            public value: string) {
+        }
+
+        getParamValue(): string {
+            if (this.identifier === ProjectIdentifierEnum.Id) {
+                return `${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
+    export class UserIdentifier {
+        constructor(
+            public identifier: UserIdentifierEnum,
+            public value: string) {
+        }
+
+        getParamValue(): string {
+            if (this.identifier === UserIdentifierEnum.Id) {
+                return `${this.value}`;
+            }
+            if (this.identifier === UserIdentifierEnum.Email) {
+                return `email/${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }

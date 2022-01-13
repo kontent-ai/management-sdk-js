@@ -16,6 +16,7 @@ import {
     WorkflowModels
 } from '../models';
 import {
+    ViewSubscriptionUserQuery,
     ActionQuery,
     AddAssetFoldersQuery,
     AddAssetQuery,
@@ -67,7 +68,7 @@ import {
     ModifyTaxonomyQuery,
     PatchQuery,
     PostQuery,
-    ProjectIdIdentifierQuery,
+    ProjectIdentifierQuery,
     ProjectInformationQuery,
     PublishLanguageVariantQuery,
     PutQuery,
@@ -93,7 +94,13 @@ import {
     CollectionIdentifierQuery,
     ListLanguageVariantsByCollectionQuery,
     SetCollectionsQuery,
-    UploadAssetFromUrlQuery
+    UploadAssetFromUrlQuery,
+    ListSubscriptionProjectsQuery,
+    ViewSubscriptionProjectQuery,
+    ListSubscriptionUsersQuery,
+    UserIdentifierQuery,
+    ActivateUserInAllProjectsQuery,
+    DeactivateUserInAllProjectsQuery
 } from '../queries';
 import { IMappingService } from '../services';
 
@@ -251,7 +258,7 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to validate project content
      */
-    validateProjectContent(): ProjectIdIdentifierQuery<ValidateProjectContentQuery>;
+    validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery>;
 
     /**
      * Query to delete content type
@@ -465,15 +472,44 @@ export interface IManagementClient<TCancelToken> {
      */
     uploadAssetFromUrl(): DataQuery<UploadAssetFromUrlQuery, AssetModels.IUploadAssetFromUrlRequestData>;
 
-
     /**
      * Creates edit urls according to https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-editing-from-preview
      */
     createLanguageVariantEditUrl(data: {
-        variantId: string,
+        variantId: string;
         languageCodename: string;
         elementCodename?: string;
         nestedItemId?: string;
         nestedItemElementCodename?: string;
     }): string;
+
+    /**
+     * Query to list projects in given subscription
+     */
+    listSubscriptionProjects(): ListSubscriptionProjectsQuery;
+
+    /**
+     * View subscription project
+     */
+    viewSubscriptionProject(): ProjectIdentifierQuery<ViewSubscriptionProjectQuery>;
+
+    /**
+     * View subscription users
+     */
+    listSubscriptionUsers(): ListSubscriptionUsersQuery;
+
+    /**
+     * View subscription user
+     */
+    viewSubscriptionUser(): UserIdentifierQuery<ViewSubscriptionUserQuery>;
+
+    /**
+     * Activates user in all projects
+     */
+    activateUserInAllProjects(): UserIdentifierQuery<ActivateUserInAllProjectsQuery>;
+
+    /**
+     * Deactivates user in all projects
+     */
+    deactivateUserInAllProjects(): UserIdentifierQuery<DeactivateUserInAllProjectsQuery>;
 }

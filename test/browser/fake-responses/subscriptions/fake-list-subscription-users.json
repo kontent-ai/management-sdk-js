@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": "e67eadda-dc58-4bf9-89fc-1dadc0b95858",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "jonh.doe@exmaple.com",
+      "has_pending_invitation": true,
+      "projects": [
+        {
+          "id": "a7d24131-b0c5-4dda-ad78-c0b409951493",
+          "name": "Sample project",
+          "environments": [
+            {
+              "id": "c9bad3b5-2b91-4df9-9d4a-53d0bf14343b",
+              "name": "Production",
+              "is_user_active": true,
+              "last_activity_at": "2021-12-24T12:00:00.7692802Z",
+              "collection_groups": [
+                {
+                  "collections": [
+                    {
+                      "id": "3f367e4f-75b7-4b48-be3b-1136bbaf1f53"
+                    }
+                  ],
+                  "roles": [
+                    {
+                      "id": "c11a2c9e-f129-43b8-9cb1-20a7b3746934",
+                      "name": "Project manager",
+                      "codename": "project-manager",
+                      "languages": [
+                        {
+                          "id": "00000000-0000-0000-0000-000000000000",
+                          "external_id": "string",
+                          "codename": "default",
+                          "name": "Default language",
+                          "is_active": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "continuation_token": "+RID:~...",
+    "next_page": "https://manage.kontent.ai/v2/your/chosen/list/endpoint?continuationToken=%2bRID%3a~..."
+  }
+}

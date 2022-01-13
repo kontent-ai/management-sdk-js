@@ -1,236 +1,305 @@
 import { Identifiers } from './identifiers';
 
-
 export class ContentManagementApiEndpoints {
+    private readonly projectId?: string;
+    private readonly subscriptionId?: string;
 
-    changeWorkflowStepOfLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier, workflowIdentifier: Identifiers.WorkflowIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/workflow/${workflowIdentifier.getParamValue()}`;
+    private readonly projectsPath: string = 'projects';
+    private readonly subscriptionsPath: string = 'subscriptions';
+
+    constructor(data: { projectId?: string; subscriptionId?: string }) {
+        this.projectId = data.projectId;
+        this.subscriptionId = data.subscriptionId;
     }
 
-    publishLaguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/publish`;
+    changeWorkflowStepOfLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier,
+        workflowIdentifier: Identifiers.WorkflowIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/workflow/${workflowIdentifier.getParamValue()}`;
     }
 
-    createNewVersionOfALanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/new-version`;
+    publishLaguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/publish`;
     }
 
-    unpublishLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/unpublish-and-archive`;
+    createNewVersionOfALanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/new-version`;
     }
 
-    cancelScheduledPublishingOfLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/cancel-scheduled-publish`;
+    unpublishLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/unpublish-and-archive`;
     }
 
-    cancelScheduledUnpublishingOfLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, languageIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/cancel-scheduled-unpublish`;
+    cancelScheduledPublishingOfLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/cancel-scheduled-publish`;
+    }
+
+    cancelScheduledUnpublishingOfLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/cancel-scheduled-unpublish`;
     }
 
     listWorkflowSteps(): string {
-        return `workflow`;
+        return `${this.getProjectPath()}/workflow`;
     }
 
     listContentTypeSnippets(): string {
-        return `snippets`;
+        return `${this.getProjectPath()}/snippets`;
     }
 
     viewContentTypeSnippet(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `snippets/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/snippets/${identifier.getParamValue()}`;
     }
 
     addContentTypeSnippet(): string {
-        return `snippets`;
+        return `${this.getProjectPath()}/snippets`;
     }
 
     deleteContentTypeSnippet(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `snippets/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/snippets/${identifier.getParamValue()}`;
     }
 
     modifyContentTypeSnippet(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `snippets/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/snippets/${identifier.getParamValue()}`;
     }
 
     validateProjectContent(): string {
-        return `validate`;
+        return `${this.getProjectPath()}/validate`;
     }
 
     projectInformation(): string {
-        return ``;
+        return `${this.getProjectPath()}`;
     }
 
     listContentTypes(): string {
-        return `types`;
+        return `${this.getProjectPath()}/types`;
     }
 
     addContentType(): string {
-        return `types`;
+        return `${this.getProjectPath()}/types`;
     }
 
     deleteContentType(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `types/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/types/${identifier.getParamValue()}`;
     }
 
     viewContentType(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `types/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/types/${identifier.getParamValue()}`;
     }
 
     modifyContentType(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `types/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/types/${identifier.getParamValue()}`;
     }
 
     addTaxonomy(): string {
-        return `taxonomies`;
+        return `${this.getProjectPath()}/taxonomies`;
     }
 
     modifyTaxonomy(identifier: Identifiers.TaxonomyIdentifier): string {
-        return `taxonomies/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/taxonomies/${identifier.getParamValue()}`;
     }
 
     deleteTaxonomy(identifier: Identifiers.TaxonomyIdentifier): string {
-        return `taxonomies/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/taxonomies/${identifier.getParamValue()}`;
     }
 
     listTaxonomies(): string {
-        return `taxonomies`;
+        return `${this.getProjectPath()}/taxonomies`;
     }
 
     getTaxonomy(identifier: Identifiers.TaxonomyIdentifier): string {
-        return `taxonomies/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/taxonomies/${identifier.getParamValue()}`;
     }
 
     addAsset(): string {
-        return `assets`;
+        return `${this.getProjectPath()}/assets`;
     }
 
     deleteAsset(identifier: Identifiers.AssetIdentifier): string {
-        return `assets/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/assets/${identifier.getParamValue()}`;
     }
 
     upsertAsset(assetIdentifier: Identifiers.AssetIdentifier): string {
-        return `assets/${assetIdentifier.getParamValue()}`;
+        return `${this.getProjectPath()}/assets/${assetIdentifier.getParamValue()}`;
     }
 
     uploadBinaryFile(filename: string): string {
-        return `files/${filename}`;
+        return `${this.getProjectPath()}/files/${filename}`;
     }
 
     listAssets(): string {
-        return 'assets';
+        return `${this.getProjectPath()}/assets`;
     }
 
     viewAsset(identifier: Identifiers.AssetIdentifier): string {
-        return `assets/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/assets/${identifier.getParamValue()}`;
     }
 
     items(): string {
-        return 'items';
+        return `${this.getProjectPath()}/items`;
     }
 
     viewContentItem(identifier: Identifiers.ContentItemIdentifier): string {
-        return `items/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/items/${identifier.getParamValue()}`;
     }
 
     addContentItem(): string {
-        return `items`;
+        return `${this.getProjectPath()}/items`;
     }
 
     updateContentItem(identifier: Identifiers.ContentItemIdentifier): string {
-        return `items/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/items/${identifier.getParamValue()}`;
     }
 
     upsertContentItem(identifier: Identifiers.ContentItemIdentifier): string {
-        return `items/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/items/${identifier.getParamValue()}`;
     }
 
     deleteContentItem(identifier: Identifiers.ContentItemIdentifier): string {
-        return `items/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/items/${identifier.getParamValue()}`;
     }
 
     listLanguageVariantsOfItem(identifier: Identifiers.ContentItemIdentifier): string {
-        return `items/${identifier.getParamValue()}/variants`;
+        return `${this.getProjectPath()}/items/${identifier.getParamValue()}/variants`;
     }
 
     listLanguageVariantsOfContentType(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `types/${identifier.getParamValue()}/variants`;
+        return `${this.getProjectPath()}/types/${identifier.getParamValue()}/variants`;
     }
 
     listLanguageVariantsByCollection(identifier: Identifiers.CollectionIdentifier): string {
-        return `collections/${identifier.getParamValue()}/variants`;
+        return `${this.getProjectPath()}/collections/${identifier.getParamValue()}/variants`;
     }
 
     listLanguageVariantsOfContentTypeWithComponents(identifier: Identifiers.ContentTypeIdentifier): string {
-        return `types/${identifier.getParamValue()}/components`;
+        return `${this.getProjectPath()}/types/${identifier.getParamValue()}/components`;
     }
 
-    deleteLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, langaugeIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${langaugeIdentifier.getParamValue()}`;
+    deleteLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        langaugeIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${langaugeIdentifier.getParamValue()}`;
     }
 
-    viewOrUpsertLanguageVariant(itemIdentifier: Identifiers.ContentItemIdentifier, langaugeIdentifier: Identifiers.LanguageIdentifier): string {
-        return `items/${itemIdentifier.getParamValue()}/variants/${langaugeIdentifier.getParamValue()}`;
+    viewOrUpsertLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        langaugeIdentifier: Identifiers.LanguageIdentifier
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${langaugeIdentifier.getParamValue()}`;
     }
 
     viewLanguage(identifier: Identifiers.LanguageIdentifier): string {
-        return `languages/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/languages/${identifier.getParamValue()}`;
     }
 
     addLanguage(): string {
-        return `languages`;
+        return `${this.getProjectPath()}/languages`;
     }
 
     modifyLanguage(identifier: Identifiers.LanguageIdentifier): string {
-        return `languages/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/languages/${identifier.getParamValue()}`;
     }
 
     listLanguages(): string {
-        return `languages`;
+        return `${this.getProjectPath()}/languages`;
     }
 
     deleteWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `webhooks/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/webhooks/${identifier.getParamValue()}`;
     }
 
     getWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `webhooks/${identifier.getParamValue()}`;
+        return `${this.getProjectPath()}/webhooks/${identifier.getParamValue()}`;
     }
 
     addWebhook(): string {
-        return `webhooks`;
+        return `${this.getProjectPath()}/webhooks`;
     }
 
     enableWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `webhooks/${identifier.getParamValue()}/enable`;
+        return `${this.getProjectPath()}/webhooks/${identifier.getParamValue()}/enable`;
     }
 
     disableWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `webhooks/${identifier.getParamValue()}/disable`;
+        return `${this.getProjectPath()}/webhooks/${identifier.getParamValue()}/disable`;
     }
 
     listWebhooks(): string {
-        return `webhooks`;
+        return `${this.getProjectPath()}/webhooks`;
     }
 
     listAssetFolders(): string {
-        return 'folders';
+        return `${this.getProjectPath()}/folders`;
     }
 
     addAssetFolders(): string {
-        return 'folders';
+        return `${this.getProjectPath()}/folders`;
     }
 
     modifyAssetFolders(): string {
-        return 'folders';
+        return `${this.getProjectPath()}/folders`;
     }
 
     listCollections(): string {
-        return 'collections';
+        return `${this.getProjectPath()}/collections`;
     }
 
     setCollections(): string {
-        return 'collections';
+        return `${this.getProjectPath()}/collections`;
     }
 
-}
+    listSubscriptionProjects(): string {
+        return `${this.getSubscriptionPath()}/projects`;
+    }
 
-export const contentManagementApiEndpoints = new ContentManagementApiEndpoints();
+    listSubscriptionUsers(): string {
+        return `${this.getSubscriptionPath()}/users`;
+    }
+
+    viewSubscriptionProject(identifier: Identifiers.ProjectIdentifier): string {
+        return `${this.getSubscriptionPath()}/projects/${identifier.getParamValue()}`;
+    }
+
+    viewSubscriptionUser(identifier: Identifiers.UserIdentifier): string {
+        return `${this.getSubscriptionPath()}/users/${identifier.getParamValue()}`;
+    }
+
+    activateUserInAllProjects(identifier: Identifiers.UserIdentifier): string {
+        return `${this.getSubscriptionPath()}/users/${identifier.getParamValue()}/activate`;
+    }
+
+    deactivateUserInAllProjects(identifier: Identifiers.UserIdentifier): string {
+        return `${this.getSubscriptionPath()}/users/${identifier.getParamValue()}/deactivate`;
+    }
+
+    private getProjectPath(): string {
+        if (!this.projectId) {
+            throw Error(`ProjectId was not provided in client configuration`);
+        }
+        return `${this.projectsPath}/${this.projectId}`;
+    }
+
+    private getSubscriptionPath(): string {
+        if (!this.subscriptionId) {
+            throw Error(`SubscriptionId was not provided in client configuration`);
+        }
+        return `${this.subscriptionsPath}/${this.subscriptionId}`;
+    }
+}

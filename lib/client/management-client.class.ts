@@ -60,7 +60,7 @@ import {
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
     ModifyLanguageQuery,
-    ProjectIdIdentifierQuery,
+    ProjectIdentifierQuery,
     ProjectInformationQuery,
     PublishLanguageVariantQuery,
     TaxonomyIdentifierQuery,
@@ -93,7 +93,14 @@ import {
     CollectionIdentifierQuery,
     ListLanguageVariantsByCollectionQuery,
     SetCollectionsQuery,
-    UploadAssetFromUrlQuery
+    UploadAssetFromUrlQuery,
+    ListSubscriptionProjectsQuery,
+    ViewSubscriptionProjectQuery,
+    ListSubscriptionUsersQuery,
+    UserIdentifierQuery,
+    ViewSubscriptionUserQuery,
+    ActivateUserInAllProjectsQuery,
+    DeactivateUserInAllProjectsQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -476,11 +483,11 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    validateProjectContent(): ProjectIdIdentifierQuery<ValidateProjectContentQuery> {
-        return new ProjectIdIdentifierQuery<ValidateProjectContentQuery>(
+    validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery> {
+        return new ProjectIdentifierQuery<ValidateProjectContentQuery>(
             this.config,
             this.queryService,
-            (config, queryService, projectId) => new ValidateProjectContentQuery(config, queryService, projectId)
+            (config, queryService, identifier) => new ValidateProjectContentQuery(config, queryService, identifier)
         );
     }
 
@@ -865,7 +872,7 @@ export class ManagementClient implements IManagementClient<CancelToken> {
     }
 
     createLanguageVariantEditUrl(data: {
-        variantId: string,
+        variantId: string;
         languageCodename: string;
         elementCodename?: string;
         nestedItemId?: string;
@@ -886,5 +893,45 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         }
 
         return url;
+    }
+
+    listSubscriptionProjects(): ListSubscriptionProjectsQuery {
+        return new ListSubscriptionProjectsQuery(this.config, this.queryService);
+    }
+
+    listSubscriptionUsers(): ListSubscriptionUsersQuery {
+        return new ListSubscriptionUsersQuery(this.config, this.queryService);
+    }
+
+    viewSubscriptionProject(): ProjectIdentifierQuery<ViewSubscriptionProjectQuery> {
+        return new ProjectIdentifierQuery<ViewSubscriptionProjectQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ViewSubscriptionProjectQuery(config, queryService, identifier)
+        );
+    }
+
+    viewSubscriptionUser(): UserIdentifierQuery<ViewSubscriptionUserQuery> {
+        return new UserIdentifierQuery<ViewSubscriptionUserQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ViewSubscriptionUserQuery(config, queryService, identifier)
+        );
+    }
+
+    activateUserInAllProjects(): UserIdentifierQuery<ActivateUserInAllProjectsQuery> {
+        return new UserIdentifierQuery<ActivateUserInAllProjectsQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ActivateUserInAllProjectsQuery(config, queryService, identifier)
+        );
+    }
+
+    deactivateUserInAllProjects(): UserIdentifierQuery<DeactivateUserInAllProjectsQuery> {
+        return new UserIdentifierQuery<DeactivateUserInAllProjectsQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new DeactivateUserInAllProjectsQuery(config, queryService, identifier)
+        );
     }
 }

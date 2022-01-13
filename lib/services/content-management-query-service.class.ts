@@ -12,6 +12,7 @@ import {
     LanguageContracts,
     LanguageVariantContracts,
     ProjectContracts,
+    SubscriptionContracts,
     TaxonomyContracts,
     WebhookContracts,
     WorkflowContracts
@@ -28,7 +29,8 @@ import {
     taxonomyMappper,
     workflowMapper,
     genericMapper,
-    collectionsMappers
+    collectionsMappers,
+    subscriptionMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -58,7 +60,8 @@ import {
     WebhookResponses,
     WorkflowResponses,
     GenericResponses,
-    CollectionResponses
+    CollectionResponses,
+    SubscriptionResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 
@@ -76,7 +79,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: any,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
-        return genericMapper.mapGenericResponse(await super.postResponseAsync<void>(url, data, {}, config));
+        return genericMapper.mapGenericResponse(
+            await super.postResponseAsync<void>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async genericPatchResponse(
@@ -84,21 +96,46 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: any,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
-        return genericMapper.mapGenericResponse(await super.patchResponseAsync<void>(url, data, {}, config));
+        return genericMapper.mapGenericResponse(
+            await super.patchResponseAsync<void>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async genericDeleteResponse(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
-        return genericMapper.mapGenericResponse(await super.deleteResponseAsync<void>(url, {}, config));
+        return genericMapper.mapGenericResponse(
+            await super.deleteResponseAsync<void>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async genericGetResponse(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
-        return genericMapper.mapGenericResponse(await super.getResponseAsync<void>(url, {}, config));
+        return genericMapper.mapGenericResponse(
+            await super.getResponseAsync<void>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async genericPutResponse(
@@ -106,7 +143,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: any,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
-        return genericMapper.mapGenericResponse(await super.putResponseAsync<void>(url, data, {}, config));
+        return genericMapper.mapGenericResponse(
+            await super.putResponseAsync<void>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async getListAllResponse<
@@ -138,14 +184,32 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: WorkflowModels.IPublishLanguageVariantData | undefined,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
+        return workflowMapper.mapEmptyResponse(
+            await this.putResponseAsync<void>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async createNewVersionOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
+        return workflowMapper.mapEmptyResponse(
+            await this.putResponseAsync<void>(
+                url,
+                undefined,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async unpublishLanguageVariant(
@@ -153,28 +217,64 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: WorkflowModels.IUnpublishLanguageVarianthData | undefined,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
+        return workflowMapper.mapEmptyResponse(
+            await this.putResponseAsync<void>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async cancelScheduledPublishingOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
+        return workflowMapper.mapEmptyResponse(
+            await this.putResponseAsync<void>(
+                url,
+                undefined,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async cancelScheduledUnpublishingOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
+        return workflowMapper.mapEmptyResponse(
+            await this.putResponseAsync<void>(
+                url,
+                undefined,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async changeWorkflowStepOfLanguageVariant(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
+        return workflowMapper.mapEmptyResponse(
+            await this.putResponseAsync<void>(
+                url,
+                undefined,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
     }
 
     async listWorkflowSteps(
@@ -182,7 +282,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<WorkflowResponses.ListWorkflowStepsResponse> {
         return workflowMapper.mapListWorkflowStepsResponse(
-            await this.getResponseAsync<WorkflowContracts.IListWorkflowStepsResponseContract>(url, {}, config)
+            await this.getResponseAsync<WorkflowContracts.IListWorkflowStepsResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -192,7 +298,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeResponses.AddContentTypeResponse> {
         return contentTypeMapper.mapAddContentTypeResponse(
-            await this.postResponseAsync<ContentTypeContracts.IAddContentTypeResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<ContentTypeContracts.IAddContentTypeResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -203,7 +316,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return contentTypeSnippetMapper.mapViewContentTypeSnippetResponse(
             await this.getResponseAsync<ContentTypeSnippetContracts.IViewContentTypeSnippetResponseContract>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -216,7 +331,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return contentTypeSnippetMapper.mapEmptyResponse(
             await this.deleteResponseAsync<ContentTypeSnippetContracts.IDeleteContentTypeSnippetResponseContract>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -231,7 +348,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             await this.postResponseAsync<ContentTypeSnippetContracts.IAddContentTypeSnippetResponseContract>(
                 url,
                 data,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -244,7 +363,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return contentTypeSnippetMapper.mapListingResponse(
             await this.getResponseAsync<ContentTypeSnippetContracts.IContentTypeSnippetListResponseContract>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -255,7 +376,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ProjectResponses.ProjectInformationResponse> {
         return projectMapper.mapProjectInformationResponse(
-            await this.getResponseAsync<ProjectContracts.IProjectInformationResponseContract>(url, {}, config)
+            await this.getResponseAsync<ProjectContracts.IProjectInformationResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -267,7 +394,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ProjectResponses.ValidateProjectContentResponse> {
         return projectMapper.mapValidateProjectContentResponse(
-            await this.postResponseAsync<ProjectContracts.IProjectReportResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<ProjectContracts.IProjectReportResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -276,7 +410,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return contentTypeMapper.mapEmptyResponse(
-            await this.deleteResponseAsync<ContentTypeContracts.IDeleteContentTypeResponseContract>(url, {}, config)
+            await this.deleteResponseAsync<ContentTypeContracts.IDeleteContentTypeResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -289,7 +429,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             await this.patchResponseAsync<ContentTypeContracts.IModifyContentTypeResponseContract>(
                 url,
                 data,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -301,7 +443,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: TaxonomyModels.IModifyTaxonomyData[]
     ): Promise<TaxonomyResponses.ModifyTaxonomyResponse> {
         return taxonomyMappper.mapModifyTaxonomyResponse(
-            await this.patchResponseAsync<TaxonomyContracts.IModifyTaxonomyResponseContract>(url, data, {}, config)
+            await this.patchResponseAsync<TaxonomyContracts.IModifyTaxonomyResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -314,7 +463,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             await this.patchResponseAsync<ContentTypeContracts.IModifyContentTypeResponseContract>(
                 url,
                 data,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -325,7 +476,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeResponses.ViewContentTypeResponse> {
         return contentTypeMapper.mapViewContentTypeResponse(
-            await this.getResponseAsync<ContentTypeContracts.IViewContentTypeResponseContract>(url, {}, config)
+            await this.getResponseAsync<ContentTypeContracts.IViewContentTypeResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -334,7 +491,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeResponses.ContentTypeListResponse> {
         return contentTypeMapper.mapListingResponse(
-            await this.getResponseAsync<ContentTypeContracts.IContentTypeListResponseContract>(url, {}, config)
+            await this.getResponseAsync<ContentTypeContracts.IContentTypeListResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -344,7 +507,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<TaxonomyResponses.AddTaxonomyResponse> {
         return taxonomyMappper.mapAddTaxonomyResponse(
-            await this.postResponseAsync<TaxonomyContracts.IAddTaxonomyResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<TaxonomyContracts.IAddTaxonomyResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -353,7 +523,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return taxonomyMappper.mapEmptyResponse(
-            await this.deleteResponseAsync<TaxonomyContracts.IDeleteTaxonomyResponseContract>(url, {}, config)
+            await this.deleteResponseAsync<TaxonomyContracts.IDeleteTaxonomyResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -362,7 +538,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<TaxonomyResponses.GetTaxonomyResponse> {
         return taxonomyMappper.mapGetTaxonomyResponse(
-            await this.getResponseAsync<TaxonomyContracts.IGetTaxonomyResponseContract>(url, {}, config)
+            await this.getResponseAsync<TaxonomyContracts.IGetTaxonomyResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -371,7 +553,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<TaxonomyResponses.TaxonomyListResponse> {
         return taxonomyMappper.mapListingTaxonomysResponse(
-            await this.getResponseAsync<TaxonomyContracts.IListTaxonomyResponseContract>(url, {}, config)
+            await this.getResponseAsync<TaxonomyContracts.IListTaxonomyResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -380,7 +568,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return assetsMapper.mapEmptyResponse(
-            await this.deleteResponseAsync<AssetContracts.IDeleteAssetResponseContract>(url, {}, config)
+            await this.deleteResponseAsync<AssetContracts.IDeleteAssetResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -390,7 +584,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<AssetResponses.UpdateAssetResponse> {
         return assetsMapper.mapUpsertAssetResponse(
-            await this.putResponseAsync<AssetContracts.IUpsertAssetResponseContract>(url, data, {}, config)
+            await this.putResponseAsync<AssetContracts.IUpsertAssetResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -400,7 +601,106 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<AssetResponses.AddAssetResponse> {
         return assetsMapper.mapAddAssetResponse(
-            await this.postResponseAsync<AssetContracts.IAddAssetResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<AssetContracts.IAddAssetResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
+        );
+    }
+
+    async listSubscriptionProjects(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<SubscriptionResponses.SubscriptionProjectsListResponse> {
+        return subscriptionMapper.mapSubscriptionProjectsListResponse(
+            await this.getResponseAsync<SubscriptionContracts.IListSubscriptionProjectsResponseContract>(
+                url,
+                {
+                    queryType: 'subscriptions'
+                },
+                config
+            )
+        );
+    }
+
+    async litSubscriptionUsers(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<SubscriptionResponses.SubscriptionUsersListResponse> {
+        return subscriptionMapper.mapSubscriptionUsersListResponse(
+            await this.getResponseAsync<SubscriptionContracts.IListSubscriptionUsersResponseContract>(
+                url,
+                {
+                    queryType: 'subscriptions'
+                },
+                config
+            )
+        );
+    }
+
+    async viewSubscriptionProject(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<SubscriptionResponses.ViewSubscriptionProjectResponse> {
+        return subscriptionMapper.mapViewSubscriptionProjectResponse(
+            await this.getResponseAsync<SubscriptionContracts.ISubscriptionProjectContract>(
+                url,
+                {
+                    queryType: 'subscriptions'
+                },
+                config
+            )
+        );
+    }
+
+    async viewSubscriptionUser(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<SubscriptionResponses.ViewSubscriptionUserResponse> {
+        return subscriptionMapper.mapViewSubscriptionUserResponse(
+            await this.getResponseAsync<SubscriptionContracts.ISubscriptionUserContract>(
+                url,
+                {
+                    queryType: 'subscriptions'
+                },
+                config
+            )
+        );
+    }
+
+    async activateUserInAllProjects(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentItemsMapper.mapEmptyResponse(
+            await this.putResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(
+                url,
+                {},
+                {
+                    queryType: 'subscriptions'
+                },
+                config
+            )
+        );
+    }
+
+    async deactivateUserInAllProjects(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentItemsMapper.mapEmptyResponse(
+            await this.putResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(
+                url,
+                {},
+                {
+                    queryType: 'subscriptions'
+                },
+                config
+            )
         );
     }
 
@@ -470,7 +770,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             await this.postResponseAsync<AssetContracts.IUploadBinaryFileResponseContract>(
                 url,
                 data.binaryData,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -478,13 +780,25 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
 
     async viewAsset(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.ViewAssetResponse> {
         return assetsMapper.mapViewAssetResponse(
-            await this.getResponseAsync<AssetContracts.IAssetModelContract>(url, {}, config)
+            await this.getResponseAsync<AssetContracts.IAssetModelContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
     async listAssets(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.AssetsListResponse> {
         return assetsMapper.mapListingAssetsResponse(
-            await this.getResponseAsync<AssetContracts.IAssetsListingResponseContract>(url, {}, config)
+            await this.getResponseAsync<AssetContracts.IAssetsListingResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -493,7 +807,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.ContentItemsResponse> {
         return contentItemsMapper.mapListingItemsResponse(
-            await this.getResponseAsync<ContentItemContracts.IContentItemsListingResponseContract>(url, {}, config)
+            await this.getResponseAsync<ContentItemContracts.IContentItemsListingResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -502,7 +822,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.ViewContentItemResponse> {
         return contentItemsMapper.mapViewContentItemResponse(
-            await this.getResponseAsync<ContentItemContracts.IViewContentItemResponseContract>(url, {}, config)
+            await this.getResponseAsync<ContentItemContracts.IViewContentItemResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -512,7 +838,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.AddContentItemResponse> {
         return contentItemsMapper.mapAddContentItemResponse(
-            await this.postResponseAsync<ContentItemContracts.IAddContentItemResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<ContentItemContracts.IAddContentItemResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -522,7 +855,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.UpsertContentItemResponse> {
         return contentItemsMapper.mapUpsertContentItemResponse(
-            await this.putResponseAsync<ContentItemContracts.IUpsertContentItemResponseContract>(url, data, {}, config)
+            await this.putResponseAsync<ContentItemContracts.IUpsertContentItemResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -532,7 +872,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.AddContentItemResponse> {
         return contentItemsMapper.mapUpdateContentItemResponse(
-            await this.putResponseAsync<ContentItemContracts.IUpdateContentItemResponseContract>(url, data, {}, config)
+            await this.putResponseAsync<ContentItemContracts.IUpdateContentItemResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -541,7 +888,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return contentItemsMapper.mapEmptyResponse(
-            await this.deleteResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config)
+            await this.deleteResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -550,7 +903,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return contentItemsMapper.mapEmptyResponse(
-            await this.deleteResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(url, {}, config)
+            await this.deleteResponseAsync<ContentItemContracts.IDeleteContentItemResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -565,7 +924,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
                 {
                     elements: elements
                 },
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -576,7 +937,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.ViewLanguageVariantResponse> {
         return languageVariantMapper.mapViewLanguageVariantResponse(
-            await this.getResponseAsync<LanguageVariantContracts.IViewLanguageVariantResponseContract>(url, {}, config)
+            await this.getResponseAsync<LanguageVariantContracts.IViewLanguageVariantResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -587,7 +954,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return languageVariantMapper.mapLanguageVariantsOfItemResponse(
             await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsOfItemResponseContract[]>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -600,7 +969,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return languageVariantMapper.mapLanguageVariantsOfContentTypeWithComponentsResponse(
             await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -613,7 +984,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return languageVariantMapper.mapLanguageVariantsOfContentTypeResponse(
             await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -626,7 +999,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return languageVariantMapper.mapLanguageVariantsByCollectionResponse(
             await this.getResponseAsync<LanguageVariantContracts.IListLanguageVariantsByCollectionResponseContract>(
                 url,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -637,7 +1012,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<LanguageResponses.ListLanguagesResponse> {
         return languageMapper.mapListLanguagesResponse(
-            await this.getResponseAsync<LanguageContracts.IListLanguagesResponseContract>(url, {}, config)
+            await this.getResponseAsync<LanguageContracts.IListLanguagesResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -646,7 +1027,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<LanguageResponses.ViewLanguageResponse> {
         return languageMapper.mapViewLanguageResponse(
-            await this.getResponseAsync<LanguageContracts.IViewLanguageResponseContract>(url, {}, config)
+            await this.getResponseAsync<LanguageContracts.IViewLanguageResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -656,7 +1043,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: LanguageModels.IAddLanguageData
     ): Promise<LanguageResponses.AddLanguageResponse> {
         return languageMapper.mapAddLanguageResponse(
-            await this.postResponseAsync<LanguageContracts.IAddLanguageResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<LanguageContracts.IAddLanguageResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -666,7 +1060,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: LanguageModels.IModifyLanguageData[]
     ): Promise<LanguageResponses.ModifyLanguageResponse> {
         return languageMapper.mapModifyLanguageResponse(
-            await this.patchResponseAsync<LanguageContracts.IModifyLanguageResponseContract>(url, data, {}, config)
+            await this.patchResponseAsync<LanguageContracts.IModifyLanguageResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -675,13 +1076,25 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.WebhookListResponse> {
         return webhookMapper.mapWebhooksListResponse(
-            await this.getResponseAsync<WebhookContracts.IWebhookListContract>(url, {}, config)
+            await this.getResponseAsync<WebhookContracts.IWebhookListContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
     async getWebhook(url: string, config: IContentManagementQueryConfig): Promise<WebhookResponses.GetWebhookResponse> {
         return webhookMapper.mapGetWebhookResponse(
-            await this.getResponseAsync<WebhookContracts.IGetWebhookContract>(url, {}, config)
+            await this.getResponseAsync<WebhookContracts.IGetWebhookContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -691,7 +1104,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: WebhookModels.IAddWebhookData
     ): Promise<WebhookResponses.AddWebhookResponse> {
         return webhookMapper.mapAddWebhookResponse(
-            await this.postResponseAsync<WebhookContracts.IAddWebhookContract>(url, data, {}, config)
+            await this.postResponseAsync<WebhookContracts.IAddWebhookContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -700,7 +1120,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.AddWebhookResponse> {
         return webhookMapper.mapEnableWebhookResponse(
-            await this.putResponseAsync<WebhookContracts.IEnableWebhookContract>(url, {}, {}, config)
+            await this.putResponseAsync<WebhookContracts.IEnableWebhookContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -709,7 +1138,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.DisableWebhookResponse> {
         return webhookMapper.mapDisableWebhookResponse(
-            await this.putResponseAsync<WebhookContracts.IDisableWebhookContract>(url, {}, {}, config)
+            await this.putResponseAsync<WebhookContracts.IDisableWebhookContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -718,7 +1156,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return webhookMapper.mapEmptyResponse(
-            await this.deleteResponseAsync<BaseResponses.EmptyContentManagementResponse>(url, {}, config)
+            await this.deleteResponseAsync<BaseResponses.EmptyContentManagementResponse>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -727,7 +1171,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<AssetFolderResponses.AssetFoldersListResponse> {
         return assetFolderMapper.mapListAssetFoldersResponse(
-            await this.getResponseAsync<AssetFolderContracts.IListAssetFoldersResponseContract>(url, {}, config)
+            await this.getResponseAsync<AssetFolderContracts.IListAssetFoldersResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -737,7 +1187,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: AssetFolderModels.IAddAssetFoldersData
     ): Promise<AssetFolderResponses.AddAssetFoldersResponse> {
         return assetFolderMapper.mapAddAssetFoldersResponse(
-            await this.postResponseAsync<AssetFolderContracts.IAddAssetFoldersResponseContract>(url, data, {}, config)
+            await this.postResponseAsync<AssetFolderContracts.IAddAssetFoldersResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -750,7 +1207,9 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             await this.patchResponseAsync<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>(
                 url,
                 data,
-                {},
+                {
+                    queryType: 'projects'
+                },
                 config
             )
         );
@@ -761,7 +1220,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<CollectionResponses.CollectionsListResponse> {
         return collectionsMappers.mapListCollectionsResponse(
-            await this.getResponseAsync<CollectionContracts.ICollectionListResponseContract>(url, {}, config)
+            await this.getResponseAsync<CollectionContracts.ICollectionListResponseContract>(
+                url,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 
@@ -771,7 +1236,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: CollectionModels.ISetCollectionData[]
     ): Promise<CollectionResponses.SetCollectionsResponse> {
         return collectionsMappers.mapSetCollectionsResponse(
-            await this.patchResponseAsync<CollectionContracts.ISetCollectionsResponseContract>(url, data, {}, config)
+            await this.patchResponseAsync<CollectionContracts.ISetCollectionsResponseContract>(
+                url,
+                data,
+                {
+                    queryType: 'projects'
+                },
+                config
+            )
         );
     }
 

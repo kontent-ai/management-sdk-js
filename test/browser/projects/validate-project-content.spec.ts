@@ -8,12 +8,12 @@ describe('Validate project content', () => {
     beforeAll(async () => {
         response = await getTestClientWithJson(validateProjectContentJson)
             .validateProjectContent()
-            .forProjectId('xxx')
+            .projectId('xxx')
             .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.validateProjectContent().forProjectId('xxx').getUrl();
+        const url = cmLiveClient.validateProjectContent().projectId('xxx').getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/validate`);
     });

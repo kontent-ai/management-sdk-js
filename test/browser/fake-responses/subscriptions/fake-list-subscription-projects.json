@@ -1,0 +1,23 @@
+{
+    "projects": [
+      {
+        "id": "a7d24131-b0c5-4dda-ad78-c0b409951493",
+        "name": "Sample project",
+        "is_active": true,
+        "environments": [
+          {
+            "id": "c9bad3b5-2b91-4df9-9d4a-53d0bf14343b",
+            "name": "Production"
+          },
+          {
+            "id": "fcd4e8cb-4577-4bd0-9104-07538b64eef7",
+            "name": "Dev"
+          }
+        ]
+      }
+    ],
+    "pagination": {
+      "continuation_token": "+RID:~...",
+      "next_page": "https://manage.kontent.ai/v2/your/chosen/list/endpoint?continuationToken=%2bRID%3a~..."
+    }
+  }

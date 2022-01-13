@@ -110,9 +110,11 @@ const client = new ManagementClient({
 
 | Option          | Default                               | Description                                                                                                                                                         |
 | --------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `projectId`     | N/A                                   | **Required** - Id of your Kentico Kontent project                                                                                                                   |
-| `apiKey`        | N/A                                   | **Required** - Content management API Token                                                                                                                         |
-| `baseUrl`       | https://manage.kontent.ai/v2/projects | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                           |
+| `projectId`     | N/A                                   | **Required for Management API** - Id of your Kentico Kontent project                                                                                                                   |
+| `Management API Key`        | N/A                                   | **Required for Management API** - Management API Key            |
+| `subscriptionId`       | N/A  | **Required for Subscription API** - If of your Subscription     |
+| `subscription API Key`       | N/A  | **Required for Subscription API** - Subscription API Key
+| `baseUrl`       | https://manage.kontent.ai/v2/projects | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                          
 | `retryStrategy` | undefined                             | Retry strategy configuration. If not set, default strategy is used.                                                                                                 |
 | `httpService`   | HttpService                           | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
 

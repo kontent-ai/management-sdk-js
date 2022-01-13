@@ -12,3 +12,4 @@ export * from './languages/language-responses';
 export * from './webhook/webhook-responses';
 export * from './generic/generic-responses';
 export * from './collections/collection-responses';
+export * from './subscriptions/subscription-responses';

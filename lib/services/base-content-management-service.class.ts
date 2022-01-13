@@ -14,11 +14,13 @@ import { SharedContracts } from '../contracts';
 import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
 import { getType } from 'mime';
 
+export type QueryType = 'projects' | 'subscriptions';
+
 export abstract class BaseContentManagementQueryService<TCancelToken> {
     /**
      * Default base url for content management API
      */
-    private readonly defaultBaseCMUrl: string = 'https://manage.kontent.ai/v2/projects';
+    private readonly defaultBaseCMUrl: string = 'https://manage.kontent.ai/v2';
 
     constructor(
         protected readonly config: IManagementClientConfig,
@@ -40,7 +42,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
      * Gets proper set of headers for given request.
      * @param config Query config
      */
-    getHeaders(config: IContentManagementQueryConfig): IHeader[] {
+    getHeaders(queryType: QueryType, config: IContentManagementQueryConfig): IHeader[] {
         const headers: IHeader[] = [
             // sdk tracking header
             headerHelper.getSdkIdHeader({
@@ -49,7 +51,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 version: this.sdkInfo.version
             }),
             // add authorization header
-            this.getAuthorizationHeader(this.config.apiKey)
+            this.getAuthorizationHeader(queryType)
         ];
 
         // add query headers
@@ -78,7 +80,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(config),
+                    headers: this.getHeaders(internalConfig.queryType, config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -106,7 +108,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(config),
+                    headers: this.getHeaders(internalConfig.queryType, config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -137,7 +139,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(config),
+                    headers: this.getHeaders(internalConfig.queryType, config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -168,7 +170,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(config),
+                    headers: this.getHeaders(internalConfig.queryType, config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -197,7 +199,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(config),
+                    headers: this.getHeaders(internalConfig.queryType, config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -269,13 +271,23 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
     }
 
     /**
-     * Gets authorization header. This is used for 'preview' functionality
+     * Gets authorization header
      */
-    private getAuthorizationHeader(key?: string): IHeader {
-        if (!key) {
-            throw Error(`Cannot get authorization header because key is undefined`);
+    private getAuthorizationHeader(queryType: QueryType): IHeader {
+        let key: string | undefined;
+
+        if (queryType === 'projects') {
+            key = this.config.managementApiKey;
+        } else if (queryType === 'subscriptions') {
+            key = this.config.subscriptionApiKey;
+        } else {
+            throw Error(`Unsupported query type '${queryType}'`);
         }
-        // authorization header required for preview mode
+
+        if (!key) {
+            throw Error(`Cannot get authorization header for query type '${queryType}' because API Key is undefined`);
+        }
+
         return {
             header: 'authorization',
             value: `bearer ${key}`
@@ -285,13 +297,6 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
      * Gets base URL of the request including the project Id
      */
     private getBaseUrl(): string {
-        return this.GetEndpointUrl() + '/' + this.config.projectId;
-    }
-
-    /**
-     * Gets API endpoint url
-     */
-    private GetEndpointUrl(): string {
         if (this.config.baseUrl) {
             return this.config.baseUrl;
         }

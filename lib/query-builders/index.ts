@@ -15,3 +15,4 @@ export * from './data-query-optional.class';
 export * from './webhook-identifier-query.class';
 export * from './action-query.class';
 export * from './collection-identifier-query.class';
+export * from './user-identifier-query.class';

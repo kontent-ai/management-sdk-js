@@ -5,12 +5,22 @@ export interface IManagementClientConfig {
     /**
      * Kentico Kontent project id
      */
-    projectId: string;
+    projectId?: string;
 
     /**
-     * Content management API key
+     * Management API key
      */
-    apiKey: string;
+    managementApiKey?: string;
+
+    /**
+     * Kentico Kontent subscription id
+     */
+    subscriptionId?: string;
+
+    /**
+     * Kentico Kontent subscription API Key
+     */
+    subscriptionApiKey?: string;
 
     /**
      * Base Url. Can be overriden if e.g. a proxy is required

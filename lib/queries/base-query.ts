@@ -1,7 +1,7 @@
 import { IQueryParameter, Parameters, IHeader, IHttpCancelRequestToken } from '@kentico/kontent-core';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
-import { ContentManagementApiEndpoints, contentManagementApiEndpoints, IContentManagementQueryConfig } from '../models';
+import { ContentManagementApiEndpoints, IContentManagementQueryConfig } from '../models';
 import { BaseResponses } from '../responses';
 import { ContentManagementQueryService } from '../services';
 
@@ -13,7 +13,10 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
         cancelTokenRequest: undefined
     };
     protected readonly parameters: IQueryParameter[] = [];
-    protected readonly apiEndpoints: ContentManagementApiEndpoints = contentManagementApiEndpoints;
+    protected readonly apiEndpoints: ContentManagementApiEndpoints = new ContentManagementApiEndpoints({
+        projectId: this.config.projectId,
+        subscriptionId: this.config.subscriptionId
+    });
     protected _addSlashToUrl: boolean = true;
 
     constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {}

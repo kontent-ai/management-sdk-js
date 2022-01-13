@@ -14,3 +14,4 @@ export * from './webhooks';
 export * from './asset-folders';
 export * from './generic';
 export * from './collections';
+export * from './subscriptions';

@@ -1,23 +1,27 @@
+import { Identifiers } from '../models/identifiers';
 import { IManagementClientConfig } from '../config';
 import { ContentManagementQueryService } from '../services';
 
-export class ProjectIdIdentifierQuery<TResult> {
-
+export class ProjectIdentifierQuery<TResult> {
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ContentManagementQueryService,
         protected buildResult: (
             config: IManagementClientConfig,
             queryService: ContentManagementQueryService,
-            projectId: string) => TResult
-    ) {
-    }
+            itentifier: Identifiers.ProjectIdentifier
+        ) => TResult
+    ) {}
 
     /**
-    * For given Project by id
-    * @param projectId ProjectId
-    */
-    forProjectId(projectId: string): TResult {
-        return this.buildResult(this.config, this.queryService, projectId);
+     * For given Project by id
+     * @param projectId ProjectId
+     */
+    projectId(projectId: string): TResult {
+        return this.buildResult(
+            this.config,
+            this.queryService,
+            new Identifiers.ProjectIdentifier(Identifiers.ProjectIdentifierEnum.Id, projectId)
+        );
     }
 }
