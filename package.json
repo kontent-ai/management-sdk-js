@@ -28,9 +28,13 @@
     "node": ">= 8"
   },
   "main": "./dist/cjs/index.js",
-  "module": "./dist/esm5/index.js",
-  "es2015": "./dist/esm/index.js",
   "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "type": "module",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "default": "./dist/cjs/index.js"
+  },
   "standard-version": {
     "scripts": {
       "postchangelog": "npm run set-sdk-version"
