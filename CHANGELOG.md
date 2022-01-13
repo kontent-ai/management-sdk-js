@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-1](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.8.0...v2.0.0-1) (2022-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Adds support for Subscription API (subscription projects & users), updates client configuration by separating management & subscription endpoints (renames 'apiKey' to 'managementApiKey')
+
+### Features
+
+* adds ESM module exports ([8d34486](https://github.com/Kentico/kontent-management-sdk-js/commit/8d344863d708258d08b288a856d8e1af7ddd0db8))
+* Adds management client factory and updates docs to use it ([14aa84e](https://github.com/Kentico/kontent-management-sdk-js/commit/14aa84eda137f940662dc152aa858478b57c380f))
+* Adds support for listing project roles ([1aae040](https://github.com/Kentico/kontent-management-sdk-js/commit/1aae040bccbd049f4d757ae045de96be587877ec))
+* Adds support for project user endpoints ([abe35f9](https://github.com/Kentico/kontent-management-sdk-js/commit/abe35f9ba890229e4902901d48f939d3f85cc820))
+* Adds support for Subscription API (subscription projects & users), updates client configuration by separating management & subscription endpoints (renames 'apiKey' to 'managementApiKey') ([e43ccc3](https://github.com/Kentico/kontent-management-sdk-js/commit/e43ccc3f3221cdc5f75ca2697988a9c70dc2e6d5))
+* Adds support for view role ([acb653c](https://github.com/Kentico/kontent-management-sdk-js/commit/acb653c58a4f867faf0ad3c6a692bf3d3562273e))
+* updates all dependencies to latest versions ([4bc7fcd](https://github.com/Kentico/kontent-management-sdk-js/commit/4bc7fcda2e2dbe29977418b9128ce1c1eb975315))
+* Uses list query for taxonomy list endpoint and removes temporary taxonomy response included due to a breaking change in API some time ago ([827279d](https://github.com/Kentico/kontent-management-sdk-js/commit/827279d07d5a29bee6e047fd8fcb62217b6ea998))
+
+
+### Bug Fixes
+
+* fixes scripts & cuts prerelease ([3c25601](https://github.com/Kentico/kontent-management-sdk-js/commit/3c256011b82a5a8fbfa16f303a3ce78e10c12225))
+
 ## [2.0.0-0](https://github.com/Kentico/kontent-management-sdk-js/compare/v1.8.0...v2.0.0-0) (2022-01-13)
 
 ### Features
