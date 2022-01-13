@@ -14,8 +14,6 @@ import { SharedContracts } from '../contracts';
 import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
 import { getType } from 'mime';
 
-export type QueryType = 'projects' | 'subscriptions';
-
 export abstract class BaseContentManagementQueryService<TCancelToken> {
     /**
      * Default base url for content management API
@@ -42,7 +40,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
      * Gets proper set of headers for given request.
      * @param config Query config
      */
-    getHeaders(queryType: QueryType, config: IContentManagementQueryConfig): IHeader[] {
+    getHeaders(config: IContentManagementQueryConfig): IHeader[] {
         const headers: IHeader[] = [
             // sdk tracking header
             headerHelper.getSdkIdHeader({
@@ -51,7 +49,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 version: this.sdkInfo.version
             }),
             // add authorization header
-            this.getAuthorizationHeader(queryType)
+            this.getAuthorizationHeader()
         ];
 
         // add query headers
@@ -80,7 +78,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(internalConfig.queryType, config),
+                    headers: this.getHeaders(config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -108,7 +106,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(internalConfig.queryType, config),
+                    headers: this.getHeaders(config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -139,7 +137,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(internalConfig.queryType, config),
+                    headers: this.getHeaders( config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -170,7 +168,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(internalConfig.queryType, config),
+                    headers: this.getHeaders(config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -199,7 +197,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders(internalConfig.queryType, config),
+                    headers: this.getHeaders(config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
@@ -273,19 +271,11 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
     /**
      * Gets authorization header
      */
-    private getAuthorizationHeader(queryType: QueryType): IHeader {
-        let key: string | undefined;
-
-        if (queryType === 'projects') {
-            key = this.config.managementApiKey;
-        } else if (queryType === 'subscriptions') {
-            key = this.config.subscriptionApiKey;
-        } else {
-            throw Error(`Unsupported query type '${queryType}'`);
-        }
+    private getAuthorizationHeader(): IHeader {
+        const key: string = this.config.apiKey;
 
         if (!key) {
-            throw Error(`Cannot get authorization header for query type '${queryType}' because API Key is undefined`);
+            throw Error(`Cannot get authorization header for query type because API Key is undefined`);
         }
 
         return {

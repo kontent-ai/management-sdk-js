@@ -1,6 +1,5 @@
 import { IHeader, IHttpCancelRequestToken } from '@kentico/kontent-core';
 import { ResponseType } from 'axios';
-import { QueryType } from '../services/base-content-management-service.class';
 
 import { BaseResponses } from '../responses/base-responses';
 
@@ -10,7 +9,6 @@ export interface IContentManagementQueryConfig {
 }
 
 export interface IContentManagementInternalQueryConfig {
-    queryType: QueryType;
     responseType?: ResponseType;
 }
 

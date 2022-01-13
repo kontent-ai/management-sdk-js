@@ -1,44 +1,40 @@
-import { ManagementClient } from '../../../lib';
+import { createManagementClient, ManagementClient } from '../../../lib';
 import { IResponse, TestHttpService } from '@kentico/kontent-core';
 
 export const testProjectId: string = 'projectId';
 export const testSubscriptionId: string = 'subscriptionId';
 
-export const testManagementApiKey: string = 'managementTestApiKey';
-export const testSubscriptionApiKey: string = 'subscriptionTestApiKey';
+export const testApiKey: string = 'managementTestApiKey';
 
 export function useLiveTesting(): boolean {
-    if (testManagementApiKey) {
+    if (testApiKey) {
         return true;
     }
     return false;
 }
 
-export const cmLiveClient: ManagementClient = new ManagementClient({
+export const cmLiveClient: ManagementClient = createManagementClient({
     projectId: testProjectId,
     subscriptionId: testSubscriptionId,
-    managementApiKey: testManagementApiKey,
-    subscriptionApiKey: testSubscriptionApiKey
+    apiKey: testApiKey
 });
 
 export const getTestManagementClient = (projectId: string, apiKey: string) =>
-    new ManagementClient({
-        managementApiKey: apiKey,
+    createManagementClient({
+        apiKey: apiKey,
         projectId: projectId
     });
 
-export const cmTestClientWithInvalidApiKey: ManagementClient = new ManagementClient({
+export const cmTestClientWithInvalidApiKey: ManagementClient = createManagementClient({
     projectId: testProjectId,
     subscriptionId: testSubscriptionId,
-    managementApiKey: testManagementApiKey,
-    subscriptionApiKey: testSubscriptionApiKey
+    apiKey: testApiKey
 });
 
 export const getTestClientWithBaseKontentError: (errorJson: any) => ManagementClient = (errorJson: any) =>
-    new ManagementClient({
+    createManagementClient({
         projectId: testProjectId,
-        managementApiKey: testManagementApiKey,
-        subscriptionApiKey: testSubscriptionApiKey,
+        apiKey: testApiKey,
         httpService: new TestHttpService({
             response: undefined,
             error: {
@@ -51,11 +47,10 @@ export const getTestClientWithBaseKontentError: (errorJson: any) => ManagementCl
     });
 
 export const getTestClientWithJson: (json: any) => ManagementClient = (json: any) =>
-    new ManagementClient({
+    createManagementClient({
         projectId: testProjectId,
         subscriptionId: testSubscriptionId,
-        subscriptionApiKey: testSubscriptionApiKey,
-        managementApiKey: testManagementApiKey,
+        apiKey: testApiKey,
         httpService: new TestHttpService({
             response: getResponseFromJson(json),
             error: undefined

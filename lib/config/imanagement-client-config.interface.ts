@@ -2,25 +2,21 @@ import { IHttpService, IRetryStrategyOptions } from '@kentico/kontent-core';
 import { IContentManagementListQueryConfig } from '../models';
 
 export interface IManagementClientConfig {
+
+    /**
+     * API key
+     */
+     apiKey: string;
+
     /**
      * Kentico Kontent project id
      */
     projectId?: string;
 
     /**
-     * Management API key
-     */
-    managementApiKey?: string;
-
-    /**
      * Kentico Kontent subscription id
      */
     subscriptionId?: string;
-
-    /**
-     * Kentico Kontent subscription API Key
-     */
-    subscriptionApiKey?: string;
 
     /**
      * Base Url. Can be overriden if e.g. a proxy is required

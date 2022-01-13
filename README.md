@@ -39,10 +39,11 @@ download it and refer to local versions of scripts.
 The following code example shows how to create new content item in your Kentico Kontent project.
 
 ```javascript
-import { ManagementClient } from '@kentico/kontent-management';
+import { createManagementClient } from '@kentico/kontent-management';
 
-const client = new ManagementClient({
+const client = createManagementClient({
     projectId: 'xxx', // id of your Kentico Kontent project
+    subscriptionId: 'zzz' // optional, but required for Subscription related endpoints
     apiKey: 'yyy' // Content management API token
 });
 
@@ -78,7 +79,8 @@ variable.
                 projectId: 'xxx',
                 // using CM API key in browser is NOT safe. If you need to use SDK in browsers
                 // you should use proxy server and set authorization header there rather than here
-                apiKey: 'yyy'
+                apiKey: 'yyy',
+                subscriptionId: 'zzz' // optional, but required for Subscription related endpoints
             });
 
             client
@@ -103,17 +105,18 @@ variable.
 The `ManagementClient` contains several configuration options:
 
 ```javascript
-const client = new ManagementClient({
+import { createManagementClient } from '@kentico/kontent-management';
+
+const client = createManagementClient({
     // configuration options
 });
 ```
 
 | Option          | Default                               | Description                                                                                                                                                         |
 | --------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `projectId`     | N/A                                   | **Required for Management API** - Id of your Kentico Kontent project                                                                                                                   |
-| `Management API Key`        | N/A                                   | **Required for Management API** - Management API Key            |
-| `subscriptionId`       | N/A  | **Required for Subscription API** - If of your Subscription     |
-| `subscription API Key`       | N/A  | **Required for Subscription API** - Subscription API Key
+| `API Key`        | N/A                                   | **Required** - Management or Subscription API Key. Subscription API Key also works for Management requests            |
+| `projectId`     | N/A                                   | **Required for Management API** - Project Id                                                                                                   
+| `subscriptionId`       | N/A  | **Required for Subscription API** - Subscription Id
 | `baseUrl`       | https://manage.kontent.ai/v2/projects | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                          
 | `retryStrategy` | undefined                             | Retry strategy configuration. If not set, default strategy is used.                                                                                                 |
 | `httpService`   | HttpService                           | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
@@ -124,7 +127,7 @@ See the [error section in Management API reference](https://docs.kontent.ai/refe
 
 ```typescript
 try {
-    const client = await new ManagementClient({
+    const client = createManagementClient({
         projectId: 'x',
         apiKey: 'y'
     });
@@ -145,7 +148,7 @@ try {
 ### Cancelling Requests
 
 ```typescript
-const client = await new ManagementClient({
+const client = {
     projectId: 'x',
     apiKey: 'y'
 });
@@ -184,7 +187,9 @@ Following is a sample scenario consisting of:
 #### Inicializing client
 
 ```typescript 
-const client = new ManagementClient({
+import { createManagementClient } from '@kentico/kontent-management';
+
+const client = createManagementClient({
     projectId: 'x',
     apiKey: 'y'
 });
