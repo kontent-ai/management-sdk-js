@@ -6,34 +6,31 @@ import { TaxonomyResponses as TaxonomyResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
 export class TaxonomyMapper extends BaseMapper {
-
     mapListingTaxonomysResponse(
-        response: IResponse<TaxonomyContracts.ITemporaryTaxonomyListResponse>
+        response: IResponse<TaxonomyContracts.IListTaxonomyResponseContract>
     ): TaxonomyResponses.TaxonomyListResponse {
-
         let taxonomies: TaxonomyModels.Taxonomy[];
         let pagination: SharedModels.Pagination;
 
         // temporary mapping of taxonomies before API breaking change
         if (Array.isArray(response.data)) {
-             taxonomies = response.data.map(m => this.mapTaxonomy(m));
-             pagination = new SharedModels.Pagination(null, null);
+            taxonomies = response.data.map((m) => this.mapTaxonomy(m));
+            pagination = new SharedModels.Pagination(null, null);
         } else {
             // new API response model
-            taxonomies = response.data.taxonomies.map(m => this.mapTaxonomy(m));
+            taxonomies = response.data.taxonomies.map((m) => this.mapTaxonomy(m));
             pagination = super.mapPagination(response.data.pagination);
         }
 
         return new TaxonomyResponses.TaxonomyListResponse(super.mapResponseDebug(response), response.data, {
             pagination: pagination,
-            taxonomies: taxonomies
+            items: taxonomies
         });
     }
 
     mapGetTaxonomyResponse(
         response: IResponse<TaxonomyContracts.IGetTaxonomyResponseContract>
     ): TaxonomyResponses.GetTaxonomyResponse {
-
         const taxonomy = this.mapTaxonomy(response.data);
 
         return new TaxonomyResponses.GetTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
@@ -42,7 +39,6 @@ export class TaxonomyMapper extends BaseMapper {
     mapModifyTaxonomyResponse(
         response: IResponse<TaxonomyContracts.IModifyTaxonomyResponseContract>
     ): TaxonomyResponses.ModifyTaxonomyResponse {
-
         const taxonomy = this.mapTaxonomy(response.data);
 
         return new TaxonomyResponses.ModifyTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
@@ -51,7 +47,6 @@ export class TaxonomyMapper extends BaseMapper {
     mapAddTaxonomyResponse(
         response: IResponse<TaxonomyContracts.IAddTaxonomyResponseContract>
     ): TaxonomyResponses.AddTaxonomyResponse {
-
         const taxonomy = this.mapTaxonomy(response.data);
 
         return new TaxonomyResponses.AddTaxonomyResponse(super.mapResponseDebug(response), response.data, taxonomy);
@@ -63,7 +58,7 @@ export class TaxonomyMapper extends BaseMapper {
             id: rawTaxonomy.id,
             lastModified: new Date(rawTaxonomy.last_modified),
             name: rawTaxonomy.name,
-            terms: rawTaxonomy.terms.map(m => this.mapTaxonomy(m)),
+            terms: rawTaxonomy.terms.map((m) => this.mapTaxonomy(m)),
             externalId: rawTaxonomy.external_id,
             _raw: rawTaxonomy
         });

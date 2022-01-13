@@ -11,9 +11,7 @@ export namespace TaxonomyContracts {
         external_id?: string;
     }
 
-    export type ITemporaryTaxonomyListResponse = ITaxonomyContract[] | IListTaxonomyResponse;
-
-    export interface IListTaxonomyResponse {
+    export interface IListTaxonomyResponseContract {
         pagination: SharedContracts.IPaginationModelContract;
         taxonomies: ITaxonomyContract[];
     }

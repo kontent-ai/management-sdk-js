@@ -3,24 +3,35 @@ import { TaxonomyModels, SharedModels } from '../../models';
 import { BaseResponses } from '../base-responses';
 
 export namespace TaxonomyResponses {
-
-    export class TaxonomyListResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.ITemporaryTaxonomyListResponse, {
-        taxonomies: TaxonomyModels.Taxonomy[],
-        pagination: SharedModels.Pagination
-    }>  {
+    export class TaxonomyListResponse extends BaseResponses.BaseContentManagementListResponse<
+        TaxonomyContracts.IListTaxonomyResponseContract,
+        TaxonomyModels.Taxonomy
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: TaxonomyContracts.ITemporaryTaxonomyListResponse,
+            rawData: TaxonomyContracts.IListTaxonomyResponseContract,
             data: {
-                taxonomies: TaxonomyModels.Taxonomy[],
-                pagination: SharedModels.Pagination
+                items: TaxonomyModels.Taxonomy[];
+                pagination: SharedModels.Pagination;
             }
         ) {
             super(debug, rawData, data);
         }
     }
 
-    export class GetTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IGetTaxonomyResponseContract, TaxonomyModels.Taxonomy>  {
+    export class ListAllTaxonomiesResponse extends BaseResponses.ContentManagementListAllResponse<
+        TaxonomyListResponse,
+        TaxonomyModels.Taxonomy
+    > {
+        constructor(data: { items: TaxonomyModels.Taxonomy[]; responses: TaxonomyListResponse[] }) {
+            super(data);
+        }
+    }
+
+    export class GetTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<
+        TaxonomyContracts.IGetTaxonomyResponseContract,
+        TaxonomyModels.Taxonomy
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: TaxonomyContracts.IGetTaxonomyResponseContract,
@@ -30,7 +41,10 @@ export namespace TaxonomyResponses {
         }
     }
 
-    export class AddTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IAddTaxonomyResponseContract, TaxonomyModels.Taxonomy>  {
+    export class AddTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<
+        TaxonomyContracts.IAddTaxonomyResponseContract,
+        TaxonomyModels.Taxonomy
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: TaxonomyContracts.IAddTaxonomyResponseContract,
@@ -40,7 +54,10 @@ export namespace TaxonomyResponses {
         }
     }
 
-    export class ModifyTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<TaxonomyContracts.IModifyTaxonomyResponseContract, TaxonomyModels.Taxonomy>  {
+    export class ModifyTaxonomyResponse extends BaseResponses.BaseContentManagementResponse<
+        TaxonomyContracts.IModifyTaxonomyResponseContract,
+        TaxonomyModels.Taxonomy
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: TaxonomyContracts.IModifyTaxonomyResponseContract,

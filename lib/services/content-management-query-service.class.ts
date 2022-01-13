@@ -371,7 +371,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         config: IContentManagementQueryConfig
     ): Promise<TaxonomyResponses.TaxonomyListResponse> {
         return taxonomyMappper.mapListingTaxonomysResponse(
-            await this.getResponseAsync<TaxonomyContracts.ITaxonomyContract[]>(url, {}, config)
+            await this.getResponseAsync<TaxonomyContracts.IListTaxonomyResponseContract>(url, {}, config)
         );
     }
 

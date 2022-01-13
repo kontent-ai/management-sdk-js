@@ -27,10 +27,12 @@ describe('List taxonomies', () => {
     });
 
     it(`taxonomy properties should be mapped`, () => {
-        expect(Array.isArray(response.data.taxonomies)).toBeTruthy();
-        expect(response.data.taxonomies.length).toEqual(responseJson.taxonomies.length);
+        expect(Array.isArray(response.data.items)).toBeTruthy();
+        expect(response.data.pagination.continuationToken).toEqual(response.data.pagination.continuationToken);
+        expect(response.data.pagination.nextPage).toEqual(response.data.pagination.nextPage);
+        expect(response.data.items.length).toEqual(responseJson.taxonomies.length);
 
-        response.data.taxonomies.forEach((m) => {
+        response.data.items.forEach((m) => {
             // find original item
             const originalItem = responseJson.taxonomies.find((s) => s.id === m.id);
 
