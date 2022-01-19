@@ -4,13 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [2.0.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.1-0...v2.0.1) (2022-01-19)
 
-### [2.0.1-0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.0...v2.0.1-0) (2022-01-19)
-
-
 ### Bug Fixes
 
 * Correct the generic `get()` HTTP method ([65946d8](https://github.com/Kentico/kontent-management-sdk-js/commit/65946d8dea3ab7903ceb88a50afa3b7b74d98c35))
-* Fixes generic query HTTP method type ([696d4ee](https://github.com/Kentico/kontent-management-sdk-js/commit/696d4ee4bdf72ec4639b4c4950be52866743c280))
 
 ## [2.0.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.0-1...v2.0.0) (2022-01-13)
 
