@@ -15,7 +15,7 @@ export class GetQuery extends BaseQuery<GenericResponses.GenericResponse> {
     }
 
     toPromise(): Promise<GenericResponses.GenericResponse> {
-        return this.queryService.genericDeleteResponse(this.getUrl(), this.queryConfig);
+        return this.queryService.genericGetResponse(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {
