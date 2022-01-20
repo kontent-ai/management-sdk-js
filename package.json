@@ -1,6 +1,6 @@
 {
   "name": "@kentico/kontent-management",
-  "version": "2.0.1",
+  "version": "2.0.2-0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kentico/kontent-management-sdk-js"

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2-0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.1...v2.0.2-0) (2022-01-20)
+
+
+### Bug Fixes
+
+* Return `urlSlugElement()` to elements builder ([41e63c2](https://github.com/Kentico/kontent-management-sdk-js/commit/41e63c2b6ae818ed495869a8bf805f0cc78fccb5))
+
 ### [2.0.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.1-0...v2.0.1) (2022-01-19)
 
 ### Bug Fixes
