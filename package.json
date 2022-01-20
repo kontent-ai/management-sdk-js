@@ -37,7 +37,7 @@
     }
   },
   "scripts": {
-    "prerelease": "standard-version --prerelease",
+    "release:beta": "standard-version --prerelease",
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
