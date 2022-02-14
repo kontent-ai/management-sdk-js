@@ -55,6 +55,7 @@ export namespace ContentTypeElements {
             condition: 'at_most' | 'exactly' | 'at_least';
         };
         is_required?: boolean;
+        is_non_localizable?: boolean;
     }
 
     export interface ISnippetElementData extends IElementShared {
@@ -62,6 +63,7 @@ export namespace ContentTypeElements {
         type: 'snippet';
         codename: string;
         external_id?: string;
+        is_non_localizable?: boolean;
     }
 
     export interface ICustomElementData extends IElementShared {
@@ -73,6 +75,7 @@ export namespace ContentTypeElements {
         external_id?: string;
         guidelines?: string;
         is_required?: boolean;
+        is_non_localizable?: boolean;
         allowed_elements?: SharedContracts.IReferenceObjectContract[];
     }
 
@@ -80,6 +83,7 @@ export namespace ContentTypeElements {
         name: string;
         type: 'date_time';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         guidelines?: string;
         codename?: string;
         external_id?: string;
@@ -90,6 +94,7 @@ export namespace ContentTypeElements {
         type: 'guidelines';
         codename?: string;
         external_id?: string;
+        is_non_localizable?: boolean;
     }
 
     export interface ILinkedItemsElementData extends IElementShared {
@@ -102,6 +107,7 @@ export namespace ContentTypeElements {
         guidelines?: string;
         type: 'modular_content';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
     }
@@ -116,6 +122,7 @@ export namespace ContentTypeElements {
         guidelines?: string;
         type: 'subpages';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
     }
@@ -131,6 +138,7 @@ export namespace ContentTypeElements {
         name: string;
         type: 'multiple_choice';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         external_id?: string;
         guidelines?: string;
         codename?: string;
@@ -140,6 +148,7 @@ export namespace ContentTypeElements {
         name: string;
         type: 'number';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
         guidelines?: string;
@@ -164,6 +173,7 @@ export namespace ContentTypeElements {
         name: string;
         type: 'rich_text';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
         guidelines?: string;
@@ -180,6 +190,7 @@ export namespace ContentTypeElements {
         guidelines?: string;
         type: 'taxonomy';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
         term_count_limit?: {
@@ -192,6 +203,7 @@ export namespace ContentTypeElements {
         name: string;
         type: 'text';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
         guidelines?: string;
@@ -214,6 +226,7 @@ export namespace ContentTypeElements {
         name: string;
         type: 'url_slug';
         is_required?: boolean;
+        is_non_localizable?: boolean;
         codename: string;
         external_id?: string;
         guidelines?: string;

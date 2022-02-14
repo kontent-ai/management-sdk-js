@@ -21,7 +21,8 @@ describe('Add content type', () => {
                         }),
                         builder.textElement({
                             name: 'title',
-                            type: 'text'
+                            type: 'text',
+                            is_non_localizable: true,
                         }),
                         builder.taxonomyElement({
                             type: 'taxonomy',

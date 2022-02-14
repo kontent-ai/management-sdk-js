@@ -10,7 +10,8 @@
         "guidelines": "",
         "type": "text",
         "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
-        "codename": "video_id"
+        "codename": "video_id",
+        "is_non_localizable": true
       },
       {
         "mode": "single",
@@ -30,7 +31,8 @@
         "guidelines": "",
         "type": "multiple_choice",
         "id": "87924912-4861-aa84-176a-1eae7b22529b",
-        "codename": "video_host"
+        "codename": "video_host",
+        "is_non_localizable": false
       }
     ]
   }
