@@ -117,6 +117,7 @@ import { ContentManagementQueryService, IMappingService, MappingService } from '
 import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
+import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -981,5 +982,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     getEnvironmentCloningState(): GetEnvironmentCloningStateQuery {
         return new GetEnvironmentCloningStateQuery(this.config, this.queryService);
+    }
+
+    deleteEnvironment(): DeleteEnvironmentQuery {
+        return new DeleteEnvironmentQuery(this.config, this.queryService);
     }
 }

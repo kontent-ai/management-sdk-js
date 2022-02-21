@@ -887,6 +887,15 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async deleteEnvironment(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return environmentMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<EnvironmentContracts.IDeleteEnvironmentResponseContract>(url, {}, config)
+        );
+    }
+
     private async getListAllResponseInternalAsync<
         TResponse extends BaseResponses.IContentManagementListResponse
     >(data: {

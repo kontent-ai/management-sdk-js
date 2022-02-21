@@ -309,6 +309,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/environment-cloning-state`;
     }
 
+    deleteEnvironment(): string {
+        return this.getEnvironmentsPath();
+    }
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);

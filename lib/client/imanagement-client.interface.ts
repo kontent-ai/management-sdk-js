@@ -110,6 +110,7 @@ import {
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
+import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
@@ -544,4 +545,9 @@ export interface IManagementClient<TCancelToken> {
      * Get cloning state of the environment
      */
     getEnvironmentCloningState(): GetEnvironmentCloningStateQuery;
+
+    /**
+     * Delete environment
+     */
+    deleteEnvironment(): DeleteEnvironmentQuery;
 }
