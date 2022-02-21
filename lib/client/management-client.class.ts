@@ -116,6 +116,7 @@ import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
+import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -976,5 +977,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                     (nConfig, nQueryService, data) => new ChangeUserRolesQuery(nConfig, nQueryService, identifier, data)
                 )
         );
+    }
+
+    getEnvironmentCloningState(): GetEnvironmentCloningStateQuery {
+        return new GetEnvironmentCloningStateQuery(this.config, this.queryService);
     }
 }

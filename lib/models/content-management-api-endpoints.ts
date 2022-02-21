@@ -305,6 +305,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/users/${identifier.getParamValue()}/roles`;
     }
 
+    getEnvironmentCloningStatus(): string {
+        return `${this.getEnvironmentsPath()}/environment-cloning-state`;
+    }
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);
@@ -317,5 +321,12 @@ export class ContentManagementApiEndpoints {
             throw Error(`SubscriptionId was not provided in client configuration`);
         }
         return `${this.subscriptionsPath}/${this.subscriptionId}`;
+    }
+
+    private getEnvironmentsPath(): string {
+        if (!this.projectId) {
+            throw Error(`ProjectId was not provided in client configuration`);
+        }
+        return `${this.projectsPath}/${this.projectId}`;
     }
 }

@@ -109,6 +109,7 @@ import {
     ViewRoleQuery
 } from '../queries';
 import { IMappingService } from '../services';
+import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
@@ -538,4 +539,9 @@ export interface IManagementClient<TCancelToken> {
      * View role
      */
     viewRole(): RoleIdentifierQuery<ViewRoleQuery>;
+
+    /**
+     * Get cloning state of the environment
+     */
+    getEnvironmentCloningState(): GetEnvironmentCloningStateQuery;
 }

@@ -9,6 +9,7 @@ import {
     ContentItemContracts,
     ContentTypeContracts,
     ContentTypeSnippetContracts,
+    EnvironmentContracts,
     LanguageContracts,
     LanguageVariantContracts,
     ProjectContracts,
@@ -71,6 +72,8 @@ import {
     ProjectUsersResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
+import { EnvironmentResponses } from '../responses/environments/environment-responses';
+import { environmentMapper } from '../mappers/environment-mapper';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService<any> {
     constructor(
@@ -872,6 +875,15 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Promise<ProjectUsersResponses.ChangeUserRolesResponse> {
         return projectUserMapper.mapChangeUserRolesResponse(
             await this.putResponseAsync<ProjectUserContracts.IChangeUserRolesResponseContract>(url, data, {}, config)
+        );
+    }
+
+    async getEnvironmentCloningState(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<EnvironmentResponses.GetCloningStateResponse> {
+        return environmentMapper.mapGetEnvironmentCloningStateResponse(
+            await this.getResponseAsync<EnvironmentContracts.IEnvironmentCloningStateResponseContract>(url, {}, config)
         );
     }
 
