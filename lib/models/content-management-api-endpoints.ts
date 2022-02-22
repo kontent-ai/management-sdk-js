@@ -313,6 +313,10 @@ export class ContentManagementApiEndpoints {
         return this.getEnvironmentsPath();
     }
 
+    renameEnvironment(): string {
+        return this.getEnvironmentsPath();
+    }
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);

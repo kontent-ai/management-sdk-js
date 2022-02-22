@@ -111,6 +111,8 @@ import {
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
+import { RenameEnvironmentQuery } from '../queries/environments/rename-environment-query';
+import { EnvironmentModels } from '../models/environments/environments.model';
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
@@ -550,4 +552,9 @@ export interface IManagementClient<TCancelToken> {
      * Delete environment
      */
     deleteEnvironment(): DeleteEnvironmentQuery;
+
+    /**
+     * Rename environment
+     */
+    renameEnvironment(): DataQuery<RenameEnvironmentQuery, EnvironmentModels.IRenameEnvironmentData[]>;
 }

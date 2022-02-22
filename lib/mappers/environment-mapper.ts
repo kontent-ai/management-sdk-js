@@ -15,6 +15,20 @@ export class EnvironmentMapper extends BaseMapper {
             }
         );
     }
+
+    mapRenameEnvironmentResponse(
+        response: IResponse<EnvironmentContracts.IRenameEnvironmentResponseContract>
+    ): EnvironmentResponses.RenameEnvironmentResponse {
+        return new EnvironmentResponses.RenameEnvironmentResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapEnvironment(response.data)
+        );
+    }
+
+    mapEnvironment(raw: EnvironmentContracts.IEnvironmentResponseContract): EnvironmentModels.EnvironmentModel {
+        return new EnvironmentModels.EnvironmentModel(raw.id, raw.name, raw.is_production);
+    }
 }
 
 export const environmentMapper = new EnvironmentMapper();

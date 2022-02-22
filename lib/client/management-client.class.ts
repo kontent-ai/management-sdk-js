@@ -118,6 +118,8 @@ import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
+import { RenameEnvironmentQuery } from '../queries/environments/rename-environment-query';
+import { EnvironmentModels } from '../models/environments/environments.model';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -986,5 +988,12 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     deleteEnvironment(): DeleteEnvironmentQuery {
         return new DeleteEnvironmentQuery(this.config, this.queryService);
+    }
+
+    renameEnvironment(): DataQuery<RenameEnvironmentQuery, EnvironmentModels.IRenameEnvironmentData[]> {
+        return new DataQuery<RenameEnvironmentQuery, EnvironmentModels.IRenameEnvironmentData[]>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new RenameEnvironmentQuery(config, queryService, data));
     }
 }

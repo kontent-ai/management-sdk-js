@@ -74,6 +74,7 @@ import {
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
 import { environmentMapper } from '../mappers/environment-mapper';
+import { EnvironmentModels } from '../models/environments/environments.model';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService<any> {
     constructor(
@@ -893,6 +894,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return environmentMapper.mapEmptyResponse(
             await this.deleteResponseAsync<EnvironmentContracts.IDeleteEnvironmentResponseContract>(url, {}, config)
+        );
+    }
+
+    async renameEnvironment(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: EnvironmentModels.IRenameEnvironmentData[]
+    ): Promise<EnvironmentResponses.RenameEnvironmentResponse> {
+        return environmentMapper.mapRenameEnvironmentResponse(
+            await this.patchResponseAsync<EnvironmentContracts.IRenameEnvironmentResponseContract>(url, data, {}, config)
         );
     }
 

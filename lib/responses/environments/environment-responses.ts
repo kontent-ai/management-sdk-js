@@ -16,4 +16,15 @@ export namespace EnvironmentResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class RenameEnvironmentResponse extends BaseResponses.BaseContentManagementResponse<EnvironmentContracts.IRenameEnvironmentResponseContract, EnvironmentModels.EnvironmentModel
+        > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: EnvironmentContracts.IRenameEnvironmentResponseContract,
+            data: EnvironmentModels.EnvironmentModel
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }
