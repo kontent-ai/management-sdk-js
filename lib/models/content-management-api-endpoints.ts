@@ -321,6 +321,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/clone-environment`;
     }
 
+    markEnvironmentAsProduction(): string {
+        return `${this.getEnvironmentsPath()}/mark-environment-as-production`;
+    }
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);

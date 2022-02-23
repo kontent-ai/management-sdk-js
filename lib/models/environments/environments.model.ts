@@ -35,4 +35,8 @@ export namespace EnvironmentModels {
             public securedDeliveryApiKey: string,
         ) { }
     }
+
+    export interface IMarkEnvironmentAsProductionData {
+        enable_webhooks: boolean;
+    }
 }

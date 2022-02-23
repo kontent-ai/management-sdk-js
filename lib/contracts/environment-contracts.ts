@@ -21,4 +21,7 @@ export namespace EnvironmentContracts {
         delivery_preview_api_key: string;
         secured_delivery_api_key: string;
     }
+
+    export interface IMarkEnvironmentAsProductionResponseContract {
+    }
 }

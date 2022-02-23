@@ -121,6 +121,7 @@ import { DeleteEnvironmentQuery } from '../queries/environments/delete-environme
 import { RenameEnvironmentQuery } from '../queries/environments/rename-environment-query';
 import { EnvironmentModels } from '../models/environments/environments.model';
 import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
+import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -1003,5 +1004,12 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.config,
             this.queryService,
             (config, queryService, data) => new CloneEnvironmentQuery(config, queryService, data));
+    }
+
+    markEnvironmentAsProduction(): DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData> {
+        return new DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new MarkEnvironmentAsProductionQuery(config, queryService, data));
     }
 }

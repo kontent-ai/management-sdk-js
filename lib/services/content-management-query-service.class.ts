@@ -917,6 +917,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async markEnvironmentAsProduction(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: EnvironmentModels.IMarkEnvironmentAsProductionData
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return environmentMapper.mapEmptyResponse(
+            await this.putResponseAsync<EnvironmentContracts.IMarkEnvironmentAsProductionResponseContract>(url, data, {}, config)
+        );
+    }
+
     private async getListAllResponseInternalAsync<
         TResponse extends BaseResponses.IContentManagementListResponse
     >(data: {
