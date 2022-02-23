@@ -14,4 +14,11 @@ export namespace EnvironmentContracts {
 
     export interface IRenameEnvironmentResponseContract extends IEnvironmentResponseContract {
     }
+
+    export interface ICloneEnvironmentResponseContract {
+        id: string;
+        management_api_key: string;
+        delivery_preview_api_key: string;
+        secured_delivery_api_key: string;
+    }
 }

@@ -27,4 +27,15 @@ export namespace EnvironmentResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class CloneEnvironmentResponse extends BaseResponses.BaseContentManagementResponse<EnvironmentContracts.ICloneEnvironmentResponseContract, EnvironmentModels.CloneEnvironmentModel
+        > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: EnvironmentContracts.ICloneEnvironmentResponseContract,
+            data: EnvironmentModels.CloneEnvironmentModel
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

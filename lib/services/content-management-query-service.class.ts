@@ -907,6 +907,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async cloneEnvironment(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: EnvironmentModels.ICloneEnvironmentData
+    ): Promise<EnvironmentResponses.CloneEnvironmentResponse> {
+        return environmentMapper.mapCloneEnvironmentResponse(
+            await this.postResponseAsync<EnvironmentContracts.ICloneEnvironmentResponseContract>(url, data, {}, config)
+        );
+    }
+
     private async getListAllResponseInternalAsync<
         TResponse extends BaseResponses.IContentManagementListResponse
     >(data: {

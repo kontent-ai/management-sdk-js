@@ -21,4 +21,18 @@ export namespace EnvironmentModels {
             public isProduction: boolean
         ) { }
     }
+
+    export interface ICloneEnvironmentData {
+        name: string;
+        roles_to_activate?: string[];
+    }
+
+    export class CloneEnvironmentModel {
+        constructor(
+            public id: string,
+            public managementApiKey: string,
+            public deliveryPreviewApiKey: string,
+            public securedDeliveryApiKey: string,
+        ) { }
+    }
 }

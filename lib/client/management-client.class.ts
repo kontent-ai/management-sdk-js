@@ -120,6 +120,7 @@ import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
 import { RenameEnvironmentQuery } from '../queries/environments/rename-environment-query';
 import { EnvironmentModels } from '../models/environments/environments.model';
+import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -995,5 +996,12 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.config,
             this.queryService,
             (config, queryService, data) => new RenameEnvironmentQuery(config, queryService, data));
+    }
+
+    cloneEnvironment(): DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData> {
+        return new DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new CloneEnvironmentQuery(config, queryService, data));
     }
 }
