@@ -1,4 +1,4 @@
-import { EnvironmentModels } from '../../../lib/models/environments/environments.model';
+import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-mark-environment-as-production.json';
 import { BaseResponses } from '../../../lib/responses';

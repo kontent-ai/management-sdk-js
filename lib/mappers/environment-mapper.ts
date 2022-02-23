@@ -2,7 +2,7 @@ import { BaseMapper } from './base-mapper';
 import { IResponse } from '@kentico/kontent-core';
 import { EnvironmentContracts } from '../contracts';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
-import { EnvironmentModels } from '../models/environments/environments.model';
+import { EnvironmentModels } from '../models/environments/environment.models';
 import CloneEnvironmentModel = EnvironmentModels.CloneEnvironmentModel;
 
 export class EnvironmentMapper extends BaseMapper {
@@ -17,13 +17,17 @@ export class EnvironmentMapper extends BaseMapper {
         );
     }
 
-    mapRenameEnvironmentResponse(
-        response: IResponse<EnvironmentContracts.IRenameEnvironmentResponseContract>
-    ): EnvironmentResponses.RenameEnvironmentResponse {
-        return new EnvironmentResponses.RenameEnvironmentResponse(
+    mapModifyEnvironmentResponse(
+        response: IResponse<EnvironmentContracts.IModifyEnvironmentResponseContract>
+    ): EnvironmentResponses.ModifyEnvironmentResponse {
+        return new EnvironmentResponses.ModifyEnvironmentResponse(
             super.mapResponseDebug(response),
             response.data,
-            this.mapEnvironment(response.data)
+            new EnvironmentModels.EnvironmentModel(
+                response.data.id,
+                response.data.name,
+                response.data.is_production
+            )
         );
     }
 
@@ -40,10 +44,6 @@ export class EnvironmentMapper extends BaseMapper {
                 response.data.secured_delivery_api_key
             )
         );
-    }
-
-    mapEnvironment(raw: EnvironmentContracts.IEnvironmentResponseContract): EnvironmentModels.EnvironmentModel {
-        return new EnvironmentModels.EnvironmentModel(raw.id, raw.name, raw.is_production);
     }
 }
 

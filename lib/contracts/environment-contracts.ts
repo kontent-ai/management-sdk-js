@@ -12,7 +12,7 @@ export namespace EnvironmentContracts {
         is_production: boolean;
     }
 
-    export interface IRenameEnvironmentResponseContract extends IEnvironmentResponseContract {
+    export interface IModifyEnvironmentResponseContract extends IEnvironmentResponseContract {
     }
 
     export interface ICloneEnvironmentResponseContract {

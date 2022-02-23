@@ -6,12 +6,8 @@ export namespace EnvironmentModels {
     }
 
     export interface IModifyEnvironmentData {
-        op: string;
+        op: 'rename_environment';
         value: string;
-    }
-
-    export interface IRenameEnvironmentData extends IModifyEnvironmentData {
-        op: 'rename-environment';
     }
 
     export class EnvironmentModel {

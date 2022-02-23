@@ -1,6 +1,6 @@
 import { BaseResponses } from '../base-responses';
 import { EnvironmentContracts } from '../../contracts';
-import { EnvironmentModels } from '../../models/environments/environments.model';
+import { EnvironmentModels } from '../../models/environments/environment.models';
 
 export namespace EnvironmentResponses {
     export class GetCloningStateResponse extends BaseResponses.BaseContentManagementResponse<EnvironmentContracts.IEnvironmentCloningStateResponseContract, {
@@ -17,11 +17,12 @@ export namespace EnvironmentResponses {
         }
     }
 
-    export class RenameEnvironmentResponse extends BaseResponses.BaseContentManagementResponse<EnvironmentContracts.IRenameEnvironmentResponseContract, EnvironmentModels.EnvironmentModel
+    export class ModifyEnvironmentResponse extends BaseResponses.BaseContentManagementResponse<
+        EnvironmentContracts.IModifyEnvironmentResponseContract, EnvironmentModels.EnvironmentModel
         > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: EnvironmentContracts.IRenameEnvironmentResponseContract,
+            rawData: EnvironmentContracts.IModifyEnvironmentResponseContract,
             data: EnvironmentModels.EnvironmentModel
         ) {
             super(debug, rawData, data);

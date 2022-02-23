@@ -1,7 +1,7 @@
 import { BaseQuery } from '../base-query';
 import { IManagementClientConfig } from '../../config';
 import { ContentManagementQueryService } from '../../services';
-import { EnvironmentModels } from '../../models/environments/environments.model';
+import { EnvironmentModels } from '../../models/environments/environment.models';
 import { BaseResponses } from '../../responses';
 
 export class MarkEnvironmentAsProductionQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {

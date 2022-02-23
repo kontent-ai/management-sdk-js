@@ -313,7 +313,7 @@ export class ContentManagementApiEndpoints {
         return this.getEnvironmentsPath();
     }
 
-    renameEnvironment(): string {
+    modifyEnvironment(): string {
         return this.getEnvironmentsPath();
     }
 

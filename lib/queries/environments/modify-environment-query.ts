@@ -2,21 +2,21 @@ import { BaseQuery } from '../base-query';
 import { EnvironmentResponses } from '../../responses/environments/environment-responses';
 import { IManagementClientConfig } from '../../config';
 import { ContentManagementQueryService } from '../../services';
-import { EnvironmentModels } from '../../models/environments/environments.model';
+import { EnvironmentModels } from '../../models/environments/environment.models';
 
-export class RenameEnvironmentQuery extends BaseQuery<EnvironmentResponses.RenameEnvironmentResponse> {
+export class ModifyEnvironmentQuery extends BaseQuery<EnvironmentResponses.ModifyEnvironmentResponse> {
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ContentManagementQueryService,
-        public data: EnvironmentModels.IRenameEnvironmentData[]) {
+        public data: EnvironmentModels.IModifyEnvironmentData[]) {
         super(config, queryService);
     }
 
-    toPromise(): Promise<EnvironmentResponses.RenameEnvironmentResponse> {
-        return this.queryService.renameEnvironment(this.getUrl(), this.queryConfig, this.data);
+    toPromise(): Promise<EnvironmentResponses.ModifyEnvironmentResponse> {
+        return this.queryService.modifyEnvironment(this.getUrl(), this.queryConfig, this.data);
     }
 
     protected getAction(): string {
-        return this.apiEndpoints.renameEnvironment();
+        return this.apiEndpoints.modifyEnvironment();
     }
 }

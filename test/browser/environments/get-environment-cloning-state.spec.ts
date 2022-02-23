@@ -1,8 +1,7 @@
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-environment-cloning-state.json';
 import { EnvironmentResponses } from '../../../lib/responses/environments/environment-responses';
-import { EnvironmentModels } from '../../../lib/models/environments/environments.model';
-
+import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
 
 describe('Get environment cloning state', () => {
     let response: EnvironmentResponses.GetCloningStateResponse;

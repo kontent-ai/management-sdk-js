@@ -118,10 +118,10 @@ import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
-import { RenameEnvironmentQuery } from '../queries/environments/rename-environment-query';
-import { EnvironmentModels } from '../models/environments/environments.model';
+import { EnvironmentModels } from '../models/environments/environment.models';
 import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
 import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
+import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -992,11 +992,11 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new DeleteEnvironmentQuery(this.config, this.queryService);
     }
 
-    renameEnvironment(): DataQuery<RenameEnvironmentQuery, EnvironmentModels.IRenameEnvironmentData[]> {
-        return new DataQuery<RenameEnvironmentQuery, EnvironmentModels.IRenameEnvironmentData[]>(
+    modifyEnvironment(): DataQuery<ModifyEnvironmentQuery, EnvironmentModels.IModifyEnvironmentData[]> {
+        return new DataQuery<ModifyEnvironmentQuery, EnvironmentModels.IModifyEnvironmentData[]>(
             this.config,
             this.queryService,
-            (config, queryService, data) => new RenameEnvironmentQuery(config, queryService, data));
+            (config, queryService, data) => new ModifyEnvironmentQuery(config, queryService, data));
     }
 
     cloneEnvironment(): DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData> {

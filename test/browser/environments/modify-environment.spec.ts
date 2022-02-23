@@ -1,31 +1,31 @@
 import { EnvironmentResponses } from '../../../lib/responses/environments/environment-responses';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
-import * as responseJson from '../fake-responses/environments/fake-rename-environment.json';
-import { EnvironmentModels } from '../../../lib/models/environments/environments.model';
+import * as responseJson from '../fake-responses/environments/fake-modify-environment.json';
+import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
 
-describe('Rename environment', () => {
-    let response: EnvironmentResponses.RenameEnvironmentResponse;
-    let requestData: EnvironmentModels.IRenameEnvironmentData[];
+describe('Modify environment', () => {
+    let response: EnvironmentResponses.ModifyEnvironmentResponse;
+    let requestData: EnvironmentModels.IModifyEnvironmentData[];
 
     beforeAll(async () => {
         requestData = [{
-            op: 'rename-environment',
+            op: 'rename_environment',
             value: 'Cool environment'
         }];
         response = await getTestClientWithJson(responseJson)
-            .renameEnvironment()
+            .modifyEnvironment()
             .withData(requestData)
             .toPromise();
     });
 
     it(`should have correct url`, () => {
-        const url = cmLiveClient.renameEnvironment().withData(requestData).getUrl();
+        const url = cmLiveClient.modifyEnvironment().withData(requestData).getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}`);
     });
 
-    it(`response should be instance of RenameEnvironmentResponse class`, () => {
-        expect(response).toEqual(jasmine.any(EnvironmentResponses.RenameEnvironmentResponse));
+    it(`response should be instance of ModifyEnvironmentResponse class`, () => {
+        expect(response).toEqual(jasmine.any(EnvironmentResponses.ModifyEnvironmentResponse));
     });
 
     it(`response should contain debug data`, () => {

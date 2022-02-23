@@ -74,7 +74,7 @@ import {
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
 import { environmentMapper } from '../mappers/environment-mapper';
-import { EnvironmentModels } from '../models/environments/environments.model';
+import { EnvironmentModels } from '../models/environments/environment.models';
 
 export class ContentManagementQueryService extends BaseContentManagementQueryService<any> {
     constructor(
@@ -897,13 +897,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async renameEnvironment(
+    async modifyEnvironment(
         url: string,
         config: IContentManagementQueryConfig,
-        data: EnvironmentModels.IRenameEnvironmentData[]
-    ): Promise<EnvironmentResponses.RenameEnvironmentResponse> {
-        return environmentMapper.mapRenameEnvironmentResponse(
-            await this.patchResponseAsync<EnvironmentContracts.IRenameEnvironmentResponseContract>(url, data, {}, config)
+        data: EnvironmentModels.IModifyEnvironmentData[]
+    ): Promise<EnvironmentResponses.ModifyEnvironmentResponse> {
+        return environmentMapper.mapModifyEnvironmentResponse(
+            await this.patchResponseAsync<EnvironmentContracts.IModifyEnvironmentResponseContract>(url, data, {}, config)
         );
     }
 
