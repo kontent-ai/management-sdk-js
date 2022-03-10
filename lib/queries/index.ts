@@ -17,3 +17,4 @@ export * from './collections';
 export * from './subscriptions';
 export * from './roles';
 export * from './project-users';
+export * from './asset-renditions';

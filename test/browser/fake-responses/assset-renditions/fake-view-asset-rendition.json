@@ -1,0 +1,16 @@
+{
+  "rendition_id": "d866c136-8824-45f9-af39-9ebf9c31ea8f",
+  "asset_id": "ba00e3ba-e217-4fc0-9f4e-90b9510d2b08",
+  "external_id": "rendition-external-id-01",
+  "transformation": {
+    "mode": "rect",
+    "fit": "clip",
+    "custom_width": 250,
+    "custom_height": 50,
+    "x": 0,
+    "y": 30,
+    "width": 500,
+    "height": 100
+  },
+  "last_modified": "2022-03-01T10:54:52.1001012Z"
+}

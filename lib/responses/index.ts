@@ -15,3 +15,4 @@ export * from './collections/collection-responses';
 export * from './subscriptions/subscription-responses';
 export * from './roles/role-responses';
 export * from './project-users/project-users-responses';
+export * from './asset-renditions/asset-rendition-responses';

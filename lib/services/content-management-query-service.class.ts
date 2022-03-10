@@ -5,6 +5,7 @@ import { IManagementClientConfig } from '../config/imanagement-client-config.int
 import {
     AssetContracts,
     AssetFolderContracts,
+    AssetRenditionContracts,
     CollectionContracts,
     ContentItemContracts,
     ContentTypeContracts,
@@ -35,7 +36,8 @@ import {
     collectionsMappers,
     subscriptionMapper,
     roleMapper,
-    projectUserMapper
+    projectUserMapper,
+    assetRenditionMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -50,7 +52,8 @@ import {
     AssetFolderModels,
     IContentManagementListQueryConfig,
     CollectionModels,
-    ProjectUserModels
+    ProjectUserModels,
+    AssetRenditionModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -69,7 +72,8 @@ import {
     CollectionResponses,
     SubscriptionResponses,
     RoleResponses,
-    ProjectUsersResponses
+    ProjectUsersResponses,
+    AssetRenditionResponses
 } from '../responses';
 import { BaseContentManagementQueryService } from './base-content-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
@@ -200,16 +204,6 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addContentType(
-        url: string,
-        data: ContentTypeModels.IAddContentTypeData,
-        config: IContentManagementQueryConfig
-    ): Promise<ContentTypeResponses.AddContentTypeResponse> {
-        return contentTypeMapper.mapAddContentTypeResponse(
-            await this.postResponseAsync<ContentTypeContracts.IAddContentTypeResponseContract>(url, data, {}, config)
-        );
-    }
-
     async viewContentTypeSnippet(
         url: string,
         config: IContentManagementQueryConfig
@@ -285,6 +279,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async addContentType(
+        url: string,
+        data: ContentTypeModels.IAddContentTypeData,
+        config: IContentManagementQueryConfig
+    ): Promise<ContentTypeResponses.AddContentTypeResponse> {
+        return contentTypeMapper.mapAddContentTypeResponse(
+            await this.postResponseAsync<ContentTypeContracts.IAddContentTypeResponseContract>(url, data, {}, config)
+        );
+    }
+
     async deleteContentType(
         url: string,
         config: IContentManagementQueryConfig
@@ -349,6 +353,54 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
     ): Promise<ContentTypeResponses.ContentTypeListResponse> {
         return contentTypeMapper.mapListingResponse(
             await this.getResponseAsync<ContentTypeContracts.IContentTypeListResponseContract>(url, {}, config)
+        );
+    }
+
+    async listAssetRenditions(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<AssetRenditionResponses.AssetRenditionsListResponse> {
+        return assetRenditionMapper.mapListAssetRenditionsResponse(
+            await this.getResponseAsync<AssetRenditionContracts.IListRenditionResponseContract>(url, {}, config)
+        );
+    }
+
+    async viewAssetRendition(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<AssetRenditionResponses.ViewAssetRenditionResponse> {
+        return assetRenditionMapper.mapViewAssetRenditionResponse(
+            await this.getResponseAsync<AssetRenditionContracts.IViewRenditionResponseContract>(url, {}, config)
+        );
+    }
+
+    async addAssetRendition(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: AssetRenditionModels.IAddAssetRenditionData
+    ): Promise<AssetRenditionResponses.AddAssetRenditionResponse> {
+        return assetRenditionMapper.mapAddAssetRenditionResponse(
+            await this.postResponseAsync<AssetRenditionContracts.IAddAssetRenditionResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
+        );
+    }
+
+    async modifyAssetRendition(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: AssetRenditionModels.IModifyAssetRenditionData
+    ): Promise<AssetRenditionResponses.AddAssetRenditionResponse> {
+        return assetRenditionMapper.mapModifyAssetRenditionResponse(
+            await this.putResponseAsync<AssetRenditionContracts.IModifyAssetRenditionResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 
@@ -903,7 +955,12 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: EnvironmentModels.IModifyEnvironmentData[]
     ): Promise<EnvironmentResponses.ModifyEnvironmentResponse> {
         return environmentMapper.mapModifyEnvironmentResponse(
-            await this.patchResponseAsync<EnvironmentContracts.IModifyEnvironmentResponseContract>(url, data, {}, config)
+            await this.patchResponseAsync<EnvironmentContracts.IModifyEnvironmentResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 
@@ -923,7 +980,12 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: EnvironmentModels.IMarkEnvironmentAsProductionData
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return environmentMapper.mapEmptyResponse(
-            await this.putResponseAsync<EnvironmentContracts.IMarkEnvironmentAsProductionResponseContract>(url, data, {}, config)
+            await this.putResponseAsync<EnvironmentContracts.IMarkEnvironmentAsProductionResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
         );
     }
 

@@ -17,3 +17,4 @@ export * from './action-query.class';
 export * from './collection-identifier-query.class';
 export * from './user-identifier-query.class';
 export * from './role-identifier-query.class';
+export * from './rendition-identifier-query.class';

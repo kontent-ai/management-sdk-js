@@ -11,6 +11,11 @@ export namespace Identifiers {
         Codename = 'codename'
     }
 
+    export enum RenditionIdentifierEnum {
+        ExternalId = 'externalId',
+        InternalId = 'internalId',
+    }
+
     export enum CollectionIdentifierEnum {
         ExternalId = 'externalId',
         InternalId = 'internalId',
@@ -99,6 +104,20 @@ export namespace Identifiers {
                 return `${this.value}`;
             }
             if (this.identifier === ContentTypeIdentifierEnum.ExternalId) {
+                return `external-id/${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
+    export class RenditionIdentifier {
+        constructor(public identifier: RenditionIdentifierEnum, public value: string) {}
+
+        getParamValue(): string {
+            if (this.identifier === RenditionIdentifierEnum.InternalId) {
+                return `${this.value}`;
+            }
+            if (this.identifier === RenditionIdentifierEnum.ExternalId) {
                 return `external-id/${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);

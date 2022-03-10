@@ -2,7 +2,7 @@ import { IManagementClientConfig } from '../config';
 import { Identifiers } from '../models';
 import { ContentManagementQueryService } from '../services';
 
-export class AssetIdentifierQuery<TResult> {
+export class RenditionIdentifierQuery<TResult> {
 
     constructor(
         protected config: IManagementClientConfig,
@@ -10,7 +10,7 @@ export class AssetIdentifierQuery<TResult> {
         protected buildResult: (
             config: IManagementClientConfig,
             queryService: ContentManagementQueryService,
-            identifier: Identifiers.AssetIdentifier) => TResult
+            identifier: Identifiers.RenditionIdentifier) => TResult
     ) {
     }
 
@@ -18,15 +18,15 @@ export class AssetIdentifierQuery<TResult> {
     * Gets using internal Id
     * @param id Internal Id of content item
     */
-    byAssetId(id: string): TResult {
-        return this.buildResult(this.config, this.queryService, new Identifiers.AssetIdentifier(Identifiers.AssetIdentifierEnum.InternalId, id));
+    byRenditionId(id: string): TResult {
+        return this.buildResult(this.config, this.queryService, new Identifiers.RenditionIdentifier(Identifiers.RenditionIdentifierEnum.InternalId, id));
     }
 
     /**
     * Gets query using external Id
     * @param id External Id of content item
     */
-    byAssetExternalId(id: string): TResult {
-        return this.buildResult(this.config, this.queryService, new Identifiers.AssetIdentifier(Identifiers.AssetIdentifierEnum.ExternalId, id));
+    byRenditionExternalId(id: string): TResult {
+        return this.buildResult(this.config, this.queryService, new Identifiers.RenditionIdentifier(Identifiers.RenditionIdentifierEnum.ExternalId, id));
     }
 }

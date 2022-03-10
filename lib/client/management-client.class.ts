@@ -1,5 +1,6 @@
 import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kentico/kontent-core';
 import {
+    AssetRenditionModels,
     CollectionModels,
     LanguageVariantElements,
     LanguageVariantElementsBuilder,
@@ -29,7 +30,7 @@ import {
     AddLanguageQuery,
     AddTaxonomyQuery,
     AddWebhookQuery,
-    AssetIdentifierQueryClass,
+    AssetIdentifierQuery,
     CancelScheduledPublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
     ContentItemIdentifierQuery,
@@ -110,7 +111,12 @@ import {
     InviteProjectUserQuery,
     ChangeUserRolesQuery,
     RoleIdentifierQuery,
-    ViewRoleQuery
+    ViewRoleQuery,
+    ListAssetRenditionsQuery,
+    ModifyAssetRenditionQuery,
+    AddAssetRenditionQuery,
+    RenditionIdentifierQuery,
+    ViewAssetRenditionQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -590,6 +596,75 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new ListContentTypesQuery(this.config, this.queryService);
     }
 
+    listAssetRenditions(): AssetIdentifierQuery<ListAssetRenditionsQuery> {
+        return new AssetIdentifierQuery<ListAssetRenditionsQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ListAssetRenditionsQuery(config, queryService, identifier)
+        );
+    }
+
+    addAssetRendition(): AssetIdentifierQuery<
+        DataQuery<AddAssetRenditionQuery, AssetRenditionModels.IAddAssetRenditionData>
+    > {
+        return new AssetIdentifierQuery<DataQuery<AddAssetRenditionQuery, AssetRenditionModels.IAddAssetRenditionData>>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<AddAssetRenditionQuery, AssetRenditionModels.IAddAssetRenditionData>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new AddAssetRenditionQuery(nConfig, nQueryService, identifier, data)
+                )
+        );
+    }
+
+    modifyAssetRendition(): AssetIdentifierQuery<
+        RenditionIdentifierQuery<DataQuery<ModifyAssetRenditionQuery, AssetRenditionModels.IModifyAssetRenditionData>>
+    > {
+        return new AssetIdentifierQuery<
+            RenditionIdentifierQuery<
+                DataQuery<ModifyAssetRenditionQuery, AssetRenditionModels.IModifyAssetRenditionData>
+            >
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, assetIdentifier) =>
+                new RenditionIdentifierQuery<
+                    DataQuery<ModifyAssetRenditionQuery, AssetRenditionModels.IModifyAssetRenditionData>
+                >(config, queryService, (mConfig, mQueryService, renditionIdentifier) => {
+                    return new DataQuery<ModifyAssetRenditionQuery, AssetRenditionModels.IModifyAssetRenditionData>(
+                        config,
+                        queryService,
+                        (nConfig, nQueryService, data) =>
+                            new ModifyAssetRenditionQuery(
+                                nConfig,
+                                nQueryService,
+                                assetIdentifier,
+                                renditionIdentifier,
+                                data
+                            )
+                    );
+                })
+        );
+    }
+
+    viewAssetRendition(): AssetIdentifierQuery<RenditionIdentifierQuery<ViewAssetRenditionQuery>> {
+        return new AssetIdentifierQuery<RenditionIdentifierQuery<ViewAssetRenditionQuery>>(
+            this.config,
+            this.queryService,
+            (config, queryService, assetIdentifier) =>
+                new RenditionIdentifierQuery<ViewAssetRenditionQuery>(
+                    config,
+                    queryService,
+                    (xConfig, xQueryService, renditionIdentifier) => {
+                        return new ViewAssetRenditionQuery(config, queryService, assetIdentifier, renditionIdentifier);
+                    }
+                )
+        );
+    }
+
     deleteTaxonomy(): TaxonomyIdentifierQuery<DeleteTaxonomyQuery> {
         return new TaxonomyIdentifierQuery<DeleteTaxonomyQuery>(
             this.config,
@@ -618,16 +693,16 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    deleteAsset(): AssetIdentifierQueryClass<DeleteAssetQuery> {
-        return new AssetIdentifierQueryClass<DeleteAssetQuery>(
+    deleteAsset(): AssetIdentifierQuery<DeleteAssetQuery> {
+        return new AssetIdentifierQuery<DeleteAssetQuery>(
             this.config,
             this.queryService,
             (config, queryService, identifier) => new DeleteAssetQuery(config, queryService, identifier)
         );
     }
 
-    upsertAsset(): AssetIdentifierQueryClass<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>> {
-        return new AssetIdentifierQueryClass<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>(
+    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>> {
+        return new AssetIdentifierQuery<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>(
             this.config,
             this.queryService,
             (config, queryService, identifier) =>
@@ -663,8 +738,8 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    viewAsset(): AssetIdentifierQueryClass<ViewAssetsQuery> {
-        return new AssetIdentifierQueryClass<ViewAssetsQuery>(
+    viewAsset(): AssetIdentifierQuery<ViewAssetsQuery> {
+        return new AssetIdentifierQuery<ViewAssetsQuery>(
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ViewAssetsQuery(config, queryService, identifier)
@@ -996,20 +1071,26 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new DataQuery<ModifyEnvironmentQuery, EnvironmentModels.IModifyEnvironmentData[]>(
             this.config,
             this.queryService,
-            (config, queryService, data) => new ModifyEnvironmentQuery(config, queryService, data));
+            (config, queryService, data) => new ModifyEnvironmentQuery(config, queryService, data)
+        );
     }
 
     cloneEnvironment(): DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData> {
         return new DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData>(
             this.config,
             this.queryService,
-            (config, queryService, data) => new CloneEnvironmentQuery(config, queryService, data));
+            (config, queryService, data) => new CloneEnvironmentQuery(config, queryService, data)
+        );
     }
 
-    markEnvironmentAsProduction(): DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData> {
+    markEnvironmentAsProduction(): DataQuery<
+        MarkEnvironmentAsProductionQuery,
+        EnvironmentModels.IMarkEnvironmentAsProductionData
+    > {
         return new DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData>(
             this.config,
             this.queryService,
-            (config, queryService, data) => new MarkEnvironmentAsProductionQuery(config, queryService, data));
+            (config, queryService, data) => new MarkEnvironmentAsProductionQuery(config, queryService, data)
+        );
     }
 }

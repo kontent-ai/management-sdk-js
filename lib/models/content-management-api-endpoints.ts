@@ -265,6 +265,22 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/collections`;
     }
 
+    listAssetRenditions(identifier: Identifiers.AssetIdentifier): string {
+        return `${this.getProjectPath()}/assets/${identifier.getParamValue()}/renditions`;
+    }
+
+    addAssetRendition(identifier: Identifiers.AssetIdentifier): string {
+        return `${this.getProjectPath()}/assets/${identifier.getParamValue()}/renditions`;
+    }
+
+    modifyAssetRendition(assetIdentifier: Identifiers.AssetIdentifier, renditionIdentifier: Identifiers.RenditionIdentifier): string {
+        return `${this.getProjectPath()}/assets/${assetIdentifier.getParamValue()}/renditions/${renditionIdentifier.getParamValue()}`;
+    }
+
+    viewAssetRendition(assetIdentifier: Identifiers.AssetIdentifier, renditionIdentifier: Identifiers.RenditionIdentifier): string {
+        return `${this.getProjectPath()}/assets/${assetIdentifier.getParamValue()}/renditions/${renditionIdentifier.getParamValue()}`;
+    }
+
     listSubscriptionProjects(): string {
         return `${this.getSubscriptionPath()}/projects`;
     }

@@ -3,6 +3,7 @@ import { ContentItemContracts } from '../contracts';
 import {
     AssetFolderModels,
     AssetModels,
+    AssetRenditionModels,
     CollectionModels,
     ContentTypeElementsBuilder,
     ContentTypeModels,
@@ -27,7 +28,7 @@ import {
     AddLanguageQuery,
     AddTaxonomyQuery,
     AddWebhookQuery,
-    AssetIdentifierQueryClass,
+    AssetIdentifierQuery,
     CancelScheduledPublishingOfLanguageVariantQuery,
     CancelScheduledUnpublishingOfLanguageVariantQuery,
     ChangeWorkflowStepOfLanguageOrVariantQuery,
@@ -106,7 +107,12 @@ import {
     InviteProjectUserQuery,
     ChangeUserRolesQuery,
     RoleIdentifierQuery,
-    ViewRoleQuery
+    ViewRoleQuery,
+    ListAssetRenditionsQuery,
+    AddAssetRenditionQuery,
+    ModifyAssetRenditionQuery,
+    RenditionIdentifierQuery,
+    ViewAssetRenditionQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -318,12 +324,12 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to delete an asset
      */
-    deleteAsset(): AssetIdentifierQueryClass<DeleteAssetQuery>;
+    deleteAsset(): AssetIdentifierQuery<DeleteAssetQuery>;
 
     /**
      * Query to upsert an asset from uploaded binary file
      */
-    upsertAsset(): AssetIdentifierQueryClass<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>;
+    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>;
 
     /**
      * Query to add an asset from uploaded binary file
@@ -338,7 +344,7 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to view asset
      */
-    viewAsset(): AssetIdentifierQueryClass<ViewAssetsQuery>;
+    viewAsset(): AssetIdentifierQuery<ViewAssetsQuery>;
 
     /**
      * Query for listing assets
@@ -568,5 +574,32 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Mark environment as production
      */
-    markEnvironmentAsProduction(): DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData>;
+    markEnvironmentAsProduction(): DataQuery<
+        MarkEnvironmentAsProductionQuery,
+        EnvironmentModels.IMarkEnvironmentAsProductionData
+    >;
+
+    /**
+     * List asset renditions of given asset
+     */
+    listAssetRenditions(): AssetIdentifierQuery<ListAssetRenditionsQuery>;
+
+    /**
+     * Adds rendition to given asset
+     */
+    addAssetRendition(): AssetIdentifierQuery<
+        DataQuery<AddAssetRenditionQuery, AssetRenditionModels.IAddAssetRenditionData>
+    >;
+
+    /**
+     * Modifies asset rendition
+     */
+    modifyAssetRendition(): AssetIdentifierQuery<
+        RenditionIdentifierQuery<DataQuery<ModifyAssetRenditionQuery, AssetRenditionModels.IModifyAssetRenditionData>>
+    >;
+
+    /**
+     * Views asset rendition
+     */
+    viewAssetRendition(): AssetIdentifierQuery<RenditionIdentifierQuery<ViewAssetRenditionQuery>>;
 }

@@ -16,3 +16,5 @@ export * from './collections-mapper';
 export * from './subscription-mapper';
 export * from './role-mapper';
 export * from './project-user-mapper';
+export * from './asset-rendition-mapper';
+export * from './environment-mapper';
