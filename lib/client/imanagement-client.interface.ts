@@ -1,6 +1,7 @@
 import { IHttpCancelRequestToken } from '@kentico/kontent-core';
 import { ContentItemContracts } from '../contracts';
 import {
+    AssetElementsBuilder,
     AssetFolderModels,
     AssetModels,
     AssetRenditionModels,
@@ -329,12 +330,12 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to upsert an asset from uploaded binary file
      */
-    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>;
+    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>>;
 
     /**
      * Query to add an asset from uploaded binary file
      */
-    addAsset(): DataQuery<AddAssetQuery, AssetModels.IAddAssetRequestData>;
+    addAsset(): DataQuery<AddAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IAddAssetRequestData>;
 
     /**
      * Query to upload file

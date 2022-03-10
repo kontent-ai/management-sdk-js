@@ -80,12 +80,23 @@ export namespace AssetModels {
         filename: string;
     }
 
+    /**
+     * Currently only reference to taxonomy terms are supported. In future more elements will be allowed
+     */
+    export type IAssetElementValueType = IAssetElementData<SharedContracts.IReferenceObjectContract[]>;
+  
+    export interface IAssetElementData<TValue> {
+        element: SharedContracts.IReferenceObjectContract;
+        value: TValue
+    }
+
     export interface IAddAssetRequestData {
         file_reference: IAssetFileReference;
         title?: string;
         external_id?: string;
         descriptions?: IAssetFileDescription[];
         folder?: IAssetFolderReference;
+        elements?: IAssetElementValueType[];
     }
 
     export interface IUpsertAssetRequestData {
@@ -93,6 +104,7 @@ export namespace AssetModels {
         title?: string;
         file_reference?: IAssetFileReference;
         folder?: IAssetFolderReference;
+        elements?: IAssetElementValueType[];
     }
 
     export interface IUploadAssetFromUrlRequestData {

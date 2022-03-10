@@ -6,26 +6,48 @@ describe('Add asset', () => {
     let response: AssetResponses.AddAssetResponse;
 
     beforeAll(async () => {
-        response = await getTestClientWithJson(addAssetResponseJson).addAsset()
-            .withData({
-                descriptions: [],
-                file_reference: {
-                    id: 'x',
-                    type: 'internal'
-                }
+        response = await getTestClientWithJson(addAssetResponseJson)
+            .addAsset()
+            .withData((builder) => {
+                return {
+                    descriptions: [],
+                    elements: [
+                        builder.taxonomyElement({
+                            element: {
+                                codename: 'taxonomy-categories'
+                            },
+                            value: [
+                                {
+                                    codename: 'coffee'
+                                },
+                                {
+                                    codename: 'brewing'
+                                }
+                            ]
+                        })
+                    ],
+                    file_reference: {
+                        id: 'x',
+                        type: 'internal'
+                    }
+                };
             })
             .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.addAsset()
-            .withData({
-                descriptions: [],
-                file_reference: {
-                    id: 'x',
-                    type: 'internal'
-                }
-            }).getUrl();
+        const url = cmLiveClient
+            .addAsset()
+            .withData((builder) => {
+                return {
+                    descriptions: [],
+                    file_reference: {
+                        id: 'x',
+                        type: 'internal'
+                    }
+                };
+            })
+            .getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets`);
     });
@@ -59,12 +81,9 @@ describe('Add asset', () => {
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);
         expect(asset.fileReference.type).toEqual(originalItem.file_reference.type);
 
-        asset.descriptions.forEach(s => {
+        asset.descriptions.forEach((s) => {
             expect(s.description).toBeDefined();
             expect(s.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
         });
     });
-
-
 });
-

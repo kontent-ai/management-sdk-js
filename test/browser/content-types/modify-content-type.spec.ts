@@ -9,7 +9,10 @@ describe('Modify content type', () => {
         response = await getTestClientWithJson(responseJson)
             .modifyContentType()
             .byTypeCodename('x')
-            .withData([])
+            .withData([{
+                op: 'remove',
+                path: 'elements/x',
+            }])
             .toPromise();
     });
 

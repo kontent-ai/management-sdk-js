@@ -1,5 +1,6 @@
 import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kentico/kontent-core';
 import {
+    AssetElementsBuilder,
     AssetRenditionModels,
     CollectionModels,
     LanguageVariantElements,
@@ -701,12 +702,12 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>> {
-        return new AssetIdentifierQuery<DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>>(
+    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>> {
+        return new AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>>(
             this.config,
             this.queryService,
             (config, queryService, identifier) =>
-                new DataQuery<UpsertAssetQuery, AssetModels.IUpsertAssetRequestData>(
+                new DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>(
                     this.config,
                     this.queryService,
                     (xConfig, xQueryService, data) => new UpsertAssetQuery(config, queryService, identifier, data)
@@ -714,8 +715,8 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    addAsset(): DataQuery<AddAssetQuery, AssetModels.IAddAssetRequestData> {
-        return new DataQuery<AddAssetQuery, AssetModels.IAddAssetRequestData>(
+    addAsset(): DataQuery<AddAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IAddAssetRequestData> {
+        return new DataQuery<AddAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IAddAssetRequestData>(
             this.config,
             this.queryService,
             (config, queryService, data) => new AddAssetQuery(config, queryService, data)

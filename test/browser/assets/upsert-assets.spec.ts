@@ -9,12 +9,29 @@ describe('Upsert asset', () => {
         response = await getTestClientWithJson(upsertAssetResponseJson)
             .upsertAsset()
             .byAssetId('x')
-            .withData({
-                descriptions: [],
-                file_reference: {
-                    id: 'xId',
-                    type: 'internal'
-                }
+            .withData((builder) => {
+                return {
+                    elements: [
+                        builder.taxonomyElement({
+                            element: {
+                                codename: 'taxonomy-categories'
+                            },
+                            value: [
+                                {
+                                    codename: 'coffee'
+                                },
+                                {
+                                    codename: 'brewing'
+                                }
+                            ]
+                        })
+                    ],
+                    descriptions: [],
+                    file_reference: {
+                        id: 'xId',
+                        type: 'internal'
+                    }
+                };
             })
             .toPromise();
     });
@@ -23,17 +40,13 @@ describe('Upsert asset', () => {
         const idUrl = cmLiveClient
             .upsertAsset()
             .byAssetId('x')
-            .withData({
-                descriptions: []
-            })
+            .withData({} as any)
             .getUrl();
 
         const externalIdUrl = cmLiveClient
             .upsertAsset()
             .byAssetExternalId('x')
-            .withData({
-                descriptions: []
-            })
+            .withData({} as any)
             .getUrl();
 
         expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x`);
