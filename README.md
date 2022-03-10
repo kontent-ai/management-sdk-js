@@ -15,9 +15,7 @@
 
 ## Getting started
 
-To get started, you'll first need to have access to your [Kentico Kontent](https://kontent.ai/) project where you need
-to enable Content management API and generate `access token` that will be used to authenticate all requests made by this
-library.
+To get started, you'll first need to have access to your [Kontent](https://kontent.ai/) project where you need to enable Content management API and generate `access token` that will be used to authenticate all requests made by this library.
 
 ## Installation
 
@@ -123,7 +121,7 @@ const client = createManagementClient({
 
 ### Handling API Management Errors
 
-See the [error section in Management API reference](https://docs.kontent.ai/reference/management-api-v2#section/Errors) for infofmation about status codes and error messages.
+See the [error section in Management API reference](https://kontent.ai/learn/reference/management-api-v2#section/Guidelines-on-handling-changes) for infofmation about status codes and error messages.
 
 ```typescript
 try {
