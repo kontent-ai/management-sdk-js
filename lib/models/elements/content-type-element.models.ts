@@ -218,6 +218,12 @@ export namespace ContentTypeElements {
         codename: string;
         external_id?: string;
         guidelines?: string;
+        validation_regex?: {
+            is_active: boolean,
+            regex: string,
+            flags?: string,
+            validation_message?: string
+        };
     }
 
     export interface IElementWithId {
