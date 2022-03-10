@@ -4,9 +4,43 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.1.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.2...v2.1.0) (2022-03-10)
 
+### New add / upsert asset query syntax
+
+The `upsertAsset` and `addAsset` queries now use `builder` that helps setting new asset's `elements` property. Currently, only `taxonomy` element is supported. You may need to update your syntax to following format: 
+
+```typescript
+    client.addAsset()
+        .withData((builder) => {
+            return {
+                descriptions: [],
+                elements: [
+                   builder.taxonomyElement({
+                    element: {
+                        codename: 'taxonomy-categories'
+                    },
+                    value: [
+                        {
+                            codename: 'coffee'
+                        },
+                        {
+                            codename: 'brewing'
+                        }
+                    ]
+                })
+                ],
+                    file_reference: {
+                        id: 'x',
+                        type: 'internal'
+                    }
+                };
+            })
+        .toPromise();
+```
+
 
 ### Features
 
+* adds support for Environment endpoints
 * adds support for asset rendition endpoints (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/68) ([9e22f6e](https://github.com/Kentico/kontent-management-sdk-js/commit/9e22f6e4167bbe75199f1e7228d79c70ff98bc6c))
 * adds support for taxonomy elements (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/71) ([d8f3f21](https://github.com/Kentico/kontent-management-sdk-js/commit/d8f3f21419050a7335d2fd4e812ac02d7c13a24f))
 * updates deps ([945ad06](https://github.com/Kentico/kontent-management-sdk-js/commit/945ad06e9647414a3f3a7ab1e3c415794e5411df))
