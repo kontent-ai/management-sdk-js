@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.2...v2.1.0) (2022-03-10)
+
+
+### Features
+
+* adds support for asset rendition endpoints (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/68) ([9e22f6e](https://github.com/Kentico/kontent-management-sdk-js/commit/9e22f6e4167bbe75199f1e7228d79c70ff98bc6c))
+* adds support for taxonomy elements (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/71) ([d8f3f21](https://github.com/Kentico/kontent-management-sdk-js/commit/d8f3f21419050a7335d2fd4e812ac02d7c13a24f))
+* updates deps ([945ad06](https://github.com/Kentico/kontent-management-sdk-js/commit/945ad06e9647414a3f3a7ab1e3c415794e5411df))
+
 ### [2.0.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.2-0...v2.0.2) (2022-01-20)
 
 ### [2.0.2-0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.1...v2.0.2-0) (2022-01-20)
