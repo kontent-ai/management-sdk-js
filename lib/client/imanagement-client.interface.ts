@@ -109,6 +109,12 @@ import {
     ViewRoleQuery
 } from '../queries';
 import { IMappingService } from '../services';
+import { GetEnvironmentCloningStateQuery } from '../queries/environments';
+import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
+import { EnvironmentModels } from '../models/environments/environment.models';
+import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
+import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
+import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
@@ -538,4 +544,29 @@ export interface IManagementClient<TCancelToken> {
      * View role
      */
     viewRole(): RoleIdentifierQuery<ViewRoleQuery>;
+
+    /**
+     * Get cloning state of the environment
+     */
+    getEnvironmentCloningState(): GetEnvironmentCloningStateQuery;
+
+    /**
+     * Delete environment
+     */
+    deleteEnvironment(): DeleteEnvironmentQuery;
+
+    /**
+     * Modify environment
+     */
+    modifyEnvironment(): DataQuery<ModifyEnvironmentQuery, EnvironmentModels.IModifyEnvironmentData[]>;
+
+    /**
+     * Clone environment
+     */
+    cloneEnvironment(): DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData>;
+
+    /**
+     * Mark environment as production
+     */
+    markEnvironmentAsProduction(): DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData>;
 }

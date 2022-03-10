@@ -1,0 +1,6 @@
+{
+  "id": "00000000-0000-0000-0000-000000000005",
+  "management_api_key": "managementApiKey",
+  "delivery_preview_api_key": "deliveryPreviewApiKey",
+  "secured_delivery_api_key": "securedDeliveryApiKey"
+}

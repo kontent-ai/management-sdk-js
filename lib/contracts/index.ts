@@ -16,4 +16,4 @@ export * from './collection-contracts';
 export * from './subscription-contracts';
 export * from './role-contracts';
 export * from './project-user-contracts';
-
+export * from './environment-contracts';

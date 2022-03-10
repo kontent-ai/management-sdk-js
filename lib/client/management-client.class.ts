@@ -116,6 +116,12 @@ import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
+import { GetEnvironmentCloningStateQuery } from '../queries/environments';
+import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
+import { EnvironmentModels } from '../models/environments/environment.models';
+import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
+import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
+import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ContentManagementQueryService;
@@ -976,5 +982,34 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                     (nConfig, nQueryService, data) => new ChangeUserRolesQuery(nConfig, nQueryService, identifier, data)
                 )
         );
+    }
+
+    getEnvironmentCloningState(): GetEnvironmentCloningStateQuery {
+        return new GetEnvironmentCloningStateQuery(this.config, this.queryService);
+    }
+
+    deleteEnvironment(): DeleteEnvironmentQuery {
+        return new DeleteEnvironmentQuery(this.config, this.queryService);
+    }
+
+    modifyEnvironment(): DataQuery<ModifyEnvironmentQuery, EnvironmentModels.IModifyEnvironmentData[]> {
+        return new DataQuery<ModifyEnvironmentQuery, EnvironmentModels.IModifyEnvironmentData[]>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new ModifyEnvironmentQuery(config, queryService, data));
+    }
+
+    cloneEnvironment(): DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData> {
+        return new DataQuery<CloneEnvironmentQuery, EnvironmentModels.ICloneEnvironmentData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new CloneEnvironmentQuery(config, queryService, data));
+    }
+
+    markEnvironmentAsProduction(): DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData> {
+        return new DataQuery<MarkEnvironmentAsProductionQuery, EnvironmentModels.IMarkEnvironmentAsProductionData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new MarkEnvironmentAsProductionQuery(config, queryService, data));
     }
 }
