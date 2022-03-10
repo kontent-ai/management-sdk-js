@@ -200,6 +200,7 @@ export namespace ContentTypeElements {
             applies_to: 'words' | 'characters';
         };
         validation_regex?: {
+            is_active: boolean,
             regex: string,
             flags?: string,
             validation_message?: string
