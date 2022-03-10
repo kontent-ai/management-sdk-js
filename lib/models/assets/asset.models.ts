@@ -84,10 +84,10 @@ export namespace AssetModels {
      * Currently only reference to taxonomy terms are supported. In future more elements will be allowed
      */
     export type IAssetElementValueType = IAssetElementData<SharedContracts.IReferenceObjectContract[]>;
-  
+
     export interface IAssetElementData<TValue> {
         element: SharedContracts.IReferenceObjectContract;
-        value: TValue
+        value: TValue;
     }
 
     export interface IAddAssetRequestData {

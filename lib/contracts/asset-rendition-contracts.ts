@@ -1,7 +1,6 @@
-import { SharedContracts } from "./shared-contracts";
+import { SharedContracts } from './shared-contracts';
 
 export namespace AssetRenditionContracts {
-
     export interface IAssetRenditionContract {
         rendition_id: string;
         asset_id: string;
@@ -11,10 +10,10 @@ export namespace AssetRenditionContracts {
     }
 
     export interface IAssetRenditionTransformationContract {
-        mode: 'rect',
-        fit: 'clip',
-        custom_width?: number,
-        custom_height?: number,
+        mode: 'rect';
+        fit: 'clip';
+        custom_width?: number;
+        custom_height?: number;
         x: number;
         y: number;
         width: number;
@@ -26,13 +25,9 @@ export namespace AssetRenditionContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IAddAssetRenditionResponseContract extends IAssetRenditionContract {
-    }
+    export interface IAddAssetRenditionResponseContract extends IAssetRenditionContract {}
 
-    export interface IModifyAssetRenditionResponseContract extends IAssetRenditionContract {
-    }
+    export interface IModifyAssetRenditionResponseContract extends IAssetRenditionContract {}
 
-    export interface IViewRenditionResponseContract extends IAssetRenditionContract {
-    }
-
+    export interface IViewRenditionResponseContract extends IAssetRenditionContract {}
 }
