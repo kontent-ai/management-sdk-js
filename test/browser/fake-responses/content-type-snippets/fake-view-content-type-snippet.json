@@ -9,14 +9,16 @@
       "guidelines": "Length: 30–60 characters",
       "type": "text",
       "id": "09398b24-61ed-512e-5b5c-affd54a098e5",
-      "codename": "meta_title"
+      "codename": "meta_title",
+      "is_non_localizable": false
     },
     {
       "name": "Meta description",
       "guidelines": "Length: 70–150 characters",
       "type": "text",
       "id": "2e555cc1-1eae-520c-189e-28548904f529",
-      "codename": "meta_description"
+      "codename": "meta_description",
+      "is_non_localizable": false
     }
   ]
 }

@@ -11,7 +11,8 @@
             "guidelines": "",
             "type": "text",
             "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
-            "codename": "video_id"
+            "codename": "video_id",
+            "is_non_localizable": true
           }
         ]
       },
@@ -25,28 +26,32 @@
             "guidelines": "",
             "type": "guidelines",
             "id": "9367da14-3d08-4ed1-4841-24bf8055f916",
-            "codename": "n9367da14_3d08_4ed1_4841_24bf8055f916"
+            "codename": "n9367da14_3d08_4ed1_4841_24bf8055f916",
+            "is_non_localizable": false
           },
           {
             "name": "Hero unit",
             "guidelines": "Assign 1 Hero unit that has been prepared for a home page. ",
             "type": "modular_content",
             "id": "2b15a8f3-2e5f-7d01-4d8e-5b22e222aa76",
-            "codename": "hero_unit"
+            "codename": "hero_unit",
+            "is_non_localizable": false
           },
           {
             "name": "Articles",
             "guidelines": "Assign all articles which should be displayed on the home page.",
             "type": "modular_content",
             "id": "222f3a69-a54f-3e92-83ac-05f8a08e667f",
-            "codename": "articles"
+            "codename": "articles",
+            "is_non_localizable": false
           },
           {
             "name": "Our story",
             "guidelines": "Assign 1 Fact about us which will be displayed on the home page.",
             "type": "modular_content",
             "id": "617bccc0-4844-4beb-4ede-6247e954633a",
-            "codename": "our_story"
+            "codename": "our_story",
+            "is_non_localizable": false
           },
           {
             "snippet": {
@@ -54,7 +59,8 @@
             },
             "type": "snippet",
             "id": "255d6748-ba3a-1b59-af5c-afd4a7d6cb4f",
-            "codename": "metadata"
+            "codename": "metadata",
+            "is_non_localizable": false
           }
         ]
       }

@@ -9,7 +9,8 @@
       "guidelines": "Here you can tell users how to fill in the element.",
       "type": "text",
       "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
-      "codename": "my_text_element"
+      "codename": "my_text_element",
+      "is_non_localizable": false
     },
     {
       "mode": "multiple",
@@ -30,7 +31,8 @@
       "type": "multiple_choice",
       "id": "87924912-4861-aa84-176a-1eae7b22529b",
       "codename": "my_multiple_choice_element",
-      "external_id": "my-multiple-choice-id"
+      "external_id": "my-multiple-choice-id",
+      "is_non_localizable": true
     },
     {
       "name": "My title",
@@ -38,7 +40,8 @@
       "type": "text",
       "external_id": "my-title-id",
       "id": "eacf283d-7e60-57b9-a68e-91180bfebb6d",
-      "codename": "my_title"
+      "codename": "my_title",
+      "is_non_localizable": false
     }
   ]
 }
