@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.1.0...v2.2.0) (2022-03-17)
+
+
+### Features
+
+* adds is_non_localizable property to type elements ([5ef6096](https://github.com/Kentico/kontent-management-sdk-js/commit/5ef609646ae258dd3746dbdc6b60efc918d166e1))
+
 ## [2.1.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.0.2...v2.1.0) (2022-03-10)
 
 ### New add / upsert asset query syntax
