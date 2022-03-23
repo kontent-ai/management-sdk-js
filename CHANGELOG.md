@@ -2,6 +2,88 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v0.4.3...v3.0.0) (2022-03-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* Adds support for Subscription API (subscription projects & users), updates client configuration by separating management & subscription endpoints (renames 'apiKey' to 'managementApiKey')
+* refactors library await from rjx (removes all observable related features), adds support for cancelling request via cancel tokens
+
+### Features
+
+* adds 'cancel scheduled unpublish' endpoint support ([9860c1b](https://github.com/Kentico/kontent-management-sdk-js/commit/9860c1bd346ac7b52d46deafcd5abf4502474716))
+* adds environment to project information (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/49) ([3b49ccf](https://github.com/Kentico/kontent-management-sdk-js/commit/3b49ccf5b3dea4ec0c6b8299e7d99bc2904ca4ff))
+* adds ESM module exports ([8d34486](https://github.com/Kentico/kontent-management-sdk-js/commit/8d344863d708258d08b288a856d8e1af7ddd0db8))
+* adds guidelines to taxonomy element data model ([9f436cd](https://github.com/Kentico/kontent-management-sdk-js/commit/9f436cd4d2c085acb6b7b83822a4183e76df70ed))
+* adds is_non_localizable property to type elements ([5ef6096](https://github.com/Kentico/kontent-management-sdk-js/commit/5ef609646ae258dd3746dbdc6b60efc918d166e1))
+* Adds management client factory and updates docs to use it ([14aa84e](https://github.com/Kentico/kontent-management-sdk-js/commit/14aa84eda137f940662dc152aa858478b57c380f))
+* adds mode & searchableValue to variant element model and contract ([13d9b84](https://github.com/Kentico/kontent-management-sdk-js/commit/13d9b84ac36663a3689dbd9f6ea19c5293d10247))
+* adds support for asset rendition endpoints (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/68) ([9e22f6e](https://github.com/Kentico/kontent-management-sdk-js/commit/9e22f6e4167bbe75199f1e7228d79c70ff98bc6c))
+* adds support for codename in workflow related endpoints & queries (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/35) ([98f1ddf](https://github.com/Kentico/kontent-management-sdk-js/commit/98f1ddf020663beb325759fba10ed9f175c0dda8))
+* adds support for constructing edit urls (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/10) ([ba2fc2e](https://github.com/Kentico/kontent-management-sdk-js/commit/ba2fc2e5949bcba840b69e72cd928ec3719ea29a))
+* adds support for creating & updating collections ([db2a1d2](https://github.com/Kentico/kontent-management-sdk-js/commit/db2a1d2ea3e2ee7d8a904d64ce4472c32e0d4fc7))
+* adds support for enabling / disabling webhooks ([485cfe0](https://github.com/Kentico/kontent-management-sdk-js/commit/485cfe0da81c435958fc39359a4485261a1285d3))
+* adds support for listing collections ([01bcc2b](https://github.com/Kentico/kontent-management-sdk-js/commit/01bcc2b1e38a4554b437cae0505f228b5cbb8538))
+* adds support for listing language variants by collection ([f12a877](https://github.com/Kentico/kontent-management-sdk-js/commit/f12a877d392f984c0e2c3eb1d675581e7706e69b))
+* Adds support for listing project roles ([1aae040](https://github.com/Kentico/kontent-management-sdk-js/commit/1aae040bccbd049f4d757ae045de96be587877ec))
+* adds support for new unpublish / schedule unpublish endpoint & removes deprecated unpublish endpoint (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/28) ([4da0b6b](https://github.com/Kentico/kontent-management-sdk-js/commit/4da0b6b646e21899cc19c892e40e5f23474d487b))
+* Adds support for project user endpoints ([abe35f9](https://github.com/Kentico/kontent-management-sdk-js/commit/abe35f9ba890229e4902901d48f939d3f85cc820))
+* adds support for subpages element & uses type in favor of enum for some models ([5713d8f](https://github.com/Kentico/kontent-management-sdk-js/commit/5713d8f5ae75023040dd2d0b60dc7d7b77c0755f))
+* Adds support for Subscription API (subscription projects & users), updates client configuration by separating management & subscription endpoints (renames 'apiKey' to 'managementApiKey') ([e43ccc3](https://github.com/Kentico/kontent-management-sdk-js/commit/e43ccc3f3221cdc5f75ca2697988a9c70dc2e6d5))
+* adds support for taxonomy 'term_count_limit' option (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/48) ([f19aae4](https://github.com/Kentico/kontent-management-sdk-js/commit/f19aae46acfee855d8a3edccd918647685af3cfb))
+* adds support for taxonomy elements (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/71) ([d8f3f21](https://github.com/Kentico/kontent-management-sdk-js/commit/d8f3f21419050a7335d2fd4e812ac02d7c13a24f))
+* adds support for uploading assets & binary files from url (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/18), adds automatic mime type detection support ([d54a0b8](https://github.com/Kentico/kontent-management-sdk-js/commit/d54a0b8ab94d411056bccb194a87fcd19bf86592))
+* Adds support for view role ([acb653c](https://github.com/Kentico/kontent-management-sdk-js/commit/acb653c58a4f867faf0ad3c6a692bf3d3562273e))
+* adds types support for content type elements (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/46) ([01f7c82](https://github.com/Kentico/kontent-management-sdk-js/commit/01f7c8225ac318b41a6d40b9acc98bb6733f34e9))
+* adds url encoding tests & changes name of internal base query props ([6413d3f](https://github.com/Kentico/kontent-management-sdk-js/commit/6413d3f8696d2ff2008b6f916557abd5e9deb1e3))
+* adds validation_regex support for text element ([ac81a48](https://github.com/Kentico/kontent-management-sdk-js/commit/ac81a48e910e8efc74b020540a00fe555397364d))
+* improves types for element builders ([0c076c6](https://github.com/Kentico/kontent-management-sdk-js/commit/0c076c60bf5ce06e2b6e6a874435962b73529d96))
+* refactors library await from rjx (removes all observable related features), adds support for cancelling request via cancel tokens ([01b0d71](https://github.com/Kentico/kontent-management-sdk-js/commit/01b0d713911a8c784c927c1fb30a3ddf02b9310e))
+* removes 'isDeveloperMode' config property as its not utilized anymore ([986cc40](https://github.com/Kentico/kontent-management-sdk-js/commit/986cc408984601da3db4e2cd9dc6c7e480909eab))
+* removes "_" from dist folder names ([079c1f6](https://github.com/Kentico/kontent-management-sdk-js/commit/079c1f6156a1f70a4409a229c8ea4b35680a804f))
+* removes unnecessary builder code by extending content type snippet builder ([728a5e1](https://github.com/Kentico/kontent-management-sdk-js/commit/728a5e1b37b46314eba7ff04d73bdab53b05a8dc))
+* simplifies scripts & update dependencies ([b948be5](https://github.com/Kentico/kontent-management-sdk-js/commit/b948be5dab88398dc1f9b7bed9e40ff307e2ff19))
+* unifies publish / unpublish naming convention, removes unsused query models ([cc78e90](https://github.com/Kentico/kontent-management-sdk-js/commit/cc78e90829e0e7b9b378ced4e4684908230ff510))
+* updates all dependencies ([6b2e7c1](https://github.com/Kentico/kontent-management-sdk-js/commit/6b2e7c14721131a0e917faba7d7962e234856f4d))
+* updates all dependencies to latest versions ([4bc7fcd](https://github.com/Kentico/kontent-management-sdk-js/commit/4bc7fcda2e2dbe29977418b9128ce1c1eb975315))
+* updates all dependencies, uses axios models directly instead of proxy models ([53837e1](https://github.com/Kentico/kontent-management-sdk-js/commit/53837e1cf64635d827b0407af6f5e5892cb35925))
+* updates dependencies ([391b29b](https://github.com/Kentico/kontent-management-sdk-js/commit/391b29b610b004bd225d016a70277fa482896688))
+* updates dependencies ([93b80c7](https://github.com/Kentico/kontent-management-sdk-js/commit/93b80c719d52750f1bff5f110535b356b7c3179d))
+* updates dependencies ([4031f16](https://github.com/Kentico/kontent-management-sdk-js/commit/4031f162efe4a74c019717bd396656b5e6d7721b))
+* updates dependencies ([bdde42c](https://github.com/Kentico/kontent-management-sdk-js/commit/bdde42cc9bc27139efecc57622d466abfa6dd523))
+* updates deps ([5f4f394](https://github.com/Kentico/kontent-management-sdk-js/commit/5f4f3946169f87bd8b3326a686936ebf16ec444d))
+* updates deps ([945ad06](https://github.com/Kentico/kontent-management-sdk-js/commit/945ad06e9647414a3f3a7ab1e3c415794e5411df))
+* updates deps ([1d0a095](https://github.com/Kentico/kontent-management-sdk-js/commit/1d0a0958e1fa3f3ea73f5080818a810a6c4d5bef))
+* updates deps ([1144509](https://github.com/Kentico/kontent-management-sdk-js/commit/1144509873cb8a3e059b716d6d28708b1ef92c74))
+* updates deps ([e306ba6](https://github.com/Kentico/kontent-management-sdk-js/commit/e306ba6c80973f90380d51280a39c7d3df4e6f87))
+* updates deps ([43e857c](https://github.com/Kentico/kontent-management-sdk-js/commit/43e857c3576930680f46537e160c16e95c43c088))
+* updates deps ([6123ea0](https://github.com/Kentico/kontent-management-sdk-js/commit/6123ea087eda96364b1f4903e1d8c394ec5c9b36))
+* updates deps ([fe0778d](https://github.com/Kentico/kontent-management-sdk-js/commit/fe0778d4a673fa113bdb790965062d1754c5e948))
+* updates deps (fixes retry strategy) ([946f864](https://github.com/Kentico/kontent-management-sdk-js/commit/946f86438a0f4ebce6e3e607ef5237eb189c33ae))
+* updates deps, refactors build process to use dist folder and more output formats, unifies tests under test folder ([7c5bf5b](https://github.com/Kentico/kontent-management-sdk-js/commit/7c5bf5be3dfbaa00c79d854b00cc97da76f08ea3))
+* updates kontent-core dependency to v9 ([dd25dd4](https://github.com/Kentico/kontent-management-sdk-js/commit/dd25dd431d76f11104eb057b734942ce5a927af3))
+* use 'mime' npm instead of 'mime-type' due to browser compatibility support ([2200b73](https://github.com/Kentico/kontent-management-sdk-js/commit/2200b73155110d21f8d5a1e49d45da8e5f3f58e8))
+* Uses list query for taxonomy list endpoint and removes temporary taxonomy response included due to a breaking change in API some time ago ([827279d](https://github.com/Kentico/kontent-management-sdk-js/commit/827279d07d5a29bee6e047fd8fcb62217b6ea998))
+
+
+### Bug Fixes
+
+* adds 'content_group' to all elements via 'IElementInContentType' data contract (fixes  https://github.com/Kentico/kontent-management-sdk-js/issues/44) ([c5d5deb](https://github.com/Kentico/kontent-management-sdk-js/commit/c5d5deb1279a091d43979906cb0479112d37d07f))
+* adds 'id' property to component rich text model (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/50) ([e038feb](https://github.com/Kentico/kontent-management-sdk-js/commit/e038feb1467637498307dacf92f55efba500585d))
+* adds missing 'codename' to content group contract interface for creating new content type (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/45) ([3930dca](https://github.com/Kentico/kontent-management-sdk-js/commit/3930dcab5ee5e266c99497beff7a9a56544a6ea9))
+* Correct the generic `get()` HTTP method ([65946d8](https://github.com/Kentico/kontent-management-sdk-js/commit/65946d8dea3ab7903ceb88a50afa3b7b74d98c35))
+* fixes cjs folder name ([d470214](https://github.com/Kentico/kontent-management-sdk-js/commit/d470214401188a9bc08c851cbe3a839cf6cf5acc))
+* fixes commonjs folder output ([5abf59f](https://github.com/Kentico/kontent-management-sdk-js/commit/5abf59f170b17cd7f5a3a0afbf535f2afb896c6a))
+* fixes contract for 'type' in 'UpsertContentItem' query (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/39) ([a9e72ab](https://github.com/Kentico/kontent-management-sdk-js/commit/a9e72abfdff7d7c6ec08637216e29563ea7aff5a))
+* Fixes generic query HTTP method type ([696d4ee](https://github.com/Kentico/kontent-management-sdk-js/commit/696d4ee4bdf72ec4639b4c4950be52866743c280))
+* fixes package.json entry modules ([0fa0176](https://github.com/Kentico/kontent-management-sdk-js/commit/0fa01762cdda432611be3cff4a36236bfc3e2f20))
+* fixes scripts & cuts prerelease ([3c25601](https://github.com/Kentico/kontent-management-sdk-js/commit/3c256011b82a5a8fbfa16f303a3ce78e10c12225))
+* makes 'item_count_limit' optional (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/29) ([826a0eb](https://github.com/Kentico/kontent-management-sdk-js/commit/826a0ebfc4156f99d64c961e9edc3bcf35b3f21f))
+* Return `urlSlugElement()` to elements builder ([41e63c2](https://github.com/Kentico/kontent-management-sdk-js/commit/41e63c2b6ae818ed495869a8bf805f0cc78fccb5))
+* uses correct query identifier for upsert content item query ([6079c04](https://github.com/Kentico/kontent-management-sdk-js/commit/6079c0496f5088ef510afc9aa2f47dd3b2ef057f))
+* uses proper contract class for ContentItemElement (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/42) ([bf97efb](https://github.com/Kentico/kontent-management-sdk-js/commit/bf97efbe9c235fea6845d9a03884584dcaeecead))
+
 ## [2.2.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.1.0...v2.2.0) (2022-03-17)
 
 
