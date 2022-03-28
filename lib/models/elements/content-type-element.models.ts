@@ -270,6 +270,7 @@ export namespace ContentTypeElements {
     export interface IUrlSlugElement extends IElementWithId, IUrlSlugElementData {}
 
     export type ContentTypeElementModel =
+        | IAssetElement
         | ICustomElement
         | IDateTimeElement
         | IGuidelinesElement
