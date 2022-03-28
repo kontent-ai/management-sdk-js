@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.2.0...v2.4.0) (2022-03-28)
+
+
+### Features
+
+* updates deps ([5f4f394](https://github.com/Kentico/kontent-management-sdk-js/commit/5f4f3946169f87bd8b3326a686936ebf16ec444d))
+
+
+### Bug Fixes
+
+* Adds missing IAssetElement to ContentTypeElementModel type ([12f9a9e](https://github.com/Kentico/kontent-management-sdk-js/commit/12f9a9eb018c8f5c6c8417e4c748ef3ab40359b0))
+
 ## [2.3.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.2.0...v2.3.0) (2022-03-23)
 
 
