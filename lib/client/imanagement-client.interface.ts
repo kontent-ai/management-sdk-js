@@ -203,6 +203,18 @@ export interface IManagementClient<TCancelToken> {
     addWorkflow(): DataQuery<AddWorkflowQuery, WorkflowModels.IAddWorkflowData>;
 
     /**
+     * @deprecated The method should not be used anymore. Use 'changeWorkflowLanguageVariant' instead
+     */
+    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
+    >;
+
+    /**
+     * @deprecated The method should not be used anymore. Use 'listWorkflows' instead
+     */
+    listWorkflowSteps(): ListWorkflowStepsQuery;
+
+    /**
      * Cancel scheduled unpublishing of the specified language variant.
      */
     cancelSheduledUnpublishingOfLanguageVariant(): ContentItemIdentifierQuery<
@@ -217,13 +229,6 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
-     * Change the workflow of the specified language variant to the specified workflow step. Equivalent to the UI operation of updating workflow.
-     */
-    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
-    >;
-
-    /**
      * Change the workflow step of the specified language variant to "Published" or schedule publishing at the specified time.
      */
     publishLanguageVariant(): ContentItemIdentifierQuery<
@@ -231,11 +236,6 @@ export interface IManagementClient<TCancelToken> {
             DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>
         >
     >;
-
-    /**
-     * Query to list all workflow steps in project
-     */
-    listWorkflowSteps(): ListWorkflowStepsQuery;
 
     /**
      * Query to view content type snippet
