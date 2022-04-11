@@ -113,7 +113,12 @@ import {
     AddAssetRenditionQuery,
     ModifyAssetRenditionQuery,
     RenditionIdentifierQuery,
-    ViewAssetRenditionQuery
+    ViewAssetRenditionQuery,
+    ChangeWorkflowOfLanguageOrVariantQuery,
+    ListWorkflowsQuery,
+    WorkflowIdentifierQuery,
+    DeleteWorkflowQuery,
+    AddWorkflowQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -172,6 +177,30 @@ export interface IManagementClient<TCancelToken> {
             DataQueryOptional<UnpublishLanguageVariantQuery, WorkflowModels.IUnpublishLanguageVarianthData>
         >
     >;
+
+    /**
+     * The Management API ignores the workflow transition limitations present in the UI. This means you can change the workflow step of the language variant from any step to any other step excluding Published or Scheduled.
+     */
+    changeWorkflowLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
+        >
+    >;
+
+    /**
+     * Lists all workflows in projects
+     */
+    listWorkflows(): ListWorkflowsQuery;
+
+    /**
+     * Deletes an unused workflow from your project.
+     */
+    deleteWorkflow(): WorkflowIdentifierQuery<DeleteWorkflowQuery>;
+
+    /**
+     * Create a new workflow.
+     */
+    addWorkflow(): DataQuery<AddWorkflowQuery, WorkflowModels.IAddWorkflowData>;
 
     /**
      * Cancel scheduled unpublishing of the specified language variant.
@@ -330,7 +359,9 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to upsert an asset from uploaded binary file
      */
-    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>>;
+    upsertAsset(): AssetIdentifierQuery<
+        DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>
+    >;
 
     /**
      * Query to add an asset from uploaded binary file

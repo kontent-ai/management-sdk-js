@@ -3,12 +3,40 @@ import { WorkflowModels } from '../../models';
 import { BaseResponses } from '../base-responses';
 
 export namespace WorkflowResponses {
-
-    export class ListWorkflowStepsResponse extends BaseResponses.BaseContentManagementResponse<WorkflowContracts.IListWorkflowStepsResponseContract, WorkflowModels.WorkflowStep[]>  {
+    export class ListWorkflowStepsResponse extends BaseResponses.BaseContentManagementResponse<
+        WorkflowContracts.IListWorkflowStepsResponseContract,
+        WorkflowModels.WorkflowStep[]
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: WorkflowContracts.IListWorkflowStepsResponseContract,
             data: WorkflowModels.WorkflowStep[]
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class ListWorkflowsResponse extends BaseResponses.BaseContentManagementResponse<
+        WorkflowContracts.IListWorkflowsResponseContract,
+        WorkflowModels.Workflow[]
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: WorkflowContracts.IListWorkflowsResponseContract,
+            data: WorkflowModels.Workflow[]
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class AddWorkflowResponse extends BaseResponses.BaseContentManagementResponse<
+        WorkflowContracts.IAddWorkflowContract,
+        WorkflowModels.Workflow
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: WorkflowContracts.IAddWorkflowContract,
+            data: WorkflowModels.Workflow
         ) {
             super(debug, rawData, data);
         }

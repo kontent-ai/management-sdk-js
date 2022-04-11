@@ -59,6 +59,25 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/workflow`;
     }
 
+    listWorkflows(): string {
+        return `${this.getProjectPath()}/workflows`;
+    }
+
+    addWorkflow(): string {
+        return `${this.getProjectPath()}/workflows`;
+    }
+
+    deleteWorkflow(identifier: Identifiers.WorkflowIdentifier): string {
+        return `${this.getProjectPath()}/workflows/${identifier.getParamValue()}`;
+    }
+
+    changeWorkflowOfLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier,
+    ): string {
+        return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/change-workflow`;
+    }
+
     listContentTypeSnippets(): string {
         return `${this.getProjectPath()}/snippets`;
     }
