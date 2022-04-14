@@ -38,7 +38,7 @@
   },
   "scripts": {
     "release:beta": "standard-version --prerelease",
-    "release": "standard-version",
+    "release": "npm run ts-lint:check && standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
