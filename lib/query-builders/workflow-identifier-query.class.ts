@@ -15,7 +15,7 @@ export class WorkflowIdentifierQuery<TResult> {
 
     /**
      * Id identifier
-     * @param id If of the workflow 
+     * @param id If of the workflow
      */
     byWorkflowId(id: string): TResult {
         return this.buildResult(
@@ -27,7 +27,7 @@ export class WorkflowIdentifierQuery<TResult> {
 
     /**
      * Codename identifier
-     * @param codename codename of the workflow 
+     * @param codename codename of the workflow
      */
     byWorkflowCodename(codename: string): TResult {
         return this.buildResult(
