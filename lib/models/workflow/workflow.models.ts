@@ -1,10 +1,8 @@
 import { SharedModels } from '../shared/shared-models';
-import { WorkflowContracts } from '../../contracts';
+import { SharedContracts, WorkflowContracts } from '../../contracts';
 
 export namespace WorkflowModels {
-
     export class WorkflowStep implements SharedModels.IBaseModel<WorkflowContracts.IWorkflowStepContract> {
-
         public id!: string;
         public name!: string;
         public codename!: string;
@@ -12,11 +10,35 @@ export namespace WorkflowModels {
         public _raw!: WorkflowContracts.IWorkflowStepContract;
 
         constructor(data: {
-            id: string,
-            name: string,
+            id: string;
+            name: string;
             codename: string;
-            transitionsTo: string[],
-            _raw: WorkflowContracts.IWorkflowStepContract
+            transitionsTo: string[];
+            _raw: WorkflowContracts.IWorkflowStepContract;
+        }) {
+            Object.assign(this, data);
+        }
+    }
+
+    export class Workflow implements SharedModels.IBaseModel<WorkflowContracts.IWorkflowContract> {
+        public id!: string;
+        public name!: string;
+        public codename!: string;
+        public scopes!: WorkflowContracts.IWorkflowScopeContract[];
+        public steps!: WorkflowContracts.IWorkflowStepNewContract[];
+        public publishedStep!: WorkflowContracts.IWorkflowPublishedStepContract;
+        public archivedStep!: WorkflowContracts.IWorkflowArchivedStepContract;
+        public _raw!: WorkflowContracts.IWorkflowContract;
+
+        constructor(data: {
+            id: string;
+            name: string;
+            codename: string;
+            scopes: WorkflowContracts.IWorkflowScopeContract[];
+            steps: WorkflowContracts.IWorkflowStepNewContract[];
+            publishedStep: WorkflowContracts.IWorkflowPublishedStepContract;
+            archivedStep: WorkflowContracts.IWorkflowArchivedStepContract;
+            _raw: WorkflowContracts.IWorkflowContract;
         }) {
             Object.assign(this, data);
         }
@@ -38,4 +60,62 @@ export namespace WorkflowModels {
         scheduled_to?: string;
     }
 
+    export interface IChangeWorkflowOfLanguageVariantData {
+        workflow_identifier: {
+            id?: string;
+            codename?: string;
+        };
+        step_identifier: SharedContracts.IReferenceObjectContract;
+    }
+
+    export type WorkflowColor =
+        | 'gray'
+        | 'red'
+        | 'rose'
+        | 'light-purple'
+        | 'dark-purple'
+        | 'dark-blue'
+        | 'light-blue'
+        | 'sky-blue'
+        | 'mint-green'
+        | 'persian-green'
+        | 'dark-green'
+        | 'light-green'
+        | 'yellow'
+        | 'pink'
+        | 'orange'
+        | 'brown';
+
+    export interface IAddWorkflowData {
+        name: string;
+        codename?: string;
+        scopes: {
+            content_types: SharedContracts.IReferenceObjectContract[];
+        }[];
+        steps: {
+            name: string;
+            codename: string;
+            color: WorkflowColor;
+            transitions_to: {
+                step: {
+                    id?: string;
+                    codename?: string;
+                };
+            }[];
+            role_ids: string[];
+        }[];
+        published_step: {
+            id?: string;
+            name?: string;
+            codename?: string;
+            create_new_version_role_ids?: string[];
+            unpublish_role_ids?: string[];
+        };
+        archived_step: {
+            id?: string;
+            name?: string;
+            codename?: string;
+            role_ids?: string[];
+        };
+    }
 }

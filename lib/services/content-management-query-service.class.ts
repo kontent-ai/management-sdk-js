@@ -195,12 +195,48 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
+    async changeWorkflowOfLanguageVariant(
+        url: string,
+        data: WorkflowModels.IChangeWorkflowOfLanguageVariantData,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
+    }
+
     async listWorkflowSteps(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WorkflowResponses.ListWorkflowStepsResponse> {
         return workflowMapper.mapListWorkflowStepsResponse(
             await this.getResponseAsync<WorkflowContracts.IListWorkflowStepsResponseContract>(url, {}, config)
+        );
+    }
+
+    async listWorkflows(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<WorkflowResponses.ListWorkflowsResponse> {
+        return workflowMapper.mapListWorkflowsResponse(
+            await this.getResponseAsync<WorkflowContracts.IListWorkflowsResponseContract>(url, {}, config)
+        );
+    }
+
+    async addWorkflow(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: WorkflowModels.IAddWorkflowData
+    ): Promise<WorkflowResponses.AddWorkflowResponse> {
+        return workflowMapper.mapAddWorkflowResponse(
+            await this.postResponseAsync<WorkflowContracts.IAddWorkflowContract>(url, data, {}, config)
+        );
+    }
+
+    async deleteWorkflow(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return webhookMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<BaseResponses.EmptyContentManagementResponse>(url, {}, config)
         );
     }
 

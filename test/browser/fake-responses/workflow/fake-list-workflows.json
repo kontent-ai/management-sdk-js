@@ -1,0 +1,63 @@
+[
+  {
+    "id": "0928a73c-39a6-4dd0-bac2-4d5d88bc1b54",
+    "name": "My workflow",
+    "codename": "my_workflow",
+    "scopes": [
+      {
+        "content_types": [
+          {
+            "id": "3f367e4f-75b7-4b48-be3b-1136bbaf1f53"
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "id": "16221cc2-bd22-4414-a513-f3e555c0fc93",
+        "name": "Draft",
+        "codename": "draft",
+        "color": "red",
+        "transitions_to": [
+          {
+            "step": {
+              "id": "13145328-b946-4e47-9c9d-6f40c7aaeaef"
+            }
+          },
+          {
+            "step": {
+              "id": "7a535a69-ad34-47f8-806a-def1fdf4d391"
+            }
+          },
+          {
+            "step": {
+              "id": "b4363ccd-8f21-45fd-a840-5843d7b7f008"
+            }
+          }
+        ],
+        "role_ids": [
+          "d761b25c-f7cf-4977-9c45-3c92d6562233"
+        ]
+      }
+    ],
+    "published_step": {
+      "id": "c199950d-99f0-4983-b711-6c4c91624b22",
+      "name": "Published",
+      "codename": "published",
+      "unpublish_role_ids": [
+        "d761b25c-f7cf-4977-9c45-3c92d6562233"
+      ],
+      "create_new_version_role_ids": [
+        "d761b25c-f7cf-4977-9c45-3c92d6562233"
+      ]
+    },
+    "archived_step": {
+      "id": "7a535a69-ad34-47f8-806a-def1fdf4d391",
+      "name": "Archived",
+      "codename": "archived",
+      "role_ids": [
+        "d761b25c-f7cf-4977-9c45-3c92d6562233"
+      ]
+    }
+  }
+]

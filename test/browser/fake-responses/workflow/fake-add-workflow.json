@@ -1,0 +1,61 @@
+{
+  "id": "705c3bd8-29c6-466c-b42b-6c6c3887786e",
+  "name": "My workflow",
+  "codename": "my_workflow",
+  "scopes": [
+    {
+      "content_types": [
+        {
+          "id": "1aeb9220-f167-4f8e-a7db-1bfec365fa80"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "2044477d-36aa-4ad5-91de-eaa2927ab173",
+      "name": "First step",
+      "codename": "first_step",
+      "color": "sky-blue",
+      "transitions_to": [
+        {
+          "step": {
+            "id": "c236dedd-a216-47fa-b0c0-0ea33877f357"
+          }
+        }
+      ],
+      "role_ids": []
+    },
+    {
+      "id": "c236dedd-a216-47fa-b0c0-0ea33877f357",
+      "name": "Second step",
+      "codename": "second_step",
+      "color": "rose",
+      "transitions_to": [
+        {
+          "step": {
+            "id": "c199950d-99f0-4983-b711-6c4c91624b22"
+          }
+        }
+      ],
+      "role_ids": [
+        "e796887c-38a1-4ab2-a999-c40861bb7a4b"
+      ]
+    }
+  ],
+  "published_step": {
+    "id": "c199950d-99f0-4983-b711-6c4c91624b22",
+    "name": "Published",
+    "codename": "published",
+    "unpublish_role_ids": [
+      "e796887c-38a1-4ab2-a999-c40861bb7a4b"
+    ],
+    "create_new_version_role_ids": []
+  },
+  "archived_step": {
+    "id": "7a535a69-ad34-47f8-806a-def1fdf4d391",
+    "name": "Archived",
+    "codename": "archived",
+    "role_ids": []
+  }
+}

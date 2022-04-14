@@ -113,7 +113,12 @@ import {
     AddAssetRenditionQuery,
     ModifyAssetRenditionQuery,
     RenditionIdentifierQuery,
-    ViewAssetRenditionQuery
+    ViewAssetRenditionQuery,
+    ChangeWorkflowOfLanguageOrVariantQuery,
+    ListWorkflowsQuery,
+    WorkflowIdentifierQuery,
+    DeleteWorkflowQuery,
+    AddWorkflowQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -174,6 +179,42 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
+     * The Management API ignores the workflow transition limitations present in the UI. This means you can change the workflow step of the language variant from any step to any other step excluding Published or Scheduled.
+     */
+    changeWorkflowLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
+        >
+    >;
+
+    /**
+     * Lists all workflows in projects
+     */
+    listWorkflows(): ListWorkflowsQuery;
+
+    /**
+     * Deletes an unused workflow from your project.
+     */
+    deleteWorkflow(): WorkflowIdentifierQuery<DeleteWorkflowQuery>;
+
+    /**
+     * Create a new workflow.
+     */
+    addWorkflow(): DataQuery<AddWorkflowQuery, WorkflowModels.IAddWorkflowData>;
+
+    /**
+     * @deprecated The method should not be used anymore. Use 'changeWorkflowLanguageVariant' instead
+     */
+    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
+    >;
+
+    /**
+     * @deprecated The method should not be used anymore. Use 'listWorkflows' instead
+     */
+    listWorkflowSteps(): ListWorkflowStepsQuery;
+
+    /**
      * Cancel scheduled unpublishing of the specified language variant.
      */
     cancelSheduledUnpublishingOfLanguageVariant(): ContentItemIdentifierQuery<
@@ -188,13 +229,6 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
-     * Change the workflow of the specified language variant to the specified workflow step. Equivalent to the UI operation of updating workflow.
-     */
-    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
-    >;
-
-    /**
      * Change the workflow step of the specified language variant to "Published" or schedule publishing at the specified time.
      */
     publishLanguageVariant(): ContentItemIdentifierQuery<
@@ -202,11 +236,6 @@ export interface IManagementClient<TCancelToken> {
             DataQueryOptional<PublishLanguageVariantQuery, WorkflowModels.IPublishLanguageVariantData>
         >
     >;
-
-    /**
-     * Query to list all workflow steps in project
-     */
-    listWorkflowSteps(): ListWorkflowStepsQuery;
 
     /**
      * Query to view content type snippet
@@ -330,7 +359,9 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to upsert an asset from uploaded binary file
      */
-    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>>;
+    upsertAsset(): AssetIdentifierQuery<
+        DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>
+    >;
 
     /**
      * Query to add an asset from uploaded binary file

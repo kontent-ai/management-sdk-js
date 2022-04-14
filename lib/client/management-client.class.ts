@@ -117,7 +117,12 @@ import {
     ModifyAssetRenditionQuery,
     AddAssetRenditionQuery,
     RenditionIdentifierQuery,
-    ViewAssetRenditionQuery
+    ViewAssetRenditionQuery,
+    ChangeWorkflowOfLanguageOrVariantQuery,
+    ListWorkflowsQuery,
+    WorkflowIdentifierQuery,
+    DeleteWorkflowQuery,
+    AddWorkflowQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -344,6 +349,64 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                             }
                         )
                 )
+        );
+    }
+
+    changeWorkflowLanguageVariant(): ContentItemIdentifierQuery<
+        LanguageIdAndCodenameIdentifierQuery<
+            DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
+        >
+    > {
+        return new ContentItemIdentifierQuery<
+            LanguageIdAndCodenameIdentifierQuery<
+                DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
+            >
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, contentItemIdentifier) =>
+                new LanguageIdAndCodenameIdentifierQuery<
+                    DataQuery<
+                        ChangeWorkflowOfLanguageOrVariantQuery,
+                        WorkflowModels.IChangeWorkflowOfLanguageVariantData
+                    >
+                >(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, languageIdentifier) =>
+                        new DataQuery<
+                            ChangeWorkflowOfLanguageOrVariantQuery,
+                            WorkflowModels.IChangeWorkflowOfLanguageVariantData
+                        >(nConfig, nQueryService, (mConfig, mQueryservice, data) => {
+                            return new ChangeWorkflowOfLanguageOrVariantQuery(
+                                config,
+                                queryService,
+                                contentItemIdentifier,
+                                languageIdentifier,
+                                data
+                            );
+                        })
+                )
+        );
+    }
+
+    listWorkflows(): ListWorkflowsQuery {
+        return new ListWorkflowsQuery(this.config, this.queryService);
+    }
+
+    deleteWorkflow(): WorkflowIdentifierQuery<DeleteWorkflowQuery> {
+        return new WorkflowIdentifierQuery<DeleteWorkflowQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new DeleteWorkflowQuery(config, queryService, identifier)
+        );
+    }
+
+    addWorkflow(): DataQuery<AddWorkflowQuery, WorkflowModels.IAddWorkflowData> {
+        return new DataQuery<AddWorkflowQuery, WorkflowModels.IAddWorkflowData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new AddWorkflowQuery(config, queryService, data)
         );
     }
 
@@ -702,8 +765,12 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    upsertAsset(): AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>> {
-        return new AssetIdentifierQuery<DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>>(
+    upsertAsset(): AssetIdentifierQuery<
+        DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>
+    > {
+        return new AssetIdentifierQuery<
+            DataQuery<UpsertAssetQuery, (builder: AssetElementsBuilder) => AssetModels.IUpsertAssetRequestData>
+        >(
             this.config,
             this.queryService,
             (config, queryService, identifier) =>
