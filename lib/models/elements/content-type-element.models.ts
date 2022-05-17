@@ -161,6 +161,7 @@ export namespace ContentTypeElements {
         };
         maximum_image_size?: number;
         allowed_content_types?: SharedContracts.IReferenceObjectContract[];
+        allowed_item_link_types?: SharedContracts.IReferenceObjectContract[];
         image_width_limit?: {
             value: number;
             condition: RichTextImageCondition;
