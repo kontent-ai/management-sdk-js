@@ -98,6 +98,39 @@ export namespace WorkflowModels {
             color: WorkflowColor;
             transitions_to: {
                 step: {
+                    codename?: string;
+                };
+            }[];
+            role_ids: string[];
+        }[];
+        published_step: {
+            id?: string;
+            name?: string;
+            codename?: string;
+            create_new_version_role_ids?: string[];
+            unpublish_role_ids?: string[];
+        };
+        archived_step: {
+            id?: string;
+            name?: string;
+            codename?: string;
+            role_ids?: string[];
+        };
+    }
+
+    export interface IUpdateWorkflowData {
+        name: string;
+        codename?: string;
+        scopes: {
+            content_types: SharedContracts.IReferenceObjectContract[];
+        }[];
+        steps: {
+            id?: string;
+            name: string;
+            codename: string;
+            color: WorkflowColor;
+            transitions_to: {
+                step: {
                     id?: string;
                     codename?: string;
                 };

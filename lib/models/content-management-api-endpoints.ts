@@ -67,6 +67,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/workflows`;
     }
 
+    updateWorkflow(workflowIdentifier: Identifiers.WorkflowIdentifier): string {
+        return `${this.getProjectPath()}/workflows/${workflowIdentifier.getParamValue()}`;
+    }
+
     deleteWorkflow(identifier: Identifiers.WorkflowIdentifier): string {
         return `${this.getProjectPath()}/workflows/${identifier.getParamValue()}`;
     }

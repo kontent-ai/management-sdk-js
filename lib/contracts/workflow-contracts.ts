@@ -14,6 +14,8 @@ export namespace WorkflowContracts {
 
     export type IAddWorkflowContract = IWorkflowContract;
 
+    export type IUpdateWorkflowContract = IWorkflowContract;
+
     export interface IWorkflowScopeContract {
         content_types: SharedContracts.IReferenceObjectContract[];
     }

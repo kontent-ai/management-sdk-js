@@ -2,11 +2,12 @@ import { WorkflowResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/workflow/fake-add-workflow.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-describe('Add workflow', () => {
-    let response: WorkflowResponses.AddWorkflowResponse;
+describe('Update workflow', () => {
+    let response: WorkflowResponses.UpdateWorkflowResponse;
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson)
-            .addWorkflow()
+            .updateWorkflow()
+            .byWorkflowCodename('xx')
             .withData({
                 name: 'My workflow',
                 scopes: [
@@ -26,7 +27,7 @@ describe('Add workflow', () => {
                         transitions_to: [
                             {
                                 step: {
-                                    codename: 'x'
+                                    codename: 'y'
                                 }
                             }
                         ],
@@ -38,7 +39,9 @@ describe('Add workflow', () => {
                         color: 'rose',
                         transitions_to: [
                             {
-                                step: {}
+                                step: {
+                                    id: 'y'
+                                }
                             }
                         ],
                         role_ids: ['e796887c-38a1-4ab2-a999-c40861bb7a4b']
@@ -56,15 +59,24 @@ describe('Add workflow', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
-            .addWorkflow()
+        const urlByCodename = cmLiveClient
+            .updateWorkflow()
+            .byWorkflowCodename('x')
             .withData({} as any)
             .getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/workflows`);
+
+        const urlById = cmLiveClient
+            .updateWorkflow()
+            .byWorkflowId('x')
+            .withData({} as any)
+            .getUrl();
+
+        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/workflows/codename/x`);
+        expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/workflows/x`);
     });
 
-    it(`response should be instance of AddWorkflowResponse class`, () => {
-        expect(response).toEqual(jasmine.any(WorkflowResponses.AddWorkflowResponse));
+    it(`response should be instance of UpdateWorkflowResponse class`, () => {
+        expect(response).toEqual(jasmine.any(WorkflowResponses.UpdateWorkflowResponse));
     });
 
     it(`response should contain debug data`, () => {

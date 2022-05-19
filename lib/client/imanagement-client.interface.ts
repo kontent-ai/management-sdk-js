@@ -118,7 +118,8 @@ import {
     ListWorkflowsQuery,
     WorkflowIdentifierQuery,
     DeleteWorkflowQuery,
-    AddWorkflowQuery
+    AddWorkflowQuery,
+    UpdateWorkflowQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -196,6 +197,11 @@ export interface IManagementClient<TCancelToken> {
      * Deletes an unused workflow from your project.
      */
     deleteWorkflow(): WorkflowIdentifierQuery<DeleteWorkflowQuery>;
+
+    /**
+     * Updates workflow
+     */
+    updateWorkflow(): WorkflowIdentifierQuery<DataQuery<UpdateWorkflowQuery, WorkflowModels.IUpdateWorkflowData>>;
 
     /**
      * Create a new workflow.

@@ -41,4 +41,17 @@ export namespace WorkflowResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class UpdateWorkflowResponse extends BaseResponses.BaseContentManagementResponse<
+        WorkflowContracts.IUpdateWorkflowContract,
+        WorkflowModels.Workflow
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: WorkflowContracts.IUpdateWorkflowContract,
+            data: WorkflowModels.Workflow
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

@@ -8,5 +8,6 @@ export * from './cancel-scheduled-unpublishing-of-language-variant-query.class';
 export * from './list-workflows-query.class';
 export * from './add-workflow-query.class';
 export * from './delete-workflow-query.class';
+export * from './update-workflow-query.class';
 export * from './change-workflow-of-language-variant-query.class';
 

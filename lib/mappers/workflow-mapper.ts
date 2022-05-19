@@ -36,6 +36,16 @@ export class WorkflowMapper extends BaseMapper {
         );
     }
 
+    mapUpdateWorkflowResponse(
+        response: IResponse<WorkflowContracts.IUpdateWorkflowContract>
+    ): WorkflowResponses.UpdateWorkflowResponse {
+        return new WorkflowResponses.UpdateWorkflowResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapWorkflow(response.data)
+        );
+    }
+
     mapWorkflowStep(rawStep: WorkflowContracts.IWorkflowStepContract): WorkflowModels.WorkflowStep {
         return new WorkflowModels.WorkflowStep({
             id: rawStep.id,

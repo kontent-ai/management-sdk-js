@@ -122,7 +122,8 @@ import {
     ListWorkflowsQuery,
     WorkflowIdentifierQuery,
     DeleteWorkflowQuery,
-    AddWorkflowQuery
+    AddWorkflowQuery,
+    UpdateWorkflowQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -407,6 +408,19 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.config,
             this.queryService,
             (config, queryService, data) => new AddWorkflowQuery(config, queryService, data)
+        );
+    }
+
+    updateWorkflow(): WorkflowIdentifierQuery<DataQuery<UpdateWorkflowQuery, WorkflowModels.IUpdateWorkflowData>> {
+        return new WorkflowIdentifierQuery<DataQuery<UpdateWorkflowQuery, WorkflowModels.IUpdateWorkflowData>>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<UpdateWorkflowQuery, WorkflowModels.IUpdateWorkflowData>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new UpdateWorkflowQuery(nConfig, nQueryService, data, identifier)
+                )
         );
     }
 

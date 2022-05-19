@@ -231,6 +231,16 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async updateWorkflow(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: WorkflowModels.IUpdateWorkflowData
+    ): Promise<WorkflowResponses.AddWorkflowResponse> {
+        return workflowMapper.mapUpdateWorkflowResponse(
+            await this.postResponseAsync<WorkflowContracts.IUpdateWorkflowContract>(url, data, {}, config)
+        );
+    }
+
     async deleteWorkflow(
         url: string,
         config: IContentManagementQueryConfig
