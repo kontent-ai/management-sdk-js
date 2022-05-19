@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.5.0...v2.6.0) (2022-05-19)
+
+
+### Features
+
+* Adds support for 'Update workflow' query (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/78) ([c98fb2e](https://github.com/Kentico/kontent-management-sdk-js/commit/c98fb2efda5a840a36a0b14a00d876f00fef5202))
+* Adds support for allowed link types ([2fc7689](https://github.com/Kentico/kontent-management-sdk-js/commit/2fc768933b47d47c346412028ddb920be26af04d))
+* updates dependencies ([2686a9b](https://github.com/Kentico/kontent-management-sdk-js/commit/2686a9b64001f69198e8833788ccc5195c2a5b80))
+
 ## [2.5.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.4.0...v2.5.0) (2022-04-14)
 
 
