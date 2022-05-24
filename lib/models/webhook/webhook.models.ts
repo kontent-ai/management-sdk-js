@@ -8,10 +8,10 @@ export namespace WebhookModels {
         url: string;
         enabled?: boolean;
         triggers: {
-            delivery_api_content_changes: WebhookContracts.IWebhookDeliveryApiContentChangesContract[];
-            preview_delivery_api_content_changes: WebhookContracts.IWebhookDeliveryApiContentChangesContract[];
-            workflow_step_changes: WebhookContracts.IWebhookWorkflowStepChangesContract[];
-            management_api_content_changes: WebhookContracts.IWebhookManagementApiContentChangesContract[];
+            delivery_api_content_changes?: WebhookContracts.IWebhookDeliveryApiContentChangesContract[];
+            preview_delivery_api_content_changes?: WebhookContracts.IWebhookDeliveryApiContentChangesContract[];
+            workflow_step_changes?: WebhookContracts.IWebhookWorkflowStepChangesContract[];
+            management_api_content_changes?: WebhookContracts.IWebhookManagementApiContentChangesContract[];
         };
     }
 

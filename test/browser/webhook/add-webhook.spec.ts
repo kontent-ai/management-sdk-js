@@ -27,6 +27,18 @@ describe('Add webhook', () => {
                             ],
                             type: 'content_item_variant'
                         }
+                    ],
+                    management_api_content_changes: [
+                        {
+                            operations: ['create'],
+                            type: 'content_item_variant'
+                        }
+                    ],
+                    preview_delivery_api_content_changes: [
+                        {
+                            operations: ['archive', 'unpublish'],
+                            type: 'taxonomy'
+                        }
                     ]
                 },
                 url: 's'
