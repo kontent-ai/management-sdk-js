@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.6.0...v2.7.0) (2022-05-24)
+
+
+### Features
+
+* adds additional properties to add webhook model ([3426c7f](https://github.com/Kentico/kontent-management-sdk-js/commit/3426c7ff642d45a5fa11a18209d33809da47bbbc))
+
+
+### Bug Fixes
+
+* makes webhook triggers optional ([fc83181](https://github.com/Kentico/kontent-management-sdk-js/commit/fc8318124a5ade9604022217cdd5d1a0a6cc927a))
+
 ## [2.6.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.5.0...v2.6.0) (2022-05-19)
 
 
