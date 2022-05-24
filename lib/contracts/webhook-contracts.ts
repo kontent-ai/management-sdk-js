@@ -9,9 +9,16 @@ export namespace WebhookContracts {
 
     export type WebhookWorkflowStepOperationContract = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
 
+    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
+
     export interface IWebhookWorkflowStepChangesContract {
         type: 'content_item_variant';
         transitions_to: IWebhookTransitionsToContract[];
+    }
+
+    export interface IWebhookManagementApiContentChangesContract {
+        type: 'content_item_variant';
+        operations: WebhookManagementContentChangesOperations[];
     }
 
     export interface IWebhookDeliveryApiContentChangesContract {
