@@ -89,9 +89,9 @@ export namespace ContentTypeElements {
         external_id?: string;
         default?: {
             global?: {
-                value: 'string'
-            }
-        }
+                value: 'string';
+            };
+        };
     }
 
     export interface IGuidelinesElementData extends IElementShared {
@@ -150,8 +150,8 @@ export namespace ContentTypeElements {
         default?: {
             global?: {
                 value: SharedContracts.IReferenceObjectContract[];
-            }
-        }
+            };
+        };
     }
 
     export interface INumberElementData extends IElementShared {
@@ -164,9 +164,9 @@ export namespace ContentTypeElements {
         guidelines?: string;
         default?: {
             global?: {
-                value: number
-            }
-        }
+                value: number;
+            };
+        };
     }
 
     export interface IRichTextElementData extends IElementShared {
@@ -216,8 +216,8 @@ export namespace ContentTypeElements {
         default?: {
             global?: {
                 value: SharedContracts.IReferenceObjectContract[];
-            }
-        }
+            };
+        };
     }
 
     export interface ITextElementData extends IElementShared {
@@ -234,14 +234,14 @@ export namespace ContentTypeElements {
         };
         default?: {
             global?: {
-                value: string
-            }
-        }
+                value: string;
+            };
+        };
         validation_regex?: {
-            is_active: boolean,
-            regex: string,
-            flags?: string,
-            validation_message?: string
+            is_active: boolean;
+            regex: string;
+            flags?: string;
+            validation_message?: string;
         };
     }
 
@@ -258,10 +258,10 @@ export namespace ContentTypeElements {
         external_id?: string;
         guidelines?: string;
         validation_regex?: {
-            is_active: boolean,
-            regex: string,
-            flags?: string,
-            validation_message?: string
+            is_active: boolean;
+            regex: string;
+            flags?: string;
+            validation_message?: string;
         };
     }
 
