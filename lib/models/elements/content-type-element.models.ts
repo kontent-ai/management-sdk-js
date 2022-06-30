@@ -87,6 +87,11 @@ export namespace ContentTypeElements {
         guidelines?: string;
         codename?: string;
         external_id?: string;
+        default?: {
+            global?: {
+                value: 'string'
+            }
+        }
     }
 
     export interface IGuidelinesElementData extends IElementShared {
@@ -142,6 +147,11 @@ export namespace ContentTypeElements {
         external_id?: string;
         guidelines?: string;
         codename?: string;
+        default?: {
+            global?: {
+                value: SharedContracts.IReferenceObjectContract[];
+            }
+        }
     }
 
     export interface INumberElementData extends IElementShared {
@@ -152,6 +162,11 @@ export namespace ContentTypeElements {
         codename?: string;
         external_id?: string;
         guidelines?: string;
+        default?: {
+            global?: {
+                value: number
+            }
+        }
     }
 
     export interface IRichTextElementData extends IElementShared {
@@ -198,6 +213,11 @@ export namespace ContentTypeElements {
             value: number;
             condition: 'at_most' | 'exactly' | 'at_least';
         };
+        default?: {
+            global?: {
+                value: SharedContracts.IReferenceObjectContract[];
+            }
+        }
     }
 
     export interface ITextElementData extends IElementShared {
@@ -212,6 +232,11 @@ export namespace ContentTypeElements {
             value: number;
             applies_to: 'words' | 'characters';
         };
+        default?: {
+            global?: {
+                value: string
+            }
+        }
         validation_regex?: {
             is_active: boolean,
             regex: string,

@@ -23,11 +23,23 @@ describe('Add content type', () => {
                             name: 'title',
                             type: 'text',
                             is_non_localizable: true,
+                            default: {
+                                global: {
+                                    value: 'default value'
+                                }
+                            }
                         }),
                         builder.taxonomyElement({
                             type: 'taxonomy',
                             taxonomy_group: {
                                 codename: 'xTaxonomyCodename'
+                            },
+                            default: {
+                                global: {
+                                    value: [{
+                                        codename: 'yx'
+                                    }]
+                                }
                             },
                             is_required: true,
                             term_count_limit: {
