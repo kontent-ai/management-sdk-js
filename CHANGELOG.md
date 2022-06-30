@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.3.0...v2.8.0) (2022-06-30)
+
+
+### Features
+
+* adds additional properties to add webhook model ([3426c7f](https://github.com/Kentico/kontent-management-sdk-js/commit/3426c7ff642d45a5fa11a18209d33809da47bbbc))
+* Adds support for 'Update workflow' query (fixes https://github.com/Kentico/kontent-management-sdk-js/issues/78) ([c98fb2e](https://github.com/Kentico/kontent-management-sdk-js/commit/c98fb2efda5a840a36a0b14a00d876f00fef5202))
+* Adds support for allowed link types ([2fc7689](https://github.com/Kentico/kontent-management-sdk-js/commit/2fc768933b47d47c346412028ddb920be26af04d))
+* Adds support for default values in text, taxonomy, date time, multiple choice and number elements ([eb22c57](https://github.com/Kentico/kontent-management-sdk-js/commit/eb22c577d7e93c242c14c4f1c8b6cabb2b874dec))
+* Implements new workflow endpoints (https://github.com/Kentico/kontent-management-sdk-js/issues/74) ([2931924](https://github.com/Kentico/kontent-management-sdk-js/commit/29319246bde19dc841e49f343b8e2c31bbf88e86))
+* updates all dev dependencies ([24a8c89](https://github.com/Kentico/kontent-management-sdk-js/commit/24a8c895ed2bd6dba8cac392f1ae3f86a25f9f4e))
+* updates dependencies ([2686a9b](https://github.com/Kentico/kontent-management-sdk-js/commit/2686a9b64001f69198e8833788ccc5195c2a5b80))
+* updates dev dependencies ([447de8d](https://github.com/Kentico/kontent-management-sdk-js/commit/447de8d68c2c6f24fb9744b226b416aab19b7991))
+
+
+### Bug Fixes
+
+* Adds missing IAssetElement to ContentTypeElementModel type ([12f9a9e](https://github.com/Kentico/kontent-management-sdk-js/commit/12f9a9eb018c8f5c6c8417e4c748ef3ab40359b0))
+* makes webhook triggers optional ([fc83181](https://github.com/Kentico/kontent-management-sdk-js/commit/fc8318124a5ade9604022217cdd5d1a0a6cc927a))
+
 ## [2.7.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.6.0...v2.7.0) (2022-05-24)
 
 
