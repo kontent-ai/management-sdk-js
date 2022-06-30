@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.7.0...v2.8.0) (2022-06-30)
+
+
+### Features
+
+* Adds support for default values in text, taxonomy, date time, multiple choice and number elements ([eb22c57](https://github.com/Kentico/kontent-management-sdk-js/commit/eb22c577d7e93c242c14c4f1c8b6cabb2b874dec))
+* updates all dev dependencies ([24a8c89](https://github.com/Kentico/kontent-management-sdk-js/commit/24a8c895ed2bd6dba8cac392f1ae3f86a25f9f4e))
+
 ## [2.7.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.6.0...v2.7.0) (2022-05-24)
 
 
