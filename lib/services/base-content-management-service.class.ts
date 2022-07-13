@@ -129,7 +129,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
         config: IContentManagementQueryConfig
     ): Promise<IResponse<TRawData>> {
         try {
-            return this.httpService.postAsync<TRawData>(
+            return await this.httpService.postAsync<TRawData>(
                 {
                     url: url,
                     body: body
@@ -137,7 +137,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
                 {
                     cancelToken: config.cancelTokenRequest,
                     retryStrategy: this.config.retryStrategy,
-                    headers: this.getHeaders( config),
+                    headers: this.getHeaders(config),
                     responseType:
                         internalConfig && internalConfig.responseType ? internalConfig.responseType : undefined
                 }
