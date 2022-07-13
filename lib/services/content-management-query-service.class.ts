@@ -237,7 +237,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         data: WorkflowModels.IUpdateWorkflowData
     ): Promise<WorkflowResponses.AddWorkflowResponse> {
         return workflowMapper.mapUpdateWorkflowResponse(
-            await this.postResponseAsync<WorkflowContracts.IUpdateWorkflowContract>(url, data, {}, config)
+            await this.putResponseAsync<WorkflowContracts.IUpdateWorkflowContract>(url, data, {}, config)
         );
     }
 
