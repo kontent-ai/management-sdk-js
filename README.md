@@ -174,7 +174,7 @@ cancelTokenRequest.cancel('Request manually cancelled');
 
 Following is a sample scenario consisting of:
 
-1. Inicializing client
+1. Initializing client
 2. Getting default language of project
 3. Creating new taxonomy with terms
 4. Creating new content type
@@ -182,7 +182,7 @@ Following is a sample scenario consisting of:
 6. Creating binary file & asset from URL
 7. Upserting language variant of the newly created content item in default language
 
-#### Inicializing client
+#### Initializing client
 
 ```typescript 
 import { createManagementClient } from '@kentico/kontent-management';
