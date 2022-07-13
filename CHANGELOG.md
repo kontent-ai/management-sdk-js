@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.9.0...v2.9.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* Handle errors where 'error_code'  is equal to '0' ([3ef7fa0](https://github.com/Kentico/kontent-management-sdk-js/commit/3ef7fa0c6d1790cbd1f0590568eb6e67b2f26c73))
+
 ## [2.9.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.7.0...v2.9.0) (2022-07-13)
 
 
