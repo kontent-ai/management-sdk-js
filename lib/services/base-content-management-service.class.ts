@@ -242,30 +242,31 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
 
         const cmError = axiosError.response?.data as SharedContracts.IContentManagementError;
 
-        if (!cmError || !cmError.error_code) {
-            return error;
+        if (cmError?.error_code || cmError?.request_id) {
+            const validationErrors: SharedModels.ValidationError[] = [];
+
+            if (cmError.validation_errors) {
+                validationErrors.push(
+                    ...cmError.validation_errors.map(
+                        (validationErrorRaw) =>
+                            new SharedModels.ValidationError({
+                                message: validationErrorRaw.message
+                            })
+                    )
+                );
+            }
+
+            return new SharedModels.ContentManagementBaseKontentError({
+                errorCode: cmError.error_code,
+                message: cmError.message,
+                originalError: error,
+                requestId: cmError.request_id,
+                validationErrors: validationErrors
+            });
         }
 
-        const validationErrors: SharedModels.ValidationError[] = [];
+        return error;
 
-        if (cmError.validation_errors) {
-            validationErrors.push(
-                ...cmError.validation_errors.map(
-                    (validationErrorRaw) =>
-                        new SharedModels.ValidationError({
-                            message: validationErrorRaw.message
-                        })
-                )
-            );
-        }
-
-        return new SharedModels.ContentManagementBaseKontentError({
-            errorCode: cmError.error_code,
-            message: cmError.message,
-            originalError: error,
-            requestId: cmError.request_id,
-            validationErrors: validationErrors
-        });
     }
 
     /**
