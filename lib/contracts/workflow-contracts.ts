@@ -8,6 +8,24 @@ export namespace WorkflowContracts {
         transitions_to: string[];
     }
 
+    export type WorkflowColor =
+    | 'gray'
+    | 'red'
+    | 'rose'
+    | 'light-purple'
+    | 'dark-purple'
+    | 'dark-blue'
+    | 'light-blue'
+    | 'sky-blue'
+    | 'mint-green'
+    | 'persian-green'
+    | 'dark-green'
+    | 'light-green'
+    | 'yellow'
+    | 'pink'
+    | 'orange'
+    | 'brown';
+
     export type IListWorkflowStepsResponseContract = IWorkflowStepContract[];
 
     export type IListWorkflowsResponseContract = IWorkflowContract[];
@@ -43,7 +61,7 @@ export namespace WorkflowContracts {
         id: string;
         name: string;
         codename: string;
-        color: string;
+        color: WorkflowColor;
         transitions_to: IWorkflowStepTransitionsToContract[];
         role_ids: string[];
     }

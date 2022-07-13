@@ -68,24 +68,6 @@ export namespace WorkflowModels {
         step_identifier: SharedContracts.IReferenceObjectContract;
     }
 
-    export type WorkflowColor =
-        | 'gray'
-        | 'red'
-        | 'rose'
-        | 'light-purple'
-        | 'dark-purple'
-        | 'dark-blue'
-        | 'light-blue'
-        | 'sky-blue'
-        | 'mint-green'
-        | 'persian-green'
-        | 'dark-green'
-        | 'light-green'
-        | 'yellow'
-        | 'pink'
-        | 'orange'
-        | 'brown';
-
     export interface IAddWorkflowData {
         name: string;
         codename?: string;
@@ -95,7 +77,7 @@ export namespace WorkflowModels {
         steps: {
             name: string;
             codename: string;
-            color: WorkflowColor;
+            color: WorkflowContracts.WorkflowColor;
             transitions_to: {
                 step: {
                     codename?: string;
@@ -128,7 +110,7 @@ export namespace WorkflowModels {
             id?: string;
             name: string;
             codename: string;
-            color: WorkflowColor;
+            color: WorkflowContracts.WorkflowColor;
             transitions_to: {
                 step: {
                     id?: string;

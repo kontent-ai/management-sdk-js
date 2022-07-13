@@ -42,7 +42,7 @@ describe('List workflows', () => {
             expect(workflow.id).toEqual(originalItem.id);
             expect(workflow.publishedStep).toEqual(originalItem.published_step);
             expect(workflow.scopes).toEqual(originalItem.scopes);
-            expect(workflow.steps).toEqual(originalItem.steps);
+            expect(workflow.steps).toEqual(originalItem.steps  as any);
         }
     });
 });
