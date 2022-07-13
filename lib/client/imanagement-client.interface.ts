@@ -182,7 +182,7 @@ export interface IManagementClient<TCancelToken> {
     /**
      * The Management API ignores the workflow transition limitations present in the UI. This means you can change the workflow step of the language variant from any step to any other step excluding Published or Scheduled.
      */
-    changeWorkflowLanguageVariant(): ContentItemIdentifierQuery<
+    changeWorkflowOfLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
         >

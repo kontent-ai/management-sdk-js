@@ -353,7 +353,7 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    changeWorkflowLanguageVariant(): ContentItemIdentifierQuery<
+    changeWorkflowOfLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
         >

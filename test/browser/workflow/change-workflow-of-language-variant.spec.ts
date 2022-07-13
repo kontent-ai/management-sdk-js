@@ -6,7 +6,7 @@ describe('Change workflow of language variant', () => {
 
     beforeAll(async () => {
         response = await getTestClientWithJson(undefined)
-            .changeWorkflowLanguageVariant()
+            .changeWorkflowOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withData({
@@ -22,7 +22,7 @@ describe('Change workflow of language variant', () => {
 
     it(`url should be correct`, () => {
         const w1Url = cmLiveClient
-            .changeWorkflowLanguageVariant()
+            .changeWorkflowOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withData({
@@ -35,7 +35,7 @@ describe('Change workflow of language variant', () => {
             })
             .getUrl();
         const w2Url = cmLiveClient
-            .changeWorkflowLanguageVariant()
+            .changeWorkflowOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withData({
