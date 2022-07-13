@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.7.0...v2.9.0) (2022-07-13)
+
+
+### Features
+
+* Adds support for default values in text, taxonomy, date time, multiple choice and number elements ([eb22c57](https://github.com/Kentico/kontent-management-sdk-js/commit/eb22c577d7e93c242c14c4f1c8b6cabb2b874dec))
+* Moves WorkflowColor to WorkflowContracts and uses it for contracts as well as in models ([f6ef3cc](https://github.com/Kentico/kontent-management-sdk-js/commit/f6ef3cca74656681e2fd5238c3583447dbe94fb8))
+* Renames 'changeWorkflowLanguageVariant' to 'changeWorkflowOfLanguageVariant' ([2a77dee](https://github.com/Kentico/kontent-management-sdk-js/commit/2a77deef8444316da2696775cac8d301c59e27dc))
+* updates all dev dependencies ([24a8c89](https://github.com/Kentico/kontent-management-sdk-js/commit/24a8c895ed2bd6dba8cac392f1ae3f86a25f9f4e))
+
+
+### Bug Fixes
+
+* Adds missing 'await' in post query ([d2a4c69](https://github.com/Kentico/kontent-management-sdk-js/commit/d2a4c692c966400ce91e01e34c577c689fd963d2))
+
 ## [2.8.0](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.7.0...v2.8.0) (2022-06-30)
 
 
