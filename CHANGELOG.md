@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.2](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.9.1...v2.9.2) (2022-07-13)
+
+
+### Bug Fixes
+
+* Use PUT request for update workflow query ([7e49a58](https://github.com/Kentico/kontent-management-sdk-js/commit/7e49a58e13733a3720806713a1b53e3b4d7d4a16))
+
 ### [2.9.1](https://github.com/Kentico/kontent-management-sdk-js/compare/v2.9.0...v2.9.1) (2022-07-13)
 
 
