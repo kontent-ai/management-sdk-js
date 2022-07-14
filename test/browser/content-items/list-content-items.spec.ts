@@ -1,7 +1,7 @@
 import { ContentItemResponses } from '../../../lib';
 import * as listingResponseJson from '../fake-responses/content-items/fake-list-content-items.json';
 import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
-import { IHeader } from '@kentico/kontent-core';
+import { IHeader } from '@kontent-ai/core-sdk';
 
 describe('List content items', () => {
     let response: ContentItemResponses.ContentItemsResponse;

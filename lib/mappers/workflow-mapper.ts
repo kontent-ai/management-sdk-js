@@ -1,4 +1,4 @@
-import { IResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kontent-ai/core-sdk';
 
 import { WorkflowContracts } from '../contracts/workflow-contracts';
 import { WorkflowModels } from '../models';

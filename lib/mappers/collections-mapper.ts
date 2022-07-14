@@ -1,4 +1,4 @@
-import { IResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kontent-ai/core-sdk';
 
 import { CollectionContracts } from '../contracts';
 import { CollectionModels } from '../models';

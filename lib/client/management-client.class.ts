@@ -1,4 +1,4 @@
-import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kentico/kontent-core';
+import { HttpService, IHttpCancelRequestToken, IHttpService } from '@kontent-ai/core-sdk';
 import {
     AssetElementsBuilder,
     AssetRenditionModels,

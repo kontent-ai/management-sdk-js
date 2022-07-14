@@ -1,7 +1,7 @@
 
-import { ISDKInfo } from '@kentico/kontent-core';
+import { ISDKInfo } from '@kontent-ai/core-sdk';
 export const sdkInfo: ISDKInfo = {
     host: 'npmjs.com',
-    version: '2.9.2',
-    name: '@kentico/kontent-management'
+    version: '3.0.0-0',
+    name: '@kontent-ai/management-sdk'
 };

@@ -1,4 +1,4 @@
-import { IQueryParameter, Parameters, IHeader, IHttpCancelRequestToken } from '@kentico/kontent-core';
+import { IQueryParameter, Parameters, IHeader, IHttpCancelRequestToken } from '@kontent-ai/core-sdk';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { ContentManagementApiEndpoints, IContentManagementQueryConfig } from '../models';

@@ -1,4 +1,4 @@
-import { IResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kontent-ai/core-sdk';
 import { WebhookContracts } from '../contracts/webhook-contracts';
 import { WebhookModels } from '../models/webhook/webhook.models';
 import { WebhookResponses } from '../responses';

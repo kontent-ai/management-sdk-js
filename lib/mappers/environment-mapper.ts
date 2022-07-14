@@ -1,5 +1,5 @@
 import { BaseMapper } from './base-mapper';
-import { IResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kontent-ai/core-sdk';
 import { EnvironmentContracts } from '../contracts';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
 import { EnvironmentModels } from '../models/environments/environment.models';

@@ -1,4 +1,4 @@
-import { IHttpCancelRequestToken } from '@kentico/kontent-core';
+import { IHttpCancelRequestToken } from '@kontent-ai/core-sdk';
 import { ContentItemContracts } from '../contracts';
 import {
     AssetElementsBuilder,

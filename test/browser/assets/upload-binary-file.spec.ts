@@ -1,7 +1,7 @@
 import { AssetResponses } from '../../../lib';
 import * as uploadBinaryResponseJson from '../fake-responses/assets/fake-upload-binary-file.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
-import { IHeader } from '@kentico/kontent-core';
+import { IHeader } from '@kontent-ai/core-sdk';
 
 describe('Upload binary file', () => {
     let response: AssetResponses.UploadBinaryFileResponse;

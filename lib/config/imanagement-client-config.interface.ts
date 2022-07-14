@@ -1,4 +1,4 @@
-import { IHttpService, IRetryStrategyOptions } from '@kentico/kontent-core';
+import { IHttpService, IRetryStrategyOptions } from '@kontent-ai/core-sdk';
 import { IContentManagementListQueryConfig } from '../models';
 
 export interface IManagementClientConfig {
@@ -9,12 +9,12 @@ export interface IManagementClientConfig {
      apiKey: string;
 
     /**
-     * Kentico Kontent project id
+     * Kontent.ai project id
      */
     projectId?: string;
 
     /**
-     * Kentico Kontent subscription id
+     * Kontent.ai subscription id
      */
     subscriptionId?: string;
 

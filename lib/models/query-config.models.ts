@@ -1,4 +1,4 @@
-import { IHeader, IHttpCancelRequestToken } from '@kentico/kontent-core';
+import { IHeader, IHttpCancelRequestToken } from '@kontent-ai/core-sdk';
 import { ResponseType } from 'axios';
 
 import { BaseResponses } from '../responses/base-responses';

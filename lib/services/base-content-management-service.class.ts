@@ -6,7 +6,7 @@ import {
     IQueryParameter,
     ISDKInfo,
     urlHelper
-} from '@kentico/kontent-core';
+} from '@kontent-ai/core-sdk';
 import { AxiosError } from 'axios';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';

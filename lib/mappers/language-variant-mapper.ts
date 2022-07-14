@@ -1,4 +1,4 @@
-import { IResponse } from '@kentico/kontent-core';
+import { IResponse } from '@kontent-ai/core-sdk';
 
 import { LanguageVariantContracts } from '../contracts';
 import { LanguageVariantModels } from '../models';

@@ -1,5 +1,5 @@
 import { createManagementClient, ManagementClient } from '../../../lib';
-import { IResponse, TestHttpService } from '@kentico/kontent-core';
+import { IResponse, TestHttpService } from '@kontent-ai/core-sdk';
 
 export const testProjectId: string = 'projectId';
 export const testSubscriptionId: string = 'subscriptionId';
