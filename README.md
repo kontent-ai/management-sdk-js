@@ -6,7 +6,6 @@
 
 [![npm version](https://badge.fury.io/js/%40kontent-ai%2Fmanagement-sdk.svg)](https://badge.fury.io/js/%40kontent-ai%2Fmanagement-sdk)
 [![Build & Test](https://github.com/kontent-ai/management-sdk-js/actions/workflows/integrate.yml/badge.svg)](https://github.com/kontent-ai/management-sdk-js/actions/workflows/integrate.yml)
-[![CircleCI](https://circleci.com/gh/kontent-ai/management-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/kontent-ai/management-sdk-js/tree/master)
 [![npm](https://img.shields.io/npm/dt/@kontent-ai/kontent-management.svg)](https://www.npmjs.com/package/@kontent-ai/management-sdk)
 [![Known Vulnerabilities](https://snyk.io/test/github/kontent-ai/management-sdk-js/badge.svg)](https://snyk.io/test/github/kontent-ai/management-sdk-js)
 [![GitHub license](https://img.shields.io/github/license/kontent-ai/management-sdk-js.svg)](https://github.com/kontent-ai/management-sdk-js)
@@ -371,7 +370,6 @@ const languageVariant = await client
         })
     ])
     .toPromise();
-});
 ```
 
 ### Testing
