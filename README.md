@@ -6,10 +6,10 @@
 
 [![npm version](https://badge.fury.io/js/%40kontent-ai%2Fmanagement-sdk.svg)](https://badge.fury.io/js/%40kontent-ai%2Fmanagement-sdk)
 [![Build & Test](https://github.com/kontent-ai/management-sdk-js/actions/workflows/integrate.yml/badge.svg)](https://github.com/kontent-ai/management-sdk-js/actions/workflows/integrate.yml)
-[![npm](https://img.shields.io/npm/dt/@kontent-ai/kontent-management.svg)](https://www.npmjs.com/package/@kontent-ai/management-sdk)
+[![npm](https://img.shields.io/npm/dt/@kontent-ai/management-sdk.svg)](https://www.npmjs.com/package/@kontent-ai/management-sdk)
 [![Known Vulnerabilities](https://snyk.io/test/github/kontent-ai/management-sdk-js/badge.svg)](https://snyk.io/test/github/kontent-ai/management-sdk-js)
 [![GitHub license](https://img.shields.io/github/license/kontent-ai/management-sdk-js.svg)](https://github.com/kontent-ai/management-sdk-js)
-![Gzip bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kontent-ai/management-sdk/_bundles/kontent-management.umd.min.js?compression=gzip)
+![Gzip bundle](https://img.badgesize.io/https:/cdn.jsdelivr.net/npm/@kontent-ai/management-sdk/dist/bundles/kontent-management.umd.min.js?compression=gzip)
 [![](https://data.jsdelivr.com/v1/package/npm/@kontent-ai/management-sdk/badge)](https://www.jsdelivr.com/package/npm/@kontent-ai/management-sdk)
 
 ## Getting started
