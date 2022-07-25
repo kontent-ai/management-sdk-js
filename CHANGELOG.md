@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/kontent-ai/management-sdk-js/compare/v3.0.0...v3.0.1) (2022-07-25)
+
+
+### Bug Fixes
+
+* Fixes 'uploadAssetFromUrl ' method from never resolving by cloning config and making sure proper headers are used for 'addAsset' method (fixes https://github.com/kontent-ai/management-sdk-js/issues/82) ([c12fa3c](https://github.com/kontent-ai/management-sdk-js/commit/c12fa3ce54cc17fa547e96c8285fc0e72f9d7495))
+
 ## [3.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.0.0-0...v3.0.0) (2022-07-14)
 
 ## [3.0.0-0](https://github.com/kontent-ai/management-sdk-js/compare/v2.9.2...v3.0.0-0) (2022-07-14)
