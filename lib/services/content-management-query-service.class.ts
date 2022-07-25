@@ -591,6 +591,10 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
             );
         }
 
+        // config needs to be cloned as otherwise it would be mutated with invalid
+        // headers in uploadBinaryFile method
+        const configForUploadBinaryFile = JSON.parse(JSON.stringify(config));
+
         // upload binary file
         const uploadedBinaryFileResponse = await this.uploadBinaryFile(
             uploadBinaryFileUrl,
@@ -600,7 +604,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
                 filename: data.binaryFile.filename,
                 contentLength: binaryData.byteLength
             },
-            config
+            configForUploadBinaryFile
         );
 
         // creta asset & assign it to binary file
