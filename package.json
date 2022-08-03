@@ -10,8 +10,9 @@
   "license": "MIT",
   "description": "Official Kontent.ai management SDK",
   "keywords": [
+    "Kontent.ai",
     "Kontent Management",
-    "Kontent.AI Management",
+    "Kontent.ai Management",
     "Kontent SDK",
     "Kontent Management API"
   ],

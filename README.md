@@ -1,4 +1,4 @@
-# Kontent Management Javascript SDK
+# Kontent.ai Management Javascript SDK
 
 > Javascript SDK for the
 > [Management API](https://kontent.ai/learn/reference/kontent-apis-overview/#content-management-api-v2). Helps you manage
@@ -65,7 +65,7 @@ variable.
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Kontent management | jsdelivr cdn</title>
+        <title>Kontent.ai management | jsdelivr cdn</title>
         <script src="https://cdn.jsdelivr.net/npm/@kontent-ai/management-sdk/dist/bundles/kontent-management.umd.min.js"></script>
     </head>
     <body>

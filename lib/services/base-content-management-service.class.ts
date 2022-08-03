@@ -208,7 +208,7 @@ export abstract class BaseContentManagementQueryService<TCancelToken> {
     }
 
     protected async getBinaryDataFromUrlAsync(url: string): Promise<ArrayBuffer> {
-        // temp fix for Kontent Repository not validating url
+        // temp fix for repository not validating url
         url = url.replace('#', '%23');
 
         const response = await this.httpService.getAsync<ArrayBuffer>(

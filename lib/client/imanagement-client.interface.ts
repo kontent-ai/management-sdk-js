@@ -575,7 +575,7 @@ export interface IManagementClient<TCancelToken> {
     listRoles(): ListRolesQuery;
 
     /**
-     * Invites specified user to Kontent project
+     * Invites specified user to Kontent.ai project
      */
     inviteUser(): DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData>;
 
