@@ -3,14 +3,14 @@
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
 import { BaseResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class CancelScheduledPublishingOfLanguageVariantQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {
 
   constructor(
     protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService,
+    protected queryService: ManagementQueryService,
     public contentItemIdentifier: Identifiers.ContentItemIdentifier,
     public languageIdentifier: Identifiers.LanguageIdentifier,
   ) {
@@ -18,7 +18,7 @@ export class CancelScheduledPublishingOfLanguageVariantQuery extends BaseQuery<B
   }
 
   toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
-    return this.queryService.cancelScheduledPublishingOfLanguageVariant(this.getUrl(), this.queryConfig);
+    return this.queryService.cancelScheduledPublishingOfLanguageVariantAsync(this.getUrl(), this.queryConfig);
   }
 
   protected getAction(): string {

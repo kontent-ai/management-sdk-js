@@ -1,18 +1,18 @@
 import { IManagementClientConfig } from '../../config';
 import { TaxonomyResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
 export class ListTaxonomiesQuery extends BaseListingQuery<
     TaxonomyResponses.TaxonomyListResponse,
     TaxonomyResponses.ListAllTaxonomiesResponse
 > {
-    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
+    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
         super(config, queryService);
     }
 
     toPromise(): Promise<TaxonomyResponses.TaxonomyListResponse> {
-        return this.queryService.listTaxonomies(this.getUrl(), this.queryConfig);
+        return this.queryService.listTaxonomiesAsync(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {

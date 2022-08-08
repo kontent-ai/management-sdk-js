@@ -4,14 +4,14 @@ import { IManagementClientConfig } from '../../config';
 import { ContentItemContracts } from '../../contracts';
 import { Identifiers } from '../../models';
 import { ContentItemResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class UpsertContentItemQuery extends BaseQuery<ContentItemResponses.UpsertContentItemResponse> {
 
   constructor(
     protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService,
+    protected queryService: ManagementQueryService,
     public data: ContentItemContracts.IUpsertContentItemPostContract,
     public identifier: Identifiers.ContentItemIdentifier,
   ) {
@@ -19,7 +19,7 @@ export class UpsertContentItemQuery extends BaseQuery<ContentItemResponses.Upser
   }
 
   toPromise(): Promise<ContentItemResponses.UpsertContentItemResponse> {
-    return this.queryService.upsertContentItem(this.getUrl(), this.data, this.queryConfig);
+    return this.queryService.upsertContentItemAsync(this.getUrl(), this.data, this.queryConfig);
   }
 
   protected getAction(): string {

@@ -1,7 +1,7 @@
 import { Identifiers } from '../../models/identifiers';
 import { IManagementClientConfig } from '../../config';
 import { AssetRenditionResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
 export class ListAssetRenditionsQuery extends BaseListingQuery<
@@ -10,14 +10,14 @@ export class ListAssetRenditionsQuery extends BaseListingQuery<
 > {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public identifier: Identifiers.AssetIdentifier
     ) {
         super(config, queryService);
     }
 
     toPromise(): Promise<AssetRenditionResponses.AssetRenditionsListResponse> {
-        return this.queryService.listAssetRenditions(this.getUrl(), this.queryConfig);
+        return this.queryService.listAssetRenditionsAsync(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {

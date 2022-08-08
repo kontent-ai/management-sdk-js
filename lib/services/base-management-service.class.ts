@@ -14,7 +14,7 @@ import { SharedContracts } from '../contracts';
 import { IContentManagementInternalQueryConfig, IContentManagementQueryConfig, SharedModels } from '../models';
 import { getType } from 'mime';
 
-export abstract class BaseContentManagementQueryService<TCancelToken> {
+export abstract class BaseManagementQueryService<TCancelToken> {
     /**
      * Default base url for content management API
      */

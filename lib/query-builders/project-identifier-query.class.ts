@@ -1,14 +1,14 @@
 import { Identifiers } from '../models/identifiers';
 import { IManagementClientConfig } from '../config';
-import { ContentManagementQueryService } from '../services';
+import { ManagementQueryService } from '../services';
 
 export class ProjectIdentifierQuery<TResult> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         protected buildResult: (
             config: IManagementClientConfig,
-            queryService: ContentManagementQueryService,
+            queryService: ManagementQueryService,
             itentifier: Identifiers.ProjectIdentifier
         ) => TResult
     ) {}

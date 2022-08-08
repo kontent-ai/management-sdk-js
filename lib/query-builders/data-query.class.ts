@@ -1,14 +1,14 @@
 import { IManagementClientConfig } from '../config';
-import { ContentManagementQueryService } from '../services';
+import { ManagementQueryService } from '../services';
 
 export class DataQuery<TResult, TData> {
 
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         protected buildResult: (
             config: IManagementClientConfig,
-            queryService: ContentManagementQueryService,
+            queryService: ManagementQueryService,
             data: TData) => TResult
     ) {
     }

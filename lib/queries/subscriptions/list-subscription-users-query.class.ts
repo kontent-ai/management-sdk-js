@@ -1,18 +1,18 @@
 import { IManagementClientConfig } from '../../config';
 import { SubscriptionResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
 export class ListSubscriptionUsersQuery extends BaseListingQuery<
     SubscriptionResponses.SubscriptionUsersListResponse,
     SubscriptionResponses.SubscriptionUsersListAllResponse
 > {
-    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
+    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
         super(config, queryService);
     }
 
     toPromise(): Promise<SubscriptionResponses.SubscriptionUsersListResponse> {
-        return this.queryService.litSubscriptionUsers(this.getUrl(), this.queryConfig);
+        return this.queryService.litSubscriptionUsersAsync(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {

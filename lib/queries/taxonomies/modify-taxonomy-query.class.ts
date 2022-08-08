@@ -3,13 +3,13 @@
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, TaxonomyModels } from '../../models';
 import { TaxonomyResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class ModifyTaxonomyQuery extends BaseQuery<TaxonomyResponses.ModifyTaxonomyResponse> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public identifier: Identifiers.TaxonomyIdentifier,
         public data: TaxonomyModels.IModifyTaxonomyData[]
     ) {
@@ -17,7 +17,7 @@ export class ModifyTaxonomyQuery extends BaseQuery<TaxonomyResponses.ModifyTaxon
     }
 
     toPromise(): Promise<TaxonomyResponses.ModifyTaxonomyResponse> {
-        return this.queryService.modifyTaxonomy(this.getUrl(), this.queryConfig, this.data);
+        return this.queryService.modifyTaxonomyAsync(this.getUrl(), this.queryConfig, this.data);
     }
 
     protected getAction(): string {

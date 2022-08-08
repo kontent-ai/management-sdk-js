@@ -2,13 +2,13 @@
 
 import { IManagementClientConfig } from '../../config';
 import { GenericResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class PutQuery extends BaseQuery<GenericResponses.GenericResponse> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public action: string,
         public data: any
     ) {
@@ -16,7 +16,7 @@ export class PutQuery extends BaseQuery<GenericResponses.GenericResponse> {
     }
 
     toPromise(): Promise<GenericResponses.GenericResponse> {
-        return this.queryService.genericPutResponse(this.getUrl(), this.data, this.queryConfig);
+        return this.queryService.genericPutResponseAsync(this.getUrl(), this.data, this.queryConfig);
     }
 
     protected getAction(): string {

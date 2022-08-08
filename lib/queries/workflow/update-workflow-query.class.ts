@@ -3,13 +3,13 @@
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, WorkflowModels } from '../../models';
 import { WorkflowResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class UpdateWorkflowQuery extends BaseQuery<WorkflowResponses.UpdateWorkflowResponse> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public data: WorkflowModels.IUpdateWorkflowData,
         public identifier: Identifiers.WorkflowIdentifier
     ) {
@@ -17,7 +17,7 @@ export class UpdateWorkflowQuery extends BaseQuery<WorkflowResponses.UpdateWorkf
     }
 
     toPromise(): Promise<WorkflowResponses.UpdateWorkflowResponse> {
-        return this.queryService.updateWorkflow(this.getUrl(), this.queryConfig, this.data);
+        return this.queryService.updateWorkflowAsync(this.getUrl(), this.queryConfig, this.data);
     }
 
     protected getAction(): string {

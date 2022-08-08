@@ -3,13 +3,13 @@
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, WorkflowModels } from '../../models';
 import { BaseResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class UnpublishLanguageVariantQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public contentItemIdentifier: Identifiers.ContentItemIdentifier,
         public languageIdentifier: Identifiers.LanguageIdentifier,
         public data?: WorkflowModels.IUnpublishLanguageVarianthData
@@ -18,7 +18,7 @@ export class UnpublishLanguageVariantQuery extends BaseQuery<BaseResponses.Empty
     }
 
     toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return this.queryService.unpublishLanguageVariant(this.getUrl(), this.data, this.queryConfig);
+        return this.queryService.unpublishLanguageVariantAsync(this.getUrl(), this.data, this.queryConfig);
     }
 
     protected getAction(): string {

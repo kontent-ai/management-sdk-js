@@ -1,13 +1,13 @@
 import { IManagementClientConfig } from '../../config';
 import { AssetModels } from '../../models';
 import { AssetResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class UploadAssetFromUrlQuery extends BaseQuery<AssetResponses.AddAssetResponse> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public data: AssetModels.IUploadAssetFromUrlRequestData
     ) {
         super(config, queryService);
@@ -16,7 +16,7 @@ export class UploadAssetFromUrlQuery extends BaseQuery<AssetResponses.AddAssetRe
     }
 
     toPromise(): Promise<AssetResponses.AddAssetResponse> {
-        return this.queryService.uploadAssetFromUrl(
+        return this.queryService.uploadAssetFromUrlAsync(
             this.getUploadBinaryFileUrl(),
             this.getAddAssetUrl(),
             this.data,

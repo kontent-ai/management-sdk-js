@@ -1,13 +1,13 @@
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, AssetRenditionModels } from '../../models';
 import { AssetRenditionResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class ModifyAssetRenditionQuery extends BaseQuery<AssetRenditionResponses.ModifyAssetRenditionResponse> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         public assetIdentifier: Identifiers.AssetIdentifier,
         public renditionIdentifier: Identifiers.RenditionIdentifier,
         public data: AssetRenditionModels.IModifyAssetRenditionData
@@ -16,7 +16,7 @@ export class ModifyAssetRenditionQuery extends BaseQuery<AssetRenditionResponses
     }
 
     toPromise(): Promise<AssetRenditionResponses.ModifyAssetRenditionResponse> {
-        return this.queryService.modifyAssetRendition(this.getUrl(), this.queryConfig, this.data);
+        return this.queryService.modifyAssetRenditionAsync(this.getUrl(), this.queryConfig, this.data);
     }
 
     protected getAction(): string {

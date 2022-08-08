@@ -3,21 +3,21 @@
 import { IManagementClientConfig } from '../../config';
 import { ContentItemContracts } from '../../contracts';
 import { ContentItemResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class AddContentItemQuery extends BaseQuery<ContentItemResponses.AddContentItemResponse> {
 
   constructor(
     protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService,
+    protected queryService: ManagementQueryService,
     public data: ContentItemContracts.IAddContentItemPostContract
   ) {
     super(config, queryService);
   }
 
   toPromise(): Promise<ContentItemResponses.AddContentItemResponse> {
-    return this.queryService.addContentItem(this.getUrl(), this.data, this.queryConfig);
+    return this.queryService.addContentItemAsync(this.getUrl(), this.data, this.queryConfig);
   }
 
   protected getAction(): string {
@@ -28,7 +28,7 @@ export class AddContentItemQuery extends BaseQuery<ContentItemResponses.AddConte
 export class AddContentItemQueryInit {
   constructor(
     protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService,
+    protected queryService: ManagementQueryService,
   ) {
   }
 

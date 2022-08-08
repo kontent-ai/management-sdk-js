@@ -130,7 +130,7 @@ import {
     ListProjectValidationIssuesQuery as ListProjectValidationIssuesQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
-import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
+import { ManagementQueryService, IMappingService, MappingService } from '../services';
 import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -141,14 +141,14 @@ import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-e
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
-    private readonly queryService: ContentManagementQueryService;
+    private readonly queryService: ManagementQueryService;
     private httpService: IHttpService<CancelToken>;
 
     public readonly mappingService: IMappingService = new MappingService();
 
     constructor(protected readonly config: IManagementClientConfig) {
         const httpService = config.httpService ? config.httpService : new HttpService();
-        this.queryService = new ContentManagementQueryService(config, httpService, {
+        this.queryService = new ManagementQueryService(config, httpService, {
             host: sdkInfo.host,
             name: sdkInfo.name,
             version: sdkInfo.version

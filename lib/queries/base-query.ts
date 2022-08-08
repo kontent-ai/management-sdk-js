@@ -3,7 +3,7 @@ import { IQueryParameter, Parameters, IHeader, IHttpCancelRequestToken } from '@
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { ContentManagementApiEndpoints, IContentManagementQueryConfig } from '../models';
 import { BaseResponses } from '../responses';
-import { ContentManagementQueryService } from '../services';
+import { ManagementQueryService } from '../services';
 
 export abstract class BaseQuery<TResponse extends BaseResponses.IContentManagementResponse> {
     private _customUrl?: string;
@@ -19,7 +19,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     });
     protected _addSlashToUrl: boolean = true;
 
-    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {}
+    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {}
 
     /**
      * Gets url for this query

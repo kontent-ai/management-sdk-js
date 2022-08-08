@@ -2,19 +2,19 @@
 
 import { IManagementClientConfig } from '../../config';
 import { LanguageResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
 export class ListLanguagesQuery extends BaseListingQuery<
     LanguageResponses.ListLanguagesResponse,
     LanguageResponses.ListAllLanguagesResponse
 > {
-    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
+    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
         super(config, queryService);
     }
 
     toPromise(): Promise<LanguageResponses.ListLanguagesResponse> {
-        return this.queryService.listLanguages(this.getUrl(), this.queryConfig);
+        return this.queryService.listLanguagesAsync(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {

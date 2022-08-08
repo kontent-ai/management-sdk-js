@@ -3,14 +3,14 @@
 import { IManagementClientConfig } from '../../config';
 import { Identifiers, ContentTypeModels } from '../../models';
 import { ContentTypeResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class ModifyContentTypeQuery extends BaseQuery<ContentTypeResponses.ModifyContentTypeResponse> {
 
   constructor(
     protected config: IManagementClientConfig,
-    protected queryService: ContentManagementQueryService,
+    protected queryService: ManagementQueryService,
     public identifier: Identifiers.ContentTypeIdentifier,
     public data: ContentTypeModels.IModifyContentTypeData[]
   ) {
@@ -18,7 +18,7 @@ export class ModifyContentTypeQuery extends BaseQuery<ContentTypeResponses.Modif
   }
 
   toPromise(): Promise<ContentTypeResponses.ModifyContentTypeResponse> {
-    return this.queryService.modifyContentType(this.getUrl(), this.queryConfig, this.data);
+    return this.queryService.modifyContentTypeAsync(this.getUrl(), this.queryConfig, this.data);
   }
 
   protected getAction(): string {

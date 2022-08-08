@@ -75,12 +75,12 @@ import {
     ProjectUsersResponses,
     AssetRenditionResponses
 } from '../responses';
-import { BaseContentManagementQueryService } from './base-content-management-service.class';
+import { BaseManagementQueryService } from './base-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
 import { environmentMapper } from '../mappers/environment-mapper';
 import { EnvironmentModels } from '../models/environments/environment.models';
 
-export class ContentManagementQueryService extends BaseContentManagementQueryService<any> {
+export class ManagementQueryService extends BaseManagementQueryService<any> {
     constructor(
         protected config: IManagementClientConfig,
         protected httpService: IHttpService<any>,
@@ -89,7 +89,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         super(config, httpService, sdkInfo);
     }
 
-    async genericPostResponse(
+    async genericPostResponseAsync(
         url: string,
         data: any,
         config: IContentManagementQueryConfig
@@ -97,7 +97,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return genericMapper.mapGenericResponse(await super.postResponseAsync<void>(url, data, {}, config));
     }
 
-    async genericPatchResponse(
+    async genericPatchResponseAsync(
         url: string,
         data: any,
         config: IContentManagementQueryConfig
@@ -105,21 +105,21 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return genericMapper.mapGenericResponse(await super.patchResponseAsync<void>(url, data, {}, config));
     }
 
-    async genericDeleteResponse(
+    async genericDeleteResponseAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
         return genericMapper.mapGenericResponse(await super.deleteResponseAsync<void>(url, {}, config));
     }
 
-    async genericGetResponse(
+    async genericGetResponseAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<GenericResponses.GenericResponse> {
         return genericMapper.mapGenericResponse(await super.getResponseAsync<void>(url, {}, config));
     }
 
-    async genericPutResponse(
+    async genericPutResponseAsync(
         url: string,
         data: any,
         config: IContentManagementQueryConfig
@@ -127,7 +127,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return genericMapper.mapGenericResponse(await super.putResponseAsync<void>(url, data, {}, config));
     }
 
-    async getListAllResponse<
+    async getListAllResponseAsync<
         TResponse extends BaseResponses.IContentManagementListResponse,
         TAllResponse extends BaseResponses.IContentManagementListAllResponse
     >(data: {
@@ -151,7 +151,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async publishLanguageVariant(
+    async publishLanguageVariantAsync(
         url: string,
         data: WorkflowModels.IPublishLanguageVariantData | undefined,
         config: IContentManagementQueryConfig
@@ -159,14 +159,14 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
     }
 
-    async createNewVersionOfLanguageVariant(
+    async createNewVersionOfLanguageVariantAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    async unpublishLanguageVariant(
+    async unpublishLanguageVariantAsync(
         url: string,
         data: WorkflowModels.IUnpublishLanguageVarianthData | undefined,
         config: IContentManagementQueryConfig
@@ -174,28 +174,28 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
     }
 
-    async cancelScheduledPublishingOfLanguageVariant(
+    async cancelScheduledPublishingOfLanguageVariantAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    async cancelScheduledUnpublishingOfLanguageVariant(
+    async cancelScheduledUnpublishingOfLanguageVariantAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    async changeWorkflowStepOfLanguageVariant(
+    async changeWorkflowStepOfLanguageVariantAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    async changeWorkflowOfLanguageVariant(
+    async changeWorkflowOfLanguageVariantAsync(
         url: string,
         data: WorkflowModels.IChangeWorkflowOfLanguageVariantData,
         config: IContentManagementQueryConfig
@@ -203,7 +203,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
     }
 
-    async listWorkflowSteps(
+    async listWorkflowStepsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WorkflowResponses.ListWorkflowStepsResponse> {
@@ -212,7 +212,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listWorkflows(
+    async listWorkflowsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WorkflowResponses.ListWorkflowsResponse> {
@@ -221,7 +221,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addWorkflow(
+    async addWorkflowAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: WorkflowModels.IAddWorkflowData
@@ -231,7 +231,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async updateWorkflow(
+    async updateWorkflowAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: WorkflowModels.IUpdateWorkflowData
@@ -241,7 +241,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteWorkflow(
+    async deleteWorkflowAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -250,7 +250,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewContentTypeSnippet(
+    async viewContentTypeSnippetAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeSnippetResponses.ViewContentTypeSnippetResponse> {
@@ -263,7 +263,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteContentTypeSnippet(
+    async deleteContentTypeSnippetAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -276,7 +276,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addContentTypeSnippet(
+    async addContentTypeSnippetAsync(
         url: string,
         data: ContentTypeSnippetModels.IAddContentTypeSnippetData,
         config: IContentManagementQueryConfig
@@ -291,7 +291,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listContentTypeSnippets(
+    async listContentTypeSnippetsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeSnippetResponses.ContentTypeSnippetListResponse> {
@@ -304,7 +304,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async projectInformation(
+    async projectInformationAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ProjectResponses.ProjectInformationResponse> {
@@ -313,7 +313,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listProjectValidationIssues(
+    async listProjectValidationIssuesAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ProjectResponses.ProjectValidationIssuesListResponse> {
@@ -322,7 +322,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async startProjectValidation(
+    async startProjectValidationAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ProjectResponses.StartProjectValidationResponse> {
@@ -331,7 +331,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async checkProjectValidation(
+    async checkProjectValidationAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ProjectResponses.CheckProjectValidationResponse> {
@@ -340,7 +340,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async validateProjectContent(
+    async validateProjectContentAsync(
         url: string,
         data: {
             projectId: string;
@@ -352,7 +352,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addContentType(
+    async addContentTypeAsync(
         url: string,
         data: ContentTypeModels.IAddContentTypeData,
         config: IContentManagementQueryConfig
@@ -362,7 +362,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteContentType(
+    async deleteContentTypeAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -371,7 +371,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyContentType(
+    async modifyContentTypeAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: ContentTypeModels.IModifyContentTypeData[]
@@ -386,7 +386,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyTaxonomy(
+    async modifyTaxonomyAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: TaxonomyModels.IModifyTaxonomyData[]
@@ -396,7 +396,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyContentTypeSnippet(
+    async modifyContentTypeSnippetAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: ContentTypeSnippetModels.IModifyContentTypeSnippetData[]
@@ -411,7 +411,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewContentType(
+    async viewContentTypeAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeResponses.ViewContentTypeResponse> {
@@ -420,7 +420,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listContentTypes(
+    async listContentTypesAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ContentTypeResponses.ContentTypeListResponse> {
@@ -429,7 +429,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listAssetRenditions(
+    async listAssetRenditionsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<AssetRenditionResponses.AssetRenditionsListResponse> {
@@ -438,7 +438,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewAssetRendition(
+    async viewAssetRenditionAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<AssetRenditionResponses.ViewAssetRenditionResponse> {
@@ -447,7 +447,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addAssetRendition(
+    async addAssetRenditionAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: AssetRenditionModels.IAddAssetRenditionData
@@ -462,7 +462,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyAssetRendition(
+    async modifyAssetRenditionAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: AssetRenditionModels.IModifyAssetRenditionData
@@ -477,7 +477,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addTaxonomy(
+    async addTaxonomyAsync(
         url: string,
         data: TaxonomyModels.IAddTaxonomyRequestModel,
         config: IContentManagementQueryConfig
@@ -487,7 +487,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteTaxonomy(
+    async deleteTaxonomyAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -496,7 +496,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async getTaxonomy(
+    async getTaxonomyAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<TaxonomyResponses.GetTaxonomyResponse> {
@@ -505,7 +505,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listTaxonomies(
+    async listTaxonomiesAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<TaxonomyResponses.TaxonomyListResponse> {
@@ -514,7 +514,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteAsset(
+    async deleteAssetAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -523,7 +523,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async upsertAsset(
+    async upsertAssetAsync(
         url: string,
         data: AssetModels.IUpsertAssetRequestData,
         config: IContentManagementQueryConfig
@@ -533,7 +533,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addAsset(
+    async addAssetAsync(
         url: string,
         data: AssetModels.IAddAssetRequestData,
         config: IContentManagementQueryConfig
@@ -543,7 +543,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listSubscriptionProjects(
+    async listSubscriptionProjectsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<SubscriptionResponses.SubscriptionProjectsListResponse> {
@@ -556,7 +556,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async litSubscriptionUsers(
+    async litSubscriptionUsersAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<SubscriptionResponses.SubscriptionUsersListResponse> {
@@ -565,7 +565,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewSubscriptionProject(
+    async viewSubscriptionProjectAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<SubscriptionResponses.ViewSubscriptionProjectResponse> {
@@ -574,7 +574,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewSubscriptionUser(
+    async viewSubscriptionUserAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<SubscriptionResponses.ViewSubscriptionUserResponse> {
@@ -583,7 +583,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async activateUserInAllProjects(
+    async activateUserInAllProjectsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -592,7 +592,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deactivateUserInAllProjects(
+    async deactivateUserInAllProjectsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -601,7 +601,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async uploadAssetFromUrl(
+    async uploadAssetFromUrlAsync(
         uploadBinaryFileUrl: string,
         addAssetUrl: string,
         data: AssetModels.IUploadAssetFromUrlRequestData,
@@ -623,7 +623,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         const configForUploadBinaryFile = JSON.parse(JSON.stringify(config));
 
         // upload binary file
-        const uploadedBinaryFileResponse = await this.uploadBinaryFile(
+        const uploadedBinaryFileResponse = await this.uploadBinaryFileAsync(
             uploadBinaryFileUrl,
             {
                 binaryData: binaryData,
@@ -635,7 +635,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
 
         // creta asset & assign it to binary file
-        const assetResponse = await this.addAsset(
+        const assetResponse = await this.addAssetAsync(
             addAssetUrl,
             {
                 file_reference: {
@@ -653,7 +653,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return assetResponse;
     }
 
-    async uploadBinaryFile(
+    async uploadBinaryFileAsync(
         url: string,
         data: AssetModels.IUploadBinaryFileRequestData,
         config: IContentManagementQueryConfig
@@ -677,19 +677,19 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewAsset(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.ViewAssetResponse> {
+    async viewAssetAsync(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.ViewAssetResponse> {
         return assetsMapper.mapViewAssetResponse(
             await this.getResponseAsync<AssetContracts.IAssetModelContract>(url, {}, config)
         );
     }
 
-    async listAssets(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.AssetsListResponse> {
+    async listAssetsAsync(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.AssetsListResponse> {
         return assetsMapper.mapListingAssetsResponse(
             await this.getResponseAsync<AssetContracts.IAssetsListingResponseContract>(url, {}, config)
         );
     }
 
-    async listContentItems(
+    async listContentItemsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.ContentItemsResponse> {
@@ -698,7 +698,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewContentItem(
+    async viewContentItemAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<ContentItemResponses.ViewContentItemResponse> {
@@ -707,7 +707,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addContentItem(
+    async addContentItemAsync(
         url: string,
         data: ContentItemContracts.IAddContentItemPostContract,
         config: IContentManagementQueryConfig
@@ -717,7 +717,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async upsertContentItem(
+    async upsertContentItemAsync(
         url: string,
         data: ContentItemContracts.IUpsertContentItemPostContract,
         config: IContentManagementQueryConfig
@@ -727,7 +727,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async updateContentItem(
+    async updateContentItemAsync(
         url: string,
         data: ContentItemContracts.IUpdateContentItemPostContract,
         config: IContentManagementQueryConfig
@@ -737,7 +737,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteContentItem(
+    async deleteContentItemAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -746,7 +746,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteLanguageVariant(
+    async deleteLanguageVariantAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -755,7 +755,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async upsertLanguageVariant(
+    async upsertLanguageVariantAsync(
         url: string,
         elements: LanguageVariantElements.ILanguageVariantElementBase[],
         config: IContentManagementQueryConfig
@@ -772,7 +772,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewLanguageVariant(
+    async viewLanguageVariantAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.ViewLanguageVariantResponse> {
@@ -781,7 +781,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listLanguageVariantsOfItem(
+    async listLanguageVariantsOfItemAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.ListLanguageVariantsOfItemResponse> {
@@ -794,7 +794,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listLanguageVariantsOfContentTypeWithComponents(
+    async listLanguageVariantsOfContentTypeWithComponentsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
@@ -807,7 +807,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listLanguageVariantsOfContentType(
+    async listLanguageVariantsOfContentTypeAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse> {
@@ -820,7 +820,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listLanguageVariantsByCollection(
+    async listLanguageVariantsByCollectionAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.ListLanguageVariantsByCollectionResponse> {
@@ -833,7 +833,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listLanguages(
+    async listLanguagesAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageResponses.ListLanguagesResponse> {
@@ -842,7 +842,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async viewLanguage(
+    async viewLanguageAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<LanguageResponses.ViewLanguageResponse> {
@@ -851,7 +851,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addLanguage(
+    async addLanguageAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: LanguageModels.IAddLanguageData
@@ -861,7 +861,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyLanguage(
+    async modifyLanguageAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: LanguageModels.IModifyLanguageData[]
@@ -871,7 +871,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listWebhooks(
+    async listWebhooksAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.WebhookListResponse> {
@@ -880,13 +880,13 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async getWebhook(url: string, config: IContentManagementQueryConfig): Promise<WebhookResponses.GetWebhookResponse> {
+    async getWebhookAsync(url: string, config: IContentManagementQueryConfig): Promise<WebhookResponses.GetWebhookResponse> {
         return webhookMapper.mapGetWebhookResponse(
             await this.getResponseAsync<WebhookContracts.IGetWebhookContract>(url, {}, config)
         );
     }
 
-    async addWebhook(
+    async addWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: WebhookModels.IAddWebhookData
@@ -896,7 +896,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async enableWebhook(
+    async enableWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.AddWebhookResponse> {
@@ -905,7 +905,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async disableWebhook(
+    async disableWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.DisableWebhookResponse> {
@@ -914,7 +914,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteWebhook(
+    async deleteWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -923,7 +923,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listAssetFolders(
+    async listAssetFoldersAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<AssetFolderResponses.AssetFoldersListResponse> {
@@ -932,7 +932,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async addAssetFolders(
+    async addAssetFoldersAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: AssetFolderModels.IAddAssetFoldersData
@@ -942,7 +942,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyAssetFolders(
+    async modifyAssetFoldersAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: AssetFolderModels.IModifyAssetFoldersData[]
@@ -957,7 +957,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listCollections(
+    async listCollectionsAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<CollectionResponses.CollectionsListResponse> {
@@ -966,19 +966,19 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async listRoles(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.RoleListResponse> {
+    async listRolesAsync(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.RoleListResponse> {
         return roleMapper.mapRoleListResponse(
             await this.getResponseAsync<RoleContracts.IRoleListResponseContract>(url, {}, config)
         );
     }
 
-    async viewRole(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.ViewRoleResponse> {
+    async viewRoleAsync(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.ViewRoleResponse> {
         return roleMapper.mapViewRoleResponse(
             await this.getResponseAsync<RoleContracts.IRoleContract>(url, {}, config)
         );
     }
 
-    async setCollections(
+    async setCollectionsAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: CollectionModels.ISetCollectionData[]
@@ -988,7 +988,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async inviteProjectUser(
+    async inviteProjectUserAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: ProjectUserModels.IInviteUserData
@@ -998,7 +998,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async changeUserRoles(
+    async changeUserRolesAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: ProjectUserModels.IChangeUserRoleData
@@ -1008,7 +1008,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async getEnvironmentCloningState(
+    async getEnvironmentCloningStateAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<EnvironmentResponses.GetCloningStateResponse> {
@@ -1017,7 +1017,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async deleteEnvironment(
+    async deleteEnvironmentAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
@@ -1026,7 +1026,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async modifyEnvironment(
+    async modifyEnvironmentAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: EnvironmentModels.IModifyEnvironmentData[]
@@ -1041,7 +1041,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async cloneEnvironment(
+    async cloneEnvironmentAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: EnvironmentModels.ICloneEnvironmentData
@@ -1051,7 +1051,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
-    async markEnvironmentAsProduction(
+    async markEnvironmentAsProductionAsync(
         url: string,
         config: IContentManagementQueryConfig,
         data: EnvironmentModels.IMarkEnvironmentAsProductionData
@@ -1077,7 +1077,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         const response = await data.getResponse(data.xContinuationToken);
 
         if (data.listQueryConfig?.delayBetweenRequests) {
-            await this.sleep(data.listQueryConfig.delayBetweenRequests);
+            await this.sleepAsync(data.listQueryConfig.delayBetweenRequests);
         }
 
         data.resolvedResponses.push(response);
@@ -1098,7 +1098,7 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         return data.resolvedResponses;
     }
 
-    private sleep(ms: number): Promise<void> {
-        return new Promise((resolve) => setTimeout(resolve, ms));
+    private async sleepAsync(ms: number): Promise<void> {
+        return await new Promise((resolve) => setTimeout(resolve, ms));
     }
 }

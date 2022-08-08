@@ -2,19 +2,19 @@
 
 import { IManagementClientConfig } from '../../config';
 import { AssetResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
 export class ListAssetsQuery extends BaseListingQuery<
     AssetResponses.AssetsListResponse,
     AssetResponses.AssetsListAllResponse
 > {
-    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
+    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
         super(config, queryService);
     }
 
     toPromise(): Promise<AssetResponses.AssetsListResponse> {
-        return this.queryService.listAssets(this.getUrl(), this.queryConfig);
+        return this.queryService.listAssetsAsync(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {

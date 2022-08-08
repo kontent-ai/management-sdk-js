@@ -1,14 +1,14 @@
 import { IManagementClientConfig } from '../config';
 import { Identifiers } from '../models';
-import { ContentManagementQueryService } from '../services';
+import { ManagementQueryService } from '../services';
 
 export class RoleIdentifierQuery<TResult> {
     constructor(
         protected config: IManagementClientConfig,
-        protected queryService: ContentManagementQueryService,
+        protected queryService: ManagementQueryService,
         protected buildResult: (
             config: IManagementClientConfig,
-            queryService: ContentManagementQueryService,
+            queryService: ManagementQueryService,
             identifier: Identifiers.RoleIdentifier
         ) => TResult
     ) {}

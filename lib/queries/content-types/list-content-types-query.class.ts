@@ -2,19 +2,19 @@
 
 import { IManagementClientConfig } from '../../config';
 import { ContentTypeResponses } from '../../responses';
-import { ContentManagementQueryService } from '../../services';
+import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
 
 export class ListContentTypesQuery extends BaseListingQuery<
     ContentTypeResponses.ContentTypeListResponse,
     ContentTypeResponses.ContentTypeListAllResponse
 > {
-    constructor(protected config: IManagementClientConfig, protected queryService: ContentManagementQueryService) {
+    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
         super(config, queryService);
     }
 
     toPromise(): Promise<ContentTypeResponses.ContentTypeListResponse> {
-        return this.queryService.listContentTypes(this.getUrl(), this.queryConfig);
+        return this.queryService.listContentTypesAsync(this.getUrl(), this.queryConfig);
     }
 
     protected getAction(): string {
