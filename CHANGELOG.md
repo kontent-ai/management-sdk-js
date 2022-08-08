@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.0.1...v3.1.0) (2022-08-08)
+
+
+### Features
+
+* Adds support for new validation endpoints (fixes https://github.com/kontent-ai/management-sdk-js/issues/81) ([ed06430](https://github.com/kontent-ai/management-sdk-js/commit/ed06430098b0b9e4ffc6b9799ce22f33eb1bed04))
+* updates dev dependencies ([c5404be](https://github.com/kontent-ai/management-sdk-js/commit/c5404be9644c8b11c01de473d8b5eba347d95fcc))
+
+
+### Bug Fixes
+
+* Removes 'codename' property from snippet element data as it is not supported (fixes https://github.com/kontent-ai/management-sdk-js/issues/83) ([861c88f](https://github.com/kontent-ai/management-sdk-js/commit/861c88f8fc388921d1dc131ea3bbb8992bcefc86))
+
 ### [3.0.1](https://github.com/kontent-ai/management-sdk-js/compare/v3.0.0...v3.0.1) (2022-07-25)
 
 
