@@ -310,8 +310,10 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
-     * Query to validate project content
-     */
+    * @deprecated In favor of async validation endpoints
+    * 
+    * Query to validate project content. This endpoint works reliably only with projects under 25,000 content items.
+    */
     validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery>;
 
     /**

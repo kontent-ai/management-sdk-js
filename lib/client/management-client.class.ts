@@ -583,6 +583,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
+    /**
+    * @deprecated In favor of async validation endpoints
+    */
     validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery> {
         return new ProjectIdentifierQuery<ValidateProjectContentQuery>(
             this.config,
