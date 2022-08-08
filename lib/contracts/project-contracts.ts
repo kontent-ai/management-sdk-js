@@ -1,9 +1,45 @@
+import { SharedContracts } from './shared-contracts';
+
 export namespace ProjectContracts {
 
     export interface IProjectInformationResponseContract {
         id: string;
         name: string;
         environment: string;
+    }
+
+    export type ProjectValidationIssueType = 'type_issue' | 'variant_issue';
+
+    export interface IProjectValidationItemIssueContract {
+        element:  IProjectVariantElementContract;
+        messages: string[];
+    }
+
+    export interface IProjectValidationIssueContract {
+        issue_type: ProjectValidationIssueType;
+        item: IProjectVariantContentItemContract;
+        language: IProjectVariantLanguageContract;
+        issues: IProjectValidationItemIssueContract[];
+    }
+
+    export interface IProjectValidationListResponseContract {
+        issues: IProjectValidationIssueContract[];
+        pagination: SharedContracts.IPaginationModelContract;
+    }
+
+    export type ProjectValidationStatus = 'finished' | 'queued' | 'failed';
+    export type ProjectValidationResult = 'none' | 'no_issues' | 'issues_found';
+
+    export interface IStartProjectValidationResponseContract {
+        id: string;
+        status: ProjectValidationStatus;
+        validation_result: ProjectValidationResult;
+    }
+
+    export interface ICheckProjectValidationResponseContract {
+        id: string;
+        status: ProjectValidationStatus;
+        validation_result: ProjectValidationResult;
     }
 
     export interface IProjectReportResponseContract {

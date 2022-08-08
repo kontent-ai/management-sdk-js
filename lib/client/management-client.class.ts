@@ -123,7 +123,11 @@ import {
     WorkflowIdentifierQuery,
     DeleteWorkflowQuery,
     AddWorkflowQuery,
-    UpdateWorkflowQuery
+    UpdateWorkflowQuery,
+    StartProjectValidationQuery,
+    TaskIdentifierQuery,
+    CheckProjectValidationQuery,
+    ListProjectValidationIssuesQuery as ListProjectValidationIssuesQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ContentManagementQueryService, IMappingService, MappingService } from '../services';
@@ -584,13 +588,33 @@ export class ManagementClient implements IManagementClient<CancelToken> {
     }
 
     /**
-    * @deprecated In favor of async validation endpoints
-    */
+     * @deprecated In favor of async validation endpoints
+     */
     validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery> {
         return new ProjectIdentifierQuery<ValidateProjectContentQuery>(
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ValidateProjectContentQuery(config, queryService, identifier)
+        );
+    }
+
+    startProjectValidation(): StartProjectValidationQuery {
+        return new StartProjectValidationQuery(this.config, this.queryService);
+    }
+
+    checkProjectValidation(): TaskIdentifierQuery<CheckProjectValidationQuery> {
+        return new TaskIdentifierQuery<CheckProjectValidationQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new CheckProjectValidationQuery(config, queryService, identifier)
+        );
+    }
+
+    listProjectValidationIssues(): TaskIdentifierQuery<ListProjectValidationIssuesQuery> {
+        return new TaskIdentifierQuery<ListProjectValidationIssuesQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ListProjectValidationIssuesQuery(config, queryService, identifier)
         );
     }
 

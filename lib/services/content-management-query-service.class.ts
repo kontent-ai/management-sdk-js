@@ -313,6 +313,33 @@ export class ContentManagementQueryService extends BaseContentManagementQuerySer
         );
     }
 
+    async listProjectValidationIssues(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<ProjectResponses.ProjectValidationIssuesListResponse> {
+        return projectMapper.mapProjectValidationIssuesListResponse(
+            await this.getResponseAsync<ProjectContracts.IProjectValidationListResponseContract>(url, {}, config)
+        );
+    }
+
+    async startProjectValidation(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<ProjectResponses.StartProjectValidationResponse> {
+        return projectMapper.mapStartProjectValidationResponse(
+            await this.postResponseAsync<ProjectContracts.IStartProjectValidationResponseContract>(url, {}, {}, config)
+        );
+    }
+
+    async checkProjectValidation(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<ProjectResponses.CheckProjectValidationResponse> {
+        return projectMapper.mapCheckProjectValidationResponse(
+            await this.getResponseAsync<ProjectContracts.ICheckProjectValidationResponseContract>(url, {}, config)
+        );
+    }
+
     async validateProjectContent(
         url: string,
         data: {

@@ -1,0 +1,33 @@
+{
+  "issues": [
+    {
+      "issue_type": "variant_issue",
+      "item": {
+        "id": "b2fea94c-73fd-42ec-a22f-f409878de187",
+        "name": "My article",
+        "codename": "my_article"
+      },
+      "language": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "name": "English (United States)",
+        "codename": "default"
+      },
+      "issues": [
+        {
+          "element": {
+            "id": "b9dc537c-2518-e4f5-8325-ce4fce26171e",
+            "name": "Meta description",
+            "codename": "meta_description"
+          },
+          "messages": [
+            "Element 'Meta description' should have at most 160 characters(s) but has 174 character(s)."
+          ]
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "continuation_token": "W3sidG9rZW4iOiIrUklEOn...",
+    "next_page": "https://manage.kontent.ai/v2/your/chosen/list/endpoint"
+  }
+}

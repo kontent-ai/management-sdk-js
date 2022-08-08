@@ -102,6 +102,18 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/snippets/${identifier.getParamValue()}`;
     }
 
+    startProjectValidation(): string {
+        return `${this.getProjectPath()}/validate-async`;
+    }
+
+    checkProjectValidation(identifier: Identifiers.TaskIdentifier): string {
+        return `${this.getProjectPath()}/validate-async/tasks/${identifier.getParamValue()}`;
+    }
+
+    listProjectIssues(identifier: Identifiers.TaskIdentifier): string {
+        return `${this.getProjectPath()}/validate-async/tasks/${identifier.getParamValue()}/issues`;
+    }
+
     validateProjectContent(): string {
         return `${this.getProjectPath()}/validate`;
     }

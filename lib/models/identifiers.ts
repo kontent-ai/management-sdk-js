@@ -1,4 +1,8 @@
 export namespace Identifiers {
+    export enum TaskIdentifierEnum {
+        InternalId = 'internalId'
+    }
+
     export enum ContentItemIdentifierEnum {
         ExternalId = 'externalId',
         InternalId = 'internalId',
@@ -13,7 +17,7 @@ export namespace Identifiers {
 
     export enum RenditionIdentifierEnum {
         ExternalId = 'externalId',
-        InternalId = 'internalId',
+        InternalId = 'internalId'
     }
 
     export enum CollectionIdentifierEnum {
@@ -151,6 +155,18 @@ export namespace Identifiers {
             if (this.identifier === WorkflowIdentifierEnum.Codename) {
                 return `codename/${this.value}`;
             }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
+    export class TaskIdentifier {
+        constructor(public identifier: TaskIdentifierEnum, public value: string) {}
+
+        getParamValue(): string {
+            if (this.identifier === TaskIdentifierEnum.InternalId) {
+                return `${this.value}`;
+            }
+
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
     }

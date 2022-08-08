@@ -119,7 +119,11 @@ import {
     WorkflowIdentifierQuery,
     DeleteWorkflowQuery,
     AddWorkflowQuery,
-    UpdateWorkflowQuery
+    UpdateWorkflowQuery,
+    StartProjectValidationQuery,
+    TaskIdentifierQuery,
+    CheckProjectValidationQuery,
+    ListProjectValidationIssuesQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -310,11 +314,32 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
-    * @deprecated In favor of async validation endpoints
-    * 
-    * Query to validate project content. This endpoint works reliably only with projects under 25,000 content items.
-    */
+     * @deprecated In favor of async validation endpoints
+     *
+     * Query to validate project content. This endpoint works reliably only with projects under 25,000 content items.
+     */
     validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery>;
+
+    /**
+     * Starts validating the specified project to check for issues such as:
+    * - Nonexistent objects referenced in content items.
+    * - Content element values don't meet the limitations configured in content types.
+    * - Content types referencing nonexistent taxonomy groups.
+    * Depending on the size of your project, the validation might take several minutes.
+    * After you start the project validation, you get a validation task.
+    * With the validation task, you can check validation progress and list validation results once the validation is finished.
+     */
+    startProjectValidation(): StartProjectValidationQuery;
+
+    /**
+     * Retrieves information about a project validation task by the task's internal ID.
+     */
+    checkProjectValidation(): TaskIdentifierQuery<CheckProjectValidationQuery>;
+
+    /**
+     * Retrieves a paginated list of project validation issues.
+     */
+    listProjectValidationIssues(): TaskIdentifierQuery<ListProjectValidationIssuesQuery>;
 
     /**
      * Query to delete content type
