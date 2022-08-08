@@ -61,7 +61,6 @@ export namespace ContentTypeElements {
     export interface ISnippetElementData extends IElementShared {
         snippet: SharedContracts.IReferenceObjectContract;
         type: 'snippet';
-        codename: string;
         external_id?: string;
         is_non_localizable?: boolean;
     }
