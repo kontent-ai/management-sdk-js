@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.2.0...v3.3.0) (2022-09-14)
+
+
+### Features
+
+* Adds default value support for linked items & asset elements (fixes https://github.com/kontent-ai/management-sdk-js/issues/84), updates default property signature ([bd13ec2](https://github.com/kontent-ai/management-sdk-js/commit/bd13ec2c856034d37a7676e2a4172476af4c2c45))
+
 ## [3.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.1.0...v3.2.0) (2022-09-14)
 
 
