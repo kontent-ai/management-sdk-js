@@ -58,6 +58,11 @@ export namespace ContentTypeElements {
         };
         is_required?: boolean;
         is_non_localizable?: boolean;
+        default?: {
+            global: {
+                value: SharedContracts.IReferenceObjectContract[];
+            };
+        };
     }
 
     export interface ISnippetElementData extends IElementShared {
@@ -89,7 +94,7 @@ export namespace ContentTypeElements {
         codename?: string;
         external_id?: string;
         default?: {
-            global?: {
+            global: {
                 value: 'string';
             };
         };
@@ -116,6 +121,11 @@ export namespace ContentTypeElements {
         is_non_localizable?: boolean;
         codename?: string;
         external_id?: string;
+        default?: {
+            global: {
+                value: SharedContracts.IReferenceObjectContract[];
+            };
+        };
     }
 
     export interface ISubpagesElementData extends IElementShared {
@@ -149,7 +159,7 @@ export namespace ContentTypeElements {
         guidelines?: string;
         codename?: string;
         default?: {
-            global?: {
+            global: {
                 value: SharedContracts.IReferenceObjectContract[];
             };
         };
@@ -164,7 +174,7 @@ export namespace ContentTypeElements {
         external_id?: string;
         guidelines?: string;
         default?: {
-            global?: {
+            global: {
                 value: number;
             };
         };
@@ -215,7 +225,7 @@ export namespace ContentTypeElements {
             condition: 'at_most' | 'exactly' | 'at_least';
         };
         default?: {
-            global?: {
+            global: {
                 value: SharedContracts.IReferenceObjectContract[];
             };
         };
@@ -234,7 +244,7 @@ export namespace ContentTypeElements {
             applies_to: 'words' | 'characters';
         };
         default?: {
-            global?: {
+            global: {
                 value: string;
             };
         };
