@@ -9,6 +9,8 @@ export namespace ContentTypeElements {
         | 'heading-two'
         | 'heading-three'
         | 'heading-four'
+        | 'heading-five'
+        | 'heading-six'
         | 'ordered-list'
         | 'unordered-list';
     export type RichTextAllowedFormatting =
