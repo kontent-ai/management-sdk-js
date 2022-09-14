@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.1.0...v3.2.0) (2022-09-14)
+
+
+### Features
+
+* adds support for h5 & h6 in rich text elements (fixes https://github.com/kontent-ai/management-sdk-js/issues/85) ([59acd6d](https://github.com/kontent-ai/management-sdk-js/commit/59acd6dfa2af35165f40a52af1267edadf1dfbea))
+* updates deps ([f501c9f](https://github.com/kontent-ai/management-sdk-js/commit/f501c9fbf1abf41748dd0c86c324af7f62e93d95))
+
 ## [3.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.0.1...v3.1.0) (2022-08-08)
 
 
