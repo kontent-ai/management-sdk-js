@@ -5,11 +5,21 @@ export namespace ProjectModels {
         constructor(public id: string, public name: string) {}
     }
 
-    export class ProjectValidationIssueModel {
+    export class ProjectValidationVariantIssueModel {
+        public readonly issue_type: ProjectContracts.ProjectValidationIssueType = 'variant_issue';
+
         constructor(
-            public issue_type: ProjectContracts.ProjectValidationIssueType,
             public item: ProjectVariantContentItemModel,
             public language: ProjectVariantLanguageModel,
+            public issues: ProjectIssueModel[]
+        ) {}
+    }
+
+    export class ProjectValidationTypeIssueModel {
+        public readonly issue_type: ProjectContracts.ProjectValidationIssueType = 'type_issue';
+
+        constructor(
+            public type: ProjectTypeModel,
             public issues: ProjectIssueModel[]
         ) {}
     }

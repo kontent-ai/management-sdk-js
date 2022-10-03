@@ -6,13 +6,16 @@ import { BaseResponses } from '../base-responses';
 export namespace ProjectResponses {
     export class ProjectValidationIssuesListResponse extends BaseResponses.BaseContentManagementListResponse<
         ProjectContracts.IProjectValidationListResponseContract,
-        ProjectModels.ProjectValidationIssueModel
+        ProjectModels.ProjectValidationVariantIssueModel | ProjectModels.ProjectValidationTypeIssueModel
     > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: ProjectContracts.IProjectValidationListResponseContract,
             data: {
-                items: ProjectModels.ProjectValidationIssueModel[];
+                items: (
+                    | ProjectModels.ProjectValidationVariantIssueModel
+                    | ProjectModels.ProjectValidationTypeIssueModel
+                )[];
                 pagination: SharedModels.Pagination;
             }
         ) {
@@ -22,10 +25,10 @@ export namespace ProjectResponses {
 
     export class ProjectValidationIssuesListAllResponse extends BaseResponses.ContentManagementListAllResponse<
         ProjectValidationIssuesListResponse,
-        ProjectModels.ProjectValidationIssueModel
+        ProjectModels.ProjectValidationVariantIssueModel
     > {
         constructor(data: {
-            items: ProjectModels.ProjectValidationIssueModel[];
+            items: ProjectModels.ProjectValidationVariantIssueModel[];
             responses: ProjectValidationIssuesListResponse[];
         }) {
             super(data);

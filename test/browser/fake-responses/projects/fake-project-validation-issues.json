@@ -1,6 +1,26 @@
 {
   "issues": [
     {
+      "type": {
+        "id": "05346de8-1407-588e-b8a9-7d0873fa677f",
+        "name": "Test Type",
+        "codename": "TestType"
+      },
+      "issues": [
+        {
+          "element": {
+            "id": "f47b4e7e-b5b7-4810-b9d7-a34cbb8ee267",
+            "name": "Some taxonomy",
+            "codename": "some_taxonomy"
+          },
+          "messages": [
+            "The taxonomy element 'some_taxonomy' contains references to non-existing taxonomy group with ID 1febc55c-bf75-4243-bf88-8744cde2247d."
+          ]
+        }
+      ],
+      "issue_type": "type_issue"
+    },
+    {
       "issue_type": "variant_issue",
       "item": {
         "id": "b2fea94c-73fd-42ec-a22f-f409878de187",

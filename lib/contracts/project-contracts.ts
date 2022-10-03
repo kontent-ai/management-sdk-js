@@ -17,8 +17,9 @@ export namespace ProjectContracts {
 
     export interface IProjectValidationIssueContract {
         issue_type: ProjectValidationIssueType;
-        item: IProjectVariantContentItemContract;
-        language: IProjectVariantLanguageContract;
+        item?: IProjectVariantContentItemContract;
+        type?: IProjectTypeContract;
+        language?: IProjectVariantLanguageContract;
         issues: IProjectValidationItemIssueContract[];
     }
 

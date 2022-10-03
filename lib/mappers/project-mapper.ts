@@ -106,13 +106,23 @@ export class ProjectMapper extends BaseMapper {
 
     mapProjectValidationIssue(
         raw: ProjectContracts.IProjectValidationIssueContract
-    ): ProjectModels.ProjectValidationIssueModel {
-        return new ProjectModels.ProjectValidationIssueModel(
-            raw.issue_type,
-            this.mapItemModel(raw.item),
-            this.mapLanguageModel(raw.language),
-            raw.issues.map((m) => this.mapIssueModel(m))
-        );
+    ): ProjectModels.ProjectValidationVariantIssueModel | ProjectModels.ProjectValidationTypeIssueModel {
+        if (raw.issue_type === 'variant_issue') {
+            return new ProjectModels.ProjectValidationVariantIssueModel(
+                this.mapItemModel(raw.item as ProjectContracts.IProjectVariantContentItemContract),
+                this.mapLanguageModel(raw.language as ProjectContracts.IProjectVariantLanguageContract),
+                raw.issues.map((m) => this.mapIssueModel(m))
+            );
+        }
+
+        if (raw.issue_type === 'type_issue') {
+            return new ProjectModels.ProjectValidationTypeIssueModel(
+                this.mapTypeModel(raw.type as ProjectContracts.IProjectTypeContract),
+                raw.issues.map((m) => this.mapIssueModel(m))
+            );
+        }
+
+        throw Error(`Unsupported issue type '${raw.issue_type}'`);
     }
 }
 

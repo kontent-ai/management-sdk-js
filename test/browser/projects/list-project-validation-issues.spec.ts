@@ -37,15 +37,25 @@ describe('List project issues', () => {
 
     it(`variant issue data should be mapped`, () => {
         response.data.items.forEach((item) => {
-            expect(item).toEqual(jasmine.any(ProjectModels.ProjectValidationIssueModel));
+            if (item.issue_type === 'type_issue') {
+                const mappedModel = item as ProjectModels.ProjectValidationTypeIssueModel;
+                expect(mappedModel).toEqual(jasmine.any(ProjectModels.ProjectValidationTypeIssueModel));
+                expect(mappedModel.type).toEqual(jasmine.any(ProjectModels.ProjectTypeModel));
 
-            item.issues.forEach((issue) => {
-                expect(issue).toEqual(jasmine.any(ProjectModels.ProjectIssueModel));
-                expect(issue.element).toEqual(jasmine.any(ProjectModels.ProjectVariantElementModel));
-            });
+                mappedModel.issues.forEach((issue) => {
+                    expect(issue).toEqual(jasmine.any(ProjectModels.ProjectIssueModel));
+                    expect(issue.element).toEqual(jasmine.any(ProjectModels.ProjectVariantElementModel));
+                });
+            } else if (item.issue_type === 'variant_issue') {
+                const mappedModel = item as ProjectModels.ProjectValidationVariantIssueModel;
+                expect(mappedModel).toEqual(jasmine.any(ProjectModels.ProjectValidationVariantIssueModel));
+                expect(mappedModel.language).toEqual(jasmine.any(ProjectModels.ProjectVariantLanguageModel));
 
-            expect(item.item).toEqual(jasmine.any(ProjectModels.ProjectVariantContentItemModel));
-            expect(item.language).toEqual(jasmine.any(ProjectModels.ProjectVariantLanguageModel));
+                mappedModel.issues.forEach((issue) => {
+                    expect(issue).toEqual(jasmine.any(ProjectModels.ProjectIssueModel));
+                    expect(issue.element).toEqual(jasmine.any(ProjectModels.ProjectVariantElementModel));
+                });
+            }
         });
     });
 });
