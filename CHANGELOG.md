@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.3.0...v3.4.0) (2022-10-03)
+
+
+### Features
+
+* updates dependencies ([e8183bb](https://github.com/kontent-ai/management-sdk-js/commit/e8183bb7eb3556dbec1da20ab7edfaceef1d3597))
+
+
+### Bug Fixes
+
+* Fixes mapping of type & variant issue types in new validation endpoint (fixes https://github.com/kontent-ai/management-sdk-js/issues/87) ([5e02276](https://github.com/kontent-ai/management-sdk-js/commit/5e02276397191fcc43645977eb09a6ea01bf33e1))
+
 ## [3.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.2.0...v3.3.0) (2022-09-14)
 
 
