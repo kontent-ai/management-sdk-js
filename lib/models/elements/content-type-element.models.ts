@@ -69,7 +69,6 @@ export namespace ContentTypeElements {
         snippet: SharedContracts.IReferenceObjectContract;
         type: 'snippet';
         external_id?: string;
-        is_non_localizable?: boolean;
     }
 
     export interface ICustomElementData extends IElementShared {
@@ -105,7 +104,6 @@ export namespace ContentTypeElements {
         type: 'guidelines';
         codename?: string;
         external_id?: string;
-        is_non_localizable?: boolean;
     }
 
     export interface ILinkedItemsElementData extends IElementShared {
