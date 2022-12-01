@@ -1,5 +1,5 @@
 import { IHttpService, ISDKInfo } from '@kontent-ai/core-sdk';
-import { LanguageVariantElements } from '../models/language-variants/language-variant-elements-builder';
+// import { LanguageVariantElements } from '../models/language-variants/language-variant-elements-builder';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import {
@@ -757,15 +757,14 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
 
     async upsertLanguageVariantAsync(
         url: string,
-        elements: LanguageVariantElements.ILanguageVariantElementBase[],
+        // elements: LanguageVariantElements.ILanguageVariantElementBase[],
+        data: LanguageVariantContracts.IUpsertLanguageVariantPostContract,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.UpsertLanguageVariantResponse> {
         return languageVariantMapper.mapUpsertLanguageVariantResponse(
             await this.putResponseAsync<LanguageVariantContracts.IUpsertLanguageVariantResponseContract>(
                 url,
-                {
-                    elements: elements
-                },
+                data,
                 {},
                 config
             )
