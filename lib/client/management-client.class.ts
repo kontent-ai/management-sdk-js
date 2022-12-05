@@ -9,7 +9,7 @@ import {
 } from '../models';
 
 import { IManagementClientConfig } from '../config';
-import { ContentItemContracts } from '../contracts';
+import { ContentItemContracts, LanguageVariantContracts} from '../contracts';
 import {
     AssetFolderModels,
     AssetModels,
@@ -519,7 +519,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<
                 UpsertLanguageVariantQuery,
-                (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                // (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
+
             >
         >
     > {
@@ -527,7 +529,10 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             LanguageIdAndCodenameIdentifierQuery<
                 DataQuery<
                     UpsertLanguageVariantQuery,
-                    (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                    // (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                    (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
+
+
                 >
             >
         >(
@@ -539,7 +544,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                         UpsertLanguageVariantQuery,
                         (
                             builder: LanguageVariantElementsBuilder
-                        ) => LanguageVariantElements.ILanguageVariantElementBase[]
+                        // ) => LanguageVariantElements.ILanguageVariantElementBase[]
+                        ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
+
                     >
                 >(
                     config,
@@ -549,7 +556,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                             UpsertLanguageVariantQuery,
                             (
                                 builder: LanguageVariantElementsBuilder
-                            ) => LanguageVariantElements.ILanguageVariantElementBase[]
+                            // ) => LanguageVariantElements.ILanguageVariantElementBase[]
+                            ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
+
                         >(
                             nConfig,
                             nQueryService,

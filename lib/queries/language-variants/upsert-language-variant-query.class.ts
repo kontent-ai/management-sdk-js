@@ -1,6 +1,6 @@
-import { LanguageVariantElements, LanguageVariantElementsBuilder, languageVariantElementsBuilder } from '../../models/language-variants/language-variant-elements-builder';
+import {LanguageVariantElementsBuilder, languageVariantElementsBuilder } from '../../models/language-variants/language-variant-elements-builder';
 
-import { LanguageVariantContracts } from 'lib/contracts';
+import { LanguageVariantContracts } from '../../contracts';
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
 import { LanguageVariantResponses } from '../../responses';

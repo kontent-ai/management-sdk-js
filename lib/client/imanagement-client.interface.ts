@@ -1,5 +1,5 @@
 import { IHttpCancelRequestToken } from '@kontent-ai/core-sdk';
-import { ContentItemContracts } from '../contracts';
+import { ContentItemContracts, LanguageVariantContracts } from '../contracts';
 import {
     AssetElementsBuilder,
     AssetFolderModels,
@@ -301,7 +301,9 @@ export interface IManagementClient<TCancelToken> {
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<
                 UpsertLanguageVariantQuery,
-                (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                //(builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
+                (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
+
             >
         >
     >;
