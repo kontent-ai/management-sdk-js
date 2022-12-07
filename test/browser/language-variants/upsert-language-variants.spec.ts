@@ -10,8 +10,10 @@ describe('Upsert language variant', () => {
             .upsertLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('x')
-            .withData((builder) => [
-                builder.textElement({
+            .withData((builder) => {
+            return {
+               elements: [
+                    builder.textElement({
                     element: {
                         codename: 'xElementCodename'
                     },
@@ -65,7 +67,11 @@ describe('Upsert language variant', () => {
                         }
                     ]
                 }
-            ])
+            ],
+        // workflow_step:{
+        //     id: 
+        // }
+    }})
             .toPromise();
     });
 
@@ -74,38 +80,38 @@ describe('Upsert language variant', () => {
             .upsertLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageCodename('xLanguageCodename')
-            .withData((builder) => [])
+            .withData((builder) => {return{elements:[]}})
             .getUrl();
         const internalIdUrlWithCodenameLanguage = cmLiveClient
             .upsertLanguageVariant()
             .byItemId('xItemId')
             .byLanguageCodename('xLanguageCodename')
-            .withData((builder) => [])
+            .withData((builder) => {return{elements:[]}})
             .getUrl();
         const externalIdUrlWithCodenameLanguage = cmLiveClient
             .upsertLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageCodename('xLanguageCodename')
-            .withData((builder) => [])
+            .withData((builder) => {return{elements:[]}})
             .getUrl();
 
         const codenameUrlWithIdLanguage = cmLiveClient
             .upsertLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageId('xLanguageId')
-            .withData((builder) => [])
+            .withData((builder) => {return{elements:[]}})
             .getUrl();
         const internalIdUrlWithIdLanguage = cmLiveClient
             .upsertLanguageVariant()
             .byItemId('xItemId')
             .byLanguageId('xLanguageId')
-            .withData((builder) => [])
+            .withData((builder) => {return{elements:[]}})
             .getUrl();
         const externalIdUrlWithIdLanguage = cmLiveClient
             .upsertLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageId('xLanguageId')
-            .withData((builder) => [])
+            .withData((builder) => {return{elements:[]}})
             .getUrl();
 
         expect(codenameUrlWithCodenameLanguage).toEqual(
