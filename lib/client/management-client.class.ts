@@ -3,7 +3,6 @@ import {
     AssetElementsBuilder,
     AssetRenditionModels,
     CollectionModels,
-    LanguageVariantElements,
     LanguageVariantElementsBuilder,
     ProjectUserModels
 } from '../models';

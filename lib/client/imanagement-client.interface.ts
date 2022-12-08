@@ -11,7 +11,6 @@ import {
     ContentTypeSnippetElements,
     ContentTypeSnippetModels,
     LanguageModels,
-    LanguageVariantElements,
     LanguageVariantElementsBuilder,
     ProjectUserModels,
     TaxonomyModels,
