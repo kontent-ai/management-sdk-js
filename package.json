@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@kontent-ai/core-sdk": "^10.0.0",
+    "axios": "^1.2.0",
     "mime": "3.0.0"
   },
   "devDependencies": {

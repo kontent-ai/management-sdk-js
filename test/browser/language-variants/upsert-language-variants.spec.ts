@@ -68,9 +68,9 @@ describe('Upsert language variant', () => {
                     ]
                 }
             ],
-        // workflow_step:{
-        //     id: 
-        // }
+        workflow_step:{
+            codename: 'xWorkflowStepCodename'
+        }
     }})
             .toPromise();
     });
