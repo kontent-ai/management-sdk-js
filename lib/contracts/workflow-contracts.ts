@@ -75,8 +75,4 @@ export namespace WorkflowContracts {
         published_step: IWorkflowPublishedStepContract;
         archived_step: IWorkflowArchivedStepContract;
     }
-    export interface IWorkflowReferenceUpsertLanguageVariantContract {
-        workflow_identifier: SharedContracts.IReferenceObjectContract;
-        step_identifier: SharedContracts.IReferenceObjectContract;
-    }
 }
