@@ -300,7 +300,6 @@ export interface IManagementClient<TCancelToken> {
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<
                 UpsertLanguageVariantQuery,
-                //(builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
                 (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
 
             >

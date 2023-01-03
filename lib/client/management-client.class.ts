@@ -518,7 +518,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<
                 UpsertLanguageVariantQuery,
-                // (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
                 (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
 
             >
@@ -528,7 +527,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             LanguageIdAndCodenameIdentifierQuery<
                 DataQuery<
                     UpsertLanguageVariantQuery,
-                    // (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[]
                     (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
 
 
@@ -543,7 +541,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                         UpsertLanguageVariantQuery,
                         (
                             builder: LanguageVariantElementsBuilder
-                        // ) => LanguageVariantElements.ILanguageVariantElementBase[]
                         ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
 
                     >
@@ -555,7 +552,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                             UpsertLanguageVariantQuery,
                             (
                                 builder: LanguageVariantElementsBuilder
-                            // ) => LanguageVariantElements.ILanguageVariantElementBase[]
                             ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
 
                         >(

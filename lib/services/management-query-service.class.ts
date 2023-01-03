@@ -1,5 +1,4 @@
 import { IHttpService, ISDKInfo } from '@kontent-ai/core-sdk';
-// import { LanguageVariantElements } from '../models/language-variants/language-variant-elements-builder';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import {
