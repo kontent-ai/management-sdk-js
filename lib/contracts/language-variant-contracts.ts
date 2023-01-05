@@ -43,8 +43,8 @@ export namespace LanguageVariantContracts {
     }
 
     export interface IUpsertLanguageVariantWorkflowContract {
-        workflow_identifier: SharedContracts.IWorkflowReferenceObjectContract;
-        step_identifier: SharedContracts.IWorkflowReferenceObjectContract;
+        workflow_identifier: SharedContracts.ICodenameReferenceContract;
+        step_identifier: SharedContracts.ICodenameReferenceContract;
     }
 
 

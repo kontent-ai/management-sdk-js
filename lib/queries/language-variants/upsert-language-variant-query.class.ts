@@ -1,5 +1,4 @@
 import {LanguageVariantElementsBuilder, languageVariantElementsBuilder } from '../../models/language-variants/language-variant-elements-builder';
-
 import { LanguageVariantContracts } from '../../contracts';
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
@@ -14,10 +13,6 @@ export class UpsertLanguageVariantQuery extends BaseQuery<LanguageVariantRespons
     protected queryService: ManagementQueryService,
     protected contentItemIdentifier: Identifiers.ContentItemIdentifier,
     protected languageIdentifier: Identifiers.LanguageIdentifier,
-  //   public data: (builder: LanguageVariantElementsBuilder) => LanguageVariantElements.ILanguageVariantElementBase[],
-  // ) {
-  //   super(config, queryService);
-  // }
   public data: (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract,
   ) {
     super(config, queryService);

@@ -756,7 +756,6 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
 
     async upsertLanguageVariantAsync(
         url: string,
-        // elements: LanguageVariantElements.ILanguageVariantElementBase[],
         data: LanguageVariantContracts.IUpsertLanguageVariantPostContract,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.UpsertLanguageVariantResponse> {

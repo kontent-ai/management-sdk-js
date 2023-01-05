@@ -10,7 +10,7 @@ export namespace SharedContracts {
         codename?: string;
         external_id?: string;
     }
-    export interface IWorkflowReferenceObjectContract {
+    export interface ICodenameReferenceContract {
         id?: string;
         codename?: string;
     }
