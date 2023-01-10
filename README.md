@@ -28,7 +28,7 @@ If you'd like to use this library directly in browser, place following script ta
 download it and refer to local versions of scripts.
 
 ```javascript
-<script src="https://cdn.jsdelivr.net/npm/@kontent-ai/management-sdk/_bundles/kontent-management.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@kontent-ai/management-sdk@latest/dist/bundles/kontent-management.umd.js"></script>
 ```
 
 ### Making the first request

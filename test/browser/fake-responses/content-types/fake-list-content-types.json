@@ -26,8 +26,7 @@
             "guidelines": "",
             "type": "guidelines",
             "id": "9367da14-3d08-4ed1-4841-24bf8055f916",
-            "codename": "n9367da14_3d08_4ed1_4841_24bf8055f916",
-            "is_non_localizable": false
+            "codename": "n9367da14_3d08_4ed1_4841_24bf8055f916"
           },
           {
             "name": "Hero unit",
@@ -59,8 +58,7 @@
             },
             "type": "snippet",
             "id": "255d6748-ba3a-1b59-af5c-afd4a7d6cb4f",
-            "codename": "metadata",
-            "is_non_localizable": false
+            "codename": "metadata"
           }
         ]
       }
