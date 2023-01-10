@@ -1,5 +1,6 @@
 import { ElementContracts } from './element-contracts';
 import { SharedContracts } from './shared-contracts';
+import { LanguageVariantElements } from '../models';
 
 export namespace LanguageVariantContracts {
 
@@ -22,6 +23,10 @@ export namespace LanguageVariantContracts {
     export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {
     }
 
+    export interface IUpsertLanguageVariantPostContract {
+        elements: LanguageVariantElements.ILanguageVariantElementBase[];
+        workflow?: IUpsertLanguageVariantWorkflowContract;
+    }
     export interface IListLanguageVariantsOfContentTypeWithComponentsResponseContract {
         variants: ILanguageVariantModelWithComponentsContract[];
         pagination: SharedContracts.IPaginationModelContract;
@@ -36,6 +41,12 @@ export namespace LanguageVariantContracts {
         variants: ILanguageVariantModelContract[];
         pagination: SharedContracts.IPaginationModelContract;
     }
+
+    export interface IUpsertLanguageVariantWorkflowContract {
+        workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
+        step_identifier: SharedContracts.ICodenameIdReferenceContract;
+    }
+
 
     export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {
     }
