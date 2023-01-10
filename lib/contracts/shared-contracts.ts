@@ -10,7 +10,7 @@ export namespace SharedContracts {
         codename?: string;
         external_id?: string;
     }
-    export interface ICodenameReferenceContract {
+    export interface ICodenameIdReferenceContract {
         id?: string;
         codename?: string;
     }
