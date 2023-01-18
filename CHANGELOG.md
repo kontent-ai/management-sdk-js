@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.4.0...v4.0.0) (2023-01-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add workflow to upsert variant (#93)
+
+### Features
+
+* Add workflow to upsert variant ([#93](https://github.com/kontent-ai/management-sdk-js/issues/93)) ([9472209](https://github.com/kontent-ai/management-sdk-js/commit/9472209aca09a8fe5e10260b6405612fa50642b3))
+* remove is_non_localizable property from unsupported type elements in MAPI ([561583c](https://github.com/kontent-ai/management-sdk-js/commit/561583c847dfd938785fc65210c27745120982b4))
+* Update dependencies ([#98](https://github.com/kontent-ai/management-sdk-js/issues/98)) ([8e31e20](https://github.com/kontent-ai/management-sdk-js/commit/8e31e20dc405181a0cb460967699360845124926))
+
 ## [3.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.3.0...v3.4.0) (2022-10-03)
 
 
