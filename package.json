@@ -60,14 +60,14 @@
   },
   "dependencies": {
     "@kontent-ai/core-sdk": "10.1.1",
-    "axios": "1.2.2",
+    "axios": "1.2.3",
     "mime": "3.0.0"
   },
   "devDependencies": {
     "@types/jasmine": "4.3.1",
     "@types/mime": "3.0.1",
     "@types/node": "18.11.18",
-    "core-js": "3.27.1",
+    "core-js": "3.27.2",
     "jasmine-core": "4.5.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.1",
