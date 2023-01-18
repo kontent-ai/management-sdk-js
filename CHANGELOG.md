@@ -7,7 +7,44 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* Add workflow to upsert variant (#93)
+* Adds ability to specify `workflow` in `upsertLanguageVariant` query (#93)
+
+Updated way of using the `upsertLanguageVariant` is:
+
+```typescript
+import { ManagementClient } from '@kontent-ai/management-sdk';
+
+const client = new ManagementClient({
+  projectId: '<YOUR_PROJECT_ID>',
+  apiKey: '<YOUR_API_KEY>'
+});
+
+const response = await client
+    .upsertLanguageVariant()
+    .byItemCodename('x')
+    .byLanguageCodename('x')
+    .withData((builder) => {
+        return {
+            elements: [
+                builder.textElement({
+                    element: {
+                        codename: 'xElementCodename'
+                    },
+                    value: 'xText'
+                }),
+            ],
+            workflow: {
+                step_identifier: {
+                    codename: 'y'
+                },
+                workflow_identifier: {
+                    codename: 'x'
+                }
+            }
+        }
+    })
+    .toPromise();
+```
 
 ### Features
 
