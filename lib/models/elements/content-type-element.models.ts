@@ -39,7 +39,6 @@ export namespace ContentTypeElements {
     export interface IAssetElementData extends IElementShared {
         name: string;
         type: 'asset';
-        codename?: string;
         external_id?: string;
         guidelines?: string;
         asset_count_limit?: {
@@ -76,7 +75,6 @@ export namespace ContentTypeElements {
         type: 'custom';
         source_url: string;
         json_parameters?: string;
-        codename?: string;
         external_id?: string;
         guidelines?: string;
         is_required?: boolean;
@@ -90,7 +88,6 @@ export namespace ContentTypeElements {
         is_required?: boolean;
         is_non_localizable?: boolean;
         guidelines?: string;
-        codename?: string;
         external_id?: string;
         default?: {
             global: {
@@ -102,7 +99,6 @@ export namespace ContentTypeElements {
     export interface IGuidelinesElementData extends IElementShared {
         guidelines: string;
         type: 'guidelines';
-        codename?: string;
         external_id?: string;
     }
 
@@ -117,7 +113,6 @@ export namespace ContentTypeElements {
         type: 'modular_content';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename?: string;
         external_id?: string;
         default?: {
             global: {
@@ -137,13 +132,11 @@ export namespace ContentTypeElements {
         type: 'subpages';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename?: string;
         external_id?: string;
     }
 
     export interface IMultipleChoiceOption {
         name: string;
-        codename?: string;
     }
 
     export interface IMultipleChoiceElementData extends IElementShared {
@@ -155,7 +148,6 @@ export namespace ContentTypeElements {
         is_non_localizable?: boolean;
         external_id?: string;
         guidelines?: string;
-        codename?: string;
         default?: {
             global: {
                 value: SharedContracts.IReferenceObjectContract[];
@@ -168,7 +160,6 @@ export namespace ContentTypeElements {
         type: 'number';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename?: string;
         external_id?: string;
         guidelines?: string;
         default?: {
@@ -199,7 +190,6 @@ export namespace ContentTypeElements {
         type: 'rich_text';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename?: string;
         external_id?: string;
         guidelines?: string;
         allowed_blocks?: RichTextAllowedBlock[];
@@ -216,7 +206,6 @@ export namespace ContentTypeElements {
         type: 'taxonomy';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename?: string;
         external_id?: string;
         term_count_limit?: {
             value: number;
@@ -234,7 +223,6 @@ export namespace ContentTypeElements {
         type: 'text';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename?: string;
         external_id?: string;
         guidelines?: string;
         maximum_text_length?: {
@@ -274,35 +262,36 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface IElementWithId {
+    export interface IElementWithIdAndCodename {
         id: string;
+        codename: string;
     }
 
-    export interface IAssetElement extends IElementWithId, IAssetElementData {}
+    export interface IAssetElement extends IElementWithIdAndCodename, IAssetElementData {}
 
-    export interface ICustomElement extends IElementWithId, ICustomElementData {}
+    export interface ICustomElement extends IElementWithIdAndCodename, ICustomElementData {}
 
-    export interface IDateTimeElement extends IElementWithId, IDateTimeElementData {}
+    export interface IDateTimeElement extends IElementWithIdAndCodename, IDateTimeElementData {}
 
-    export interface IGuidelinesElement extends IElementWithId, IGuidelinesElementData {}
+    export interface IGuidelinesElement extends IElementWithIdAndCodename, IGuidelinesElementData {}
 
-    export interface ILinkedItemsElement extends IElementWithId, ILinkedItemsElementData {}
+    export interface ILinkedItemsElement extends IElementWithIdAndCodename, ILinkedItemsElementData {}
 
-    export interface ISubpagesElement extends IElementWithId, ISubpagesElementData {}
+    export interface ISubpagesElement extends IElementWithIdAndCodename, ISubpagesElementData {}
 
-    export interface IMultipleChoiceElement extends IElementWithId, IMultipleChoiceElementData {}
+    export interface IMultipleChoiceElement extends IElementWithIdAndCodename, IMultipleChoiceElementData {}
 
-    export interface INumberElement extends IElementWithId, INumberElementData {}
+    export interface INumberElement extends IElementWithIdAndCodename, INumberElementData {}
 
-    export interface IRichTextElement extends IElementWithId, IRichTextElementData {}
+    export interface IRichTextElement extends IElementWithIdAndCodename, IRichTextElementData {}
 
-    export interface ISnippetElement extends IElementWithId, ISnippetElementData {}
+    export interface ISnippetElement extends IElementWithIdAndCodename, ISnippetElementData {}
 
-    export interface ITaxonomyElement extends IElementWithId, ITaxonomyElementData {}
+    export interface ITaxonomyElement extends IElementWithIdAndCodename, ITaxonomyElementData {}
 
-    export interface ITextElement extends IElementWithId, ITextElementData {}
+    export interface ITextElement extends IElementWithIdAndCodename, ITextElementData {}
 
-    export interface IUrlSlugElement extends IElementWithId, IUrlSlugElementData {}
+    export interface IUrlSlugElement extends IElementWithIdAndCodename, IUrlSlugElementData {}
 
     export type ContentTypeElementModel =
         | IAssetElement
