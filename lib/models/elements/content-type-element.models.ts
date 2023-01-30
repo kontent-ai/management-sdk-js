@@ -29,8 +29,8 @@ export namespace ContentTypeElements {
     export interface IElementShared {
         type: ElementModels.ElementType;
         content_group?: SharedContracts.IReferenceObjectContract;
-        id: string;
-        codename: string;
+        id?: string;
+        codename?: string;
     }
 
     export interface IContentGroup extends IElementShared {
@@ -264,10 +264,6 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface IElementWithIdAndCodename {
-        id: string;
-        codename: string;
-    }
 
     export interface IAssetElement extends  IAssetElementData {}
 
