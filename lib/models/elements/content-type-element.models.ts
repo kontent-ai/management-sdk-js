@@ -29,6 +29,8 @@ export namespace ContentTypeElements {
     export interface IElementShared {
         type: ElementModels.ElementType;
         content_group?: SharedContracts.IReferenceObjectContract;
+        id: string;
+        codename: string;
     }
 
     export interface IContentGroup extends IElementShared {
@@ -267,31 +269,31 @@ export namespace ContentTypeElements {
         codename: string;
     }
 
-    export interface IAssetElement extends IElementWithIdAndCodename, IAssetElementData {}
+    export interface IAssetElement extends  IAssetElementData {}
 
-    export interface ICustomElement extends IElementWithIdAndCodename, ICustomElementData {}
+    export interface ICustomElement extends  ICustomElementData {}
 
-    export interface IDateTimeElement extends IElementWithIdAndCodename, IDateTimeElementData {}
+    export interface IDateTimeElement extends  IDateTimeElementData {}
 
-    export interface IGuidelinesElement extends IElementWithIdAndCodename, IGuidelinesElementData {}
+    export interface IGuidelinesElement extends  IGuidelinesElementData {}
 
-    export interface ILinkedItemsElement extends IElementWithIdAndCodename, ILinkedItemsElementData {}
+    export interface ILinkedItemsElement extends  ILinkedItemsElementData {}
 
-    export interface ISubpagesElement extends IElementWithIdAndCodename, ISubpagesElementData {}
+    export interface ISubpagesElement extends  ISubpagesElementData {}
 
-    export interface IMultipleChoiceElement extends IElementWithIdAndCodename, IMultipleChoiceElementData {}
+    export interface IMultipleChoiceElement extends  IMultipleChoiceElementData {}
 
-    export interface INumberElement extends IElementWithIdAndCodename, INumberElementData {}
+    export interface INumberElement extends  INumberElementData {}
 
-    export interface IRichTextElement extends IElementWithIdAndCodename, IRichTextElementData {}
+    export interface IRichTextElement extends  IRichTextElementData {}
 
-    export interface ISnippetElement extends IElementWithIdAndCodename, ISnippetElementData {}
+    export interface ISnippetElement extends  ISnippetElementData {}
 
-    export interface ITaxonomyElement extends IElementWithIdAndCodename, ITaxonomyElementData {}
+    export interface ITaxonomyElement extends  ITaxonomyElementData {}
 
-    export interface ITextElement extends IElementWithIdAndCodename, ITextElementData {}
+    export interface ITextElement extends  ITextElementData {}
 
-    export interface IUrlSlugElement extends IElementWithIdAndCodename, IUrlSlugElementData {}
+    export interface IUrlSlugElement extends  IUrlSlugElementData {}
 
     export type ContentTypeElementModel =
         | IAssetElement
