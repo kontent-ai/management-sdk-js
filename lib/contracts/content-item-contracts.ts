@@ -50,7 +50,8 @@ export namespace ContentItemContracts {
     export interface IAddContentItemPostContract {
         name: string;
         type: {
-            codename: string
+            codename?: string,
+            id?: string
         };
         codename?: string;
         external_id?: string;
