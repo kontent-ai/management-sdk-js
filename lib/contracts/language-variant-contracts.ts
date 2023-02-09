@@ -9,7 +9,8 @@ export namespace LanguageVariantContracts {
         elements: ElementContracts.IContentItemElementContract[];
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
-        workflow_step: SharedContracts.IReferenceObjectContract;
+        workflow: ILanguageVariantWorkflowContract;
+        // workflow_step: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ILanguageVariantModelWithComponentsContract {
@@ -17,7 +18,8 @@ export namespace LanguageVariantContracts {
         elements: ElementContracts.IContentItemElementWithComponentsContract[];
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
-        workflow_step: SharedContracts.IReferenceObjectContract;
+        workflow: ILanguageVariantWorkflowContract;
+        // workflow_step: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {
@@ -25,7 +27,7 @@ export namespace LanguageVariantContracts {
 
     export interface IUpsertLanguageVariantPostContract {
         elements: LanguageVariantElements.ILanguageVariantElementBase[];
-        workflow?: IUpsertLanguageVariantWorkflowContract;
+        workflow?: ILanguageVariantWorkflowContract;
     }
     export interface IListLanguageVariantsOfContentTypeWithComponentsResponseContract {
         variants: ILanguageVariantModelWithComponentsContract[];
@@ -42,7 +44,7 @@ export namespace LanguageVariantContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IUpsertLanguageVariantWorkflowContract {
+    export interface ILanguageVariantWorkflowContract {
         workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
         step_identifier: SharedContracts.ICodenameIdReferenceContract;
     }
