@@ -21,7 +21,8 @@ export namespace LanguageVariantModels {
         public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
-        public workflowStep!: SharedModels.ReferenceObject;
+        public workflow!: LanguageVariantContracts.ILanguageVariantWorkflowContract;
+        // public workflowStep!: SharedModels.ReferenceObject;
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
         constructor(
@@ -31,7 +32,8 @@ export namespace LanguageVariantModels {
                 elements: ElementModels.ContentItemElement[],
                 language: SharedModels.ReferenceObject,
                 lastModified: Date,
-                workflowStep: SharedModels.ReferenceObject,
+                workflow: LanguageVariantContracts.ILanguageVariantWorkflowContract,
+                // workflowStep: SharedModels.ReferenceObject,
                 _raw: LanguageVariantContracts.ILanguageVariantModelContract
             }
         ) {
@@ -44,7 +46,8 @@ export namespace LanguageVariantModels {
         public elements!: ElementModels.ContentItemElementWithComponents[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
-        public workflowStep!: SharedModels.ReferenceObject;
+        public workflow!: LanguageVariantContracts.ILanguageVariantWorkflowContract;
+        // public workflowStep!: SharedModels.ReferenceObject;
         public _raw!: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract;
 
         constructor(
@@ -54,7 +57,8 @@ export namespace LanguageVariantModels {
                 elements: ElementModels.ContentItemElementWithComponents[],
                 language: SharedModels.ReferenceObject,
                 lastModified: Date,
-                workflowStep: SharedModels.ReferenceObject,
+                workflow: LanguageVariantContracts.ILanguageVariantWorkflowContract,
+                // workflowStep: SharedModels.ReferenceObject,
                 _raw: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract
             }
         ) {
