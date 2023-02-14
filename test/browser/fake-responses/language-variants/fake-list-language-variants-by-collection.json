@@ -19,10 +19,11 @@
           ]
         }
       ],
-      "workflow_step": {
-        "id": "502a6d13-4e33-4e14-905b-c784217ddc7d"
+      "workflow": {
+        "workflow_identifier": {"id": "00000000-0000-0000-0000-000000000000"},
+        "step_identifier": {"id":"c199950d-99f0-4983-b711-6c4c91624b22"}
       },
-      "item": {
+    "item": {
         "id": "3f4a537b-b755-49b0-bb09-9df63ae92404"
       },
       "language": {

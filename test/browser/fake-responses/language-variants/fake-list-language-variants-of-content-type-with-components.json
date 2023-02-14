@@ -58,8 +58,9 @@
             ]
           }
         ],
-        "workflow_step": {
-          "id": "1e93d088-1ff4-421c-82ca-0564182746ef"
+        "workflow": {
+          "workflow_identifier": {"id": "00000000-0000-0000-0000-000000000000"},
+          "step_identifier": {"id":"c199950d-99f0-4983-b711-6c4c91624b22"}
         },
         "item": {
           "id": "0276f15b-1104-46d8-8e04-29326c58c332"
