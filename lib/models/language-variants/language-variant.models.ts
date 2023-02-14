@@ -22,7 +22,6 @@ export namespace LanguageVariantModels {
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
         public workflow!: LanguageVariantContracts.ILanguageVariantWorkflowContract;
-        // public workflowStep!: SharedModels.ReferenceObject;
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
         constructor(
@@ -33,7 +32,6 @@ export namespace LanguageVariantModels {
                 language: SharedModels.ReferenceObject,
                 lastModified: Date,
                 workflow: LanguageVariantContracts.ILanguageVariantWorkflowContract,
-                // workflowStep: SharedModels.ReferenceObject,
                 _raw: LanguageVariantContracts.ILanguageVariantModelContract
             }
         ) {
@@ -47,7 +45,6 @@ export namespace LanguageVariantModels {
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
         public workflow!: LanguageVariantContracts.ILanguageVariantWorkflowContract;
-        // public workflowStep!: SharedModels.ReferenceObject;
         public _raw!: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract;
 
         constructor(
@@ -58,7 +55,6 @@ export namespace LanguageVariantModels {
                 language: SharedModels.ReferenceObject,
                 lastModified: Date,
                 workflow: LanguageVariantContracts.ILanguageVariantWorkflowContract,
-                // workflowStep: SharedModels.ReferenceObject,
                 _raw: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract
             }
         ) {
