@@ -3,12 +3,12 @@ import { SharedContracts } from './shared-contracts';
 import { LanguageVariantElements } from '../models';
 
 export namespace LanguageVariantContracts {
-
     export interface ILanguageVariantModelContract {
         item: SharedContracts.IReferenceObjectContract;
         elements: ElementContracts.IContentItemElementContract[];
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
+        workflow: ILanguageVariantWorkflowContract;
         workflow_step: SharedContracts.IReferenceObjectContract;
     }
 
@@ -18,14 +18,14 @@ export namespace LanguageVariantContracts {
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
         workflow_step: SharedContracts.IReferenceObjectContract;
+        workflow: ILanguageVariantWorkflowContract;
     }
 
-    export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {
-    }
+    export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {}
 
     export interface IUpsertLanguageVariantPostContract {
         elements: LanguageVariantElements.ILanguageVariantElementBase[];
-        workflow?: IUpsertLanguageVariantWorkflowContract;
+        workflow?: ILanguageVariantWorkflowContract;
     }
     export interface IListLanguageVariantsOfContentTypeWithComponentsResponseContract {
         variants: ILanguageVariantModelWithComponentsContract[];
@@ -42,15 +42,12 @@ export namespace LanguageVariantContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IUpsertLanguageVariantWorkflowContract {
+    export interface ILanguageVariantWorkflowContract {
         workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
         step_identifier: SharedContracts.ICodenameIdReferenceContract;
     }
 
+    export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {}
 
-    export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {
-    }
-
-    export interface IViewLanguageVariantResponseContract extends ILanguageVariantModelContract {
-    }
+    export interface IViewLanguageVariantResponseContract extends ILanguageVariantModelContract {}
 }

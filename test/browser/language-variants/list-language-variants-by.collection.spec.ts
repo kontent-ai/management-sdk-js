@@ -58,8 +58,9 @@ describe('List language variants by collection', () => {
             expect(variant.language).toBeDefined();
             expect(variant.elements).toBeDefined();
             expect(variant.lastModified).toEqual(jasmine.any(Date));
-            expect(variant.workflowStep).toBeDefined();
-            expect(variant.workflowStep.id).toEqual(originalItem.workflow_step.id);
+            expect(variant.workflow.workflowIdentifier).toBeDefined();
+            expect(variant.workflow.stepIdentifier.id).toEqual(originalItem.workflow.step_identifier.id);
+            expect(variant.workflow.workflowIdentifier.id).toEqual(originalItem.workflow.workflow_identifier.id);
 
             expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
             expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
