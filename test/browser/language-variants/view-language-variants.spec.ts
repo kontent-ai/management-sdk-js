@@ -91,13 +91,15 @@ describe('View language variant', () => {
             throw Error(`Could not find original item with id '${variant.item.id}'`);
         }
 
-        expect(variant.item).toBeDefined();
-        expect(variant.language).toBeDefined();
-        expect(variant.elements).toBeDefined();
+        expect(variant.item.id).toEqual(originalItem.item.id);
+        expect(variant.language.id).toEqual(originalItem.language.id);
         expect(variant.lastModified).toEqual(jasmine.any(Date));
-
         expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
+
+        expect(variant.worklfowStep.id).toEqual(originalItem.workflow_step.id);
+        expect(variant.workflow.stepIdentifier.id).toEqual(originalItem.workflow.step_identifier.id);
+        expect(variant.workflow.workflowIdentifier.id).toEqual(originalItem.workflow.workflow_identifier.id);
 
         variant.elements.forEach((element) => {
             const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);

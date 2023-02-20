@@ -2,6 +2,12 @@ import { SharedModels } from '../shared/shared-models';
 import { SharedContracts, WorkflowContracts } from '../../contracts';
 
 export namespace WorkflowModels {
+
+    export interface LanguageVariantWorkflow {
+        workflowOdentifier: SharedContracts.ICodenameIdReferenceContract;
+        stepIdentifier: SharedContracts.ICodenameIdReferenceContract;
+    }
+
     export class WorkflowStep implements SharedModels.IBaseModel<WorkflowContracts.IWorkflowStepContract> {
         public id!: string;
         public name!: string;

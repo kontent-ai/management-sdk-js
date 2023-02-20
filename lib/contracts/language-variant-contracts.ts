@@ -3,13 +3,13 @@ import { SharedContracts } from './shared-contracts';
 import { LanguageVariantElements } from '../models';
 
 export namespace LanguageVariantContracts {
-
     export interface ILanguageVariantModelContract {
         item: SharedContracts.IReferenceObjectContract;
         elements: ElementContracts.IContentItemElementContract[];
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
         workflow: ILanguageVariantWorkflowContract;
+        workflow_step: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ILanguageVariantModelWithComponentsContract {
@@ -17,11 +17,11 @@ export namespace LanguageVariantContracts {
         elements: ElementContracts.IContentItemElementWithComponentsContract[];
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
+        workflow_step: SharedContracts.IReferenceObjectContract;
         workflow: ILanguageVariantWorkflowContract;
     }
 
-    export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {
-    }
+    export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {}
 
     export interface IUpsertLanguageVariantPostContract {
         elements: LanguageVariantElements.ILanguageVariantElementBase[];
@@ -47,10 +47,7 @@ export namespace LanguageVariantContracts {
         step_identifier: SharedContracts.ICodenameIdReferenceContract;
     }
 
+    export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {}
 
-    export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {
-    }
-
-    export interface IViewLanguageVariantResponseContract extends ILanguageVariantModelContract {
-    }
+    export interface IViewLanguageVariantResponseContract extends ILanguageVariantModelContract {}
 }
