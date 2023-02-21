@@ -7,7 +7,7 @@ export namespace SpaceContracts {
         name: string;
         codename: string;
     }
-    export interface IContentItemsListingResponseContract {
+    export interface ISpacesListingResponseContract {
         items: ISpaceModelContract[];
         pagination: SharedContracts.IPaginationModelContract;
     }

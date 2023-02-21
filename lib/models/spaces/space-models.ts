@@ -3,7 +3,7 @@ import { SharedModels } from '../shared/shared-models';
 
 export namespace SpaceModels {
 
-    export class ContentItem implements SharedModels.IBaseModel<SpaceContracts.ISpaceModelContract> {
+    export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceModelContract> {
 
         public id!: string;
         public name!: string;
