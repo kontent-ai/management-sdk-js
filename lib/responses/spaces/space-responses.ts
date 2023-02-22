@@ -16,6 +16,17 @@ export namespace SpaceResponses {
             super(debug, rawData, data);
         }
     }
+    export class SpacesListAllResponse extends BaseResponses.ContentManagementListAllResponse<SpacesResponse, SpaceModels.Space> {
+        constructor(
+            data: {
+                items: SpaceModels.Space[],
+                responses: SpacesResponse[]
+            }
+        ) {
+            super(data);
+        }
+    }
+
     export class ViewSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IViewSpaceResponseContract, SpaceModels.Space> {
 
         constructor(
