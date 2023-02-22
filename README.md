@@ -329,46 +329,50 @@ const languageVariant = await client
     .upsertLanguageVariant()
     .byItemId(contentItem.data.id)
     .byLanguageId(defaultLanguage?.id ?? '')
-    .withData((builder) => [
-        builder.textElement({
-            element: {
-                codename: 'title'
-            },
-            value: 'Warrior'
-        }),
-        builder.dateTimeElement({
-            element: {
-                codename: 'release_date'
-            },
-            value: '2011-09-09'
-        }),
-        builder.richTextElement({
-            element: {
-                codename: 'description'
-            },
-            value: '<p>Path that puts the fighter on a collision course with his estranged, older brother.</p>'
-        }),
-        builder.assetElement({
-            element: {
-                codename: 'cover'
-            },
-            value: [
-                {
-                    id: imageAsset.data.id
-                }
+    .withData((builder) => {
+        return {
+            elements: [
+                builder.textElement({
+                    element: {
+                        codename: 'title'
+                    },
+                    value: 'Warrior'
+                }),
+                builder.dateTimeElement({
+                    element: {
+                        codename: 'release_date'
+                    },
+                    value: '2011-09-09'
+                }),
+                builder.richTextElement({
+                    element: {
+                        codename: 'description'
+                    },
+                    value: '<p>Path that puts the fighter on a collision course with his estranged, older brother.</p>'
+                }),
+                builder.assetElement({
+                    element: {
+                        codename: 'cover'
+                    },
+                    value: [
+                        {
+                            id: imageAsset.data.id
+                        }
+                    ]
+                }),
+                builder.taxonomyElement({
+                    element: {
+                        codename: 'genre'
+                    },
+                    value: [
+                        {
+                            codename: 'action'
+                        }
+                    ]
+                })
             ]
-        }),
-        builder.taxonomyElement({
-            element: {
-                codename: 'genre'
-            },
-            value: [
-                {
-                    codename: 'action'
-                }
-            ]
-        })
-    ])
+        }
+    })
     .toPromise();
 ```
 
