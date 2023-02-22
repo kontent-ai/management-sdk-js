@@ -16,7 +16,7 @@ export namespace SpaceResponses {
             super(debug, rawData, data);
         }
     }
-    export class ViewContentItemResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IViewSpaceResponseContract, SpaceModels.Space> {
+    export class ViewSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IViewSpaceResponseContract, SpaceModels.Space> {
 
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
