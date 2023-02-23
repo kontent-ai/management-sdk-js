@@ -5,72 +5,68 @@ import { SpaceModels } from '../models';
 import { SpaceResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
-export class ContentItemsMapper extends BaseMapper {
-    
+export class SpacesMapper extends BaseMapper {
+
     mapListingSpacesResponse(
         response: IResponse<SpaceContracts.ISpacesListingResponseContract>
     ): SpaceResponses.SpacesResponse {
         const pagination = super.mapPagination(response.data.pagination);
-        const items = response.data.items.map((m) => this.mapContentItem(m));
+        const items = response.data.items.map((m) => this.mapSpace(m));
 
-        return new ContentItemResponses.ContentItemsResponse(super.mapResponseDebug(response), response.data, {
+        return new SpaceResponses.SpacesResponse(super.mapResponseDebug(response), response.data, {
             pagination: pagination,
             items: items
         });
     }
 
-    mapViewContentItemResponse(
-        response: IResponse<ContentItemContracts.IContentItemModelContract>
-    ): ContentItemResponses.ViewContentItemResponse {
-        return new ContentItemResponses.ViewContentItemResponse(
+    mapViewSpaceResponse(
+        response: IResponse<SpaceContracts.ISpaceModelContract>
+    ): SpaceResponses.ViewSpaceResponse {
+        return new SpaceResponses.ViewSpaceResponse(
             super.mapResponseDebug(response),
             response.data,
-            this.mapContentItem(response.data)
+            this.mapSpace(response.data)
         );
     }
 
-    mapAddContentItemResponse(
-        response: IResponse<ContentItemContracts.IAddContentItemResponseContract>
-    ): ContentItemResponses.AddContentItemResponse {
-        return new ContentItemResponses.AddContentItemResponse(
+    mapAddSpaceResponse(
+        response: IResponse<SpaceContracts.IAddSpaceResponseContract>
+    ): SpaceResponses.AddSpaceResponse {
+        return new SpaceResponses.AddSpaceResponse(
             super.mapResponseDebug(response),
             response.data,
-            this.mapContentItem(response.data)
+            this.mapSpace(response.data)
         );
     }
 
-    mapUpdateContentItemResponse(
-        response: IResponse<ContentItemContracts.IUpdateContentItemResponseContract>
-    ): ContentItemResponses.UpdateContentItemResponse {
-        return new ContentItemResponses.UpdateContentItemResponse(
+    mapUpdateSpaceResponse(
+        response: IResponse<SpaceContracts.IUpdateSpaceResponseContract>
+    ): SpaceResponses.UpdateSpaceResponse {
+        return new SpaceResponses.UpdateSpaceResponse(
             super.mapResponseDebug(response),
             response.data,
-            this.mapContentItem(response.data)
+            this.mapSpace(response.data)
         );
     }
 
-    mapUpsertContentItemResponse(
-        response: IResponse<ContentItemContracts.IUpsertContentItemResponseContract>
-    ): ContentItemResponses.UpsertContentItemResponse {
-        return new ContentItemResponses.UpsertContentItemResponse(
+    mapUpsertSpaceResponse(
+        response: IResponse<SpaceContracts.IUpsertSpaceResponseContract>
+    ): SpaceResponses.UpsertSpaceResponse {
+        return new SpaceResponses.UpsertSpaceResponse(
             super.mapResponseDebug(response),
             response.data,
-            this.mapContentItem(response.data)
+            this.mapSpace(response.data)
         );
     }
 
-    mapContentItem(rawItem: ContentItemContracts.IContentItemModelContract): ContentItemModels.ContentItem {
-        return new ContentItemModels.ContentItem({
+    mapSpace(rawItem: SpaceContracts.ISpaceModelContract): SpaceModels.Space {
+        return new SpaceModels.Space({
             codename: rawItem.codename,
-            externalId: rawItem.external_id,
             id: rawItem.id,
-            lastModified: new Date(rawItem.last_modified),
             name: rawItem.name,
-            type: rawItem.type,
-            collection: super.mapReference(rawItem.collection),
             _raw: rawItem
         });
     }
 }
 
-export const contentItemsMapper = new ContentItemsMapper();
+export const spacesMapper = new SpacesMapper();

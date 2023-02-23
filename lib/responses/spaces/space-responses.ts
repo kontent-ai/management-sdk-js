@@ -37,4 +37,34 @@ export namespace SpaceResponses {
             super(debug, rawData, data);
         }
     }
+    export class AddSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IAddSpaceResponseContract, SpaceModels.Space> {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: SpaceContracts.IAddSpaceResponseContract,
+            data: SpaceModels.Space
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class UpdateSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IUpdateSpaceResponseContract, SpaceModels.Space> {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: SpaceContracts.IAddSpaceResponseContract,
+            data: SpaceModels.Space
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class UpsertSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IUpsertSpaceResponseContract, SpaceModels.Space> {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: SpaceContracts.IUpsertSpaceResponseContract,
+            data: SpaceModels.Space
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
 }
