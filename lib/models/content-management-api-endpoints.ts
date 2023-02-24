@@ -376,6 +376,30 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/mark-environment-as-production`;
     }
 
+    listSpaces(): string {
+        return `${this.getEnvironmentsPath()}/spaces`;
+    }
+
+    viewSpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
+    }
+
+    addSpace(): string {
+        return `${this.getEnvironmentsPath()}/spaces`;
+    }
+
+    deleteSpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces`;
+    }
+
+    modifySpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
+    }
+
+
+    
+
+
     private getProjectPath(): string {
         if (!this.projectId) {
             throw Error(`ProjectId was not provided in client configuration`);
