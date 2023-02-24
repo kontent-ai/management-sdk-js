@@ -16,6 +16,7 @@ import {
     ProjectUserContracts,
     RoleContracts,
     SubscriptionContracts,
+    SpaceContracts,
     TaxonomyContracts,
     WebhookContracts,
     WorkflowContracts
@@ -36,7 +37,8 @@ import {
     subscriptionMapper,
     roleMapper,
     projectUserMapper,
-    assetRenditionMapper
+    assetRenditionMapper,
+    spacesMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -52,7 +54,8 @@ import {
     IContentManagementListQueryConfig,
     CollectionModels,
     ProjectUserModels,
-    AssetRenditionModels
+    AssetRenditionModels,
+    SpaceModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -72,7 +75,8 @@ import {
     SubscriptionResponses,
     RoleResponses,
     ProjectUsersResponses,
-    AssetRenditionResponses
+    AssetRenditionResponses,
+    SpaceResponses
 } from '../responses';
 import { BaseManagementQueryService } from './base-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
@@ -1062,6 +1066,37 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
             )
         );
     }
+
+    async addSpaceAsync(
+        url: string,
+        data: SpaceContracts.IAddSpacePostContract,
+        config: IContentManagementQueryConfig
+    ): Promise<SpaceResponses.AddSpaceResponse> {
+        return spacesMapper.mapAddSpaceResponse(
+            await this.postResponseAsync<SpaceContracts.IAddSpaceResponseContract>(url, data, {}, config)
+        );
+    }
+
+    async viewSpaceAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<SpaceResponses.ViewSpaceResponse> {
+        return spacesMapper.mapViewSpaceResponse(
+            await this.getResponseAsync<SpaceContracts.IViewSpaceResponseContract>(url, {}, config)
+        );
+    }
+
+    async listSpacesAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<SpaceResponses.SpacesResponse> {
+        return spacesMapper.mapListingSpacesResponse(
+            await this.getResponseAsync<SpaceContracts.ISpacesListingResponseContract>(url, {}, config)
+        );
+    }
+
+
+
 
     private async getListAllResponseInternalAsync<
         TResponse extends BaseResponses.IContentManagementListResponse

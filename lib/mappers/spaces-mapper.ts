@@ -59,6 +59,8 @@ export class SpacesMapper extends BaseMapper {
         );
     }
 
+    mapDeleteSpaceResponse()
+
     mapSpace(rawItem: SpaceContracts.ISpaceModelContract): SpaceModels.Space {
         return new SpaceModels.Space({
             codename: rawItem.codename,
