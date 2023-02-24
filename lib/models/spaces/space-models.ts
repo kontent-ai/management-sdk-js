@@ -15,19 +15,19 @@ export namespace SpaceModels {
     }
 
 
-    export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceModelContract> {
+    export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceContract> {
 
         public id!: string;
         public name!: string;
         public codename!: string;
-        public _raw!: SpaceContracts.ISpaceModelContract;
+        public _raw!: SpaceContracts.ISpaceContract;
 
         constructor(
             data: {
                 id: string,
                 name: string,
                 codename: string,
-                _raw: SpaceContracts.ISpaceModelContract
+                _raw: SpaceContracts.ISpaceContract
             }
         ) {
             Object.assign(this, data);

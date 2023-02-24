@@ -26,19 +26,14 @@ export namespace SpaceContracts {
     export interface IDeleteSpaceResponseContact {
     }
 
-    export interface IUpdateSpacePostContract {
+    export interface IModifySpacePostContract {
         name: string;
-        codename?: string;
+        codename: string;
     }
-
-    export interface IUpsertSpacePostContract {
-        name: string;
-        codename?: string;
-    }
-
     export interface IAddSpacePostContract {
         name: string;
-        codename?: string;
+        codename: string;
+        external_id?: string;
     }
 }
 
