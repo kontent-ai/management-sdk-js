@@ -66,6 +66,13 @@ export namespace Identifiers {
         Codename = 'codename'
     }
 
+    export enum SpaceIdentifierEnum {
+        InternalId = 'internalId',
+        ExternalId = 'externalId',
+        Codename = 'codename'
+    }
+
+
     export class AssetIdentifier {
         constructor(public identifier: AssetIdentifierEnum, public value: string) {}
 
@@ -255,4 +262,22 @@ export namespace Identifiers {
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
     }
+    
+    export class SpaceIdentifier {
+        constructor(public identifier: SpaceIdentifierEnum, public value: string) {}
+
+        getParamValue(): string {
+            if (this.identifier === SpaceIdentifierEnum.Codename) {
+                return `codename/${this.value}`;
+            }
+            if (this.identifier === SpaceIdentifierEnum.InternalId) {
+                return `${this.value}`;
+            }
+            if (this.identifier === SpaceIdentifierEnum.ExternalId) {
+                return `external-id/${this.value}`;
+            }
+            throw Error(`Unsupported identifier '${this.identifier}'`);
+        }
+    }
+
 }
