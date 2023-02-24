@@ -1095,6 +1095,31 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
+    async deleteSpaceAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return contentTypeMapper.mapEmptyResponse(
+            await this.deleteResponseAsync<SpaceContracts.IDeleteSpaceResponseContact>(url, {}, config)
+        );
+    }
+
+    async modifySpaceAsync(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: SpaceModels.IModifySpaceeData[]
+    ): Promise<SpaceResponses.ModifySpaceResponse> {
+        return spacesMapper.mapModifySpaceResponse(
+            await this.patchResponseAsync<SpaceContracts.IModifySpaceResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
+        );
+    }
+
+
 
 
 

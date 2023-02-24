@@ -3,6 +3,18 @@ import { SharedModels } from '../shared/shared-models';
 
 export namespace SpaceModels {
 
+    export type ModifySpaceOperation = 'replace';
+
+    export interface IModifySpaceeData {
+        op: ModifySpaceOperation;
+        path: string;
+        value?: any;
+
+        before?: SharedModels.IReferenceObject;
+        after?: SharedModels.IReferenceObject;
+    }
+
+
     export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceModelContract> {
 
         public id!: string;

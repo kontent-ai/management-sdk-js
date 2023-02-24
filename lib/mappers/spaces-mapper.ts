@@ -20,7 +20,7 @@ export class SpacesMapper extends BaseMapper {
     }
 
     mapViewSpaceResponse(
-        response: IResponse<SpaceContracts.ISpaceModelContract>
+        response: IResponse<SpaceContracts.ISpaceContract>
     ): SpaceResponses.ViewSpaceResponse {
         return new SpaceResponses.ViewSpaceResponse(
             super.mapResponseDebug(response),
@@ -39,29 +39,19 @@ export class SpacesMapper extends BaseMapper {
         );
     }
 
-    mapUpdateSpaceResponse(
-        response: IResponse<SpaceContracts.IUpdateSpaceResponseContract>
-    ): SpaceResponses.UpdateSpaceResponse {
-        return new SpaceResponses.UpdateSpaceResponse(
-            super.mapResponseDebug(response),
-            response.data,
-            this.mapSpace(response.data)
+    mapModifySpaceResponse(response: IResponse<SpaceContracts.IModifySpaceResponseContract>): SpaceResponses.ModifySpaceResponse {
+        return new SpaceResponses.ModifySpaceResponse(
+            super.mapResponseDebug(response), response.data, this.mapSpace(response.data)
         );
     }
 
-    mapUpsertSpaceResponse(
-        response: IResponse<SpaceContracts.IUpsertSpaceResponseContract>
-    ): SpaceResponses.UpsertSpaceResponse {
-        return new SpaceResponses.UpsertSpaceResponse(
-            super.mapResponseDebug(response),
-            response.data,
-            this.mapSpace(response.data)
-        );
+
+
+    mapDeleteSpaceResponse() {
+
     }
 
-    mapDeleteSpaceResponse()
-
-    mapSpace(rawItem: SpaceContracts.ISpaceModelContract): SpaceModels.Space {
+    mapSpace(rawItem: SpaceContracts.ISpaceContract): SpaceModels.Space {
         return new SpaceModels.Space({
             codename: rawItem.codename,
             id: rawItem.id,

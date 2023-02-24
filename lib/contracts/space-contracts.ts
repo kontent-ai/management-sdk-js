@@ -2,28 +2,25 @@ import { SharedContracts } from './shared-contracts';
 
 
 export namespace SpaceContracts {
-    export interface ISpaceModelContract {
+    export interface ISpaceContract {
         id: string;
         name: string;
         codename: string;
     }
     export interface ISpacesListingResponseContract {
-        items: ISpaceModelContract[];
+        items: ISpaceContract[];
         pagination: SharedContracts.IPaginationModelContract;
     }
-    export interface IAddSpaceResponseContract extends ISpaceModelContract{
+    export interface IAddSpaceResponseContract extends ISpaceContract{
     }
 
-    export interface IViewSpaceResponseContract extends ISpaceModelContract{
+    export interface IViewSpaceResponseContract extends ISpaceContract{
     }
 
-    export interface IAddSpaceResponseContract extends ISpaceModelContract{
+    export interface IAddSpaceResponseContract extends ISpaceContract{
     }
 
-    export interface IUpdateSpaceResponseContract extends ISpaceModelContract{
-    }
-
-    export interface IUpsertSpaceResponseContract extends ISpaceModelContract{
+    export interface IModifySpaceResponseContract extends ISpaceContract {
     }
 
     export interface IDeleteSpaceResponseContact {

@@ -47,24 +47,15 @@ export namespace SpaceResponses {
         }
     }
 
-    export class UpdateSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IUpdateSpaceResponseContract, SpaceModels.Space> {
+    export class ModifySpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IViewSpaceResponseContract, SpaceModels.Space>  {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: SpaceContracts.IAddSpaceResponseContract,
+            rawData: SpaceContracts.IViewSpaceResponseContract,
             data: SpaceModels.Space
         ) {
             super(debug, rawData, data);
         }
     }
 
-    export class UpsertSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IUpsertSpaceResponseContract, SpaceModels.Space> {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: SpaceContracts.IUpsertSpaceResponseContract,
-            data: SpaceModels.Space
-        ) {
-            super(debug, rawData, data);
-        }
-    }
 
 }
