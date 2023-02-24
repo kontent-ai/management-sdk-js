@@ -16,25 +16,25 @@ export class SpaceIdentifierQuery<TResult> {
 
     /**
     * Gets using internal Id
-    * @param id Internal Id of content item
+    * @param id Internal Id of space
     */
-    byItemId(id: string): TResult {
-        return this.buildResult(this.config, this.queryService, new Identifiers.ContentItemIdentifier(Identifiers.ContentItemIdentifierEnum.InternalId, id));
+    bySpaceId(id: string): TResult {
+        return this.buildResult(this.config, this.queryService, new Identifiers.SpaceIdentifier(Identifiers.SpaceIdentifierEnum.InternalId, id));
     }
 
     /**
     * Gets query using external Id
-    * @param id External Id of content item
+    * @param id External Id of space
     */
-    byItemExternalId(id: string): TResult {
-        return this.buildResult(this.config, this.queryService, new Identifiers.ContentItemIdentifier(Identifiers.ContentItemIdentifierEnum.ExternalId, id));
+    bySpaceExternalId(id: string): TResult {
+        return this.buildResult(this.config, this.queryService, new Identifiers.SpaceIdentifier(Identifiers.SpaceIdentifierEnum.ExternalId, id));
     }
 
     /**
     * Gets query using codename
-    * @param codename Codename of content item
+    * @param codename Codename of space
     */
-    byItemCodename(codename: string): TResult {
-        return this.buildResult(this.config, this.queryService, new Identifiers.ContentItemIdentifier(Identifiers.ContentItemIdentifierEnum.Codename, codename));
+    bySpaceCodename(codename: string): TResult {
+        return this.buildResult(this.config, this.queryService, new Identifiers.SpaceIdentifier(Identifiers.SpaceIdentifierEnum.Codename, codename));
     }
 }
