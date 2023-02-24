@@ -5,7 +5,7 @@ export namespace SpaceModels {
 
     export type ModifySpaceOperation = 'replace';
 
-    export interface IModifySpaceeData {
+    export interface IModifySpaceData {
         op: ModifySpaceOperation;
         path: string;
         value?: any;
