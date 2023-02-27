@@ -14,6 +14,11 @@ export namespace SpaceModels {
         after?: SharedModels.IReferenceObject;
     }
 
+    export interface IAddSpaceData {
+        name: string;
+        codename: string;
+    }
+
 
     export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceContract> {
 

@@ -13,6 +13,7 @@ import {
     LanguageModels,
     LanguageVariantElementsBuilder,
     ProjectUserModels,
+    SpaceModels,
     TaxonomyModels,
     WebhookModels,
     WorkflowModels
@@ -26,6 +27,7 @@ import {
     AddContentTypeQuery,
     AddContentTypeSnippetQuery,
     AddLanguageQuery,
+    AddSpaceQuery,
     AddTaxonomyQuery,
     AddWebhookQuery,
     AssetIdentifierQuery,
@@ -43,6 +45,7 @@ import {
     DeleteContentTypeQuery,
     DeleteContentTypeSnippetQuery,
     DeleteLanguageVariantQuery,
+    DeleteSpaceQuery,
     DeleteQuery,
     DeleteTaxonomyQuery,
     DeleteWebhookQuery,
@@ -60,6 +63,7 @@ import {
     ListLanguageVariantsOfContentTypeQuery,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
     ListLanguageVariantsOfItemQuery,
+    ListSpacesQuery,
     ListTaxonomiesQuery,
     ListWebhooksQuery,
     ListWorkflowStepsQuery,
@@ -67,6 +71,7 @@ import {
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
     ModifyLanguageQuery,
+    ModifySpaceQuery,
     ModifyTaxonomyQuery,
     PatchQuery,
     PostQuery,
@@ -88,6 +93,7 @@ import {
     ViewContentTypeSnippetQuery,
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
+    ViewSpaceQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
     EnableWebhookQuery,
@@ -131,6 +137,7 @@ import { EnvironmentModels } from '../models/environments/environment.models';
 import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
 import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
+import { SpaceIdentifierQuery } from 'lib/query-builders/space-identifier-query.class';
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
@@ -667,4 +674,34 @@ export interface IManagementClient<TCancelToken> {
      * Views asset rendition
      */
     viewAssetRendition(): AssetIdentifierQuery<RenditionIdentifierQuery<ViewAssetRenditionQuery>>;
+    
+    /**
+     * Adds space
+     */
+    addSpace(): DataQuery<AddSpaceQuery, SpaceModels.IAddSpaceData>;
+
+    /**
+     * Deletes a space
+     */
+    DeleteSpaceQuery(): SpaceIdentifierQuery<DeleteSpaceQuery>;
+       
+
+    /**
+     * Lists all spaces
+     */
+    listSpaces(): ListSpacesQuery;
+
+
+    /**
+     * Modifies a space
+     */
+    modifySpace(): SpaceIdentifierQuery<
+        DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>
+    >;
+
+    /**
+     * Views a space
+     */
+         viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery>;
+
 }
