@@ -4,7 +4,8 @@ import {
     AssetRenditionModels,
     CollectionModels,
     LanguageVariantElementsBuilder,
-    ProjectUserModels
+    ProjectUserModels,
+    SpaceModels
 } from '../models';
 
 import { IManagementClientConfig } from '../config';
@@ -126,7 +127,12 @@ import {
     StartProjectValidationQuery,
     TaskIdentifierQuery,
     CheckProjectValidationQuery,
-    ListProjectValidationIssuesQuery as ListProjectValidationIssuesQuery
+    ListProjectValidationIssuesQuery as ListProjectValidationIssuesQuery,
+    AddSpaceQuery,
+    DeleteSpaceQuery,
+    ListSpacesQuery,
+    ModifySpaceQuery,
+    ViewSpaceQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
@@ -138,6 +144,7 @@ import { EnvironmentModels } from '../models/environments/environment.models';
 import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
 import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
+import { SpaceIdentifierQuery } from 'lib/query-builders/space-identifier-query.class';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
     private readonly queryService: ManagementQueryService;
@@ -1205,5 +1212,49 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.queryService,
             (config, queryService, data) => new MarkEnvironmentAsProductionQuery(config, queryService, data)
         );
+    }
+
+    addSpace(): DataQuery<AddSpaceQuery, SpaceModels.IAddSpaceData> {
+        return new DataQuery<AddSpaceQuery, SpaceModels.IAddSpaceData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new AddSpaceQuery(config, queryService, data)
+        );
+    }
+
+    deleteSpace(): SpaceIdentifierQuery<DeleteSpaceQuery> {
+        return new SpaceIdentifierQuery<DeleteSpaceQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new DeleteSpaceQuery(config, queryService, identifier)
+        );
+    }
+
+    listSpaces(): ListSpacesQuery {
+        return new ListSpacesQuery(this.config, this.queryService);
+    }
+
+    modifySpace(): SpaceIdentifierQuery<DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>> {
+        return new SpaceIdentifierQuery<
+            DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) =>
+                        new ModifySpaceQuery(nConfig, nQueryService, identifier, data)
+                )
+        )
+    }
+
+    viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery> {
+        return new SpaceIdentifierQuery<ViewSpaceQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new ViewSpaceQuery(config, queryService, identifier)
+        )
     }
 }
