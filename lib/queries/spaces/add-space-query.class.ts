@@ -1,6 +1,6 @@
 
 
-import { SpaceContracts } from 'lib/contracts';
+import { SpaceContracts } from '../../contracts';
 import { IManagementClientConfig } from '../../config';
 import { SpaceResponses } from '../../responses';
 import { ManagementQueryService } from '../../services';

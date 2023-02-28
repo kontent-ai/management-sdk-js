@@ -1107,7 +1107,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async modifySpaceAsync(
         url: string,
         config: IContentManagementQueryConfig,
-        data: SpaceModels.IModifySpaceeData[]
+        data: SpaceModels.IModifySpaceData[]
     ): Promise<SpaceResponses.ModifySpaceResponse> {
         return spacesMapper.mapModifySpaceResponse(
             await this.patchResponseAsync<SpaceContracts.IModifySpaceResponseContract>(

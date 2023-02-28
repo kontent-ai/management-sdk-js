@@ -1,4 +1,4 @@
-import { SpaceContracts } from 'lib/contracts/space-contracts';
+import { SpaceContracts } from '../../contracts';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace SpaceModels {
