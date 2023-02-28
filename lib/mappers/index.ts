@@ -18,4 +18,4 @@ export * from './role-mapper';
 export * from './project-user-mapper';
 export * from './asset-rendition-mapper';
 export * from './environment-mapper';
-export * from './spaces-mapper'
+export * from './space-mapper'

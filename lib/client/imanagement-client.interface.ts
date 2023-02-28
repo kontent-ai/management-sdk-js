@@ -683,7 +683,7 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Deletes a space
      */
-    DeleteSpaceQuery(): SpaceIdentifierQuery<DeleteSpaceQuery>;
+    deleteSpace(): SpaceIdentifierQuery<DeleteSpaceQuery>;
        
 
     /**
@@ -702,6 +702,6 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Views a space
      */
-         viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery>;
+    viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery>;
 
 }
