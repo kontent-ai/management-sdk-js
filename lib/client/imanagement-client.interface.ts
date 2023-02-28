@@ -79,6 +79,7 @@ import {
     ProjectInformationQuery,
     PublishLanguageVariantQuery,
     PutQuery,
+    SpaceIdentifierQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
     UpdateContentItemQuery,
@@ -137,7 +138,6 @@ import { EnvironmentModels } from '../models/environments/environment.models';
 import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
 import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
-import { SpaceIdentifierQuery } from 'lib/query-builders/space-identifier-query.class';
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
