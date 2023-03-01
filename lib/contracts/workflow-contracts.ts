@@ -36,6 +36,7 @@ export namespace WorkflowContracts {
 
     export interface IWorkflowScopeContract {
         content_types: SharedContracts.IReferenceObjectContract[];
+        collections: SharedContracts.IReferenceObjectContract[];
     }
 
     export interface IWorkflowStepTransitionsToContract {
