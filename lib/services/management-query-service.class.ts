@@ -1089,7 +1089,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async listSpacesAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<SpaceResponses.SpacesResponse> {
+    ): Promise<SpaceResponses.SpacesListAllResponse> {
         return spacesMapper.mapListingSpacesResponse(
             await this.getResponseAsync<SpaceContracts.ISpacesListingResponseContract>(url, {}, config)
         );

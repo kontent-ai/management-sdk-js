@@ -3,17 +3,14 @@
 import { IManagementClientConfig } from '../../config';
 import { SpaceResponses } from '../../responses';
 import { ManagementQueryService } from '../../services';
-import { BaseListingQuery } from '../base-listing-query';
+import { BaseQuery } from '../base-query';
 
-export class ListSpacesQuery extends BaseListingQuery<
-    SpaceResponses.SpacesResponse,
-    SpaceResponses.SpacesListAllResponse
-> {
+export class ListSpacesQuery extends BaseQuery<SpaceResponses.SpacesListAllResponse> {
     constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
         super(config, queryService);
     }
 
-    toPromise(): Promise<SpaceResponses.SpacesResponse> {
+    toPromise(): Promise<SpaceResponses.SpacesListAllResponse> {
         return this.queryService.listSpacesAsync(this.getUrl(), this.queryConfig);
     }
 
@@ -21,13 +18,4 @@ export class ListSpacesQuery extends BaseListingQuery<
         return this.apiEndpoints.listSpaces();
     }
 
-    protected allResponseFactory(
-        items: any[],
-        responses: SpaceResponses.SpacesResponse[]
-    ): SpaceResponses.SpacesListAllResponse {
-        return new SpaceResponses.SpacesListAllResponse({
-            items: items,
-            responses: responses
-        });
-    }
 }
