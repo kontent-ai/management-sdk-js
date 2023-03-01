@@ -79,6 +79,7 @@ export namespace WorkflowModels {
         codename?: string;
         scopes: {
             content_types: SharedContracts.IReferenceObjectContract[];
+            collections: SharedContracts.IReferenceObjectContract[];
         }[];
         steps: {
             name: string;
@@ -111,6 +112,7 @@ export namespace WorkflowModels {
         codename?: string;
         scopes: {
             content_types: SharedContracts.IReferenceObjectContract[];
+            collections?: SharedContracts.IReferenceObjectContract[];
         }[];
         steps: {
             id?: string;
