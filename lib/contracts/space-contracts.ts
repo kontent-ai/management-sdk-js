@@ -1,4 +1,3 @@
-import { SharedContracts } from './shared-contracts';
 
 
 export namespace SpaceContracts {
@@ -7,10 +6,8 @@ export namespace SpaceContracts {
         name: string;
         codename: string;
     }
-    export interface ISpacesListingResponseContract {
-        items: ISpaceContract[];
-        pagination: SharedContracts.IPaginationModelContract;
-    }
+    export type ISpacesListingResponseContract = ISpaceContract[];
+
     export interface IAddSpaceResponseContract extends ISpaceContract{
     }
 

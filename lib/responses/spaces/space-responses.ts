@@ -1,29 +1,28 @@
 import { SpaceContracts } from '../../contracts';
-import { SpaceModels, SharedModels } from '../../models';
+import { SpaceModels} from '../../models';
 import { BaseResponses } from '../base-responses';
 
 export namespace SpaceResponses {
 
-    export class SpacesResponse extends BaseResponses.BaseContentManagementListResponse<SpaceContracts.ISpacesListingResponseContract, SpaceModels.Space>  {
+    // export class SpacesResponse extends BaseResponses.BaseContentManagementListResponse<SpaceContracts.ISpacesListingResponseContract, SpaceModels.Space>  {
+    //     constructor(
+    //         debug: BaseResponses.IContentManagementResponseDebug,
+    //         rawData: SpaceContracts.ISpacesListingResponseContract,
+    //         data: {
+    //             items: SpaceModels.Space[],
+    //             // pagination: SharedModels.Pagination
+    //         }
+    //     ) {
+    //         super(debug, rawData, data);
+    //     }
+    // }
+    export class SpacesListAllResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.ISpacesListingResponseContract, SpaceModels.Space[]> {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: SpaceContracts.ISpacesListingResponseContract,
-            data: {
-                items: SpaceModels.Space[],
-                pagination: SharedModels.Pagination
-            }
+            data: SpaceModels.Space[]
         ) {
             super(debug, rawData, data);
-        }
-    }
-    export class SpacesListAllResponse extends BaseResponses.ContentManagementListAllResponse<SpacesResponse, SpaceModels.Space> {
-        constructor(
-            data: {
-                items: SpaceModels.Space[],
-                responses: SpacesResponse[]
-            }
-        ) {
-            super(data);
         }
     }
 

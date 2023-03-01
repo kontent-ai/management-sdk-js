@@ -9,14 +9,10 @@ export class SpacesMapper extends BaseMapper {
 
     mapListingSpacesResponse(
         response: IResponse<SpaceContracts.ISpacesListingResponseContract>
-    ): SpaceResponses.SpacesResponse {
-        const pagination = super.mapPagination(response.data.pagination);
-        const items = response.data.items.map((m) => this.mapSpace(m));
+    ): SpaceResponses.SpacesListAllResponse {
+        const items = response.data.map((m) => this.mapSpace(m));
 
-        return new SpaceResponses.SpacesResponse(super.mapResponseDebug(response), response.data, {
-            pagination: pagination,
-            items: items
-        });
+        return new SpaceResponses.SpacesListAllResponse(super.mapResponseDebug(response), response.data, items);
     }
 
     mapViewSpaceResponse(
