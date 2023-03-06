@@ -1,8 +1,8 @@
 import { SpaceResponses, SpaceModels } from '../../../lib';
-import * as viewSpaceJson from '../fake-responses/content-types/fake-view-content-type.json';
+import * as viewSpaceJson from '../fake-responses/spaces/fake-view-space.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-describe('View content type', () => {
+describe('View space', () => {
     let response: SpaceResponses.ViewSpaceResponse;
 
     beforeAll(async () => {
