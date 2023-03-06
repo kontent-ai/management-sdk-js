@@ -389,7 +389,7 @@ export class ContentManagementApiEndpoints {
     }
 
     deleteSpace(identifier: Identifiers.SpaceIdentifier): string {
-        return `${this.getEnvironmentsPath()}/spaces`;
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
     }
 
     modifySpace(identifier: Identifiers.SpaceIdentifier): string {

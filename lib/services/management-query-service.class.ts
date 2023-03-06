@@ -1099,7 +1099,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return contentTypeMapper.mapEmptyResponse(
+        return spacesMapper.mapEmptyResponse(
             await this.deleteResponseAsync<SpaceContracts.IDeleteSpaceResponseContact>(url, {}, config)
         );
     }

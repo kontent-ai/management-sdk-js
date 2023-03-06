@@ -1,5 +1,5 @@
 import { SpaceResponses, SpaceModels } from '../../../lib';
-import * as listSpacesJson from '../fake-responses/content-types/fake-list-spaces.json';
+import * as listSpacesJson from '../fake-responses/spaces/fake-list-spaces.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
 describe('List content types', () => {
@@ -26,7 +26,7 @@ describe('List content types', () => {
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
         expect(Array.isArray(response.data)).toBeTruthy();
-        expect(response.data.length).toEqual(listSpacesJson.spaces.length);
+        expect(response.data.length).toEqual(listSpacesJson.length);
         expect(response.data).toBeTruthy();
     });
 
@@ -34,7 +34,7 @@ describe('List content types', () => {
         const spaces = response.data;
 
         spaces.forEach((space) => {
-            const originalItem = listSpacesJson.spaces.find((m) => m.id === space.id);
+            const originalItem = listSpacesJson.find((m) => m.id === space.id);
 
             if (!originalItem) {
                 throw Error(`Invalid content type with id '${space.id}'`);
