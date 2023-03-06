@@ -7,7 +7,7 @@ export namespace SpaceModels {
 
     export interface IModifySpaceData {
         op: ModifySpaceOperation;
-        path: string;
+        property_name: string;
         value?: any;
 
         before?: SharedModels.IReferenceObject;
