@@ -13,11 +13,11 @@ describe('Delete space', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.deleteContentType().byTypeCodename('xCodename').getUrl();
-        const internalIdUrl = cmLiveClient.deleteContentType().byTypeId('xInternalId').getUrl();
+        const codenameUrl = cmLiveClient.deleteSpace().bySpaceCodename('xCodename').getUrl();
+        const internalIdUrl = cmLiveClient.deleteSpace().bySpaceId('xInternalId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/xCodename`);
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/xInternalId`);
+        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/codename/xCodename`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/xInternalId`);
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {
