@@ -29,7 +29,7 @@ describe('View space', () => {
         expect(response.data).toBeDefined();
     });
 
-    it(`content type properties should be mapped`, () => {
+    it(`space properties should be mapped`, () => {
         const originalItem = viewSpaceJson;
         const Space = response.data;
 
