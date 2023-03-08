@@ -39,7 +39,7 @@ describe('List spaces', () => {
             if (!originalItem) {
                 throw Error(`Invalid space with id '${space.id}'`);
             }
-            
+
             expect(space).toEqual(jasmine.any(SpaceModels.Space));
             expect(space.codename).toEqual(originalItem.codename);
             expect(space.name).toEqual(originalItem.name);

@@ -1247,7 +1247,7 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                     (nConfig, nQueryService, data) =>
                         new ModifySpaceQuery(nConfig, nQueryService, identifier, data)
                 )
-        )
+        );
     }
 
     viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery> {
@@ -1255,6 +1255,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ViewSpaceQuery(config, queryService, identifier)
-        )
+        );
     }
 }

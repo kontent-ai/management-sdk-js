@@ -1,7 +1,6 @@
 import { SpaceResponses } from '../../../lib';
-import * as responseJson from '../fake-responses/workflow/fake-add-workflow.json';
+import * as responseJson from '../fake-responses/spaces/fake-add-space.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
-
 
 describe('Add space', () => {
     let response: SpaceResponses.AddSpaceResponse;
@@ -10,7 +9,7 @@ describe('Add space', () => {
             .addSpace()
             .withData({
                 name: 'Spacename',
-                codename: "My_Workflow"
+                codename: 'My_Workflow'
             })
             .toPromise();
     });
@@ -35,14 +34,12 @@ describe('Add space', () => {
         expect(response.data).toBeDefined();
     });
 
-    it('space properties should be mapped',() => {
+    it('space properties should be mapped', () => {
         const originalItem = responseJson;
         const space = response.data;
 
-        expect (space.codename).toEqual(originalItem.codename);
-        expect (space.name).toEqual(originalItem.name);
-        expect (space.id).toBeDefined;
-
-
-    })
-})
+        expect(space.codename).toEqual(originalItem.codename);
+        expect(space.name).toEqual(originalItem.name);
+        expect(space.id).toBeDefined();
+    });
+});

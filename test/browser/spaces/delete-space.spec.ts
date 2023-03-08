@@ -16,7 +16,7 @@ describe('Delete space', () => {
         const codenameUrl = cmLiveClient.deleteSpace().bySpaceCodename('xCodename').getUrl();
         const internalIdUrl = cmLiveClient.deleteSpace().bySpaceId('xInternalId').getUrl();
 
-        console.log(codenameUrl, internalIdUrl)
+        console.log(codenameUrl, internalIdUrl);
         expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/codename/xCodename`);
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/xInternalId`);
     });

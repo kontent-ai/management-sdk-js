@@ -674,7 +674,7 @@ export interface IManagementClient<TCancelToken> {
      * Views asset rendition
      */
     viewAssetRendition(): AssetIdentifierQuery<RenditionIdentifierQuery<ViewAssetRenditionQuery>>;
-    
+
     /**
      * Adds space
      */
@@ -684,7 +684,7 @@ export interface IManagementClient<TCancelToken> {
      * Deletes a space
      */
     deleteSpace(): SpaceIdentifierQuery<DeleteSpaceQuery>;
-       
+
 
     /**
      * Lists all spaces

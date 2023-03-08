@@ -262,7 +262,7 @@ export namespace Identifiers {
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
     }
-    
+
     export class SpaceIdentifier {
         constructor(public identifier: SpaceIdentifierEnum, public value: string) {}
 
