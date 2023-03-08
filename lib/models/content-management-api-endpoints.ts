@@ -77,7 +77,7 @@ export class ContentManagementApiEndpoints {
 
     changeWorkflowOfLanguageVariant(
         itemIdentifier: Identifiers.ContentItemIdentifier,
-        languageIdentifier: Identifiers.LanguageIdentifier,
+        languageIdentifier: Identifiers.LanguageIdentifier
     ): string {
         return `${this.getProjectPath()}/items/${itemIdentifier.getParamValue()}/variants/${languageIdentifier.getParamValue()}/change-workflow`;
     }
@@ -308,11 +308,17 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/assets/${identifier.getParamValue()}/renditions`;
     }
 
-    modifyAssetRendition(assetIdentifier: Identifiers.AssetIdentifier, renditionIdentifier: Identifiers.RenditionIdentifier): string {
+    modifyAssetRendition(
+        assetIdentifier: Identifiers.AssetIdentifier,
+        renditionIdentifier: Identifiers.RenditionIdentifier
+    ): string {
         return `${this.getProjectPath()}/assets/${assetIdentifier.getParamValue()}/renditions/${renditionIdentifier.getParamValue()}`;
     }
 
-    viewAssetRendition(assetIdentifier: Identifiers.AssetIdentifier, renditionIdentifier: Identifiers.RenditionIdentifier): string {
+    viewAssetRendition(
+        assetIdentifier: Identifiers.AssetIdentifier,
+        renditionIdentifier: Identifiers.RenditionIdentifier
+    ): string {
         return `${this.getProjectPath()}/assets/${assetIdentifier.getParamValue()}/renditions/${renditionIdentifier.getParamValue()}`;
     }
 
@@ -374,6 +380,26 @@ export class ContentManagementApiEndpoints {
 
     markEnvironmentAsProduction(): string {
         return `${this.getEnvironmentsPath()}/mark-environment-as-production`;
+    }
+
+    listSpaces(): string {
+        return `${this.getEnvironmentsPath()}/spaces`;
+    }
+
+    viewSpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
+    }
+
+    addSpace(): string {
+        return `${this.getEnvironmentsPath()}/spaces`;
+    }
+
+    deleteSpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
+    }
+
+    modifySpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
     }
 
     private getProjectPath(): string {

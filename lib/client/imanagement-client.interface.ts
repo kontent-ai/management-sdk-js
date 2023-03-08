@@ -13,6 +13,7 @@ import {
     LanguageModels,
     LanguageVariantElementsBuilder,
     ProjectUserModels,
+    SpaceModels,
     TaxonomyModels,
     WebhookModels,
     WorkflowModels
@@ -26,6 +27,7 @@ import {
     AddContentTypeQuery,
     AddContentTypeSnippetQuery,
     AddLanguageQuery,
+    AddSpaceQuery,
     AddTaxonomyQuery,
     AddWebhookQuery,
     AssetIdentifierQuery,
@@ -43,6 +45,7 @@ import {
     DeleteContentTypeQuery,
     DeleteContentTypeSnippetQuery,
     DeleteLanguageVariantQuery,
+    DeleteSpaceQuery,
     DeleteQuery,
     DeleteTaxonomyQuery,
     DeleteWebhookQuery,
@@ -60,6 +63,7 @@ import {
     ListLanguageVariantsOfContentTypeQuery,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
     ListLanguageVariantsOfItemQuery,
+    ListSpacesQuery,
     ListTaxonomiesQuery,
     ListWebhooksQuery,
     ListWorkflowStepsQuery,
@@ -67,6 +71,7 @@ import {
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
     ModifyLanguageQuery,
+    ModifySpaceQuery,
     ModifyTaxonomyQuery,
     PatchQuery,
     PostQuery,
@@ -74,6 +79,7 @@ import {
     ProjectInformationQuery,
     PublishLanguageVariantQuery,
     PutQuery,
+    SpaceIdentifierQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
     UpdateContentItemQuery,
@@ -88,6 +94,7 @@ import {
     ViewContentTypeSnippetQuery,
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
+    ViewSpaceQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
     EnableWebhookQuery,
@@ -667,4 +674,34 @@ export interface IManagementClient<TCancelToken> {
      * Views asset rendition
      */
     viewAssetRendition(): AssetIdentifierQuery<RenditionIdentifierQuery<ViewAssetRenditionQuery>>;
+    
+    /**
+     * Adds space
+     */
+    addSpace(): DataQuery<AddSpaceQuery, SpaceModels.IAddSpaceData>;
+
+    /**
+     * Deletes a space
+     */
+    deleteSpace(): SpaceIdentifierQuery<DeleteSpaceQuery>;
+       
+
+    /**
+     * Lists all spaces
+     */
+    listSpaces(): ListSpacesQuery;
+
+
+    /**
+     * Modifies a space
+     */
+    modifySpace(): SpaceIdentifierQuery<
+        DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>
+    >;
+
+    /**
+     * Views a space
+     */
+    viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery>;
+
 }
