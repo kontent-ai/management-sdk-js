@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v4.0.0...v4.1.0) (2023-03-08)
+
+
+### Features
+
+* Add spaces support ([#105](https://github.com/kontent-ai/management-sdk-js/issues/105)) ([d765d45](https://github.com/kontent-ai/management-sdk-js/commit/d765d45e638c03a94e58e87721752c7a26bf9c6f)), closes [#104](https://github.com/kontent-ai/management-sdk-js/issues/104)
+* Adds id field to IAddContentItemPostCOntract and makes id and codename nullable ([#101](https://github.com/kontent-ai/management-sdk-js/issues/101)) ([14cd7ae](https://github.com/kontent-ai/management-sdk-js/commit/14cd7aecd8f1ece2c996b09631c18f145e2d4e88))
+* adds support for limiting workflows to collections (https://github.com/kontent-ai/management-sdk-js/issues/96) ([bcbdde7](https://github.com/kontent-ai/management-sdk-js/commit/bcbdde7eceb26916909f94575359a7804fbe606a))
+* Unifies shared elements models ([#100](https://github.com/kontent-ai/management-sdk-js/issues/100)) ([3a59a45](https://github.com/kontent-ai/management-sdk-js/commit/3a59a457ea7281cb8854d9a76ce03872a235ac2c))
+* updates deps ([26ba21e](https://github.com/kontent-ai/management-sdk-js/commit/26ba21e2856826666a9357685b27c1b8c2ae9531))
+
 ## [4.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v3.4.0...v4.0.0) (2023-01-18)
 
 
