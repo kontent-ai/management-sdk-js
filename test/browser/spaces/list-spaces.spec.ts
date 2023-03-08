@@ -2,8 +2,8 @@ import { SpaceResponses, SpaceModels } from '../../../lib';
 import * as listSpacesJson from '../fake-responses/spaces/fake-list-spaces.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-describe('List content types', () => {
-    let response: SpaceResponses.SpacesListAllResponse;
+describe('List spaces', () => {
+    let response: SpaceResponses.SpacesListResponse;
 
     beforeAll(async () => {
         response = await getTestClientWithJson(listSpacesJson).listSpaces().toPromise();
@@ -15,8 +15,8 @@ describe('List content types', () => {
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces`);
     });
 
-    it(`response should be instance of ContentTypeListResponse class`, () => {
-        expect(response).toEqual(jasmine.any(SpaceResponses.SpacesListAllResponse));
+    it(`response should be instance of SpacesListAllResponse class`, () => {
+        expect(response).toEqual(jasmine.any(SpaceResponses.SpacesListResponse));
     });
 
     it(`response should contain debug data`, () => {
@@ -37,7 +37,7 @@ describe('List content types', () => {
             const originalItem = listSpacesJson.find((m) => m.id === space.id);
 
             if (!originalItem) {
-                throw Error(`Invalid content type with id '${space.id}'`);
+                throw Error(`Invalid space with id '${space.id}'`);
             }
             
             expect(space).toEqual(jasmine.any(SpaceModels.Space));

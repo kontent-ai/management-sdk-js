@@ -8,17 +8,13 @@ export namespace SpaceModels {
     export interface IModifySpaceData {
         op: ModifySpaceOperation;
         property_name: string;
-        value?: any;
-
-        before?: SharedModels.IReferenceObject;
-        after?: SharedModels.IReferenceObject;
+        value: string;
     }
 
     export interface IAddSpaceData {
         name: string;
-        codename: string;
+        codename?: string;
     }
-
 
     export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceContract> {
 

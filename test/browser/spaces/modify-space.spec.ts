@@ -2,18 +2,20 @@ import { SpaceResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/spaces/fake-modify-space.json';
 import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
 
-describe('Modify content type', () => {
+describe('Modify space', () => {
     let response: SpaceResponses.ModifySpaceResponse;
 
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson)
             .modifySpace()
             .bySpaceCodename('x')
-            .withData([{
-                "op": 'replace',
-                "property_name": 'name',
-                "value": 'new_name'
-            }])
+            .withData([
+                {
+                    op: 'replace',
+                    property_name: 'name',
+                    value: 'new_name'
+                }
+            ])
             .toPromise();
     });
 

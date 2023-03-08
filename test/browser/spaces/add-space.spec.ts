@@ -9,7 +9,7 @@ describe('Add space', () => {
         response = await getTestClientWithJson(responseJson)
             .addSpace()
             .withData({
-                name: 'My workflow',
+                name: 'Spacename',
                 codename: "My_Workflow"
             })
             .toPromise();

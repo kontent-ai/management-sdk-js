@@ -1069,7 +1069,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
 
     async addSpaceAsync(
         url: string,
-        data: SpaceContracts.IAddSpacePostContract,
+        data: SpaceModels.IAddSpaceData,
         config: IContentManagementQueryConfig
     ): Promise<SpaceResponses.AddSpaceResponse> {
         return spacesMapper.mapAddSpaceResponse(
@@ -1089,7 +1089,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async listSpacesAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<SpaceResponses.SpacesListAllResponse> {
+    ): Promise<SpaceResponses.SpacesListResponse> {
         return spacesMapper.mapListingSpacesResponse(
             await this.getResponseAsync<SpaceContracts.ISpacesListingResponseContract>(url, {}, config)
         );

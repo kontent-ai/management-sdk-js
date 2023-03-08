@@ -6,18 +6,15 @@ import { SpaceResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
 export class SpacesMapper extends BaseMapper {
-
     mapListingSpacesResponse(
         response: IResponse<SpaceContracts.ISpacesListingResponseContract>
-    ): SpaceResponses.SpacesListAllResponse {
+    ): SpaceResponses.SpacesListResponse {
         const items = response.data.map((m) => this.mapSpace(m));
 
-        return new SpaceResponses.SpacesListAllResponse(super.mapResponseDebug(response), response.data, items);
+        return new SpaceResponses.SpacesListResponse(super.mapResponseDebug(response), response.data, items);
     }
 
-    mapViewSpaceResponse(
-        response: IResponse<SpaceContracts.ISpaceContract>
-    ): SpaceResponses.ViewSpaceResponse {
+    mapViewSpaceResponse(response: IResponse<SpaceContracts.ISpaceContract>): SpaceResponses.ViewSpaceResponse {
         return new SpaceResponses.ViewSpaceResponse(
             super.mapResponseDebug(response),
             response.data,
@@ -35,16 +32,14 @@ export class SpacesMapper extends BaseMapper {
         );
     }
 
-    mapModifySpaceResponse(response: IResponse<SpaceContracts.IModifySpaceResponseContract>): SpaceResponses.ModifySpaceResponse {
+    mapModifySpaceResponse(
+        response: IResponse<SpaceContracts.IModifySpaceResponseContract>
+    ): SpaceResponses.ModifySpaceResponse {
         return new SpaceResponses.ModifySpaceResponse(
-            super.mapResponseDebug(response), response.data, this.mapSpace(response.data)
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapSpace(response.data)
         );
-    }
-
-
-
-    mapDeleteSpaceResponse() {
-
     }
 
     mapSpace(rawItem: SpaceContracts.ISpaceContract): SpaceModels.Space {

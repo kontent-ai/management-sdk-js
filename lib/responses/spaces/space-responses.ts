@@ -1,22 +1,12 @@
 import { SpaceContracts } from '../../contracts';
-import { SpaceModels} from '../../models';
+import { SpaceModels } from '../../models';
 import { BaseResponses } from '../base-responses';
 
 export namespace SpaceResponses {
-
-    // export class SpacesResponse extends BaseResponses.BaseContentManagementListResponse<SpaceContracts.ISpacesListingResponseContract, SpaceModels.Space>  {
-    //     constructor(
-    //         debug: BaseResponses.IContentManagementResponseDebug,
-    //         rawData: SpaceContracts.ISpacesListingResponseContract,
-    //         data: {
-    //             items: SpaceModels.Space[],
-    //             // pagination: SharedModels.Pagination
-    //         }
-    //     ) {
-    //         super(debug, rawData, data);
-    //     }
-    // }
-    export class SpacesListAllResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.ISpacesListingResponseContract, SpaceModels.Space[]> {
+    export class SpacesListResponse extends BaseResponses.BaseContentManagementResponse<
+        SpaceContracts.ISpacesListingResponseContract,
+        SpaceModels.Space[]
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: SpaceContracts.ISpacesListingResponseContract,
@@ -26,8 +16,10 @@ export namespace SpaceResponses {
         }
     }
 
-    export class ViewSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IViewSpaceResponseContract, SpaceModels.Space> {
-
+    export class ViewSpaceResponse extends BaseResponses.BaseContentManagementResponse<
+        SpaceContracts.IViewSpaceResponseContract,
+        SpaceModels.Space
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: SpaceContracts.IViewSpaceResponseContract,
@@ -36,7 +28,10 @@ export namespace SpaceResponses {
             super(debug, rawData, data);
         }
     }
-    export class AddSpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IAddSpaceResponseContract, SpaceModels.Space> {
+    export class AddSpaceResponse extends BaseResponses.BaseContentManagementResponse<
+        SpaceContracts.IAddSpaceResponseContract,
+        SpaceModels.Space
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: SpaceContracts.IAddSpaceResponseContract,
@@ -46,7 +41,10 @@ export namespace SpaceResponses {
         }
     }
 
-    export class ModifySpaceResponse extends BaseResponses.BaseContentManagementResponse<SpaceContracts.IViewSpaceResponseContract, SpaceModels.Space>  {
+    export class ModifySpaceResponse extends BaseResponses.BaseContentManagementResponse<
+        SpaceContracts.IViewSpaceResponseContract,
+        SpaceModels.Space
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: SpaceContracts.IViewSpaceResponseContract,
@@ -55,6 +53,4 @@ export namespace SpaceResponses {
             super(debug, rawData, data);
         }
     }
-
-
 }
