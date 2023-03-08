@@ -1,8 +1,11 @@
+import { SharedContracts } from "./shared-contracts";
+
 export namespace SpaceContracts {
     export interface ISpaceContract {
         id: string;
         name: string;
         codename: string;
+        webSpotlightRootItem: SharedContracts.IReferenceObjectContract
     }
     export type ISpacesListingResponseContract = ISpaceContract[];
 
