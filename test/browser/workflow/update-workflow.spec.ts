@@ -16,6 +16,11 @@ describe('Update workflow', () => {
                             {
                                 id: '1aeb9220-f167-4f8e-a7db-1bfec365fa80'
                             }
+                        ],
+                        collections: [
+                            {
+                                id:  'a7f6887c-33a1-4442-a8599-c40861bb7a65'
+                            }
                         ]
                     }
                 ],
