@@ -22,9 +22,13 @@ export namespace SpaceContracts {
     export interface IModifySpacePostContract {
         name: string;
         codename: string;
+        webSpotlightRootItem: SharedContracts.IReferenceObjectContract,
+
     }
     export interface IAddSpacePostContract {
         name: string;
         codename: string;
+        webSpotlightRootItem: SharedContracts.IReferenceObjectContract,
+
     }
 }
