@@ -139,6 +139,9 @@ export namespace ContentTypeElements {
 
     export interface IMultipleChoiceOption {
         name: string;
+        id: string;
+        codename: string;
+        external_id?: string;
     }
 
     export interface IMultipleChoiceElementData extends IElementShared {
