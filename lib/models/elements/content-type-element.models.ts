@@ -140,7 +140,7 @@ export namespace ContentTypeElements {
     export interface IMultipleChoiceOption {
         name: string;
         id: string;
-        codename: string;
+        codename?: string;
         external_id?: string;
     }
 
