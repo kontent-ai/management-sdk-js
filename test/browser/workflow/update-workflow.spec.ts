@@ -1,6 +1,6 @@
 import { WorkflowResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/workflow/fake-add-workflow.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Update workflow', () => {
     let response: WorkflowResponses.UpdateWorkflowResponse;
@@ -76,8 +76,8 @@ describe('Update workflow', () => {
             .withData({} as any)
             .getUrl();
 
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/workflows/codename/x`);
-        expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/workflows/x`);
+        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/codename/x`);
+        expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/x`);
     });
 
     it(`response should be instance of UpdateWorkflowResponse class`, () => {

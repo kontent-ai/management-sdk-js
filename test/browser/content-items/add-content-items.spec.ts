@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../../lib';
 import * as addContentItemResponseJson from '../fake-responses/content-items/fake-add-content-item.json';
-import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
+import { getTestClientWithJson, cmLiveClient, testEnvironmentId } from '../setup';
 
 describe('Add content item', () => {
     let response: ContentItemResponses.AddContentItemResponse;
@@ -28,7 +28,7 @@ describe('Add content item', () => {
             .withData({} as any)
             .getUrl();
 
-        expect(addUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items`);
+        expect(addUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items`);
     });
 
     it(`response should be instance of AddContentItemResponse class`, () => {

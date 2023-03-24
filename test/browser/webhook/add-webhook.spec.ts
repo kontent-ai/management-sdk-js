@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-add-webhook.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add webhook', () => {
     let response: WebhookResponses.AddWebhookResponse;
@@ -51,7 +51,7 @@ describe('Add webhook', () => {
             .addWebhook()
             .withData({} as any)
             .getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/webhooks`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks`);
     });
 
     it(`response should be instance of AddWebhookResponse class`, () => {

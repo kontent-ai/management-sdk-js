@@ -1,5 +1,5 @@
 import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-mark-environment-as-production.json';
 import { BaseResponses } from '../../../lib/responses';
 
@@ -20,7 +20,7 @@ describe('Mark environment as production', () => {
     it(`should have correct url`, () => {
         const url = cmLiveClient.markEnvironmentAsProduction().withData(requestData).getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/mark-environment-as-production`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/mark-environment-as-production`);
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {

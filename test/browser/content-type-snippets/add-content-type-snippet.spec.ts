@@ -1,6 +1,6 @@
 import { ContentTypeSnippetResponses, ContentTypeSnippetModels } from '../../../lib';
 import * as responseJson from '../fake-responses/content-type-snippets/fake-add-content-type-snippet.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add content type snippet', () => {
     let response: ContentTypeSnippetResponses.AddContentTypeSnippetResponse;
@@ -28,7 +28,7 @@ describe('Add content type snippet', () => {
             .addContentTypeSnippet()
             .withData({} as any)
             .getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets`);
     });
 
     it(`response should be instance of AddContentTypeSnippetResponse class`, () => {

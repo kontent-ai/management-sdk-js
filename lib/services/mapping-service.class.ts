@@ -15,8 +15,8 @@ import {
     languageMapper,
     LanguageVariantMapper,
     languageVariantMapper,
-    ProjectMapper,
-    projectMapper,
+    EnvironmentMapper,
+    environmentMapper,
     TaxonomyMapper,
     taxonomyMappper,
     WebhookMapper,
@@ -34,7 +34,7 @@ export interface IMappingService {
     elementsMapper: ElementsMapper;
     languageMapper: LanguageMapper;
     languageVariantMapper: LanguageVariantMapper;
-    projectMapper: ProjectMapper;
+    environmentMapper: EnvironmentMapper;
     taxonomyMapper: TaxonomyMapper;
     webhookMapper: WebhookMapper;
     workflowMapper: WorkflowMapper;
@@ -49,7 +49,7 @@ export class MappingService implements IMappingService {
     public elementsMapper: ElementsMapper;
     public languageMapper: LanguageMapper;
     public languageVariantMapper: LanguageVariantMapper;
-    public projectMapper: ProjectMapper;
+    public environmentMapper: EnvironmentMapper;
     public taxonomyMapper: TaxonomyMapper;
     public webhookMapper: WebhookMapper;
     public workflowMapper: WorkflowMapper;
@@ -63,7 +63,7 @@ export class MappingService implements IMappingService {
         this.elementsMapper = elementsMapper;
         this.languageMapper = languageMapper;
         this.languageVariantMapper = languageVariantMapper;
-        this.projectMapper = projectMapper;
+        this.environmentMapper = environmentMapper;
         this.taxonomyMapper = taxonomyMappper;
         this.webhookMapper = webhookMapper;
         this.workflowMapper = workflowMapper;

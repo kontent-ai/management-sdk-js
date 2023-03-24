@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Cancel scheduled unpublishing of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -20,7 +20,7 @@ describe('Cancel scheduled unpublishing of language variant', () => {
             .getUrl();
 
         expect(w1Url).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/cancel-scheduled-unpublish`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/x/variants/codename/y/cancel-scheduled-unpublish`
         );
     });
 

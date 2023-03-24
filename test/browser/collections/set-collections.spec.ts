@@ -1,6 +1,6 @@
 import { CollectionModels, CollectionResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/collections/fake-list-collections.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Set collections', () => {
     let response: CollectionResponses.SetCollectionsResponse;
@@ -22,7 +22,7 @@ describe('Set collections', () => {
     it(`url should be correct`, () => {
         const listUrl = cmLiveClient.setCollections().withData([]).getUrl();
 
-        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/collections`);
+        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/collections`);
     });
 
     it(`response should be instance of SetCollectionsResponse class`, () => {

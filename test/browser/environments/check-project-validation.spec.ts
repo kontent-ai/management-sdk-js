@@ -1,22 +1,22 @@
-import { ProjectResponses } from '../../../lib';
+import { EnvironmentResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/projects/fake-start-project-validation.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Check project validation', () => {
-    let response: ProjectResponses.CheckProjectValidationResponse;
+    let response: EnvironmentResponses.CheckEnvironmentValidationResponse;
 
     beforeAll(async () => {
-        response = await getTestClientWithJson(responseJson).checkProjectValidation().byTaskId('x').toPromise();
+        response = await getTestClientWithJson(responseJson).checkEnvironmentValidation().byTaskId('x').toPromise();
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.checkProjectValidation().byTaskId('x').getUrl();
+        const url = cmLiveClient.checkEnvironmentValidation().byTaskId('x').getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/validate-async/tasks/x`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/validate-async/tasks/x`);
     });
 
     it(`response should be instance of CheckProjectValidationResponse class`, () => {
-        expect(response).toEqual(jasmine.any(ProjectResponses.CheckProjectValidationResponse));
+        expect(response).toEqual(jasmine.any(EnvironmentResponses.CheckEnvironmentValidationResponse));
     });
 
     it(`response should contain debug data`, () => {

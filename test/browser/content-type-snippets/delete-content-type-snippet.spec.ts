@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as jsonResponse from '../fake-responses/content-type-snippets/fake-delete-content-type-snippet.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete content type snippet', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -18,11 +18,11 @@ describe('Delete content type snippet', () => {
         const externalIdUrl = cmLiveClient.deleteContentTypeSnippet().byTypeExternalId('xExternal').getUrl();
 
         expect(codenameUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/xCodename`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/codename/xCodename`
         );
-        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/xInternalId`);
+        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/xInternalId`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/external-id/xExternal`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/external-id/xExternal`
         );
     });
 

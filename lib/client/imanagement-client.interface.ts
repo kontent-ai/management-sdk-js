@@ -75,8 +75,8 @@ import {
     ModifyTaxonomyQuery,
     PatchQuery,
     PostQuery,
-    ProjectIdentifierQuery,
-    ProjectInformationQuery,
+    EnvironmentIdentifierQuery,
+    EnvironmentInformationQuery,
     PublishLanguageVariantQuery,
     PutQuery,
     SpaceIdentifierQuery,
@@ -87,7 +87,6 @@ import {
     UpsertAssetQuery,
     UpsertContentItemQuery,
     UpsertLanguageVariantQuery,
-    ValidateProjectContentQuery,
     ViewAssetsQuery,
     ViewContentItemQuery,
     ViewContentTypeQuery,
@@ -126,10 +125,10 @@ import {
     DeleteWorkflowQuery,
     AddWorkflowQuery,
     UpdateWorkflowQuery,
-    StartProjectValidationQuery,
+    StartEnvironmentValidationQuery,
     TaskIdentifierQuery,
-    CheckProjectValidationQuery,
-    ListProjectValidationIssuesQuery
+    CheckEnvironmentValidationQuery,
+    ListEnvironmentValidationIssuesQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -199,12 +198,12 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
-     * Lists all workflows in projects
+     * Lists all workflows in environment
      */
     listWorkflows(): ListWorkflowsQuery;
 
     /**
-     * Deletes an unused workflow from your project.
+     * Deletes an unused workflow from your environment.
      */
     deleteWorkflow(): WorkflowIdentifierQuery<DeleteWorkflowQuery>;
 
@@ -321,32 +320,25 @@ export interface IManagementClient<TCancelToken> {
     >;
 
     /**
-     * @deprecated In favor of async validation endpoints
-     *
-     * Query to validate project content. This endpoint works reliably only with projects under 25,000 content items.
-     */
-    validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery>;
-
-    /**
-     * Starts validating the specified project to check for issues such as:
+     * Starts validating the specified environment to check for issues such as:
     * - Nonexistent objects referenced in content items.
     * - Content element values don't meet the limitations configured in content types.
     * - Content types referencing nonexistent taxonomy groups.
-    * Depending on the size of your project, the validation might take several minutes.
-    * After you start the project validation, you get a validation task.
+    * Depending on the size of your environment, the validation might take several minutes.
+    * After you start the environment validation, you get a validation task.
     * With the validation task, you can check validation progress and list validation results once the validation is finished.
      */
-    startProjectValidation(): StartProjectValidationQuery;
+    startEnvironmentValidation(): StartEnvironmentValidationQuery;
 
     /**
-     * Retrieves information about a project validation task by the task's internal ID.
+     * Retrieves information about a environment validation task by the task's internal ID.
      */
-    checkProjectValidation(): TaskIdentifierQuery<CheckProjectValidationQuery>;
+    checkEnvironmentValidation(): TaskIdentifierQuery<CheckEnvironmentValidationQuery>;
 
     /**
-     * Retrieves a paginated list of project validation issues.
+     * Retrieves a paginated list of environment validation issues.
      */
-    listProjectValidationIssues(): TaskIdentifierQuery<ListProjectValidationIssuesQuery>;
+    listEnvironmentValidationIssues(): TaskIdentifierQuery<ListEnvironmentValidationIssuesQuery>;
 
     /**
      * Query to delete content type
@@ -473,7 +465,7 @@ export interface IManagementClient<TCancelToken> {
     listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>;
 
     /**
-     * List languages in project
+     * List languages in environment
      */
     listLanguages(): ListLanguagesQuery;
 
@@ -523,9 +515,9 @@ export interface IManagementClient<TCancelToken> {
     listWebhooks(): ListWebhooksQuery;
 
     /**
-     * Query to get project information
+     * Query to get environment information
      */
-    projectInformation(): ProjectInformationQuery;
+    environmentInformation(): EnvironmentInformationQuery;
 
     /**
      * Query to list asset folders
@@ -581,7 +573,7 @@ export interface IManagementClient<TCancelToken> {
     /**
      * View subscription project
      */
-    viewSubscriptionProject(): ProjectIdentifierQuery<ViewSubscriptionProjectQuery>;
+    viewSubscriptionProject(): EnvironmentIdentifierQuery<ViewSubscriptionProjectQuery>;
 
     /**
      * View subscription users

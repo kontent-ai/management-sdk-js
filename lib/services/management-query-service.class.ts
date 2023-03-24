@@ -12,7 +12,6 @@ import {
     EnvironmentContracts,
     LanguageContracts,
     LanguageVariantContracts,
-    ProjectContracts,
     ProjectUserContracts,
     RoleContracts,
     SubscriptionContracts,
@@ -29,7 +28,7 @@ import {
     contentTypeSnippetMapper,
     languageMapper,
     languageVariantMapper,
-    projectMapper,
+    environmentMapper,
     taxonomyMappper,
     workflowMapper,
     genericMapper,
@@ -66,7 +65,6 @@ import {
     ContentTypeSnippetResponses,
     LanguageResponses,
     LanguageVariantResponses,
-    ProjectResponses,
     TaxonomyResponses,
     WebhookResponses,
     WorkflowResponses,
@@ -80,7 +78,6 @@ import {
 } from '../responses';
 import { BaseManagementQueryService } from './base-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
-import { environmentMapper } from '../mappers/environment-mapper';
 import { EnvironmentModels } from '../models/environments/environment.models';
 
 export class ManagementQueryService extends BaseManagementQueryService<any> {
@@ -307,51 +304,39 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
-    async projectInformationAsync(
+    async environmentInformationAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<ProjectResponses.ProjectInformationResponse> {
-        return projectMapper.mapProjectInformationResponse(
-            await this.getResponseAsync<ProjectContracts.IProjectInformationResponseContract>(url, {}, config)
+    ): Promise<EnvironmentResponses.EnvironmentInformationResponse> {
+        return environmentMapper.mapEnvironmentInformationResponse(
+            await this.getResponseAsync<EnvironmentContracts.IEnvironmentInformationResponseContract>(url, {}, config)
         );
     }
 
-    async listProjectValidationIssuesAsync(
+    async listEnvironmentValidationIssuesAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<ProjectResponses.ProjectValidationIssuesListResponse> {
-        return projectMapper.mapProjectValidationIssuesListResponse(
-            await this.getResponseAsync<ProjectContracts.IProjectValidationListResponseContract>(url, {}, config)
+    ): Promise<EnvironmentResponses.EnvironmentValidationIssuesListResponse> {
+        return environmentMapper.mapProjectValidationIssuesListResponse(
+            await this.getResponseAsync<EnvironmentContracts.IEnvironmentValidationListResponseContract>(url, {}, config)
         );
     }
 
-    async startProjectValidationAsync(
+    async startEnvironmentValidationAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<ProjectResponses.StartProjectValidationResponse> {
-        return projectMapper.mapStartProjectValidationResponse(
-            await this.postResponseAsync<ProjectContracts.IStartProjectValidationResponseContract>(url, {}, {}, config)
+    ): Promise<EnvironmentResponses.StartEnvironmentValidationResponse> {
+        return environmentMapper.mapStartEnvironmentValidationResponse(
+            await this.postResponseAsync<EnvironmentContracts.IStartEnvironmentValidationResponseContract>(url, {}, {}, config)
         );
     }
 
-    async checkProjectValidationAsync(
+    async checkEnvironmentValidationAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<ProjectResponses.CheckProjectValidationResponse> {
-        return projectMapper.mapCheckProjectValidationResponse(
-            await this.getResponseAsync<ProjectContracts.ICheckProjectValidationResponseContract>(url, {}, config)
-        );
-    }
-
-    async validateProjectContentAsync(
-        url: string,
-        data: {
-            projectId: string;
-        },
-        config: IContentManagementQueryConfig
-    ): Promise<ProjectResponses.ValidateProjectContentResponse> {
-        return projectMapper.mapValidateProjectContentResponse(
-            await this.postResponseAsync<ProjectContracts.IProjectReportResponseContract>(url, data, {}, config)
+    ): Promise<EnvironmentResponses.CheckEnvironmentValidationResponse> {
+        return environmentMapper.mapCheckEnvironmentValidationResponse(
+            await this.getResponseAsync<EnvironmentContracts.ICheckEnvironmentValidationResponseContract>(url, {}, config)
         );
     }
 

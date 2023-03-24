@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as deleteSpaceJson from '../fake-responses/spaces/fake-delete-space.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete space', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -16,8 +16,8 @@ describe('Delete space', () => {
         const codenameUrl = cmLiveClient.deleteSpace().bySpaceCodename('xCodename').getUrl();
         const internalIdUrl = cmLiveClient.deleteSpace().bySpaceId('xInternalId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/codename/xCodename`);
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/xInternalId`);
+        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/xCodename`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/xInternalId`);
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {

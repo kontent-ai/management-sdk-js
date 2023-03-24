@@ -6,13 +6,13 @@ describe('View subscription project ', () => {
     let response: SubscriptionResponses.ViewSubscriptionProjectResponse;
 
     beforeAll(async () => {
-        response = await getTestClientWithJson(responseJson).viewSubscriptionProject().projectId('x').toPromise();
+        response = await getTestClientWithJson(responseJson).viewSubscriptionProject().environmentId('x').toPromise();
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.viewSubscriptionProject().projectId('xProjectId').getUrl();
+        const idUrl = cmLiveClient.viewSubscriptionProject().environmentId('xEnvironmentId').getUrl();
 
-        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/projects/xProjectId`);
+        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/projects/xEnvironmentId`);
     });
 
     it(`response should be instance of ViewSubscriptionProjectResponse class`, () => {

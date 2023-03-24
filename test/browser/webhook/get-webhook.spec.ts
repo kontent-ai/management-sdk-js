@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-get-webhook.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Get webhook', () => {
     let response: WebhookResponses.GetWebhookResponse;
@@ -11,7 +11,7 @@ describe('Get webhook', () => {
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.getWebhook().byId('x').getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/webhooks/x`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
     });
 
     it(`response should be instance of GetWebhookResponse class`, () => {

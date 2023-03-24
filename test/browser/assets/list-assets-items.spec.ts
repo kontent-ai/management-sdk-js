@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../../lib';
 import * as listingAssetsResponseJson from '../fake-responses/assets/fake-list-assets.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List assets', () => {
     let response: AssetResponses.AssetsListResponse;
@@ -12,7 +12,7 @@ describe('List assets', () => {
     it(`url should be correct`, () => {
         const listUrl = cmLiveClient.listAssets().getUrl();
 
-        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets`);
+        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets`);
     });
 
     it(`response should be instance of AssetsListResponse class`, () => {

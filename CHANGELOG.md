@@ -26,7 +26,7 @@ Updated way of using the `upsertLanguageVariant` is:
 import { ManagementClient } from '@kontent-ai/management-sdk';
 
 const client = new ManagementClient({
-  projectId: '<YOUR_PROJECT_ID>',
+  environmentId: '<YOUR_PROJECT_ID>',
   apiKey: '<YOUR_API_KEY>'
 });
 

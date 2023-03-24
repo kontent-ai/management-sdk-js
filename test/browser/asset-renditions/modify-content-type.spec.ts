@@ -1,6 +1,6 @@
 import { AssetRenditionResponses } from '../../../lib';
 import * as rawResponse from '../fake-responses/assset-renditions/fake-modify-asset-rendition.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify asset rendition', () => {
     let response: AssetRenditionResponses.ModifyAssetRenditionResponse;
@@ -40,10 +40,10 @@ describe('Modify asset rendition', () => {
             .getUrl();
 
         expect(urlByInternalIds).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/assets/x/renditions/y`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/x/renditions/y`
         );
         expect(urlByExternalIds).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x/renditions/external-id/y`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/x/renditions/external-id/y`
         );
     });
 

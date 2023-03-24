@@ -1,6 +1,6 @@
 import { ProjectUserModels, ProjectUsersResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/project-users/fake-invite-user.spec.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Invite user', () => {
     let response: ProjectUsersResponses.InviteUserResponse;
@@ -42,7 +42,7 @@ describe('Invite user', () => {
             })
             .getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/users`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/users`);
     });
 
     it(`response should be instance of InviteUserResponse class`, () => {

@@ -52,7 +52,7 @@ export namespace Identifiers {
         Id = 'id'
     }
 
-    export enum ProjectIdentifierEnum {
+    export enum EnvironmentIdentifierEnum {
         Id = 'id'
     }
 
@@ -224,11 +224,11 @@ export namespace Identifiers {
         }
     }
 
-    export class ProjectIdentifier {
-        constructor(public identifier: ProjectIdentifierEnum, public value: string) {}
+    export class EnvironmentIdentifier {
+        constructor(public identifier: EnvironmentIdentifierEnum, public value: string) {}
 
         getParamValue(): string {
-            if (this.identifier === ProjectIdentifierEnum.Id) {
+            if (this.identifier === EnvironmentIdentifierEnum.Id) {
                 return `${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);

@@ -1,6 +1,6 @@
 import { LanguageModels, LanguageResponses, SharedModels } from '../../../lib';
 import * as responseJson from '../fake-responses/languages/fake-list-languages.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List languages', () => {
     let response: LanguageResponses.ListLanguagesResponse;
@@ -12,7 +12,7 @@ describe('List languages', () => {
     it(`url should be correct`, () => {
         const listUrl = cmLiveClient.listLanguages().getUrl();
 
-        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/languages`);
+        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/languages`);
     });
 
     it(`response should be instance of ListLanguagesResponse class`, () => {

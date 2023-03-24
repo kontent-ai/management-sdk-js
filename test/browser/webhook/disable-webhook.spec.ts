@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-get-webhook.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Disable webhook', () => {
     let response: WebhookResponses.DisableWebhookResponse;
@@ -12,7 +12,7 @@ describe('Disable webhook', () => {
     it(`url should be correct`, () => {
         const url = cmLiveClient.disableWebhook().byId('x').getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/webhooks/x/disable`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x/disable`);
     });
 
     it(`response should be instance of DisableWebhookResponse class`, () => {

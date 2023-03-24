@@ -9,9 +9,9 @@ export interface IManagementClientConfig {
      apiKey: string;
 
     /**
-     * Kontent.ai project id
+     * Kontent.ai environment id
      */
-    projectId?: string;
+    environmentId?: string;
 
     /**
      * Kontent.ai subscription id

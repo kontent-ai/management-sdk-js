@@ -1,6 +1,6 @@
 import { TaxonomyModels, TaxonomyResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/taxonomies/fake-update-taxonomy.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify taxonomy', () => {
     let response: TaxonomyResponses.ModifyTaxonomyResponse;
@@ -39,11 +39,11 @@ describe('Modify taxonomy', () => {
             .getUrl();
 
         expect(codenameUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/codename/xCodename`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/codename/xCodename`
         );
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/xInternalId`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/xInternalId`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/external-id/xExternalId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/external-id/xExternalId`
         );
     });
 

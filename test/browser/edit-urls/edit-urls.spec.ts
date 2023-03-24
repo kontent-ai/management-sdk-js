@@ -1,5 +1,5 @@
 import * as responseJson from '../fake-responses/projects/fake-project-information.json';
-import { getTestClientWithJson, testProjectId } from '../setup';
+import { getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Edit urls', () => {
     const client = getTestClientWithJson(responseJson);
@@ -11,7 +11,7 @@ describe('Edit urls', () => {
         });
 
         expect(url).toEqual(
-            `https://app.kontent.ai/goto/edit-item/project/${testProjectId}/variant-codename/x/item/y`
+            `https://app.kontent.ai/goto/edit-item/project/${testEnvironmentId}/variant-codename/x/item/y`
         );
     });
 
@@ -23,7 +23,7 @@ describe('Edit urls', () => {
         });
 
         expect(url).toEqual(
-            `https://app.kontent.ai/goto/edit-item/project/${testProjectId}/variant-codename/x/item/y/element/z`
+            `https://app.kontent.ai/goto/edit-item/project/${testEnvironmentId}/variant-codename/x/item/y/element/z`
         );
     });
 
@@ -37,7 +37,7 @@ describe('Edit urls', () => {
         });
 
         expect(url).toEqual(
-            `https://app.kontent.ai/goto/edit-item/project/${testProjectId}/variant-codename/x/item/y/element/z/item/j/element/k`
+            `https://app.kontent.ai/goto/edit-item/project/${testEnvironmentId}/variant-codename/x/item/y/element/z/item/j/element/k`
         );
     });
 });

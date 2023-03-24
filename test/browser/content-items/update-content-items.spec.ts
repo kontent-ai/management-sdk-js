@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../../lib';
 import * as updateContentItemResponseJson from '../fake-responses/content-items/fake-update-content-item.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Update content item', () => {
     let response: ContentItemResponses.UpdateContentItemResponse;
@@ -33,10 +33,10 @@ describe('Update content item', () => {
             .withData({} as any)
             .getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId`);
+        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xInternalId`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/xExternalId`
         );
     });
 

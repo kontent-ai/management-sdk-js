@@ -8,7 +8,7 @@ export class ViewSubscriptionProjectQuery extends BaseQuery<SubscriptionResponse
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ManagementQueryService,
-        public identifier: Identifiers.ProjectIdentifier
+        public identifier: Identifiers.EnvironmentIdentifier
     ) {
         super(config, queryService);
     }
