@@ -1,6 +1,6 @@
 import { LanguageModels, LanguageResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/languages/fake-add-language.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add language', () => {
     let response: LanguageResponses.AddLanguageResponse;
@@ -24,7 +24,7 @@ describe('Add language', () => {
             .withData({} as any)
             .getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/languages`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/languages`);
     });
 
     it(`response should be instance of AddLanguageResponse class`, () => {

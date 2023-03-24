@@ -2,7 +2,7 @@ export * from './content-item-identifier-query.class';
 export * from './id-and-external-id-identifier-query.class';
 export * from './data-query.class';
 export * from './id-codename-identifier-query.class';
-export * from './project-identifier-query.class';
+export * from './environment-identifier-query.class';
 export * from './language-id-and-codename-identifier-query.class';
 export * from './taxonomy-identifier-query.class';
 export * from './asset-identifier-query.class';

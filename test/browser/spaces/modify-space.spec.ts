@@ -1,6 +1,6 @@
 import { SpaceResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/spaces/fake-modify-space.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify space', () => {
     let response: SpaceResponses.ModifySpaceResponse;
@@ -23,8 +23,8 @@ describe('Modify space', () => {
         const urlByCodename = cmLiveClient.modifySpace().bySpaceCodename('x').withData([]).getUrl();
         const urlByInternalId = cmLiveClient.modifySpace().bySpaceId('y').withData([]).getUrl();
 
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/codename/x`);
-        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/y`);
+        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/x`);
+        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/y`);
     });
 
     it(`response should be instance of ModifySpaceResponse class`, () => {

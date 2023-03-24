@@ -1,6 +1,6 @@
 import { SpaceResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/spaces/fake-add-space.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add space', () => {
     let response: SpaceResponses.AddSpaceResponse;
@@ -22,7 +22,7 @@ describe('Add space', () => {
             .addSpace()
             .withData({} as any)
             .getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces`);
     });
 
     it(`response should be instance of AddSpaceResponse class`, () => {

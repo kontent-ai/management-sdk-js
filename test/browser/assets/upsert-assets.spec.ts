@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../../lib';
 import * as upsertAssetResponseJson from '../fake-responses/assets/fake-upsert-asset.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Upsert asset', () => {
     let response: AssetResponses.UpsertAssertResponse;
@@ -49,8 +49,8 @@ describe('Upsert asset', () => {
             .withData({} as any)
             .getUrl();
 
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x`);
-        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/x`);
+        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/x`);
+        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/x`);
     });
 
     it(`response should be instance of UpsertAssertResponse class`, () => {

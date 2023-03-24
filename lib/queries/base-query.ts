@@ -14,7 +14,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     };
     protected readonly parameters: IQueryParameter[] = [];
     protected readonly apiEndpoints: ContentManagementApiEndpoints = new ContentManagementApiEndpoints({
-        projectId: this.config.projectId,
+        environmentId: this.config.environmentId,
         subscriptionId: this.config.subscriptionId
     });
     protected _addSlashToUrl: boolean = true;

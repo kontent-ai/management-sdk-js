@@ -1,6 +1,6 @@
 import { ContentTypeElements, ContentTypeResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-add-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import ITextElement = ContentTypeElements.ITextElement;
 
 describe('Add content type', () => {
@@ -58,7 +58,7 @@ describe('Add content type', () => {
             .addContentType()
             .withData({} as any)
             .getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types`);
     });
 
     it(`response should be instance of AddContentTypeResponse class`, () => {

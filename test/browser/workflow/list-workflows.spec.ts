@@ -1,6 +1,6 @@
 import { WorkflowResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/workflow/fake-list-workflows.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List workflows', () => {
     let response: WorkflowResponses.ListWorkflowsResponse;
@@ -11,7 +11,7 @@ describe('List workflows', () => {
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.listWorkflows().getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/workflows`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows`);
     });
 
     it(`response should be instance of ListWorkflowsResponse class`, () => {

@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as deleteTaxonomyJson from '../fake-responses/taxonomies/fake-delete-taxonomy.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete taxonomy', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -18,11 +18,11 @@ describe('Delete taxonomy', () => {
         const externalIdUrl = cmLiveClient.deleteTaxonomy().byTaxonomyExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/codename/xCodename`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/codename/xCodename`
         );
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/xInternalId`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/xInternalId`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies/external-id/xExternalId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/external-id/xExternalId`
         );
     });
 

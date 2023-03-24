@@ -1,6 +1,6 @@
 import { ContentTypeSnippetModels, ContentTypeSnippetResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-view-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View content type snippet', () => {
     let response: ContentTypeSnippetResponses.ViewContentTypeSnippetResponse;
@@ -14,10 +14,10 @@ describe('View content type snippet', () => {
         const urlByInternalId = cmLiveClient.viewContentTypeSnippet().byTypeId('y').getUrl();
         const urlByExternalId = cmLiveClient.viewContentTypeSnippet().byTypeExternalId('c').getUrl();
 
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/codename/x`);
-        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/y`);
+        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/codename/x`);
+        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/y`);
         expect(urlByExternalId).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/snippets/external-id/c`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/external-id/c`
         );
     });
 

@@ -33,13 +33,13 @@ download it and refer to local versions of scripts.
 
 ### Making the first request
 
-The following code example shows how to create new content item in your Kontent.ai project.
+The following code example shows how to create new content item in your Kontent.ai environment.
 
 ```javascript
 import { createManagementClient } from '@kontent-ai/management-sdk';
 
 const client = createManagementClient({
-    projectId: 'xxx', // id of your Kontent.ai project
+    environmentId: 'xxx', // id of your Kontent.ai environment
     subscriptionId: 'zzz' // optional, but required for Subscription related endpoints
     apiKey: 'yyy' // Content management API token
 });
@@ -73,7 +73,7 @@ variable.
             var KontentManagement = window['kontentManagement'];
 
             var client = new KontentManagement.ManagementClient({
-                projectId: 'xxx',
+                environmentId: 'xxx',
                 // using CM API key in browser is NOT safe. If you need to use SDK in browsers
                 // you should use proxy server and set authorization header there rather than here
                 apiKey: 'yyy',
@@ -112,7 +112,7 @@ const client = createManagementClient({
 | Option          | Default                               | Description                                                                                                                                                         |
 | --------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `API Key`        | N/A                                   | **Required** - Management or Subscription API Key. Subscription API Key also works for Management requests            |
-| `projectId`     | N/A                                   | **Required for Management API** - Project Id                                                                                                   
+| `environmentId`     | N/A                                   | **Required for Management API** - Environment Id                                                                                                   
 | `subscriptionId`       | N/A  | **Required for Subscription API** - Subscription Id
 | `baseUrl`       | https://manage.kontent.ai/v2/projects | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                          
 | `retryStrategy` | undefined                             | Retry strategy configuration. If not set, default strategy is used.                                                                                                 |
@@ -125,7 +125,7 @@ See the [error section in Management API reference](https://kontent.ai/learn/ref
 ```typescript
 try {
     const client = createManagementClient({
-        projectId: 'x',
+        environmentId: 'x',
         apiKey: 'y'
     });
     await client.viewContentItem().byItemCodename('invalid codename').toPromise();
@@ -146,7 +146,7 @@ try {
 
 ```typescript
 const client = {
-    projectId: 'x',
+    environmentId: 'x',
     apiKey: 'y'
 });
 
@@ -174,7 +174,7 @@ cancelTokenRequest.cancel('Request manually cancelled');
 Following is a sample scenario consisting of:
 
 1. Initializing client
-2. Getting default language of project
+2. Getting default language of environment
 3. Creating new taxonomy with terms
 4. Creating new content type
 5. Creating content item
@@ -187,12 +187,12 @@ Following is a sample scenario consisting of:
 import { createManagementClient } from '@kontent-ai/management-sdk';
 
 const client = createManagementClient({
-    projectId: 'x',
+    environmentId: 'x',
     apiKey: 'y'
 });
 ```
 
-#### Getting default language of project
+#### Getting default language of environment
 
 ```typescript 
 const languages = await client.listLanguages().toPromise();

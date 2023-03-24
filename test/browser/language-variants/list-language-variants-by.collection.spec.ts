@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as responseJson from '../fake-responses/language-variants/fake-list-language-variants-of-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List language variants by collection', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsByCollectionResponse;
@@ -21,11 +21,11 @@ describe('List language variants by collection', () => {
             .getUrl();
 
         expect(codenameUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/collections/codename/xCodename/variants`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/collections/codename/xCodename/variants`
         );
-        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/collections/xId/variants`);
+        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/collections/xId/variants`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/collections/external-id/xExternalId/variants`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/collections/external-id/xExternalId/variants`
         );
     });
 

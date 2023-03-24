@@ -7,7 +7,6 @@ export * from './asset-folders/asset-folder.models';
 export * from './taxonomies/taxonomy.models';
 export * from './content-types/content-type.models';
 export * from './content-types/content-type-elements.builder';
-export * from './projects/project.models';
 export * from './language-variants/language-variant.models';
 export * from './language-variants/language-variant-elements-builder';
 export * from './elements/elements.models';

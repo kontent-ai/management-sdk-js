@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../../lib';
 import * as viewAssetResponseJson from '../fake-responses/assets/fake-view-asset.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View assets', () => {
     let response: AssetResponses.ViewAssetResponse;
@@ -13,9 +13,9 @@ describe('View assets', () => {
         const internalIdUrl = cmLiveClient.viewAsset().byAssetId('xInternalId').getUrl();
         const externalIdUrl = cmLiveClient.viewAsset().byAssetExternalId('xExternalId').getUrl();
 
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/xInternalId`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/xInternalId`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/xExternalId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/xExternalId`
         );
     });
 

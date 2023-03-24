@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Change workflow of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -49,10 +49,10 @@ describe('Change workflow of language variant', () => {
             .getUrl();
 
         expect(w1Url).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/change-workflow`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/x/variants/codename/y/change-workflow`
         );
         expect(w2Url).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/x/variants/codename/y/change-workflow`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/x/variants/codename/y/change-workflow`
         );
     });
 

@@ -1,6 +1,6 @@
 import { AssetRenditionResponses, SharedModels } from '../../../lib';
 import * as rawResponse from '../fake-responses/assset-renditions/fake-list-asset-renditions.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List asset renditions', () => {
     let response: AssetRenditionResponses.AssetRenditionsListResponse;
@@ -13,9 +13,9 @@ describe('List asset renditions', () => {
         const urlByAssetId = cmLiveClient.listAssetRenditions().byAssetId('x').getUrl();
         const urlByExternalId = cmLiveClient.listAssetRenditions().byAssetExternalId('x').getUrl();
 
-        expect(urlByAssetId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/assets/x/renditions`);
+        expect(urlByAssetId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/x/renditions`);
         expect(urlByExternalId).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/assets/external-id/x/renditions`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/x/renditions`
         );
     });
 

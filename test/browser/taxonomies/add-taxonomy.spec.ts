@@ -1,6 +1,6 @@
 import { TaxonomyModels, TaxonomyResponses } from '../../../lib';
 import * as addTaxonomyResponseJson from '../fake-responses/taxonomies/fake-add-taxonomy.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add taxonomy', () => {
     let response: TaxonomyResponses.AddTaxonomyResponse;
@@ -24,7 +24,7 @@ describe('Add taxonomy', () => {
             })
             .getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/taxonomies`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies`);
     });
 
     it(`response should be instance of AddTaxonomyResponse class`, () => {

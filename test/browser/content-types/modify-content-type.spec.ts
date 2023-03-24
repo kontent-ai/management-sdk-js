@@ -1,6 +1,6 @@
 import { ContentTypeResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-modify-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify content type', () => {
     let response: ContentTypeResponses.ModifyContentTypeResponse;
@@ -21,9 +21,9 @@ describe('Modify content type', () => {
         const urlByInternalId = cmLiveClient.modifyContentType().byTypeId('y').withData([]).getUrl();
         const urlByExternalId = cmLiveClient.modifyContentType().byTypeExternalId('c').withData([]).getUrl();
 
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/codename/x`);
-        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/y`);
-        expect(urlByExternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types/external-id/c`);
+        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/codename/x`);
+        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/y`);
+        expect(urlByExternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/external-id/c`);
     });
 
     it(`response should be instance of ModifyContentTypeResponse class`, () => {

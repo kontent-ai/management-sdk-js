@@ -1,6 +1,6 @@
 import { SpaceResponses, SpaceModels } from '../../../lib';
 import * as viewSpaceJson from '../fake-responses/spaces/fake-view-space.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View space', () => {
     let response: SpaceResponses.ViewSpaceResponse;
@@ -13,8 +13,8 @@ describe('View space', () => {
         const urlByCodename = cmLiveClient.viewSpace().bySpaceCodename('x').getUrl();
         const urlByInternalId = cmLiveClient.viewSpace().bySpaceId('y').getUrl();
 
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/codename/x`);
-        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/spaces/y`);
+        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/x`);
+        expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/y`);
     });
 
     it(`response should be instance of ViewSpaceResponse class`, () => {

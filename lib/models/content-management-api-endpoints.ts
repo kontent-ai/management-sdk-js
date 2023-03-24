@@ -1,14 +1,14 @@
 import { Identifiers } from './identifiers';
 
 export class ContentManagementApiEndpoints {
-    private readonly projectId?: string;
+    private readonly environmentId?: string;
     private readonly subscriptionId?: string;
 
     private readonly projectsPath: string = 'projects';
     private readonly subscriptionsPath: string = 'subscriptions';
 
-    constructor(data: { projectId?: string; subscriptionId?: string }) {
-        this.projectId = data.projectId;
+    constructor(data: { environmentId?: string; subscriptionId?: string }) {
+        this.environmentId = data.environmentId;
         this.subscriptionId = data.subscriptionId;
     }
 
@@ -106,19 +106,15 @@ export class ContentManagementApiEndpoints {
         return `${this.getProjectPath()}/validate-async`;
     }
 
-    checkProjectValidation(identifier: Identifiers.TaskIdentifier): string {
+    checkEnvironmentValidation(identifier: Identifiers.TaskIdentifier): string {
         return `${this.getProjectPath()}/validate-async/tasks/${identifier.getParamValue()}`;
     }
 
-    listProjectIssues(identifier: Identifiers.TaskIdentifier): string {
+    listEnvironmentIssues(identifier: Identifiers.TaskIdentifier): string {
         return `${this.getProjectPath()}/validate-async/tasks/${identifier.getParamValue()}/issues`;
     }
 
-    validateProjectContent(): string {
-        return `${this.getProjectPath()}/validate`;
-    }
-
-    projectInformation(): string {
+    environmentInformation(): string {
         return `${this.getProjectPath()}`;
     }
 
@@ -330,7 +326,7 @@ export class ContentManagementApiEndpoints {
         return `${this.getSubscriptionPath()}/users`;
     }
 
-    viewSubscriptionProject(identifier: Identifiers.ProjectIdentifier): string {
+    viewSubscriptionProject(identifier: Identifiers.EnvironmentIdentifier): string {
         return `${this.getSubscriptionPath()}/projects/${identifier.getParamValue()}`;
     }
 
@@ -403,10 +399,10 @@ export class ContentManagementApiEndpoints {
     }
 
     private getProjectPath(): string {
-        if (!this.projectId) {
-            throw Error(`ProjectId was not provided in client configuration`);
+        if (!this.environmentId) {
+            throw Error(`EnvironmentId was not provided in client configuration`);
         }
-        return `${this.projectsPath}/${this.projectId}`;
+        return `${this.projectsPath}/${this.environmentId}`;
     }
 
     private getSubscriptionPath(): string {
@@ -417,9 +413,9 @@ export class ContentManagementApiEndpoints {
     }
 
     private getEnvironmentsPath(): string {
-        if (!this.projectId) {
-            throw Error(`ProjectId was not provided in client configuration`);
+        if (!this.environmentId) {
+            throw Error(`EnvironmentId was not provided in client configuration`);
         }
-        return `${this.projectsPath}/${this.projectId}`;
+        return `${this.projectsPath}/${this.environmentId}`;
     }
 }

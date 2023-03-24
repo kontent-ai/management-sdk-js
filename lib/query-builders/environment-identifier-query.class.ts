@@ -2,26 +2,26 @@ import { Identifiers } from '../models/identifiers';
 import { IManagementClientConfig } from '../config';
 import { ManagementQueryService } from '../services';
 
-export class ProjectIdentifierQuery<TResult> {
+export class EnvironmentIdentifierQuery<TResult> {
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ManagementQueryService,
         protected buildResult: (
             config: IManagementClientConfig,
             queryService: ManagementQueryService,
-            itentifier: Identifiers.ProjectIdentifier
+            itentifier: Identifiers.EnvironmentIdentifier
         ) => TResult
     ) {}
 
     /**
-     * For given Project by id
-     * @param projectId ProjectId
+     * For given environment by id
+     * @param environmentId EnvironmentId
      */
-    projectId(projectId: string): TResult {
+    environmentId(environmentId: string): TResult {
         return this.buildResult(
             this.config,
             this.queryService,
-            new Identifiers.ProjectIdentifier(Identifiers.ProjectIdentifierEnum.Id, projectId)
+            new Identifiers.EnvironmentIdentifier(Identifiers.EnvironmentIdentifierEnum.Id, environmentId)
         );
     }
 }

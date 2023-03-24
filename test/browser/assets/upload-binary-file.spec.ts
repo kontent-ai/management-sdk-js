@@ -1,6 +1,6 @@
 import { AssetResponses } from '../../../lib';
 import * as uploadBinaryResponseJson from '../fake-responses/assets/fake-upload-binary-file.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import { IHeader } from '@kontent-ai/core-sdk';
 
 describe('Upload binary file', () => {
@@ -31,7 +31,7 @@ describe('Upload binary file', () => {
             })
             .getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/files/y`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/files/y`);
     });
 
     it(`url should be encoded using filename`, () => {
@@ -45,7 +45,7 @@ describe('Upload binary file', () => {
             })
             .getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/files/name%20with%20spaces`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/files/name%20with%20spaces`);
     });
 
     it(`response should be instance of UploadBinaryFileResponse class`, () => {

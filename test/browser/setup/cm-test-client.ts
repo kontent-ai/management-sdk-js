@@ -1,7 +1,7 @@
 import { createManagementClient, ManagementClient } from '../../../lib';
 import { IResponse, TestHttpService } from '@kontent-ai/core-sdk';
 
-export const testProjectId: string = 'projectId';
+export const testEnvironmentId: string = 'environmentId';
 export const testSubscriptionId: string = 'subscriptionId';
 
 export const testApiKey: string = 'managementTestApiKey';
@@ -14,26 +14,26 @@ export function useLiveTesting(): boolean {
 }
 
 export const cmLiveClient: ManagementClient = createManagementClient({
-    projectId: testProjectId,
+    environmentId: testEnvironmentId,
     subscriptionId: testSubscriptionId,
     apiKey: testApiKey
 });
 
-export const getTestManagementClient = (projectId: string, apiKey: string) =>
+export const getTestManagementClient = (environmentId: string, apiKey: string) =>
     createManagementClient({
         apiKey: apiKey,
-        projectId: projectId
+        environmentId: environmentId
     });
 
 export const cmTestClientWithInvalidApiKey: ManagementClient = createManagementClient({
-    projectId: testProjectId,
+    environmentId: testEnvironmentId,
     subscriptionId: testSubscriptionId,
     apiKey: testApiKey
 });
 
 export const getTestClientWithBaseKontentError: (errorJson: any) => ManagementClient = (errorJson: any) =>
     createManagementClient({
-        projectId: testProjectId,
+        environmentId: testEnvironmentId,
         apiKey: testApiKey,
         httpService: new TestHttpService({
             response: undefined,
@@ -48,7 +48,7 @@ export const getTestClientWithBaseKontentError: (errorJson: any) => ManagementCl
 
 export const getTestClientWithJson: (json: any) => ManagementClient = (json: any) =>
     createManagementClient({
-        projectId: testProjectId,
+        environmentId: testEnvironmentId,
         subscriptionId: testSubscriptionId,
         apiKey: testApiKey,
         httpService: new TestHttpService({

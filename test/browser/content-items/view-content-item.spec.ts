@@ -1,6 +1,6 @@
 import { ContentItemResponses, SharedModels } from '../../../lib';
 import * as viewContentItemJson from '../fake-responses/content-items/view-content-item.json';
-import { getTestClientWithJson, cmLiveClient, testProjectId } from '../setup';
+import { getTestClientWithJson, cmLiveClient, testEnvironmentId } from '../setup';
 
 describe('View content item', () => {
     let response: ContentItemResponses.ViewContentItemResponse;
@@ -17,10 +17,10 @@ describe('View content item', () => {
         const internalIdUrl = cmLiveClient.viewContentItem().byItemId('xInternalId').getUrl();
         const externalIdUrl = cmLiveClient.viewContentItem().byItemExternalId('xExternalId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/codename/xCodename`);
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/xInternalId`);
+        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename`);
+        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xInternalId`);
         expect(externalIdUrl).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/xExternalId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/xExternalId`
         );
     });
 

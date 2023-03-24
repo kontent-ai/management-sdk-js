@@ -1,5 +1,5 @@
 import * as responseJson from '../fake-responses/projects/fake-project-information.json';
-import { getTestClientWithJson, testProjectId } from '../setup';
+import { getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('URL encoding', () => {
     it(`url should be encoded`, () => {
@@ -10,10 +10,10 @@ describe('URL encoding', () => {
             .getUrl();
 
         expect(url).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/a%20b/variants/codename/x`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/a%20b/variants/codename/x`
         );
         expect(url).not.toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/a b/variants/codename/x`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/a b/variants/codename/x`
         );
     });
 
@@ -22,15 +22,15 @@ describe('URL encoding', () => {
             .viewLanguageVariant()
             .byItemExternalId('ignored')
             .byLanguageCodename('ignored')
-            .withUrl(`https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/a b/variants/codename/x`)
+            .withUrl(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/a b/variants/codename/x`)
             .getUrl();
 
         expect(url).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/a b/variants/codename/x`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/a b/variants/codename/x`
         );
 
         expect(url).not.toEqual(
-            `https://manage.kontent.ai/v2/projects/${testProjectId}/items/external-id/a%20b/variants/codename/x`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/a%20b/variants/codename/x`
         );
     });
 });

@@ -1,6 +1,6 @@
 import { ProjectUserModels, ProjectUsersResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/project-users/fake-invite-user.spec.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Change user roles', () => {
     let response: ProjectUsersResponses.ChangeUserRolesResponse;
@@ -50,8 +50,8 @@ describe('Change user roles', () => {
             })
             .getUrl();
 
-        expect(urlByEmail).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/users/email/xEmail/roles`);
-        expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/users/xId/roles`);
+        expect(urlByEmail).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/users/email/xEmail/roles`);
+        expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/users/xId/roles`);
     });
 
     it(`response should be instance of ChangeUserRolesResponse class`, () => {

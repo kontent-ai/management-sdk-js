@@ -1,6 +1,6 @@
 import { AssetFolderModels, AssetFolderResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/asset-folders/fake-modify-asset-folders.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify asset folders', () => {
     let response: AssetFolderResponses.ModifyAssetFoldersResponse;
@@ -33,7 +33,7 @@ describe('Modify asset folders', () => {
     it(`url should be correct`, () => {
         const listUrl = cmLiveClient.modifyAssetFolders().withData({} as any).getUrl();
 
-        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/folders`);
+        expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/folders`);
     });
 
     it(`response should be instance of ModifyAssetFoldersResponse class`, () => {

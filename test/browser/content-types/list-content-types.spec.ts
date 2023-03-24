@@ -1,6 +1,6 @@
 import { ContentTypeResponses, SharedModels } from '../../../lib';
 import * as listContentTypesJson from '../fake-responses/content-types/fake-list-content-types.json';
-import { cmLiveClient, getTestClientWithJson, testProjectId } from '../setup';
+import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List content types', () => {
     let response: ContentTypeResponses.ContentTypeListResponse;
@@ -12,7 +12,7 @@ describe('List content types', () => {
     it(`url should be correct`, () => {
         const url = cmLiveClient.listContentTypes().getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testProjectId}/types`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types`);
     });
 
     it(`response should be instance of ContentTypeListResponse class`, () => {

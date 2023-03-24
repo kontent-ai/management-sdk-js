@@ -67,8 +67,8 @@ import {
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
     ModifyLanguageQuery,
-    ProjectIdentifierQuery,
-    ProjectInformationQuery,
+    EnvironmentIdentifierQuery,
+    EnvironmentInformationQuery,
     PublishLanguageVariantQuery,
     TaxonomyIdentifierQuery,
     UnpublishLanguageVariantQuery,
@@ -77,7 +77,6 @@ import {
     UpsertAssetQuery,
     UpsertContentItemQuery,
     UpsertLanguageVariantQuery,
-    ValidateProjectContentQuery,
     ViewAssetsQuery,
     ViewContentItemQuery,
     ViewContentTypeQuery,
@@ -124,10 +123,10 @@ import {
     DeleteWorkflowQuery,
     AddWorkflowQuery,
     UpdateWorkflowQuery,
-    StartProjectValidationQuery,
+    StartEnvironmentValidationQuery,
     TaskIdentifierQuery,
-    CheckProjectValidationQuery,
-    ListProjectValidationIssuesQuery as ListProjectValidationIssuesQuery,
+    CheckEnvironmentValidationQuery,
+    ListEnvironmentValidationIssuesQuery,
     AddSpaceQuery,
     DeleteSpaceQuery,
     ListSpacesQuery,
@@ -598,34 +597,23 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    /**
-     * @deprecated In favor of async validation endpoints
-     */
-    validateProjectContent(): ProjectIdentifierQuery<ValidateProjectContentQuery> {
-        return new ProjectIdentifierQuery<ValidateProjectContentQuery>(
+    startEnvironmentValidation(): StartEnvironmentValidationQuery {
+        return new StartEnvironmentValidationQuery(this.config, this.queryService);
+    }
+
+    checkEnvironmentValidation(): TaskIdentifierQuery<CheckEnvironmentValidationQuery> {
+        return new TaskIdentifierQuery<CheckEnvironmentValidationQuery>(
             this.config,
             this.queryService,
-            (config, queryService, identifier) => new ValidateProjectContentQuery(config, queryService, identifier)
+            (config, queryService, identifier) => new CheckEnvironmentValidationQuery(config, queryService, identifier)
         );
     }
 
-    startProjectValidation(): StartProjectValidationQuery {
-        return new StartProjectValidationQuery(this.config, this.queryService);
-    }
-
-    checkProjectValidation(): TaskIdentifierQuery<CheckProjectValidationQuery> {
-        return new TaskIdentifierQuery<CheckProjectValidationQuery>(
+    listEnvironmentValidationIssues(): TaskIdentifierQuery<ListEnvironmentValidationIssuesQuery> {
+        return new TaskIdentifierQuery<ListEnvironmentValidationIssuesQuery>(
             this.config,
             this.queryService,
-            (config, queryService, identifier) => new CheckProjectValidationQuery(config, queryService, identifier)
-        );
-    }
-
-    listProjectValidationIssues(): TaskIdentifierQuery<ListProjectValidationIssuesQuery> {
-        return new TaskIdentifierQuery<ListProjectValidationIssuesQuery>(
-            this.config,
-            this.queryService,
-            (config, queryService, identifier) => new ListProjectValidationIssuesQuery(config, queryService, identifier)
+            (config, queryService, identifier) => new ListEnvironmentValidationIssuesQuery(config, queryService, identifier)
         );
     }
 
@@ -1046,8 +1034,8 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new ListWebhooksQuery(this.config, this.queryService);
     }
 
-    projectInformation(): ProjectInformationQuery {
-        return new ProjectInformationQuery(this.config, this.queryService);
+    environmentInformation(): EnvironmentInformationQuery {
+        return new EnvironmentInformationQuery(this.config, this.queryService);
     }
 
     listAssetFolders(): ListAssetFoldersQuery {
@@ -1089,7 +1077,7 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         nestedItemId?: string;
         nestedItemElementCodename?: string;
     }): string {
-        let url: string = `https://app.kontent.ai/goto/edit-item/project/${this.config.projectId}/variant-codename/${data.languageCodename}/item/${data.variantId}`;
+        let url: string = `https://app.kontent.ai/goto/edit-item/project/${this.config.environmentId}/variant-codename/${data.languageCodename}/item/${data.variantId}`;
 
         if (data.elementCodename) {
             url += `/element/${data.elementCodename}`;
@@ -1114,8 +1102,8 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new ListSubscriptionUsersQuery(this.config, this.queryService);
     }
 
-    viewSubscriptionProject(): ProjectIdentifierQuery<ViewSubscriptionProjectQuery> {
-        return new ProjectIdentifierQuery<ViewSubscriptionProjectQuery>(
+    viewSubscriptionProject(): EnvironmentIdentifierQuery<ViewSubscriptionProjectQuery> {
+        return new EnvironmentIdentifierQuery<ViewSubscriptionProjectQuery>(
             this.config,
             this.queryService,
             (config, queryService, identifier) => new ViewSubscriptionProjectQuery(config, queryService, identifier)
