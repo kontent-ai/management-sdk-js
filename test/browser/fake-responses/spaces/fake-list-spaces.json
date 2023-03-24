@@ -2,6 +2,10 @@
     {
     "id": "6291c693-f6e4-4a6b-ac67-5c31c32f9388",
     "name": "Space 1",
-    "codename": "space_1"
+    "codename": "space_1",
+    "webSpotlightRootItem": {
+        "id": "09d5a63a-49a9-4b77-9e18-54a05441483e",
+        "codename": "my_root_item"
+    }
     }
 ]
