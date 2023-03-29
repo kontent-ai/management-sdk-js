@@ -5,8 +5,9 @@ export namespace SpaceContracts {
         id: string;
         name: string;
         codename: string;
-        webSpotlightRootItem: SharedContracts.IReferenceObjectContract
+        web_spotlight_root_item: SharedContracts.IReferenceObjectContract;
     }
+
     export type ISpacesListingResponseContract = ISpaceContract[];
 
     export interface IAddSpaceResponseContract extends ISpaceContract {}
@@ -27,7 +28,7 @@ export namespace SpaceContracts {
     export interface IAddSpacePostContract {
         name: string;
         codename: string;
-        webSpotlightRootItem: SharedContracts.IReferenceObjectContract,
+        webSpotlightRootItem?: SharedContracts.IReferenceObjectContract,
 
     }
 }

@@ -14,7 +14,7 @@ export namespace SpaceModels {
     export interface IAddSpaceData {
         name: string;
         codename?: string;
-        webSpotlightRootItem: SharedModels.ReferenceObject
+        webSpotlightRootItem?: SharedModels.ReferenceObject
     }
 
     export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceContract> {
@@ -22,7 +22,7 @@ export namespace SpaceModels {
         public id!: string;
         public name!: string;
         public codename!: string;
-        webSpotlightRootItem!: SharedModels.ReferenceObject
+        public webSpotlightRootItem!: SharedModels.ReferenceObject
         public _raw!: SpaceContracts.ISpaceContract;
 
         constructor(
