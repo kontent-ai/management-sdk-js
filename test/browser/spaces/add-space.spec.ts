@@ -44,6 +44,6 @@ describe('Add space', () => {
         expect(space.codename).toEqual(originalItem.codename);
         expect(space.name).toEqual(originalItem.name);
         expect(space.id).toBeDefined();
-        expect(space.webSpotlightRootItem).toBeDefined();
+        expect(space.web_spotlight_root_item).toBeDefined();
     });
 });

@@ -22,7 +22,7 @@ export namespace SpaceModels {
         public id!: string;
         public name!: string;
         public codename!: string;
-        public webSpotlightRootItem!: SharedModels.ReferenceObject
+        public web_spotlight_root_item!: SharedModels.ReferenceObject
         public _raw!: SpaceContracts.ISpaceContract;
 
         constructor(
@@ -30,7 +30,7 @@ export namespace SpaceModels {
                 id: string,
                 name: string,
                 codename: string,
-                webSpotlightRootItem: SharedModels.ReferenceObject,
+                web_spotlight_root_item: SharedModels.ReferenceObject,
                 _raw: SpaceContracts.ISpaceContract
             }
         ) {
