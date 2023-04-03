@@ -8,7 +8,7 @@ export namespace SpaceModels {
     export interface IModifySpaceData {
         op: ModifySpaceOperation;
         property_name: string;
-        value: string;
+        value: string | SharedModels.ReferenceObject;
     }
 
     export interface IAddSpaceData {
@@ -22,7 +22,7 @@ export namespace SpaceModels {
         public id!: string;
         public name!: string;
         public codename!: string;
-        public web_spotlight_root_item!: SharedModels.ReferenceObject
+        public webSpotlightRootItem!: SharedModels.ReferenceObject
         public _raw!: SpaceContracts.ISpaceContract;
 
         constructor(
@@ -30,7 +30,7 @@ export namespace SpaceModels {
                 id: string,
                 name: string,
                 codename: string,
-                web_spotlight_root_item: SharedModels.ReferenceObject,
+                webSpotlightRootItem: SharedModels.ReferenceObject,
                 _raw: SpaceContracts.ISpaceContract
             }
         ) {

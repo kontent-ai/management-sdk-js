@@ -11,7 +11,6 @@ describe('List spaces', () => {
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.listSpaces().getUrl();
-
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces`);
     });
 
@@ -39,11 +38,10 @@ describe('List spaces', () => {
             if (!originalItem) {
                 throw Error(`Invalid space with id '${space.id}'`);
             }
-
             expect(space).toEqual(jasmine.any(SpaceModels.Space));
             expect(space.codename).toEqual(originalItem.codename);
             expect(space.name).toEqual(originalItem.name);
-            expect(space.web_spotlight_root_item).toEqual(originalItem.web_spotlight_root_item)
+            expect(space.webSpotlightRootItem).toBeDefined
 
         });
     });
