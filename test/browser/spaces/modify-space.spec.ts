@@ -8,7 +8,7 @@ describe('Modify space', () => {
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson)
             .modifySpace()
-            .bySpaceCodename('x')
+            .bySpaceCodename('space_1')
             .withData([
                 {
                     op: 'replace',
@@ -22,7 +22,6 @@ describe('Modify space', () => {
     it(`url should be correct`, () => {
         const urlByCodename = cmLiveClient.modifySpace().bySpaceCodename('x').withData([]).getUrl();
         const urlByInternalId = cmLiveClient.modifySpace().bySpaceId('y').withData([]).getUrl();
-
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/y`);
     });

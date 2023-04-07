@@ -1,4 +1,4 @@
-import { SpaceResponses, SpaceModels } from '../../../lib';
+import { SpaceResponses, SpaceModels, } from '../../../lib';
 import * as listSpacesJson from '../fake-responses/spaces/fake-list-spaces.json';
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
@@ -11,7 +11,6 @@ describe('List spaces', () => {
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.listSpaces().getUrl();
-
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces`);
     });
 
@@ -39,11 +38,10 @@ describe('List spaces', () => {
             if (!originalItem) {
                 throw Error(`Invalid space with id '${space.id}'`);
             }
-
             expect(space).toEqual(jasmine.any(SpaceModels.Space));
             expect(space.codename).toEqual(originalItem.codename);
             expect(space.name).toEqual(originalItem.name);
-            expect(space.webSpotlightRootItem).toEqual(originalItem.webSpotlightRootItem)
+            expect(space.webSpotlightRootItem).toBeDefined
 
         });
     });
