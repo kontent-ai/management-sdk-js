@@ -30,6 +30,7 @@ export namespace SpaceModels {
                 id: string,
                 name: string,
                 codename: string,
+                webSpotlightRootItem: SharedModels.ReferenceObject,
                 _raw: SpaceContracts.ISpaceContract
             }
         ) {
