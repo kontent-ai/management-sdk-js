@@ -1,4 +1,4 @@
-import { SharedContracts } from "./shared-contracts";
+import { SharedContracts } from './shared-contracts';
 export namespace SpaceContracts {
     export interface ISpaceContract {
         id: string;
@@ -22,12 +22,10 @@ export namespace SpaceContracts {
     export interface IModifySpacePostContract {
         name: string;
         codename: string;
-
     }
     export interface IAddSpacePostContract {
         name: string;
         codename: string;
-        webSpotlightRootItem?: SharedContracts.IReferenceObjectContract,
-
+        webSpotlightRootItem?: SharedContracts.IReferenceObjectContract;
     }
 }

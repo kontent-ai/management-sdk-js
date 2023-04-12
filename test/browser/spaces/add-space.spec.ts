@@ -11,7 +11,7 @@ describe('Add space', () => {
                 name: 'Spacename',
                 codename: 'My_Workflow',
                 web_spotlight_root_item: {
-                    codename: "my_root_item"
+                    codename: 'my_root_item'
                 }
             })
             .toPromise();

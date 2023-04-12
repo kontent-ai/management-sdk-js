@@ -1,12 +1,11 @@
-import { SharedContracts } from "./shared-contracts";
+import { SharedContracts } from './shared-contracts';
 
 export namespace EnvironmentContracts {
     export interface IEnvironmentCloningStateResponseContract {
         cloning_state: 'in_progress' | 'failed' | 'done';
     }
 
-    export interface IDeleteEnvironmentResponseContract {
-    }
+    export interface IDeleteEnvironmentResponseContract {}
 
     export interface IEnvironmentResponseContract {
         id: string;
@@ -14,8 +13,7 @@ export namespace EnvironmentContracts {
         is_production: boolean;
     }
 
-    export interface IModifyEnvironmentResponseContract extends IEnvironmentResponseContract {
-    }
+    export interface IModifyEnvironmentResponseContract extends IEnvironmentResponseContract {}
 
     export interface ICloneEnvironmentResponseContract {
         id: string;
@@ -24,8 +22,7 @@ export namespace EnvironmentContracts {
         secured_delivery_api_key: string;
     }
 
-    export interface IMarkEnvironmentAsProductionResponseContract {
-    }
+    export interface IMarkEnvironmentAsProductionResponseContract {}
 
     export interface IEnvironmentInformationResponseContract {
         id: string;
@@ -36,7 +33,7 @@ export namespace EnvironmentContracts {
     export type EnvironmentValidationIssueType = 'type_issue' | 'variant_issue';
 
     export interface IEnvironmentValidationItemIssueContract {
-        element:  IEnvironmentVariantElementContract;
+        element: IEnvironmentVariantElementContract;
         messages: string[];
     }
 
