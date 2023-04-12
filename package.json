@@ -60,14 +60,14 @@
   },
   "dependencies": {
     "@kontent-ai/core-sdk": "10.1.1",
-    "axios": "1.3.4",
+    "axios": "1.3.5",
     "mime": "3.0.0"
   },
   "devDependencies": {
     "@types/jasmine": "4.3.1",
     "@types/mime": "3.0.1",
-    "@types/node": "18.15.6",
-    "core-js": "3.29.1",
+    "@types/node": "18.15.11",
+    "core-js": "3.30.0",
     "jasmine-core": "4.6.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.1",
@@ -85,8 +85,8 @@
     "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
     "tslint": "6.1.3",
-    "typescript": "5.0.2",
-    "webpack": "5.76.3",
+    "typescript": "5.0.4",
+    "webpack": "5.78.0",
     "webpack-bundle-analyzer": "4.8.0",
     "webpack-cli": "5.0.1"
   }
