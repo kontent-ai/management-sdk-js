@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v4.1.0...v5.0.0) (2023-04-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Renames all project related properties & types & queries to reflect new environment naming conventions, also removes deprecated validateProject query
+
+### Features
+
+* Adds support for spaces & adds null support for regex flag ([#109](https://github.com/kontent-ai/management-sdk-js/issues/109)) ([d11e5f1](https://github.com/kontent-ai/management-sdk-js/commit/d11e5f165a8117f342822e8e6d7ab9cc289d01d7))
+* Renames all project related properties & types & queries to reflect new environment naming conventions, also removes deprecated validateProject query ([e99f007](https://github.com/kontent-ai/management-sdk-js/commit/e99f007cdf8aef3d2a47274fa8bf77e455a1ac9e))
+* updates dependencies ([788779b](https://github.com/kontent-ai/management-sdk-js/commit/788779bf1d9136b9135b58943836b1efca38eb1a))
+* updates dependencies ([bdaa2c7](https://github.com/kontent-ai/management-sdk-js/commit/bdaa2c7761ee31489c77a15b72a810f5bf26e69f))
+
 ## [4.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v4.0.0...v4.1.0) (2023-03-08)
 
 
