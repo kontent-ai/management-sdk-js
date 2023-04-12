@@ -9,7 +9,10 @@ describe('Add space', () => {
             .addSpace()
             .withData({
                 name: 'Spacename',
-                codename: 'My_Workflow'
+                codename: 'My_Workflow',
+                webSpotlightRootItem: {
+                    codename: "my_root_item"
+                }
             })
             .toPromise();
     });
@@ -41,5 +44,6 @@ describe('Add space', () => {
         expect(space.codename).toEqual(originalItem.codename);
         expect(space.name).toEqual(originalItem.name);
         expect(space.id).toBeDefined();
+        expect(space.webSpotlightRootItem).toBeDefined();
     });
 });

@@ -28,7 +28,8 @@ export namespace SpaceResponses {
             super(debug, rawData, data);
         }
     }
-    export class AddSpaceResponse extends BaseResponses.BaseContentManagementResponse<
+    export class 
+    AddSpaceResponse extends BaseResponses.BaseContentManagementResponse<
         SpaceContracts.IAddSpaceResponseContract,
         SpaceModels.Space
     > {

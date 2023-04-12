@@ -242,7 +242,7 @@ export namespace ContentTypeElements {
         validation_regex?: {
             is_active: boolean;
             regex: string;
-            flags?: string;
+            flags?: string | null;
             validation_message?: string;
         };
     }
