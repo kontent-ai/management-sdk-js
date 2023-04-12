@@ -10,7 +10,7 @@ describe('Add space', () => {
             .withData({
                 name: 'Spacename',
                 codename: 'My_Workflow',
-                webSpotlightRootItem: {
+                web_spotlight_root_item: {
                     codename: "my_root_item"
                 }
             })
