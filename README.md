@@ -114,7 +114,7 @@ const client = createManagementClient({
 | `API Key`        | N/A                                   | **Required** - Management or Subscription API Key. Subscription API Key also works for Management requests            |
 | `environmentId`     | N/A                                   | **Required for Management API** - Environment Id                                                                                                   
 | `subscriptionId`       | N/A  | **Required for Subscription API** - Subscription Id
-| `baseUrl`       | https://manage.kontent.ai/v2/projects | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                          
+| `baseUrl`       | https://manage.kontent.ai/v2 | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                          
 | `retryStrategy` | undefined                             | Retry strategy configuration. If not set, default strategy is used.                                                                                                 |
 | `httpService`   | HttpService                           | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
 
