@@ -93,7 +93,7 @@ export class LanguageVariantMapper extends BaseMapper {
             item: super.mapReference(rawVariant.item),
             language: super.mapReference(rawVariant.language),
             lastModified: new Date(rawVariant.last_modified),
-            worklfowStep: super.mapReference(rawVariant.workflow_step),
+            workflowStep: super.mapReference(rawVariant.workflow_step),
             workflow: {
                 workflowIdentifier: super.mapReference(rawVariant.workflow.workflow_identifier),
                 stepIdentifier: super.mapReference(rawVariant.workflow.step_identifier)
@@ -110,7 +110,7 @@ export class LanguageVariantMapper extends BaseMapper {
             item: super.mapReference(rawVariant.item),
             language: super.mapReference(rawVariant.language),
             lastModified: new Date(rawVariant.last_modified),
-            worklfowStep: super.mapReference(rawVariant.workflow_step),
+            workflowStep: super.mapReference(rawVariant.workflow_step),
             workflow: {
                 workflowIdentifier: super.mapReference(rawVariant.workflow.workflow_identifier),
                 stepIdentifier: super.mapReference(rawVariant.workflow.step_identifier)
