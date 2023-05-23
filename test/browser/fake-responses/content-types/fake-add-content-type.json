@@ -19,6 +19,7 @@
         "validation_message": "Type a value matching the pattern required in this element."
       }
     },
+    
     {
       "mode": "single",
       "options": [
