@@ -30,6 +30,7 @@ describe('Add content type', () => {
                             }
                         }),
                         builder.taxonomyElement({
+                            name: 'taxonomy',
                             type: 'taxonomy',
                             taxonomy_group: {
                                 codename: 'xTaxonomyCodename'
@@ -107,4 +108,5 @@ describe('Add content type', () => {
         const validationRegex = (textContentType as ITextElement).validation_regex;
         expect(validationRegex).toEqual((originalTextElement as any).validation_regex);
     });
+
 });
