@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.1.0...v5.2.0) (2023-07-31)
+
+
+### Features
+
+* updates '@kontent-ai/core-sdk' dependency ([4616d3b](https://github.com/kontent-ai/management-sdk-js/commit/4616d3b637e006e3257631d3bb6c8be216935ca2))
+
 ## [5.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.0.0...v5.1.0) (2023-07-31)
 
 
