@@ -63,6 +63,7 @@ export class WorkflowMapper extends BaseMapper {
             codename: raw.codename,
             archivedStep: raw.archived_step,
             publishedStep: raw.published_step,
+            scheduledStep: raw.scheduled_step,
             scopes: raw.scopes,
             steps: raw.steps,
             _raw: raw

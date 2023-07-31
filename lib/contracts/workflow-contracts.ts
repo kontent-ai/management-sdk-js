@@ -51,6 +51,12 @@ export namespace WorkflowContracts {
         unpublish_role_ids: string[];
     }
 
+    export interface IWorkflowScheduledStepContract {
+        id: string;
+        name: string;
+        codename: string;
+    }
+
     export interface IWorkflowArchivedStepContract {
         id: string;
         name: string;
@@ -74,6 +80,7 @@ export namespace WorkflowContracts {
         scopes: IWorkflowScopeContract[];
         steps: IWorkflowStepNewContract[];
         published_step: IWorkflowPublishedStepContract;
+        scheduled_step: IWorkflowPublishedStepContract;
         archived_step: IWorkflowArchivedStepContract;
     }
 }

@@ -33,6 +33,7 @@ export namespace WorkflowModels {
         public scopes!: WorkflowContracts.IWorkflowScopeContract[];
         public steps!: WorkflowContracts.IWorkflowStepNewContract[];
         public publishedStep!: WorkflowContracts.IWorkflowPublishedStepContract;
+        public scheduledStep!: WorkflowContracts.IWorkflowScheduledStepContract;
         public archivedStep!: WorkflowContracts.IWorkflowArchivedStepContract;
         public _raw!: WorkflowContracts.IWorkflowContract;
 
@@ -43,6 +44,7 @@ export namespace WorkflowModels {
             scopes: WorkflowContracts.IWorkflowScopeContract[];
             steps: WorkflowContracts.IWorkflowStepNewContract[];
             publishedStep: WorkflowContracts.IWorkflowPublishedStepContract;
+            scheduledStep: WorkflowContracts.IWorkflowScheduledStepContract;
             archivedStep: WorkflowContracts.IWorkflowArchivedStepContract;
             _raw: WorkflowContracts.IWorkflowContract;
         }) {

@@ -89,6 +89,7 @@ describe('Add workflow', () => {
         expect(workflow.codename).toEqual(originalItem.codename);
         expect(workflow.id).toEqual(originalItem.id);
         expect(workflow.publishedStep).toEqual(originalItem.published_step);
+        expect(workflow.scheduledStep).toEqual(originalItem.scheduled_step);
         expect(workflow.scopes).toEqual(originalItem.scopes);
         expect(workflow.steps).toEqual(originalItem.steps as any);
     });
