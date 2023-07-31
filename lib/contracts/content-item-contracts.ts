@@ -52,6 +52,7 @@ export namespace ContentItemContracts {
         type: {
             codename?: string,
             id?: string
+            external_id?: string;
         };
         codename?: string;
         external_id?: string;
