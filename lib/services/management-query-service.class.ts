@@ -56,7 +56,8 @@ import {
     CollectionModels,
     ProjectUserModels,
     AssetRenditionModels,
-    SpaceModels
+    SpaceModels,
+    PreviewModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -995,6 +996,16 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     ): Promise<PreviewResponses.PreviewConfigurationResponse> {
         return previewMapper.mapPreviewConfigurationResponse(
             await this.getResponseAsync<PreviewContracts.IPreviewConfigurationContract>(url, {}, config)
+        );
+    }
+
+    async modifyPreviewConfigurationAsync(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: PreviewModels.IModifyPreviewConfigurationData
+    ): Promise<PreviewResponses.ModifyConfigurationResponse> {
+        return previewMapper.mapModifyConfigurationResponse(
+            await this.putResponseAsync<PreviewContracts.IPreviewConfigurationContract>(url, data, {}, config)
         );
     }
 

@@ -4,6 +4,7 @@ import {
     AssetRenditionModels,
     CollectionModels,
     LanguageVariantElementsBuilder,
+    PreviewModels,
     ProjectUserModels,
     SpaceModels
 } from '../models';
@@ -133,7 +134,8 @@ import {
     ModifySpaceQuery,
     ViewSpaceQuery,
     SpaceIdentifierQuery,
-    GetPreviewConfigurationQuery
+    GetPreviewConfigurationQuery,
+    ModifyPreviewConfigurationQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
@@ -1147,6 +1149,17 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     getPreviewConfiguration(): GetPreviewConfigurationQuery {
         return new GetPreviewConfigurationQuery(this.config, this.queryService);
+    }
+
+    modifyPreviewConfiguration(): DataQuery<
+        ModifyPreviewConfigurationQuery,
+        PreviewModels.IModifyPreviewConfigurationData
+    > {
+        return new DataQuery<ModifyPreviewConfigurationQuery, PreviewModels.IModifyPreviewConfigurationData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new ModifyPreviewConfigurationQuery(config, queryService, data)
+        );
     }
 
     inviteUser(): DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData> {

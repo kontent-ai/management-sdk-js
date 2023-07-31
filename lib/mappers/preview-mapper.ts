@@ -16,6 +16,16 @@ export class PreviewMapper extends BaseMapper {
         );
     }
 
+    mapModifyConfigurationResponse(
+        response: IResponse<PreviewContracts.IPreviewConfigurationContract>
+    ): PreviewResponses.ModifyConfigurationResponse {
+        return new PreviewResponses.ModifyConfigurationResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapPreviewConfiguration(response.data)
+        );
+    }
+
     private mapPreviewConfiguration(
         rawItem: PreviewContracts.IPreviewConfigurationContract
     ): PreviewModels.PreviewConfiguration {

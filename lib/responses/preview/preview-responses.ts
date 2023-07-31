@@ -15,4 +15,17 @@ export namespace PreviewResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class ModifyConfigurationResponse extends BaseResponses.BaseContentManagementResponse<
+        PreviewContracts.IPreviewConfigurationContract,
+        PreviewModels.PreviewConfiguration
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: PreviewContracts.IPreviewConfigurationContract,
+            data: PreviewModels.PreviewConfiguration
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

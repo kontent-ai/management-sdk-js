@@ -354,6 +354,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/preview-configuration`;
     }
 
+    modifyPreviewConfigruation(): string {
+        return `${this.getEnvironmentsPath()}/preview-configuration`;
+    }
+
     inviteProjectUser(): string {
         return `${this.getEnvironmentsPath()}/users`;
     }

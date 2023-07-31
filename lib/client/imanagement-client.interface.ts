@@ -12,6 +12,7 @@ import {
     ContentTypeSnippetModels,
     LanguageModels,
     LanguageVariantElementsBuilder,
+    PreviewModels,
     ProjectUserModels,
     SpaceModels,
     TaxonomyModels,
@@ -129,7 +130,8 @@ import {
     TaskIdentifierQuery,
     CheckEnvironmentValidationQuery,
     ListEnvironmentValidationIssuesQuery,
-    GetPreviewConfigurationQuery
+    GetPreviewConfigurationQuery,
+    ModifyPreviewConfigurationQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -308,7 +310,6 @@ export interface IManagementClient<TCancelToken> {
             DataQuery<
                 UpsertLanguageVariantQuery,
                 (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
-
             >
         >
     >;
@@ -322,12 +323,12 @@ export interface IManagementClient<TCancelToken> {
 
     /**
      * Starts validating the specified environment to check for issues such as:
-    * - Nonexistent objects referenced in content items.
-    * - Content element values don't meet the limitations configured in content types.
-    * - Content types referencing nonexistent taxonomy groups.
-    * Depending on the size of your environment, the validation might take several minutes.
-    * After you start the environment validation, you get a validation task.
-    * With the validation task, you can check validation progress and list validation results once the validation is finished.
+     * - Nonexistent objects referenced in content items.
+     * - Content element values don't meet the limitations configured in content types.
+     * - Content types referencing nonexistent taxonomy groups.
+     * Depending on the size of your environment, the validation might take several minutes.
+     * After you start the environment validation, you get a validation task.
+     * With the validation task, you can check validation progress and list validation results once the validation is finished.
      */
     startEnvironmentValidation(): StartEnvironmentValidationQuery;
 
@@ -678,19 +679,15 @@ export interface IManagementClient<TCancelToken> {
      */
     deleteSpace(): SpaceIdentifierQuery<DeleteSpaceQuery>;
 
-
     /**
      * Lists all spaces
      */
     listSpaces(): ListSpacesQuery;
 
-
     /**
      * Modifies a space
      */
-    modifySpace(): SpaceIdentifierQuery<
-        DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>
-    >;
+    modifySpace(): SpaceIdentifierQuery<DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>>;
 
     /**
      * Views a space
@@ -701,4 +698,12 @@ export interface IManagementClient<TCancelToken> {
      * Gets preview configuration
      */
     getPreviewConfiguration(): GetPreviewConfigurationQuery;
+
+    /**
+     * Adjusts the preview URLs configured for your environment
+     */
+    modifyPreviewConfiguration(): DataQuery<
+        ModifyPreviewConfigurationQuery,
+        PreviewModels.IModifyPreviewConfigurationData
+    >;
 }

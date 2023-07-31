@@ -42,4 +42,28 @@ export namespace PreviewModels {
             this._raw = data._raw;
         }
     }
+
+    export interface IModifyPreviewConfigurationData {
+        space_domains: {
+            space: {
+                id?: string;
+                codename?: string;
+            };
+            domain: string;
+        }[];
+        preview_url_patterns: {
+            content_type: {
+                id?: string;
+                codename?: string;
+                external_id?: string;
+            };
+            url_patterns: {
+                space: null | {
+                    id?: string;
+                    codename?: string;
+                };
+                url_pattern: string;
+            }[];
+        }[];
+    }
 }
