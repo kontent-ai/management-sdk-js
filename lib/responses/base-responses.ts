@@ -45,9 +45,7 @@ export namespace BaseResponses {
         }
     }
 
-    export abstract class BaseContentManagementListResponse<TRawData extends any, TItem extends any>
-        implements IContentManagementResponse
-    {
+    export abstract class BaseContentManagementListResponse<TRawData, TItem> implements IContentManagementResponse {
         constructor(
             public debug: IContentManagementResponseDebug,
             public rawData: TRawData,
@@ -58,9 +56,7 @@ export namespace BaseResponses {
         ) {}
     }
 
-    export abstract class BaseContentManagementResponse<TRawData extends any, TData extends any>
-        implements IContentManagementResponse
-    {
+    export abstract class BaseContentManagementResponse<TRawData, TData> implements IContentManagementResponse {
         constructor(public debug: IContentManagementResponseDebug, public rawData: TRawData, public data: TData) {}
     }
 
