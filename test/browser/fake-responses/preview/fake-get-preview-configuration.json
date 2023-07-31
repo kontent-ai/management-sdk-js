@@ -1,0 +1,42 @@
+{
+    "space_domains": [
+        {
+            "space": {
+                "id": "fb2c6c2b-fb79-4d1b-856a-b59762e304b0"
+            },
+            "domain": "www.mysite1.com"
+        },
+        {
+            "space": {
+                "id": "24dace50-3cf6-4378-8704-453af9cdb60c"
+            },
+            "domain": "www.mysite2.com"
+        }
+    ],
+    "preview_url_patterns": [
+        {
+            "content_type": {
+                "id": "cf75f19d-6ed4-4820-a541-cde50dd79054"
+            },
+            "url_patterns": [
+                {
+                    "space": {
+                        "id": "24dace50-3cf6-4378-8704-453af9cdb60c"
+                    },
+                    "url_pattern": "https://{Space}/{Lang}/articles/history/"
+                }
+            ]
+        },
+        {
+            "content_type": {
+                "id": "f21f6c3b-f63e-4aa1-866f-55fd85ad262e"
+            },
+            "url_patterns": [
+                {
+                    "space": null,
+                    "url_pattern": "https://www.mysite1.com/{Lang}/articles/"
+                }
+            ]
+        }
+    ]
+}

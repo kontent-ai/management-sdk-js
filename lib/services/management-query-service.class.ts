@@ -18,7 +18,8 @@ import {
     SpaceContracts,
     TaxonomyContracts,
     WebhookContracts,
-    WorkflowContracts
+    WorkflowContracts,
+    PreviewContracts
 } from '../contracts';
 import {
     assetFolderMapper,
@@ -37,7 +38,8 @@ import {
     roleMapper,
     projectUserMapper,
     assetRenditionMapper,
-    spacesMapper
+    spacesMapper,
+    previewMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -74,7 +76,8 @@ import {
     RoleResponses,
     ProjectUsersResponses,
     AssetRenditionResponses,
-    SpaceResponses
+    SpaceResponses,
+    PreviewResponses
 } from '../responses';
 import { BaseManagementQueryService } from './base-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
@@ -983,6 +986,15 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async viewRoleAsync(url: string, config: IContentManagementQueryConfig): Promise<RoleResponses.ViewRoleResponse> {
         return roleMapper.mapViewRoleResponse(
             await this.getResponseAsync<RoleContracts.IRoleContract>(url, {}, config)
+        );
+    }
+
+    async getPreviewConfigurationAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<PreviewResponses.PreviewConfigurationResponse> {
+        return previewMapper.mapPreviewConfigurationResponse(
+            await this.getResponseAsync<PreviewContracts.IPreviewConfigurationContract>(url, {}, config)
         );
     }
 

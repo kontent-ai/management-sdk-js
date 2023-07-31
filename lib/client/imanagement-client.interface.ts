@@ -128,7 +128,8 @@ import {
     StartEnvironmentValidationQuery,
     TaskIdentifierQuery,
     CheckEnvironmentValidationQuery,
-    ListEnvironmentValidationIssuesQuery
+    ListEnvironmentValidationIssuesQuery,
+    GetPreviewConfigurationQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -696,4 +697,8 @@ export interface IManagementClient<TCancelToken> {
      */
     viewSpace(): SpaceIdentifierQuery<ViewSpaceQuery>;
 
+    /**
+     * Gets preview configuration
+     */
+    getPreviewConfiguration(): GetPreviewConfigurationQuery;
 }

@@ -19,3 +19,4 @@ export * from './project-users';
 export * from './asset-renditions';
 export * from './spaces';
 export * from './environments';
+export * from './preview';

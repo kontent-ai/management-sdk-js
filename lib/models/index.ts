@@ -24,4 +24,5 @@ export * from './project-users/project-users.models';
 export * from './asset-renditions/asset-rendition.models';
 export * from './environments/environment.models';
 export * from './assets/asset-elements.builder';
-export * from './spaces/space-models';
+export * from './spaces/space.models';
+export * from './preview/preview.models';

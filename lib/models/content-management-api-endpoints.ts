@@ -350,6 +350,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/roles/${identifier.getParamValue()}`;
     }
 
+    getPreviewConfigruation(): string {
+        return `${this.getEnvironmentsPath()}/preview-configuration`;
+    }
+
     inviteProjectUser(): string {
         return `${this.getEnvironmentsPath()}/users`;
     }

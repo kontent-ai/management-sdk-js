@@ -9,7 +9,7 @@ import {
 } from '../models';
 
 import { IManagementClientConfig } from '../config';
-import { ContentItemContracts, LanguageVariantContracts} from '../contracts';
+import { ContentItemContracts, LanguageVariantContracts } from '../contracts';
 import {
     AssetFolderModels,
     AssetModels,
@@ -132,7 +132,8 @@ import {
     ListSpacesQuery,
     ModifySpaceQuery,
     ViewSpaceQuery,
-    SpaceIdentifierQuery
+    SpaceIdentifierQuery,
+    GetPreviewConfigurationQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
@@ -525,7 +526,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             DataQuery<
                 UpsertLanguageVariantQuery,
                 (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
-
             >
         >
     > {
@@ -533,9 +533,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             LanguageIdAndCodenameIdentifierQuery<
                 DataQuery<
                     UpsertLanguageVariantQuery,
-                    (builder: LanguageVariantElementsBuilder) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
-
-
+                    (
+                        builder: LanguageVariantElementsBuilder
+                    ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
                 >
             >
         >(
@@ -548,7 +548,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                         (
                             builder: LanguageVariantElementsBuilder
                         ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
-
                     >
                 >(
                     config,
@@ -559,7 +558,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                             (
                                 builder: LanguageVariantElementsBuilder
                             ) => LanguageVariantContracts.IUpsertLanguageVariantPostContract
-
                         >(
                             nConfig,
                             nQueryService,
@@ -613,7 +611,8 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new TaskIdentifierQuery<ListEnvironmentValidationIssuesQuery>(
             this.config,
             this.queryService,
-            (config, queryService, identifier) => new ListEnvironmentValidationIssuesQuery(config, queryService, identifier)
+            (config, queryService, identifier) =>
+                new ListEnvironmentValidationIssuesQuery(config, queryService, identifier)
         );
     }
 
@@ -1146,6 +1145,10 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
+    getPreviewConfiguration(): GetPreviewConfigurationQuery {
+        return new GetPreviewConfigurationQuery(this.config, this.queryService);
+    }
+
     inviteUser(): DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData> {
         return new DataQuery<InviteProjectUserQuery, ProjectUserModels.IInviteUserData>(
             this.config,
@@ -1223,17 +1226,14 @@ export class ManagementClient implements IManagementClient<CancelToken> {
     }
 
     modifySpace(): SpaceIdentifierQuery<DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>> {
-        return new SpaceIdentifierQuery<
-            DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>
-        >(
+        return new SpaceIdentifierQuery<DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>>(
             this.config,
             this.queryService,
             (config, queryService, identifier) =>
                 new DataQuery<ModifySpaceQuery, SpaceModels.IModifySpaceData[]>(
                     config,
                     queryService,
-                    (nConfig, nQueryService, data) =>
-                        new ModifySpaceQuery(nConfig, nQueryService, identifier, data)
+                    (nConfig, nQueryService, data) => new ModifySpaceQuery(nConfig, nQueryService, identifier, data)
                 )
         );
     }

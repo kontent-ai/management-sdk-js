@@ -18,3 +18,4 @@ export * from './project-user-contracts';
 export * from './environment-contracts';
 export * from './asset-rendition-contracts';
 export * from './space-contracts';
+export * from './preview-contracts';
