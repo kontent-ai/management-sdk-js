@@ -257,7 +257,7 @@ export namespace ContentTypeElements {
         type: 'url_slug';
         is_required?: boolean;
         is_non_localizable?: boolean;
-        codename: string;
+        codename?: string;
         external_id?: string;
         guidelines?: string;
         validation_regex?: {
