@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.0.0...v5.1.0) (2023-07-31)
+
+
+### Features
+
+* adds 'scheduled_step' property to workflow (fixes https://github.com/kontent-ai/management-sdk-js/issues/116) ([9a5d161](https://github.com/kontent-ai/management-sdk-js/commit/9a5d16178c2f844b2ae9bb85d8e17502fce7590a))
+* adds support 'external_id' property when referencing content type in new content items (fixes https://github.com/kontent-ai/management-sdk-js/issues/119) ([4ced950](https://github.com/kontent-ai/management-sdk-js/commit/4ced950af47896db7c1005e83f8eafc527d3bea6))
+* adds support for 'getPreviewConfiguration' API endpoint  (https://github.com/kontent-ai/management-sdk-js/issues/95) ([6f8c7a5](https://github.com/kontent-ai/management-sdk-js/commit/6f8c7a5abcdc5fc334c7b2514f66ec7c951f5db7))
+* adds support for 'modifyPreviewConfiguration' query (https://github.com/kontent-ai/management-sdk-js/issues/95) ([2baa8ff](https://github.com/kontent-ai/management-sdk-js/commit/2baa8ff029f87df5db497a4fac732daa13a4ca58))
+* updates all dependencies & migrates to eslint from tslint ([15dcc29](https://github.com/kontent-ai/management-sdk-js/commit/15dcc29c1c25b5dd190e6ad3fcb54ed67d5d98cb))
+
+
+### Bug Fixes
+
+* fixes mapping of enable & disable webhook responses which causes exception to occur ([21ecdda](https://github.com/kontent-ai/management-sdk-js/commit/21ecddaebdf693d0cd6c03c426171fc29d4c42d8))
+* ITaxonomy element data is missing name property [#113](https://github.com/kontent-ai/management-sdk-js/issues/113) ([#114](https://github.com/kontent-ai/management-sdk-js/issues/114)) ([d07b457](https://github.com/kontent-ai/management-sdk-js/commit/d07b45784e5df086907f79ce48f09622f2496ae2))
+* makes 'codename' in url slug element optional (fixes https://github.com/kontent-ai/management-sdk-js/issues/118) ([751c445](https://github.com/kontent-ai/management-sdk-js/commit/751c445bb40efe49ffba2f12d774a1e0b8af7ba6))
+* makes id in multiple choice option non-required (fixes https://github.com/kontent-ai/management-sdk-js/issues/117) ([2d9143b](https://github.com/kontent-ai/management-sdk-js/commit/2d9143be467977d6ceec0a9b3f6c6cf6894ec5a4))
+* typo ([#112](https://github.com/kontent-ai/management-sdk-js/issues/112)) ([066b363](https://github.com/kontent-ai/management-sdk-js/commit/066b363c0d400ee9d599db446f4a2709a60d23ea))
+
 ## [5.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v4.1.0...v5.0.0) (2023-04-12)
 
 
