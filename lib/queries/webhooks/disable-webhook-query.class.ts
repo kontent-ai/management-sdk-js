@@ -1,12 +1,10 @@
-
-
 import { IManagementClientConfig } from '../../config';
-import { WebhookResponses } from '../../responses';
+import { BaseResponses } from '../../responses';
 import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 import { Identifiers } from '../../models';
 
-export class DisableWebhookQuery extends BaseQuery<WebhookResponses.DisableWebhookResponse> {
+export class DisableWebhookQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ManagementQueryService,
@@ -15,7 +13,7 @@ export class DisableWebhookQuery extends BaseQuery<WebhookResponses.DisableWebho
         super(config, queryService);
     }
 
-    toPromise(): Promise<WebhookResponses.DisableWebhookResponse> {
+    toPromise(): Promise<BaseResponses.EmptyContentManagementResponse> {
         return this.queryService.disableWebhookAsync(this.getUrl(), this.queryConfig);
     }
 

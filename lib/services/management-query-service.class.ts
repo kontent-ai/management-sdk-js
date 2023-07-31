@@ -318,7 +318,11 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         config: IContentManagementQueryConfig
     ): Promise<EnvironmentResponses.EnvironmentValidationIssuesListResponse> {
         return environmentMapper.mapProjectValidationIssuesListResponse(
-            await this.getResponseAsync<EnvironmentContracts.IEnvironmentValidationListResponseContract>(url, {}, config)
+            await this.getResponseAsync<EnvironmentContracts.IEnvironmentValidationListResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
@@ -327,7 +331,12 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         config: IContentManagementQueryConfig
     ): Promise<EnvironmentResponses.StartEnvironmentValidationResponse> {
         return environmentMapper.mapStartEnvironmentValidationResponse(
-            await this.postResponseAsync<EnvironmentContracts.IStartEnvironmentValidationResponseContract>(url, {}, {}, config)
+            await this.postResponseAsync<EnvironmentContracts.IStartEnvironmentValidationResponseContract>(
+                url,
+                {},
+                {},
+                config
+            )
         );
     }
 
@@ -336,7 +345,11 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         config: IContentManagementQueryConfig
     ): Promise<EnvironmentResponses.CheckEnvironmentValidationResponse> {
         return environmentMapper.mapCheckEnvironmentValidationResponse(
-            await this.getResponseAsync<EnvironmentContracts.ICheckEnvironmentValidationResponseContract>(url, {}, config)
+            await this.getResponseAsync<EnvironmentContracts.ICheckEnvironmentValidationResponseContract>(
+                url,
+                {},
+                config
+            )
         );
     }
 
@@ -665,13 +678,19 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
-    async viewAssetAsync(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.ViewAssetResponse> {
+    async viewAssetAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<AssetResponses.ViewAssetResponse> {
         return assetsMapper.mapViewAssetResponse(
             await this.getResponseAsync<AssetContracts.IAssetModelContract>(url, {}, config)
         );
     }
 
-    async listAssetsAsync(url: string, config: IContentManagementQueryConfig): Promise<AssetResponses.AssetsListResponse> {
+    async listAssetsAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<AssetResponses.AssetsListResponse> {
         return assetsMapper.mapListingAssetsResponse(
             await this.getResponseAsync<AssetContracts.IAssetsListingResponseContract>(url, {}, config)
         );
@@ -866,7 +885,10 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
-    async getWebhookAsync(url: string, config: IContentManagementQueryConfig): Promise<WebhookResponses.GetWebhookResponse> {
+    async getWebhookAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<WebhookResponses.GetWebhookResponse> {
         return webhookMapper.mapGetWebhookResponse(
             await this.getResponseAsync<WebhookContracts.IGetWebhookContract>(url, {}, config)
         );
@@ -885,18 +907,18 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async enableWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<WebhookResponses.AddWebhookResponse> {
-        return webhookMapper.mapEnableWebhookResponse(
-            await this.putResponseAsync<WebhookContracts.IEnableWebhookContract>(url, {}, {}, config)
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return webhookMapper.mapEmptyResponse(
+            await this.putResponseAsync<BaseResponses.EmptyContentManagementResponse>(url, {}, {}, config)
         );
     }
 
     async disableWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<WebhookResponses.DisableWebhookResponse> {
-        return webhookMapper.mapDisableWebhookResponse(
-            await this.putResponseAsync<WebhookContracts.IDisableWebhookContract>(url, {}, {}, config)
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return webhookMapper.mapEmptyResponse(
+            await this.putResponseAsync<BaseResponses.EmptyContentManagementResponse>(url, {}, {}, config)
         );
     }
 
@@ -1095,18 +1117,9 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         data: SpaceModels.IModifySpaceData[]
     ): Promise<SpaceResponses.ModifySpaceResponse> {
         return spacesMapper.mapModifySpaceResponse(
-            await this.patchResponseAsync<SpaceContracts.IModifySpaceResponseContract>(
-                url,
-                data,
-                {},
-                config
-            )
+            await this.patchResponseAsync<SpaceContracts.IModifySpaceResponseContract>(url, data, {}, config)
         );
     }
-
-
-
-
 
     private async getListAllResponseInternalAsync<
         TResponse extends BaseResponses.IContentManagementListResponse

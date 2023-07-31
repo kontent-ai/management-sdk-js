@@ -44,11 +44,5 @@ export namespace WebhookContracts {
     export interface IAddWebhookContract extends IWebhookContract {
     }
 
-    export interface IEnableWebhookContract extends IWebhookContract {
-    }
-
-    export interface IDisableWebhookContract extends IWebhookContract {
-    }
-
     export type IWebhookListContract = IWebhookContract[];
 }

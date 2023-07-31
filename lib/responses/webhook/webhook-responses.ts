@@ -3,7 +3,10 @@ import { WebhookContracts } from '../../contracts/webhook-contracts';
 import { WebhookModels } from '../../models/webhook/webhook.models';
 
 export namespace WebhookResponses {
-    export class GetWebhookResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IGetWebhookContract, WebhookModels.Webhook>  {
+    export class GetWebhookResponse extends BaseResponses.BaseContentManagementResponse<
+        WebhookContracts.IGetWebhookContract,
+        WebhookModels.Webhook
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: WebhookContracts.IGetWebhookContract,
@@ -13,7 +16,10 @@ export namespace WebhookResponses {
         }
     }
 
-    export class AddWebhookResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IAddWebhookContract, WebhookModels.Webhook>  {
+    export class AddWebhookResponse extends BaseResponses.BaseContentManagementResponse<
+        WebhookContracts.IAddWebhookContract,
+        WebhookModels.Webhook
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
             rawData: WebhookContracts.IAddWebhookContract,
@@ -23,38 +29,20 @@ export namespace WebhookResponses {
         }
     }
 
-    export class EnableWebhookResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IEnableWebhookContract, WebhookModels.Webhook>  {
+    export class WebhookListResponse extends BaseResponses.BaseContentManagementResponse<
+        WebhookContracts.IWebhookListContract,
+        {
+            webhooks: WebhookModels.Webhook[];
+        }
+    > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: WebhookContracts.IEnableWebhookContract,
-            data: WebhookModels.Webhook
+            rawData: WebhookContracts.IWebhookListContract,
+            data: {
+                webhooks: WebhookModels.Webhook[];
+            }
         ) {
             super(debug, rawData, data);
         }
     }
-
-    export class DisableWebhookResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IEnableWebhookContract, WebhookModels.Webhook>  {
-        constructor(
-            debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: WebhookContracts.IDisableWebhookContract,
-            data: WebhookModels.Webhook
-        ) {
-            super(debug, rawData, data);
-        }
-    }
-
-    export class WebhookListResponse extends BaseResponses.BaseContentManagementResponse<WebhookContracts.IWebhookListContract,
-    {
-        webhooks: WebhookModels.Webhook[],
-    }>  {
-    constructor(
-        debug: BaseResponses.IContentManagementResponseDebug,
-        rawData: WebhookContracts.IWebhookListContract,
-        data: {
-            webhooks: WebhookModels.Webhook[],
-        }
-    ) {
-        super(debug, rawData, data);
-    }
-}
 }
