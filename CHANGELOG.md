@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.2.0...v5.3.0) (2023-09-07)
+
+
+### Features
+
+* Adds codename & collection support for assets (fixes https://github.com/kontent-ai/management-sdk-js/issues/122) ([f08684f](https://github.com/kontent-ai/management-sdk-js/commit/f08684fb1344ff9a586f61ccbd08a86e9be492e4))
+* updates deps ([a81784b](https://github.com/kontent-ai/management-sdk-js/commit/a81784b5f2c00ed21124b514c8701347372c358b))
+
 ## [5.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.1.0...v5.2.0) (2023-07-31)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@kontent-ai/management-sdk",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/kontent-ai/management-sdk-js"
