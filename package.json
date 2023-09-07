@@ -59,15 +59,15 @@
     },
     "dependencies": {
         "@kontent-ai/core-sdk": "10.2.0",
-        "axios": "1.4.0",
+        "axios": "1.5.0",
         "mime": "3.0.0"
     },
     "devDependencies": {
         "@types/jasmine": "4.3.5",
         "@types/mime": "3.0.1",
-        "@types/node": "20.4.5",
-        "core-js": "3.32.0",
-        "jasmine-core": "5.1.0",
+        "@types/node": "20.5.9",
+        "core-js": "3.32.1",
+        "jasmine-core": "5.1.1",
         "jasmine-spec-reporter": "7.0.0",
         "karma": "6.4.2",
         "karma-chrome-launcher": "3.2.0",
@@ -83,12 +83,12 @@
         "standard-version": "9.5.0",
         "ts-loader": "9.4.4",
         "ts-node": "10.9.1",
-        "@typescript-eslint/eslint-plugin": "6.2.0",
-        "@typescript-eslint/parser": "6.2.0",
-        "eslint": "8.46.0",
-        "typescript": "5.1.6",
+        "@typescript-eslint/eslint-plugin": "6.6.0",
+        "@typescript-eslint/parser": "6.6.0",
+        "eslint": "8.48.0",
+        "typescript": "5.2.2",
         "webpack": "5.88.2",
-        "webpack-bundle-analyzer": "4.9.0",
+        "webpack-bundle-analyzer": "4.9.1",
         "webpack-cli": "5.1.4"
     }
 }
