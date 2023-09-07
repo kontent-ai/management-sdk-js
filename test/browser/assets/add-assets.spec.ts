@@ -11,6 +11,15 @@ describe('Add asset', () => {
             .withData((builder) => {
                 return {
                     descriptions: [],
+                    codename: 'x',
+                    collection: {
+                        codename: 'y'
+                    },
+                    external_id: 'x',
+                    folder: {
+                        id: 'x'
+                    },
+                    title: 'Title',
                     elements: [
                         builder.taxonomyElement({
                             element: {
@@ -74,6 +83,7 @@ describe('Add asset', () => {
         expect(asset.lastModified).toEqual(new Date(originalItem.last_modified));
         expect(asset.imageHeight).toEqual(originalItem.image_height);
         expect(asset.title).toEqual(originalItem.title);
+        expect(asset.codename).toEqual(originalItem.codename);
         expect(asset.externalId).toEqual(originalItem.external_id);
         expect(asset.imageWidth).toEqual(originalItem.image_width);
         expect(asset.size).toEqual(originalItem.size);

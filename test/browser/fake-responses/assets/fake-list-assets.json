@@ -1,35 +1,56 @@
 {
     "assets": [
-      {
-        "descriptions": [
-          {
-            "language": {
-              "id": "00000000-0000-0000-0000-000000000000"
+        {
+            "descriptions": [
+                {
+                    "language": {
+                        "id": "00000000-0000-0000-0000-000000000000"
+                    },
+                    "description": "The asset's alt text for the default language."
+                }
+            ],
+            "elements": [
+                {
+                    "element": {
+                        "id": "c7c3b834-2222-5677-89c4-b46f04489109"
+                    },
+                    "value": [
+                        {
+                            "id": "53a5eecb-f295-59b4-a07d-19655b6ad860"
+                        },
+                        {
+                            "id": "3f367e4f-75b7-4b48-be3b-1136bbaf1f53"
+                        }
+                    ]
+                }
+            ],
+            "external_id": "custom-asset-identifier",
+            "file_name": "file_name.png",
+            "file_reference": {
+                "id": "806ec84e-7c71-4856-9519-ee3dd3558583",
+                "type": "internal"
             },
-            "description": "Alt text in default language for the asset."
-          }
-        ],
-        "external_id": "which-brewing-fits-you",
-        "file_name": "which-brewing-fits-you-1080px.jpg",
-        "file_reference": {
-          "id": "806ec84e-7c71-4856-9519-ee3dd3558583",
-          "type": "internal"
-        },
-        "folder": {
-          "id": "8fe4ff47-0ca8-449d-bc63-c280efee44ea"
-        },
-        "id": "fcbb12e6-66a3-4672-85d9-d502d16b8d9c",
-        "image_height": 666,
-        "image_width": 1000,
-        "last_modified": "2019-09-12T08:29:36.1645977Z",
-        "size": 125770,
-        "title": "Coffee brewing techniques",
-        "type": "image/jpeg",
-        "url": "https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg"
-      }
+            "folder": {
+                "id": "8fe4ff47-0ca8-449d-bc63-c280efee44ea"
+            },
+            "collection": {
+                "reference": {
+                    "codename": "first_collection"
+                }
+            },
+            "id": "fcbb12e6-66a3-4672-85d9-d502d16b8d9c",
+            "codename": "my_asset",
+            "image_height": 548,
+            "image_width": 1280,
+            "last_modified": "2019-09-12T08:29:36.1645977Z",
+            "size": 148636,
+            "title": "Makes the asset easier to find when you need it",
+            "type": "image/png",
+            "url": "https://assets-us-01.kc-usercontent.com/8d20758c-d74c-4f59-ae04-ee928c0816b7/806ec84e-7c71-4856-9519-ee3dd3558583/file_name.png"
+        }
     ],
     "pagination": {
-      "continuation_token": "+RID:~...",
-      "next_page": "https://manage.kontent.ai/v2/projects/<project_id>/<resource>?continuationToken=%2bRID%3a~..."
+        "continuation_token": "W3sidG9rZW4iOiIrUklEOn...",
+        "next_page": "https://manage.kontent.ai/v2/your/chosen/list/endpoint"
     }
-  }
+}

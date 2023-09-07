@@ -1,32 +1,49 @@
 {
-  "id": "fcbb12e6-66a3-4672-85d9-d502d16b8d9c",
-  "file_name": "which-brewing-fits-you-1080px.jpg",
-  "title": "Coffee Brewing Techniques",
-  "size": 125770,
-  "type": "image/jpeg",
-  "folder": {
-    "external_id": "another-folder"
-  },
-  "image_width": 1000,
-  "image_height": 666,
-  "file_reference": {
     "id": "fcbb12e6-66a3-4672-85d9-d502d16b8d9c",
-    "type": "internal"
-  },
-  "descriptions": [
-    {
-      "language": {
-        "id": "00000000-0000-0000-0000-000000000000"
-      },
-      "description": "Coffee Brewing Techniques"
+    "folder": {
+        "id": "4033071a-5bc1-48da-8342-d129bb967d1d"
     },
-    {
-      "language": {
-        "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
-      },
-      "description": "Técnicas para hacer café"
-    }
-  ],
-  "external_id": "which-brewing-fits-you",
-  "last_modified": "2017-09-12T08:29:36.1645977Z"
+    "file_name": "which-brewing-fits-you-1080px.jpg",
+    "title": "Coffee Brewing Techniques",
+    "size": 125770,
+    "type": "image/jpeg",
+    "url": "https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg",
+    "image_width": 1000,
+    "image_height": 666,
+    "file_reference": {
+        "id": "fcbb12e6-66a3-4672-85d9-d502d16b8d9c",
+        "type": "internal"
+    },
+    "codename": "xcodename",
+    "external_id": "xid",
+    "descriptions": [
+        {
+            "language": {
+                "id": "00000000-0000-0000-0000-000000000000"
+            },
+            "description": "Coffee Brewing Techniques"
+        },
+        {
+            "language": {
+                "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+            },
+            "description": "Técnicas para hacer café"
+        }
+    ],
+    "elements": [
+        {
+            "element": {
+                "id": "c7c3b834-2222-5677-89c4-b46f04489109"
+            },
+            "value": [
+                {
+                    "id": "53a5eecb-f295-59b4-a07d-19655b6ad860"
+                },
+                {
+                    "id": "3f367e4f-75b7-4b48-be3b-1136bbaf1f53"
+                }
+            ]
+        }
+    ],
+    "last_modified": "2017-09-12T08:29:36.1645977Z"
 }

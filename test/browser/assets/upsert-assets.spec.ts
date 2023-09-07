@@ -76,6 +76,7 @@ describe('Upsert asset', () => {
         expect(asset.imageHeight).toEqual(originalItem.image_height);
         expect(asset.title).toEqual(originalItem.title);
         expect(asset.externalId).toEqual(originalItem.external_id);
+        expect(asset.codename).toEqual(originalItem.codename);
         expect(asset.imageWidth).toEqual(originalItem.image_width);
         expect(asset.folder).toEqual(originalItem.folder);
         expect(asset.size).toEqual(originalItem.size);

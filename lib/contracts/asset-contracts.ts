@@ -14,6 +14,7 @@ export namespace AssetContracts {
         external_id: string;
         last_modified: string;
         url: string;
+        codename: string;
         folder?: IAssetFolderReferenceContract;
     }
 

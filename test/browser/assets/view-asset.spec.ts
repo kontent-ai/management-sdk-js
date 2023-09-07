@@ -40,7 +40,8 @@ describe('View assets', () => {
         expect(asset.lastModified).toEqual(new Date(originalItem.last_modified));
         expect(asset.imageHeight).toEqual(originalItem.image_height);
         expect(asset.title).toEqual(originalItem.title);
-        expect(asset.externalId).toEqual(undefined);
+        expect(asset.codename).toEqual(originalItem.codename);
+        expect(asset.externalId).toEqual(originalItem.external_id);
         expect(asset.imageWidth).toEqual(originalItem.image_width);
         expect(asset.size).toEqual(originalItem.size);
         expect(asset.fileReference).toEqual(jasmine.any(AssetModels.AssetFileReference));

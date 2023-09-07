@@ -650,7 +650,10 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
                 descriptions: data.asset.descriptions,
                 external_id: data.asset.external_id,
                 folder: data.asset.folder,
-                title: data.asset.title
+                title: data.asset.title,
+                codename: data.asset.codename,
+                collection: data.asset.collection,
+                elements: data.asset.elements,
             },
             config
         );

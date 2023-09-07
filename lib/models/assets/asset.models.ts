@@ -15,6 +15,7 @@ export namespace AssetModels {
         public externalId?: string;
         public lastModified!: Date;
         public url!: string;
+        public codename!: string;
         public folder?: IAssetFolderReference;
         public _raw!: AssetContracts.IAssetModelContract;
 
@@ -31,6 +32,7 @@ export namespace AssetModels {
             externalId?: string;
             lastModified: Date;
             url: string;
+            codename: string;
             folder?: IAssetFolderReference;
             _raw: AssetContracts.IAssetModelContract;
         }) {
@@ -97,6 +99,8 @@ export namespace AssetModels {
         descriptions?: IAssetFileDescription[];
         folder?: IAssetFolderReference;
         elements?: IAssetElementValueType[];
+        collection?: SharedContracts.IReferenceObjectContract;
+        codename?: String;
     }
 
     export interface IUpsertAssetRequestData {
@@ -113,6 +117,9 @@ export namespace AssetModels {
             external_id?: string;
             descriptions?: IAssetFileDescription[];
             folder?: IAssetFolderReference;
+            elements?: IAssetElementValueType[];
+            collection?: SharedContracts.IReferenceObjectContract;
+            codename?: String;
         };
         binaryFile: {
             filename: string;

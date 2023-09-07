@@ -57,6 +57,7 @@ describe('List assets', () => {
             expect(m.imageWidth).toEqual(originalItem.image_width);
             expect(m.size).toEqual(originalItem.size);
             expect(m.url).toEqual(originalItem.url);
+            expect(m.codename).toEqual(originalItem.codename);
             expect(m.fileReference).toEqual(jasmine.any(AssetModels.AssetFileReference));
             expect(m.fileReference.id).toEqual(originalItem.file_reference.id);
             expect(m.fileReference.type).toEqual(originalItem.file_reference.type);
