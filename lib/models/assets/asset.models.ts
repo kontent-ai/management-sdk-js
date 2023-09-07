@@ -100,7 +100,7 @@ export namespace AssetModels {
         folder?: IAssetFolderReference;
         elements?: IAssetElementValueType[];
         collection?: SharedContracts.IReferenceObjectContract;
-        codename?: String;
+        codename?: string;
     }
 
     export interface IUpsertAssetRequestData {
