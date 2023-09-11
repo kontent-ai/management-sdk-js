@@ -2,6 +2,7 @@ import { AssetFolderContracts } from '../../contracts';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace AssetFolderModels {
+
     export class AssetFolder implements SharedModels.IBaseModel<AssetFolderContracts.IAssetFolderContract> {
         public id: string;
         public name: string;
@@ -36,7 +37,7 @@ export namespace AssetFolderModels {
 
     export interface IModifyAssetFoldersData {
         op: 'addInto' | 'remove' | 'rename';
-        value: IAddOrModifyAssetFolderData;
+        value?: IAddOrModifyAssetFolderData;
         after?: {
             external_id?: string;
             id?: string;
