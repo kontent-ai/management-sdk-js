@@ -59,14 +59,14 @@
     },
     "dependencies": {
         "@kontent-ai/core-sdk": "10.2.0",
-        "axios": "1.5.0",
+        "axios": "1.5.1",
         "mime": "3.0.0"
     },
     "devDependencies": {
-        "@types/jasmine": "4.3.5",
-        "@types/mime": "3.0.1",
-        "@types/node": "20.5.9",
-        "core-js": "3.32.1",
+        "@types/jasmine": "5.1.1",
+        "@types/mime": "3.0.3",
+        "@types/node": "20.8.8",
+        "core-js": "3.33.1",
         "jasmine-core": "5.1.1",
         "jasmine-spec-reporter": "7.0.0",
         "karma": "6.4.2",
@@ -81,13 +81,13 @@
         "lcov-parse": "1.0.0",
         "mocha": "10.2.0",
         "standard-version": "9.5.0",
-        "ts-loader": "9.4.4",
+        "ts-loader": "9.5.0",
         "ts-node": "10.9.1",
-        "@typescript-eslint/eslint-plugin": "6.6.0",
-        "@typescript-eslint/parser": "6.6.0",
-        "eslint": "8.48.0",
+        "@typescript-eslint/eslint-plugin": "6.9.0",
+        "@typescript-eslint/parser": "6.9.0",
+        "eslint": "8.52.0",
         "typescript": "5.2.2",
-        "webpack": "5.88.2",
+        "webpack": "5.89.0",
         "webpack-bundle-analyzer": "4.9.1",
         "webpack-cli": "5.1.4"
     }
