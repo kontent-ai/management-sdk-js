@@ -30,6 +30,11 @@ describe('Upsert asset', () => {
                     file_reference: {
                         id: 'xId',
                         type: 'internal'
+                    },
+                    collection: {
+                        reference: {
+                            codename: "y"
+                        }
                     }
                 };
             })
@@ -83,6 +88,7 @@ describe('Upsert asset', () => {
         expect(asset.fileReference).toEqual(jasmine.any(AssetModels.AssetFileReference));
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);
         expect(asset.fileReference.type).toEqual(originalItem.file_reference.type);
+        expect(asset.collection).toEqual(originalItem.collection);
 
         asset.descriptions.forEach((s) => {
             expect(s.description).toBeDefined();

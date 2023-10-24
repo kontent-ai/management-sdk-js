@@ -15,6 +15,7 @@ export namespace AssetContracts {
         last_modified: string;
         url: string;
         codename: string;
+        collection?: IAssetCollectionReferenceContract;
         folder?: IAssetFolderReferenceContract;
     }
 
@@ -31,6 +32,10 @@ export namespace AssetContracts {
     export interface IAssetFileDescriptionContract {
         language: SharedContracts.IReferenceObjectContract;
         description: string;
+    }
+
+    export interface IAssetCollectionReferenceContract {
+        reference: SharedContracts.IReferenceObjectContract | null;
     }
 
     export interface IAssetsListingResponseContract {

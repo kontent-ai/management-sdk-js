@@ -99,6 +99,7 @@ export class AssetsMapper extends BaseMapper {
             type: rawAsset.type,
             folder: rawAsset.folder,
             codename: rawAsset.codename,
+            collection: rawAsset.collection,
             _raw: rawAsset
         });
     }

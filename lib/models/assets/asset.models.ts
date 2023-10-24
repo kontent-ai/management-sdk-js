@@ -16,6 +16,7 @@ export namespace AssetModels {
         public lastModified!: Date;
         public url!: string;
         public codename!: string;
+        public collection?: IAssetCollectionReferenceObject;
         public folder?: IAssetFolderReference;
         public _raw!: AssetContracts.IAssetModelContract;
 
@@ -33,6 +34,7 @@ export namespace AssetModels {
             lastModified: Date;
             url: string;
             codename: string;
+            collection?: IAssetCollectionReferenceObject;
             folder?: IAssetFolderReference;
             _raw: AssetContracts.IAssetModelContract;
         }) {
@@ -63,6 +65,10 @@ export namespace AssetModels {
     export interface IAssetFileDescription {
         language: SharedContracts.IReferenceObjectContract;
         description: string;
+    }
+
+    export interface IAssetCollectionReferenceObject {
+        reference: SharedModels.IReferenceObject | null
     }
 
     export class AssetFileDescription {
@@ -99,7 +105,7 @@ export namespace AssetModels {
         descriptions?: IAssetFileDescription[];
         folder?: IAssetFolderReference;
         elements?: IAssetElementValueType[];
-        collection?: SharedContracts.IReferenceObjectContract;
+        collection?: IAssetCollectionReferenceObject;
         codename?: string;
     }
 
@@ -108,6 +114,7 @@ export namespace AssetModels {
         title?: string;
         file_reference?: IAssetFileReference;
         folder?: IAssetFolderReference;
+        collection?: IAssetCollectionReferenceObject;
         elements?: IAssetElementValueType[];
     }
 
@@ -118,7 +125,7 @@ export namespace AssetModels {
             descriptions?: IAssetFileDescription[];
             folder?: IAssetFolderReference;
             elements?: IAssetElementValueType[];
-            collection?: SharedContracts.IReferenceObjectContract;
+            collection?: IAssetCollectionReferenceObject;
             codename?: string;
         };
         binaryFile: {

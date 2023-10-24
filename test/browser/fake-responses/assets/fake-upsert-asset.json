@@ -10,6 +10,9 @@
     "url": "https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg",
     "image_width": 1000,
     "image_height": 666,
+    "collection": {
+        "reference": null
+    },
     "file_reference": {
         "id": "fcbb12e6-66a3-4672-85d9-d502d16b8d9c",
         "type": "internal"
