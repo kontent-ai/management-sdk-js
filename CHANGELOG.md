@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.3.0...v5.4.0) (2023-10-24)
+
+
+### Features
+
+* Adds asset collection models ([#126](https://github.com/kontent-ai/management-sdk-js/issues/126)) ([fd2a7c0](https://github.com/kontent-ai/management-sdk-js/commit/fd2a7c00fce30b9957638de04a0c803c25300377))
+* updates deps ([6b7a70f](https://github.com/kontent-ai/management-sdk-js/commit/6b7a70f369803e750130450b33521b8ae6e4acef))
+
+
+### Bug Fixes
+
+* Change modify asset folders value not required ([#123](https://github.com/kontent-ai/management-sdk-js/issues/123)) ([d4714c7](https://github.com/kontent-ai/management-sdk-js/commit/d4714c74080540b5c0419282119ddb2cf6e206b3))
+
 ## [5.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.2.0...v5.3.0) (2023-09-07)
 
 
