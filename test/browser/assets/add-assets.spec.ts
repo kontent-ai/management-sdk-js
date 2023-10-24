@@ -13,7 +13,9 @@ describe('Add asset', () => {
                     descriptions: [],
                     codename: 'x',
                     collection: {
-                        codename: 'y'
+                        reference: {
+                            codename: 'y'
+                        }
                     },
                     external_id: 'x',
                     folder: {
@@ -53,7 +55,8 @@ describe('Add asset', () => {
                     file_reference: {
                         id: 'x',
                         type: 'internal'
-                    }
+                    },
+                    collection: { reference: null }
                 };
             })
             .getUrl();
@@ -90,6 +93,7 @@ describe('Add asset', () => {
         expect(asset.fileReference).toEqual(jasmine.any(AssetModels.AssetFileReference));
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);
         expect(asset.fileReference.type).toEqual(originalItem.file_reference.type);
+        expect(asset.collection).toEqual(originalItem.collection);
 
         asset.descriptions.forEach((s) => {
             expect(s.description).toBeDefined();
