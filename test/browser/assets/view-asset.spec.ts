@@ -12,10 +12,14 @@ describe('View assets', () => {
     it(`url should be correct`, () => {
         const internalIdUrl = cmLiveClient.viewAsset().byAssetId('xInternalId').getUrl();
         const externalIdUrl = cmLiveClient.viewAsset().byAssetExternalId('xExternalId').getUrl();
+        const codenameUrl = cmLiveClient.viewAsset().byAssetCodename('xCodename').getUrl();
 
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/xInternalId`);
         expect(externalIdUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/xExternalId`
+        );
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/codename/xCodename`
         );
     });
 

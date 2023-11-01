@@ -45,7 +45,8 @@ export namespace Identifiers {
 
     export enum AssetIdentifierEnum {
         InternalId = 'internalId',
-        ExternalId = 'externalId'
+        ExternalId = 'externalId',
+        Codename = 'codename'
     }
 
     export enum WebhookIdentifierEnum {
@@ -72,7 +73,6 @@ export namespace Identifiers {
         Codename = 'codename'
     }
 
-
     export class AssetIdentifier {
         constructor(public identifier: AssetIdentifierEnum, public value: string) {}
 
@@ -82,6 +82,9 @@ export namespace Identifiers {
             }
             if (this.identifier === AssetIdentifierEnum.ExternalId) {
                 return `external-id/${this.value}`;
+            }
+            if (this.identifier === AssetIdentifierEnum.Codename) {
+                return `codename/${this.value}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -279,5 +282,4 @@ export namespace Identifiers {
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
     }
-
 }
