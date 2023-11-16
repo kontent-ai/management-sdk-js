@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.5.0...v5.6.0) (2023-11-16)
+
+
+### Features
+
+* updates deps (updated core-sdk with latest axios), updates node to be >= 16 ([5fca107](https://github.com/kontent-ai/management-sdk-js/commit/5fca1079cc57abfc4be6422c022acf3e37538e21))
+
 ## [5.5.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.4.0...v5.5.0) (2023-11-01)
 
 
