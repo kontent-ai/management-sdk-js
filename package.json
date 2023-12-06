@@ -59,14 +59,14 @@
         "bundle-stats": "npm run build:umd && webpack-bundle-analyzer dist/bundles/stats.json"
     },
     "dependencies": {
-        "@kontent-ai/core-sdk": "10.3.0",
+        "@kontent-ai/core-sdk": "10.3.1",
         "mime": "3.0.0"
     },
     "devDependencies": {
-        "@types/jasmine": "5.1.2",
+        "@types/jasmine": "5.1.4",
         "@types/mime": "3.0.4",
-        "@types/node": "20.9.0",
-        "core-js": "3.33.2",
+        "@types/node": "20.10.3",
+        "core-js": "3.34.0",
         "jasmine-core": "5.1.1",
         "jasmine-spec-reporter": "7.0.0",
         "karma": "6.4.2",
@@ -83,10 +83,10 @@
         "standard-version": "9.5.0",
         "ts-loader": "9.5.1",
         "ts-node": "10.9.1",
-        "@typescript-eslint/eslint-plugin": "6.11.0",
-        "@typescript-eslint/parser": "6.11.0",
-        "eslint": "8.53.0",
-        "typescript": "5.2.2",
+        "@typescript-eslint/eslint-plugin": "6.13.2",
+        "@typescript-eslint/parser": "6.13.2",
+        "eslint": "8.55.0",
+        "typescript": "5.3.2",
         "webpack": "5.89.0",
         "webpack-bundle-analyzer": "4.10.1",
         "webpack-cli": "5.1.4"
