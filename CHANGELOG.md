@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.7.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.6.0...v5.7.0) (2023-12-06)
+
+
+### Features
+
+* updates deps ([ba32a69](https://github.com/kontent-ai/management-sdk-js/commit/ba32a69d99408e8b2df8d34d5e8f4dc4d989b55e))
+
+
+### Bug Fixes
+
+* Downgrades TS due to incompatibility with karma tests ([d10c486](https://github.com/kontent-ai/management-sdk-js/commit/d10c4865439476ab843f61816409ad87c875dd91))
+* Uses 'null' type for element's value property contract ([7d9d78e](https://github.com/kontent-ai/management-sdk-js/commit/7d9d78e7e7d05a7c6e6efbd6f435b2645edfa437))
+
 ## [5.6.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.5.0...v5.6.0) (2023-11-16)
 
 
