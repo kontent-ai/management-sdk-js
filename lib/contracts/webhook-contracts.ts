@@ -91,11 +91,19 @@ export namespace WebhookContracts {
         }
     }
 
-    export interface IGetWebhookContract extends ILegacyWebhookContract {
+    export interface IGetLegacyWebhookContract extends ILegacyWebhookContract {
     }
 
-    export interface IAddWebhookContract extends ILegacyWebhookContract {
+    export interface IGetWebhookContract extends IWebhookContract {
     }
 
-    export type IWebhookListContract = ILegacyWebhookContract[];
+    export interface IAddLegacyWebhookContract extends ILegacyWebhookContract {
+    }
+
+    export interface IAddWebhookContract extends IWebhookContract {
+    }
+
+    export type ILegacyWebhookListContract = ILegacyWebhookContract[];
+
+    export type IWebhookListContract = IWebhookContract[];
 }

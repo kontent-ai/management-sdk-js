@@ -14,7 +14,7 @@ export namespace WebhookModels {
             management_api_content_changes?: WebhookContracts.ILegacyWebhookManagementApiContentChangesContract[];
         };
     }
-    export interface IAddWebhookModel {
+    export interface IAddWebhookData {
         id: string;
         name: string;
         secret: string;
