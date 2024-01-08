@@ -2,18 +2,36 @@ import { WebhookContracts } from '../../contracts/webhook-contracts';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace WebhookModels {
-    export interface IAddWebhookData {
+    export interface IAddLegacyWebhookData {
         name: string;
         secret: string;
         url: string;
         enabled?: boolean;
         triggers: {
-            delivery_api_content_changes?: WebhookContracts.IWebhookDeliveryApiContentChangesContract[];
-            preview_delivery_api_content_changes?: WebhookContracts.IWebhookDeliveryApiContentChangesContract[];
-            workflow_step_changes?: WebhookContracts.IWebhookWorkflowStepChangesContract[];
-            management_api_content_changes?: WebhookContracts.IWebhookManagementApiContentChangesContract[];
+            delivery_api_content_changes?: WebhookContracts.ILegacyWebhookDeliveryApiContentChangesContract[];
+            preview_delivery_api_content_changes?: WebhookContracts.ILegacyWebhookDeliveryApiContentChangesContract[];
+            workflow_step_changes?: WebhookContracts.ILegacyWebhookWorkflowStepChangesContract[];
+            management_api_content_changes?: WebhookContracts.ILegacyWebhookManagementApiContentChangesContract[];
         };
     }
+    export interface IAddWebhookModel {
+        id: string;
+        name: string;
+        secret: string;
+        url: string;
+        last_modified?: string;
+        delivery_triggers: {
+            slot: string;
+            events: string;
+            asset?: WebhookContracts.IWebhookAssetContract[];
+            content_type?: WebhookContracts.IWebhookContentTypeContract[];
+            taxonomy?: WebhookContracts.IWebhookTaxonomyContract[];
+            language?: WebhookContracts.IWebhookLanguageContract[];
+            content_item?: WebhookContracts.IWebhookContentItemContract[];
+        };
+    };
+
+
 
     export type WebhookWorkflowStepOperation = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
 
@@ -25,7 +43,7 @@ export namespace WebhookModels {
         }
     }
 
-    export class WebhookWorkflowStepChanges {
+    export class LegacyWebhookWorkflowStepChanges {
         public type: 'content_item_variant';
         public transitionsTo: WebhookTransitionsTo[];
 
@@ -35,7 +53,7 @@ export namespace WebhookModels {
         }
     }
 
-    export class WebhookDeliveryApiContentChanges {
+    export class LegacyWebhookDeliveryApiContentChanges {
         public type: 'taxonomy' | 'content_item_variant';
         public operations: WebhookWorkflowStepOperation[];
 
@@ -51,9 +69,15 @@ export namespace WebhookModels {
         public secret: string;
         public url: string;
         public lastModified?: Date;
-        public triggers: {
-            deliveryApiContentChanges: WebhookDeliveryApiContentChanges[];
-            workflowStepChanges: WebhookWorkflowStepChanges[];
+        delivery_triggers: {
+            slot: string;
+            events: string;
+            asset?: WebhookContracts.IWebhookAssetContract[];
+            content_type?: WebhookContracts.IWebhookContentTypeContract[];
+            taxonomy?: WebhookContracts.IWebhookTaxonomyContract[];
+            language?: WebhookContracts.IWebhookLanguageContract[];
+            content_item?: WebhookContracts.IWebhookContentItemContract[];
+
         };
         public _raw!: WebhookContracts.IWebhookContract;
 
@@ -63,11 +87,52 @@ export namespace WebhookModels {
             secret: string;
             url: string;
             lastModified?: Date;
-            triggers: {
-                deliveryApiContentChanges: WebhookDeliveryApiContentChanges[];
-                workflowStepChanges: WebhookWorkflowStepChanges[];
+            delivery_triggers: {
+                slot: string;
+                events: string;
+                asset?: WebhookContracts.IWebhookAssetContract[];
+                content_type?: WebhookContracts.IWebhookContentTypeContract[];
+                taxonomy?: WebhookContracts.IWebhookTaxonomyContract[];
+                language?: WebhookContracts.IWebhookLanguageContract[];
+                content_item?: WebhookContracts.IWebhookContentItemContract[];
+    
             };
             _raw: WebhookContracts.IWebhookContract
+        }) {
+            this.id = data.id;
+            this.name = data.name;
+            this.secret = data.secret;
+            this.url = data.url;
+            this.lastModified = data.lastModified;
+            this.delivery_triggers = data.delivery_triggers;
+        }
+
+
+    };
+
+    export class LegacyWebhook implements SharedModels.IBaseModel<WebhookContracts.ILegacyWebhookContract> {
+        public id: string;
+        public name: string;
+        public secret: string;
+        public url: string;
+        public lastModified?: Date;
+        public triggers: {
+            deliveryApiContentChanges: LegacyWebhookDeliveryApiContentChanges[];
+            workflowStepChanges: LegacyWebhookWorkflowStepChanges[];
+        };
+        public _raw!: WebhookContracts.ILegacyWebhookContract;
+
+        constructor(data: {
+            id: string;
+            name: string;
+            secret: string;
+            url: string;
+            lastModified?: Date;
+            triggers: {
+                deliveryApiContentChanges: LegacyWebhookDeliveryApiContentChanges[];
+                workflowStepChanges: LegacyWebhookWorkflowStepChanges[];
+            };
+            _raw: WebhookContracts.ILegacyWebhookContract
         }) {
             this.id = data.id;
             this.name = data.name;
