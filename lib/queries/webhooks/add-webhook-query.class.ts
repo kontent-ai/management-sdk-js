@@ -16,7 +16,7 @@ export class AddLegacyWebhookQuery extends BaseQuery<WebhookResponses.AddWebhook
     }
 
     toPromise(): Promise<WebhookResponses.GetWebhookResponse> {
-        return this.queryService.addWebhookAsync(this.getUrl(), this.queryConfig, this.data);
+        return this.queryService.addLegacyWebhookAsync(this.getUrl(), this.queryConfig, this.data);
     }
 
     protected getAction(): string {

@@ -31,9 +31,80 @@ export namespace WebhookModels {
         };
     };
 
+    export class WebhookDeliveryTriggersContentType {
+        public enabled: boolean;
+        public actions: WebhookContentTypeActions[];
+
+        constructor(data: { enabled: boolean;
+        actions: WebhookContentTypeActions[]}) {
+            this.enabled = data.enabled;
+            this.actions = data.actions;
+        }
+
+    }
+
+    export class WebhookDeliveryTriggersAsset {
+        public enabled: boolean;
+        public actions: WebhookAssetActions[];
+
+        constructor(data: { enabled: boolean;
+        actions: WebhookAssetActions[]}) {
+            this.enabled = data.enabled;
+            this.actions = data.actions;
+        }
+
+    }
+
+    export class WebhookDeliveryTriggersTaxonomy {
+        public enabled: boolean;
+        public actions: WebhookTaxonomyActions[];
+
+        constructor(data: { enabled: boolean;
+        actions: WebhookTaxonomyActions[]}) {
+            this.enabled = data.enabled;
+            this.actions = data.actions;
+        }
+
+    }
+
+    export class WebhookDeliveryTriggersLanguage {
+        public enabled: boolean;
+        public actions: WebhookLanguageActions[];
+
+        constructor(data: { enabled: boolean;
+        actions: WebhookLanguageActions[]}) {
+            this.enabled = data.enabled;
+            this.actions = data.actions;
+        }
+
+    }
+
+    export class WebhookDeliveryTriggersContentItem {
+        public enabled: boolean;
+        public actions: WebhookContentItemActions[];
+
+        constructor(data: { enabled: boolean;
+        actions: WebhookContentItemActions[]}) {
+            this.enabled = data.enabled;
+            this.actions = data.actions;
+        }
+
+    }
+
+
 
 
     export type WebhookWorkflowStepOperation = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
+
+    export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
+
+    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
+
+    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved';
+
+    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted';
+
+    export type WebhookContentItemActions = 'published' | 'unpublished' | 'created' | 'changed' | 'metadata_changed' | 'deleted' | 'workflow_step_changed';
 
     export class WebhookTransitionsTo {
         public id: string;

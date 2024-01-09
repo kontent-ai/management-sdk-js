@@ -892,12 +892,32 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
+    async listLegacyWebhooksAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<WebhookResponses.LegacyWebhookListResponse> {
+        return webhookMapper.mapWebhooksListResponse(
+            await this.getResponseAsync<WebhookContracts.ILegacyWebhookListContract>(url, {}, config)
+        );
+    }
+
+
     async getWebhookAsync(
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.GetWebhookResponse> {
         return webhookMapper.mapGetWebhookResponse(
             await this.getResponseAsync<WebhookContracts.IGetWebhookContract>(url, {}, config)
+        );
+    }
+
+    async addLegacyWebhookAsync(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: WebhookModels.IAddLegacyWebhookData
+    ): Promise<WebhookResponses.AddWebhookResponse> {
+        return webhookMapper.mapAddWebhookResponse(
+            await this.postResponseAsync<WebhookContracts.IAddLegacyWebhookContract>(url, data, {}, config)
         );
     }
 
@@ -910,6 +930,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
             await this.postResponseAsync<WebhookContracts.IAddWebhookContract>(url, data, {}, config)
         );
     }
+
 
     async enableWebhookAsync(
         url: string,
