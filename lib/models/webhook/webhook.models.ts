@@ -33,10 +33,10 @@ export namespace WebhookModels {
 
     export class WebhookDeliveryTriggersContentType {
         public enabled: boolean;
-        public actions: WebhookContentTypeActions[];
+        public actions?: WebhookContentTypeActions[];
 
         constructor(data: { enabled: boolean;
-        actions: WebhookContentTypeActions[]}) {
+        actions?: WebhookContentTypeActions[]}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
@@ -45,10 +45,10 @@ export namespace WebhookModels {
 
     export class WebhookDeliveryTriggersAsset {
         public enabled: boolean;
-        public actions: WebhookAssetActions[];
+        public actions?: WebhookAssetActions[];
 
         constructor(data: { enabled: boolean;
-        actions: WebhookAssetActions[]}) {
+        actions?: WebhookAssetActions[]}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
@@ -57,10 +57,10 @@ export namespace WebhookModels {
 
     export class WebhookDeliveryTriggersTaxonomy {
         public enabled: boolean;
-        public actions: WebhookTaxonomyActions[];
+        public actions?: WebhookTaxonomyActions[];
 
         constructor(data: { enabled: boolean;
-        actions: WebhookTaxonomyActions[]}) {
+        actions?: WebhookTaxonomyActions[]}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
@@ -69,10 +69,10 @@ export namespace WebhookModels {
 
     export class WebhookDeliveryTriggersLanguage {
         public enabled: boolean;
-        public actions: WebhookLanguageActions[];
+        public actions?: WebhookLanguageActions[];
 
         constructor(data: { enabled: boolean;
-        actions: WebhookLanguageActions[]}) {
+        actions?: WebhookLanguageActions[]}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
@@ -98,11 +98,11 @@ export namespace WebhookModels {
 
     export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
 
-    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
+    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted' | undefined;
 
-    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved';
+    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved' | undefined;
 
-    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted';
+    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted' | undefined;
 
     export type WebhookContentItemActions = 'published' | 'unpublished' | 'created' | 'changed' | 'metadata_changed' | 'deleted' | 'workflow_step_changed';
 

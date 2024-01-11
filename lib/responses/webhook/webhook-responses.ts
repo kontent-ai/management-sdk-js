@@ -4,12 +4,12 @@ import { WebhookModels } from '../../models/webhook/webhook.models';
 
 export namespace WebhookResponses {
     export class GetLegacyWebhookResponse extends BaseResponses.BaseContentManagementResponse<
-        WebhookContracts.IGetWebhookContract,
+        WebhookContracts.IGetLegacyWebhookContract,
         WebhookModels.LegacyWebhook
     > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: WebhookContracts.IGetWebhookContract,
+            rawData: WebhookContracts.IGetLegacyWebhookContract,
             data: WebhookModels.LegacyWebhook
         ) {
             super(debug, rawData, data);
@@ -75,14 +75,14 @@ export namespace WebhookResponses {
     export class WebhookListResponse extends BaseResponses.BaseContentManagementResponse<
     WebhookContracts.IWebhookListContract,
     {
-        webhooks: WebhookModels.LegacyWebhook[];
+        webhooks: WebhookModels.Webhook[];
     }
 > {
     constructor(
         debug: BaseResponses.IContentManagementResponseDebug,
         rawData: WebhookContracts.IWebhookListContract,
         data: {
-            webhooks: WebhookModels.LegacyWebhook[];
+            webhooks: WebhookModels.Webhook[];
         }
     ) {
         super(debug, rawData, data);

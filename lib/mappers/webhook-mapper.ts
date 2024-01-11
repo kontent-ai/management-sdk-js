@@ -22,7 +22,7 @@ export class WebhookMapper extends BaseMapper {
         return new WebhookResponses.GetLegacyWebhookResponse(
             super.mapResponseDebug(response),
             response.data,
-            this.mapWebhook(response.data)
+            this.mapLegacyWebhook(response.data)
         );
     }
 
@@ -44,6 +44,15 @@ export class WebhookMapper extends BaseMapper {
             webhooks: response.data.map(m => this.mapWebhook(m))
         });
     }
+
+    mapLegacyWebhooksListResponse(
+        response: IResponse<WebhookContracts.ILegacyWebhookListContract>
+    ): WebhookResponses.LegacyWebhookListResponse {
+        return new WebhookResponses.LegacyWebhookListResponse(super.mapResponseDebug(response), response.data, {
+            webhooks: response.data.map(m => this.mapLegacyWebhook(m))
+        });
+    }
+
 
     mapLegacyWebhook(rawWebhook: WebhookContracts.ILegacyWebhookContract): WebhookModels.LegacyWebhook {
         return new WebhookModels.LegacyWebhook({
@@ -86,32 +95,43 @@ export class WebhookMapper extends BaseMapper {
             delivery_triggers: {
                 slot: rawWebhook.delivery_triggers.slot,
                 events: rawWebhook.delivery_triggers.events,
-                asset: rawWebhook.delivery_triggers.asset?.map(
+                asset: rawWebhook.delivery_triggers.asset ? rawWebhook.delivery_triggers.asset.map(
                     m =>
-                        new WebhookModels.
-                )
+                        new WebhookModels.WebhookDeliveryTriggersAsset({
+                            enabled: m.enabled,
+                            actions: m.actions
+                        })
+                ) : undefined,
+                content_type: rawWebhook.delivery_triggers.content_type ? rawWebhook.delivery_triggers.content_type.map(
+                    m =>
+                        new WebhookModels.WebhookDeliveryTriggersContentType({
+                            enabled: m.enabled,
+                            actions: m.actions
+                        })
+                ) : undefined,
+                taxonomy: rawWebhook.delivery_triggers.taxonomy ? rawWebhook.delivery_triggers.taxonomy.map(
+                    m =>
+                        new WebhookModels.WebhookDeliveryTriggersTaxonomy({
+                            enabled: m.enabled,
+                            actions: m.actions
+                        })
+                ) : undefined,
+                language: rawWebhook.delivery_triggers.language ? rawWebhook.delivery_triggers.language.map(
+                    m =>
+                        new WebhookModels.WebhookDeliveryTriggersLanguage({
+                            enabled: m.enabled,
+                            actions: m.actions
+                        })
+                ) : undefined,
+                content_item: rawWebhook.delivery_triggers.content_item ? rawWebhook.delivery_triggers.content_item.map(
+                    m =>
+                        new WebhookModels.WebhookDeliveryTriggersContentItem({
+                            enabled: m.enabled,
+                            actions: m.actions
+                        })
+                ): undefined
 
-            }
-            triggers: {
-                deliveryApiContentChanges: rawWebhook.triggers.delivery_api_content_changes.map(
-                    m =>
-                        new WebhookModels.LegacyWebhookDeliveryApiContentChanges({
-                            operations: m.operations,
-                            type: m.type
-                        })
-                ),
-                workflowStepChanges: rawWebhook.triggers.workflow_step_changes.map(
-                    m =>
-                        new WebhookModels.LegacyWebhookWorkflowStepChanges({
-                            transitionsTo: m.transitions_to.map(
-                                s =>
-                                    new WebhookModels.WebhookTransitionsTo({
-                                        id: s.id
-                                    })
-                            ),
-                            type: m.type
-                        })
-                )
+
             },
             url: rawWebhook.url,
             _raw: rawWebhook

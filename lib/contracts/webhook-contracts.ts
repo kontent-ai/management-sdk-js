@@ -13,11 +13,11 @@ export namespace WebhookContracts {
 
     export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
 
-    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
+    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted' | undefined;
 
-    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved';
+    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved' | undefined;
 
-    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted';
+    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted' | undefined;
 
     export type WebhookContentItemActions = 'published' | 'unpublished' | 'created' | 'changed' | 'metadata_changed' | 'deleted' | 'workflow_step_changed';
 
