@@ -252,29 +252,54 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/languages`;
     }
 
-    deleteWebhook(identifier: Identifiers.WebhookIdentifier): string {
+    deleteLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
         return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}`;
     }
 
-    getWebhook(identifier: Identifiers.WebhookIdentifier): string {
+    getLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
         return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}`;
     }
 
-    addWebhook(): string {
+    addLegacyWebhook(): string {
         return `${this.getEnvironmentsPath()}/webhooks`;
     }
 
-    enableWebhook(identifier: Identifiers.WebhookIdentifier): string {
+    enableLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
         return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}/enable`;
     }
 
-    disableWebhook(identifier: Identifiers.WebhookIdentifier): string {
+    disableLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
         return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}/disable`;
     }
 
-    listWebhooks(): string {
+    listLegacyWebhooks(): string {
         return `${this.getEnvironmentsPath()}/webhooks`;
     }
+
+    deleteWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `${this.getEnvironmentsPath()}/webhooks-vnext/${identifier.getParamValue()}`;
+    }
+
+    getWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `${this.getEnvironmentsPath()}/webhooks-vnext/${identifier.getParamValue()}`;
+    }
+
+    addWebhook(): string {
+        return `${this.getEnvironmentsPath()}/webhooks-vnext`;
+    }
+
+    enableWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `${this.getEnvironmentsPath()}/webhooks-vnext/${identifier.getParamValue()}/enable`;
+    }
+
+    disableWebhook(identifier: Identifiers.WebhookIdentifier): string {
+        return `${this.getEnvironmentsPath()}/webhooks-vnext/${identifier.getParamValue()}/disable`;
+    }
+
+    listWebhooks(): string {
+        return `${this.getEnvironmentsPath()}/webhooks-vnext`;
+    }
+
 
     listAssetFolders(): string {
         return `${this.getEnvironmentsPath()}/folders`;
