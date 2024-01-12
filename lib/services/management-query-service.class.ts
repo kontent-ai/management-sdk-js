@@ -896,7 +896,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         url: string,
         config: IContentManagementQueryConfig
     ): Promise<WebhookResponses.LegacyWebhookListResponse> {
-        return webhookMapper.mapWebhooksListResponse(
+        return webhookMapper.mapLegacyWebhooksListResponse(
             await this.getResponseAsync<WebhookContracts.ILegacyWebhookListContract>(url, {}, config)
         );
     }
@@ -911,13 +911,12 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
-    async addLegacyWebhookAsync(
+    async getLegacyWebhookAsync(
         url: string,
-        config: IContentManagementQueryConfig,
-        data: WebhookModels.IAddLegacyWebhookData
-    ): Promise<WebhookResponses.AddWebhookResponse> {
-        return webhookMapper.mapAddWebhookResponse(
-            await this.postResponseAsync<WebhookContracts.IAddLegacyWebhookContract>(url, data, {}, config)
+        config: IContentManagementQueryConfig
+    ): Promise<WebhookResponses.GetLegacyWebhookResponse> {
+        return webhookMapper.mapGetLegacyWebhookResponse(
+            await this.getResponseAsync<WebhookContracts.IGetLegacyWebhookContract>(url, {}, config)
         );
     }
 
@@ -931,6 +930,15 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
+    async addLegacyWebhookAsync(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: WebhookModels.IAddLegacyWebhookData
+    ): Promise<WebhookResponses.AddLegacyWebhookResponse> {
+        return webhookMapper.mapAddLegacyWebhookResponse(
+            await this.postResponseAsync<WebhookContracts.IAddLegacyWebhookContract>(url, data, {}, config)
+        );
+    }
 
     async enableWebhookAsync(
         url: string,

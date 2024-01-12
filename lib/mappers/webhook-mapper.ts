@@ -37,6 +37,17 @@ export class WebhookMapper extends BaseMapper {
         );
     }
 
+    mapAddLegacyWebhookResponse(
+        response: IResponse<WebhookContracts.IGetLegacyWebhookContract>
+    ): WebhookResponses.AddLegacyWebhookResponse {
+        return new WebhookResponses.AddLegacyWebhookResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapLegacyWebhook(response.data)
+        );
+    }
+
+
     mapWebhooksListResponse(
         response: IResponse<WebhookContracts.IWebhookListContract>
     ): WebhookResponses.WebhookListResponse {
