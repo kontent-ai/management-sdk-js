@@ -3,11 +3,11 @@ import * as responseJson from '../fake-responses/webhooks/fake-add-webhook.json'
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add webhook', () => {
-    let response: WebhookResponses.AddWebhookResponse;
+    let response: WebhookResponses.AddLegacyWebhookResponse;
 
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson)
-            .addWebhook()
+            .addLegacyWebhook()
             .withData({
                 name: 'x',
                 secret: 'x',

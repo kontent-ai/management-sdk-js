@@ -15,6 +15,6 @@ export class ListLegacyWebhooksQuery extends BaseQuery<WebhookResponses.LegacyWe
     }
 
     protected getAction(): string {
-        return this.apiEndpoints.listWebhooks();
+        return this.apiEndpoints.listLegacyWebhooks();
     }
 }

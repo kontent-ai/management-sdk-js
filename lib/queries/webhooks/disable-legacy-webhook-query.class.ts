@@ -4,7 +4,7 @@ import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 import { Identifiers } from '../../models';
 
-export class DisableWebhookQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {
+export class DisableLegacyWebhookQuery extends BaseQuery<BaseResponses.EmptyContentManagementResponse> {
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ManagementQueryService,
