@@ -3,43 +3,17 @@ import * as responseJson from '../fake-responses/webhooks/fake-add-webhook.json'
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add webhook', () => {
-    let response: WebhookResponses.AddLegacyWebhookResponse;
+    let response: WebhookResponses.AddWebhookResponse;
 
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson)
-            .addLegacyWebhook()
+            .addWebhook()
             .withData({
                 name: 'x',
                 secret: 'x',
-                triggers: {
-                    delivery_api_content_changes: [
-                        {
-                            operations: ['archive', 'restore'],
-                            type: 'content_item_variant'
-                        }
-                    ],
-                    workflow_step_changes: [
-                        {
-                            transitions_to: [
-                                {
-                                    id: 'x'
-                                }
-                            ],
-                            type: 'content_item_variant'
-                        }
-                    ],
-                    management_api_content_changes: [
-                        {
-                            operations: ['create'],
-                            type: 'content_item_variant'
-                        }
-                    ],
-                    preview_delivery_api_content_changes: [
-                        {
-                            operations: ['archive', 'unpublish'],
-                            type: 'taxonomy'
-                        }
-                    ]
+                delivery_triggers: {
+                    slot: "published",
+                    events: "all"
                 },
                 url: 's'
             })
@@ -51,7 +25,7 @@ describe('Add webhook', () => {
             .addWebhook()
             .withData({} as any)
             .getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext`);
     });
 
     it(`response should be instance of AddWebhookResponse class`, () => {
@@ -74,23 +48,13 @@ describe('Add webhook', () => {
         expect(webhook.name).toEqual(originalItem.name);
         expect(webhook.lastModified).toEqual(undefined);
         expect(webhook.url).toEqual(originalItem.url);
+        expect(webhook.delivery_triggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
+        expect(webhook.delivery_triggers.content_item).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem));
+        expect(webhook.delivery_triggers.content_type).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType));
+        expect(webhook.delivery_triggers.events).toEqual(jasmine.any(String));
+        expect(webhook.delivery_triggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
+        expect(webhook.delivery_triggers.slot).toEqual(jasmine.any(String));
+        expect(webhook.delivery_triggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
 
-        expect(webhook.triggers.deliveryApiContentChanges).toEqual(jasmine.any(Array));
-        expect(webhook.triggers.workflowStepChanges).toEqual(jasmine.any(Array));
-
-        for (const trigger of webhook.triggers.deliveryApiContentChanges) {
-            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges));
-            expect(trigger.type).toBeDefined();
-        }
-
-        for (const trigger of webhook.triggers.workflowStepChanges) {
-            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookWorkflowStepChanges));
-            expect(trigger.type).toBeDefined();
-
-            for (const transition of trigger.transitionsTo) {
-                expect(transition).toEqual(jasmine.any(WebhookModels.WebhookTransitionsTo));
-                expect(transition.id).toBeDefined();
-            }
-        }
     });
 });

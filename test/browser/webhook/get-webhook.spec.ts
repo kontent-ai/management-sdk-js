@@ -11,7 +11,7 @@ describe('Get webhook', () => {
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.getWebhook().byId('x').getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext/x`);
     });
 
     it(`response should be instance of GetWebhookResponse class`, () => {
@@ -34,23 +34,14 @@ describe('Get webhook', () => {
         expect(webhook.name).toEqual(originalItem.name);
         expect(webhook.lastModified).toEqual(undefined);
         expect(webhook.url).toEqual(originalItem.url);
+        expect(webhook.delivery_triggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
+        expect(webhook.delivery_triggers.content_item).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem));
+        expect(webhook.delivery_triggers.content_type).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType));
+        expect(webhook.delivery_triggers.events).toEqual(jasmine.any(String));
+        expect(webhook.delivery_triggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
+        expect(webhook.delivery_triggers.slot).toEqual(jasmine.any(String));
+        expect(webhook.delivery_triggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
 
-        expect(webhook.triggers.deliveryApiContentChanges).toEqual(jasmine.any(Array));
-        expect(webhook.triggers.workflowStepChanges).toEqual(jasmine.any(Array));
 
-        for (const trigger of webhook.triggers.deliveryApiContentChanges) {
-            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges));
-            expect(trigger.type).toBeDefined();
-        }
-
-        for (const trigger of webhook.triggers.workflowStepChanges) {
-            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookWorkflowStepChanges));
-            expect(trigger.type).toBeDefined();
-
-            for (const transition of trigger.transitionsTo) {
-                expect(transition).toEqual(jasmine.any(WebhookModels.WebhookTransitionsTo));
-                expect(transition.id).toBeDefined();
-            }
-        }
     });
 });

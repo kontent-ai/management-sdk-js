@@ -15,7 +15,7 @@ export namespace WebhookModels {
         };
     }
     export interface IAddWebhookData {
-        id: string;
+        id?: string;
         name: string;
         secret: string;
         url: string;

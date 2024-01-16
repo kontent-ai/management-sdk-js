@@ -9,8 +9,8 @@ describe('Delete webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient.deleteWebhook().byId('x').getUrl();
-        expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext/x`);
+        const w1Url = cmLiveClient.deleteLegacyWebhook().byId('x').getUrl();
+        expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {

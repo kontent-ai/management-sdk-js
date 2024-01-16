@@ -10,9 +10,9 @@ describe('Disable webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.disableWebhook().byId('x').getUrl();
+        const url = cmLiveClient.disableLegacyWebhook().byId('x').getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext/x/disable`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x/disable`);
     });
 
     it(`response should be instance of BaseResponses.EmptyContentManagementResponse class`, () => {

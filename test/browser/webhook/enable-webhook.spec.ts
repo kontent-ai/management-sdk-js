@@ -12,7 +12,7 @@ describe('Enable webhook', () => {
     it(`url should be correct`, () => {
         const url = cmLiveClient.enableWebhook().byId('x').getUrl();
 
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x/enable`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext/x/enable`);
     });
 
     it(`response should be instance of EnableWebhookResponse class`, () => {
