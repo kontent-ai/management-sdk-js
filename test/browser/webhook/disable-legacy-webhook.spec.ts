@@ -2,7 +2,7 @@ import { BaseResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-get-webhook.json';
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
-describe('Disable webhook', () => {
+describe('Disable legacy webhook', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
     beforeAll(async () => {

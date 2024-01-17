@@ -82,11 +82,11 @@ export namespace WebhookContracts {
         delivery_triggers: {
             slot: string;
             events: string;
-            asset?: IWebhookAssetContract[];
-            content_type?: IWebhookContentTypeContract[];
-            taxonomy?: IWebhookTaxonomyContract[];
-            language?: IWebhookLanguageContract[];
-            content_item?: IWebhookContentItemContract[];
+            asset?: IWebhookAssetContract;
+            content_type?: IWebhookContentTypeContract;
+            taxonomy?: IWebhookTaxonomyContract;
+            language?: IWebhookLanguageContract;
+            content_item?: IWebhookContentItemContract;
 
         }
     }

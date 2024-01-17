@@ -2,7 +2,7 @@ import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-list-legacy-webhooks.json';
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
-describe('List webhooks', () => {
+describe('List legacy webhooks', () => {
     let response: WebhookResponses.LegacyWebhookListResponse;
 
     beforeAll(async () => {

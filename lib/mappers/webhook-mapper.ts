@@ -106,41 +106,26 @@ export class WebhookMapper extends BaseMapper {
             delivery_triggers: {
                 slot: rawWebhook.delivery_triggers.slot,
                 events: rawWebhook.delivery_triggers.events,
-                asset: rawWebhook.delivery_triggers.asset ? rawWebhook.delivery_triggers.asset.map(
-                    m =>
-                        new WebhookModels.WebhookDeliveryTriggersAsset({
-                            enabled: m.enabled,
-                            actions: m.actions
-                        })
-                ) : undefined,
-                content_type: rawWebhook.delivery_triggers.content_type ? rawWebhook.delivery_triggers.content_type.map(
-                    m =>
-                        new WebhookModels.WebhookDeliveryTriggersContentType({
-                            enabled: m.enabled,
-                            actions: m.actions
-                        })
-                ) : undefined,
-                taxonomy: rawWebhook.delivery_triggers.taxonomy ? rawWebhook.delivery_triggers.taxonomy.map(
-                    m =>
-                        new WebhookModels.WebhookDeliveryTriggersTaxonomy({
-                            enabled: m.enabled,
-                            actions: m.actions
-                        })
-                ) : undefined,
-                language: rawWebhook.delivery_triggers.language ? rawWebhook.delivery_triggers.language.map(
-                    m =>
-                        new WebhookModels.WebhookDeliveryTriggersLanguage({
-                            enabled: m.enabled,
-                            actions: m.actions
-                        })
-                ) : undefined,
-                content_item: rawWebhook.delivery_triggers.content_item ? rawWebhook.delivery_triggers.content_item.map(
-                    m =>
-                        new WebhookModels.WebhookDeliveryTriggersContentItem({
-                            enabled: m.enabled,
-                            actions: m.actions
-                        })
-                ): undefined
+                asset: rawWebhook.delivery_triggers.asset ? new WebhookModels.WebhookDeliveryTriggersAsset({
+                    enabled: rawWebhook.delivery_triggers.asset.enabled,
+                    actions: rawWebhook.delivery_triggers.asset.actions
+                }): undefined,
+                content_type: rawWebhook.delivery_triggers.content_type ? new WebhookModels.WebhookDeliveryTriggersContentType({
+                    enabled: rawWebhook.delivery_triggers.content_type.enabled,
+                    actions: rawWebhook.delivery_triggers.content_type.actions
+                }): undefined,
+                taxonomy: rawWebhook.delivery_triggers.taxonomy ? new WebhookModels.WebhookDeliveryTriggersTaxonomy({
+                    enabled: rawWebhook.delivery_triggers.taxonomy.enabled,
+                    actions: rawWebhook.delivery_triggers.taxonomy.actions
+                }): undefined,
+                language: rawWebhook.delivery_triggers.language ? new WebhookModels.WebhookDeliveryTriggersLanguage({
+                    enabled: rawWebhook.delivery_triggers.language.enabled,
+                    actions: rawWebhook.delivery_triggers.language.actions
+                }): undefined,
+                content_item: rawWebhook.delivery_triggers.content_item ? new WebhookModels.WebhookDeliveryTriggersContentItem({
+                    enabled: rawWebhook.delivery_triggers.content_item.enabled,
+                    actions: rawWebhook.delivery_triggers.content_item.actions
+                }): undefined
 
 
             },

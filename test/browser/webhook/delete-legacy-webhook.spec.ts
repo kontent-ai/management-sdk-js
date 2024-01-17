@@ -1,7 +1,7 @@
 import { BaseResponses } from '../../../lib';
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
-describe('Delete webhook', () => {
+describe('Delete legacy webhook', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
     beforeAll(async () => {

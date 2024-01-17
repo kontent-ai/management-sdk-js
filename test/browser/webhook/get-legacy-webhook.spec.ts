@@ -2,7 +2,7 @@ import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-get-legacy-webhook.json';
 import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
-describe('Get webhook', () => {
+describe('Get legacy webhook', () => {
     let response: WebhookResponses.GetLegacyWebhookResponse;
 
     beforeAll(async () => {
@@ -10,7 +10,7 @@ describe('Get webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.getWebhook().byId('x').getUrl();
+        const url = cmLiveClient.getLegacyWebhook().byId('x').getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
     });
 

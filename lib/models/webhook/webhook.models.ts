@@ -23,11 +23,11 @@ export namespace WebhookModels {
         delivery_triggers: {
             slot: string;
             events: string;
-            asset?: WebhookContracts.IWebhookAssetContract[];
-            content_type?: WebhookContracts.IWebhookContentTypeContract[];
-            taxonomy?: WebhookContracts.IWebhookTaxonomyContract[];
-            language?: WebhookContracts.IWebhookLanguageContract[];
-            content_item?: WebhookContracts.IWebhookContentItemContract[];
+            asset?: WebhookContracts.IWebhookAssetContract;
+            content_type?: WebhookContracts.IWebhookContentTypeContract;
+            taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
+            language?: WebhookContracts.IWebhookLanguageContract;
+            content_item?: WebhookContracts.IWebhookContentItemContract;
         };
     };
 
@@ -143,11 +143,11 @@ export namespace WebhookModels {
         delivery_triggers: {
             slot: string;
             events: string;
-            asset?: WebhookContracts.IWebhookAssetContract[];
-            content_type?: WebhookContracts.IWebhookContentTypeContract[];
-            taxonomy?: WebhookContracts.IWebhookTaxonomyContract[];
-            language?: WebhookContracts.IWebhookLanguageContract[];
-            content_item?: WebhookContracts.IWebhookContentItemContract[];
+            asset?: WebhookContracts.IWebhookAssetContract;
+            content_type?: WebhookContracts.IWebhookContentTypeContract;
+            taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
+            language?: WebhookContracts.IWebhookLanguageContract;
+            content_item?: WebhookContracts.IWebhookContentItemContract;
 
         };
         public _raw!: WebhookContracts.IWebhookContract;
@@ -161,11 +161,11 @@ export namespace WebhookModels {
             delivery_triggers: {
                 slot: string;
                 events: string;
-                asset?: WebhookContracts.IWebhookAssetContract[];
-                content_type?: WebhookContracts.IWebhookContentTypeContract[];
-                taxonomy?: WebhookContracts.IWebhookTaxonomyContract[];
-                language?: WebhookContracts.IWebhookLanguageContract[];
-                content_item?: WebhookContracts.IWebhookContentItemContract[];
+                asset?: WebhookContracts.IWebhookAssetContract;
+                content_type?: WebhookContracts.IWebhookContentTypeContract;
+                taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
+                language?: WebhookContracts.IWebhookLanguageContract;
+                content_item?: WebhookContracts.IWebhookContentItemContract;
     
             };
             _raw: WebhookContracts.IWebhookContract
