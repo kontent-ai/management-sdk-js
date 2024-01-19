@@ -32,6 +32,22 @@
             }
           ]
         }
+      ],
+      "preview_delivery_api_content_changes": [
+        {
+          "type":"content_item_variant",
+          "operations":[
+            "archive"
+          ]
+        }
+      ],
+      "management_api_content_changes": [
+        {
+          "type":"content_item_variant",
+          "operations":[
+            "publish"
+          ]
+        }
       ]
     }
   }

@@ -70,6 +70,7 @@ export class WebhookMapper extends BaseMapper {
             id: rawWebhook.id,
             name: rawWebhook.name,
             lastModified: rawWebhook.last_modified ? new Date(rawWebhook.last_modified) : undefined,
+            healthStatus: rawWebhook.health_status ? rawWebhook.health_status: undefined,
             secret: rawWebhook.secret,
             triggers: {
                 deliveryApiContentChanges: rawWebhook.triggers.delivery_api_content_changes.map(
@@ -90,6 +91,20 @@ export class WebhookMapper extends BaseMapper {
                             ),
                             type: m.type
                         })
+                ),
+                previewDeliveryContentChanges: rawWebhook.triggers.preview_delivery_api_content_changes.map(
+                    m =>
+                        new WebhookModels.LegacyWebhookPreviewDeliveryApiContentChanges({
+                            operations: m.operations,
+                            type: m.type
+                        })
+                ),
+                managementApiContentChanges: rawWebhook.triggers.management_api_content_changes.map(
+                    m =>
+                        new WebhookModels.LegacyWebhookManagementApiContentChanges({
+                            operations: m.operations,
+                            type: m.type
+                        })
                 )
             },
             url: rawWebhook.url,
@@ -102,6 +117,7 @@ export class WebhookMapper extends BaseMapper {
             id: rawWebhook.id,
             name: rawWebhook.name,
             lastModified: rawWebhook.last_modified ? new Date(rawWebhook.last_modified) : undefined,
+            healthStatus: rawWebhook.health_status,
             secret: rawWebhook.secret,
             delivery_triggers: {
                 slot: rawWebhook.delivery_triggers.slot,

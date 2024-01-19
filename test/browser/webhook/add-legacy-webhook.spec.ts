@@ -66,6 +66,10 @@ describe('Add legacy webhook', () => {
         expect(response.data).toBeDefined();
     });
 
+    it('response should contain raw data', () =>{
+        expect(response.rawData).toBeDefined();
+    });
+
     it(`webhook properties should be mapped`, () => {
         const originalItem = responseJson;
         const webhook = response.data;

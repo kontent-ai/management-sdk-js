@@ -19,6 +19,10 @@ describe('Get webhook', () => {
         expect(response).toEqual(jasmine.any(WebhookResponses.GetWebhookResponse));
     });
 
+    it('response should contain raw data', () =>{
+        expect(response.rawData).toBeDefined();
+    });
+    
     it(`response should contain debug data`, () => {
         expect(response.debug).toBeDefined();
     });

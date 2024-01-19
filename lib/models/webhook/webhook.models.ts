@@ -15,14 +15,14 @@ export namespace WebhookModels {
         };
     }
     export interface IAddWebhookData {
-        id?: string;
         name: string;
         secret: string;
         url: string;
         last_modified?: string;
+        enabled?: boolean;
         delivery_triggers: {
-            slot: string;
-            events: string;
+            slot: 'published' | 'preview';
+            events: 'all' | 'specific';
             asset?: WebhookContracts.IWebhookAssetContract;
             content_type?: WebhookContracts.IWebhookContentTypeContract;
             taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
@@ -81,10 +81,10 @@ export namespace WebhookModels {
 
     export class WebhookDeliveryTriggersContentItem {
         public enabled: boolean;
-        public actions: WebhookContentItemActions[];
+        public actions?: WebhookContentItemActions[];
 
         constructor(data: { enabled: boolean;
-        actions: WebhookContentItemActions[]}) {
+        actions?: WebhookContentItemActions[]}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
@@ -98,13 +98,23 @@ export namespace WebhookModels {
 
     export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
 
-    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted' | undefined;
+    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted' ;
 
-    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved' | undefined;
+    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved' ;
 
-    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted' | undefined;
+    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted' ;
 
     export type WebhookContentItemActions = 'published' | 'unpublished' | 'created' | 'changed' | 'metadata_changed' | 'deleted' | 'workflow_step_changed';
+
+    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
+
+    export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert' | 'restore';
+
+    export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
+
+    export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
+
+
 
     export class WebhookTransitionsTo {
         public id: string;
@@ -134,15 +144,41 @@ export namespace WebhookModels {
         }
     }
 
+    export class LegacyWebhookPreviewDeliveryApiContentChanges {
+        public type: 'taxonomy' | 'content_item_variant';
+        public operations: WebhookPreviewContentChangesOperations[];
+
+        constructor(data: { type: 'taxonomy' | 'content_item_variant'; operations: WebhookPreviewContentChangesOperations[] }) {
+            this.type = data.type;
+            this.operations = data.operations;
+        }
+
+    }
+
+    export class LegacyWebhookManagementApiContentChanges {
+        public type: 'taxonomy' | 'content_item_variant';
+        public operations: WebhookManagementContentChangesOperations[];
+
+        constructor(data: { type: 'taxonomy' | 'content_item_variant'; operations: WebhookManagementContentChangesOperations[] }) {
+            this.type = data.type;
+            this.operations = data.operations;
+        }
+
+    }
+
+
+
     export class Webhook implements SharedModels.IBaseModel<WebhookContracts.IWebhookContract> {
         public id: string;
         public name: string;
         public secret: string;
         public url: string;
+        public enabled?: boolean;
         public lastModified?: Date;
+        public healthStatus?: string;
         delivery_triggers: {
-            slot: string;
-            events: string;
+            slot: WebhookDeliveryTriggerSlots;
+            events: WebhookDeliveryTriggersEvents;
             asset?: WebhookContracts.IWebhookAssetContract;
             content_type?: WebhookContracts.IWebhookContentTypeContract;
             taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
@@ -150,7 +186,7 @@ export namespace WebhookModels {
             content_item?: WebhookContracts.IWebhookContentItemContract;
 
         };
-        public _raw!: WebhookContracts.IWebhookContract;
+        public _raw: WebhookContracts.IWebhookContract;
 
         constructor(data: {
             id: string;
@@ -158,9 +194,10 @@ export namespace WebhookModels {
             secret: string;
             url: string;
             lastModified?: Date;
+            healthStatus?: string;
             delivery_triggers: {
-                slot: string;
-                events: string;
+                slot: WebhookDeliveryTriggerSlots;
+                events: WebhookDeliveryTriggersEvents;
                 asset?: WebhookContracts.IWebhookAssetContract;
                 content_type?: WebhookContracts.IWebhookContentTypeContract;
                 taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
@@ -175,7 +212,9 @@ export namespace WebhookModels {
             this.secret = data.secret;
             this.url = data.url;
             this.lastModified = data.lastModified;
+            this.healthStatus = data.healthStatus;
             this.delivery_triggers = data.delivery_triggers;
+            this._raw = data._raw;
         }
 
 
@@ -186,10 +225,14 @@ export namespace WebhookModels {
         public name: string;
         public secret: string;
         public url: string;
+        public enabled?: boolean;
+        public healthStatus?: string;
         public lastModified?: Date;
         public triggers: {
             deliveryApiContentChanges: LegacyWebhookDeliveryApiContentChanges[];
+            previewDeliveryContentChanges: LegacyWebhookPreviewDeliveryApiContentChanges[];
             workflowStepChanges: LegacyWebhookWorkflowStepChanges[];
+            managementApiContentChanges: LegacyWebhookManagementApiContentChanges[];
         };
         public _raw!: WebhookContracts.ILegacyWebhookContract;
 
@@ -198,10 +241,13 @@ export namespace WebhookModels {
             name: string;
             secret: string;
             url: string;
+            healthStatus?: string;
             lastModified?: Date;
             triggers: {
                 deliveryApiContentChanges: LegacyWebhookDeliveryApiContentChanges[];
                 workflowStepChanges: LegacyWebhookWorkflowStepChanges[];
+                previewDeliveryContentChanges: LegacyWebhookPreviewDeliveryApiContentChanges[];
+                managementApiContentChanges: LegacyWebhookManagementApiContentChanges[];
             };
             _raw: WebhookContracts.ILegacyWebhookContract
         }) {
@@ -211,6 +257,7 @@ export namespace WebhookModels {
             this.url = data.url;
             this.triggers = data.triggers;
             this.lastModified = data.lastModified;
+            this.healthStatus = data.healthStatus;
         }
     }
 }

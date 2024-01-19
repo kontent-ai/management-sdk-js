@@ -26,6 +26,10 @@ describe('List legacy webhooks', () => {
         expect(response.data).toBeDefined();
     });
 
+    it('response should contain raw data', () =>{
+        expect(response.rawData).toBeDefined();
+    });
+
     it(`webhook properties should be mapped`, () => {
         expect(response.data.webhooks.length).toBeGreaterThan(0);
 

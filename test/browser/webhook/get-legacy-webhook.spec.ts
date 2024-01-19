@@ -21,6 +21,10 @@ describe('Get legacy webhook', () => {
     it(`response should contain debug data`, () => {
         expect(response.debug).toBeDefined();
     });
+    
+    it('response should contain raw data', () =>{
+        expect(response.rawData).toBeDefined();
+    });
 
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
