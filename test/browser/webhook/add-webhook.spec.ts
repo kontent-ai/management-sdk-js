@@ -12,8 +12,8 @@ describe('Add webhook', () => {
                 name: 'x',
                 secret: 'x',
                 delivery_triggers: {
-                    slot: "published",
-                    events: "all"
+                    slot: 'published',
+                    events: 'all'
                 },
                 url: 's'
             })
@@ -40,7 +40,7 @@ describe('Add webhook', () => {
         expect(response.data).toBeDefined();
     });
 
-    it('response should contain raw data', () =>{
+    it('response should contain raw data', () => {
         expect(response.rawData).toBeDefined();
     });
 
@@ -52,13 +52,16 @@ describe('Add webhook', () => {
         expect(webhook.name).toEqual(originalItem.name);
         expect(webhook.lastModified).toEqual(undefined);
         expect(webhook.url).toEqual(originalItem.url);
-        expect(webhook.delivery_triggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
-        expect(webhook.delivery_triggers.content_item).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem));
-        expect(webhook.delivery_triggers.content_type).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType));
-        expect(webhook.delivery_triggers.events).toEqual(jasmine.any(String));
-        expect(webhook.delivery_triggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
-        expect(webhook.delivery_triggers.slot).toEqual(jasmine.any(String));
-        expect(webhook.delivery_triggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
-
+        expect(webhook.deliveryTriggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
+        expect(webhook.deliveryTriggers.contentItem).toEqual(
+            jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem)
+        );
+        expect(webhook.deliveryTriggers.contentType).toEqual(
+            jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType)
+        );
+        expect(webhook.deliveryTriggers.events).toEqual(originalItem.delivery_triggers.events);
+        expect(webhook.deliveryTriggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
+        expect(webhook.deliveryTriggers.slot).toEqual(originalItem.delivery_triggers.slot);
+        expect(webhook.deliveryTriggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
     });
 });

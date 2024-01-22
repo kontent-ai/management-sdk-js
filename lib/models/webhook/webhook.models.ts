@@ -26,6 +26,7 @@ export namespace WebhookModels {
     export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert' | 'restore';
     export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
     export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
+    export type WebhookHealthStatus = 'unknown' | 'working' | 'failing' | 'dead';
 
     export interface IAddLegacyWebhookData {
         name: string;
@@ -167,15 +168,15 @@ export namespace WebhookModels {
         public url: string;
         public enabled?: boolean;
         public lastModified?: Date;
-        public healthStatus?: string;
-        delivery_triggers: {
+        public healthStatus?: WebhookHealthStatus;
+        public deliveryTriggers: {
             slot: WebhookDeliveryTriggerSlots;
             events: WebhookDeliveryTriggersEvents;
             asset?: WebhookContracts.IWebhookAssetContract;
-            content_type?: WebhookContracts.IWebhookContentTypeContract;
+            contentType?: WebhookContracts.IWebhookContentTypeContract;
             taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
             language?: WebhookContracts.IWebhookLanguageContract;
-            content_item?: WebhookContracts.IWebhookContentItemContract;
+            contentItem?: WebhookContracts.IWebhookContentItemContract;
         };
         public _raw: WebhookContracts.IWebhookContract;
 
@@ -184,16 +185,17 @@ export namespace WebhookModels {
             name: string;
             secret: string;
             url: string;
+            enabled?: boolean;
             lastModified?: Date;
-            healthStatus?: string;
-            delivery_triggers: {
+            healthStatus?: WebhookHealthStatus;
+            deliveryTriggers: {
                 slot: WebhookDeliveryTriggerSlots;
                 events: WebhookDeliveryTriggersEvents;
                 asset?: WebhookContracts.IWebhookAssetContract;
-                content_type?: WebhookContracts.IWebhookContentTypeContract;
+                contentType?: WebhookContracts.IWebhookContentTypeContract;
                 taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
                 language?: WebhookContracts.IWebhookLanguageContract;
-                content_item?: WebhookContracts.IWebhookContentItemContract;
+                contentItem?: WebhookContracts.IWebhookContentItemContract;
             };
             _raw: WebhookContracts.IWebhookContract;
         }) {
@@ -203,7 +205,8 @@ export namespace WebhookModels {
             this.url = data.url;
             this.lastModified = data.lastModified;
             this.healthStatus = data.healthStatus;
-            this.delivery_triggers = data.delivery_triggers;
+            this.deliveryTriggers = data.deliveryTriggers;
+            this.enabled = data.enabled;
             this._raw = data._raw;
         }
     }

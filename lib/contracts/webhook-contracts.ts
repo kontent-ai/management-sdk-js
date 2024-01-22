@@ -1,34 +1,36 @@
-import { SharedContracts } from "./shared-contracts";
+import { SharedContracts } from './shared-contracts';
 
 export namespace WebhookContracts {
+    export type WebhookWorkflowStepOperationContract = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
+    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
+    export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert' | 'restore';
+    export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
+    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
+    export type WebhookTaxonomyActions =
+        | 'created'
+        | 'metadata_changed'
+        | 'deleted'
+        | 'term_created'
+        | 'term_changed'
+        | 'term_deleted'
+        | 'terms_moved';
+    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted';
+    export type WebhookContentItemActions =
+        | 'published'
+        | 'unpublished'
+        | 'created'
+        | 'changed'
+        | 'metadata_changed'
+        | 'deleted'
+        | 'workflow_step_changed';
+    export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
+    export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
 
-    export interface IDeleteWebhookResponseContract {
-    }
+    export interface IDeleteWebhookResponseContract {}
 
     export interface ILegacyWebhookTransitionsToContract {
         id: string;
     }
-
-    export type WebhookWorkflowStepOperationContract = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
-
-    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
-
-    export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert'| 'restore';
-
-    export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
-
-    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
-
-    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved' ;
-
-    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted' ;
-
-    export type WebhookContentItemActions = 'published' | 'unpublished' | 'created' | 'changed' | 'metadata_changed' | 'deleted' | 'workflow_step_changed';
-
-    export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
-
-    export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
-
 
     export interface ILegacyWebhookWorkflowStepChangesContract {
         type: 'content_item_variant';
@@ -89,10 +91,10 @@ export namespace WebhookContracts {
         last_modified?: string;
         health_status?: string;
         triggers: {
-            delivery_api_content_changes: ILegacyWebhookDeliveryApiContentChangesContract[],
-            workflow_step_changes: ILegacyWebhookWorkflowStepChangesContract[],
-            preview_delivery_api_content_changes: ILegacyWebhookPreviewDeliveryApiContentChangesContract[],
-            management_api_content_changes: ILegacyWebhookManagementApiContentChangesContract[]
+            delivery_api_content_changes: ILegacyWebhookDeliveryApiContentChangesContract[];
+            workflow_step_changes: ILegacyWebhookWorkflowStepChangesContract[];
+            preview_delivery_api_content_changes: ILegacyWebhookPreviewDeliveryApiContentChangesContract[];
+            management_api_content_changes: ILegacyWebhookManagementApiContentChangesContract[];
         };
     }
 
@@ -102,6 +104,7 @@ export namespace WebhookContracts {
         secret: string;
         url: string;
         last_modified?: string;
+        enabled?: boolean;
         health_status?: string;
         delivery_triggers: {
             slot: WebhookDeliveryTriggerSlots;
@@ -111,21 +114,16 @@ export namespace WebhookContracts {
             taxonomy?: IWebhookTaxonomyContract;
             language?: IWebhookLanguageContract;
             content_item?: IWebhookContentItemContract;
-
-        }
+        };
     }
 
-    export interface IGetLegacyWebhookContract extends ILegacyWebhookContract {
-    }
+    export interface IGetLegacyWebhookContract extends ILegacyWebhookContract {}
 
-    export interface IGetWebhookContract extends IWebhookContract {
-    }
+    export interface IGetWebhookContract extends IWebhookContract {}
 
-    export interface IAddLegacyWebhookContract extends ILegacyWebhookContract {
-    }
+    export interface IAddLegacyWebhookContract extends ILegacyWebhookContract {}
 
-    export interface IAddWebhookContract extends IWebhookContract {
-    }
+    export interface IAddWebhookContract extends IWebhookContract {}
 
     export type ILegacyWebhookListContract = ILegacyWebhookContract[];
 

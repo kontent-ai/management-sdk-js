@@ -26,7 +26,6 @@ export class WebhookMapper extends BaseMapper {
         );
     }
 
-
     mapAddWebhookResponse(
         response: IResponse<WebhookContracts.IGetWebhookContract>
     ): WebhookResponses.AddWebhookResponse {
@@ -47,12 +46,11 @@ export class WebhookMapper extends BaseMapper {
         );
     }
 
-
     mapWebhooksListResponse(
         response: IResponse<WebhookContracts.IWebhookListContract>
     ): WebhookResponses.WebhookListResponse {
         return new WebhookResponses.WebhookListResponse(super.mapResponseDebug(response), response.data, {
-            webhooks: response.data.map(m => this.mapWebhook(m))
+            webhooks: response.data.map((m) => this.mapWebhook(m))
         });
     }
 
@@ -60,31 +58,30 @@ export class WebhookMapper extends BaseMapper {
         response: IResponse<WebhookContracts.ILegacyWebhookListContract>
     ): WebhookResponses.LegacyWebhookListResponse {
         return new WebhookResponses.LegacyWebhookListResponse(super.mapResponseDebug(response), response.data, {
-            webhooks: response.data.map(m => this.mapLegacyWebhook(m))
+            webhooks: response.data.map((m) => this.mapLegacyWebhook(m))
         });
     }
-
 
     mapLegacyWebhook(rawWebhook: WebhookContracts.ILegacyWebhookContract): WebhookModels.LegacyWebhook {
         return new WebhookModels.LegacyWebhook({
             id: rawWebhook.id,
             name: rawWebhook.name,
             lastModified: rawWebhook.last_modified ? new Date(rawWebhook.last_modified) : undefined,
-            healthStatus: rawWebhook.health_status ? rawWebhook.health_status: undefined,
+            healthStatus: rawWebhook.health_status ? rawWebhook.health_status : undefined,
             secret: rawWebhook.secret,
             triggers: {
                 deliveryApiContentChanges: rawWebhook.triggers.delivery_api_content_changes.map(
-                    m =>
+                    (m) =>
                         new WebhookModels.LegacyWebhookDeliveryApiContentChanges({
                             operations: m.operations,
                             type: m.type
                         })
                 ),
                 workflowStepChanges: rawWebhook.triggers.workflow_step_changes.map(
-                    m =>
+                    (m) =>
                         new WebhookModels.LegacyWebhookWorkflowStepChanges({
                             transitionsTo: m.transitions_to.map(
-                                s =>
+                                (s) =>
                                     new WebhookModels.WebhookTransitionsTo({
                                         id: s.id
                                     })
@@ -93,14 +90,14 @@ export class WebhookMapper extends BaseMapper {
                         })
                 ),
                 previewDeliveryContentChanges: rawWebhook.triggers.preview_delivery_api_content_changes.map(
-                    m =>
+                    (m) =>
                         new WebhookModels.LegacyWebhookPreviewDeliveryApiContentChanges({
                             operations: m.operations,
                             type: m.type
                         })
                 ),
                 managementApiContentChanges: rawWebhook.triggers.management_api_content_changes.map(
-                    m =>
+                    (m) =>
                         new WebhookModels.LegacyWebhookManagementApiContentChanges({
                             operations: m.operations,
                             type: m.type
@@ -117,39 +114,47 @@ export class WebhookMapper extends BaseMapper {
             id: rawWebhook.id,
             name: rawWebhook.name,
             lastModified: rawWebhook.last_modified ? new Date(rawWebhook.last_modified) : undefined,
-            healthStatus: rawWebhook.health_status,
+            healthStatus: rawWebhook.health_status as WebhookModels.WebhookHealthStatus,
+            enabled: rawWebhook.enabled,
             secret: rawWebhook.secret,
-            delivery_triggers: {
+            deliveryTriggers: {
                 slot: rawWebhook.delivery_triggers.slot,
                 events: rawWebhook.delivery_triggers.events,
-                asset: rawWebhook.delivery_triggers.asset ? new WebhookModels.WebhookDeliveryTriggersAsset({
-                    enabled: rawWebhook.delivery_triggers.asset.enabled,
-                    actions: rawWebhook.delivery_triggers.asset.actions
-                }): undefined,
-                content_type: rawWebhook.delivery_triggers.content_type ? new WebhookModels.WebhookDeliveryTriggersContentType({
-                    enabled: rawWebhook.delivery_triggers.content_type.enabled,
-                    actions: rawWebhook.delivery_triggers.content_type.actions
-                }): undefined,
-                taxonomy: rawWebhook.delivery_triggers.taxonomy ? new WebhookModels.WebhookDeliveryTriggersTaxonomy({
-                    enabled: rawWebhook.delivery_triggers.taxonomy.enabled,
-                    actions: rawWebhook.delivery_triggers.taxonomy.actions
-                }): undefined,
-                language: rawWebhook.delivery_triggers.language ? new WebhookModels.WebhookDeliveryTriggersLanguage({
-                    enabled: rawWebhook.delivery_triggers.language.enabled,
-                    actions: rawWebhook.delivery_triggers.language.actions
-                }): undefined,
-                content_item: rawWebhook.delivery_triggers.content_item ? new WebhookModels.WebhookDeliveryTriggersContentItem({
-                    enabled: rawWebhook.delivery_triggers.content_item.enabled,
-                    actions: rawWebhook.delivery_triggers.content_item.actions
-                }): undefined
-
-
+                asset: rawWebhook.delivery_triggers.asset
+                    ? new WebhookModels.WebhookDeliveryTriggersAsset({
+                          enabled: rawWebhook.delivery_triggers.asset.enabled,
+                          actions: rawWebhook.delivery_triggers.asset.actions
+                      })
+                    : undefined,
+                contentType: rawWebhook.delivery_triggers.content_type
+                    ? new WebhookModels.WebhookDeliveryTriggersContentType({
+                          enabled: rawWebhook.delivery_triggers.content_type.enabled,
+                          actions: rawWebhook.delivery_triggers.content_type.actions
+                      })
+                    : undefined,
+                taxonomy: rawWebhook.delivery_triggers.taxonomy
+                    ? new WebhookModels.WebhookDeliveryTriggersTaxonomy({
+                          enabled: rawWebhook.delivery_triggers.taxonomy.enabled,
+                          actions: rawWebhook.delivery_triggers.taxonomy.actions
+                      })
+                    : undefined,
+                language: rawWebhook.delivery_triggers.language
+                    ? new WebhookModels.WebhookDeliveryTriggersLanguage({
+                          enabled: rawWebhook.delivery_triggers.language.enabled,
+                          actions: rawWebhook.delivery_triggers.language.actions
+                      })
+                    : undefined,
+                contentItem: rawWebhook.delivery_triggers.content_item
+                    ? new WebhookModels.WebhookDeliveryTriggersContentItem({
+                          enabled: rawWebhook.delivery_triggers.content_item.enabled,
+                          actions: rawWebhook.delivery_triggers.content_item.actions
+                      })
+                    : undefined
             },
             url: rawWebhook.url,
             _raw: rawWebhook
         });
     }
-
 }
 
 export const webhookMapper = new WebhookMapper();
