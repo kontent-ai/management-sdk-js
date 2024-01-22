@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.8.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.7.0...v5.8.0) (2024-01-22)
+
+
+### Features
+
+* Add support for vnext webhooks API ([#131](https://github.com/kontent-ai/management-sdk-js/issues/131)) ([f82354b](https://github.com/kontent-ai/management-sdk-js/commit/f82354b3f31c22846deecf32e9e197f1da907010))
+
 ## [5.7.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.6.0...v5.7.0) (2023-12-06)
 
 
