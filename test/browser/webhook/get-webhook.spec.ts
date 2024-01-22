@@ -7,15 +7,20 @@ describe('Get webhook', () => {
 
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson).getWebhook().byId('x').toPromise();
+        console.log(response);
     });
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.getWebhook().byId('x').getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext/x`);
     });
 
     it(`response should be instance of GetWebhookResponse class`, () => {
         expect(response).toEqual(jasmine.any(WebhookResponses.GetWebhookResponse));
+    });
+
+    it('response should contain raw data', () => {
+        expect(response.rawData).toBeDefined();
     });
 
     it(`response should contain debug data`, () => {
@@ -34,23 +39,16 @@ describe('Get webhook', () => {
         expect(webhook.name).toEqual(originalItem.name);
         expect(webhook.lastModified).toEqual(undefined);
         expect(webhook.url).toEqual(originalItem.url);
-
-        expect(webhook.triggers.deliveryApiContentChanges).toEqual(jasmine.any(Array));
-        expect(webhook.triggers.workflowStepChanges).toEqual(jasmine.any(Array));
-
-        for (const trigger of webhook.triggers.deliveryApiContentChanges) {
-            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges));
-            expect(trigger.type).toBeDefined();
-        }
-
-        for (const trigger of webhook.triggers.workflowStepChanges) {
-            expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookWorkflowStepChanges));
-            expect(trigger.type).toBeDefined();
-
-            for (const transition of trigger.transitionsTo) {
-                expect(transition).toEqual(jasmine.any(WebhookModels.WebhookTransitionsTo));
-                expect(transition.id).toBeDefined();
-            }
-        }
+        expect(webhook.deliveryTriggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
+        expect(webhook.deliveryTriggers.contentItem).toEqual(
+            jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem)
+        );
+        expect(webhook.deliveryTriggers.contentType).toEqual(
+            jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType)
+        );
+        expect(webhook.deliveryTriggers.events).toEqual(originalItem.delivery_triggers.events);
+        expect(webhook.deliveryTriggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
+        expect(webhook.deliveryTriggers.slot).toEqual(originalItem.delivery_triggers.slot);
+        expect(webhook.deliveryTriggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
     });
 });

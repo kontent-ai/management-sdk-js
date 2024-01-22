@@ -30,6 +30,7 @@ import {
     AddLanguageQuery,
     AddSpaceQuery,
     AddTaxonomyQuery,
+    AddLegacyWebhookQuery,
     AddWebhookQuery,
     AssetIdentifierQuery,
     CancelScheduledPublishingOfLanguageVariantQuery,
@@ -50,9 +51,11 @@ import {
     DeleteQuery,
     DeleteTaxonomyQuery,
     DeleteWebhookQuery,
+    DeleteLegacyWebhookQuery,
     GetQuery,
     GetTaxonomyQuery,
     GetWebhookQuery,
+    GetLegacyWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
     LanguageIdentifierQuery,
     ListAssetFoldersQuery,
@@ -66,6 +69,7 @@ import {
     ListLanguageVariantsOfItemQuery,
     ListSpacesQuery,
     ListTaxonomiesQuery,
+    ListLegacyWebhooksQuery,
     ListWebhooksQuery,
     ListWorkflowStepsQuery,
     ModifyAssetFoldersQuery,
@@ -97,7 +101,9 @@ import {
     ViewSpaceQuery,
     WebhookIdentifierQuery,
     WorkflowStepIdentifierQuery,
+    EnableLegacyWebhookQuery,
     EnableWebhookQuery,
+    DisableLegacyWebhookQuery,
     DisableWebhookQuery,
     ListCollectionsQuery,
     CollectionIdentifierQuery,
@@ -515,6 +521,36 @@ export interface IManagementClient<TCancelToken> {
      * Gets all webhooks
      */
     listWebhooks(): ListWebhooksQuery;
+
+        /**
+     * Delete a legacy webhook
+     */
+    deleteLegacyWebhook(): WebhookIdentifierQuery<DeleteLegacyWebhookQuery>;
+
+    /**
+     * Adds new legacy webhook
+     */
+    addLegacyWebhook(): DataQuery<AddLegacyWebhookQuery, WebhookModels.IAddLegacyWebhookData>;
+
+    /**
+     * Gets single legacy webhook
+     */
+    getLegacyWebhook(): WebhookIdentifierQuery<GetLegacyWebhookQuery>;
+
+    /**
+     * Enableslegacy webhook
+     */
+    enableLegacyWebhook(): WebhookIdentifierQuery<EnableLegacyWebhookQuery>;
+
+    /**
+     * Disables legacy webhook
+     */
+    disableLegacyWebhook(): WebhookIdentifierQuery<DisableLegacyWebhookQuery>;
+
+    /**
+     * Gets all legacy webhooks
+     */
+    listLegacyWebhooks(): ListLegacyWebhooksQuery;
 
     /**
      * Query to get environment information

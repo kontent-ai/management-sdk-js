@@ -2,36 +2,28 @@
     "name": "Example",
     "url": "https://example.com",
     "secret": "secret",
-    "triggers": {
-      "delivery_api_content_changes": [
-        {
-          "type": "content_item_variant",
-          "operations": [
-            "publish",
-            "unpublish"
-          ]
-        },
-        {
-          "type": "taxonomy",
-          "operations": [
-            "archive",
-            "restore",
-            "upsert"
-          ]
-        }
-      ],
-      "workflow_step_changes": [
-        {
-          "type": "content_item_variant",
-          "transitions_to": [
-            {
-              "id": "b4363ccd-8f21-45fd-a840-5843d7b7f008"
-            },
-            {
-              "id": "88ac5e6e-1c5c-4638-96e1-0d61221ad5bf"
-            }
-          ]
-        }
-      ]
+    "delivery_triggers": {
+      "slot": "published",
+      "events": "specific",
+      "content_type": {
+        "enabled": true,
+        "actions": ["created"]
+      },
+      "asset": {
+        "enabled":true,
+        "actions": ["created"]
+      },
+      "taxonomy": {
+        "enabled":true,
+        "actions": ["created"]
+      },
+      "language": {
+        "enabled": true,
+        "actions": ["created"]
+      },
+      "content_item": {
+        "enabled": true,
+        "actions": ["created"]
+      }
     }
   }

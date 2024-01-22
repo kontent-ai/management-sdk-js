@@ -6,21 +6,21 @@ import { WebhookResponses } from '../../responses';
 import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
-export class AddWebhookQuery extends BaseQuery<WebhookResponses.AddWebhookResponse> {
+export class AddLegacyWebhookQuery extends BaseQuery<WebhookResponses.AddLegacyWebhookResponse> {
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ManagementQueryService,
-        public data: WebhookModels.IAddWebhookData
+        public data: WebhookModels.IAddLegacyWebhookData
     ) {
         super(config, queryService);
     }
 
-    toPromise(): Promise<WebhookResponses.GetWebhookResponse> {
-        return this.queryService.addWebhookAsync(this.getUrl(), this.queryConfig, this.data);
+    toPromise(): Promise<WebhookResponses.GetLegacyWebhookResponse> {
+        return this.queryService.addLegacyWebhookAsync(this.getUrl(), this.queryConfig, this.data);
     }
 
     protected getAction(): string {
-        return this.apiEndpoints.addWebhook();
+        return this.apiEndpoints.addLegacyWebhook();
     }
-
 }
+

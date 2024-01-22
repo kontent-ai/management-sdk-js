@@ -11,7 +11,7 @@ describe('List webhooks', () => {
 
     it(`url should be correct`, () => {
         const url = cmLiveClient.listWebhooks().getUrl();
-        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks`);
+        expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks-vnext`);
     });
 
     it(`response should be instance of WebhookListResponse class`, () => {
@@ -24,6 +24,10 @@ describe('List webhooks', () => {
 
     it(`response should contain data`, () => {
         expect(response.data).toBeDefined();
+    });
+
+    it('response should contain raw data', () => {
+        expect(response.rawData).toBeDefined();
     });
 
     it(`webhook properties should be mapped`, () => {
@@ -42,24 +46,21 @@ describe('List webhooks', () => {
                 originalItem.last_modified ? new Date(originalItem.last_modified) : undefined
             );
             expect(webhook.url).toEqual(originalItem.url);
-
-            expect(webhook.triggers.deliveryApiContentChanges).toEqual(jasmine.any(Array));
-            expect(webhook.triggers.workflowStepChanges).toEqual(jasmine.any(Array));
-
-            for (const trigger of webhook.triggers.deliveryApiContentChanges) {
-                expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookDeliveryApiContentChanges));
-                expect(trigger.type).toBeDefined();
-            }
-
-            for (const trigger of webhook.triggers.workflowStepChanges) {
-                expect(trigger).toEqual(jasmine.any(WebhookModels.WebhookWorkflowStepChanges));
-                expect(trigger.type).toBeDefined();
-
-                for (const transition of trigger.transitionsTo) {
-                    expect(transition).toEqual(jasmine.any(WebhookModels.WebhookTransitionsTo));
-                    expect(transition.id).toBeDefined();
-                }
-            }
+            expect(webhook.deliveryTriggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
+            expect(webhook.deliveryTriggers.contentItem).toEqual(
+                jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem)
+            );
+            expect(webhook.deliveryTriggers.contentType).toEqual(
+                jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType)
+            );
+            expect(webhook.deliveryTriggers.events).toEqual(originalItem.delivery_triggers.events);
+            expect(webhook.deliveryTriggers.language).toEqual(
+                jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage)
+            );
+            expect(webhook.deliveryTriggers.slot).toEqual(originalItem.delivery_triggers.slot);
+            expect(webhook.deliveryTriggers.taxonomy).toEqual(
+                jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy)
+            );
         }
     });
 });
