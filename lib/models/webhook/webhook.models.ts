@@ -2,6 +2,31 @@ import { WebhookContracts } from '../../contracts/webhook-contracts';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace WebhookModels {
+    export type WebhookWorkflowStepOperation = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
+    export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
+    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
+    export type WebhookTaxonomyActions =
+        | 'created'
+        | 'metadata_changed'
+        | 'deleted'
+        | 'term_created'
+        | 'term_changed'
+        | 'term_deleted'
+        | 'terms_moved';
+    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted';
+    export type WebhookContentItemActions =
+        | 'published'
+        | 'unpublished'
+        | 'created'
+        | 'changed'
+        | 'metadata_changed'
+        | 'deleted'
+        | 'workflow_step_changed';
+    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
+    export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert' | 'restore';
+    export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
+    export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
+
     export interface IAddLegacyWebhookData {
         name: string;
         secret: string;
@@ -21,100 +46,65 @@ export namespace WebhookModels {
         last_modified?: string;
         enabled?: boolean;
         delivery_triggers: {
-            slot: 'published' | 'preview';
-            events: 'all' | 'specific';
+            slot: WebhookDeliveryTriggerSlots;
+            events: WebhookDeliveryTriggersEvents;
             asset?: WebhookContracts.IWebhookAssetContract;
             content_type?: WebhookContracts.IWebhookContentTypeContract;
             taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
             language?: WebhookContracts.IWebhookLanguageContract;
             content_item?: WebhookContracts.IWebhookContentItemContract;
         };
-    };
+    }
 
     export class WebhookDeliveryTriggersContentType {
         public enabled: boolean;
         public actions?: WebhookContentTypeActions[];
 
-        constructor(data: { enabled: boolean;
-        actions?: WebhookContentTypeActions[]}) {
+        constructor(data: { enabled: boolean; actions?: WebhookContentTypeActions[] }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
-
     }
 
     export class WebhookDeliveryTriggersAsset {
         public enabled: boolean;
         public actions?: WebhookAssetActions[];
 
-        constructor(data: { enabled: boolean;
-        actions?: WebhookAssetActions[]}) {
+        constructor(data: { enabled: boolean; actions?: WebhookAssetActions[] }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
-
     }
 
     export class WebhookDeliveryTriggersTaxonomy {
         public enabled: boolean;
         public actions?: WebhookTaxonomyActions[];
 
-        constructor(data: { enabled: boolean;
-        actions?: WebhookTaxonomyActions[]}) {
+        constructor(data: { enabled: boolean; actions?: WebhookTaxonomyActions[] }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
-
     }
 
     export class WebhookDeliveryTriggersLanguage {
         public enabled: boolean;
         public actions?: WebhookLanguageActions[];
 
-        constructor(data: { enabled: boolean;
-        actions?: WebhookLanguageActions[]}) {
+        constructor(data: { enabled: boolean; actions?: WebhookLanguageActions[] }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
-
     }
 
     export class WebhookDeliveryTriggersContentItem {
         public enabled: boolean;
         public actions?: WebhookContentItemActions[];
 
-        constructor(data: { enabled: boolean;
-        actions?: WebhookContentItemActions[]}) {
+        constructor(data: { enabled: boolean; actions?: WebhookContentItemActions[] }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
         }
-
     }
-
-
-
-
-    export type WebhookWorkflowStepOperation = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
-
-    export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
-
-    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted' ;
-
-    export type WebhookTaxonomyActions = 'created' | 'metadata_changed' | 'deleted' | 'term_created' | 'term_changed' | 'term_deleted'| 'terms_moved' ;
-
-    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted' ;
-
-    export type WebhookContentItemActions = 'published' | 'unpublished' | 'created' | 'changed' | 'metadata_changed' | 'deleted' | 'workflow_step_changed';
-
-    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
-
-    export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert' | 'restore';
-
-    export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
-
-    export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
-
-
 
     export class WebhookTransitionsTo {
         public id: string;
@@ -148,25 +138,27 @@ export namespace WebhookModels {
         public type: 'taxonomy' | 'content_item_variant';
         public operations: WebhookPreviewContentChangesOperations[];
 
-        constructor(data: { type: 'taxonomy' | 'content_item_variant'; operations: WebhookPreviewContentChangesOperations[] }) {
+        constructor(data: {
+            type: 'taxonomy' | 'content_item_variant';
+            operations: WebhookPreviewContentChangesOperations[];
+        }) {
             this.type = data.type;
             this.operations = data.operations;
         }
-
     }
 
     export class LegacyWebhookManagementApiContentChanges {
         public type: 'taxonomy' | 'content_item_variant';
         public operations: WebhookManagementContentChangesOperations[];
 
-        constructor(data: { type: 'taxonomy' | 'content_item_variant'; operations: WebhookManagementContentChangesOperations[] }) {
+        constructor(data: {
+            type: 'taxonomy' | 'content_item_variant';
+            operations: WebhookManagementContentChangesOperations[];
+        }) {
             this.type = data.type;
             this.operations = data.operations;
         }
-
     }
-
-
 
     export class Webhook implements SharedModels.IBaseModel<WebhookContracts.IWebhookContract> {
         public id: string;
@@ -184,7 +176,6 @@ export namespace WebhookModels {
             taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
             language?: WebhookContracts.IWebhookLanguageContract;
             content_item?: WebhookContracts.IWebhookContentItemContract;
-
         };
         public _raw: WebhookContracts.IWebhookContract;
 
@@ -203,9 +194,8 @@ export namespace WebhookModels {
                 taxonomy?: WebhookContracts.IWebhookTaxonomyContract;
                 language?: WebhookContracts.IWebhookLanguageContract;
                 content_item?: WebhookContracts.IWebhookContentItemContract;
-    
             };
-            _raw: WebhookContracts.IWebhookContract
+            _raw: WebhookContracts.IWebhookContract;
         }) {
             this.id = data.id;
             this.name = data.name;
@@ -216,9 +206,7 @@ export namespace WebhookModels {
             this.delivery_triggers = data.delivery_triggers;
             this._raw = data._raw;
         }
-
-
-    };
+    }
 
     export class LegacyWebhook implements SharedModels.IBaseModel<WebhookContracts.ILegacyWebhookContract> {
         public id: string;
@@ -249,7 +237,7 @@ export namespace WebhookModels {
                 previewDeliveryContentChanges: LegacyWebhookPreviewDeliveryApiContentChanges[];
                 managementApiContentChanges: LegacyWebhookManagementApiContentChanges[];
             };
-            _raw: WebhookContracts.ILegacyWebhookContract
+            _raw: WebhookContracts.ILegacyWebhookContract;
         }) {
             this.id = data.id;
             this.name = data.name;
