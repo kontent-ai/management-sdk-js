@@ -77,9 +77,16 @@ export namespace WebhookContracts {
         content_types?: SharedContracts.IReferenceObjectContract[];
         languages?: SharedContracts.IReferenceObjectContract[];
     }
+    export interface IContentItemActions {
+        action: WebhookContentItemActions,
+        transition_to: {
+            workflow_identifier: SharedContracts.IReferenceObjectContract,
+            step_identifier: SharedContracts.IReferenceObjectContract;
+        }
+    }
     export interface IWebhookContentItemContract {
         enabled: boolean;
-        actions?: WebhookContentItemActions[];
+        actions?: IContentItemActions[];
         filters?: IContentItemFilters;
     }
 
