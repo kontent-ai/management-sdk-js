@@ -147,7 +147,8 @@ export class WebhookMapper extends BaseMapper {
                 contentItem: rawWebhook.delivery_triggers.content_item
                     ? new WebhookModels.WebhookDeliveryTriggersContentItem({
                           enabled: rawWebhook.delivery_triggers.content_item.enabled,
-                          actions: rawWebhook.delivery_triggers.content_item.actions
+                          actions: rawWebhook.delivery_triggers.content_item.actions,
+                          filters: rawWebhook.delivery_triggers.content_item.filters
                       })
                     : undefined
             },
