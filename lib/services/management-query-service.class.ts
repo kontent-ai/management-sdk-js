@@ -137,7 +137,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     >(data: {
         getResponse: (xContinuationToken?: string) => Promise<TResponse>;
         allResponseFactory: (items: any[], responses: TResponse[]) => TAllResponse;
-        listQueryConfig?: IContentManagementListQueryConfig<TResponse>;
+        listQueryConfig: IContentManagementListQueryConfig<TResponse> | undefined;
     }): Promise<TAllResponse> {
         const responses = await this.getListAllResponseInternalAsync({
             resolvedResponses: [],
@@ -653,7 +653,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
                 title: data.asset.title,
                 codename: data.asset.codename,
                 collection: data.asset.collection,
-                elements: data.asset.elements,
+                elements: data.asset.elements
             },
             config
         );
@@ -900,7 +900,6 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
             await this.getResponseAsync<WebhookContracts.ILegacyWebhookListContract>(url, {}, config)
         );
     }
-
 
     async getWebhookAsync(
         url: string,
@@ -1179,10 +1178,10 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     private async getListAllResponseInternalAsync<
         TResponse extends BaseResponses.IContentManagementListResponse
     >(data: {
-        xContinuationToken?: string;
+        xContinuationToken: string | undefined;
         getResponse: (xContinuationToken?: string) => Promise<TResponse>;
         resolvedResponses: TResponse[];
-        listQueryConfig?: IContentManagementListQueryConfig<TResponse>;
+        listQueryConfig: IContentManagementListQueryConfig<TResponse> | undefined;
     }): Promise<TResponse[]> {
         const response = await data.getResponse(data.xContinuationToken);
 
@@ -1201,7 +1200,8 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
             return await this.getListAllResponseInternalAsync({
                 xContinuationToken: response.data.pagination.continuationToken,
                 getResponse: data.getResponse,
-                resolvedResponses: data.resolvedResponses
+                resolvedResponses: data.resolvedResponses,
+                listQueryConfig: data.listQueryConfig
             });
         }
 
