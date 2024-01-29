@@ -28,6 +28,7 @@ export namespace WebhookModels {
     export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
     export type WebhookHealthStatus = 'unknown' | 'working' | 'failing' | 'dead';
 
+
     export interface IAddLegacyWebhookData {
         name: string;
         secret: string;
@@ -99,11 +100,13 @@ export namespace WebhookModels {
 
     export class WebhookDeliveryTriggersContentItem {
         public enabled: boolean;
-        public actions?: WebhookContentItemActions[];
+        public actions?: WebhookContracts.IContentItemActions[];
+        public filters?: WebhookContracts.IContentItemFilters;
 
-        constructor(data: { enabled: boolean; actions?: WebhookContentItemActions[] }) {
+        constructor(data: { enabled: boolean; actions?: WebhookContracts.IContentItemActions[]; filters?: WebhookContracts.IContentItemFilters;}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
+            this.filters = data.filters;
         }
     }
 

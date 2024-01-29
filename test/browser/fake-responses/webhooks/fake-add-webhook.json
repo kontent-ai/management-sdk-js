@@ -23,7 +23,20 @@
       },
       "content_item": {
         "enabled": true,
-        "actions": ["created"]
+        "actions": [
+          {
+          "action": "created",
+          "transition_to": {
+            "workflow_identifier": {
+              "id": "705c3bd8-29c6-466c-b42b-6c6c3887786e"
+            },
+            "step_identifier": {
+              "id": "c199950d-99f0-4983-b711-6c4c91624b22"
+            }
+          }
+
+          }
+      ]
       }
     }
   }
