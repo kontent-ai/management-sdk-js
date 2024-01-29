@@ -44,7 +44,7 @@ export namespace LanguageVariantModels {
 
     export class ContentItemLanguageWithComponentsVariant {
         public item!: SharedModels.ReferenceObject;
-        public elements!: ElementModels.ContentItemElementWithComponents[];
+        public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
         /**
@@ -55,12 +55,12 @@ export namespace LanguageVariantModels {
             workflowIdentifier: SharedModels.ReferenceObject;
             stepIdentifier: SharedModels.ReferenceObject;
         };
-        public _raw!: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract;
+        public _raw!: LanguageVariantContracts.ILanguageVariantModelsContract;
 
         constructor(data: {
             rawElements: any;
             item: SharedModels.ReferenceObject;
-            elements: ElementModels.ContentItemElementWithComponents[];
+            elements: ElementModels.ContentItemElement[];
             language: SharedModels.ReferenceObject;
             lastModified: Date;
             workflowStep: SharedModels.ReferenceObject;
@@ -68,7 +68,7 @@ export namespace LanguageVariantModels {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
             };
-            _raw: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract;
+            _raw: LanguageVariantContracts.ILanguageVariantModelsContract;
         }) {
             Object.assign(this, data);
         }

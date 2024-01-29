@@ -68,7 +68,7 @@ describe('List language variants of content type with components', () => {
             variant.elements.forEach((element) => {
                 const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);
 
-                expect(element).toEqual(jasmine.any(ElementModels.ContentItemElementWithComponents));
+                expect(element).toEqual(jasmine.any(ElementModels.ContentItemElement));
 
                 if (!originalElement) {
                     throw Error(`Original element with id '${element.element.id}' was not found`);
@@ -99,7 +99,7 @@ describe('List language variants of content type with components', () => {
 
                         for (const nestedElement of component.elements) {
                             nestedElementChecked = true;
-                            expect(nestedElement).toEqual(jasmine.any(ElementModels.ContentItemElementWithComponents));
+                            expect(nestedElement).toEqual(jasmine.any(ElementModels.ContentItemElement));
                         }
                     }
                 }

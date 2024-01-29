@@ -85,11 +85,11 @@ export class LanguageVariantMapper extends BaseMapper {
     }
 
     mapLanguageVariantWithComponents(
-        rawVariant: LanguageVariantContracts.ILanguageVariantModelWithComponentsContract
+        rawVariant: LanguageVariantContracts.ILanguageVariantModelsContract
     ): LanguageVariantModels.ContentItemLanguageWithComponentsVariant {
         return new LanguageVariantModels.ContentItemLanguageWithComponentsVariant({
             rawElements: rawVariant.elements,
-            elements: elementsMapper.mapElementsWithComponents(rawVariant.elements),
+            elements: elementsMapper.mapElements(rawVariant.elements),
             item: super.mapReference(rawVariant.item),
             language: super.mapReference(rawVariant.language),
             lastModified: new Date(rawVariant.last_modified),

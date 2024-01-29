@@ -16,22 +16,15 @@ export class ElementsMapper extends BaseMapper {
     }
 
     mapElements(elementsRaw: ElementContracts.IContentItemElementContract[]): ElementModels.ContentItemElement[] {
-        return elementsRaw.map((m) => this.mapElement(m));
-    }
-
-    mapElementsWithComponents(
-        elementsRaw: ElementContracts.IContentItemElementWithComponentsContract[]
-    ): ElementModels.ContentItemElementWithComponents[] {
-        return elementsRaw.map((m) => this.mapElementWithComponents(m));
-    }
-
-    mapElementWithComponents(
-        rawElement: ElementContracts.IContentItemElementWithComponentsContract
-    ): ElementModels.ContentItemElementWithComponents {
-        return new ElementModels.ContentItemElementWithComponents({
-            element: super.mapReference(rawElement.element),
-            value: this.mapElementValue(rawElement.value),
-            components: this.mapElementComponents(rawElement.components || [])
+        return elementsRaw.map((m) => {
+            return new ElementModels.ContentItemElement({
+                element: super.mapReference(m.element),
+                value: this.mapElementValue(m.value),
+                components: this.mapElementComponents(m.components ?? []),
+                mode: m.mode,
+                searchableValue: m.searchableValue,
+                _raw: m
+            });
         });
     }
 
@@ -45,13 +38,13 @@ export class ElementsMapper extends BaseMapper {
         });
     }
 
-    mapElementComponents(
+    private mapElementComponents(
         components: ElementContracts.IContentItemElementComponent[]
     ): ElementModels.ContentItemElementComponent[] {
         return components.map(
             (m) =>
                 new ElementModels.ContentItemElementComponent({
-                    elements: this.mapElementsWithComponents(m.elements),
+                    elements: this.mapElements(m.elements),
                     id: m.id,
                     type: m.type,
                     _raw: m
@@ -59,7 +52,7 @@ export class ElementsMapper extends BaseMapper {
         );
     }
 
-    mapElementValue(
+    private mapElementValue(
         rawValue: string | number | SharedContracts.IReferenceObjectContract[]
     ): string | number | SharedModels.ReferenceObject[] {
         if (Array.isArray(rawValue)) {
