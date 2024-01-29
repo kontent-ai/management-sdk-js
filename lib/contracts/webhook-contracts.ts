@@ -2,11 +2,11 @@ import { SharedContracts } from './shared-contracts';
 
 export namespace WebhookContracts {
     export type WebhookWorkflowStepOperationContract = 'publish' | 'unpublish' | 'archive' | 'restore' | 'upsert';
-    export type WebhookManagementContentChangesOperations = 'archive' | 'create' | 'restore';
-    export type WebhookPreviewContentChangesOperations = 'archive' | 'upsert' | 'restore';
-    export type WebhookContentTypeActions = 'created' | 'changed' | 'deleted';
-    export type WebhookAssetActions = 'created' | 'changed' | 'metadata_changed' | 'deleted';
-    export type WebhookTaxonomyActions =
+    export type WebhookManagementContentChangesOperation = 'archive' | 'create' | 'restore';
+    export type WebhookPreviewContentChangesOperation = 'archive' | 'upsert' | 'restore';
+    export type WebhookContentTypeAction = 'created' | 'changed' | 'deleted';
+    export type WebhookAssetAction = 'created' | 'changed' | 'metadata_changed' | 'deleted';
+    export type WebhookTaxonomyAction =
         | 'created'
         | 'metadata_changed'
         | 'deleted'
@@ -14,8 +14,8 @@ export namespace WebhookContracts {
         | 'term_changed'
         | 'term_deleted'
         | 'terms_moved';
-    export type WebhookLanguageActions = 'created' | 'changed' | 'deleted';
-    export type WebhookContentItemActions =
+    export type WebhookLanguageAction = 'created' | 'changed' | 'deleted';
+    export type WebhookContentItemAction =
         | 'published'
         | 'unpublished'
         | 'created'
@@ -23,8 +23,8 @@ export namespace WebhookContracts {
         | 'metadata_changed'
         | 'deleted'
         | 'workflow_step_changed';
-    export type WebhookDeliveryTriggerSlots = 'published' | 'preview';
-    export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
+    export type WebhookDeliveryTriggerSlot = 'published' | 'preview';
+    export type WebhookDeliveryTriggersEvent = 'all' | 'specific';
 
     export interface IDeleteWebhookResponseContract {}
 
@@ -39,7 +39,7 @@ export namespace WebhookContracts {
 
     export interface ILegacyWebhookManagementApiContentChangesContract {
         type: 'content_item_variant';
-        operations: WebhookManagementContentChangesOperations[];
+        operations: WebhookManagementContentChangesOperation[];
     }
 
     export interface ILegacyWebhookDeliveryApiContentChangesContract {
@@ -49,27 +49,27 @@ export namespace WebhookContracts {
 
     export interface ILegacyWebhookPreviewDeliveryApiContentChangesContract {
         type: 'taxonomy' | 'content_item_variant';
-        operations: WebhookPreviewContentChangesOperations[];
+        operations: WebhookPreviewContentChangesOperation[];
     }
 
     export interface IWebhookContentTypeContract {
         enabled: boolean;
-        actions?: WebhookContentTypeActions[];
+        actions?: WebhookContentTypeAction[];
     }
 
     export interface IWebhookAssetContract {
         enabled: boolean;
-        actions?: WebhookAssetActions[];
+        actions?: WebhookAssetAction[];
     }
 
     export interface IWebhookTaxonomyContract {
         enabled: boolean;
-        actions?: WebhookTaxonomyActions[];
+        actions?: WebhookTaxonomyAction[];
     }
 
     export interface IWebhookLanguageContract {
         enabled: boolean;
-        actions?: WebhookLanguageActions[];
+        actions?: WebhookLanguageAction[];
     }
 
     export interface IContentItemFilters {
@@ -78,7 +78,7 @@ export namespace WebhookContracts {
         languages?: SharedContracts.IReferenceObjectContract[];
     }
     export interface IContentItemActions {
-        action: WebhookContentItemActions;
+        action: WebhookContentItemAction;
         transition_to: {
             workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
             step_identifier: SharedContracts.ICodenameIdReferenceContract;
@@ -114,8 +114,8 @@ export namespace WebhookContracts {
         enabled?: boolean;
         health_status?: string;
         delivery_triggers: {
-            slot: WebhookDeliveryTriggerSlots;
-            events: WebhookDeliveryTriggersEvents;
+            slot: WebhookDeliveryTriggerSlot;
+            events: WebhookDeliveryTriggersEvent;
             asset?: IWebhookAssetContract;
             content_type?: IWebhookContentTypeContract;
             taxonomy?: IWebhookTaxonomyContract;
