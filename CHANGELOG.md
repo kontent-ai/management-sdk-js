@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.8.2](https://github.com/kontent-ai/management-sdk-js/compare/v5.8.1...v5.8.2) (2024-01-29)
+
+
+### Bug Fixes
+
+* Adds 'components' to element models ([d0ac229](https://github.com/kontent-ai/management-sdk-js/commit/d0ac2298db0ffba36b6b90cec38aceedde3a3963))
+
 ### [5.8.1](https://github.com/kontent-ai/management-sdk-js/compare/v5.8.0...v5.8.1) (2024-01-29)
 
 
