@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.8.1](https://github.com/kontent-ai/management-sdk-js/compare/v5.8.0...v5.8.1) (2024-01-29)
+
+
+### Bug Fixes
+
+* Fixes missing listQueryConfig when using toAllPromise ([5d4868e](https://github.com/kontent-ai/management-sdk-js/commit/5d4868ebc149c1978e76134bada24ec8634183fb))
+* Updates webhook contract models (actions) ([#134](https://github.com/kontent-ai/management-sdk-js/issues/134)) ([1cf2e4c](https://github.com/kontent-ai/management-sdk-js/commit/1cf2e4cb3567d862c8862f9d854156185d5e28f2))
+
 ## [5.8.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.7.0...v5.8.0) (2024-01-22)
 
 
