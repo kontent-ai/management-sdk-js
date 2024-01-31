@@ -118,6 +118,18 @@ export namespace LanguageVariantResponses {
         }
     }
 
+    export class ListAllLanguageVariantsBySpaceResponse extends BaseResponses.ContentManagementListAllResponse<ListLanguageVariantsBySpaceResponse, LanguageVariantModels.ContentItemLanguageVariant> {
+        constructor(
+            data: {
+                items: LanguageVariantModels.ContentItemLanguageVariant[],
+                responses: ListLanguageVariantsBySpaceResponse[]
+            }
+        ) {
+            super(data);
+        }
+    }
+
+
     export class UpsertLanguageVariantResponse extends BaseResponses.BaseContentManagementResponse<
         LanguageVariantContracts.IUpsertLanguageVariantResponseContract,
         LanguageVariantModels.ContentItemLanguageVariant

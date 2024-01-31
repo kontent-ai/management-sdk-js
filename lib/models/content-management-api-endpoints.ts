@@ -217,6 +217,11 @@ export class ContentManagementApiEndpoints {
     listLanguageVariantsByCollection(identifier: Identifiers.CollectionIdentifier): string {
         return `${this.getEnvironmentsPath()}/collections/${identifier.getParamValue()}/variants`;
     }
+    
+    listLanguageVariantsBySpace(identifier: Identifiers.SpaceIdentifier): string {
+        return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}/variants`;
+    }
+
 
     listLanguageVariantsOfContentTypeWithComponents(identifier: Identifiers.ContentTypeIdentifier): string {
         return `${this.getEnvironmentsPath()}/types/${identifier.getParamValue()}/components`;
