@@ -79,6 +79,23 @@ export namespace LanguageVariantResponses {
         }
     }
 
+    export class ListLanguageVariantsBySpaceResponse extends BaseResponses.BaseContentManagementListResponse<
+    LanguageVariantContracts.IListLanguageVariantsBySpaceResponseContract,
+    LanguageVariantModels.ContentItemLanguageVariant
+> {
+    constructor(
+        debug: BaseResponses.IContentManagementResponseDebug,
+        rawData: LanguageVariantContracts.IListLanguageVariantsBySpaceResponseContract,
+        data: {
+            items: LanguageVariantModels.ContentItemLanguageVariant[];
+            pagination: SharedModels.Pagination;
+        }
+    ) {
+        super(debug, rawData, data);
+    }
+}
+
+
     export class ListAllLanguageVariantsOfContentTypeResponse extends BaseResponses.ContentManagementListAllResponse<ListLanguageVariantsOfContentTypeResponse, LanguageVariantModels.ContentItemLanguageVariant> {
         constructor(
             data: {
