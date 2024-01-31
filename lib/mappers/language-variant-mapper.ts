@@ -56,6 +56,21 @@ export class LanguageVariantMapper extends BaseMapper {
         );
     }
 
+    mapLanguageVariantsBySpaceResponse(
+        response: IResponse<LanguageVariantContracts.IListLanguageVariantsBySpaceResponseContract>
+    ): LanguageVariantResponses.ListLanguageVariantsBySpaceResponse {
+        const variants = response.data.variants.map((m) => this.mapLanguageVariant(m));
+        return new LanguageVariantResponses.ListLanguageVariantsBySpaceResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            {
+                items: variants,
+                pagination: super.mapPagination(response.data.pagination)
+            }
+        );
+    }
+
+
     mapLanguageVariantsOfContentTypeResponse(
         response: IResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeResponseContract>
     ): LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse {
@@ -69,6 +84,8 @@ export class LanguageVariantMapper extends BaseMapper {
             }
         );
     }
+
+    
 
     mapLanguageVariantsOfContentTypeWithComponentsResponse(
         response: IResponse<LanguageVariantContracts.IListLanguageVariantsOfContentTypeWithComponentsResponseContract>
