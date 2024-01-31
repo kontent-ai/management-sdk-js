@@ -18,7 +18,8 @@ describe('Publish language variant', () => {
             .byItemCodename('x')
             .byLanguageCodename('y')
             .withData({
-                scheduled_to: '2019-01-31T11:00:00+01:00'
+                scheduled_to: '2019-01-31T11:00:00+01:00',
+                display_timezone: 'Australia/Sydney'
             });
 
         response = await query.toPromise();
