@@ -67,6 +67,7 @@ import {
     ListLanguageVariantsOfContentTypeQuery,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
     ListLanguageVariantsOfItemQuery,
+    ListLanguageVariantsBySpaceQuery,
     ListSpacesQuery,
     ListTaxonomiesQuery,
     ListLegacyWebhooksQuery,
@@ -581,6 +582,11 @@ export interface IManagementClient<TCancelToken> {
      * Query to list language variants of given collection
      */
     listLanguageVariantsByCollection(): CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery>;
+
+    /**
+     * Query to list language variants of given collection
+     */
+    listLanguageVariantsBySpace(): SpaceIdentifierQuery<ListLanguageVariantsBySpaceQuery>;
 
     /**
      * Query to set collections
