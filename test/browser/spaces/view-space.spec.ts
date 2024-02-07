@@ -36,5 +36,8 @@ describe('View space', () => {
         expect(Space).toEqual(jasmine.any(SpaceModels.Space));
         expect(Space.codename).toEqual(originalItem.codename);
         expect(Space.name).toEqual(originalItem.name);
+        expect(Space.webSpotlightRootItem).toBeDefined();
+        expect(Space.collections).toBeDefined();
+
     });
 });

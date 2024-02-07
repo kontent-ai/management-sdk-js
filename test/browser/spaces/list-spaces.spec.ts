@@ -42,6 +42,7 @@ describe('List spaces', () => {
             expect(space.codename).toEqual(originalItem.codename);
             expect(space.name).toEqual(originalItem.name);
             expect(space.webSpotlightRootItem).toBeDefined();
+            expect(space.collections).toBeDefined();
         });
     });
 });
