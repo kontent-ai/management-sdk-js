@@ -584,7 +584,7 @@ export interface IManagementClient<TCancelToken> {
     listLanguageVariantsByCollection(): CollectionIdentifierQuery<ListLanguageVariantsByCollectionQuery>;
 
     /**
-     * Query to list language variants of given collection
+     * Query to list language variants of given space
      */
     listLanguageVariantsBySpace(): SpaceIdentifierQuery<ListLanguageVariantsBySpaceQuery>;
 
