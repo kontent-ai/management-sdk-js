@@ -14,6 +14,7 @@ export namespace SpaceModels {
         name: string;
         codename?: string;
         web_spotlight_root_item?: SharedContracts.IReferenceObjectContract;
+        collections?: SharedContracts.IReferenceObjectContract[];
     }
 
     export class Space implements SharedModels.IBaseModel<SpaceContracts.ISpaceContract> {
@@ -21,7 +22,7 @@ export namespace SpaceModels {
         public name!: string;
         public codename!: string;
         public webSpotlightRootItem?: SharedModels.ReferenceObject;
-        public collections?: SharedModels.ReferenceObject;
+        public collections?: SharedModels.ReferenceObject[];
         public _raw!: SpaceContracts.ISpaceContract;
 
         constructor(data: {
@@ -29,7 +30,7 @@ export namespace SpaceModels {
             name: string;
             codename: string;
             webSpotlightRootItem?: SharedModels.ReferenceObject;
-            collections?: SharedModels.ReferenceObject;
+            collections?: SharedModels.ReferenceObject[];
             _raw: SpaceContracts.ISpaceContract;
         }) {
             Object.assign(this, data);

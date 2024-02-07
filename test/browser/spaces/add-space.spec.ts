@@ -12,7 +12,12 @@ describe('Add space', () => {
                 codename: 'My_Workflow',
                 web_spotlight_root_item: {
                     codename: 'my_root_item'
+                },
+                collections: [
+                    {
+                    id: '00000000-0000-0000-0000-000000000000'
                 }
+            ]
             })
             .toPromise();
     });
@@ -45,5 +50,6 @@ describe('Add space', () => {
         expect(space.name).toEqual(originalItem.name);
         expect(space.id).toBeDefined();
         expect(space.webSpotlightRootItem).toBeDefined();
+        expect(space.collections).toEqual(originalItem.collections)
     });
 });
