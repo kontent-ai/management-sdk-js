@@ -48,6 +48,7 @@ export class SpacesMapper extends BaseMapper {
             id: rawItem.id,
             name: rawItem.name,
             webSpotlightRootItem: rawItem.web_spotlight_root_item,
+            collections: rawItem.collections,
             _raw: rawItem
         });
     }
