@@ -25,17 +25,17 @@ export namespace AssetFolderModels {
         }
     }
 
-    export interface IAddOrModifyAssetFolderData {
+    export interface IAssetFolderValue {
         name: string;
-        folders: IAddOrModifyAssetFolderData[];
+        folders: IAssetFolderValue[];
         external_id?: string;
     }
 
     export interface IAddAssetFoldersData {
-        folders: IAddOrModifyAssetFolderData[];
+        folders: IAssetFolderValue[];
     }
 
-    export type IModifyAssetFolderOperations = AddIntoOperation | RemoveOperation | RenameOperation;
+    export type IModifyAssetFolderData = AddIntoOperation | RemoveOperation | RenameOperation;
 
     export type AddIntoOperation = {
         op: 'addInto',
@@ -43,7 +43,7 @@ export namespace AssetFolderModels {
             id?: string;
             external_id?: string;
         },
-        value: IAddOrModifyAssetFolderData[];
+        value: IAssetFolderValue;
         before?: {
             id?: string;
             external_id?: string;
@@ -66,20 +66,20 @@ export namespace AssetFolderModels {
         value: string
     }
 
-    export interface IModifyAssetFoldersData {
-        op: 'addInto' | 'remove' | 'rename';
-        value?: IAddOrModifyAssetFolderData;
-        after?: {
-            external_id?: string;
-            id?: string;
-        };
-        before?: {
-            external_id?: string;
-            id?: string;
-        };
-        reference?: {
-            external_id?: string;
-            id?: string;
-        };
-    }
+    // export interface IModifyAssetFoldersData {
+    //     op: 'addInto' | 'remove' | 'rename';
+    //     value?: IAddOrModifyAssetFolderData;
+    //     after?: {
+    //         external_id?: string;
+    //         id?: string;
+    //     };
+    //     before?: {
+    //         external_id?: string;
+    //         id?: string;
+    //     };
+    //     reference?: {
+    //         external_id?: string;
+    //         id?: string;
+    //     };
+    // }
 }
