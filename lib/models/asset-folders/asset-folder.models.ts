@@ -35,6 +35,37 @@ export namespace AssetFolderModels {
         folders: IAddOrModifyAssetFolderData[];
     }
 
+    export type IModifyAssetFolderOperations = AddIntoOperation | RemoveOperation | RenameOperation;
+
+    export type AddIntoOperation = {
+        op: 'addInto',
+        reference?: {
+            id?: string;
+            external_id?: string;
+        },
+        value: IAddOrModifyAssetFolderData[];
+        before?: {
+            id?: string;
+            external_id?: string;
+        },
+        after?: {
+            id?: string;
+            external_id?: string;
+        }
+
+    }
+
+    export type RemoveOperation = {
+        op: 'remove',
+        reference: SharedModels.ReferenceObject
+    }
+
+    export type RenameOperation = {
+        op: 'rename',
+        reference: SharedModels.ReferenceObject,
+        value: string
+    }
+
     export interface IModifyAssetFoldersData {
         op: 'addInto' | 'remove' | 'rename';
         value?: IAddOrModifyAssetFolderData;
