@@ -41,7 +41,8 @@ describe('List spaces', () => {
             expect(space).toEqual(jasmine.any(SpaceModels.Space));
             expect(space.codename).toEqual(originalItem.codename);
             expect(space.name).toEqual(originalItem.name);
-            expect(space.webSpotlightRootItem).toBeDefined();
+            expect(space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
+            expect(space.collections).toEqual(originalItem.collections);
         });
     });
 });

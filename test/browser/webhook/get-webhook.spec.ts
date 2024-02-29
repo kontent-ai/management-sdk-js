@@ -7,7 +7,6 @@ describe('Get webhook', () => {
 
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson).getWebhook().byId('x').toPromise();
-        console.log(response);
     });
 
     it(`url should be correct`, () => {

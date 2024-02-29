@@ -44,5 +44,9 @@ describe('Modify space', () => {
 
         expect(space.codename).toEqual(originalItem.codename);
         expect(space.name).toEqual(originalItem.name);
+        expect(space.id).toBeDefined();
+        expect(space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
+        expect(space.collections).toEqual(originalItem.collections);
+
     });
 });

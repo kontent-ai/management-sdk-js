@@ -12,11 +12,15 @@ describe('Add space', () => {
                 codename: 'My_Workflow',
                 web_spotlight_root_item: {
                     codename: 'my_root_item'
+                },
+                collections: [
+                    {
+                    id: '00000000-0000-0000-0000-000000000000'
                 }
+            ]
             })
             .toPromise();
     });
-
     it(`url should be correct`, () => {
         const url = cmLiveClient
             .addSpace()
@@ -40,10 +44,10 @@ describe('Add space', () => {
     it('space properties should be mapped', () => {
         const originalItem = responseJson;
         const space = response.data;
-
         expect(space.codename).toEqual(originalItem.codename);
         expect(space.name).toEqual(originalItem.name);
         expect(space.id).toBeDefined();
-        expect(space.webSpotlightRootItem).toBeDefined();
+        expect(space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
+        expect(space.collections).toEqual(originalItem.collections)
     });
 });

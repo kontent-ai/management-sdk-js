@@ -1,0 +1,43 @@
+{
+    "variants": [
+      {
+        "elements": [
+          {
+            "element": {
+              "id": "c7c3b834-2222-5677-89c4-b46f04489109"
+            },
+            "value": "Text element value"
+          },
+          {
+            "mode": "custom",
+            "element": {
+              "id": "53a5eecb-f295-59b4-a07d-19655b6ad860"
+            },
+            "value": "custom-url-slug-value"
+          }
+        ],
+        "workflow": {
+          "workflow_identifier": {
+            "id": "06ea628e-4ec7-4991-91e4-1412995151ee"
+          },
+          "step_identifier": {
+            "id": "dc87d7cf-424b-4b89-9519-c9f79a3458b7"
+          }
+        },
+        "workflow_step": {
+          "id": "dc87d7cf-424b-4b89-9519-c9f79a3458b7"
+        },
+        "item": {
+          "id": "82ef61f4-ccee-42ac-95e2-1a44beda9625"
+        },
+        "language": {
+          "id": "00000000-0000-0000-0000-000000000000"
+        },
+        "last_modified": "2020-02-27T19:08:25.404Z"
+      }
+    ],
+    "pagination": {
+      "continuation_token": "W3sidG9rZW4iOiIrUklEOn...",
+      "next_page": "https://manage.kontent.ai/v2/your/chosen/list/endpoint"
+    }
+  }

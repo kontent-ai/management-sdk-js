@@ -58,6 +58,7 @@ export namespace WorkflowModels {
          * If you do not provide this property, the specified language variant is published immediately.
          */
         scheduled_to?: string;
+        display_timezone?: string;
     }
 
     export interface IUnpublishLanguageVarianthData {
@@ -66,6 +67,7 @@ export namespace WorkflowModels {
          * If you do not provide this property, the specified language variant is published immediately.
          */
         scheduled_to?: string;
+        display_timezone?: string;
     }
 
     export interface IChangeWorkflowOfLanguageVariantData {

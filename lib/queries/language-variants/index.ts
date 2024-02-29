@@ -5,3 +5,4 @@ export * from './upsert-language-variant-query.class';
 export * from './view-language-variant-query.class';
 export * from './delete-language-variant-query.class';
 export * from './list-language-variants-by-collection-query.class';
+export * from './list-language-variants-by-space-query.class';

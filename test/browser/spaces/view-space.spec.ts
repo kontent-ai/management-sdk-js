@@ -32,9 +32,11 @@ describe('View space', () => {
     it(`space properties should be mapped`, () => {
         const originalItem = viewSpaceJson;
         const Space = response.data;
-
         expect(Space).toEqual(jasmine.any(SpaceModels.Space));
         expect(Space.codename).toEqual(originalItem.codename);
         expect(Space.name).toEqual(originalItem.name);
+        expect(Space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
+        expect(Space.collections).toEqual(originalItem.collections);
+
     });
 });

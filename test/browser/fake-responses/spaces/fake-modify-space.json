@@ -4,6 +4,12 @@
     "codename": "space_1",
     "web_spotlight_root_item": {
         "id":"09d5a63a-49a9-4b77-9e18-54a05441483e"
-    }
+    },
+    "collections": [
+        {
+            "id":"00000000-0000-0000-0000-000000000000"
+        }
+    ]
+
 
     }

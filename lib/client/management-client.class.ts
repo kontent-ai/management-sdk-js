@@ -64,6 +64,7 @@ import {
     ListLanguageVariantsOfContentTypeQuery,
     ListLanguageVariantsOfContentTypeWithComponentsQuery,
     ListLanguageVariantsOfItemQuery,
+    ListLanguageVariantsBySpaceQuery,
     ListTaxonomiesQuery,
     ListWebhooksQuery,
     ListLegacyWebhooksQuery,
@@ -954,6 +955,16 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                 new ListLanguageVariantsByCollectionQuery(config, queryService, identifier)
         );
     }
+
+    listLanguageVariantsBySpace(): SpaceIdentifierQuery<ListLanguageVariantsBySpaceQuery> {
+        return new SpaceIdentifierQuery<ListLanguageVariantsBySpaceQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new ListLanguageVariantsBySpaceQuery(config, queryService, identifier)
+        );
+    }
+
 
     listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
         return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
