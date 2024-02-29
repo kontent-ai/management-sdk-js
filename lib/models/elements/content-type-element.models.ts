@@ -93,7 +93,7 @@ export namespace ContentTypeElements {
         external_id?: string;
         default?: {
             global: {
-                value: 'string';
+                value: string;
             };
         };
     }
