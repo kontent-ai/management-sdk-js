@@ -1004,7 +1004,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async modifyAssetFoldersAsync(
         url: string,
         config: IContentManagementQueryConfig,
-        data: AssetFolderModels.IModifyAssetFoldersData[]
+        data: AssetFolderModels.IModifyAssetFolderData[]
     ): Promise<AssetFolderResponses.ModifyAssetFoldersResponse> {
         return assetFolderMapper.mapModifyAssetFoldersResponse(
             await this.patchResponseAsync<AssetFolderContracts.IModifyAssetFoldersDataResponseContract>(

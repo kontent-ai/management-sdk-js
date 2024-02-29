@@ -10,7 +10,7 @@ export class ModifyAssetFoldersQuery extends BaseQuery<AssetFolderResponses.Modi
     constructor(
         protected config: IManagementClientConfig,
         protected queryService: ManagementQueryService,
-        public data: AssetFolderModels.IModifyAssetFoldersData[]
+        public data: AssetFolderModels.IModifyAssetFolderData[]
     ) {
         super(config, queryService);
     }
