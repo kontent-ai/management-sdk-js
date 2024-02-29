@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.9.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.8.2...v5.9.0) (2024-02-29)
+
+
+### Features
+
+* Add support for collections in spaces ([#141](https://github.com/kontent-ai/management-sdk-js/issues/141)) ([db09550](https://github.com/kontent-ai/management-sdk-js/commit/db09550a3015e3f0ed9a893d0b3eaf9afec1413e))
+* added display_timezone to workflow model ([#136](https://github.com/kontent-ai/management-sdk-js/issues/136)) ([cfc5ef9](https://github.com/kontent-ai/management-sdk-js/commit/cfc5ef92fd9b29d7b772f1c988433c8079dfc7d1))
+* adds support for Webhook headers (fixes https://github.com/kontent-ai/management-sdk-js/issues/139) ([9173a0b](https://github.com/kontent-ai/management-sdk-js/commit/9173a0b3594cb09aab82429588ce73f02db6d641))
+* updates deps ([333db01](https://github.com/kontent-ai/management-sdk-js/commit/333db0135633008351fc19bd254bebd199d09604))
+
+
+### Bug Fixes
+
+* fixes invalid type (https://github.com/kontent-ai/management-sdk-js/issues/140) ([1c68d75](https://github.com/kontent-ai/management-sdk-js/commit/1c68d75145637f7f9a78e75b3eb8c2c5b73d4ca8))
+
 ### [5.8.2](https://github.com/kontent-ai/management-sdk-js/compare/v5.8.1...v5.8.2) (2024-01-29)
 
 
