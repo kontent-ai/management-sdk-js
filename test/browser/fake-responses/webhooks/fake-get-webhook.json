@@ -2,6 +2,12 @@
     "name": "Example",
     "url": "https://example.com",
     "secret": "secret",
+    "headers": [
+      {
+        "key": "x",
+        "value": "y"
+      }
+    ],
     "delivery_triggers": {
       "slot": "published",
       "events": "specific",

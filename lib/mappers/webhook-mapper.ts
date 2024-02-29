@@ -116,6 +116,7 @@ export class WebhookMapper extends BaseMapper {
             lastModified: rawWebhook.last_modified ? new Date(rawWebhook.last_modified) : undefined,
             healthStatus: rawWebhook.health_status as WebhookModels.WebhookHealthStatus,
             enabled: rawWebhook.enabled,
+            headers: rawWebhook.headers,
             secret: rawWebhook.secret,
             deliveryTriggers: {
                 slot: rawWebhook.delivery_triggers.slot,

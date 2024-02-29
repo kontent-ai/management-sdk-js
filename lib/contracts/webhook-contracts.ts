@@ -105,6 +105,11 @@ export namespace WebhookContracts {
         };
     }
 
+    export interface IWebhookHeaderContract {
+        key: string;
+        value: string;
+    }
+
     export interface IWebhookContract {
         id: string;
         name: string;
@@ -112,6 +117,7 @@ export namespace WebhookContracts {
         url: string;
         last_modified?: string;
         enabled?: boolean;
+        headers?: IWebhookHeaderContract[];
         health_status?: string;
         delivery_triggers: {
             slot: WebhookDeliveryTriggerSlot;

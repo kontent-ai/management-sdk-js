@@ -28,7 +28,6 @@ export namespace WebhookModels {
     export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
     export type WebhookHealthStatus = 'unknown' | 'working' | 'failing' | 'dead';
 
-
     export interface IAddLegacyWebhookData {
         name: string;
         secret: string;
@@ -103,7 +102,11 @@ export namespace WebhookModels {
         public actions?: WebhookContracts.IContentItemActions[];
         public filters?: WebhookContracts.IContentItemFilters;
 
-        constructor(data: { enabled: boolean; actions?: WebhookContracts.IContentItemActions[]; filters?: WebhookContracts.IContentItemFilters;}) {
+        constructor(data: {
+            enabled: boolean;
+            actions?: WebhookContracts.IContentItemActions[];
+            filters?: WebhookContracts.IContentItemFilters;
+        }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
             this.filters = data.filters;
@@ -164,6 +167,11 @@ export namespace WebhookModels {
         }
     }
 
+    export interface IWebhookHeader {
+        key: string;
+        value: string;
+    }
+
     export class Webhook implements SharedModels.IBaseModel<WebhookContracts.IWebhookContract> {
         public id: string;
         public name: string;
@@ -172,6 +180,7 @@ export namespace WebhookModels {
         public enabled?: boolean;
         public lastModified?: Date;
         public healthStatus?: WebhookHealthStatus;
+        public headers?: IWebhookHeader[];
         public deliveryTriggers: {
             slot: WebhookDeliveryTriggerSlots;
             events: WebhookDeliveryTriggersEvents;
@@ -191,6 +200,7 @@ export namespace WebhookModels {
             enabled?: boolean;
             lastModified?: Date;
             healthStatus?: WebhookHealthStatus;
+            headers?: IWebhookHeader[];
             deliveryTriggers: {
                 slot: WebhookDeliveryTriggerSlots;
                 events: WebhookDeliveryTriggersEvents;
@@ -210,6 +220,7 @@ export namespace WebhookModels {
             this.healthStatus = data.healthStatus;
             this.deliveryTriggers = data.deliveryTriggers;
             this.enabled = data.enabled;
+            this.headers = data.headers;
             this._raw = data._raw;
         }
     }

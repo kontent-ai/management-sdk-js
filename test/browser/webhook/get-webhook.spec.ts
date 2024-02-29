@@ -39,6 +39,11 @@ describe('Get webhook', () => {
         expect(webhook.lastModified).toEqual(undefined);
         expect(webhook.url).toEqual(originalItem.url);
         expect(webhook.deliveryTriggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
+        expect(webhook.headers).toEqual([{
+            key: 'x',
+            value: 'y'
+        }]);
+
         expect(webhook.deliveryTriggers.contentItem).toEqual(
             jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem)
         );
