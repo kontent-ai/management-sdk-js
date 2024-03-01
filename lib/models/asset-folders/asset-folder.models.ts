@@ -2,7 +2,6 @@ import { AssetFolderContracts } from '../../contracts';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace AssetFolderModels {
-
     export class AssetFolder implements SharedModels.IBaseModel<AssetFolderContracts.IAssetFolderContract> {
         public id: string;
         public name: string;
@@ -25,30 +24,43 @@ export namespace AssetFolderModels {
         }
     }
 
-    export interface IAddOrModifyAssetFolderData {
+    export interface IAssetFolderValue {
         name: string;
-        folders: IAddOrModifyAssetFolderData[];
+        folders: IAssetFolderValue[];
         external_id?: string;
     }
 
     export interface IAddAssetFoldersData {
-        folders: IAddOrModifyAssetFolderData[];
+        folders: IAssetFolderValue[];
     }
 
-    export interface IModifyAssetFoldersData {
-        op: 'addInto' | 'remove' | 'rename';
-        value?: IAddOrModifyAssetFolderData;
-        after?: {
-            external_id?: string;
-            id?: string;
-        };
-        before?: {
-            external_id?: string;
-            id?: string;
-        };
+    export type IModifyAssetFolderData = AddIntoOperation | RemoveOperation | RenameOperation;
+
+    export type AddIntoOperation = {
+        op: 'addInto';
         reference?: {
-            external_id?: string;
             id?: string;
+            external_id?: string;
         };
-    }
+        value: IAssetFolderValue;
+        before?: {
+            id?: string;
+            external_id?: string;
+        };
+        after?: {
+            id?: string;
+            external_id?: string;
+        };
+    };
+
+    export type RemoveOperation = {
+        op: 'remove';
+        reference: SharedModels.ReferenceObject;
+    };
+
+    export type RenameOperation = {
+        op: 'rename';
+        reference: SharedModels.ReferenceObject;
+        value: string;
+    };
 }

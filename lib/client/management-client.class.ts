@@ -1113,8 +1113,8 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]> {
-        return new DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]>(
+    modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFolderData[]> {
+        return new DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFolderData[]>(
             this.config,
             this.queryService,
             (config, queryService, data) => new ModifyAssetFoldersQuery(config, queryService, data)

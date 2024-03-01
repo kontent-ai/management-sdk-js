@@ -571,7 +571,7 @@ export interface IManagementClient<TCancelToken> {
     /**
      * Query to modify asset folders
      */
-    modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFoldersData[]>;
+    modifyAssetFolders(): DataQuery<ModifyAssetFoldersQuery, AssetFolderModels.IModifyAssetFolderData[]>;
 
     /**
      * Query to list collections
