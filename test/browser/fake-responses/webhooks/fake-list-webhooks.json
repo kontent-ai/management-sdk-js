@@ -1,34 +1,81 @@
 [
-    {
-      "last_modified": "2019-09-18T12:13:19.0256989Z",
-      "id": "d53360f7-79e1-42f4-a524-1b53a417d03e",
-      "name": "Example",
-      "url": "https://example.com",
-      "secret": "secret",
-      "delivery_triggers": {
-        "slot": "published",
-        "events": "specific",
-        "content_type": {
-          "enabled": true,
-          "actions": ["created"]
-        },
-        "asset": {
-          "enabled":true,
-          "actions": ["created"]
-        },
-        "taxonomy": {
-          "enabled":true,
-          "actions": ["created"]
-        },
-        "language": {
-          "enabled": true,
-          "actions": ["created"]
-        },
-        "content_item": {
-          "enabled": true,
-          "actions": ["created"]
+  {
+    "last_modified": "2019-09-18T12:13:19.0256989Z",
+    "id": "d53360f7-79e1-42f4-a524-1b53a417d03e",
+    "name": "Example",
+    "url": "https://example.com",
+    "secret": "secret",
+    "delivery_triggers": {
+      "slot": "published",
+      "events": "specific",
+      "content_type": {
+        "enabled": true,
+        "actions": [
+          "created"
+        ],
+        "filters": {
+          "content_type": [
+            {
+              "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0"
+            }
+          ]
         }
-  
+      },
+      "asset": {
+        "enabled": true,
+        "actions": [
+          "created"
+        ]
+      },
+      "taxonomy": {
+        "enabled": true,
+        "actions": [
+          "created"
+        ],
+        "filters": {
+          "taxonomies": [
+            {
+              "id": "x"
+            }
+          ]
+        }
+      },
+      "language": {
+        "enabled": true,
+        "actions": [
+          "created"
+        ],
+        "filters": {
+          "languages": [
+            {
+              "id": "2ea66788-d3b8-5ff5-b37e-258502e4fd5d"
+            }
+          ]
+        }
+      },
+      "content_item": {
+        "enabled": true,
+        "actions": [
+          "created"
+        ],
+        "filters": {
+          "collections": [
+            {
+              "id": "00000000-0000-0000-0000-000000000000"
+            }
+          ],
+          "content_types": [
+            {
+              "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0"
+            }
+          ],
+          "languages": [
+            {
+              "id": "00000000-0000-0000-0000-000000000000"
+            }
+          ]
+        }
       }
     }
-  ]
+  }
+]

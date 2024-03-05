@@ -130,19 +130,22 @@ export class WebhookMapper extends BaseMapper {
                 contentType: rawWebhook.delivery_triggers.content_type
                     ? new WebhookModels.WebhookDeliveryTriggersContentType({
                           enabled: rawWebhook.delivery_triggers.content_type.enabled,
-                          actions: rawWebhook.delivery_triggers.content_type.actions
+                          actions: rawWebhook.delivery_triggers.content_type.actions,
+                          filters: rawWebhook.delivery_triggers.content_type.filters
                       })
                     : undefined,
                 taxonomy: rawWebhook.delivery_triggers.taxonomy
                     ? new WebhookModels.WebhookDeliveryTriggersTaxonomy({
                           enabled: rawWebhook.delivery_triggers.taxonomy.enabled,
-                          actions: rawWebhook.delivery_triggers.taxonomy.actions
+                          actions: rawWebhook.delivery_triggers.taxonomy.actions,
+                          filters: rawWebhook.delivery_triggers.taxonomy.filters
                       })
                     : undefined,
                 language: rawWebhook.delivery_triggers.language
                     ? new WebhookModels.WebhookDeliveryTriggersLanguage({
                           enabled: rawWebhook.delivery_triggers.language.enabled,
-                          actions: rawWebhook.delivery_triggers.language.actions
+                          actions: rawWebhook.delivery_triggers.language.actions,
+                          filters: rawWebhook.delivery_triggers.language.filters
                       })
                     : undefined,
                 contentItem: rawWebhook.delivery_triggers.content_item

@@ -1,36 +1,83 @@
 {
-    "name": "Example",
-    "url": "https://example.com",
-    "secret": "secret",
-    "headers": [
-      {
-        "key": "x",
-        "value": "y"
+  "name": "Example",
+  "url": "https://example.com",
+  "secret": "secret",
+  "headers": [
+    {
+      "key": "x",
+      "value": "y"
+    }
+  ],
+  "delivery_triggers": {
+    "slot": "published",
+    "events": "specific",
+    "content_type": {
+      "enabled": true,
+      "actions": [
+        "created"
+      ],
+      "filters": {
+        "content_type": [
+          {
+            "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0"
+          }
+        ]
       }
-    ],
-    "delivery_triggers": {
-      "slot": "published",
-      "events": "specific",
-      "content_type": {
-        "enabled": true,
-        "actions": ["created"]
-      },
-      "asset": {
-        "enabled":true,
-        "actions": ["created"]
-      },
-      "taxonomy": {
-        "enabled":true,
-        "actions": ["created"]
-      },
-      "language": {
-        "enabled": true,
-        "actions": ["created"]
-      },
-      "content_item": {
-        "enabled": true,
-        "actions": ["created"]
+    },
+    "asset": {
+      "enabled": true,
+      "actions": [
+        "created"
+      ]
+    },
+    "taxonomy": {
+      "enabled": true,
+      "actions": [
+        "created"
+      ],
+      "filters": {
+        "taxonomies": [
+          {
+            "id": "x"
+          }
+        ]
       }
-
+    },
+    "language": {
+      "enabled": true,
+      "actions": [
+        "created"
+      ],
+      "filters": {
+        "languages": [
+          {
+            "id": "2ea66788-d3b8-5ff5-b37e-258502e4fd5d"
+          }
+        ]
+      }
+    },
+    "content_item": {
+      "enabled": true,
+      "actions": [
+        "created"
+      ],
+      "filters": {
+        "collections": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000"
+          }
+        ],
+        "content_types": [
+          {
+            "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0"
+          }
+        ],
+        "languages": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      }
     }
   }
+}

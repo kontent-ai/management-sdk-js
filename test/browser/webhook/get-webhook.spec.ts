@@ -54,5 +54,8 @@ describe('Get webhook', () => {
         expect(webhook.deliveryTriggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
         expect(webhook.deliveryTriggers.slot).toEqual(originalItem.delivery_triggers.slot);
         expect(webhook.deliveryTriggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
+        expect(webhook.deliveryTriggers.contentItem).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem));
+        expect(webhook.deliveryTriggers.contentType).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType));
+
     });
 });
