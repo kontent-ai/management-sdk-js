@@ -26,19 +26,34 @@ export namespace ContentTypeElements {
     export type RichTextallowedImageType = 'adjustable' | 'any';
     export type RichTextMaximumLengthAppliesTo = 'words' | 'characters';
 
-    export interface IElementShared {
+    export type Element =
+        | IAssetElement
+        | ICustomElement
+        | IDateTimeElement
+        | IGuidelinesElement
+        | ILinkedItemsElement
+        | ISubpagesElement
+        | IMultipleChoiceElement
+        | INumberElement
+        | IRichTextElement
+        | ISnippetElement
+        | ITaxonomyElement
+        | ITextElement
+        | IUrlSlugElement;
+        
+    interface IBaseElement {
         type: ElementModels.ElementType;
         content_group?: SharedContracts.IReferenceObjectContract;
         id?: string;
         codename?: string;
     }
 
-    export interface IContentGroup extends IElementShared {
+    export interface IContentGroup extends IBaseElement {
         name: string;
         external_id?: string;
     }
 
-    export interface IAssetElementData extends IElementShared {
+    export interface IAssetElementData extends IBaseElement {
         name: string;
         type: 'asset';
         external_id?: string;
@@ -66,13 +81,13 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface ISnippetElementData extends IElementShared {
+    export interface ISnippetElementData extends IBaseElement {
         snippet: SharedContracts.IReferenceObjectContract;
         type: 'snippet';
         external_id?: string;
     }
 
-    export interface ICustomElementData extends IElementShared {
+    export interface ICustomElementData extends IBaseElement {
         name: string;
         type: 'custom';
         source_url: string;
@@ -84,7 +99,7 @@ export namespace ContentTypeElements {
         allowed_elements?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface IDateTimeElementData extends IElementShared {
+    export interface IDateTimeElementData extends IBaseElement {
         name: string;
         type: 'date_time';
         is_required?: boolean;
@@ -98,13 +113,13 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface IGuidelinesElementData extends IElementShared {
+    export interface IGuidelinesElementData extends IBaseElement {
         guidelines: string;
         type: 'guidelines';
         external_id?: string;
     }
 
-    export interface ILinkedItemsElementData extends IElementShared {
+    export interface ILinkedItemsElementData extends IBaseElement {
         item_count_limit?: {
             value: number;
             condition: 'at_most' | 'exactly' | 'at_least';
@@ -123,7 +138,7 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface ISubpagesElementData extends IElementShared {
+    export interface ISubpagesElementData extends IBaseElement {
         item_count_limit?: {
             value: number;
             condition: 'at_most' | 'exactly' | 'at_least';
@@ -144,7 +159,7 @@ export namespace ContentTypeElements {
         external_id?: string;
     }
 
-    export interface IMultipleChoiceElementData extends IElementShared {
+    export interface IMultipleChoiceElementData extends IBaseElement {
         mode: 'single' | 'multiple';
         options: IMultipleChoiceOption[];
         name: string;
@@ -160,7 +175,7 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface INumberElementData extends IElementShared {
+    export interface INumberElementData extends IBaseElement {
         name: string;
         type: 'number';
         is_required?: boolean;
@@ -174,7 +189,7 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface IRichTextElementData extends IElementShared {
+    export interface IRichTextElementData extends IBaseElement {
         maximum_text_length?: {
             value: number;
             applies_to: RichTextMaximumLengthAppliesTo;
@@ -205,7 +220,7 @@ export namespace ContentTypeElements {
         allowed_table_formatting?: RichTextAllowedFormatting[];
     }
 
-    export interface ITaxonomyElementData extends IElementShared {
+    export interface ITaxonomyElementData extends IBaseElement {
         name?: string;
         taxonomy_group: SharedContracts.IReferenceObjectContract;
         guidelines?: string;
@@ -224,7 +239,7 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface ITextElementData extends IElementShared {
+    export interface ITextElementData extends IBaseElement {
         name: string;
         type: 'text';
         is_required?: boolean;
@@ -248,7 +263,7 @@ export namespace ContentTypeElements {
         };
     }
 
-    export interface IUrlSlugElementData extends IElementShared {
+    export interface IUrlSlugElementData extends IBaseElement {
         depends_on: {
             element: SharedContracts.IReferenceObjectContract;
             snippet?: SharedContracts.IReferenceObjectContract;
@@ -268,32 +283,31 @@ export namespace ContentTypeElements {
         };
     }
 
+    export interface IAssetElement extends IAssetElementData {}
 
-    export interface IAssetElement extends  IAssetElementData {}
+    export interface ICustomElement extends ICustomElementData {}
 
-    export interface ICustomElement extends  ICustomElementData {}
+    export interface IDateTimeElement extends IDateTimeElementData {}
 
-    export interface IDateTimeElement extends  IDateTimeElementData {}
+    export interface IGuidelinesElement extends IGuidelinesElementData {}
 
-    export interface IGuidelinesElement extends  IGuidelinesElementData {}
+    export interface ILinkedItemsElement extends ILinkedItemsElementData {}
 
-    export interface ILinkedItemsElement extends  ILinkedItemsElementData {}
+    export interface ISubpagesElement extends ISubpagesElementData {}
 
-    export interface ISubpagesElement extends  ISubpagesElementData {}
+    export interface IMultipleChoiceElement extends IMultipleChoiceElementData {}
 
-    export interface IMultipleChoiceElement extends  IMultipleChoiceElementData {}
+    export interface INumberElement extends INumberElementData {}
 
-    export interface INumberElement extends  INumberElementData {}
+    export interface IRichTextElement extends IRichTextElementData {}
 
-    export interface IRichTextElement extends  IRichTextElementData {}
+    export interface ISnippetElement extends ISnippetElementData {}
 
-    export interface ISnippetElement extends  ISnippetElementData {}
+    export interface ITaxonomyElement extends ITaxonomyElementData {}
 
-    export interface ITaxonomyElement extends  ITaxonomyElementData {}
+    export interface ITextElement extends ITextElementData {}
 
-    export interface ITextElement extends  ITextElementData {}
-
-    export interface IUrlSlugElement extends  IUrlSlugElementData {}
+    export interface IUrlSlugElement extends IUrlSlugElementData {}
 
     export type ContentTypeElementModel =
         | IAssetElement
