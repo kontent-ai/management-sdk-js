@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.9.0...v6.0.0) (2024-03-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* change element types to discriminated union. Renames `IElementShared ` to `Element ` and changes it to type instead of interface (#144)
+
+### Features
+
+* add new webhook filters ([#143](https://github.com/kontent-ai/management-sdk-js/issues/143)) ([ae43650](https://github.com/kontent-ai/management-sdk-js/commit/ae436505d53b73b3a9141e6db6d46dbc5f943d24))
+* change element types to discriminated union. Renames `IElementShared ` to `Element ` and changes it to type instead of interface ([#144](https://github.com/kontent-ai/management-sdk-js/issues/144)) ([7d35f3e](https://github.com/kontent-ai/management-sdk-js/commit/7d35f3ea79435b1019fe0d06927f5c29aac005a5))
+* change the folder patch operation type into a discriminated union ([#142](https://github.com/kontent-ai/management-sdk-js/issues/142)) ([6994c3a](https://github.com/kontent-ai/management-sdk-js/commit/6994c3a0ba691805a0263824fe08771612b126cb))
+* updates dev deps ([d9a7873](https://github.com/kontent-ai/management-sdk-js/commit/d9a7873b703a650e76f3cc5c9b24c371ca48a242))
+
 ## [5.9.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.8.2...v5.9.0) (2024-02-29)
 
 
