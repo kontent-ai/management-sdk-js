@@ -64,7 +64,7 @@ export namespace ContentTypeModels {
 
     export interface IAddContentTypeData {
         name: string;
-        elements: ContentTypeElements.IElementShared[];
+        elements: ContentTypeElements.Element[];
 
         external_id?: string;
         codename?: string;

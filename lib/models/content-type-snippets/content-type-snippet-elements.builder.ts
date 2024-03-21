@@ -45,7 +45,7 @@ export class ContentTypeSnippetElements {
         return element;
     }
 
-    any<TElementData extends ContentTypeElements.IElementShared>(element: TElementData): TElementData {
+    any<TElementData extends ContentTypeElements.Element>(element: TElementData): TElementData {
         return element;
     }
 }
