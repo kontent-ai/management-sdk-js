@@ -65,8 +65,8 @@
     "devDependencies": {
         "@types/jasmine": "5.1.4",
         "@types/mime": "3.0.4",
-        "@types/node": "20.11.22",
-        "core-js": "3.36.0",
+        "@types/node": "20.11.30",
+        "core-js": "3.36.1",
         "jasmine-core": "5.1.2",
         "jasmine-spec-reporter": "7.0.0",
         "karma": "6.4.3",
@@ -83,11 +83,11 @@
         "standard-version": "9.5.0",
         "ts-loader": "9.5.1",
         "ts-node": "10.9.2",
-        "@typescript-eslint/eslint-plugin": "7.1.0",
-        "@typescript-eslint/parser": "7.1.0",
+        "@typescript-eslint/eslint-plugin": "7.3.1",
+        "@typescript-eslint/parser": "7.3.1",
         "eslint": "8.57.0",
         "typescript": "5.2.2",
-        "webpack": "5.90.3",
+        "webpack": "5.91.0",
         "webpack-bundle-analyzer": "4.10.1",
         "webpack-cli": "5.1.4"
     }
