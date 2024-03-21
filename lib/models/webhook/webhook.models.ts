@@ -60,10 +60,12 @@ export namespace WebhookModels {
     export class WebhookDeliveryTriggersContentType {
         public enabled: boolean;
         public actions?: WebhookContentTypeActions[];
+        public filters?: WebhookContracts.IContentTypeFilters[];
 
-        constructor(data: { enabled: boolean; actions?: WebhookContentTypeActions[] }) {
+        constructor(data: { enabled: boolean; actions?: WebhookContentTypeActions[]; filters?: WebhookContracts.IContentTypeFilters[]}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
+            this.filters = data.filters;
         }
     }
 
@@ -80,20 +82,24 @@ export namespace WebhookModels {
     export class WebhookDeliveryTriggersTaxonomy {
         public enabled: boolean;
         public actions?: WebhookTaxonomyActions[];
+        public filters?: WebhookContracts.ITaxonomyFilters[];
 
-        constructor(data: { enabled: boolean; actions?: WebhookTaxonomyActions[] }) {
+        constructor(data: { enabled: boolean; actions?: WebhookTaxonomyActions[]; filters?: WebhookContracts.ITaxonomyFilters[];}) {
             this.enabled = data.enabled;
             this.actions = data.actions;
+            this.filters = data.filters;
         }
     }
 
     export class WebhookDeliveryTriggersLanguage {
         public enabled: boolean;
         public actions?: WebhookLanguageActions[];
+        public filters?: WebhookContracts.ILanguageFilters[];
 
-        constructor(data: { enabled: boolean; actions?: WebhookLanguageActions[] }) {
+        constructor(data: { enabled: boolean; actions?: WebhookLanguageActions[]; filters?: WebhookContracts.ILanguageFilters[]; }) {
             this.enabled = data.enabled;
             this.actions = data.actions;
+            this.filters = data.filters;
         }
     }
 

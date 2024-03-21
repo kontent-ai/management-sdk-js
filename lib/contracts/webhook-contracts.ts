@@ -55,6 +55,7 @@ export namespace WebhookContracts {
     export interface IWebhookContentTypeContract {
         enabled: boolean;
         actions?: WebhookContentTypeAction[];
+        filters?: IContentTypeFilters[];
     }
 
     export interface IWebhookAssetContract {
@@ -65,11 +66,13 @@ export namespace WebhookContracts {
     export interface IWebhookTaxonomyContract {
         enabled: boolean;
         actions?: WebhookTaxonomyAction[];
+        filters?: ITaxonomyFilters[];
     }
 
     export interface IWebhookLanguageContract {
         enabled: boolean;
         actions?: WebhookLanguageAction[];
+        filters?: ILanguageFilters[];
     }
 
     export interface IContentItemFilters {
@@ -77,6 +80,19 @@ export namespace WebhookContracts {
         content_types?: SharedContracts.IReferenceObjectContract[];
         languages?: SharedContracts.IReferenceObjectContract[];
     }
+
+    export interface IContentTypeFilters{
+        content_types?: SharedContracts.IReferenceObjectContract[];
+    }
+
+    export interface ITaxonomyFilters{
+        taxonomies?: SharedContracts.IReferenceObjectContract[];
+    }
+
+    export interface ILanguageFilters{
+        languages?: SharedContracts.IReferenceObjectContract[];
+    }
+
     export interface IContentItemActions {
         action: WebhookContentItemAction;
         transition_to: {

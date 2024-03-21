@@ -13,7 +13,35 @@ describe('Add webhook', () => {
                 secret: 'x',
                 delivery_triggers: {
                     slot: 'published',
-                    events: 'all'
+                    events: 'all',
+                    content_type: { enabled: false },
+                    asset: { enabled: true, actions: ['metadata_changed', 'created'] },
+                    content_item: {
+                        enabled: true,
+                        actions: [
+                            {
+                                action: 'published',
+                                transition_to: {
+                                    workflow_identifier: {
+                                        codename: 'x'
+                                    },
+                                    step_identifier: {
+                                        codename: 'z'
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    language: {
+                        enabled: true,
+                        actions: ['changed'],
+                        filters: [{ languages: [{ codename: 'y' }] }]
+                    },
+                    taxonomy: {
+                        enabled: true,
+                        actions: ['term_changed'],
+                        filters: [{ taxonomies: [{ codename: 'z' }] }]
+                    }
                 },
                 url: 's'
             })
