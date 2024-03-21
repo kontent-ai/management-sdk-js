@@ -31,7 +31,7 @@ export namespace ContentTypeSnippetModels {
 
     export interface IAddContentTypeSnippetData {
         name: string;
-        elements: ContentTypeElements.IElementShared[];
+        elements: ContentTypeElements.Element[];
 
         external_id?: string;
         codename?: string;
