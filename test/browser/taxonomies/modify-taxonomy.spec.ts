@@ -16,6 +16,15 @@ describe('Modify taxonomy', () => {
                         name: 'name',
                         terms: []
                     }
+                },
+                {
+                    op: 'move',
+                    reference: {
+                        codename: 'z'
+                    },
+                    under: {
+                        codename: 'y'
+                    }
                 }
             ])
             .toPromise();
@@ -41,7 +50,9 @@ describe('Modify taxonomy', () => {
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/codename/xCodename`
         );
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/xInternalId`);
+        expect(internalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/xInternalId`
+        );
         expect(externalIdUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/external-id/xExternalId`
         );

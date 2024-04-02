@@ -2,7 +2,7 @@ import { SharedModels } from '../shared/shared-models';
 import { TaxonomyContracts } from '../../contracts';
 
 export namespace TaxonomyModels {
-    export type ModifyTaxonomyTypeOperation = 'addInto' | 'remove' | 'replace';
+    export type ModifyTaxonomyTypeOperation = 'addInto' | 'remove' | 'replace' | 'move';
 
     export interface IModifyTaxonomyData {
         op: ModifyTaxonomyTypeOperation;
@@ -12,6 +12,7 @@ export namespace TaxonomyModels {
 
         before?: SharedModels.IReferenceObject;
         after?: SharedModels.IReferenceObject;
+        under?: SharedModels.IReferenceObject;
     }
 
     export class Taxonomy implements SharedModels.IBaseModel<TaxonomyContracts.ITaxonomyContract> {

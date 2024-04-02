@@ -3,11 +3,11 @@ import { ContentTypeElements } from '../elements/content-type-element.models';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentTypeSnippetModels {
-
-    export type ModifyContentTypeSnippetOperation = 'addInto' | 'remove' | 'replace';
+    export type ModifyContentTypeSnippetOperation = 'addInto' | 'remove' | 'replace' | 'move';
 
     export class ContentTypeSnippet
-        implements SharedModels.IBaseModel<ContentTypeSnippetContracts.IContentTypeSnippetContract> {
+        implements SharedModels.IBaseModel<ContentTypeSnippetContracts.IContentTypeSnippetContract>
+    {
         public id!: string;
         public name!: string;
         public codename!: string;

@@ -3,7 +3,7 @@ import { ContentTypeElements } from '../elements/content-type-element.models';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace ContentTypeModels {
-    export type ModifyContentTypeOperation = 'addInto' | 'remove' | 'replace';
+    export type ModifyContentTypeOperation = 'addInto' | 'remove' | 'replace' | 'move';
 
     export interface IModifyContentTypeData {
         op: ModifyContentTypeOperation;
