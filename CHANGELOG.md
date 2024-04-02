@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v6.0.0...v6.1.0) (2024-04-02)
+
+
+### Features
+
+* adds support for `move` operation type, adds support for `under` taxonomy modification prop (fixes https://github.com/kontent-ai/management-sdk-js/issues/146) ([e70be03](https://github.com/kontent-ai/management-sdk-js/commit/e70be030bb856cb399c5f682be777671add4f920))
+
 ## [6.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v5.9.0...v6.0.0) (2024-03-21)
 
 
