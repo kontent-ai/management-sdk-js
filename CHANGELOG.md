@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [6.2.1](https://github.com/kontent-ai/management-sdk-js/compare/v6.2.0...v6.2.1) (2024-05-07)
 
+### Bug Fixes
+
+* Fixes invalid `filter` types in webhooks
+* Adds missing `headers` property to webhook data model
+
 ## [6.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v6.1.0...v6.2.0) (2024-04-29)
 
 
