@@ -35,12 +35,12 @@ describe('Add webhook', () => {
                     language: {
                         enabled: true,
                         actions: ['changed'],
-                        filters: [{ languages: [{ codename: 'y' }] }]
+                        filters: { languages: [{ codename: 'y' }] }
                     },
                     taxonomy: {
                         enabled: true,
                         actions: ['term_changed'],
-                        filters: [{ taxonomies: [{ codename: 'z' }] }]
+                        filters: { taxonomies: [{ codename: 'z' }] }
                     }
                 },
                 url: 's'

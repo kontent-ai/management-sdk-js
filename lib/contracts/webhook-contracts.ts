@@ -55,7 +55,7 @@ export namespace WebhookContracts {
     export interface IWebhookContentTypeContract {
         enabled: boolean;
         actions?: WebhookContentTypeAction[];
-        filters?: IContentTypeFilters[];
+        filters?: IContentTypeFilters;
     }
 
     export interface IWebhookAssetContract {
@@ -66,13 +66,13 @@ export namespace WebhookContracts {
     export interface IWebhookTaxonomyContract {
         enabled: boolean;
         actions?: WebhookTaxonomyAction[];
-        filters?: ITaxonomyFilters[];
+        filters?: ITaxonomyFilters;
     }
 
     export interface IWebhookLanguageContract {
         enabled: boolean;
         actions?: WebhookLanguageAction[];
-        filters?: ILanguageFilters[];
+        filters?: ILanguageFilters;
     }
 
     export interface IContentItemFilters {
