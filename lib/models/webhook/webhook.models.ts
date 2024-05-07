@@ -44,8 +44,9 @@ export namespace WebhookModels {
         name: string;
         secret: string;
         url: string;
-        last_modified?: string;
         enabled?: boolean;
+        headers?: IWebhookHeader[];
+
         delivery_triggers: {
             slot: WebhookDeliveryTriggerSlots;
             events: WebhookDeliveryTriggersEvents;

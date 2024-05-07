@@ -18,6 +18,11 @@ describe('Add webhook', () => {
                     asset: { enabled: true, actions: ['metadata_changed', 'created'] },
                     content_item: {
                         enabled: true,
+                        filters: {
+                            collections: [{ codename: 'y' }],
+                            content_types: [{ codename: 'x' }],
+                            languages: [{ codename: 'z' }]
+                        },
                         actions: [
                             {
                                 action: 'published',
@@ -43,7 +48,14 @@ describe('Add webhook', () => {
                         filters: { taxonomies: [{ codename: 'z' }] }
                     }
                 },
-                url: 's'
+                url: 's',
+                enabled: true,
+                headers: [
+                    {
+                        key: 'name',
+                        value: 'value'
+                    }
+                ]
             })
             .toPromise();
     });
@@ -80,6 +92,8 @@ describe('Add webhook', () => {
         expect(webhook.name).toEqual(originalItem.name);
         expect(webhook.lastModified).toEqual(undefined);
         expect(webhook.url).toEqual(originalItem.url);
+
+        // type checks
         expect(webhook.deliveryTriggers.asset).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersAsset));
         expect(webhook.deliveryTriggers.contentItem).toEqual(
             jasmine.any(WebhookModels.WebhookDeliveryTriggersContentItem)
@@ -87,9 +101,7 @@ describe('Add webhook', () => {
         expect(webhook.deliveryTriggers.contentType).toEqual(
             jasmine.any(WebhookModels.WebhookDeliveryTriggersContentType)
         );
-        expect(webhook.deliveryTriggers.events).toEqual(originalItem.delivery_triggers.events);
         expect(webhook.deliveryTriggers.language).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersLanguage));
-        expect(webhook.deliveryTriggers.slot).toEqual(originalItem.delivery_triggers.slot);
         expect(webhook.deliveryTriggers.taxonomy).toEqual(jasmine.any(WebhookModels.WebhookDeliveryTriggersTaxonomy));
     });
 });

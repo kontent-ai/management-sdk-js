@@ -81,21 +81,21 @@ export namespace WebhookContracts {
         languages?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface IContentTypeFilters{
+    export interface IContentTypeFilters {
         content_types?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface ITaxonomyFilters{
+    export interface ITaxonomyFilters {
         taxonomies?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface ILanguageFilters{
+    export interface ILanguageFilters {
         languages?: SharedContracts.IReferenceObjectContract[];
     }
 
     export interface IContentItemActions {
         action: WebhookContentItemAction;
-        transition_to: {
+        transition_to?: {
             workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
             step_identifier: SharedContracts.ICodenameIdReferenceContract;
         };
