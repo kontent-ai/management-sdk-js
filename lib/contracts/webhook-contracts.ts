@@ -55,7 +55,7 @@ export namespace WebhookContracts {
     export interface IWebhookContentTypeContract {
         enabled: boolean;
         actions?: WebhookContentTypeAction[];
-        filters?: IContentTypeFilters[];
+        filters?: IContentTypeFilters;
     }
 
     export interface IWebhookAssetContract {
@@ -66,13 +66,13 @@ export namespace WebhookContracts {
     export interface IWebhookTaxonomyContract {
         enabled: boolean;
         actions?: WebhookTaxonomyAction[];
-        filters?: ITaxonomyFilters[];
+        filters?: ITaxonomyFilters;
     }
 
     export interface IWebhookLanguageContract {
         enabled: boolean;
         actions?: WebhookLanguageAction[];
-        filters?: ILanguageFilters[];
+        filters?: ILanguageFilters;
     }
 
     export interface IContentItemFilters {
@@ -81,21 +81,21 @@ export namespace WebhookContracts {
         languages?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface IContentTypeFilters{
+    export interface IContentTypeFilters {
         content_types?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface ITaxonomyFilters{
+    export interface ITaxonomyFilters {
         taxonomies?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface ILanguageFilters{
+    export interface ILanguageFilters {
         languages?: SharedContracts.IReferenceObjectContract[];
     }
 
     export interface IContentItemActions {
         action: WebhookContentItemAction;
-        transition_to: {
+        transition_to?: {
             workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
             step_identifier: SharedContracts.ICodenameIdReferenceContract;
         };
