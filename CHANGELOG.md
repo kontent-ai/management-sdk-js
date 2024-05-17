@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v6.2.1...v6.3.0) (2024-05-17)
+
+
+### Features
+
+* Adds `elements` property to asset model ([a07f051](https://github.com/kontent-ai/management-sdk-js/commit/a07f051b0b69ead167b0a90e53edb990d65287d5))
+
 ### [6.2.1](https://github.com/kontent-ai/management-sdk-js/compare/v6.2.0...v6.2.1) (2024-05-07)
 
 ### Bug Fixes
