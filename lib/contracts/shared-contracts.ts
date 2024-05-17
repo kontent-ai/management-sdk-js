@@ -1,5 +1,4 @@
 export namespace SharedContracts {
-
     export interface IPaginationModelContract {
         continuation_token: string | null;
         next_page: string | null;
@@ -15,6 +14,10 @@ export namespace SharedContracts {
         codename?: string;
     }
 
+    export interface IIdReferenceContract {
+        id: string;
+    }
+
     export interface IValidationErrorContract {
         message: string;
     }
@@ -26,6 +29,5 @@ export namespace SharedContracts {
         validation_errors?: IValidationErrorContract[];
     }
 
-    export interface IEmptyResponseContract {
-    }
+    export interface IEmptyResponseContract {}
 }

@@ -10,7 +10,7 @@ export class AssetsMapper extends BaseMapper {
         response: IResponse<AssetContracts.IAssetsListingResponseContract>
     ): AssetResponses.AssetsListResponse {
         const pagination = super.mapPagination(response.data.pagination);
-        const items = response.data.assets.map(m => this.mapAsset(m));
+        const items = response.data.assets.map((m) => this.mapAsset(m));
 
         return new AssetResponses.AssetsListResponse(super.mapResponseDebug(response), response.data, {
             pagination: pagination,
@@ -18,9 +18,7 @@ export class AssetsMapper extends BaseMapper {
         });
     }
 
-    mapViewAssetResponse(
-        response: IResponse<AssetContracts.IAssetModelContract>
-    ): AssetResponses.ViewAssetResponse {
+    mapViewAssetResponse(response: IResponse<AssetContracts.IAssetModelContract>): AssetResponses.ViewAssetResponse {
         return new AssetResponses.ViewAssetResponse(
             super.mapResponseDebug(response),
             response.data,
@@ -68,9 +66,7 @@ export class AssetsMapper extends BaseMapper {
         );
     }
 
-    mapAssetReference(
-        rawFileReference: AssetContracts.IAssetFileReferenceContract
-    ): AssetModels.AssetFileReference {
+    mapAssetReference(rawFileReference: AssetContracts.IAssetFileReferenceContract): AssetModels.AssetFileReference {
         return new AssetModels.AssetFileReference({
             id: rawFileReference.id,
             type: rawFileReference.type
@@ -80,7 +76,7 @@ export class AssetsMapper extends BaseMapper {
     mapAsset(rawAsset: AssetContracts.IAssetModelContract): AssetModels.Asset {
         return new AssetModels.Asset({
             descriptions: rawAsset.descriptions.map(
-                m =>
+                (m) =>
                     new AssetModels.AssetFileDescription({
                         description: m.description,
                         language: super.mapReference(m.language)
@@ -100,6 +96,7 @@ export class AssetsMapper extends BaseMapper {
             folder: rawAsset.folder,
             codename: rawAsset.codename,
             collection: rawAsset.collection,
+            elements: rawAsset.elements,
             _raw: rawAsset
         });
     }

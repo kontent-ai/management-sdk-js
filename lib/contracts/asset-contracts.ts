@@ -17,6 +17,12 @@ export namespace AssetContracts {
         codename: string;
         collection?: IAssetCollectionReferenceContract;
         folder?: IAssetFolderReferenceContract;
+        elements?: IAssetElement[];
+    }
+
+    export interface IAssetElement {
+        element: SharedContracts.IIdReferenceContract;
+        value: SharedContracts.IIdReferenceContract[];
     }
 
     export interface IAssetFileReferenceContract  {

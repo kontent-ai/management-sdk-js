@@ -89,6 +89,7 @@ describe('Add asset', () => {
         expect(asset.codename).toEqual(originalItem.codename);
         expect(asset.externalId).toEqual(originalItem.external_id);
         expect(asset.imageWidth).toEqual(originalItem.image_width);
+        expect(asset.elements).toEqual(originalItem.elements);
         expect(asset.size).toEqual(originalItem.size);
         expect(asset.fileReference).toEqual(jasmine.any(AssetModels.AssetFileReference));
         expect(asset.fileReference.id).toEqual(originalItem.file_reference.id);

@@ -18,6 +18,7 @@ export namespace AssetModels {
         public codename!: string;
         public collection?: IAssetCollectionReferenceObject;
         public folder?: IAssetFolderReference;
+        public elements?: IAssetElement[];
         public _raw!: AssetContracts.IAssetModelContract;
 
         constructor(data: {
@@ -36,10 +37,16 @@ export namespace AssetModels {
             codename: string;
             collection?: IAssetCollectionReferenceObject;
             folder?: IAssetFolderReference;
+            elements?: IAssetElement[];
             _raw: AssetContracts.IAssetModelContract;
         }) {
             Object.assign(this, data);
         }
+    }
+
+    export interface IAssetElement {
+        element: SharedContracts.IIdReferenceContract;
+        value: SharedContracts.IIdReferenceContract[];
     }
 
     export interface IAssetFolderReference {
@@ -68,7 +75,7 @@ export namespace AssetModels {
     }
 
     export interface IAssetCollectionReferenceObject {
-        reference: SharedModels.IReferenceObject | null
+        reference: SharedModels.IReferenceObject | null;
     }
 
     export class AssetFileDescription {
