@@ -36,7 +36,7 @@ describe('Add legacy webhook', () => {
                     ],
                     preview_delivery_api_content_changes: [
                         {
-                            operations: ['archive', 'unpublish'],
+                            operations: ['archive', 'restore'],
                             type: 'taxonomy'
                         }
                     ]
@@ -66,7 +66,7 @@ describe('Add legacy webhook', () => {
         expect(response.data).toBeDefined();
     });
 
-    it('response should contain raw data', () =>{
+    it('response should contain raw data', () => {
         expect(response.rawData).toBeDefined();
     });
 
