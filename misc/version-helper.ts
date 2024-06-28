@@ -1,7 +1,8 @@
 import { writeFile } from 'fs';
-import { red, green, cyan, yellow } from 'colors/safe';
+import { red, green, cyan, yellow } from 'colors';
+import { ISDKInfo } from '@kontent-ai/core-sdk';
 
-export function verifySdkVersion(sdkInfo: any, versionInPackage: string): void {
+export function verifySdkVersion(sdkInfo: ISDKInfo, versionInPackage: string): void {
     if (sdkInfo.version !== versionInPackage) {
         const msg =
             "Versions of '" +
@@ -17,7 +18,12 @@ export function verifySdkVersion(sdkInfo: any, versionInPackage: string): void {
     }
 }
 
-export function createSdkVersionFile(filePath: string, appVersion: string, packageName: string, importFrom: string): void {
+export function createSdkVersionFile(
+    filePath: string,
+    appVersion: string,
+    packageName: string,
+    importFrom: string
+): void {
     console.log(cyan('\nCreating SDK version file'));
 
     const src = `
