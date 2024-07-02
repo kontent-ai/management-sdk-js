@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/subscriptions/fake-view-subscription-user.json';
-import { cmLiveClient, getTestClientWithJson, testSubscriptionId } from '../setup';
+import { cmClient, getTestClientWithJson, testSubscriptionId } from '../setup';
 
 describe('Activate user in all projects', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -10,8 +10,8 @@ describe('Activate user in all projects', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.activateUserInAllProjects().byId('xId').getUrl();
-        const emailUrl = cmLiveClient.activateUserInAllProjects().byEmail('xEmail').getUrl();
+        const idUrl = cmClient.activateUserInAllProjects().byId('xId').getUrl();
+        const emailUrl = cmClient.activateUserInAllProjects().byEmail('xEmail').getUrl();
 
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/users/xId/activate`);
         expect(emailUrl).toEqual(

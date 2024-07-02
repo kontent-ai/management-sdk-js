@@ -1,6 +1,6 @@
 import { WorkflowResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/workflow/fake-list-workflows.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List workflows', () => {
     let response: WorkflowResponses.ListWorkflowsResponse;
@@ -10,7 +10,7 @@ describe('List workflows', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.listWorkflows().getUrl();
+        const url = cmClient.listWorkflows().getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows`);
     });
 
@@ -42,7 +42,7 @@ describe('List workflows', () => {
             expect(workflow.id).toEqual(originalItem.id);
             expect(workflow.publishedStep).toEqual(originalItem.published_step);
             expect(workflow.scopes).toEqual(originalItem.scopes);
-            expect(workflow.steps).toEqual(originalItem.steps  as any);
+            expect(workflow.steps).toEqual(originalItem.steps as any);
         }
     });
 });

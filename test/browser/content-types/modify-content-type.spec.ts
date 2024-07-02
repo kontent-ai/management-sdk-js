@@ -1,6 +1,6 @@
 import { ContentTypeResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-modify-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify content type', () => {
     let response: ContentTypeResponses.ModifyContentTypeResponse;
@@ -26,13 +26,15 @@ describe('Modify content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient.modifyContentType().byTypeCodename('x').withData([]).getUrl();
-        const urlByInternalId = cmLiveClient.modifyContentType().byTypeId('y').withData([]).getUrl();
-        const urlByExternalId = cmLiveClient.modifyContentType().byTypeExternalId('c').withData([]).getUrl();
+        const urlByCodename = cmClient.modifyContentType().byTypeCodename('x').withData([]).getUrl();
+        const urlByInternalId = cmClient.modifyContentType().byTypeId('y').withData([]).getUrl();
+        const urlByExternalId = cmClient.modifyContentType().byTypeExternalId('c').withData([]).getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/y`);
-        expect(urlByExternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/external-id/c`);
+        expect(urlByExternalId).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/external-id/c`
+        );
     });
 
     it(`response should be instance of ModifyContentTypeResponse class`, () => {
@@ -63,12 +65,12 @@ describe('Modify content type', () => {
                 throw Error(`Invalid element with id '${element.id}'`);
             }
 
-          // all element properties should be identical
-          for (const key of Object.keys(element)) {
-            const mappedElementValue = (element as any)[key];
-            const originalElementValue = (originalElement as any)[key];
-            expect(mappedElementValue).toEqual(originalElementValue);
-        }
+            // all element properties should be identical
+            for (const key of Object.keys(element)) {
+                const mappedElementValue = (element as any)[key];
+                const originalElementValue = (originalElement as any)[key];
+                expect(mappedElementValue).toEqual(originalElementValue);
+            }
         });
     });
 });

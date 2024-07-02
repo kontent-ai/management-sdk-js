@@ -1,6 +1,6 @@
 import { EnvironmentModels, EnvironmentResponses, SharedModels } from '../../../lib';
 import * as validateProjectContentJson from '../fake-responses/projects/fake-project-validation-issues.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List project issues', () => {
     let response: EnvironmentResponses.EnvironmentValidationIssuesListResponse;
@@ -13,7 +13,7 @@ describe('List project issues', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.listEnvironmentValidationIssues().byTaskId('x').getUrl();
+        const url = cmClient.listEnvironmentValidationIssues().byTaskId('x').getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/validate-async/tasks/x/issues`);
     });

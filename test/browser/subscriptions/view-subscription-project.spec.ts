@@ -1,6 +1,6 @@
 import { SubscriptionModels, SubscriptionResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/subscriptions/fake-view-subscription-project.json';
-import { cmLiveClient, getTestClientWithJson, testSubscriptionId } from '../setup';
+import { cmClient, getTestClientWithJson, testSubscriptionId } from '../setup';
 
 describe('View subscription project ', () => {
     let response: SubscriptionResponses.ViewSubscriptionProjectResponse;
@@ -10,9 +10,11 @@ describe('View subscription project ', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.viewSubscriptionProject().environmentId('xEnvironmentId').getUrl();
+        const idUrl = cmClient.viewSubscriptionProject().environmentId('xEnvironmentId').getUrl();
 
-        expect(idUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/projects/xEnvironmentId`);
+        expect(idUrl).toEqual(
+            `https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/projects/xEnvironmentId`
+        );
     });
 
     it(`response should be instance of ViewSubscriptionProjectResponse class`, () => {

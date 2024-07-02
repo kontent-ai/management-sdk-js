@@ -1,6 +1,6 @@
 import { SpaceResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/spaces/fake-modify-space.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify space', () => {
     let response: SpaceResponses.ModifySpaceResponse;
@@ -20,8 +20,8 @@ describe('Modify space', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient.modifySpace().bySpaceCodename('x').withData([]).getUrl();
-        const urlByInternalId = cmLiveClient.modifySpace().bySpaceId('y').withData([]).getUrl();
+        const urlByCodename = cmClient.modifySpace().bySpaceCodename('x').withData([]).getUrl();
+        const urlByInternalId = cmClient.modifySpace().bySpaceId('y').withData([]).getUrl();
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/y`);
     });
@@ -47,6 +47,5 @@ describe('Modify space', () => {
         expect(space.id).toBeDefined();
         expect(space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
         expect(space.collections).toEqual(originalItem.collections);
-
     });
 });

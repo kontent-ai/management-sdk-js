@@ -1,8 +1,8 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as jsonResponse from '../fake-responses/language-variants/fake-view-language-variant.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
-describe('View language variant', () => {
+describe('View language variant published', () => {
     let response: LanguageVariantResponses.ViewLanguageVariantResponse;
 
     beforeAll(async () => {
@@ -10,60 +10,67 @@ describe('View language variant', () => {
             .viewLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('x')
+            .published()
             .toPromise();
     });
 
     it(`url should be correct`, () => {
-        const codenameUrlWithCodenameLanguage = cmLiveClient
+        const codenameUrlWithCodenameLanguage = cmClient
             .viewLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageCodename('xLanguageCodename')
+            .published()
             .getUrl();
-        const internalIdUrlWithCodenameLanguage = cmLiveClient
+        const internalIdUrlWithCodenameLanguage = cmClient
             .viewLanguageVariant()
             .byItemId('xItemId')
             .byLanguageCodename('xLanguageCodename')
+            .published()
             .getUrl();
-        const externalIdUrlWithCodenameLanguage = cmLiveClient
+        const externalIdUrlWithCodenameLanguage = cmClient
             .viewLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageCodename('xLanguageCodename')
+            .published()
             .getUrl();
 
-        const codenameUrlWithIdLanguage = cmLiveClient
+        const codenameUrlWithIdLanguage = cmClient
             .viewLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageId('xLanguageId')
+            .published()
             .getUrl();
-        const internalIdUrlWithIdLanguage = cmLiveClient
+        const internalIdUrlWithIdLanguage = cmClient
             .viewLanguageVariant()
             .byItemId('xItemId')
             .byLanguageId('xLanguageId')
+            .published()
             .getUrl();
-        const externalIdUrlWithIdLanguage = cmLiveClient
+        const externalIdUrlWithIdLanguage = cmClient
             .viewLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageId('xLanguageId')
+            .published()
             .getUrl();
 
         expect(codenameUrlWithCodenameLanguage).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename/variants/codename/xLanguageCodename`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename/variants/codename/xLanguageCodename/published`
         );
         expect(internalIdUrlWithCodenameLanguage).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xItemId/variants/codename/xLanguageCodename`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xItemId/variants/codename/xLanguageCodename/published`
         );
         expect(externalIdUrlWithCodenameLanguage).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/XItemExternal/variants/codename/xLanguageCodename`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/XItemExternal/variants/codename/xLanguageCodename/published`
         );
 
         expect(codenameUrlWithIdLanguage).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename/variants/xLanguageId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename/variants/xLanguageId/published`
         );
         expect(internalIdUrlWithIdLanguage).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xItemId/variants/xLanguageId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xItemId/variants/xLanguageId/published`
         );
         expect(externalIdUrlWithIdLanguage).toEqual(
-            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/XItemExternal/variants/xLanguageId`
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/XItemExternal/variants/xLanguageId/published`
         );
     });
 

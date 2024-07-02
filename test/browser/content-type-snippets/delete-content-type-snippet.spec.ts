@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as jsonResponse from '../fake-responses/content-type-snippets/fake-delete-content-type-snippet.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete content type snippet', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -13,9 +13,9 @@ describe('Delete content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.deleteContentTypeSnippet().byTypeCodename('xCodename').getUrl();
-        const idUrl = cmLiveClient.deleteContentTypeSnippet().byTypeId('xInternalId').getUrl();
-        const externalIdUrl = cmLiveClient.deleteContentTypeSnippet().byTypeExternalId('xExternal').getUrl();
+        const codenameUrl = cmClient.deleteContentTypeSnippet().byTypeCodename('xCodename').getUrl();
+        const idUrl = cmClient.deleteContentTypeSnippet().byTypeId('xInternalId').getUrl();
+        const externalIdUrl = cmClient.deleteContentTypeSnippet().byTypeExternalId('xExternal').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/codename/xCodename`

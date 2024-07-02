@@ -1,6 +1,6 @@
 import { EnvironmentResponses } from '../../../lib/responses/environments/environment-responses';
 import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-clone-environment.json';
 
 describe('Clone environment', () => {
@@ -11,14 +11,11 @@ describe('Clone environment', () => {
         requestData = {
             name: 'New environment'
         };
-        response = await getTestClientWithJson(responseJson)
-            .cloneEnvironment()
-            .withData(requestData)
-            .toPromise();
+        response = await getTestClientWithJson(responseJson).cloneEnvironment().withData(requestData).toPromise();
     });
 
     it(`should have correct url`, () => {
-        const url = cmLiveClient.cloneEnvironment().withData(requestData).getUrl();
+        const url = cmClient.cloneEnvironment().withData(requestData).getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/clone-environment`);
     });

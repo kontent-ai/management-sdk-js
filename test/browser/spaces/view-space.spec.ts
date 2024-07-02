@@ -1,6 +1,6 @@
 import { SpaceResponses, SpaceModels } from '../../../lib';
 import * as viewSpaceJson from '../fake-responses/spaces/fake-view-space.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View space', () => {
     let response: SpaceResponses.ViewSpaceResponse;
@@ -10,8 +10,8 @@ describe('View space', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient.viewSpace().bySpaceCodename('x').getUrl();
-        const urlByInternalId = cmLiveClient.viewSpace().bySpaceId('y').getUrl();
+        const urlByCodename = cmClient.viewSpace().bySpaceCodename('x').getUrl();
+        const urlByInternalId = cmClient.viewSpace().bySpaceId('y').getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/y`);
@@ -37,6 +37,5 @@ describe('View space', () => {
         expect(Space.name).toEqual(originalItem.name);
         expect(Space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
         expect(Space.collections).toEqual(originalItem.collections);
-
     });
 });

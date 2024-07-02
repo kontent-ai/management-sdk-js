@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as deleteTaxonomyJson from '../fake-responses/taxonomies/fake-delete-taxonomy.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete taxonomy', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -13,14 +13,16 @@ describe('Delete taxonomy', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.deleteTaxonomy().byTaxonomyCodename('xCodename').getUrl();
-        const internalIdUrl = cmLiveClient.deleteTaxonomy().byTaxonomyId('xInternalId').getUrl();
-        const externalIdUrl = cmLiveClient.deleteTaxonomy().byTaxonomyExternalId('xExternalId').getUrl();
+        const codenameUrl = cmClient.deleteTaxonomy().byTaxonomyCodename('xCodename').getUrl();
+        const internalIdUrl = cmClient.deleteTaxonomy().byTaxonomyId('xInternalId').getUrl();
+        const externalIdUrl = cmClient.deleteTaxonomy().byTaxonomyExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/codename/xCodename`
         );
-        expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/xInternalId`);
+        expect(internalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/xInternalId`
+        );
         expect(externalIdUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies/external-id/xExternalId`
         );

@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as listLanguageVariantsJson from '../fake-responses/language-variants/fake-list-language-variants-of-item.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List language variants of item', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsOfItemResponse;
@@ -13,9 +13,9 @@ describe('List language variants of item', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.listLanguageVariantsOfItem().byItemCodename('xCodename').getUrl();
-        const internalIdUrl = cmLiveClient.listLanguageVariantsOfItem().byItemId('xInternalId').getUrl();
-        const externalIdUrl = cmLiveClient.listLanguageVariantsOfItem().byItemExternalId('xExternalId').getUrl();
+        const codenameUrl = cmClient.listLanguageVariantsOfItem().byItemCodename('xCodename').getUrl();
+        const internalIdUrl = cmClient.listLanguageVariantsOfItem().byItemId('xInternalId').getUrl();
+        const externalIdUrl = cmClient.listLanguageVariantsOfItem().byItemExternalId('xExternalId').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename/variants`

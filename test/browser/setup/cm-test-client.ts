@@ -13,7 +13,7 @@ export function useLiveTesting(): boolean {
     return false;
 }
 
-export const cmLiveClient: ManagementClient = createManagementClient({
+export const cmClient: ManagementClient = createManagementClient({
     environmentId: testEnvironmentId,
     subscriptionId: testSubscriptionId,
     apiKey: testApiKey

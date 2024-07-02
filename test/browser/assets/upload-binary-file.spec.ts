@@ -1,6 +1,6 @@
 import { AssetResponses } from '../../../lib';
 import * as uploadBinaryResponseJson from '../fake-responses/assets/fake-upload-binary-file.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import { IHeader } from '@kontent-ai/core-sdk';
 
 describe('Upload binary file', () => {
@@ -21,7 +21,7 @@ describe('Upload binary file', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .uploadBinaryFile()
             .withData({
                 binaryData: 'c',
@@ -35,7 +35,7 @@ describe('Upload binary file', () => {
     });
 
     it(`url should be encoded using filename`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .uploadBinaryFile()
             .withData({
                 binaryData: 'c',

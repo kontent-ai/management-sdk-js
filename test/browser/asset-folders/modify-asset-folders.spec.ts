@@ -1,6 +1,6 @@
 import { AssetFolderModels, AssetFolderResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/asset-folders/fake-modify-asset-folders.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify asset folders', () => {
     let response: AssetFolderResponses.ModifyAssetFoldersResponse;
@@ -45,7 +45,7 @@ describe('Modify asset folders', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient
+        const listUrl = cmClient
             .modifyAssetFolders()
             .withData({} as any)
             .getUrl();

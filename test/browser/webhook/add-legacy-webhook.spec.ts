@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-add-legacy-webhook.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add legacy webhook', () => {
     let response: WebhookResponses.AddLegacyWebhookResponse;
@@ -47,7 +47,7 @@ describe('Add legacy webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .addLegacyWebhook()
             .withData({} as any)
             .getUrl();

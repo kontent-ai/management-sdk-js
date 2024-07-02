@@ -1,6 +1,6 @@
 import { ContentTypeElements, ContentTypeResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-types/fake-add-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import ITextElement = ContentTypeElements.ITextElement;
 
 describe('Add content type', () => {
@@ -37,9 +37,11 @@ describe('Add content type', () => {
                             },
                             default: {
                                 global: {
-                                    value: [{
-                                        codename: 'yx'
-                                    }]
+                                    value: [
+                                        {
+                                            codename: 'yx'
+                                        }
+                                    ]
                                 }
                             },
                             is_required: true,
@@ -55,7 +57,7 @@ describe('Add content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .addContentType()
             .withData({} as any)
             .getUrl();
@@ -99,14 +101,12 @@ describe('Add content type', () => {
         });
     });
 
-    it(`text type element should contain validation regex`, () =>
-    {
-        const originalTextElement = responseJson.elements.find(m => m.type === 'text');
-        const textContentType = response.data.elements.find(m => m.type === 'text');
+    it(`text type element should contain validation regex`, () => {
+        const originalTextElement = responseJson.elements.find((m) => m.type === 'text');
+        const textContentType = response.data.elements.find((m) => m.type === 'text');
         expect(Object.keys(textContentType!)).toContain('validation_regex');
 
         const validationRegex = (textContentType as ITextElement).validation_regex;
         expect(validationRegex).toEqual((originalTextElement as any).validation_regex);
     });
-
 });

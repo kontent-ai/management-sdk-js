@@ -1,6 +1,6 @@
 import { ContentTypeSnippetResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/content-type-snippets/fake-modify-content-type-snippet.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify content type snippet', () => {
     let response: ContentTypeSnippetResponses.ModifyContentTypeSnippetResponse;
@@ -14,9 +14,9 @@ describe('Modify content type snippet', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient.modifyContentTypeSnippet().byTypeCodename('x').withData([]).getUrl();
-        const urlByInternalId = cmLiveClient.modifyContentTypeSnippet().byTypeId('y').withData([]).getUrl();
-        const urlByExternalId = cmLiveClient.modifyContentTypeSnippet().byTypeExternalId('c').withData([]).getUrl();
+        const urlByCodename = cmClient.modifyContentTypeSnippet().byTypeCodename('x').withData([]).getUrl();
+        const urlByInternalId = cmClient.modifyContentTypeSnippet().byTypeId('y').withData([]).getUrl();
+        const urlByExternalId = cmClient.modifyContentTypeSnippet().byTypeExternalId('c').withData([]).getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets/y`);

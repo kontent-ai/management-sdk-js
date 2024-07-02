@@ -1,6 +1,6 @@
 import { EnvironmentResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/projects/fake-start-project-validation.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Check project validation', () => {
     let response: EnvironmentResponses.CheckEnvironmentValidationResponse;
@@ -10,7 +10,7 @@ describe('Check project validation', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.checkEnvironmentValidation().byTaskId('x').getUrl();
+        const url = cmClient.checkEnvironmentValidation().byTaskId('x').getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/validate-async/tasks/x`);
     });

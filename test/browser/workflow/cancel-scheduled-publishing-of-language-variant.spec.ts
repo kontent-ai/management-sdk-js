@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Cancel scheduled publishing of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -13,7 +13,7 @@ describe('Cancel scheduled publishing of language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient
+        const w1Url = cmClient
             .cancelSheduledPublishingOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')

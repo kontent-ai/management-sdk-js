@@ -1,6 +1,6 @@
 import { ContentTypeSnippetResponses, SharedModels, ContentTypeSnippetModels } from '../../../lib';
 import * as listContentTypesJson from '../fake-responses/content-type-snippets/fake-list-content-type-snippets.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List content type snippets', () => {
     let response: ContentTypeSnippetResponses.ContentTypeSnippetListResponse;
@@ -10,7 +10,7 @@ describe('List content type snippets', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.listContentTypeSnippets().getUrl();
+        const url = cmClient.listContentTypeSnippets().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/snippets`);
     });

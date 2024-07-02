@@ -1,5 +1,5 @@
 import { BaseResponses, PublishLanguageVariantQuery } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Publish language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -35,7 +35,7 @@ describe('Publish language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient
+        const w1Url = cmClient
             .publishLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')

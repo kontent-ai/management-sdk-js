@@ -1,6 +1,6 @@
 import { RoleModels, RoleResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/roles/fake-view-role.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View role', () => {
     let response: RoleResponses.ViewRoleResponse;
@@ -10,11 +10,13 @@ describe('View role', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.viewRole().byId('xId').getUrl();
-        const codenameUrl = cmLiveClient.viewRole().byCodename('xCodename').getUrl();
+        const idUrl = cmClient.viewRole().byId('xId').getUrl();
+        const codenameUrl = cmClient.viewRole().byCodename('xCodename').getUrl();
 
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/roles/xId`);
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/roles/codename/xCodename`);
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/roles/codename/xCodename`
+        );
     });
 
     it(`response should be instance of ViewRoleResponse class`, () => {

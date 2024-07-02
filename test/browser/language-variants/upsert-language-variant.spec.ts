@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as jsonResponse from '../fake-responses/language-variants/fake-upsert-language-variant.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Upsert language variant', () => {
     let response: LanguageVariantResponses.UpsertLanguageVariantResponse;
@@ -82,7 +82,7 @@ describe('Upsert language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrlWithCodenameLanguage = cmLiveClient
+        const codenameUrlWithCodenameLanguage = cmClient
             .upsertLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageCodename('xLanguageCodename')
@@ -90,7 +90,7 @@ describe('Upsert language variant', () => {
                 return { elements: [] };
             })
             .getUrl();
-        const internalIdUrlWithCodenameLanguage = cmLiveClient
+        const internalIdUrlWithCodenameLanguage = cmClient
             .upsertLanguageVariant()
             .byItemId('xItemId')
             .byLanguageCodename('xLanguageCodename')
@@ -98,7 +98,7 @@ describe('Upsert language variant', () => {
                 return { elements: [] };
             })
             .getUrl();
-        const externalIdUrlWithCodenameLanguage = cmLiveClient
+        const externalIdUrlWithCodenameLanguage = cmClient
             .upsertLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageCodename('xLanguageCodename')
@@ -107,7 +107,7 @@ describe('Upsert language variant', () => {
             })
             .getUrl();
 
-        const codenameUrlWithIdLanguage = cmLiveClient
+        const codenameUrlWithIdLanguage = cmClient
             .upsertLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageId('xLanguageId')
@@ -115,7 +115,7 @@ describe('Upsert language variant', () => {
                 return { elements: [] };
             })
             .getUrl();
-        const internalIdUrlWithIdLanguage = cmLiveClient
+        const internalIdUrlWithIdLanguage = cmClient
             .upsertLanguageVariant()
             .byItemId('xItemId')
             .byLanguageId('xLanguageId')
@@ -123,7 +123,7 @@ describe('Upsert language variant', () => {
                 return { elements: [] };
             })
             .getUrl();
-        const externalIdUrlWithIdLanguage = cmLiveClient
+        const externalIdUrlWithIdLanguage = cmClient
             .upsertLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageId('xLanguageId')

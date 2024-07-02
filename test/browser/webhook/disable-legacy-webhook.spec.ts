@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-get-webhook.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Disable legacy webhook', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -10,7 +10,7 @@ describe('Disable legacy webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.disableLegacyWebhook().byId('x').getUrl();
+        const url = cmClient.disableLegacyWebhook().byId('x').getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x/disable`);
     });

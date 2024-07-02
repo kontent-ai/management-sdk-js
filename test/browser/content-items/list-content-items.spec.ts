@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../../lib';
 import * as listingResponseJson from '../fake-responses/content-items/fake-list-content-items.json';
-import { getTestClientWithJson, cmLiveClient, testEnvironmentId } from '../setup';
+import { getTestClientWithJson, cmClient, testEnvironmentId } from '../setup';
 import { IHeader } from '@kontent-ai/core-sdk';
 
 describe('List content items', () => {
@@ -23,7 +23,7 @@ describe('List content items', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient.listContentItems().getUrl();
+        const listUrl = cmClient.listContentItems().getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items`);
     });

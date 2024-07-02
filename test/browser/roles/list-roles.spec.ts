@@ -1,6 +1,6 @@
 import { RoleModels, RoleResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/roles/fake-list-roles.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List roles', () => {
     let response: RoleResponses.RoleListResponse;
@@ -10,7 +10,7 @@ describe('List roles', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient.listRoles().getUrl();
+        const listUrl = cmClient.listRoles().getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/roles`);
     });

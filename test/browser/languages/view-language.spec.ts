@@ -1,6 +1,6 @@
 import { LanguageModels, LanguageResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/languages/fake-view-language.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View language', () => {
     let response: LanguageResponses.ViewLanguageResponse;
@@ -10,11 +10,11 @@ describe('View language', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.viewLanguage().byLanguageId('xId').getUrl();
+        const idUrl = cmClient.viewLanguage().byLanguageId('xId').getUrl();
 
-        const codenameUrl = cmLiveClient.viewLanguage().byLanguageCodename('xCodename').getUrl();
+        const codenameUrl = cmClient.viewLanguage().byLanguageCodename('xCodename').getUrl();
 
-        const externalIdUrl = cmLiveClient.viewLanguage().byExternalId('xExternalId').getUrl();
+        const externalIdUrl = cmClient.viewLanguage().byExternalId('xExternalId').getUrl();
 
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/languages/xId`);
         expect(codenameUrl).toEqual(

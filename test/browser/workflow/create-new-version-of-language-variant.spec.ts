@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Create new version of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -13,11 +13,7 @@ describe('Create new version of language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient
-            .createNewVersionOfLanguageVariant()
-            .byItemCodename('x')
-            .byLanguageCodename('y')
-            .getUrl();
+        const w1Url = cmClient.createNewVersionOfLanguageVariant().byItemCodename('x').byLanguageCodename('y').getUrl();
 
         expect(w1Url).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/x/variants/codename/y/new-version`

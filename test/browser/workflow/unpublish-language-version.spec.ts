@@ -1,5 +1,5 @@
 import { BaseResponses, UnpublishLanguageVariantQuery } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Unpublish a language version', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -12,14 +12,14 @@ describe('Unpublish a language version', () => {
             .byLanguageCodename('y')
             .withData({
                 scheduled_to: '2019-01-31T11:00:00+01:00',
-                display_timezone: "Australia/Sydney"
+                display_timezone: 'Australia/Sydney'
             });
 
         response = await query.toPromise();
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient
+        const w1Url = cmClient
             .unpublishLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')

@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../../lib';
 import * as upsertContentItemResponseJson from '../fake-responses/content-items/fake-update-content-item.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Upsert content item', () => {
     let response: ContentItemResponses.UpsertContentItemResponse;
@@ -23,17 +23,17 @@ describe('Upsert content item', () => {
     });
 
     it(`url should be correct`, () => {
-        const externalIdUrl = cmLiveClient
+        const externalIdUrl = cmClient
             .upsertContentItem()
             .byItemExternalId('xExternalId')
             .withData({} as any)
             .getUrl();
-        const internalIdUrl = cmLiveClient
+        const internalIdUrl = cmClient
             .upsertContentItem()
             .byItemId('xId')
             .withData({} as any)
             .getUrl();
-        const codenameUrl = cmLiveClient
+        const codenameUrl = cmClient
             .upsertContentItem()
             .byItemCodename('xCodename')
             .withData({} as any)
@@ -43,7 +43,9 @@ describe('Upsert content item', () => {
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/xExternalId`
         );
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xId`);
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename`);
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename`
+        );
     });
 
     it(`response should be instance of UpsertContentItemResponse class`, () => {

@@ -1,6 +1,6 @@
 import { AssetFolderModels, AssetFolderResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/asset-folders/fake-add-asset-folders.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add asset folders', () => {
     let response: AssetFolderResponses.AddAssetFoldersResponse;
@@ -21,7 +21,10 @@ describe('Add asset folders', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient.addAssetFolders().withData({} as any).getUrl();
+        const listUrl = cmClient
+            .addAssetFolders()
+            .withData({} as any)
+            .getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/folders`);
     });
@@ -48,9 +51,9 @@ describe('Add asset folders', () => {
         expect(Array.isArray(response.data.items)).toBeTruthy();
         expect(response.data.items.length).toBeGreaterThan(0);
 
-        response.data.items.forEach(m => {
+        response.data.items.forEach((m) => {
             // find original item
-            const originalItem = responseJson.folders.find(s => s.id === m.id);
+            const originalItem = responseJson.folders.find((s) => s.id === m.id);
 
             if (!originalItem) {
                 throw Error(`Asset folder with id '${m.id}' was not found in fake response`);
@@ -63,7 +66,7 @@ describe('Add asset folders', () => {
             expect(m.folders).toEqual(jasmine.any(Array));
 
             for (const nestedFolder of m.folders) {
-                const originalNestedFolder = originalItem.folders.find(s => s.id === nestedFolder.id);
+                const originalNestedFolder = originalItem.folders.find((s) => s.id === nestedFolder.id);
 
                 if (!originalNestedFolder) {
                     throw Error(`Nested Asset folder with id '${m.id}' was not found in fake response`);

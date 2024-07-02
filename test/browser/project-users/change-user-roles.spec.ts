@@ -1,6 +1,6 @@
 import { ProjectUserModels, ProjectUsersResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/project-users/fake-invite-user.spec.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Change user roles', () => {
     let response: ProjectUsersResponses.ChangeUserRolesResponse;
@@ -34,7 +34,7 @@ describe('Change user roles', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByEmail = cmLiveClient
+        const urlByEmail = cmClient
             .changeUserRoles()
             .byEmail('xEmail')
             .withData({
@@ -42,7 +42,7 @@ describe('Change user roles', () => {
             })
             .getUrl();
 
-        const urlById = cmLiveClient
+        const urlById = cmClient
             .changeUserRoles()
             .byId('xId')
             .withData({
@@ -50,7 +50,9 @@ describe('Change user roles', () => {
             })
             .getUrl();
 
-        expect(urlByEmail).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/users/email/xEmail/roles`);
+        expect(urlByEmail).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/users/email/xEmail/roles`
+        );
         expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/users/xId/roles`);
     });
 

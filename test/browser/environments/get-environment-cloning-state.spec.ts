@@ -1,4 +1,4 @@
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-environment-cloning-state.json';
 import { EnvironmentResponses } from '../../../lib/responses/environments/environment-responses';
 import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
@@ -11,7 +11,7 @@ describe('Get environment cloning state', () => {
     });
 
     it(`should have correct url`, () => {
-        const url = cmLiveClient.getEnvironmentCloningState().getUrl();
+        const url = cmClient.getEnvironmentCloningState().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/environment-cloning-state`);
     });

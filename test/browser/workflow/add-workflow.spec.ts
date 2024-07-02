@@ -1,6 +1,6 @@
 import { WorkflowResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/workflow/fake-add-workflow.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add workflow', () => {
     let response: WorkflowResponses.AddWorkflowResponse;
@@ -61,7 +61,7 @@ describe('Add workflow', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .addWorkflow()
             .withData({} as any)
             .getUrl();

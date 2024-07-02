@@ -1,6 +1,6 @@
 import { SpaceResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/spaces/fake-add-space.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Add space', () => {
     let response: SpaceResponses.AddSpaceResponse;
@@ -15,14 +15,14 @@ describe('Add space', () => {
                 },
                 collections: [
                     {
-                    id: '00000000-0000-0000-0000-000000000000'
-                }
-            ]
+                        id: '00000000-0000-0000-0000-000000000000'
+                    }
+                ]
             })
             .toPromise();
     });
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .addSpace()
             .withData({} as any)
             .getUrl();
@@ -48,6 +48,6 @@ describe('Add space', () => {
         expect(space.name).toEqual(originalItem.name);
         expect(space.id).toBeDefined();
         expect(space.webSpotlightRootItem).toEqual(originalItem.web_spotlight_root_item);
-        expect(space.collections).toEqual(originalItem.collections)
+        expect(space.collections).toEqual(originalItem.collections);
     });
 });

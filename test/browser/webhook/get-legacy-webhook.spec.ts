@@ -1,6 +1,6 @@
 import { WebhookResponses, WebhookModels } from '../../../lib';
 import * as responseJson from '../fake-responses/webhooks/fake-get-legacy-webhook.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Get legacy webhook', () => {
     let response: WebhookResponses.GetLegacyWebhookResponse;
@@ -10,7 +10,7 @@ describe('Get legacy webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.getLegacyWebhook().byId('x').getUrl();
+        const url = cmClient.getLegacyWebhook().byId('x').getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
     });
 
@@ -21,8 +21,8 @@ describe('Get legacy webhook', () => {
     it(`response should contain debug data`, () => {
         expect(response.debug).toBeDefined();
     });
-    
-    it('response should contain raw data', () =>{
+
+    it('response should contain raw data', () => {
         expect(response.rawData).toBeDefined();
     });
 

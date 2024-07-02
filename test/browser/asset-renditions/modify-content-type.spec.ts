@@ -1,6 +1,6 @@
 import { AssetRenditionResponses } from '../../../lib';
 import * as rawResponse from '../fake-responses/assset-renditions/fake-modify-asset-rendition.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify asset rendition', () => {
     let response: AssetRenditionResponses.ModifyAssetRenditionResponse;
@@ -26,13 +26,13 @@ describe('Modify asset rendition', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByInternalIds = cmLiveClient
+        const urlByInternalIds = cmClient
             .modifyAssetRendition()
             .byAssetId('x')
             .byRenditionId('y')
             .withData({} as any)
             .getUrl();
-        const urlByExternalIds = cmLiveClient
+        const urlByExternalIds = cmClient
             .modifyAssetRendition()
             .byAssetExternalId('x')
             .byRenditionExternalId('y')

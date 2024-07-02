@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as jsonResponse from '../fake-responses/language-variants/fake-upsert-language-variant.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -14,33 +14,33 @@ describe('Delete language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrlWithCodenameLanguage = cmLiveClient
+        const codenameUrlWithCodenameLanguage = cmClient
             .deleteLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageCodename('xLanguageCodename')
             .getUrl();
-        const internalIdUrlWithCodenameLanguage = cmLiveClient
+        const internalIdUrlWithCodenameLanguage = cmClient
             .deleteLanguageVariant()
             .byItemId('xItemId')
             .byLanguageCodename('xLanguageCodename')
             .getUrl();
-        const externalIdUrlWithCodenameLanguage = cmLiveClient
+        const externalIdUrlWithCodenameLanguage = cmClient
             .deleteLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageCodename('xLanguageCodename')
             .getUrl();
 
-        const codenameUrlWithIdLanguage = cmLiveClient
+        const codenameUrlWithIdLanguage = cmClient
             .deleteLanguageVariant()
             .byItemCodename('xCodename')
             .byLanguageId('xLanguageId')
             .getUrl();
-        const internalIdUrlWithIdLanguage = cmLiveClient
+        const internalIdUrlWithIdLanguage = cmClient
             .deleteLanguageVariant()
             .byItemId('xItemId')
             .byLanguageId('xLanguageId')
             .getUrl();
-        const externalIdUrlWithIdLanguage = cmLiveClient
+        const externalIdUrlWithIdLanguage = cmClient
             .deleteLanguageVariant()
             .byItemExternalId('XItemExternal')
             .byLanguageId('xLanguageId')

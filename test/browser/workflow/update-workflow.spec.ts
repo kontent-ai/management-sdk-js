@@ -1,6 +1,6 @@
 import { WorkflowResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/workflow/fake-add-workflow.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Update workflow', () => {
     let response: WorkflowResponses.UpdateWorkflowResponse;
@@ -19,7 +19,7 @@ describe('Update workflow', () => {
                         ],
                         collections: [
                             {
-                                id:  'a7f6887c-33a1-4442-a8599-c40861bb7a65'
+                                id: 'a7f6887c-33a1-4442-a8599-c40861bb7a65'
                             }
                         ]
                     }
@@ -64,19 +64,21 @@ describe('Update workflow', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient
+        const urlByCodename = cmClient
             .updateWorkflow()
             .byWorkflowCodename('x')
             .withData({} as any)
             .getUrl();
 
-        const urlById = cmLiveClient
+        const urlById = cmClient
             .updateWorkflow()
             .byWorkflowId('x')
             .withData({} as any)
             .getUrl();
 
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/codename/x`);
+        expect(urlByCodename).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/codename/x`
+        );
         expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/x`);
     });
 

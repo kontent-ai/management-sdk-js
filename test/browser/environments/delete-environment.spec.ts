@@ -1,4 +1,4 @@
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-delete-environment.json';
 import { BaseResponses } from '../../../lib/responses';
 
@@ -10,7 +10,7 @@ describe('Delete environment', () => {
     });
 
     it(`should have correct url`, () => {
-        const url = cmLiveClient.deleteEnvironment().getUrl();
+        const url = cmClient.deleteEnvironment().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}`);
     });

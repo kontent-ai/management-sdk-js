@@ -1,6 +1,6 @@
 import { SubscriptionResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/subscriptions/fake-list-subscription-projects.json';
-import { cmLiveClient, getTestClientWithJson, testSubscriptionId } from '../setup';
+import { cmClient, getTestClientWithJson, testSubscriptionId } from '../setup';
 
 describe('List subscription projects', () => {
     let response: SubscriptionResponses.SubscriptionProjectsListResponse;
@@ -9,7 +9,7 @@ describe('List subscription projects', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient.listSubscriptionProjects().getUrl();
+        const listUrl = cmClient.listSubscriptionProjects().getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/projects`);
     });

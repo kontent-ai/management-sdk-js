@@ -1,6 +1,6 @@
 import { SubscriptionModels, SubscriptionResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/subscriptions/fake-view-subscription-user.json';
-import { cmLiveClient, getTestClientWithJson, testSubscriptionId } from '../setup';
+import { cmClient, getTestClientWithJson, testSubscriptionId } from '../setup';
 
 describe('View subscription user ', () => {
     let response: SubscriptionResponses.ViewSubscriptionUserResponse;
@@ -10,8 +10,8 @@ describe('View subscription user ', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient.viewSubscriptionUser().byId('xId').getUrl();
-        const emailUrl = cmLiveClient.viewSubscriptionUser().byEmail('xEmail').getUrl();
+        const idUrl = cmClient.viewSubscriptionUser().byId('xId').getUrl();
+        const emailUrl = cmClient.viewSubscriptionUser().byEmail('xEmail').getUrl();
 
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/users/xId`);
         expect(emailUrl).toEqual(`https://manage.kontent.ai/v2/subscriptions/${testSubscriptionId}/users/email/xEmail`);

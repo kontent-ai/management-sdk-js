@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as deleteAssetJson from '../fake-responses/assets/fake-delete-asset.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete asset', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -10,8 +10,8 @@ describe('Delete asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const internalIdUrl = cmLiveClient.deleteAsset().byAssetId('xInternalId').getUrl();
-        const externalIdUrl = cmLiveClient.deleteAsset().byAssetExternalId('xExternalId').getUrl();
+        const internalIdUrl = cmClient.deleteAsset().byAssetId('xInternalId').getUrl();
+        const externalIdUrl = cmClient.deleteAsset().byAssetExternalId('xExternalId').getUrl();
 
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/xInternalId`);
         expect(externalIdUrl).toEqual(

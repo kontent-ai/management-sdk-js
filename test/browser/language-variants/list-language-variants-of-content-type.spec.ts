@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as responseJson from '../fake-responses/language-variants/fake-list-language-variants-of-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List language variants of content type', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsOfContentTypeResponse;
@@ -13,8 +13,8 @@ describe('List language variants of content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.listLanguageVariantsOfContentType().byTypeCodename('xCodename').getUrl();
-        const idUrl = cmLiveClient.listLanguageVariantsOfContentType().byTypeId('xId').getUrl();
+        const codenameUrl = cmClient.listLanguageVariantsOfContentType().byTypeCodename('xCodename').getUrl();
+        const idUrl = cmClient.listLanguageVariantsOfContentType().byTypeId('xId').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/codename/xCodename/variants`

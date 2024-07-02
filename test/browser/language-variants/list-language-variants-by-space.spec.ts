@@ -1,8 +1,8 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as responseJson from '../fake-responses/language-variants/fake-list-language-variants-by-Space.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
-describe('List language variants by space', () =>{
+describe('List language variants by space', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsBySpaceResponse;
 
     beforeAll(async () => {
@@ -13,8 +13,8 @@ describe('List language variants by space', () =>{
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.listLanguageVariantsBySpace().bySpaceCodename('xCodename').getUrl();
-        const idUrl = cmLiveClient.listLanguageVariantsBySpace().bySpaceId('xId').getUrl();
+        const codenameUrl = cmClient.listLanguageVariantsBySpace().bySpaceCodename('xCodename').getUrl();
+        const idUrl = cmClient.listLanguageVariantsBySpace().bySpaceId('xId').getUrl();
 
         expect(codenameUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces/codename/xCodename/variants`
@@ -78,5 +78,3 @@ describe('List language variants by space', () =>{
         });
     });
 });
-
-

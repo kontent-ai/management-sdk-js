@@ -1,6 +1,6 @@
 import { AssetModels, AssetResponses, SharedModels } from '../../../lib';
 import * as upsertAssetResponseJson from '../fake-responses/assets/fake-upsert-asset.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Upsert asset', () => {
     let response: AssetResponses.UpsertAssertResponse;
@@ -33,7 +33,7 @@ describe('Upsert asset', () => {
                     },
                     collection: {
                         reference: {
-                            codename: "y"
+                            codename: 'y'
                         }
                     }
                 };
@@ -42,19 +42,21 @@ describe('Upsert asset', () => {
     });
 
     it(`url should be correct`, () => {
-        const idUrl = cmLiveClient
+        const idUrl = cmClient
             .upsertAsset()
             .byAssetId('x')
             .withData({} as any)
             .getUrl();
 
-        const externalIdUrl = cmLiveClient
+        const externalIdUrl = cmClient
             .upsertAsset()
             .byAssetExternalId('x')
             .withData({} as any)
             .getUrl();
 
-        expect(externalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/x`);
+        expect(externalIdUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/external-id/x`
+        );
         expect(idUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/assets/x`);
     });
 

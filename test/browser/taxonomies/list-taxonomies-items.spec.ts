@@ -1,6 +1,6 @@
 import { TaxonomyModels, TaxonomyResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/taxonomies/fake-list-taxonomies.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List taxonomies', () => {
     let response: TaxonomyResponses.TaxonomyListResponse;
@@ -9,7 +9,7 @@ describe('List taxonomies', () => {
     });
 
     it(`url should be correct`, () => {
-        const listUrl = cmLiveClient.listTaxonomies().getUrl();
+        const listUrl = cmClient.listTaxonomies().getUrl();
 
         expect(listUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/taxonomies`);
     });

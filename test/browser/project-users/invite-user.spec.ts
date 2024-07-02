@@ -1,6 +1,6 @@
 import { ProjectUserModels, ProjectUsersResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/project-users/fake-invite-user.spec.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Invite user', () => {
     let response: ProjectUsersResponses.InviteUserResponse;
@@ -34,7 +34,7 @@ describe('Invite user', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .inviteUser()
             .withData({
                 email: 'y',

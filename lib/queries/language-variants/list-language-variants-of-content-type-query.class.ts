@@ -1,5 +1,3 @@
-
-
 import { IManagementClientConfig } from '../../config';
 import { Identifiers } from '../../models';
 import { LanguageVariantResponses } from '../../responses';

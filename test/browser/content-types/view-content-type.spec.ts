@@ -1,6 +1,6 @@
 import { ContentTypeResponses, ContentTypeModels } from '../../../lib';
 import * as viewContentTypeJson from '../fake-responses/content-types/fake-view-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('View content type', () => {
     let response: ContentTypeResponses.ViewContentTypeResponse;
@@ -10,13 +10,15 @@ describe('View content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlByCodename = cmLiveClient.viewContentType().byTypeCodename('x').getUrl();
-        const urlByInternalId = cmLiveClient.viewContentType().byTypeId('y').getUrl();
-        const urlByExternalId = cmLiveClient.viewContentType().byTypeExternalId('c').getUrl();
+        const urlByCodename = cmClient.viewContentType().byTypeCodename('x').getUrl();
+        const urlByInternalId = cmClient.viewContentType().byTypeId('y').getUrl();
+        const urlByExternalId = cmClient.viewContentType().byTypeExternalId('c').getUrl();
 
         expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/codename/x`);
         expect(urlByInternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/y`);
-        expect(urlByExternalId).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/external-id/c`);
+        expect(urlByExternalId).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/external-id/c`
+        );
     });
 
     it(`response should be instance of ViewContentTypeResponse class`, () => {

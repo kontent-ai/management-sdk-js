@@ -1,6 +1,6 @@
 import { TaxonomyModels, TaxonomyResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/taxonomies/fake-update-taxonomy.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify taxonomy', () => {
     let response: TaxonomyResponses.ModifyTaxonomyResponse;
@@ -31,17 +31,17 @@ describe('Modify taxonomy', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient
+        const codenameUrl = cmClient
             .modifyTaxonomy()
             .byTaxonomyCodename('xCodename')
             .withData({} as any)
             .getUrl();
-        const internalIdUrl = cmLiveClient
+        const internalIdUrl = cmClient
             .modifyTaxonomy()
             .byTaxonomyId('xInternalId')
             .withData({} as any)
             .getUrl();
-        const externalIdUrl = cmLiveClient
+        const externalIdUrl = cmClient
             .modifyTaxonomy()
             .byTaxonomyExternalId('xExternalId')
             .withData({} as any)

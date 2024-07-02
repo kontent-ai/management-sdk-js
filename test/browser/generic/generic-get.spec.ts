@@ -1,6 +1,6 @@
 import { GenericResponses } from '../../../lib';
 import * as jsonResponse from '../fake-responses/generic/fake-get.response.json';
-import { cmLiveClient, getTestClientWithJson } from '../setup';
+import { cmClient, getTestClientWithJson } from '../setup';
 
 describe('Generic GET', () => {
     let response: GenericResponses.GenericResponse;
@@ -10,7 +10,7 @@ describe('Generic GET', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.get().withAction('path/x').getUrl();
+        const url = cmClient.get().withAction('path/x').getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/path/x`);
     });
 

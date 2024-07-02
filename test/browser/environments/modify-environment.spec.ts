@@ -1,5 +1,5 @@
 import { EnvironmentResponses } from '../../../lib/responses/environments/environment-responses';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 import * as responseJson from '../fake-responses/environments/fake-modify-environment.json';
 import { EnvironmentModels } from '../../../lib/models/environments/environment.models';
 
@@ -8,18 +8,17 @@ describe('Modify environment', () => {
     let requestData: EnvironmentModels.IModifyEnvironmentData[];
 
     beforeAll(async () => {
-        requestData = [{
-            op: 'rename_environment',
-            value: 'Cool environment'
-        }];
-        response = await getTestClientWithJson(responseJson)
-            .modifyEnvironment()
-            .withData(requestData)
-            .toPromise();
+        requestData = [
+            {
+                op: 'rename_environment',
+                value: 'Cool environment'
+            }
+        ];
+        response = await getTestClientWithJson(responseJson).modifyEnvironment().withData(requestData).toPromise();
     });
 
     it(`should have correct url`, () => {
-        const url = cmLiveClient.modifyEnvironment().withData(requestData).getUrl();
+        const url = cmClient.modifyEnvironment().withData(requestData).getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}`);
     });

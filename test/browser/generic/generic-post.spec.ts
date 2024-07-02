@@ -1,6 +1,6 @@
 import { GenericResponses } from '../../../lib';
 import * as jsonResponse from '../fake-responses/generic/fake-post.response.json';
-import { cmLiveClient, getTestClientWithJson } from '../setup';
+import { cmClient, getTestClientWithJson } from '../setup';
 
 describe('Generic POST', () => {
     let response: GenericResponses.GenericResponse;
@@ -16,7 +16,7 @@ describe('Generic POST', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.post().withAction('path/x').withData({}).getUrl();
+        const url = cmClient.post().withAction('path/x').withData({}).getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/path/x`);
     });
 

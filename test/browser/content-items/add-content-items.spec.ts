@@ -1,6 +1,6 @@
 import { ContentItemResponses } from '../../../lib';
 import * as addContentItemResponseJson from '../fake-responses/content-items/fake-add-content-item.json';
-import { getTestClientWithJson, cmLiveClient, testEnvironmentId } from '../setup';
+import { getTestClientWithJson, cmClient, testEnvironmentId } from '../setup';
 
 describe('Add content item', () => {
     let response: ContentItemResponses.AddContentItemResponse;
@@ -23,7 +23,7 @@ describe('Add content item', () => {
     });
 
     it(`url should be correct`, () => {
-        const addUrl = cmLiveClient
+        const addUrl = cmClient
             .addContentItem()
             .withData({} as any)
             .getUrl();

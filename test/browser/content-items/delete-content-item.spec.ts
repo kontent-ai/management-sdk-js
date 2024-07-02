@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as deleteContentItemJson from '../fake-responses/content-items/fake-delete-content-item.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete content item', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -13,11 +13,13 @@ describe('Delete content item', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.deleteContentItem().byItemCodename('xCodename').getUrl();
-        const internalIdUrl = cmLiveClient.deleteContentItem().byItemId('xInternalId').getUrl();
-        const externalIdUrl = cmLiveClient.deleteContentItem().byItemExternalId('xExternalId').getUrl();
+        const codenameUrl = cmClient.deleteContentItem().byItemCodename('xCodename').getUrl();
+        const internalIdUrl = cmClient.deleteContentItem().byItemId('xInternalId').getUrl();
+        const externalIdUrl = cmClient.deleteContentItem().byItemExternalId('xExternalId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename`);
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/codename/xCodename`
+        );
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/xInternalId`);
         expect(externalIdUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/items/external-id/xExternalId`

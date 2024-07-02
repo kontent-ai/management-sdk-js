@@ -1,6 +1,6 @@
 import { PreviewModels, PreviewResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/preview/fake-get-preview-configuration.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Get preview configuration', () => {
     let response: PreviewResponses.PreviewConfigurationResponse;
@@ -10,10 +10,9 @@ describe('Get preview configuration', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.getPreviewConfiguration().getUrl();
+        const url = cmClient.getPreviewConfiguration().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/preview-configuration`);
-        
     });
 
     it(`response should be instance of PreviewResponses.PreviewConfigurationResponse class`, () => {

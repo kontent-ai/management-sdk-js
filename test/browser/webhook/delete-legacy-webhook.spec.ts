@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete legacy webhook', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -9,7 +9,7 @@ describe('Delete legacy webhook', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient.deleteLegacyWebhook().byId('x').getUrl();
+        const w1Url = cmClient.deleteLegacyWebhook().byId('x').getUrl();
         expect(w1Url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/webhooks/x`);
     });
 

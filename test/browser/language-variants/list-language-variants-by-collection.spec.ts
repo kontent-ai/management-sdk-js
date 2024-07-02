@@ -1,6 +1,6 @@
 import { ElementModels, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as responseJson from '../fake-responses/language-variants/fake-list-language-variants-of-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List language variants by collection', () => {
     let response: LanguageVariantResponses.ListLanguageVariantsByCollectionResponse;
@@ -13,9 +13,9 @@ describe('List language variants by collection', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.listLanguageVariantsByCollection().byCollectionCodename('xCodename').getUrl();
-        const idUrl = cmLiveClient.listLanguageVariantsByCollection().byCollectionId('xId').getUrl();
-        const externalIdUrl = cmLiveClient
+        const codenameUrl = cmClient.listLanguageVariantsByCollection().byCollectionCodename('xCodename').getUrl();
+        const idUrl = cmClient.listLanguageVariantsByCollection().byCollectionId('xId').getUrl();
+        const externalIdUrl = cmClient
             .listLanguageVariantsByCollection()
             .byCollectionExternalId('xExternalId')
             .getUrl();

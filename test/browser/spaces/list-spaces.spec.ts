@@ -1,6 +1,6 @@
 import { SpaceResponses, SpaceModels } from '../../../lib';
 import * as listSpacesJson from '../fake-responses/spaces/fake-list-spaces.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List spaces', () => {
     let response: SpaceResponses.SpacesListResponse;
@@ -10,7 +10,7 @@ describe('List spaces', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.listSpaces().getUrl();
+        const url = cmClient.listSpaces().getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/spaces`);
     });
 

@@ -1,6 +1,6 @@
 import { BaseResponses } from '../../../lib';
 import * as deleteContentTypeJson from '../fake-responses/content-types/fake-delete-content-type.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete content type', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -13,11 +13,13 @@ describe('Delete content type', () => {
     });
 
     it(`url should be correct`, () => {
-        const codenameUrl = cmLiveClient.deleteContentType().byTypeCodename('xCodename').getUrl();
-        const internalIdUrl = cmLiveClient.deleteContentType().byTypeId('xInternalId').getUrl();
-        const externalIdUrl = cmLiveClient.deleteContentType().byTypeExternalId('xExternalId').getUrl();
+        const codenameUrl = cmClient.deleteContentType().byTypeCodename('xCodename').getUrl();
+        const internalIdUrl = cmClient.deleteContentType().byTypeId('xInternalId').getUrl();
+        const externalIdUrl = cmClient.deleteContentType().byTypeExternalId('xExternalId').getUrl();
 
-        expect(codenameUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/codename/xCodename`);
+        expect(codenameUrl).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/codename/xCodename`
+        );
         expect(internalIdUrl).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/xInternalId`);
         expect(externalIdUrl).toEqual(
             `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/types/external-id/xExternalId`

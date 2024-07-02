@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Change workflow step of language variant', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -14,13 +14,13 @@ describe('Change workflow step of language variant', () => {
     });
 
     it(`url should be correct`, () => {
-        const w1Url = cmLiveClient
+        const w1Url = cmClient
             .changeWorkflowStepOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')
             .byWorkflowStepId('b')
             .getUrl();
-        const w2Url = cmLiveClient
+        const w2Url = cmClient
             .changeWorkflowStepOfLanguageVariant()
             .byItemCodename('x')
             .byLanguageCodename('y')

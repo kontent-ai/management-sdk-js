@@ -1,6 +1,6 @@
 import { PreviewModels, PreviewResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/preview/fake-modify-preview-configuration.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Modify preview configuration', () => {
     let response: PreviewResponses.ModifyConfigurationResponse;
@@ -37,7 +37,7 @@ describe('Modify preview configuration', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient
+        const url = cmClient
             .modifyPreviewConfiguration()
             .withData({} as any)
             .getUrl();

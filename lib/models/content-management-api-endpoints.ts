@@ -217,11 +217,10 @@ export class ContentManagementApiEndpoints {
     listLanguageVariantsByCollection(identifier: Identifiers.CollectionIdentifier): string {
         return `${this.getEnvironmentsPath()}/collections/${identifier.getParamValue()}/variants`;
     }
-    
+
     listLanguageVariantsBySpace(identifier: Identifiers.SpaceIdentifier): string {
         return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}/variants`;
     }
-
 
     listLanguageVariantsOfContentTypeWithComponents(identifier: Identifiers.ContentTypeIdentifier): string {
         return `${this.getEnvironmentsPath()}/types/${identifier.getParamValue()}/components`;
@@ -234,7 +233,17 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/items/${itemIdentifier.getParamValue()}/variants/${langaugeIdentifier.getParamValue()}`;
     }
 
-    viewOrUpsertLanguageVariant(
+    viewLanguageVariant(
+        itemIdentifier: Identifiers.ContentItemIdentifier,
+        langaugeIdentifier: Identifiers.LanguageIdentifier,
+        isPublished: boolean
+    ): string {
+        return `${this.getEnvironmentsPath()}/items/${itemIdentifier.getParamValue()}/variants/${langaugeIdentifier.getParamValue()}${
+            isPublished ? '/published' : ''
+        }`;
+    }
+
+    upsertLanguageVariant(
         itemIdentifier: Identifiers.ContentItemIdentifier,
         langaugeIdentifier: Identifiers.LanguageIdentifier
     ): string {
@@ -304,7 +313,6 @@ export class ContentManagementApiEndpoints {
     listWebhooks(): string {
         return `${this.getEnvironmentsPath()}/webhooks-vnext`;
     }
-
 
     listAssetFolders(): string {
         return `${this.getEnvironmentsPath()}/folders`;

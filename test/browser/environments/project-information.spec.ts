@@ -1,6 +1,6 @@
 import { EnvironmentModels, EnvironmentResponses } from '../../../lib';
 import * as responseJson from '../fake-responses/projects/fake-project-information.json';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Project information', () => {
     let response: EnvironmentResponses.EnvironmentInformationResponse;
@@ -10,7 +10,7 @@ describe('Project information', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.environmentInformation().getUrl();
+        const url = cmClient.environmentInformation().getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}`);
     });

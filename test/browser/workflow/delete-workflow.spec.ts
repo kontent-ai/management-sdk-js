@@ -1,5 +1,5 @@
 import { BaseResponses } from '../../../lib';
-import { cmLiveClient, getTestClientWithJson, testEnvironmentId } from '../setup';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('Delete workflow', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
@@ -9,11 +9,13 @@ describe('Delete workflow', () => {
     });
 
     it(`url should be correct`, () => {
-        const urlById = cmLiveClient.deleteWorkflow().byWorkflowId('x').getUrl();
-        const urlByCodename = cmLiveClient.deleteWorkflow().byWorkflowCodename('x').getUrl();
+        const urlById = cmClient.deleteWorkflow().byWorkflowId('x').getUrl();
+        const urlByCodename = cmClient.deleteWorkflow().byWorkflowCodename('x').getUrl();
 
         expect(urlById).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/x`);
-        expect(urlByCodename).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/codename/x`);
+        expect(urlByCodename).toEqual(
+            `https://manage.kontent.ai/v2/projects/${testEnvironmentId}/workflows/codename/x`
+        );
     });
 
     it(`response should be instance of EmptyContentManagementResponse class`, () => {

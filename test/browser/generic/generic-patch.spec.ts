@@ -1,6 +1,6 @@
 import { GenericResponses } from '../../../lib';
 import * as jsonResponse from '../fake-responses/generic/fake-patch.response.json';
-import { cmLiveClient, getTestClientWithJson } from '../setup';
+import { cmClient, getTestClientWithJson } from '../setup';
 
 describe('Generic PATCH', () => {
     let response: GenericResponses.GenericResponse;
@@ -16,7 +16,7 @@ describe('Generic PATCH', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = cmLiveClient.patch().withAction('path/x').withData({}).getUrl();
+        const url = cmClient.patch().withAction('path/x').withData({}).getUrl();
         expect(url).toEqual(`https://manage.kontent.ai/v2/path/x`);
     });
 
