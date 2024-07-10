@@ -63,7 +63,6 @@ export namespace LanguageVariantModels {
             elements: ElementModels.ContentItemElement[];
             language: SharedModels.ReferenceObject;
             lastModified: Date;
-            workflowStep: SharedModels.ReferenceObject;
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
