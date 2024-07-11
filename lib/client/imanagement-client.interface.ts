@@ -35,7 +35,6 @@ import {
     AssetIdentifierQuery,
     CancelScheduledPublishingOfLanguageVariantQuery,
     CancelScheduledUnpublishingOfLanguageVariantQuery,
-    ChangeWorkflowStepOfLanguageOrVariantQuery,
     ContentItemIdentifierQuery,
     ContentTypeCodenameAndIdIdentifierQuery,
     ContentTypeIdentifierQuery,
@@ -72,7 +71,6 @@ import {
     ListTaxonomiesQuery,
     ListLegacyWebhooksQuery,
     ListWebhooksQuery,
-    ListWorkflowStepsQuery,
     ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
@@ -101,7 +99,6 @@ import {
     ViewLanguageVariantQuery,
     ViewSpaceQuery,
     WebhookIdentifierQuery,
-    WorkflowStepIdentifierQuery,
     EnableLegacyWebhookQuery,
     EnableWebhookQuery,
     DisableLegacyWebhookQuery,
@@ -226,18 +223,6 @@ export interface IManagementClient<TCancelToken> {
      * Create a new workflow.
      */
     addWorkflow(): DataQuery<AddWorkflowQuery, WorkflowModels.IAddWorkflowData>;
-
-    /**
-     * @deprecated The method should not be used anymore. Use 'changeWorkflowLanguageVariant' instead
-     */
-    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
-    >;
-
-    /**
-     * @deprecated The method should not be used anymore. Use 'listWorkflows' instead
-     */
-    listWorkflowSteps(): ListWorkflowStepsQuery;
 
     /**
      * Cancel scheduled unpublishing of the specified language variant.
@@ -523,7 +508,7 @@ export interface IManagementClient<TCancelToken> {
      */
     listWebhooks(): ListWebhooksQuery;
 
-        /**
+    /**
      * Delete a legacy webhook
      */
     deleteLegacyWebhook(): WebhookIdentifierQuery<DeleteLegacyWebhookQuery>;

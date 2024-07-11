@@ -35,7 +35,6 @@ import {
     AddLegacyWebhookQuery,
     AssetIdentifierQuery,
     CancelScheduledPublishingOfLanguageVariantQuery,
-    ChangeWorkflowStepOfLanguageOrVariantQuery,
     ContentItemIdentifierQuery,
     ContentTypeCodenameAndIdIdentifierQuery,
     ContentTypeIdentifierQuery,
@@ -68,7 +67,6 @@ import {
     ListTaxonomiesQuery,
     ListWebhooksQuery,
     ListLegacyWebhooksQuery,
-    ListWorkflowStepsQuery,
     ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
@@ -90,7 +88,6 @@ import {
     ViewLanguageQuery,
     ViewLanguageVariantQuery,
     WebhookIdentifierQuery,
-    WorkflowStepIdentifierQuery,
     ModifyTaxonomyQuery,
     PostQuery,
     ActionQuery,
@@ -338,40 +335,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
-    changeWorkflowStepOfLanguageVariant(): ContentItemIdentifierQuery<
-        LanguageIdAndCodenameIdentifierQuery<WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>>
-    > {
-        return new ContentItemIdentifierQuery<
-            LanguageIdAndCodenameIdentifierQuery<
-                WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>
-            >
-        >(
-            this.config,
-            this.queryService,
-            (config, queryService, contentItemIdentifier) =>
-                new LanguageIdAndCodenameIdentifierQuery<
-                    WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>
-                >(
-                    config,
-                    queryService,
-                    (nConfig, nQueryService, languageIdentifier) =>
-                        new WorkflowStepIdentifierQuery<ChangeWorkflowStepOfLanguageOrVariantQuery>(
-                            nConfig,
-                            nQueryService,
-                            (mConfig, mQueryservice, workflowIdentifier) => {
-                                return new ChangeWorkflowStepOfLanguageOrVariantQuery(
-                                    config,
-                                    queryService,
-                                    contentItemIdentifier,
-                                    languageIdentifier,
-                                    workflowIdentifier
-                                );
-                            }
-                        )
-                )
-        );
-    }
-
     changeWorkflowOfLanguageVariant(): ContentItemIdentifierQuery<
         LanguageIdAndCodenameIdentifierQuery<
             DataQuery<ChangeWorkflowOfLanguageOrVariantQuery, WorkflowModels.IChangeWorkflowOfLanguageVariantData>
@@ -476,10 +439,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
                         )
                 )
         );
-    }
-
-    listWorkflowSteps(): ListWorkflowStepsQuery {
-        return new ListWorkflowStepsQuery(this.config, this.queryService);
     }
 
     listContentTypeSnippets(): ListContentTypeSnippetsQuery {
@@ -960,11 +919,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         return new SpaceIdentifierQuery<ListLanguageVariantsBySpaceQuery>(
             this.config,
             this.queryService,
-            (config, queryService, identifier) =>
-                new ListLanguageVariantsBySpaceQuery(config, queryService, identifier)
+            (config, queryService, identifier) => new ListLanguageVariantsBySpaceQuery(config, queryService, identifier)
         );
     }
-
 
     listLanguageVariantsOfContentTypeWithComponents(): ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery> {
         return new ContentTypeCodenameAndIdIdentifierQuery<ListLanguageVariantsOfContentTypeWithComponentsQuery>(
@@ -1095,7 +1052,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
     listLegacyWebhooks(): ListLegacyWebhooksQuery {
         return new ListLegacyWebhooksQuery(this.config, this.queryService);
     }
-
 
     environmentInformation(): EnvironmentInformationQuery {
         return new EnvironmentInformationQuery(this.config, this.queryService);

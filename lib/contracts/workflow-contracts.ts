@@ -9,24 +9,22 @@ export namespace WorkflowContracts {
     }
 
     export type WorkflowColor =
-    | 'gray'
-    | 'red'
-    | 'rose'
-    | 'light-purple'
-    | 'dark-purple'
-    | 'dark-blue'
-    | 'light-blue'
-    | 'sky-blue'
-    | 'mint-green'
-    | 'persian-green'
-    | 'dark-green'
-    | 'light-green'
-    | 'yellow'
-    | 'pink'
-    | 'orange'
-    | 'brown';
-
-    export type IListWorkflowStepsResponseContract = IWorkflowStepContract[];
+        | 'gray'
+        | 'red'
+        | 'rose'
+        | 'light-purple'
+        | 'dark-purple'
+        | 'dark-blue'
+        | 'light-blue'
+        | 'sky-blue'
+        | 'mint-green'
+        | 'persian-green'
+        | 'dark-green'
+        | 'light-green'
+        | 'yellow'
+        | 'pink'
+        | 'orange'
+        | 'brown';
 
     export type IListWorkflowsResponseContract = IWorkflowContract[];
 

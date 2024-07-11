@@ -192,28 +192,12 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
     }
 
-    async changeWorkflowStepOfLanguageVariantAsync(
-        url: string,
-        config: IContentManagementQueryConfig
-    ): Promise<BaseResponses.EmptyContentManagementResponse> {
-        return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, undefined, {}, config));
-    }
-
     async changeWorkflowOfLanguageVariantAsync(
         url: string,
         data: WorkflowModels.IChangeWorkflowOfLanguageVariantData,
         config: IContentManagementQueryConfig
     ): Promise<BaseResponses.EmptyContentManagementResponse> {
         return workflowMapper.mapEmptyResponse(await this.putResponseAsync<void>(url, data, {}, config));
-    }
-
-    async listWorkflowStepsAsync(
-        url: string,
-        config: IContentManagementQueryConfig
-    ): Promise<WorkflowResponses.ListWorkflowStepsResponse> {
-        return workflowMapper.mapListWorkflowStepsResponse(
-            await this.getResponseAsync<WorkflowContracts.IListWorkflowStepsResponseContract>(url, {}, config)
-        );
     }
 
     async listWorkflowsAsync(
@@ -843,7 +827,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
                 config
             )
         );
-    }  
+    }
 
     async listLanguageVariantsBySpaceAsync(
         url: string,
@@ -856,10 +840,7 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
                 config
             )
         );
-    }  
-
-
-
+    }
 
     async listLanguagesAsync(
         url: string,
