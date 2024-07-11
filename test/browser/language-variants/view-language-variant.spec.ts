@@ -97,7 +97,6 @@ describe('View language variant', () => {
         expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
 
-        expect(variant.workflowStep.id).toEqual(originalItem.workflow_step.id);
         expect(variant.workflow.stepIdentifier.id).toEqual(originalItem.workflow.step_identifier.id);
         expect(variant.workflow.workflowIdentifier.id).toEqual(originalItem.workflow.workflow_identifier.id);
 

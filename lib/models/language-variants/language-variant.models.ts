@@ -16,10 +16,6 @@ export namespace LanguageVariantModels {
         public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
-        /**
-         * Deprecated in favor of 'workflow'
-         */
-        public workflowStep!: SharedModels.ReferenceObject;
         public workflow!: {
             workflowIdentifier: SharedModels.ReferenceObject;
             stepIdentifier: SharedModels.ReferenceObject;
@@ -31,7 +27,6 @@ export namespace LanguageVariantModels {
             elements: ElementModels.ContentItemElement[];
             language: SharedModels.ReferenceObject;
             lastModified: Date;
-            workflowStep: SharedModels.ReferenceObject;
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
@@ -47,10 +42,7 @@ export namespace LanguageVariantModels {
         public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
-        /**
-         * Deprecated in favor of 'workflow'
-         */
-        public workflowStep!: SharedModels.ReferenceObject;
+
         public workflow!: {
             workflowIdentifier: SharedModels.ReferenceObject;
             stepIdentifier: SharedModels.ReferenceObject;

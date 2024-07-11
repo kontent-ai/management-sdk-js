@@ -9,7 +9,6 @@ export namespace LanguageVariantContracts {
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
         workflow: ILanguageVariantWorkflowContract;
-        workflow_step: SharedContracts.IReferenceObjectContract;
     }
 
     export interface ILanguageVariantModelsContract {
