@@ -9,6 +9,8 @@ export namespace LanguageVariantContracts {
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
         workflow: ILanguageVariantWorkflowContract;
+        schedule: ILanguageVariantSchedule;
+        due_date: ILanguageVariantDueDate;
     }
 
     export interface ILanguageVariantModelsContract {
@@ -17,6 +19,8 @@ export namespace LanguageVariantContracts {
         language: SharedContracts.IReferenceObjectContract;
         last_modified: string;
         workflow: ILanguageVariantWorkflowContract;
+        schedule: ILanguageVariantSchedule;
+        due_date: ILanguageVariantDueDate;
     }
 
     export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {}
@@ -48,6 +52,17 @@ export namespace LanguageVariantContracts {
     export interface ILanguageVariantWorkflowContract {
         workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
         step_identifier: SharedContracts.ICodenameIdReferenceContract;
+    }
+
+    export interface ILanguageVariantSchedule {
+        publish_time: string | null;
+        publish_display_timezone: string | null;
+        unpublish_time: string | null;
+        unpublish_display_timezone: string | null;
+    }
+
+    export interface ILanguageVariantDueDate {
+        value: string | null;
     }
 
     export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {}

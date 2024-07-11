@@ -107,6 +107,12 @@ describe('View language variant published', () => {
         expect(variant.workflow.stepIdentifier.id).toEqual(originalItem.workflow.step_identifier.id);
         expect(variant.workflow.workflowIdentifier.id).toEqual(originalItem.workflow.workflow_identifier.id);
 
+        expect(variant.dueDate).toEqual(originalItem.due_date);
+        expect(variant.schedule.publishDisplayTimezone).toEqual(originalItem.schedule.publish_display_timezone);
+        expect(variant.schedule.publishTime).toEqual(originalItem.schedule.publish_time);
+        expect(variant.schedule.unpublishDisplayTimezone).toEqual(originalItem.schedule.unpublish_display_timezone);
+        expect(variant.schedule.unpublishTime).toEqual(originalItem.schedule.unpublish_time);
+
         variant.elements.forEach((element) => {
             const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);
 

@@ -162,7 +162,16 @@
             "language": {
                 "id": "00000000-0000-0000-0000-000000000000"
             },
-            "last_modified": "2017-12-08T08:49:53.6039943Z"
+            "last_modified": "2017-12-08T08:49:53.6039943Z",
+            "due_date": {
+                "value": "2024-02-26T06:04:00.7069564Z"
+            },
+            "schedule": {
+                "publish_time": "2024-03-31T08:00:00",
+                "publish_display_timezone": "Europe/Prague",
+                "unpublish_time": "2024-04-30T08:00:00",
+                "unpublish_display_timezone": "Europe/Prague"
+            }
         }
     ],
     "pagination": {

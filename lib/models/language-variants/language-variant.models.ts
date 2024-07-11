@@ -9,6 +9,17 @@ export namespace LanguageVariantModels {
         external_id?: string;
     }
 
+    export interface ILanguageVariantSchedule {
+        publishTime: string | null;
+        publishDisplayTimezone: string | null;
+        unpublishTime: string | null;
+        unpublishDisplayTimezone: string | null;
+    }
+
+    export interface ILanguageVariantDueDate {
+        value: string | null;
+    }
+
     export class ContentItemLanguageVariant
         implements SharedModels.IBaseModel<LanguageVariantContracts.ILanguageVariantModelContract>
     {
@@ -20,6 +31,8 @@ export namespace LanguageVariantModels {
             workflowIdentifier: SharedModels.ReferenceObject;
             stepIdentifier: SharedModels.ReferenceObject;
         };
+        public schedule!: ILanguageVariantSchedule;
+        public dueDate!: ILanguageVariantDueDate;
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
         constructor(data: {
@@ -27,6 +40,8 @@ export namespace LanguageVariantModels {
             elements: ElementModels.ContentItemElement[];
             language: SharedModels.ReferenceObject;
             lastModified: Date;
+            schedule: ILanguageVariantSchedule;
+            dueDate: ILanguageVariantDueDate;
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
@@ -42,7 +57,8 @@ export namespace LanguageVariantModels {
         public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
         public lastModified!: Date;
-
+        public schedule!: ILanguageVariantSchedule;
+        public dueDate!: ILanguageVariantDueDate;
         public workflow!: {
             workflowIdentifier: SharedModels.ReferenceObject;
             stepIdentifier: SharedModels.ReferenceObject;
@@ -55,6 +71,8 @@ export namespace LanguageVariantModels {
             elements: ElementModels.ContentItemElement[];
             language: SharedModels.ReferenceObject;
             lastModified: Date;
+            schedule: ILanguageVariantSchedule;
+            dueDate: ILanguageVariantDueDate;
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
