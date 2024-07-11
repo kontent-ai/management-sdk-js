@@ -75,6 +75,9 @@ describe('Upsert language variant', () => {
                         workflow_identifier: {
                             codename: 'x'
                         }
+                    },
+                    due_date: {
+                        value: null
                     }
                 };
             })

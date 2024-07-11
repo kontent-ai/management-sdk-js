@@ -28,6 +28,7 @@ export namespace LanguageVariantContracts {
     export interface IUpsertLanguageVariantPostContract {
         elements: LanguageVariantElements.ILanguageVariantElementBase[];
         workflow?: ILanguageVariantWorkflowContract;
+        due_date?: ILanguageVariantDueDate;
     }
     export interface IListLanguageVariantsOfContentTypeWithComponentsResponseContract {
         variants: ILanguageVariantModelsContract[];
