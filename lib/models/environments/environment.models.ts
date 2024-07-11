@@ -73,6 +73,10 @@ export namespace EnvironmentModels {
     export interface ICloneEnvironmentData {
         name: string;
         roles_to_activate?: string[];
+        copy_data_options?: {
+            content_items_assets?: boolean;
+            content_item_version_history?: boolean;
+        };
     }
 
     export class CloneEnvironmentModel {

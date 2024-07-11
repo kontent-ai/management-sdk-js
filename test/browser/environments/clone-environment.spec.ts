@@ -5,12 +5,13 @@ import * as responseJson from '../fake-responses/environments/fake-clone-environ
 
 describe('Clone environment', () => {
     let response: EnvironmentResponses.CloneEnvironmentResponse;
-    let requestData: EnvironmentModels.ICloneEnvironmentData;
+    const requestData: EnvironmentModels.ICloneEnvironmentData = {
+        name: 'New environment',
+        roles_to_activate: [],
+        copy_data_options: { content_item_version_history: false, content_items_assets: false }
+    };
 
     beforeAll(async () => {
-        requestData = {
-            name: 'New environment'
-        };
         response = await getTestClientWithJson(responseJson).cloneEnvironment().withData(requestData).toPromise();
     });
 
