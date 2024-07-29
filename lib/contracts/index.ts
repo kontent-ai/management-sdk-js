@@ -19,3 +19,4 @@ export * from './environment-contracts';
 export * from './asset-rendition-contracts';
 export * from './space-contracts';
 export * from './preview-contracts';
+export * from './web-spotlight-contracts';

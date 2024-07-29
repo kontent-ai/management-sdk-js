@@ -17,6 +17,7 @@ import {
     SpaceModels,
     TaxonomyModels,
     WebhookModels,
+    WebSpotlightModels,
     WorkflowModels
 } from '../models';
 import {
@@ -135,7 +136,10 @@ import {
     CheckEnvironmentValidationQuery,
     ListEnvironmentValidationIssuesQuery,
     GetPreviewConfigurationQuery,
-    ModifyPreviewConfigurationQuery
+    ModifyPreviewConfigurationQuery,
+    ActivateWebSpotlightQuery,
+    DeactivateWebSpotlightQuery,
+    CheckWebSpotlightStatusQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -733,4 +737,19 @@ export interface IManagementClient<TCancelToken> {
         ModifyPreviewConfigurationQuery,
         PreviewModels.IModifyPreviewConfigurationData
     >;
+
+    /**
+     * Activates Web Spotlight
+     */
+    activateWebSpotlight(): DataQuery<ActivateWebSpotlightQuery, WebSpotlightModels.IActivateWebSpotlightData>;
+
+    /**
+     * Deactivates Web Spotlight
+     */
+    deactivateWebSpotlight(): DeactivateWebSpotlightQuery;
+
+    /**
+     * Checks Web Spotlight status
+     */
+    checkWebSpotlightStatus(): CheckWebSpotlightStatusQuery;
 }

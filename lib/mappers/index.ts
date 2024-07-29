@@ -19,3 +19,4 @@ export * from './project-user-mapper';
 export * from './asset-rendition-mapper';
 export * from './space-mapper';
 export * from './preview-mapper';
+export * from './web-spotlight-mapper';

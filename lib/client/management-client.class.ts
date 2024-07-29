@@ -6,7 +6,8 @@ import {
     LanguageVariantElementsBuilder,
     PreviewModels,
     ProjectUserModels,
-    SpaceModels
+    SpaceModels,
+    WebSpotlightModels
 } from '../models';
 
 import { IManagementClientConfig } from '../config';
@@ -139,7 +140,10 @@ import {
     ViewSpaceQuery,
     SpaceIdentifierQuery,
     GetPreviewConfigurationQuery,
-    ModifyPreviewConfigurationQuery
+    ModifyPreviewConfigurationQuery,
+    ActivateWebSpotlightQuery,
+    DeactivateWebSpotlightQuery,
+    CheckWebSpotlightStatusQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
@@ -1275,5 +1279,21 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.queryService,
             (config, queryService, identifier) => new ViewSpaceQuery(config, queryService, identifier)
         );
+    }
+
+    activateWebSpotlight(): DataQuery<ActivateWebSpotlightQuery, WebSpotlightModels.IActivateWebSpotlightData> {
+        return new DataQuery<ActivateWebSpotlightQuery, WebSpotlightModels.IActivateWebSpotlightData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new ActivateWebSpotlightQuery(config, queryService, data)
+        );
+    }
+
+    deactivateWebSpotlight(): DeactivateWebSpotlightQuery {
+        return new DeactivateWebSpotlightQuery(this.config, this.queryService);
+    }
+
+    checkWebSpotlightStatus(): CheckWebSpotlightStatusQuery {
+        return new CheckWebSpotlightStatusQuery(this.config, this.queryService);
     }
 }

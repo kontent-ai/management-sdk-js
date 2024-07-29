@@ -5,10 +5,7 @@ import { SharedModels } from '../models';
 import { BaseResponses } from '../responses';
 
 export abstract class BaseMapper {
-
-    mapResponseDebug(
-        baseResponse: IResponse<any>
-    ): BaseResponses.IContentManagementResponseDebug {
+    mapResponseDebug(baseResponse: IResponse<any>): BaseResponses.IContentManagementResponseDebug {
         if (!baseResponse) {
             throw Error(`Cannot map debug model from the response`);
         }
@@ -30,8 +27,13 @@ export abstract class BaseMapper {
         });
     }
 
+    mapIdReference(rawReference: SharedContracts.IIdReferenceContract): SharedModels.IIdRefenceObject {
+        return {
+            id: rawReference.id
+        };
+    }
+
     mapEmptyResponse(response: IResponse<void | any>): BaseResponses.EmptyContentManagementResponse {
         return new BaseResponses.EmptyContentManagementResponse(this.mapResponseDebug(response), undefined, undefined);
     }
 }
-

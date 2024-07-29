@@ -19,7 +19,8 @@ import {
     TaxonomyContracts,
     WebhookContracts,
     WorkflowContracts,
-    PreviewContracts
+    PreviewContracts,
+    WebSpotlightContracts
 } from '../contracts';
 import {
     assetFolderMapper,
@@ -39,7 +40,8 @@ import {
     projectUserMapper,
     assetRenditionMapper,
     spacesMapper,
-    previewMapper
+    previewMapper,
+    webSpotlightMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -57,7 +59,8 @@ import {
     ProjectUserModels,
     AssetRenditionModels,
     SpaceModels,
-    PreviewModels
+    PreviewModels,
+    WebSpotlightModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -78,7 +81,8 @@ import {
     ProjectUsersResponses,
     AssetRenditionResponses,
     SpaceResponses,
-    PreviewResponses
+    PreviewResponses,
+    WebSpotlightResponses
 } from '../responses';
 import { BaseManagementQueryService } from './base-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
@@ -1169,6 +1173,34 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     ): Promise<SpaceResponses.ModifySpaceResponse> {
         return spacesMapper.mapModifySpaceResponse(
             await this.patchResponseAsync<SpaceContracts.IModifySpaceResponseContract>(url, data, {}, config)
+        );
+    }
+
+    async activateWebSpotlightAsync(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: WebSpotlightModels.IActivateWebSpotlightData
+    ): Promise<WebSpotlightResponses.WebSpotlightStatusResponse> {
+        return webSpotlightMapper.mapWebSpotlightStatusResponse(
+            await this.putResponseAsync<WebSpotlightContracts.IWebSpotlightStatus>(url, data, {}, config)
+        );
+    }
+
+    async deactivateWebSpotlightAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<WebSpotlightResponses.WebSpotlightStatusResponse> {
+        return webSpotlightMapper.mapWebSpotlightStatusResponse(
+            await this.putResponseAsync<WebSpotlightContracts.IWebSpotlightStatus>(url, {}, {}, config)
+        );
+    }
+
+    async checkWebSpotlightStatusAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<WebSpotlightResponses.WebSpotlightStatusResponse> {
+        return webSpotlightMapper.mapWebSpotlightStatusResponse(
+            await this.getResponseAsync<WebSpotlightContracts.IWebSpotlightStatus>(url, {}, config)
         );
     }
 

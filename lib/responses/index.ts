@@ -18,3 +18,4 @@ export * from './asset-renditions/asset-rendition-responses';
 export * from './spaces/space-responses';
 export * from './environments/environment-responses';
 export * from './preview/preview-responses';
+export * from './web-spotlight/web-spotlight-responses';

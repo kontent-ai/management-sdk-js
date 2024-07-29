@@ -444,6 +444,18 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/spaces/${identifier.getParamValue()}`;
     }
 
+    activateWebSpotlight(): string {
+        return `${this.getEnvironmentsPath()}/web-spotlight/activate`;
+    }
+
+    deactivateWebSpotlight(): string {
+        return `${this.getEnvironmentsPath()}/web-spotlight/deactivate`;
+    }
+
+    checkWebSpotlightStatus(): string {
+        return `${this.getEnvironmentsPath()}/web-spotlight/status`;
+    }
+
     private getSubscriptionPath(): string {
         if (!this.subscriptionId) {
             throw Error(`SubscriptionId was not provided in client configuration`);
