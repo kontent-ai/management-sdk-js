@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v6.5.0...v7.0.0) (2024-07-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removes deprecated `listWorkflowSteps` and `changeWorkflowStepOfLanguageVariant` queries
+* Removes deprecated 'workflow_step' from language variant model
+
+### Features
+
+* Adds support for `schedule`  and `due_date` props in language variants ([b60a84c](https://github.com/kontent-ai/management-sdk-js/commit/b60a84c61164b4284ea2c3a048b21ce41a5a22a6))
+* Adds support for copy data options when cloning environment (fixes https://github.com/kontent-ai/management-sdk-js/issues/150) ([5a7df98](https://github.com/kontent-ai/management-sdk-js/commit/5a7df982f74576f57802e2166aac194562075868))
+* Adds support for setting `due_date` when upserting language variant ([34cc81b](https://github.com/kontent-ai/management-sdk-js/commit/34cc81bd3bd484cd8fff2cb6f502b6c8a478731d))
+* Adds support for Web spotlight API endpoints (activate/deactivate/get status) ([4070892](https://github.com/kontent-ai/management-sdk-js/commit/4070892b36d0ca35faede8d16e59dbeccb047c6c))
+* Removes deprecated 'workflow_step' from language variant model ([a687bf1](https://github.com/kontent-ai/management-sdk-js/commit/a687bf104415f7ea3fe08d869a08057b3b8b1780))
+* Removes deprecated `listWorkflowSteps` and `changeWorkflowStepOfLanguageVariant` queries ([a56173c](https://github.com/kontent-ai/management-sdk-js/commit/a56173c27e2877a9a9411dce8f64ad2806046272))
+* updates deps & sets required node.js to <= 20 ([98b0cc1](https://github.com/kontent-ai/management-sdk-js/commit/98b0cc1e8184efbc9ad22d907b25648b0194dde1))
+
 ## [6.5.0](https://github.com/kontent-ai/management-sdk-js/compare/v6.4.0...v6.5.0) (2024-07-02)
 
 
