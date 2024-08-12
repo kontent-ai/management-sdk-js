@@ -6,12 +6,13 @@ export namespace ContentItemContracts {
         name: string;
         codename: string;
         type: {
-            id?: string,
+            id?: string;
             codename?: string;
             external_id?: string;
         };
         external_id?: string;
         last_modified: Date;
+        spaces: SharedContracts.IIdReferenceContract[];
         collection: SharedContracts.IReferenceObjectContract;
     }
 
@@ -20,20 +21,15 @@ export namespace ContentItemContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IAddContentItemResponseContract extends IContentItemModelContract {
-    }
+    export interface IAddContentItemResponseContract extends IContentItemModelContract {}
 
-    export interface IViewContentItemResponseContract extends IContentItemModelContract {
-    }
+    export interface IViewContentItemResponseContract extends IContentItemModelContract {}
 
-    export interface IUpdateContentItemResponseContract extends IContentItemModelContract {
-    }
+    export interface IUpdateContentItemResponseContract extends IContentItemModelContract {}
 
-    export interface IUpsertContentItemResponseContract extends IContentItemModelContract {
-    }
+    export interface IUpsertContentItemResponseContract extends IContentItemModelContract {}
 
-    export interface IDeleteContentItemResponseContract {
-    }
+    export interface IDeleteContentItemResponseContract {}
 
     export interface IUpdateContentItemPostContract {
         name: string;
@@ -50,8 +46,8 @@ export namespace ContentItemContracts {
     export interface IAddContentItemPostContract {
         name: string;
         type: {
-            codename?: string,
-            id?: string
+            codename?: string;
+            id?: string;
             external_id?: string;
         };
         codename?: string;
@@ -59,4 +55,3 @@ export namespace ContentItemContracts {
         collection?: SharedContracts.IReferenceObjectContract;
     }
 }
-

@@ -6,13 +6,11 @@ import { ContentItemResponses } from '../responses';
 import { BaseMapper } from './base-mapper';
 
 export class ContentItemsMapper extends BaseMapper {
-
     mapListingItemsResponse(
         response: IResponse<ContentItemContracts.IContentItemsListingResponseContract>
     ): ContentItemResponses.ContentItemsResponse {
-
         const pagination = super.mapPagination(response.data.pagination);
-        const items = response.data.items.map(m => this.mapContentItem(m));
+        const items = response.data.items.map((m) => this.mapContentItem(m));
 
         return new ContentItemResponses.ContentItemsResponse(super.mapResponseDebug(response), response.data, {
             pagination: pagination,
@@ -23,25 +21,41 @@ export class ContentItemsMapper extends BaseMapper {
     mapViewContentItemResponse(
         response: IResponse<ContentItemContracts.IContentItemModelContract>
     ): ContentItemResponses.ViewContentItemResponse {
-        return new ContentItemResponses.ViewContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
+        return new ContentItemResponses.ViewContentItemResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapContentItem(response.data)
+        );
     }
 
     mapAddContentItemResponse(
         response: IResponse<ContentItemContracts.IAddContentItemResponseContract>
     ): ContentItemResponses.AddContentItemResponse {
-        return new ContentItemResponses.AddContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
+        return new ContentItemResponses.AddContentItemResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapContentItem(response.data)
+        );
     }
 
     mapUpdateContentItemResponse(
         response: IResponse<ContentItemContracts.IUpdateContentItemResponseContract>
     ): ContentItemResponses.UpdateContentItemResponse {
-        return new ContentItemResponses.UpdateContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
+        return new ContentItemResponses.UpdateContentItemResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapContentItem(response.data)
+        );
     }
 
     mapUpsertContentItemResponse(
         response: IResponse<ContentItemContracts.IUpsertContentItemResponseContract>
     ): ContentItemResponses.UpsertContentItemResponse {
-        return new ContentItemResponses.UpsertContentItemResponse(super.mapResponseDebug(response), response.data, this.mapContentItem(response.data));
+        return new ContentItemResponses.UpsertContentItemResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapContentItem(response.data)
+        );
     }
 
     mapContentItem(rawItem: ContentItemContracts.IContentItemModelContract): ContentItemModels.ContentItem {
@@ -53,6 +67,7 @@ export class ContentItemsMapper extends BaseMapper {
             name: rawItem.name,
             type: rawItem.type,
             collection: super.mapReference(rawItem.collection),
+            spaces: rawItem.spaces.map((m) => super.mapIdReference(m)),
             _raw: rawItem
         });
     }
