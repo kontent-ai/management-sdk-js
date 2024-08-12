@@ -63,6 +63,7 @@ describe('Add asset folders', () => {
             expect(m.id).toEqual(originalItem.id);
             expect(m.name).toEqual(originalItem.name);
             expect(m.externalId).toEqual(originalItem.external_id);
+            expect(m.codename).toEqual(originalItem.codename);
             expect(m.folders).toEqual(jasmine.any(Array));
 
             for (const nestedFolder of m.folders) {
@@ -75,6 +76,7 @@ describe('Add asset folders', () => {
                 expect(nestedFolder).toEqual(jasmine.any(AssetFolderModels.AssetFolder));
                 expect(nestedFolder.id).toEqual(originalNestedFolder.id);
                 expect(nestedFolder.name).toEqual(originalNestedFolder.name);
+                expect(nestedFolder.codename).toEqual(originalNestedFolder.codename);
                 expect(nestedFolder.externalId).toEqual(originalNestedFolder.external_id);
                 expect(nestedFolder.folders).toEqual(jasmine.any(Array));
             }

@@ -1,18 +1,20 @@
 {
     "last_modified": "2019-11-07T09:25:44.0680996",
     "folders": [
-      {
-        "id": "958001d8-2228-4373-b966-5262b5b96f71",
-        "name": "Top level folder",
-        "external_id": "top-folder",
-        "folders": [
-          {
-            "id": "9ca927b6-6e4d-4d6b-81e3-ec5e8f7772a0",
-            "name": "Second level folder",
-            "external_id": "second-folder",
-            "folders": []
-          }
-        ]
-      }
+        {
+            "id": "958001d8-2228-4373-b966-5262b5b96f71",
+            "name": "Top level folder",
+            "external_id": "top-folder",
+            "codename": "top_level_folder",
+            "folders": [
+                {
+                    "id": "9ca927b6-6e4d-4d6b-81e3-ec5e8f7772a0",
+                    "name": "Second level folder",
+                    "external_id": "second-folder",
+                    "codename": "second_level_folder",
+                    "folders": []
+                }
+            ]
+        }
     ]
-  }
+}

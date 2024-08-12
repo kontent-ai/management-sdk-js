@@ -47,6 +47,7 @@ describe('List asset folders', () => {
 
             expect(m).toEqual(jasmine.any(AssetFolderModels.AssetFolder));
             expect(m.id).toEqual(originalItem.id);
+            expect(m.codename).toEqual(originalItem.codename);
             expect(m.name).toEqual(originalItem.name);
             expect(m.externalId).toEqual(originalItem.external_id);
             expect(m.folders).toEqual(jasmine.any(Array));
@@ -63,6 +64,7 @@ describe('List asset folders', () => {
                 expect(nestedFolder.name).toEqual(originalNestedFolder.name);
                 expect(nestedFolder.externalId).toEqual(originalNestedFolder.external_id);
                 expect(nestedFolder.folders).toEqual(jasmine.any(Array));
+                expect(nestedFolder.codename).toEqual(originalNestedFolder.codename);
             }
         });
     });
