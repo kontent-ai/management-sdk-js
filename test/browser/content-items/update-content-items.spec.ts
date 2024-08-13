@@ -63,5 +63,6 @@ describe('Update content item', () => {
         expect(response.data.name).toEqual(updateContentItemResponseJson.name);
         expect(response.data.type).toEqual(updateContentItemResponseJson.type);
         expect(response.data.collection.id).toEqual(updateContentItemResponseJson.collection.id);
+        expect(response.data.spaces).toEqual(updateContentItemResponseJson.spaces);
     });
 });

@@ -52,5 +52,6 @@ describe('Add content item', () => {
         expect(response.data.name).toEqual(addContentItemResponseJson.name);
         expect(response.data.type).toEqual(addContentItemResponseJson.type);
         expect(response.data.collection.id).toEqual(addContentItemResponseJson.collection.id);
+        expect(response.data.spaces).toEqual(addContentItemResponseJson.spaces);
     });
 });

@@ -60,6 +60,7 @@ describe('List content items', () => {
             expect(m.type.id).toBeDefined();
             expect(m.lastModified).toEqual(jasmine.any(Date));
             expect(m.collection.id).toBeDefined();
+            expect(m.spaces).toBeDefined();
         });
     });
 });
