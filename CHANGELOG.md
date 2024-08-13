@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.0.0...v7.1.0) (2024-08-13)
+
+
+### Features
+
+* Add spaces to item, installs prettier as devDep ([86e85d4](https://github.com/kontent-ai/management-sdk-js/commit/86e85d4ddaafb6567bd5ae112e820d34b91d076b))
+* Adds support for asset folder codenames ([d032c7b](https://github.com/kontent-ai/management-sdk-js/commit/d032c7b8225feeaaf9935b6370589257b96da42c))
+
 ## [7.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v6.5.0...v7.0.0) (2024-07-29)
 
 
