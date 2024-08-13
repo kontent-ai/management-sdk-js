@@ -4,6 +4,7 @@ export namespace AssetFolderContracts {
         name: string;
         external_id?: string;
         folders: IAssetFolderContract[];
+        codename: string;
     }
 
     export interface IListAssetFoldersResponseContract {

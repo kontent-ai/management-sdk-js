@@ -1,4 +1,4 @@
-import { AssetFolderContracts } from '../../contracts';
+import { AssetFolderContracts, SharedContracts } from '../../contracts';
 import { SharedModels } from '../shared/shared-models';
 
 export namespace AssetFolderModels {
@@ -7,6 +7,7 @@ export namespace AssetFolderModels {
         public name: string;
         public externalId?: string;
         public folders: AssetFolder[];
+        public codename: string;
         public _raw!: AssetFolderContracts.IAssetFolderContract;
 
         constructor(data: {
@@ -14,12 +15,14 @@ export namespace AssetFolderModels {
             name: string;
             externalId?: string;
             folders: AssetFolder[];
+            codename: string;
             _raw: AssetFolderContracts.IAssetFolderContract;
         }) {
             this.id = data.id;
             this.name = data.name;
             this.externalId = data.externalId;
             this.folders = data.folders;
+            this.codename = data.codename;
             this._raw = data._raw;
         }
     }
@@ -28,6 +31,7 @@ export namespace AssetFolderModels {
         name: string;
         folders: IAssetFolderValue[];
         external_id?: string;
+        codename?: string;
     }
 
     export interface IAddAssetFoldersData {
@@ -38,29 +42,20 @@ export namespace AssetFolderModels {
 
     export type AddIntoOperation = {
         op: 'addInto';
-        reference?: {
-            id?: string;
-            external_id?: string;
-        };
+        reference?: SharedContracts.IReferenceObjectContract;
         value: IAssetFolderValue;
-        before?: {
-            id?: string;
-            external_id?: string;
-        };
-        after?: {
-            id?: string;
-            external_id?: string;
-        };
+        before?: SharedContracts.IReferenceObjectContract;
+        after?: SharedContracts.IReferenceObjectContract;
     };
 
     export type RemoveOperation = {
         op: 'remove';
-        reference: SharedModels.ReferenceObject;
+        reference: SharedContracts.IReferenceObjectContract;
     };
 
     export type RenameOperation = {
         op: 'rename';
-        reference: SharedModels.ReferenceObject;
+        reference: SharedContracts.IReferenceObjectContract;
         value: string;
     };
 }
