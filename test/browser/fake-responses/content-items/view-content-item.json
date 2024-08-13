@@ -7,6 +7,11 @@
   },
   "external_id": "59713",
   "last_modified": "2017-04-04T13:45:30.7692802Z",
+  "spaces": [
+    {
+      "id": "f4b3fc05-e988-4dae-9ac1-a94aba"
+    }
+  ],
   "collection": {
     "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
   }

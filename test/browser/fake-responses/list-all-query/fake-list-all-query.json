@@ -1,44 +1,58 @@
 {
-    "items": [
+  "items": [
+    {
+      "id": "a815faa5-009e-489b-b8bb-a7f3dda0e047",
+      "name": "Office in Australia",
+      "codename": "office_in_australia",
+      "type": {
+        "id": "e097306b-3893-4a42-9973-2525fad14d66"
+      },
+      "spaces": [
         {
-            "id": "a815faa5-009e-489b-b8bb-a7f3dda0e047",
-            "name": "Office in Australia",
-            "codename": "office_in_australia",
-            "type": {
-                "id": "e097306b-3893-4a42-9973-2525fad14d66"
-            },
-            "last_modified": "2016-10-20T10:50:51.0110853Z",
-            "collection": {
-                "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
-              }
-        },
-        {
-            "id": "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc",
-            "name": "Melbourne",
-            "codename": "melbourne",
-            "type": {
-                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
-            },
-            "last_modified": "2016-09-01T08:36:30.1564913Z",
-            "collection": {
-                "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
-              }
-        },
-        {
-            "id": "e844a6aa-4dc4-464f-8ae9-f9f66cc6ab61",
-            "name": "Amsterdam",
-            "codename": "amsterdam",
-            "type": {
-                "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
-            },
-            "last_modified": "2016-09-01T08:25:04.4666023Z",
-            "collection": {
-                "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
-              }
+          "id": "d3b1e3c1-3d9f-4f5e-8b22-1f2e3e0d3c5d"
         }
-    ],
-    "pagination": {
-        "continuation_token": null,
-        "next_page": "https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/items?continuationToken=MTAw"
+      ],
+      "last_modified": "2016-10-20T10:50:51.0110853Z",
+      "collection": {
+        "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
+      }
+    },
+    {
+      "id": "69f5c2f3-7efd-46cb-9adc-4fd0200f81cc",
+      "name": "Melbourne",
+      "codename": "melbourne",
+      "type": {
+        "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+      },
+      "spaces": [],
+      "last_modified": "2016-09-01T08:36:30.1564913Z",
+      "collection": {
+        "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
+      }
+    },
+    {
+      "id": "e844a6aa-4dc4-464f-8ae9-f9f66cc6ab61",
+      "name": "Amsterdam",
+      "codename": "amsterdam",
+      "type": {
+        "id": "fe41ae5a-5fe2-420a-8560-f7d6d3533dc2"
+      },
+      "spaces": [
+        {
+          "id": "d3af24fe-4874-4614-b658-c4f9eaafe73a"
+        },
+        {
+          "id": "b6ed4986-1345-4f61-b086-a122f88f344c"
+        }
+      ],
+      "last_modified": "2016-09-01T08:25:04.4666023Z",
+      "collection": {
+        "id": "c4224458-f24c-4f8e-a719-7faaadbc6e88"
+      }
     }
+  ],
+  "pagination": {
+    "continuation_token": null,
+    "next_page": "https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/items?continuationToken=MTAw"
+  }
 }

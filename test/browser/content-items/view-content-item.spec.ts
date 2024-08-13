@@ -48,5 +48,6 @@ describe('View content item', () => {
         expect(response.data.type).toEqual(viewContentItemJson.type);
         expect(response.data.collection).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(response.data.collection.id).toEqual(viewContentItemJson.collection.id);
+        expect(response.data.spaces).toEqual(viewContentItemJson.spaces);
     });
 });

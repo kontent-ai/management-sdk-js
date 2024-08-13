@@ -69,5 +69,6 @@ describe('Upsert content item', () => {
         expect(response.data.name).toEqual(upsertContentItemResponseJson.name);
         expect(response.data.type).toEqual(upsertContentItemResponseJson.type);
         expect(response.data.collection.id).toEqual(upsertContentItemResponseJson.collection.id);
+        expect(response.data.spaces).toEqual(upsertContentItemResponseJson.spaces);
     });
 });
