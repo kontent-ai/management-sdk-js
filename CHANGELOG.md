@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.1.1](https://github.com/kontent-ai/management-sdk-js/compare/v7.1.0...v7.1.1) (2024-08-14)
+
+
+### Bug Fixes
+
+* Use full reference contract for asset folders (adds ability to reference asset folder by `codename`) ([8a6a5a5](https://github.com/kontent-ai/management-sdk-js/commit/8a6a5a512bd508dd1b6789a6740c402b2975d3a6))
+
 ## [7.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.0.0...v7.1.0) (2024-08-13)
 
 
