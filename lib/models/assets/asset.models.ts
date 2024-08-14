@@ -17,7 +17,7 @@ export namespace AssetModels {
         public url!: string;
         public codename!: string;
         public collection?: IAssetCollectionReferenceObject;
-        public folder?: IAssetFolderReference;
+        public folder?: SharedContracts.IReferenceObjectContract;
         public elements?: IAssetElement[];
         public _raw!: AssetContracts.IAssetModelContract;
 
@@ -36,7 +36,7 @@ export namespace AssetModels {
             url: string;
             codename: string;
             collection?: IAssetCollectionReferenceObject;
-            folder?: IAssetFolderReference;
+            folder?: SharedContracts.IReferenceObjectContract;
             elements?: IAssetElement[];
             _raw: AssetContracts.IAssetModelContract;
         }) {
@@ -47,11 +47,6 @@ export namespace AssetModels {
     export interface IAssetElement {
         element: SharedContracts.IIdReferenceContract;
         value: SharedContracts.IIdReferenceContract[];
-    }
-
-    export interface IAssetFolderReference {
-        id?: string;
-        external_id?: string;
     }
 
     export interface IAssetFileReference {
@@ -110,7 +105,7 @@ export namespace AssetModels {
         title?: string;
         external_id?: string;
         descriptions?: IAssetFileDescription[];
-        folder?: IAssetFolderReference;
+        folder?: SharedContracts.IReferenceObjectContract;
         elements?: IAssetElementValueType[];
         collection?: IAssetCollectionReferenceObject;
         codename?: string;
@@ -120,7 +115,7 @@ export namespace AssetModels {
         descriptions: IAssetFileDescription[];
         title?: string;
         file_reference?: IAssetFileReference;
-        folder?: IAssetFolderReference;
+        folder?: SharedContracts.IReferenceObjectContract;
         collection?: IAssetCollectionReferenceObject;
         elements?: IAssetElementValueType[];
     }
@@ -130,7 +125,7 @@ export namespace AssetModels {
             title?: string;
             external_id?: string;
             descriptions?: IAssetFileDescription[];
-            folder?: IAssetFolderReference;
+            folder?: SharedContracts.IReferenceObjectContract;
             elements?: IAssetElementValueType[];
             collection?: IAssetCollectionReferenceObject;
             codename?: string;
