@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.1.1...v7.2.0) (2024-08-15)
+
+
+### Features
+
+* updates deps (& fixes Axios vulnerability), updates eslint config ([b6ce5bb](https://github.com/kontent-ai/management-sdk-js/commit/b6ce5bbbe22b16f1d4eaa1609af67ac46ac5925a))
+
 ### [7.1.1](https://github.com/kontent-ai/management-sdk-js/compare/v7.1.0...v7.1.1) (2024-08-14)
 
 
