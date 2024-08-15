@@ -3,7 +3,7 @@ import { SharedContracts } from '../../contracts';
 export namespace LanguageVariantElements {
     export interface ILanguageVariantElementBase {
         element: SharedContracts.IReferenceObjectContract;
-        value: any | null;
+        value: any;
     }
 
     export interface IRichTextComponent {

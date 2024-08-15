@@ -1,4 +1,3 @@
-
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { IContentManagementListQueryConfig } from '../models';
 import { BaseResponses } from '../responses';
@@ -12,7 +11,10 @@ export abstract class BaseListingQuery<
     protected readonly xContinuationHeaderName: string = 'x-continuation';
     protected listQueryConfig?: IContentManagementListQueryConfig<TResponse>;
 
-    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {
+    constructor(
+        protected config: IManagementClientConfig,
+        protected queryService: ManagementQueryService
+    ) {
         super(config, queryService);
     }
 
@@ -40,13 +42,13 @@ export abstract class BaseListingQuery<
     /**
      * Query to get all items. Uses paging data and may execute multiple HTTP requests depending on number of items
      */
-     toAllPromise(): Promise<TAllResponse> {
+    toAllPromise(): Promise<TAllResponse> {
         return this.queryService.getListAllResponseAsync<TResponse, TAllResponse>({
             listQueryConfig: this.listQueryConfig,
             allResponseFactory: (items, responses) => this.allResponseFactory(items, responses),
-            getResponse: token => {
+            getResponse: (token) => {
                 if (token) {
-                    this.xContinuationToken(token).toPromise();
+                    this.xContinuationToken(token);
                 }
 
                 return this.toPromise();

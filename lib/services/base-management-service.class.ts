@@ -227,7 +227,7 @@ export abstract class BaseManagementQueryService<TCancelToken> {
         return getType(filename);
     }
 
-    private mapContentManagementError(error: any): SharedModels.ContentManagementBaseKontentError | any {
+    private mapContentManagementError(error: any): any {
         let axiosError: AxiosError | undefined;
 
         if (error.error) {
@@ -266,7 +266,6 @@ export abstract class BaseManagementQueryService<TCancelToken> {
         }
 
         return error;
-
     }
 
     /**

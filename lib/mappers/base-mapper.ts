@@ -33,7 +33,7 @@ export abstract class BaseMapper {
         };
     }
 
-    mapEmptyResponse(response: IResponse<void | any>): BaseResponses.EmptyContentManagementResponse {
+    mapEmptyResponse(response: IResponse<any>): BaseResponses.EmptyContentManagementResponse {
         return new BaseResponses.EmptyContentManagementResponse(this.mapResponseDebug(response), undefined, undefined);
     }
 }
