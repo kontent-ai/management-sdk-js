@@ -23,6 +23,7 @@ export namespace LanguageVariantElements {
 
     export interface IDateTimeInVariantElement extends ILanguageVariantElementBase {
         value: string | null;
+        display_timezone: string | null;
     }
 
     export interface ILinkedItemsInVariantElement extends ILanguageVariantElementBase {
