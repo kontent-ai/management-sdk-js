@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.2.0...v7.3.0) (2024-09-26)
+
+
+### Features
+
+* updates deps ([e88a901](https://github.com/kontent-ai/management-sdk-js/commit/e88a9010088c6e496c04749c09990864826e2aab))
+
+
+### Bug Fixes
+
+* adds 'display_timezone' to date time element (fixes https://github.com/kontent-ai/management-sdk-js/issues/157) ([663d828](https://github.com/kontent-ai/management-sdk-js/commit/663d82826173dee4e26d1db7a293d2e3601ca02f))
+
 ## [7.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.1.1...v7.2.0) (2024-08-15)
 
 
