@@ -17,14 +17,7 @@ export class ElementsMapper extends BaseMapper {
 
     mapElements(elementsRaw: ElementContracts.IContentItemElementContract[]): ElementModels.ContentItemElement[] {
         return elementsRaw.map((m) => {
-            return new ElementModels.ContentItemElement({
-                element: super.mapReference(m.element),
-                value: this.mapElementValue(m.value),
-                components: this.mapElementComponents(m.components ?? []),
-                mode: m.mode,
-                searchableValue: m.searchableValue,
-                _raw: m
-            });
+            return this.mapElement(m);
         });
     }
 
@@ -32,6 +25,8 @@ export class ElementsMapper extends BaseMapper {
         return new ElementModels.ContentItemElement({
             element: super.mapReference(rawElement.element),
             value: this.mapElementValue(rawElement.value),
+            components: this.mapElementComponents(rawElement.components ?? []),
+            display_timezone: rawElement.display_timezone,
             mode: rawElement.mode,
             searchableValue: rawElement.searchableValue,
             _raw: rawElement

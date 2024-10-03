@@ -116,6 +116,11 @@ describe('View language variant', () => {
             } else {
                 expect(element.value).toEqual(originalElement.value as string | number);
             }
+
+            const display_timezone = (originalElement as any).display_timezone;
+            if (display_timezone) {
+                expect(display_timezone).toEqual(element.display_timezone);
+            }
         });
     });
 });

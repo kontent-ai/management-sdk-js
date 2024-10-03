@@ -20,7 +20,8 @@
             "element": {
                 "id": "4ae5f7a9-fe1f-1e8c-bfec-d321455139c4"
             },
-            "value": "2014-11-07T00:00:00Z"
+            "value": "2014-11-07T00:00:00Z",
+            "display_timezone": "Europe/Prague"
         },
         {
             "element": {
