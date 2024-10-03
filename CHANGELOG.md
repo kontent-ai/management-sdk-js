@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.3.0...v7.4.0) (2024-10-03)
+
+
+### Features
+
+* adds 'display_timezone' to ContentItemElement class. Fixes mapping of components in element ([bd1b082](https://github.com/kontent-ai/management-sdk-js/commit/bd1b082368d5987a56e12cff6e57488fc4b83bf6))
+
 ## [7.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.2.0...v7.3.0) (2024-09-26)
 
 
