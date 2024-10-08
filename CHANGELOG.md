@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.5.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.4.0...v7.5.0) (2024-10-08)
+
+
+### Features
+
+* adds support for defining global headers in `IManagementClientConfig` ([6582914](https://github.com/kontent-ai/management-sdk-js/commit/65829146120e38ac779c5fd0d5623f6a777d1981))
+* updates deps ([3d6fe1f](https://github.com/kontent-ai/management-sdk-js/commit/3d6fe1f54661df3c602830f1ea6e237c069d165a))
+
 ## [7.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.3.0...v7.4.0) (2024-10-03)
 
 
