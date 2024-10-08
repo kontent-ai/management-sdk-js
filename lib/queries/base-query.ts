@@ -21,7 +21,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
         protected queryService: ManagementQueryService
     ) {
         this.queryConfig = {
-            headers: config.headers ?? [],
+            headers: config.headers ? [...config.headers] : [],
             cancelTokenRequest: undefined
         };
     }
