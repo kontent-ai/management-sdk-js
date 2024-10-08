@@ -1,12 +1,11 @@
-import { IHttpService, IRetryStrategyOptions } from '@kontent-ai/core-sdk';
+import { IHeader, IHttpService, IRetryStrategyOptions } from '@kontent-ai/core-sdk';
 import { IContentManagementListQueryConfig } from '../models';
 
 export interface IManagementClientConfig {
-
     /**
      * API key
      */
-     apiKey: string;
+    apiKey: string;
 
     /**
      * Kontent.ai environment id
@@ -37,4 +36,9 @@ export interface IManagementClientConfig {
      * Custom default list query config. Applied to all list query configs unless overriden by query.
      */
     listQueryConfig?: IContentManagementListQueryConfig<any>;
+
+    /**
+     * Custom headers to be added to each request
+     */
+    headers?: IHeader[];
 }

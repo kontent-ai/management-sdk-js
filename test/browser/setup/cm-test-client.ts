@@ -1,5 +1,5 @@
-import { createManagementClient, ManagementClient } from '../../../lib';
 import { IResponse, TestHttpService } from '@kontent-ai/core-sdk';
+import { createManagementClient, ManagementClient } from '../../../lib';
 
 export const testEnvironmentId: string = 'environmentId';
 export const testSubscriptionId: string = 'subscriptionId';

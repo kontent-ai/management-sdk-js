@@ -1,4 +1,4 @@
-import { IQueryParameter, Parameters, IHeader, IHttpCancelRequestToken } from '@kontent-ai/core-sdk';
+import { IHeader, IHttpCancelRequestToken, IQueryParameter, Parameters } from '@kontent-ai/core-sdk';
 
 import { IManagementClientConfig } from '../config/imanagement-client-config.interface';
 import { ContentManagementApiEndpoints, IContentManagementQueryConfig } from '../models';
@@ -8,10 +8,7 @@ import { ManagementQueryService } from '../services';
 export abstract class BaseQuery<TResponse extends BaseResponses.IContentManagementResponse> {
     private _customUrl?: string;
 
-    protected readonly queryConfig: IContentManagementQueryConfig = {
-        headers: [],
-        cancelTokenRequest: undefined
-    };
+    protected readonly queryConfig: IContentManagementQueryConfig;
     protected readonly parameters: IQueryParameter[] = [];
     protected readonly apiEndpoints: ContentManagementApiEndpoints = new ContentManagementApiEndpoints({
         environmentId: this.config.environmentId,
@@ -19,7 +16,15 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
     });
     protected _addSlashToUrl: boolean = true;
 
-    constructor(protected config: IManagementClientConfig, protected queryService: ManagementQueryService) {}
+    constructor(
+        protected config: IManagementClientConfig,
+        protected queryService: ManagementQueryService
+    ) {
+        this.queryConfig = {
+            headers: config.headers ?? [],
+            cancelTokenRequest: undefined
+        };
+    }
 
     /**
      * Gets url for this query

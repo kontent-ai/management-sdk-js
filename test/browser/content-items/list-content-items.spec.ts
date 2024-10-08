@@ -1,7 +1,7 @@
+import { IHeader } from '@kontent-ai/core-sdk';
 import { ContentItemResponses } from '../../../lib';
 import * as listingResponseJson from '../fake-responses/content-items/fake-list-content-items.json';
-import { getTestClientWithJson, cmClient, testEnvironmentId } from '../setup';
-import { IHeader } from '@kontent-ai/core-sdk';
+import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List content items', () => {
     let response: ContentItemResponses.ContentItemsResponse;
