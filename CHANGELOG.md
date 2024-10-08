@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.5.1](https://github.com/kontent-ai/management-sdk-js/compare/v7.5.0...v7.5.1) (2024-10-08)
+
+
+### Bug Fixes
+
+* Prevent mutation of global headers config ([8abba41](https://github.com/kontent-ai/management-sdk-js/commit/8abba4125f5cea69fc496a9290d09131e30c7205))
+
 ## [7.5.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.4.0...v7.5.0) (2024-10-08)
 
 
