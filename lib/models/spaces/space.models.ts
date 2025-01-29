@@ -4,11 +4,19 @@ import { SharedModels } from '../shared/shared-models';
 export namespace SpaceModels {
     export type ModifySpaceOperation = 'replace';
 
-    export interface IModifySpaceData {
-        op: ModifySpaceOperation;
-        property_name: string;
+    type ModifySpaceProperties = {
+        property_name: "name" | "codename";
         value: string;
+    } | {
+        property_name: "web_spotlight_root_item";
+        value: SharedContracts.IReferenceObjectContract;
     }
+    | {
+        property_name: "collections";
+        value: SharedContracts.IReferenceObjectContract[];
+    }
+
+    export type IModifySpaceData = { op: ModifySpaceOperation } & ModifySpaceProperties;
 
     export interface IAddSpaceData {
         name: string;
