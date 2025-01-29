@@ -1,8 +1,8 @@
 import { SharedModels } from '../shared/shared-models';
 import { SharedContracts, WorkflowContracts } from '../../contracts';
+import { LanguageVariantModels } from '../language-variants/language-variant.models';
 
 export namespace WorkflowModels {
-
     export interface LanguageVariantWorkflow {
         workflowOdentifier: SharedContracts.ICodenameIdReferenceContract;
         stepIdentifier: SharedContracts.ICodenameIdReferenceContract;
@@ -76,6 +76,9 @@ export namespace WorkflowModels {
             codename?: string;
         };
         step_identifier: SharedContracts.IReferenceObjectContract;
+        due_date?: LanguageVariantModels.ILanguageVariantDueDate;
+        contributors?: SharedContracts.IUserReferenceObjectContract[];
+        note?: string;
     }
 
     export interface IAddWorkflowData {

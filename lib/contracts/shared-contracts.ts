@@ -9,6 +9,12 @@ export namespace SharedContracts {
         codename?: string;
         external_id?: string;
     }
+
+    export interface IUserReferenceObjectContract {
+        id?: string;
+        email?: string;
+    }
+
     export interface ICodenameIdReferenceContract {
         id?: string;
         codename?: string;

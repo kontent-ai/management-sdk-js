@@ -15,7 +15,16 @@ describe('Change workflow of language variant', () => {
                 },
                 workflow_identifier: {
                     codename: 'y'
-                }
+                },
+                contributors: [
+                    {
+                        id: 'x'
+                    }
+                ],
+                due_date: {
+                    value: '2024-02-26T06:04:00.7069564Z'
+                },
+                note: 'x'
             })
             .toPromise();
     });

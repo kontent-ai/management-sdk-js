@@ -1,6 +1,6 @@
 import { ElementModels } from '../elements/elements.models';
 import { SharedModels } from '../shared/shared-models';
-import { LanguageVariantContracts } from '../../contracts';
+import { LanguageVariantContracts, SharedContracts } from '../../contracts';
 
 export namespace LanguageVariantModels {
     export interface ILanguageVariantElementInfo {
@@ -33,6 +33,8 @@ export namespace LanguageVariantModels {
         };
         public schedule!: ILanguageVariantSchedule;
         public dueDate!: ILanguageVariantDueDate;
+        public note?: string;
+        public contributors!: SharedContracts.IUserReferenceObjectContract[];
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
         constructor(data: {
@@ -42,6 +44,8 @@ export namespace LanguageVariantModels {
             lastModified: Date;
             schedule: ILanguageVariantSchedule;
             dueDate: ILanguageVariantDueDate;
+            note?: string;
+            contributors: SharedContracts.IUserReferenceObjectContract[];
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
