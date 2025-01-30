@@ -78,7 +78,13 @@ describe('Upsert language variant', () => {
                     },
                     due_date: {
                         value: null
-                    }
+                    },
+                    note: 'x',
+                    contributors: [
+                        {
+                            email: 'user@email.com'
+                        }
+                    ]
                 };
             })
             .toPromise();
@@ -188,6 +194,8 @@ describe('Upsert language variant', () => {
         expect(variant.workflow.stepIdentifier.id).toEqual(originalItem.workflow.step_identifier.id);
         expect(variant.item).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(variant.language).toEqual(jasmine.any(SharedModels.ReferenceObject));
+        expect(variant.note).toEqual(originalItem.note);
+        expect(variant.contributors).toEqual(originalItem.contributors);
 
         variant.elements.forEach((element) => {
             const originalElement = originalItem.elements.find((m) => m.element.id === element.element.id);

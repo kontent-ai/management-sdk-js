@@ -10,6 +10,18 @@ export namespace SharedContracts {
         external_id?: string;
     }
 
+    export type UserReferenceContract = Required<Pick<UserReferenceDataContract, 'id'>>;
+
+    export type UserReferenceDataContract =
+        | {
+              id: string;
+              email?: never;
+          }
+        | {
+              id?: never;
+              email: string;
+          };
+
     export interface ICodenameIdReferenceContract {
         id?: string;
         codename?: string;

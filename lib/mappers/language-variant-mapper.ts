@@ -127,6 +127,8 @@ export class LanguageVariantMapper extends BaseMapper {
             lastModified: new Date(rawVariant.last_modified),
             dueDate: this.mapDueDate(rawVariant.due_date),
             schedule: this.mapSchedule(rawVariant.schedule),
+            note: rawVariant.note,
+            contributors: rawVariant.contributors,
             workflow: {
                 workflowIdentifier: super.mapReference(rawVariant.workflow.workflow_identifier),
                 stepIdentifier: super.mapReference(rawVariant.workflow.step_identifier)
