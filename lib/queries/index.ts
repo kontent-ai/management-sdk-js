@@ -20,4 +20,5 @@ export * from './asset-renditions';
 export * from './spaces';
 export * from './environments';
 export * from './preview';
+export * from './custom-apps';
 export * from './web-spotlight';

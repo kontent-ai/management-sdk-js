@@ -1,0 +1,18 @@
+{
+    "id": "dd1439d5-4ee2-4895-a4e4-5b0d9d8c754e",
+    "name": "New Custom App Name",
+    "codename": "new_custom_app_codename",
+    "source_url": "https://newcustomapplication.net",
+    "config": null,
+    "allowed_roles": [
+        {
+            "id": "dadc778e-83e4-4386-a4da-719b9456a099"
+        },
+        {
+            "id": "f8f0b5cb-f5b7-42e8-af85-fbdab3ddfacf"
+        },
+        {
+            "id": "a650d86c-3691-4c54-8771-d2f86e244475"
+        }
+    ]
+}

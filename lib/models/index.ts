@@ -27,3 +27,4 @@ export * from './assets/asset-elements.builder';
 export * from './spaces/space.models';
 export * from './preview/preview.models';
 export * from './web-spotlight/web-spotlight.models';
+export * from './custom-apps/custom-app.models';

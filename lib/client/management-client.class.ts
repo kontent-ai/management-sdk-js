@@ -3,6 +3,7 @@ import {
     AssetElementsBuilder,
     AssetRenditionModels,
     CollectionModels,
+    CustomAppModels,
     LanguageVariantElementsBuilder,
     PreviewModels,
     ProjectUserModels,
@@ -143,7 +144,13 @@ import {
     ModifyPreviewConfigurationQuery,
     ActivateWebSpotlightQuery,
     DeactivateWebSpotlightQuery,
-    CheckWebSpotlightStatusQuery
+    CheckWebSpotlightStatusQuery,
+    ListCustomAppsQuery,
+    AddCustomAppQuery,
+    CustomAppsIdentifierQuery,
+    GetCustomAppQuery,
+    ModifyCustomAppQuery,
+    DeleteCustomAppQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
@@ -1295,5 +1302,50 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     checkWebSpotlightStatus(): CheckWebSpotlightStatusQuery {
         return new CheckWebSpotlightStatusQuery(this.config, this.queryService);
+    }
+
+    modifyCustomApp(): CustomAppsIdentifierQuery<
+        DataQuery<ModifyCustomAppQuery, CustomAppModels.ModifyCustomAppOperation[]>
+    > {
+        return new CustomAppsIdentifierQuery<
+            DataQuery<ModifyCustomAppQuery, CustomAppModels.ModifyCustomAppOperation[]>
+        >(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) =>
+                new DataQuery<ModifyCustomAppQuery, CustomAppModels.ModifyCustomAppOperation[]>(
+                    config,
+                    queryService,
+                    (nConfig, nQueryService, data) => new ModifyCustomAppQuery(nConfig, nQueryService, identifier, data)
+                )
+        );
+    }
+
+    deleteCustomApp(): CustomAppsIdentifierQuery<DeleteCustomAppQuery> {
+        return new CustomAppsIdentifierQuery<DeleteCustomAppQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new DeleteCustomAppQuery(config, queryService, identifier)
+        );
+    }
+
+    addCustomApp(): DataQuery<AddCustomAppQuery, CustomAppModels.IAddCustomAppData> {
+        return new DataQuery<AddCustomAppQuery, CustomAppModels.IAddCustomAppData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new AddCustomAppQuery(config, queryService, data)
+        );
+    }
+
+    listCustomApps(): ListCustomAppsQuery {
+        return new ListCustomAppsQuery(this.config, this.queryService);
+    }
+
+    getCustomApp(): CustomAppsIdentifierQuery<GetCustomAppQuery> {
+        return new CustomAppsIdentifierQuery<GetCustomAppQuery>(
+            this.config,
+            this.queryService,
+            (config, queryService, identifier) => new GetCustomAppQuery(config, queryService, identifier)
+        );
     }
 }

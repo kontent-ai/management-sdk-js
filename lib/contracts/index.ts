@@ -20,3 +20,4 @@ export * from './asset-rendition-contracts';
 export * from './space-contracts';
 export * from './preview-contracts';
 export * from './web-spotlight-contracts';
+export * from './custom-apps-contracts';

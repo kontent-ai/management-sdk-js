@@ -1,0 +1,15 @@
+{
+    "id": "f8f0b5cb-f5b7-42e8-af85-fbdab3ddfacf",
+    "name": "Custom App Name",
+    "codename": "custom_app_codename",
+    "source_url": "https://customapp.net",
+    "config": "\"{\"theme\":{\"color\":\"#007BFF\",\"logo_url\":\"https://assets.customapp.net/logo.png\"},\"features\":{\"enable_notifications\":true,\"enable_advanced_mode\":false}}\"",
+    "allowed_roles": [
+        {
+            "id": "7740a768-bfa5-4f64-bab4-d77cc0791d4c"
+        },
+        {
+            "id": "7a51d721-7302-4a85-b4ce-a6a3f3cce4a6"
+        }
+    ]
+}

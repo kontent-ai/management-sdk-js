@@ -138,6 +138,26 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/types/${identifier.getParamValue()}`;
     }
 
+    addCustomApp(): string {
+        return `${this.getEnvironmentsPath()}/custom-apps`;
+    }
+
+    modifyCustomApp(identifier: Identifiers.CustomAppIdentifier): string {
+        return `${this.getEnvironmentsPath()}/custom-apps/${identifier.getParamValue()}`;
+    }
+
+    deleteCustomApp(identifier: Identifiers.CustomAppIdentifier): string {
+        return `${this.getEnvironmentsPath()}/custom-apps/${identifier.getParamValue()}`;
+    }
+
+    getCustomApp(identifier: Identifiers.CustomAppIdentifier): string {
+        return `${this.getEnvironmentsPath()}/custom-apps/${identifier.getParamValue()}`;
+    }
+
+    listCustomApps(): string {
+        return `${this.getEnvironmentsPath()}/custom-apps`;
+    }
+
     addTaxonomy(): string {
         return `${this.getEnvironmentsPath()}/taxonomies`;
     }
