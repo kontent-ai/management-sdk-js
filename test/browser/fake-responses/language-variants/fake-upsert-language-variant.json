@@ -169,5 +169,12 @@
         "publish_display_timezone": "Europe/Prague",
         "unpublish_time": "2024-04-30T08:00:00",
         "unpublish_display_timezone": "Europe/Prague"
-    }
+    },
+    "contributors": [
+        {
+            "id": "gTGVBh3vrho-JIrI7PFrqgbCaKEEyCtXdLQGWxRW9pU"
+        }
+    ],
+
+    "note": "This content is waiting for a legal review."
 }
