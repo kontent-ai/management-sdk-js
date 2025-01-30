@@ -11,7 +11,7 @@ export namespace LanguageVariantContracts {
         workflow: ILanguageVariantWorkflowContract;
         schedule: ILanguageVariantSchedule;
         due_date: ILanguageVariantDueDate;
-        contributors: SharedContracts.IUserReferenceObjectContract[];
+        contributors: SharedContracts.UserReferenceContract[];
         note?: string;
     }
 
@@ -32,7 +32,7 @@ export namespace LanguageVariantContracts {
         workflow?: ILanguageVariantWorkflowContract;
         due_date?: ILanguageVariantDueDate;
         note?: string;
-        contributors?: SharedContracts.IUserReferenceObjectContract[];
+        contributors?: SharedContracts.UserReferenceDataContract[];
     }
     export interface IListLanguageVariantsOfContentTypeWithComponentsResponseContract {
         variants: ILanguageVariantModelsContract[];

@@ -77,7 +77,7 @@ export namespace WorkflowModels {
         };
         step_identifier: SharedContracts.IReferenceObjectContract;
         due_date?: LanguageVariantModels.ILanguageVariantDueDate;
-        contributors?: SharedContracts.IUserReferenceObjectContract[];
+        contributors?: SharedContracts.UserReferenceDataContract[];
         note?: string;
     }
 
