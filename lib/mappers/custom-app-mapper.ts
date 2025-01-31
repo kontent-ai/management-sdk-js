@@ -47,11 +47,7 @@ export class CustomAppMapper extends BaseMapper {
 
     mapCustomApp(rawCustomApp: CustomAppsContracts.ICustomAppContract): CustomAppModels.CustomApp {
         return new CustomAppModels.CustomApp({
-            codename: rawCustomApp.codename,
-            name: rawCustomApp.name,
-            config: rawCustomApp.config,
-            source_url: rawCustomApp.source_url,
-            allowed_roles: rawCustomApp.allowed_roles,
+            ...rawCustomApp,
             _raw: rawCustomApp
         });
     }
