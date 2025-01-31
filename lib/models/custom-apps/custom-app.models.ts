@@ -34,7 +34,7 @@ export namespace CustomAppModels {
         allowed_roles?: SharedContracts.ICodenameIdReferenceContract[];
     }
 
-    export type ModifyCustomAppPropertyName = 'name' | 'source_url' | 'config' | 'allowed_roles' | 'codename';
+    export type ModifyCustomAppPropertyName = 'name' | 'source_url' | 'config' | 'allowed_roles';
 
     export type ModifyCustomAppOperation =
         | {
@@ -51,12 +51,7 @@ export namespace CustomAppModels {
               | {
                     op: 'replace';
                     value: string | null;
-                    property_name: Extract<ModifyCustomAppPropertyName, 'name' | 'source_url' | 'codename'>;
-                }
-              | {
-                    op: 'replace';
-                    value: string;
-                    property_name: Extract<ModifyCustomAppPropertyName, 'codename'>;
+                    property_name: Extract<ModifyCustomAppPropertyName, 'name' | 'source_url' | 'config'>;
                 }
           )
         | {
