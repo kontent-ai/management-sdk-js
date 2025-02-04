@@ -50,8 +50,13 @@ export namespace CustomAppModels {
                 }
               | {
                     op: 'replace';
+                    value: string;
+                    property_name: Extract<ModifyCustomAppPropertyName, 'name' | 'source_url'>;
+                }
+              | {
+                    op: 'replace';
                     value: string | null;
-                    property_name: Extract<ModifyCustomAppPropertyName, 'name' | 'source_url' | 'config'>;
+                    property_name: Extract<ModifyCustomAppPropertyName, 'config'>;
                 }
           )
         | {

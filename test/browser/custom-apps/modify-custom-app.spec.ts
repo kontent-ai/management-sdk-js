@@ -20,6 +20,11 @@ describe('Modify custom app', () => {
                 {
                     op: 'replace',
                     property_name: 'config',
+                    value: null
+                },
+                {
+                    op: 'replace',
+                    property_name: 'name',
                     value: 'x'
                 }
             ])
