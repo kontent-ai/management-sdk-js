@@ -10,6 +10,7 @@ import {
     ContentTypeModels,
     ContentTypeSnippetElements,
     ContentTypeSnippetModels,
+    CustomAppModels,
     LanguageModels,
     LanguageVariantElementsBuilder,
     PreviewModels,
@@ -139,7 +140,13 @@ import {
     ModifyPreviewConfigurationQuery,
     ActivateWebSpotlightQuery,
     DeactivateWebSpotlightQuery,
-    CheckWebSpotlightStatusQuery
+    CheckWebSpotlightStatusQuery,
+    AddCustomAppQuery,
+    CustomAppsIdentifierQuery,
+    GetCustomAppQuery,
+    ListCustomAppsQuery,
+    ModifyCustomAppQuery,
+    DeleteCustomAppQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -752,4 +759,31 @@ export interface IManagementClient<TCancelToken> {
      * Checks Web Spotlight status
      */
     checkWebSpotlightStatus(): CheckWebSpotlightStatusQuery;
+
+    /**
+     * Modify custom app
+     */
+    modifyCustomApp(): CustomAppsIdentifierQuery<
+        DataQuery<ModifyCustomAppQuery, CustomAppModels.ModifyCustomAppOperation[]>
+    >;
+
+    /**
+     * Delete custom app
+     */
+    deleteCustomApp(): CustomAppsIdentifierQuery<DeleteCustomAppQuery>;
+
+    /**
+     * Add custom app
+     */
+    addCustomApp(): DataQuery<AddCustomAppQuery, CustomAppModels.IAddCustomAppData>;
+
+    /**
+     * List custom apps
+     */
+    listCustomApps(): ListCustomAppsQuery;
+
+    /*
+     * Get custom app
+     */
+    getCustomApp(): CustomAppsIdentifierQuery<GetCustomAppQuery>;
 }

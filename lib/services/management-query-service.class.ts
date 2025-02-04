@@ -20,7 +20,8 @@ import {
     WebhookContracts,
     WorkflowContracts,
     PreviewContracts,
-    WebSpotlightContracts
+    WebSpotlightContracts,
+    CustomAppsContracts
 } from '../contracts';
 import {
     assetFolderMapper,
@@ -41,7 +42,8 @@ import {
     assetRenditionMapper,
     spacesMapper,
     previewMapper,
-    webSpotlightMapper
+    webSpotlightMapper,
+    customAppMapper
 } from '../mappers';
 import { webhookMapper } from '../mappers/webhook-mapper';
 import {
@@ -60,7 +62,8 @@ import {
     AssetRenditionModels,
     SpaceModels,
     PreviewModels,
-    WebSpotlightModels
+    WebSpotlightModels,
+    CustomAppModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -82,7 +85,8 @@ import {
     AssetRenditionResponses,
     SpaceResponses,
     PreviewResponses,
-    WebSpotlightResponses
+    WebSpotlightResponses,
+    CustomAppsResponses
 } from '../responses';
 import { BaseManagementQueryService } from './base-management-service.class';
 import { EnvironmentResponses } from '../responses/environments/environment-responses';
@@ -467,6 +471,51 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
                 {},
                 config
             )
+        );
+    }
+
+    async addCustomAppAsync(
+        url: string,
+        data: CustomAppModels.IAddCustomAppData,
+        config: IContentManagementQueryConfig
+    ): Promise<CustomAppsResponses.AddCustomAppResponse> {
+        return customAppMapper.mapAddCustomAppResponse(
+            await this.postResponseAsync<CustomAppsContracts.ICustomAppContract>(url, data, {}, config)
+        );
+    }
+
+    async modifyCustomAppAsync(
+        url: string,
+        data: CustomAppModels.ModifyCustomAppOperation[],
+        config: IContentManagementQueryConfig
+    ): Promise<CustomAppsResponses.ModifyCustomAppResponse> {
+        return customAppMapper.mapModifyCustomAppResponse(
+            await this.patchResponseAsync<CustomAppsContracts.ICustomAppContract>(url, data, {}, config)
+        );
+    }
+
+    async deleteCustomAppAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<BaseResponses.EmptyContentManagementResponse> {
+        return customAppMapper.mapEmptyResponse(await this.deleteResponseAsync<{}>(url, {}, config));
+    }
+
+    async getCustomAppAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<CustomAppsResponses.GetCustomAppResponse> {
+        return customAppMapper.mapGetCustomAppResponse(
+            await this.getResponseAsync<CustomAppsContracts.ICustomAppContract>(url, {}, config)
+        );
+    }
+
+    async listCustomAppsAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<CustomAppsResponses.ListCustomAppsResponse> {
+        return customAppMapper.mapListCustomAppsResponse(
+            await this.getResponseAsync<CustomAppsContracts.ICustomAppContract[]>(url, {}, config)
         );
     }
 

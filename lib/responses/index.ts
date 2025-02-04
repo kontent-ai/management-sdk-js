@@ -19,3 +19,4 @@ export * from './spaces/space-responses';
 export * from './environments/environment-responses';
 export * from './preview/preview-responses';
 export * from './web-spotlight/web-spotlight-responses';
+export * from './custom-apps/custom-apps.responses';

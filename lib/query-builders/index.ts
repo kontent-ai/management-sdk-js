@@ -21,3 +21,4 @@ export * from './rendition-identifier-query.class';
 export * from './workflow-identifier-query.class';
 export * from './task-identifier-query.class';
 export * from './space-identifier-query.class';
+export * from './custom-apps-identifier.query';
