@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.6.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.5.1...v7.6.0) (2025-02-06)
+
+
+### Features
+
+* adds support for `contributors` & `note` API ([f714ca3](https://github.com/kontent-ai/management-sdk-js/commit/f714ca3bb35877c17446290ae1aa2aa16b289eeb))
+* implements support for custom apps API ([7cc7d45](https://github.com/kontent-ai/management-sdk-js/commit/7cc7d45f23d29d0f9c0dcef947f43f53ca6dca8c))
+* updates deps ([5eb7fa0](https://github.com/kontent-ai/management-sdk-js/commit/5eb7fa069a53c195e446cd9325362bba575879b5))
+
 ### [7.5.1](https://github.com/kontent-ai/management-sdk-js/compare/v7.5.0...v7.5.1) (2024-10-08)
 
 
