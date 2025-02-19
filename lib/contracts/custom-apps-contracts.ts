@@ -8,4 +8,9 @@ export namespace CustomAppsContracts {
         config: string | null;
         allowed_roles?: SharedContracts.ICodenameIdReferenceContract[];
     }
+
+    export interface ICustomAppsListResponseContract {
+        custom_apps: ICustomAppContract[];
+        pagination: SharedContracts.IPaginationModelContract;
+    }
 }

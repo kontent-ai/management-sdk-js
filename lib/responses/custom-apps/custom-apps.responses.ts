@@ -1,5 +1,5 @@
 import { CustomAppsContracts } from '../../contracts';
-import { CustomAppModels } from '../../models';
+import { CustomAppModels, SharedModels } from '../../models';
 import { BaseResponses } from '../base-responses';
 
 export namespace CustomAppsResponses {
@@ -16,16 +16,28 @@ export namespace CustomAppsResponses {
         }
     }
 
-    export class ListCustomAppsResponse extends BaseResponses.BaseContentManagementResponse<
-        CustomAppsContracts.ICustomAppContract[],
-        CustomAppModels.CustomApp[]
+    export class CustomAppsListResponse extends BaseResponses.BaseContentManagementListResponse<
+        CustomAppsContracts.ICustomAppsListResponseContract,
+        CustomAppModels.CustomApp
     > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: CustomAppsContracts.ICustomAppContract[],
-            data: CustomAppModels.CustomApp[]
+            rawData: CustomAppsContracts.ICustomAppsListResponseContract,
+            data: {
+                items: CustomAppModels.CustomApp[];
+                pagination: SharedModels.Pagination;
+            }
         ) {
             super(debug, rawData, data);
+        }
+    }
+
+    export class CustomAppsListAllResponse extends BaseResponses.ContentManagementListAllResponse<
+        CustomAppsListResponse,
+        CustomAppModels.CustomApp
+    > {
+        constructor(data: { items: CustomAppModels.CustomApp[]; responses: CustomAppsListResponse[] }) {
+            super(data);
         }
     }
 

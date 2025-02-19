@@ -513,9 +513,9 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
     async listCustomAppsAsync(
         url: string,
         config: IContentManagementQueryConfig
-    ): Promise<CustomAppsResponses.ListCustomAppsResponse> {
+    ): Promise<CustomAppsResponses.CustomAppsListResponse> {
         return customAppMapper.mapListCustomAppsResponse(
-            await this.getResponseAsync<CustomAppsContracts.ICustomAppContract[]>(url, {}, config)
+            await this.getResponseAsync<CustomAppsContracts.ICustomAppsListResponseContract>(url, {}, config)
         );
     }
 

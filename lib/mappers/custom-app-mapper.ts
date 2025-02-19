@@ -16,13 +16,12 @@ export class CustomAppMapper extends BaseMapper {
     }
 
     mapListCustomAppsResponse(
-        response: IResponse<CustomAppsContracts.ICustomAppContract[]>
-    ): CustomAppsResponses.ListCustomAppsResponse {
-        return new CustomAppsResponses.ListCustomAppsResponse(
-            super.mapResponseDebug(response),
-            response.data,
-            response.data.map((m) => this.mapCustomApp(m))
-        );
+        response: IResponse<CustomAppsContracts.ICustomAppsListResponseContract>
+    ): CustomAppsResponses.CustomAppsListResponse {
+        return new CustomAppsResponses.CustomAppsListResponse(super.mapResponseDebug(response), response.data, {
+            pagination: super.mapPagination(response.data.pagination),
+            items: response.data.custom_apps.map((m) => this.mapCustomApp(m))
+        });
     }
 
     mapModifyCustomAppResponse(

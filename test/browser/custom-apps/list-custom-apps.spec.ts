@@ -3,7 +3,7 @@ import * as responseJson from '../fake-responses/custom-apps/fake-list-custom-ap
 import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
 describe('List custom apps', () => {
-    let response: CustomAppsResponses.ListCustomAppsResponse;
+    let response: CustomAppsResponses.CustomAppsListResponse;
 
     beforeAll(async () => {
         response = await getTestClientWithJson(responseJson).listCustomApps().toPromise();
@@ -16,7 +16,7 @@ describe('List custom apps', () => {
     });
 
     it(`response should be instance of ListCustomAppsResponse class`, () => {
-        expect(response).toEqual(jasmine.any(CustomAppsResponses.ListCustomAppsResponse));
+        expect(response).toEqual(jasmine.any(CustomAppsResponses.CustomAppsListResponse));
     });
 
     it(`response should contain debug data`, () => {
@@ -24,7 +24,7 @@ describe('List custom apps', () => {
     });
 
     it(`response should contain data`, () => {
-        for (const customApp of response.data) {
+        for (const customApp of response.data.items) {
             expect(customApp).toEqual(jasmine.any(CustomAppModels.CustomApp));
         }
     });
