@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.6.1](https://github.com/kontent-ai/management-sdk-js/compare/v7.6.0...v7.6.1) (2025-02-19)
+
+
+### Bug Fixes
+
+* Fixes list query for custom apps ([69badd7](https://github.com/kontent-ai/management-sdk-js/commit/69badd707f94772ee3ebc7a8c872171f66cb1887))
+
 ## [7.6.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.5.1...v7.6.0) (2025-02-06)
 
 
