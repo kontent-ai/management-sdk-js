@@ -15,7 +15,7 @@ describe('Add webhook', () => {
                     slot: 'published',
                     events: 'all',
                     content_type: { enabled: false },
-                    asset: { enabled: true, actions: ['metadata_changed', 'created'] },
+                    asset: { enabled: true, actions: [{ action: 'metadata_changed' }, { action: 'created' }] },
                     content_item: {
                         enabled: true,
                         filters: {
@@ -26,25 +26,20 @@ describe('Add webhook', () => {
                         actions: [
                             {
                                 action: 'published',
-                                transition_to: {
-                                    workflow_identifier: {
-                                        codename: 'x'
-                                    },
-                                    step_identifier: {
-                                        codename: 'z'
-                                    }
-                                }
+                                transition_to: [
+                                    { workflow_identifier: { codename: 'x' }, step_identifier: { codename: 'y' } }
+                                ]
                             }
                         ]
                     },
                     language: {
                         enabled: true,
-                        actions: ['changed'],
+                        actions: [{ action: 'changed' }],
                         filters: { languages: [{ codename: 'y' }] }
                     },
                     taxonomy: {
                         enabled: true,
-                        actions: ['term_changed'],
+                        actions: [{ action: 'term_changed' }],
                         filters: { taxonomies: [{ codename: 'z' }] }
                     }
                 },
