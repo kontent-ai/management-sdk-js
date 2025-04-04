@@ -52,26 +52,37 @@ export namespace WebhookContracts {
         operations: WebhookPreviewContentChangesOperation[];
     }
 
+    export type WebhookAction<
+        T extends
+            | WebhookContentTypeAction
+            | WebhookAssetAction
+            | WebhookTaxonomyAction
+            | WebhookLanguageAction
+            | WebhookContentItemAction
+    > = {
+        action: T;
+    };
+
     export interface IWebhookContentTypeContract {
         enabled: boolean;
-        actions?: WebhookContentTypeAction[];
+        actions?: WebhookAction<WebhookContentTypeAction>[];
         filters?: IContentTypeFilters;
     }
 
     export interface IWebhookAssetContract {
         enabled: boolean;
-        actions?: WebhookAssetAction[];
+        actions?: WebhookAction<WebhookAssetAction>[];
     }
 
     export interface IWebhookTaxonomyContract {
         enabled: boolean;
-        actions?: WebhookTaxonomyAction[];
+        actions?: WebhookAction<WebhookTaxonomyAction>[];
         filters?: ITaxonomyFilters;
     }
 
     export interface IWebhookLanguageContract {
         enabled: boolean;
-        actions?: WebhookLanguageAction[];
+        actions?: WebhookAction<WebhookLanguageAction>[];
         filters?: ILanguageFilters;
     }
 
@@ -93,16 +104,14 @@ export namespace WebhookContracts {
         languages?: SharedContracts.IReferenceObjectContract[];
     }
 
-    export interface IContentItemActions {
-        action: WebhookContentItemAction;
-        transition_to?: {
-            workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
-            step_identifier: SharedContracts.ICodenameIdReferenceContract;
-        };
-    }
+    export type ContentItemTransitionTo = {
+        workflow_identifier: SharedContracts.ICodenameIdReferenceContract;
+        step_identifier: SharedContracts.ICodenameIdReferenceContract;
+    };
+
     export interface IWebhookContentItemContract {
         enabled: boolean;
-        actions?: IContentItemActions[];
+        actions?: (WebhookAction<WebhookContentItemAction> & { transition_to?: ContentItemTransitionTo[] })[];
         filters?: IContentItemFilters;
     }
 
