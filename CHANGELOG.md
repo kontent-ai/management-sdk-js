@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.9.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.8.0...v7.9.0) (2025-04-30)
+
+
+### Features
+
+* updates deps ([8551f09](https://github.com/kontent-ai/management-sdk-js/commit/8551f09b090dfff4da104a9a8b2ab674d43588f8))
+
 ## [7.8.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.7.1...v7.8.0) (2025-04-08)
 
 
