@@ -16,6 +16,7 @@ export namespace ElementContracts {
         id?: string;
         external_id?: string;
         codename?: string;
+        content_group?: SharedContracts.IReferenceObjectContract;
     }
 
     export interface IContentItemElementContract {
