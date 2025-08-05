@@ -120,7 +120,7 @@ const client = createManagementClient({
 
 ### Handling API Management Errors
 
-See the [error section in Management API reference](https://kontent.ai/learn/reference/management-api-v2#section/Guidelines-on-handling-changes) for infofmation about status codes and error messages.
+See the [error section in Management API reference](https://kontent.ai/learn/reference/management-api-v2#section/Guidelines-on-handling-changes) for information about status codes and error messages.
 
 ```typescript
 try {
