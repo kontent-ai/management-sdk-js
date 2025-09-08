@@ -64,14 +64,14 @@
         "mime": "3.0.0"
     },
     "devDependencies": {
-        "@types/jasmine": "5.1.8",
+        "@types/jasmine": "5.1.9",
         "@types/mime": "3.0.4",
-        "@types/node": "24.2.0",
-        "@typescript-eslint/eslint-plugin": "8.39.0",
-        "@typescript-eslint/parser": "8.39.0",
-        "core-js": "3.45.0",
-        "eslint": "9.32.0",
-        "jasmine-core": "5.9.0",
+        "@types/node": "24.3.1",
+        "@typescript-eslint/eslint-plugin": "8.42.0",
+        "@typescript-eslint/parser": "8.42.0",
+        "core-js": "3.45.1",
+        "eslint": "9.35.0",
+        "jasmine-core": "5.10.0",
         "jasmine-spec-reporter": "7.0.0",
         "karma": "6.4.4",
         "karma-chrome-launcher": "3.2.0",
@@ -83,16 +83,16 @@
         "karma-typescript": "5.5.4",
         "karma-typescript-es6-transform": "5.5.4",
         "lcov-parse": "1.0.0",
-        "mocha": "11.7.1",
+        "mocha": "11.7.2",
         "prettier": "3.6.2",
         "standard-version": "9.5.0",
-        "ts-loader": "9.5.2",
+        "ts-loader": "9.5.4",
         "ts-node": "10.9.2",
-        "tsx": "4.20.3",
+        "tsx": "4.20.5",
         "typescript": "5.2.2",
-        "webpack": "5.101.0",
+        "webpack": "5.101.3",
         "webpack-bundle-analyzer": "4.10.2",
         "webpack-cli": "6.0.1",
-        "typescript-eslint": "8.39.0"
+        "typescript-eslint": "8.42.0"
     }
 }
