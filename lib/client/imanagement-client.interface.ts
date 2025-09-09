@@ -146,7 +146,8 @@ import {
     GetCustomAppQuery,
     ListCustomAppsQuery,
     ModifyCustomAppQuery,
-    DeleteCustomAppQuery
+    DeleteCustomAppQuery,
+    FilterLanguageVariantsQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -155,9 +156,19 @@ import { EnvironmentModels } from '../models/environments/environment.models';
 import { CloneEnvironmentQuery } from '../queries/environments/clone-environment-query';
 import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-environment-as-production-query';
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
+import { LanguageVariantModels } from '../models';
+
+export interface IEarlyAccess {
+    filterLanguageVariants(): DataQuery<FilterLanguageVariantsQuery, LanguageVariantModels.IFilterLanguageVariantsData>
+}
 
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
+
+    /**
+     * Early access queries. Use with caution as these are not yet stable and may change.
+     */
+    earlyAccess: IEarlyAccess;
 
     /**
      * Creates cancel token

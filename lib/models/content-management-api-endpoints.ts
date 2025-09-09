@@ -246,6 +246,10 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/types/${identifier.getParamValue()}/components`;
     }
 
+    filterLanguageVariants(): string {
+        return `${this.getEnvironmentsPath()}/early-access/variants/filter`;
+    }
+
     deleteLanguageVariant(
         itemIdentifier: Identifiers.ContentItemIdentifier,
         langaugeIdentifier: Identifiers.LanguageIdentifier

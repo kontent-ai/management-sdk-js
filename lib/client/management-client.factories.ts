@@ -4,3 +4,4 @@ import { IManagementClientConfig } from '../config';
 export function createManagementClient(config: IManagementClientConfig): ManagementClient {
     return new ManagementClient(config);
 }
+

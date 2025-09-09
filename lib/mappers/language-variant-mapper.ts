@@ -56,6 +56,20 @@ export class LanguageVariantMapper extends BaseMapper {
         );
     }
 
+    mapFilterLanguageVariantsResponse(
+        response: IResponse<LanguageVariantContracts.IFilterLanguageVariantsResponseContract>
+    ): LanguageVariantResponses.FilterLanguageVariantsResponse {
+        return new LanguageVariantResponses.FilterLanguageVariantsResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            {
+                items: response.data.data,
+                pagination: super.mapPagination(response.data.pagination)
+            }
+        );
+    }
+
+
     mapLanguageVariantsBySpaceResponse(
         response: IResponse<LanguageVariantContracts.IListLanguageVariantsBySpaceResponseContract>
     ): LanguageVariantResponses.ListLanguageVariantsBySpaceResponse {

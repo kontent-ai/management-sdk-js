@@ -1,0 +1,33 @@
+{
+    "data": [
+      {
+        "ContentItem": {
+          "id": "335d17ac-b6ba-4c6a-ae31-23c1193215cb",
+          "name": "My article",
+          "codename": "my_article",
+          "type": {
+            "id": "d89b6348-7cdc-444a-8e1e-adacb564f2a2"
+          },
+          "collection": {
+            "id": null,
+            "codename": null
+          },
+          "spaces": [
+            {
+              "id": "dcbf90fb-7135-4465-8102-b3e739821ed8"
+            },
+            {
+              "id": "39efe8a4-23d2-4d3a-8dfb-07789668474f"
+            }
+          ],
+          "sitemap_locations": [],
+          "external_id": "custom-identifier-for-my-article",
+          "last_modified": "2023-04-04T13:45:30.7692802Z"
+        }
+      }
+    ],
+    "pagination": {
+      "continuation_token": "W3sidG9rZW4iOiIrUklEOn...",
+      "next_page": "https://manage.kontent.ai/v2/your/chosen/list/endpoint"
+    }
+  }

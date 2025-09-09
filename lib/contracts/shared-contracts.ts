@@ -14,13 +14,13 @@ export namespace SharedContracts {
 
     export type UserReferenceDataContract =
         | {
-              id: string;
-              email?: never;
-          }
+            id: string;
+            email?: never;
+        }
         | {
-              id?: never;
-              email: string;
-          };
+            id?: never;
+            email: string;
+        };
 
     export interface ICodenameIdReferenceContract {
         id?: string;
@@ -42,5 +42,16 @@ export namespace SharedContracts {
         validation_errors?: IValidationErrorContract[];
     }
 
-    export interface IEmptyResponseContract {}
+    export interface IWorkflowStepsReferenceContract {
+        workflow_identifier: IReferenceObjectContract;
+        step_identifiers: IReferenceObjectContract[];
+    }
+
+    export interface ITaxonomyGroupReferenceContract {
+        taxonomy_identifier: IReferenceObjectContract;
+        term_identifiers?: IReferenceObjectContract[];
+        include_uncategorized?: boolean;
+    }
+
+    export interface IEmptyResponseContract { }
 }

@@ -25,7 +25,7 @@ export namespace LanguageVariantContracts {
         due_date: ILanguageVariantDueDate;
     }
 
-    export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract {}
+    export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract { }
 
     export interface IUpsertLanguageVariantPostContract {
         elements: LanguageVariantElements.ILanguageVariantElementBase[];
@@ -42,6 +42,32 @@ export namespace LanguageVariantContracts {
     export interface IListLanguageVariantsByCollectionResponseContract {
         variants: ILanguageVariantModelContract[];
         pagination: SharedContracts.IPaginationModelContract;
+    }
+
+    export interface IFilterLanguageVariantsResponseContract {
+        data: IFilterLanguageVariantsResponseDataContract[];
+        pagination: SharedContracts.IPaginationModelContract;
+    }
+
+    export interface IFilterLanguageVariantsResponseDataContract {
+        ContentItem: IFilterLanguageVariantsContentItemContract;
+    }
+
+    export interface IFilterLanguageVariantCollectionContract {
+        id?: string | null;
+        codename?: string | null;
+    }
+
+    export interface IFilterLanguageVariantsContentItemContract {
+        id: string;
+        name: string;
+        codename: string;
+        type: SharedContracts.IIdReferenceContract;
+        collection: IFilterLanguageVariantCollectionContract;
+        spaces: SharedContracts.IIdReferenceContract[];
+        sitemap_locations: string[];
+        external_id?: string;
+        last_modified: string;
     }
 
     export interface IListLanguageVariantsBySpaceResponseContract {
@@ -70,7 +96,7 @@ export namespace LanguageVariantContracts {
         value: string | null;
     }
 
-    export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract {}
+    export interface IUpsertLanguageVariantResponseContract extends ILanguageVariantModelContract { }
 
-    export interface IViewLanguageVariantResponseContract extends ILanguageVariantModelContract {}
+    export interface IViewLanguageVariantResponseContract extends ILanguageVariantModelContract { }
 }

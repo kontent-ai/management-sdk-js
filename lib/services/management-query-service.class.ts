@@ -882,6 +882,19 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
+    async filterLanguageVariantsAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<LanguageVariantResponses.FilterLanguageVariantsResponse> {
+        return languageVariantMapper.mapFilterLanguageVariantsResponse(
+            await this.getResponseAsync<LanguageVariantContracts.IFilterLanguageVariantsResponseContract>(
+                url,
+                {},
+                config
+            )
+        );
+    }
+
     async listLanguageVariantsBySpaceAsync(
         url: string,
         config: IContentManagementQueryConfig

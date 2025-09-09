@@ -5,6 +5,7 @@ import {
     CollectionModels,
     CustomAppModels,
     LanguageVariantElementsBuilder,
+    LanguageVariantModels,
     PreviewModels,
     ProjectUserModels,
     SpaceModels,
@@ -150,11 +151,12 @@ import {
     CustomAppsIdentifierQuery,
     GetCustomAppQuery,
     ModifyCustomAppQuery,
-    DeleteCustomAppQuery
+    DeleteCustomAppQuery,
+    FilterLanguageVariantsQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
-import { IManagementClient } from './imanagement-client.interface';
+import { IEarlyAccess, IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
@@ -164,7 +166,7 @@ import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-e
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
 
 export class ManagementClient implements IManagementClient<CancelToken> {
-    private readonly queryService: ManagementQueryService;
+    protected readonly queryService: ManagementQueryService;
     private httpService: IHttpService<CancelToken>;
 
     public readonly mappingService: IMappingService = new MappingService();
@@ -178,6 +180,16 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         });
 
         this.httpService = httpService;
+    }
+
+    earlyAccess: IEarlyAccess = {
+        filterLanguageVariants: () => {
+            return new DataQuery<FilterLanguageVariantsQuery, LanguageVariantModels.IFilterLanguageVariantsData>(
+                this.config,
+                this.queryService,
+                (config, queryService, data) => new FilterLanguageVariantsQuery(config, queryService, data)
+            );
+        }
     }
 
     createCancelToken(): IHttpCancelRequestToken<CancelToken> {
