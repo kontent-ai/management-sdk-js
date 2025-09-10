@@ -63,7 +63,8 @@ import {
     SpaceModels,
     PreviewModels,
     WebSpotlightModels,
-    CustomAppModels
+    CustomAppModels,
+    LanguageVariantModels
 } from '../models';
 import {
     AssetFolderResponses,
@@ -884,11 +885,13 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
 
     async filterLanguageVariantsAsync(
         url: string,
+        data: LanguageVariantModels.IFilterLanguageVariantsData,
         config: IContentManagementQueryConfig
     ): Promise<LanguageVariantResponses.FilterLanguageVariantsResponse> {
         return languageVariantMapper.mapFilterLanguageVariantsResponse(
-            await this.getResponseAsync<LanguageVariantContracts.IFilterLanguageVariantsResponseContract>(
+            await this.postResponseAsync<LanguageVariantContracts.IFilterLanguageVariantsResponseContract>(
                 url,
+                data,
                 {},
                 config
             )

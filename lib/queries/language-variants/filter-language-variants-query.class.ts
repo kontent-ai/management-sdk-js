@@ -17,7 +17,7 @@ export class FilterLanguageVariantsQuery extends BaseListingQuery<
     }
 
     toPromise(): Promise<LanguageVariantResponses.FilterLanguageVariantsResponse> {
-        return this.queryService.filterLanguageVariantsAsync(this.getUrl(), this.queryConfig);
+        return this.queryService.filterLanguageVariantsAsync(this.getUrl(), this.data, this.queryConfig);
     }
 
     protected getAction(): string {

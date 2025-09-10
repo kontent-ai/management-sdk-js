@@ -47,22 +47,15 @@ describe('Filter language variants', () => {
         expect(response.data.items.length).toEqual(responseJson.data.length);
         expect(response.data.pagination).toEqual(jasmine.any(SharedModels.Pagination));
 
-        response.data.items.forEach((variant) => {
-            const originalItem = responseJson.data.find((m) => m.ContentItem.id === variant.ContentItem.id);
+        response.data.items.forEach((itemWrapper) => {
+            const originalItem = responseJson.data.find((m) => m.item.id === itemWrapper.item.id);
 
             if (!originalItem) {
-                throw Error(`Could not find original item with id '${variant.ContentItem.id}'`);
+                throw Error(`Could not find original item with id '${itemWrapper.item.id}'`);
             }
 
-            expect(variant.ContentItem).toBeDefined();
-            expect(variant.ContentItem.name).toEqual(originalItem.ContentItem.name);
-            expect(variant.ContentItem.codename).toEqual(originalItem.ContentItem.codename);
-            expect(variant.ContentItem.type).toEqual(originalItem.ContentItem.type  );
-            expect(variant.ContentItem.collection).toEqual(originalItem.ContentItem.collection);
-            expect(variant.ContentItem.spaces).toEqual(originalItem.ContentItem.spaces);
-            expect(variant.ContentItem.sitemap_locations).toEqual(originalItem.ContentItem.sitemap_locations);
-            expect(variant.ContentItem.external_id).toEqual(originalItem.ContentItem.external_id);
-            expect(variant.ContentItem.last_modified).toEqual(originalItem.ContentItem.last_modified);
+            expect(itemWrapper.item).toEqual(originalItem.item);
+            expect(itemWrapper.variant).toEqual(originalItem.variant);
         });
     });
 });

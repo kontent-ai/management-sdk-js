@@ -49,25 +49,39 @@ export namespace LanguageVariantContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IFilterLanguageVariantsResponseDataContract {
-        ContentItem: IFilterLanguageVariantsContentItemContract;
-    }
-
-    export interface IFilterLanguageVariantCollectionContract {
-        id?: string | null;
-        codename?: string | null;
-    }
-
-    export interface IFilterLanguageVariantsContentItemContract {
+    export interface IFilterLanguageVariantsItemContract {
         id: string;
         name: string;
         codename: string;
         type: SharedContracts.IIdReferenceContract;
-        collection: IFilterLanguageVariantCollectionContract;
+        collection: SharedContracts.IIdReferenceContract;
         spaces: SharedContracts.IIdReferenceContract[];
-        sitemap_locations: string[];
+        sitemap_locations: SharedContracts.IIdReferenceContract[];
         external_id?: string;
         last_modified: string;
+    }
+
+    export interface IFilterLanguageVariantsVariantContract {
+        workflow_step: SharedContracts.IIdReferenceContract;
+        workflow: SharedContracts.IWorkflowStepsReferenceContract;
+        contributors: SharedContracts.UserReferenceContract[];
+        due_date: ILanguageVariantDueDate;
+        note: string | null;
+        schedule: ILanguageVariantSchedule;
+        item: SharedContracts.IIdReferenceContract;
+        language: SharedContracts.IIdReferenceContract;
+        last_modified: string;
+        elements?: IFilterLanguageVariantsElementContract[];
+    }
+
+    export interface IFilterLanguageVariantsResponseDataContract {
+        item: IFilterLanguageVariantsItemContract,
+        variant: IFilterLanguageVariantsVariantContract,
+    }
+
+    export interface IFilterLanguageVariantsElementContract {
+        element: SharedContracts.IIdReferenceContract;
+        value: ElementContracts.ElementValueContract;
     }
 
     export interface IListLanguageVariantsBySpaceResponseContract {

@@ -7,6 +7,8 @@ export namespace ElementContracts {
         codename: string;
     }
 
+    export type ElementValueContract = string | number | SharedContracts.IReferenceObjectContract[];
+
     export type IContentTypeElementModeTypeContract = 'single' | 'multiple';
 
     export interface IContentTypeElementContract {
@@ -21,7 +23,7 @@ export namespace ElementContracts {
 
     export interface IContentItemElementContract {
         element: SharedContracts.IReferenceObjectContract;
-        value: string | number | SharedContracts.IReferenceObjectContract[];
+        value: ElementValueContract;
         components?: IContentItemElementComponent[];
         searchableValue?: string;
         display_timezone?: string;
