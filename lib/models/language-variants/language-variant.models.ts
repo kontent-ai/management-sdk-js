@@ -4,7 +4,7 @@ import { LanguageVariantContracts, SharedContracts } from '../../contracts';
 
 export namespace LanguageVariantModels {
 
-    export type FilterLanguageVariantsCompletionStatus = 'unfinished' | 'completed' | 'not_translated';
+    export type FilterLanguageVariantsCompletionStatus = 'unfinished' | 'completed' | 'not_translated' | 'all_done';
     export type FilterLanguageVariantsOrderBy = 'last_modified' | 'name' | 'due_date';
     export type FilterLanguageVariantsOrderDirection = 'asc' | 'desc';
 
