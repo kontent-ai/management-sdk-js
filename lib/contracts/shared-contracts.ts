@@ -42,7 +42,12 @@ export namespace SharedContracts {
         validation_errors?: IValidationErrorContract[];
     }
 
-    export interface IWorkflowStepsReferenceContract {
+    export interface IResponseWorkflowStepsReferenceContract {
+        workflow_identifier: IIdReferenceContract;
+        step_identifier: IIdReferenceContract;
+    }
+
+    export interface IRequestWorkflowStepsReferenceContract {
         workflow_identifier: IIdReferenceContract;
         step_identifiers: IIdReferenceContract[];
     }

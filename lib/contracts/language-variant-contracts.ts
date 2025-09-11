@@ -63,7 +63,7 @@ export namespace LanguageVariantContracts {
 
     export interface IFilterLanguageVariantsVariantContract {
         workflow_step: SharedContracts.IIdReferenceContract;
-        workflow: SharedContracts.IWorkflowStepsReferenceContract;
+        workflow: SharedContracts.IResponseWorkflowStepsReferenceContract;
         contributors: SharedContracts.UserReferenceContract[];
         due_date: ILanguageVariantDueDate;
         note: string | null;

@@ -16,7 +16,7 @@ export namespace LanguageVariantModels {
             contributors?: SharedContracts.UserReferenceDataContract[];
             has_no_contributors?: boolean;
             completion_statuses?: FilterLanguageVariantsCompletionStatus[];
-            workflow_steps?: SharedContracts.IWorkflowStepsReferenceContract[];
+            workflow_steps?: SharedContracts.IRequestWorkflowStepsReferenceContract[];
             taxonomy_groups?: SharedContracts.ITaxonomyGroupReferenceContract[];
         };
         order?: {
