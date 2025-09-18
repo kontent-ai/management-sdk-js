@@ -5,15 +5,12 @@ export namespace ContentItemContracts {
         id: string;
         name: string;
         codename: string;
-        type: {
-            id?: string;
-            codename?: string;
-            external_id?: string;
-        };
+        type: SharedContracts.IIdReferenceContract;
         external_id?: string;
-        last_modified: Date;
+        last_modified: string;
         spaces: SharedContracts.IIdReferenceContract[];
-        collection: SharedContracts.IReferenceObjectContract;
+        collection: SharedContracts.IIdReferenceContract;
+        sitemap_locations?: SharedContracts.IIdReferenceContract[];
     }
 
     export interface IContentItemsListingResponseContract {

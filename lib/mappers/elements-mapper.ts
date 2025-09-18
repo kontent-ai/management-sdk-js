@@ -28,7 +28,7 @@ export class ElementsMapper extends BaseMapper {
             components: this.mapElementComponents(rawElement.components ?? []),
             display_timezone: rawElement.display_timezone,
             mode: rawElement.mode,
-            searchableValue: rawElement.searchableValue,
+            searchableValue: rawElement.searchable_value,
             _raw: rawElement
         });
     }

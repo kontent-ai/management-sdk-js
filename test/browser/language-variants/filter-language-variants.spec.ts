@@ -1,4 +1,4 @@
-import { LanguageVariantResponses, SharedModels } from '../../../lib';
+import { ElementContracts, LanguageVariantContracts, LanguageVariantResponses, SharedModels } from '../../../lib';
 import * as responseJson from '../fake-responses/language-variants/fake-filter-language-variants.json';
 import { cmClient, getTestClientWithJson, testEnvironmentId } from '../setup';
 
@@ -55,7 +55,14 @@ describe('Filter language variants', () => {
             }
 
             expect(itemWrapper.item).toEqual(originalItem.item);
-            expect(itemWrapper.variant).toEqual(originalItem.variant);
+            expect<FilterLanguageVariant>(itemWrapper.variant).toEqual(originalItem.variant);
         });
     });
 });
+
+/**
+ * We need to create a test type which overrides "mode" string literal to a simple string type.
+ */
+type FilterLanguageVariant = (Omit<LanguageVariantContracts.ILanguageVariantModelContract, 'elements'> & { elements: FilterElements[] });
+type FilterComponents = (Omit<ElementContracts.IContentItemElementComponent, 'elements'> & { elements?: FilterElements[] });
+type FilterElements = (Omit<ElementContracts.IContentItemElementContract, 'mode' | 'components'> & { mode?: string, components?: FilterComponents[] });

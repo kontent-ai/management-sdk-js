@@ -1,18 +1,20 @@
 import { ElementContracts } from './element-contracts';
 import { SharedContracts } from './shared-contracts';
 import { LanguageVariantElements } from '../models';
+import { ContentItemContracts } from './content-item-contracts';
 
 export namespace LanguageVariantContracts {
     export interface ILanguageVariantModelContract {
-        item: SharedContracts.IReferenceObjectContract;
+        item: SharedContracts.IIdReferenceContract;
         elements: ElementContracts.IContentItemElementContract[];
-        language: SharedContracts.IReferenceObjectContract;
+        language: SharedContracts.IIdReferenceContract;
         last_modified: string;
         workflow: ILanguageVariantWorkflowContract;
         schedule: ILanguageVariantSchedule;
         due_date: ILanguageVariantDueDate;
         contributors: SharedContracts.UserReferenceContract[];
-        note?: string;
+        workflow_step: SharedContracts.IIdReferenceContract;
+        note?: string | null;
     }
 
     export interface ILanguageVariantModelsContract {
@@ -49,39 +51,9 @@ export namespace LanguageVariantContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IFilterLanguageVariantsItemContract {
-        id: string;
-        name: string;
-        codename: string;
-        type: SharedContracts.IIdReferenceContract;
-        collection: SharedContracts.IIdReferenceContract;
-        spaces: SharedContracts.IIdReferenceContract[];
-        sitemap_locations: SharedContracts.IIdReferenceContract[];
-        external_id?: string;
-        last_modified: string;
-    }
-
-    export interface IFilterLanguageVariantsVariantContract {
-        workflow_step: SharedContracts.IIdReferenceContract;
-        workflow: SharedContracts.IResponseWorkflowStepsReferenceContract;
-        contributors: SharedContracts.UserReferenceContract[];
-        due_date: ILanguageVariantDueDate;
-        note: string | null;
-        schedule: ILanguageVariantSchedule;
-        item: SharedContracts.IIdReferenceContract;
-        language: SharedContracts.IIdReferenceContract;
-        last_modified: string;
-        elements?: IFilterLanguageVariantsElementContract[];
-    }
-
     export interface IFilterLanguageVariantsResponseDataContract {
-        item: IFilterLanguageVariantsItemContract,
-        variant: IFilterLanguageVariantsVariantContract,
-    }
-
-    export interface IFilterLanguageVariantsElementContract {
-        element: SharedContracts.IIdReferenceContract;
-        value: ElementContracts.ElementValueContract;
+        item: ContentItemContracts.IContentItemModelContract,
+        variant: ILanguageVariantModelContract,
     }
 
     export interface IListLanguageVariantsBySpaceResponseContract {

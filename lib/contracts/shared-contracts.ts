@@ -48,8 +48,8 @@ export namespace SharedContracts {
     }
 
     export interface IRequestWorkflowStepsReferenceContract {
-        workflow_identifier: IIdReferenceContract;
-        step_identifiers: IIdReferenceContract[];
+        workflow_identifier: IReferenceObjectContract;
+        step_identifiers: IReferenceObjectContract[];
     }
 
     export interface ITaxonomyGroupReferenceContract {

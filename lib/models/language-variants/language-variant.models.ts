@@ -55,7 +55,7 @@ export namespace LanguageVariantModels {
         };
         public schedule!: ILanguageVariantSchedule;
         public dueDate!: ILanguageVariantDueDate;
-        public note?: string;
+        public note?: string | null;
         public contributors!: SharedContracts.UserReferenceContract[];
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
@@ -66,7 +66,7 @@ export namespace LanguageVariantModels {
             lastModified: Date;
             schedule: ILanguageVariantSchedule;
             dueDate: ILanguageVariantDueDate;
-            note?: string;
+            note?: string | null;
             contributors: SharedContracts.UserReferenceContract[];
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;

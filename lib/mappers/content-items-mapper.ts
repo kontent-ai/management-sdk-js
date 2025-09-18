@@ -1,5 +1,4 @@
 import { IResponse } from '@kontent-ai/core-sdk';
-
 import { ContentItemContracts } from '../contracts';
 import { ContentItemModels } from '../models';
 import { ContentItemResponses } from '../responses';
@@ -66,8 +65,9 @@ export class ContentItemsMapper extends BaseMapper {
             lastModified: new Date(rawItem.last_modified),
             name: rawItem.name,
             type: rawItem.type,
-            collection: super.mapReference(rawItem.collection),
+            collection: super.mapIdReference(rawItem.collection),
             spaces: rawItem.spaces.map((m) => super.mapIdReference(m)),
+            sitemapLocations: rawItem.sitemap_locations?.map((m) => super.mapIdReference(m)) ?? [],
             _raw: rawItem
         });
     }
