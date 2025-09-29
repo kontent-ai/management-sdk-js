@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.11.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.10.0...v7.11.0) (2025-09-29)
+
+
+### Features
+
+* Adds support for filtering language variants (early access) ([#170](https://github.com/kontent-ai/management-sdk-js/issues/170)) ([fd2caa6](https://github.com/kontent-ai/management-sdk-js/commit/fd2caa67a93260defd6fe6e3d0a2fe0a4df3830a))
+
 ## [7.11.0-4](https://github.com/kontent-ai/management-sdk-js/compare/v7.11.0-3...v7.11.0-4) (2025-09-18)
 
 ## [7.11.0-3](https://github.com/kontent-ai/management-sdk-js/compare/v7.11.0-2...v7.11.0-3) (2025-09-18)
