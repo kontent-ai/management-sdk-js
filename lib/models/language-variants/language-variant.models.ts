@@ -3,6 +3,29 @@ import { SharedModels } from '../shared/shared-models';
 import { LanguageVariantContracts, SharedContracts } from '../../contracts';
 
 export namespace LanguageVariantModels {
+
+    export type FilterLanguageVariantsCompletionStatus = 'unfinished' | 'ready' | 'not_translated' | 'all_done';
+    export type FilterLanguageVariantsOrderBy = 'last_modified' | 'name' | 'due_date';
+    export type FilterLanguageVariantsOrderDirection = 'asc' | 'desc';
+
+    export interface IFilterLanguageVariantsData {
+        filters?: {
+            search_phrase?: string;
+            language?: SharedContracts.IReferenceObjectContract;
+            content_types?: SharedContracts.IReferenceObjectContract[];
+            contributors?: SharedContracts.UserReferenceDataContract[];
+            has_no_contributors?: boolean;
+            completion_statuses?: FilterLanguageVariantsCompletionStatus[];
+            workflow_steps?: SharedContracts.IRequestWorkflowStepsReferenceContract[];
+            taxonomy_groups?: SharedContracts.ITaxonomyGroupReferenceContract[];
+        };
+        order?: {
+            by?: FilterLanguageVariantsOrderBy
+            direction?: FilterLanguageVariantsOrderDirection
+        }
+        include_content?: boolean;
+    }
+
     export interface ILanguageVariantElementInfo {
         id?: string;
         codename?: string;
@@ -21,8 +44,7 @@ export namespace LanguageVariantModels {
     }
 
     export class ContentItemLanguageVariant
-        implements SharedModels.IBaseModel<LanguageVariantContracts.ILanguageVariantModelContract>
-    {
+        implements SharedModels.IBaseModel<LanguageVariantContracts.ILanguageVariantModelContract> {
         public item!: SharedModels.ReferenceObject;
         public elements!: ElementModels.ContentItemElement[];
         public language!: SharedModels.ReferenceObject;
@@ -33,7 +55,7 @@ export namespace LanguageVariantModels {
         };
         public schedule!: ILanguageVariantSchedule;
         public dueDate!: ILanguageVariantDueDate;
-        public note?: string;
+        public note?: string | null;
         public contributors!: SharedContracts.UserReferenceContract[];
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
@@ -44,7 +66,7 @@ export namespace LanguageVariantModels {
             lastModified: Date;
             schedule: ILanguageVariantSchedule;
             dueDate: ILanguageVariantDueDate;
-            note?: string;
+            note?: string | null;
             contributors: SharedContracts.UserReferenceContract[];
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;

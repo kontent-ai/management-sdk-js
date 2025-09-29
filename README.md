@@ -118,6 +118,39 @@ const client = createManagementClient({
 | `retryStrategy` | undefined                             | Retry strategy configuration. If not set, default strategy is used.                                                                                                 |
 | `httpService`   | HttpService                           | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
 
+### Early access
+
+Some SDK queries are available under the `earlyAccess` namespace. These APIs are experimental and may change without a major version bump. Use with caution in production.
+
+- Access early access features via `client.earlyAccess`
+- Endpoints, request/response shapes, and availability may evolve
+
+#### Example: Filter language variants
+
+```typescript
+import { createManagementClient } from '@kontent-ai/management-sdk';
+
+const client = createManagementClient({
+    environmentId: 'xxx',
+    apiKey: 'yyy'
+});
+
+const response = await client
+    .earlyAccess
+    .filterLanguageVariants()
+    .withData({
+        filters: {
+            search_phrase: 'home'
+        },
+        order: {
+            by: 'last_modified',
+            direction: 'desc'
+        },
+        include_content: false
+    })
+    .toPromise();
+```
+
 ### Handling API Management Errors
 
 See the [error section in Management API reference](https://kontent.ai/learn/reference/management-api-v2#section/Guidelines-on-handling-changes) for information about status codes and error messages.

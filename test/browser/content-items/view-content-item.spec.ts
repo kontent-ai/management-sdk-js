@@ -1,4 +1,4 @@
-import { ContentItemResponses, SharedModels } from '../../../lib';
+import { ContentItemResponses } from '../../../lib';
 import * as viewContentItemJson from '../fake-responses/content-items/view-content-item.json';
 import { getTestClientWithJson, cmClient, testEnvironmentId } from '../setup';
 
@@ -46,7 +46,6 @@ describe('View content item', () => {
         expect(response.data.lastModified).toEqual(new Date(viewContentItemJson.last_modified));
         expect(response.data.name).toEqual(viewContentItemJson.name);
         expect(response.data.type).toEqual(viewContentItemJson.type);
-        expect(response.data.collection).toEqual(jasmine.any(SharedModels.ReferenceObject));
         expect(response.data.collection.id).toEqual(viewContentItemJson.collection.id);
         expect(response.data.spaces).toEqual(viewContentItemJson.spaces);
     });

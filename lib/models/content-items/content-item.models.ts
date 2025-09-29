@@ -6,28 +6,24 @@ export namespace ContentItemModels {
         public id!: string;
         public name!: string;
         public codename!: string;
-        public type!: {
-            id: string;
-        };
+        public type!: SharedModels.IIdRefenceObject;
         public externalId?: string;
         public lastModified!: Date;
-        public collection!: SharedModels.ReferenceObject;
+        public collection!: SharedModels.IIdRefenceObject;
         public spaces: SharedModels.IIdRefenceObject[] = [];
+        public sitemapLocations: SharedModels.IIdRefenceObject[] = [];
         public _raw!: ContentItemContracts.IContentItemModelContract;
 
         constructor(data: {
             id: string;
             name: string;
             codename: string;
-            type: {
-                id?: string;
-                codename?: string;
-                external_id?: string;
-            };
+            type: SharedModels.IIdRefenceObject;
             externalId?: string;
             lastModified: Date;
-            collection: SharedModels.ReferenceObject;
+            collection: SharedModels.IIdRefenceObject;
             spaces: SharedModels.IIdRefenceObject[];
+            sitemapLocations: SharedModels.IIdRefenceObject[];
             _raw: ContentItemContracts.IContentItemModelContract;
         }) {
             Object.assign(this, data);
