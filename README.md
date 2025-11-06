@@ -117,6 +117,7 @@ const client = createManagementClient({
 | `baseUrl`       | https://manage.kontent.ai/v2 | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes                                                                          
 | `retryStrategy` | undefined                             | Retry strategy configuration. If not set, default strategy is used.                                                                                                 |
 | `httpService`   | HttpService                           | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
+| `logErrorsToConsole` | true                             | Determines whether errors should be logged to console. Set to `false` to disable error logging. |
 
 ### Early access
 
@@ -172,6 +173,25 @@ try {
     } else {
         // handle generic error however you need
     }
+}
+```
+
+#### Hiding Error Logs
+
+By default, errors are logged to the console. This can be problematic in server applications or backend APIs where error logs can be very long and may obscure other important log messages. You can disable automatic error logging by setting `logErrorsToConsole` to `false`:
+
+```typescript
+const client = createManagementClient({
+    environmentId: 'x',
+    apiKey: 'y',
+    logErrorsToConsole: false // Disable automatic error logging to console
+});
+
+// Errors will still be thrown but won't be logged to console automatically
+try {
+    await client.viewContentItem().byItemCodename('invalid').toPromise();
+} catch (err) {
+    // Handle the error as needed without automatic console logging
 }
 ```
 
