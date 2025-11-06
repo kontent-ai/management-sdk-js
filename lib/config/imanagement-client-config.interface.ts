@@ -41,4 +41,9 @@ export interface IManagementClientConfig {
      * Custom headers to be added to each request
      */
     headers?: IHeader[];
+
+    /**
+     * Determines whether errors should be logged to console. Defaults to true.
+     */
+    logErrorsToConsole?: boolean;
 }

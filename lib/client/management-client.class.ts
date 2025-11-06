@@ -172,7 +172,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
     public readonly mappingService: IMappingService = new MappingService();
 
     constructor(protected readonly config: IManagementClientConfig) {
-        const httpService = config.httpService ? config.httpService : new HttpService();
+        const httpService = config.httpService ? config.httpService : new HttpService({
+            logErrorsToConsole: config.logErrorsToConsole
+        });
         this.queryService = new ManagementQueryService(config, httpService, {
             host: sdkInfo.host,
             name: sdkInfo.name,
