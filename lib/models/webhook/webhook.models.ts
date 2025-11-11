@@ -28,18 +28,6 @@ export namespace WebhookModels {
     export type WebhookDeliveryTriggersEvents = 'all' | 'specific';
     export type WebhookHealthStatus = 'unknown' | 'working' | 'failing' | 'dead';
 
-    export interface IAddLegacyWebhookData {
-        name: string;
-        secret: string;
-        url: string;
-        enabled?: boolean;
-        triggers: {
-            delivery_api_content_changes?: WebhookContracts.ILegacyWebhookDeliveryApiContentChangesContract[];
-            preview_delivery_api_content_changes?: WebhookContracts.ILegacyWebhookPreviewDeliveryApiContentChangesContract[];
-            workflow_step_changes?: WebhookContracts.ILegacyWebhookWorkflowStepChangesContract[];
-            management_api_content_changes?: WebhookContracts.ILegacyWebhookManagementApiContentChangesContract[];
-        };
-    }
     export interface IAddWebhookData {
         name: string;
         secret: string;
@@ -144,52 +132,6 @@ export namespace WebhookModels {
         }
     }
 
-    export class LegacyWebhookWorkflowStepChanges {
-        public type: 'content_item_variant';
-        public transitionsTo: WebhookTransitionsTo[];
-
-        constructor(data: { type: 'content_item_variant'; transitionsTo: WebhookTransitionsTo[] }) {
-            this.type = data.type;
-            this.transitionsTo = data.transitionsTo;
-        }
-    }
-
-    export class LegacyWebhookDeliveryApiContentChanges {
-        public type: 'taxonomy' | 'content_item_variant';
-        public operations: WebhookWorkflowStepOperation[];
-
-        constructor(data: { type: 'taxonomy' | 'content_item_variant'; operations: WebhookWorkflowStepOperation[] }) {
-            this.type = data.type;
-            this.operations = data.operations;
-        }
-    }
-
-    export class LegacyWebhookPreviewDeliveryApiContentChanges {
-        public type: 'taxonomy' | 'content_item_variant';
-        public operations: WebhookPreviewContentChangesOperations[];
-
-        constructor(data: {
-            type: 'taxonomy' | 'content_item_variant';
-            operations: WebhookPreviewContentChangesOperations[];
-        }) {
-            this.type = data.type;
-            this.operations = data.operations;
-        }
-    }
-
-    export class LegacyWebhookManagementApiContentChanges {
-        public type: 'taxonomy' | 'content_item_variant';
-        public operations: WebhookManagementContentChangesOperations[];
-
-        constructor(data: {
-            type: 'taxonomy' | 'content_item_variant';
-            operations: WebhookManagementContentChangesOperations[];
-        }) {
-            this.type = data.type;
-            this.operations = data.operations;
-        }
-    }
-
     export interface IWebhookHeader {
         key: string;
         value: string;
@@ -245,47 +187,6 @@ export namespace WebhookModels {
             this.enabled = data.enabled;
             this.headers = data.headers;
             this._raw = data._raw;
-        }
-    }
-
-    export class LegacyWebhook implements SharedModels.IBaseModel<WebhookContracts.ILegacyWebhookContract> {
-        public id: string;
-        public name: string;
-        public secret: string;
-        public url: string;
-        public enabled?: boolean;
-        public healthStatus?: string;
-        public lastModified?: Date;
-        public triggers: {
-            deliveryApiContentChanges: LegacyWebhookDeliveryApiContentChanges[];
-            previewDeliveryContentChanges: LegacyWebhookPreviewDeliveryApiContentChanges[];
-            workflowStepChanges: LegacyWebhookWorkflowStepChanges[];
-            managementApiContentChanges: LegacyWebhookManagementApiContentChanges[];
-        };
-        public _raw!: WebhookContracts.ILegacyWebhookContract;
-
-        constructor(data: {
-            id: string;
-            name: string;
-            secret: string;
-            url: string;
-            healthStatus?: string;
-            lastModified?: Date;
-            triggers: {
-                deliveryApiContentChanges: LegacyWebhookDeliveryApiContentChanges[];
-                workflowStepChanges: LegacyWebhookWorkflowStepChanges[];
-                previewDeliveryContentChanges: LegacyWebhookPreviewDeliveryApiContentChanges[];
-                managementApiContentChanges: LegacyWebhookManagementApiContentChanges[];
-            };
-            _raw: WebhookContracts.ILegacyWebhookContract;
-        }) {
-            this.id = data.id;
-            this.name = data.name;
-            this.secret = data.secret;
-            this.url = data.url;
-            this.triggers = data.triggers;
-            this.lastModified = data.lastModified;
-            this.healthStatus = data.healthStatus;
         }
     }
 }

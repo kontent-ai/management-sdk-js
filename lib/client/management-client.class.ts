@@ -35,7 +35,6 @@ import {
     AddLanguageQuery,
     AddTaxonomyQuery,
     AddWebhookQuery,
-    AddLegacyWebhookQuery,
     AssetIdentifierQuery,
     CancelScheduledPublishingOfLanguageVariantQuery,
     ContentItemIdentifierQuery,
@@ -51,10 +50,8 @@ import {
     DeleteLanguageVariantQuery,
     DeleteTaxonomyQuery,
     DeleteWebhookQuery,
-    DeleteLegacyWebhookQuery,
     GetTaxonomyQuery,
     GetWebhookQuery,
-    GetLegacyWebhookQuery,
     LanguageIdAndCodenameIdentifierQuery,
     LanguageIdentifierQuery,
     ListAssetFoldersQuery,
@@ -69,7 +66,6 @@ import {
     ListLanguageVariantsBySpaceQuery,
     ListTaxonomiesQuery,
     ListWebhooksQuery,
-    ListLegacyWebhooksQuery,
     ModifyAssetFoldersQuery,
     ModifyContentTypeQuery,
     ModifyContentTypeSnippetQuery,
@@ -100,9 +96,7 @@ import {
     GetQuery,
     CancelScheduledUnpublishingOfLanguageVariantQuery,
     EnableWebhookQuery,
-    EnableLegacyWebhookQuery,
     DisableWebhookQuery,
-    DisableLegacyWebhookQuery,
     ListCollectionsQuery,
     CollectionIdentifierQuery,
     ListLanguageVariantsByCollectionQuery,
@@ -1030,50 +1024,6 @@ export class ManagementClient implements IManagementClient<CancelToken> {
 
     listWebhooks(): ListWebhooksQuery {
         return new ListWebhooksQuery(this.config, this.queryService);
-    }
-
-    deleteLegacyWebhook(): WebhookIdentifierQuery<DeleteLegacyWebhookQuery> {
-        return new WebhookIdentifierQuery<DeleteLegacyWebhookQuery>(
-            this.config,
-            this.queryService,
-            (config, queryService, identifier) => new DeleteLegacyWebhookQuery(config, queryService, identifier)
-        );
-    }
-
-    addLegacyWebhook(): DataQuery<AddLegacyWebhookQuery, WebhookModels.IAddLegacyWebhookData> {
-        return new DataQuery<AddLegacyWebhookQuery, WebhookModels.IAddLegacyWebhookData>(
-            this.config,
-            this.queryService,
-            (config, queryService, data) => new AddLegacyWebhookQuery(config, queryService, data)
-        );
-    }
-
-    enableLegacyWebhook(): WebhookIdentifierQuery<EnableLegacyWebhookQuery> {
-        return new WebhookIdentifierQuery<EnableLegacyWebhookQuery>(
-            this.config,
-            this.queryService,
-            (config, queryService, identifier) => new EnableLegacyWebhookQuery(config, queryService, identifier)
-        );
-    }
-
-    disableLegacyWebhook(): WebhookIdentifierQuery<DisableLegacyWebhookQuery> {
-        return new WebhookIdentifierQuery<DisableLegacyWebhookQuery>(
-            this.config,
-            this.queryService,
-            (config, queryService, identifier) => new DisableLegacyWebhookQuery(config, queryService, identifier)
-        );
-    }
-
-    getLegacyWebhook(): WebhookIdentifierQuery<GetLegacyWebhookQuery> {
-        return new WebhookIdentifierQuery<GetLegacyWebhookQuery>(
-            this.config,
-            this.queryService,
-            (config, queryService, identifier) => new GetLegacyWebhookQuery(config, queryService, identifier)
-        );
-    }
-
-    listLegacyWebhooks(): ListLegacyWebhooksQuery {
-        return new ListLegacyWebhooksQuery(this.config, this.queryService);
     }
 
     environmentInformation(): EnvironmentInformationQuery {

@@ -5,7 +5,7 @@ describe('Delete webhook', () => {
     let response: BaseResponses.EmptyContentManagementResponse;
 
     beforeAll(async () => {
-        response = await getTestClientWithJson(undefined).deleteLegacyWebhook().byId('x').toPromise();
+        response = await getTestClientWithJson(undefined).deleteWebhook().byId('x').toPromise();
     });
 
     it(`url should be correct`, () => {

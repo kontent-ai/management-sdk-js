@@ -28,30 +28,6 @@ export namespace WebhookContracts {
 
     export interface IDeleteWebhookResponseContract {}
 
-    export interface ILegacyWebhookTransitionsToContract {
-        id: string;
-    }
-
-    export interface ILegacyWebhookWorkflowStepChangesContract {
-        type: 'content_item_variant';
-        transitions_to: ILegacyWebhookTransitionsToContract[];
-    }
-
-    export interface ILegacyWebhookManagementApiContentChangesContract {
-        type: 'content_item_variant';
-        operations: WebhookManagementContentChangesOperation[];
-    }
-
-    export interface ILegacyWebhookDeliveryApiContentChangesContract {
-        type: 'taxonomy' | 'content_item_variant';
-        operations: WebhookWorkflowStepOperationContract[];
-    }
-
-    export interface ILegacyWebhookPreviewDeliveryApiContentChangesContract {
-        type: 'taxonomy' | 'content_item_variant';
-        operations: WebhookPreviewContentChangesOperation[];
-    }
-
     export type WebhookAction<
         T extends
             | WebhookContentTypeAction
@@ -115,21 +91,6 @@ export namespace WebhookContracts {
         filters?: IContentItemFilters;
     }
 
-    export interface ILegacyWebhookContract {
-        id: string;
-        name: string;
-        secret: string;
-        url: string;
-        last_modified?: string;
-        health_status?: string;
-        triggers: {
-            delivery_api_content_changes: ILegacyWebhookDeliveryApiContentChangesContract[];
-            workflow_step_changes: ILegacyWebhookWorkflowStepChangesContract[];
-            preview_delivery_api_content_changes: ILegacyWebhookPreviewDeliveryApiContentChangesContract[];
-            management_api_content_changes: ILegacyWebhookManagementApiContentChangesContract[];
-        };
-    }
-
     export interface IWebhookHeaderContract {
         key: string;
         value: string;
@@ -155,15 +116,9 @@ export namespace WebhookContracts {
         };
     }
 
-    export interface IGetLegacyWebhookContract extends ILegacyWebhookContract {}
-
     export interface IGetWebhookContract extends IWebhookContract {}
 
-    export interface IAddLegacyWebhookContract extends ILegacyWebhookContract {}
-
     export interface IAddWebhookContract extends IWebhookContract {}
-
-    export type ILegacyWebhookListContract = ILegacyWebhookContract[];
 
     export type IWebhookListContract = IWebhookContract[];
 }

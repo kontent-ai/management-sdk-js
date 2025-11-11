@@ -290,29 +290,6 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/languages`;
     }
 
-    deleteLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}`;
-    }
-
-    getLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}`;
-    }
-
-    addLegacyWebhook(): string {
-        return `${this.getEnvironmentsPath()}/webhooks`;
-    }
-
-    enableLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}/enable`;
-    }
-
-    disableLegacyWebhook(identifier: Identifiers.WebhookIdentifier): string {
-        return `${this.getEnvironmentsPath()}/webhooks/${identifier.getParamValue()}/disable`;
-    }
-
-    listLegacyWebhooks(): string {
-        return `${this.getEnvironmentsPath()}/webhooks`;
-    }
 
     deleteWebhook(identifier: Identifiers.WebhookIdentifier): string {
         return `${this.getEnvironmentsPath()}/webhooks-vnext/${identifier.getParamValue()}`;
