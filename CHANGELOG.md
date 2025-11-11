@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.11.0...v8.0.0) (2025-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removes legacy webhook API (fixes https://github.com/kontent-ai/management-sdk-js/issues/173)
+
+### Features
+
+* Removes legacy webhook API (fixes https://github.com/kontent-ai/management-sdk-js/issues/173) ([bf4f59e](https://github.com/kontent-ai/management-sdk-js/commit/bf4f59e93fec8599da8a9e89f9a9f3fef63955e4))
+* updates deps ([846e2c6](https://github.com/kontent-ai/management-sdk-js/commit/846e2c6daf0a270229afd4cf91556fe7d46468a4))
+
 ## [7.11.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.10.0...v7.11.0) (2025-09-29)
 
 
