@@ -39,7 +39,7 @@ export namespace TaxonomyModels {
 
     export interface IAddTaxonomyRequestModel {
         name: string;
-        terms: IAddTaxonomyRequestModel[];
+        terms?: IAddTaxonomyRequestModel[];
         external_id?: string;
         codename?: string;
     }

@@ -3,7 +3,7 @@ export namespace AssetFolderContracts {
         id: string;
         name: string;
         external_id?: string;
-        folders: IAssetFolderContract[];
+        folders?: IAssetFolderContract[];
         codename: string;
     }
 

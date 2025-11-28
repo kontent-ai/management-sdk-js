@@ -44,7 +44,7 @@ export class AssetFolderMapper extends BaseMapper {
             externalId: rawFolder.external_id,
             id: rawFolder.id,
             name: rawFolder.name,
-            folders: rawFolder.folders.map((m) => this.mapAssetFolder(m)),
+            folders: rawFolder.folders?.map((m) => this.mapAssetFolder(m)) ?? [],
             codename: rawFolder.codename,
             _raw: rawFolder
         });
