@@ -29,7 +29,7 @@ export namespace AssetFolderModels {
 
     export interface IAssetFolderValue {
         name: string;
-        folders: IAssetFolderValue[];
+        folders?: IAssetFolderValue[];
         external_id?: string;
         codename?: string;
     }

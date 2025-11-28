@@ -58,7 +58,7 @@ export class TaxonomyMapper extends BaseMapper {
             id: rawTaxonomy.id,
             lastModified: new Date(rawTaxonomy.last_modified),
             name: rawTaxonomy.name,
-            terms: rawTaxonomy.terms.map((m) => this.mapTaxonomy(m)),
+            terms: rawTaxonomy.terms?.map((m) => this.mapTaxonomy(m)) ?? [],
             externalId: rawTaxonomy.external_id,
             _raw: rawTaxonomy
         });
