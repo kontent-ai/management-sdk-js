@@ -7,7 +7,7 @@ export namespace TaxonomyContracts {
         name: string;
         id: string;
         codename: string;
-        terms: ITaxonomyContract[];
+        terms?: ITaxonomyContract[];
         external_id?: string;
     }
 
