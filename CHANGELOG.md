@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.0.0...v8.1.0) (2025-12-03)
+
+
+### Features
+
+* make taxonomy terms and nested asset folders optional ([#175](https://github.com/kontent-ai/management-sdk-js/issues/175)) ([4dccfe1](https://github.com/kontent-ai/management-sdk-js/commit/4dccfe1cfaa77f42b467f261fa534834a601f3f0))
+
 ## [8.0.0](https://github.com/kontent-ai/management-sdk-js/compare/v7.11.0...v8.0.0) (2025-11-11)
 
 
