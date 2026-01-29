@@ -65,6 +65,11 @@ export namespace CustomAppModels {
                 value: string | null;
                 property_name: Extract<ModifyCustomAppPropertyName, 'config'>;
             }
+            | {
+                op: 'replace';
+                value: CustomAppsContracts.CustomAppDisplayMode;
+                property_name: Extract<ModifyCustomAppPropertyName, 'display_mode'>;
+            }
         )
         | {
             op: 'remove';
