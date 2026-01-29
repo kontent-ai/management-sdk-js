@@ -2,6 +2,7 @@
     "id": "dd1439d5-4ee2-4895-a4e4-5b0d9d8c754e",
     "name": "New Custom App Name",
     "codename": "new_custom_app_codename",
+    "display_mode": "fullScreen",
     "source_url": "https://newcustomapplication.net",
     "config": null,
     "allowed_roles": [

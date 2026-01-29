@@ -3,6 +3,7 @@
     "name": "Custom App Name",
     "codename": "custom_app_codename",
     "source_url": "https://customapp.net",
+    "display_mode": "fullScreen",
     "config": "\"{\"theme\":{\"color\":\"#007BFF\",\"logo_url\":\"https://assets.customapp.net/logo.png\"},\"features\":{\"enable_notifications\":true,\"enable_advanced_mode\":false}}\"",
     "allowed_roles": [
         {
