@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [8.1.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.0...v8.1.1) (2026-01-29)
 
+### Features
+
+* Adds missing `id` and `display_mode` property to custom app models
+
 ## [8.1.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.0.0...v8.1.0) (2025-12-03)
 
 
