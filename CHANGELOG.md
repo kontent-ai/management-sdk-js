@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.1.3](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.2...v8.1.3) (2026-01-29)
+
+
+### Bug Fixes
+
+* allowed_roles in custom apps should take array value of references ([2a58544](https://github.com/kontent-ai/management-sdk-js/commit/2a58544fbf0145341f96761f830205b6e77fb3c7))
+
 ### [8.1.2](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.1...v8.1.2) (2026-01-29)
 
 ### [8.1.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.0...v8.1.1) (2026-01-29)
