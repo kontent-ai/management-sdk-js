@@ -13,9 +13,22 @@ describe('Modify custom app', () => {
                 {
                     op: 'addInto',
                     property_name: 'allowed_roles',
-                    value: {
+                    value: [{
                         codename: 'x'
-                    }
+                    },
+                    {
+                        id: 'x'
+                    }]
+                },
+                {
+                    op: 'replace',
+                    property_name: 'allowed_roles',
+                    value: [{
+                        codename: 'z'
+                    },
+                    {
+                        id: 'u'
+                    }]
                 },
                 {
                     op: 'replace',
