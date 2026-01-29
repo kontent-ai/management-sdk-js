@@ -41,7 +41,7 @@ export namespace CustomAppModels {
     }
 
 
-    export type ModifyCustomAppPropertyName = 'name' | 'source_url' | 'config' | 'allowed_roles';
+    export type ModifyCustomAppPropertyName = 'name' | 'source_url' | 'config' | 'allowed_roles' | 'display_mode';
 
     export type ModifyCustomAppOperation =
         | {
