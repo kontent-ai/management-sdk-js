@@ -46,13 +46,13 @@ export namespace CustomAppModels {
     export type ModifyCustomAppOperation =
         | {
             op: 'addInto';
-            value: SharedContracts.IReferenceObjectContract;
+            value: SharedContracts.IReferenceObjectContract[];
             property_name: Extract<ModifyCustomAppPropertyName, 'allowed_roles'>;
         }
         | (
             | {
                 op: 'replace';
-                value: SharedContracts.IReferenceObjectContract;
+                value: SharedContracts.IReferenceObjectContract[];
                 property_name: Extract<ModifyCustomAppPropertyName, 'allowed_roles'>;
             }
             | {
@@ -73,7 +73,9 @@ export namespace CustomAppModels {
         )
         | {
             op: 'remove';
-            value: SharedContracts.IReferenceObjectContract;
+            value: SharedContracts.IReferenceObjectContract[];
             property_name: Extract<ModifyCustomAppPropertyName, 'allowed_roles'>;
         };
 }
+
+
