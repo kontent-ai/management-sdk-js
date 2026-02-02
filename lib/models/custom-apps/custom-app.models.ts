@@ -38,6 +38,7 @@ export namespace CustomAppModels {
         source_url: string;
         config?: string | null;
         allowed_roles?: SharedContracts.ICodenameIdReferenceContract[];
+        display_mode?: CustomAppsContracts.CustomAppDisplayMode;
     }
 
 

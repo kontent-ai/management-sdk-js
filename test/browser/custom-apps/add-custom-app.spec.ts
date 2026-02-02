@@ -13,7 +13,8 @@ describe('Add custom app', () => {
                 codename: 'x',
                 config: '',
                 source_url: 'x',
-                allowed_roles: [{ codename: 'x' }]
+                allowed_roles: [{ codename: 'x' }],
+                display_mode: 'fullScreen'
             })
             .toPromise();
     });
@@ -26,7 +27,8 @@ describe('Add custom app', () => {
                 codename: 'x',
                 config: '',
                 source_url: 'x',
-                allowed_roles: [{ codename: 'x' }]
+                allowed_roles: [{ codename: 'x' }],
+                display_mode: 'fullScreen'
             })
             .getUrl();
 
