@@ -39,6 +39,11 @@ describe('Modify custom app', () => {
                     op: 'replace',
                     property_name: 'name',
                     value: 'x'
+                },
+                {
+                    op: 'replace',
+                    property_name: 'display_mode',
+                    value: 'fullScreen'
                 }
             ])
             .toPromise();
