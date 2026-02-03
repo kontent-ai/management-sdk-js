@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.1.4](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.3...v8.1.4) (2026-02-03)
+
+
+### Bug Fixes
+
+* Add display_mode to add custom app request model ([#176](https://github.com/kontent-ai/management-sdk-js/issues/176)) ([6c4d7a9](https://github.com/kontent-ai/management-sdk-js/commit/6c4d7a9b67d7ae66c83132b6aa097b4d61ca014e))
+* make codename in add custom apps optional ([89a6f21](https://github.com/kontent-ai/management-sdk-js/commit/89a6f21a754dd1d7f79cebd0ed66c812b59f2e8e))
+
 ### [8.1.3](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.2...v8.1.3) (2026-01-29)
 
 
