@@ -34,8 +34,8 @@ export namespace CustomAppModels {
 
     export interface IAddCustomAppData {
         name: string;
-        codename: string;
         source_url: string;
+        codename?: string;
         config?: string | null;
         allowed_roles?: SharedContracts.ICodenameIdReferenceContract[];
         display_mode?: CustomAppsContracts.CustomAppDisplayMode;
