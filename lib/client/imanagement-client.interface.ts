@@ -141,7 +141,8 @@ import {
     ListCustomAppsQuery,
     ModifyCustomAppQuery,
     DeleteCustomAppQuery,
-    FilterLanguageVariantsQuery
+    FilterItemsWithVariantsQuery,
+    BulkGetItemsWithVariantsQuery
 } from '../queries';
 import { IMappingService } from '../services';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
@@ -152,17 +153,18 @@ import { MarkEnvironmentAsProductionQuery } from '../queries/environments/mark-e
 import { ModifyEnvironmentQuery } from '../queries/environments/modify-environment-query';
 import { LanguageVariantModels } from '../models';
 
-export interface IEarlyAccess {
-    filterLanguageVariants(): DataQuery<FilterLanguageVariantsQuery, LanguageVariantModels.IFilterLanguageVariantsData>
-}
-
 export interface IManagementClient<TCancelToken> {
     mappingService: IMappingService;
 
     /**
-     * Early access queries. Use with caution as these are not yet stable and may change.
+     * Query to filter items with variants
      */
-    earlyAccess: IEarlyAccess;
+    filterItemsWithVariants(): DataQuery<FilterItemsWithVariantsQuery, LanguageVariantModels.IFilterItemsWithVariantsData>;
+
+    /**
+     * Query to bulk get items with variants
+     */
+    bulkGetItemsWithVariants(): DataQuery<BulkGetItemsWithVariantsQuery, LanguageVariantModels.IBulkGetItemsWithVariantsData>;
 
     /**
      * Creates cancel token

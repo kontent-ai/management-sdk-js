@@ -246,8 +246,12 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/types/${identifier.getParamValue()}/components`;
     }
 
-    filterLanguageVariants(): string {
-        return `${this.getEnvironmentsPath()}/early-access/variants/filter`;
+    filterItemsWithVariants(): string {
+        return `${this.getEnvironmentsPath()}/items-with-variant/filter`;
+    }
+
+    bulkGetItemsWithVariants(): string {
+        return `${this.getEnvironmentsPath()}/items-with-variant/bulk-get`;
     }
 
     deleteLanguageVariant(

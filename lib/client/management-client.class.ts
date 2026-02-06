@@ -146,11 +146,12 @@ import {
     GetCustomAppQuery,
     ModifyCustomAppQuery,
     DeleteCustomAppQuery,
-    FilterLanguageVariantsQuery
+    FilterItemsWithVariantsQuery,
+    BulkGetItemsWithVariantsQuery
 } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
 import { ManagementQueryService, IMappingService, MappingService } from '../services';
-import { IEarlyAccess, IManagementClient } from './imanagement-client.interface';
+import { IManagementClient } from './imanagement-client.interface';
 import { CancelToken } from 'axios';
 import { GetEnvironmentCloningStateQuery } from '../queries/environments';
 import { DeleteEnvironmentQuery } from '../queries/environments/delete-environment-query';
@@ -176,14 +177,20 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         this.httpService = httpService;
     }
 
-    earlyAccess: IEarlyAccess = {
-        filterLanguageVariants: () => {
-            return new DataQuery<FilterLanguageVariantsQuery, LanguageVariantModels.IFilterLanguageVariantsData>(
-                this.config,
-                this.queryService,
-                (config, queryService, data) => new FilterLanguageVariantsQuery(config, queryService, data)
-            );
-        }
+    filterItemsWithVariants(): DataQuery<FilterItemsWithVariantsQuery, LanguageVariantModels.IFilterItemsWithVariantsData> {
+        return new DataQuery<FilterItemsWithVariantsQuery, LanguageVariantModels.IFilterItemsWithVariantsData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new FilterItemsWithVariantsQuery(config, queryService, data)
+        );
+    }
+
+    bulkGetItemsWithVariants(): DataQuery<BulkGetItemsWithVariantsQuery, LanguageVariantModels.IBulkGetItemsWithVariantsData> {
+        return new DataQuery<BulkGetItemsWithVariantsQuery, LanguageVariantModels.IBulkGetItemsWithVariantsData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new BulkGetItemsWithVariantsQuery(config, queryService, data)
+        );
     }
 
     createCancelToken(): IHttpCancelRequestToken<CancelToken> {
