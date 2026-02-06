@@ -8,7 +8,7 @@ export namespace LanguageVariantModels {
     export type FilterLanguageVariantsOrderBy = 'last_modified' | 'name' | 'due_date';
     export type FilterLanguageVariantsOrderDirection = 'asc' | 'desc';
 
-    export interface IFilterLanguageVariantsData {
+    export interface IFilterItemsWithVariantsData {
         filters?: {
             search_phrase?: string;
             language?: SharedContracts.IReferenceObjectContract;
@@ -20,10 +20,18 @@ export namespace LanguageVariantModels {
             taxonomy_groups?: SharedContracts.ITaxonomyGroupReferenceContract[];
         };
         order?: {
-            by?: FilterLanguageVariantsOrderBy
-            direction?: FilterLanguageVariantsOrderDirection
-        }
-        include_content?: boolean;
+            by?: FilterLanguageVariantsOrderBy;
+            direction?: FilterLanguageVariantsOrderDirection;
+        };
+    }
+
+    export interface IVariantIdentifier {
+        item: SharedContracts.IReferenceObjectContract;
+        language: SharedContracts.IReferenceObjectContract;
+    }
+
+    export interface IBulkGetItemsWithVariantsData {
+        variants: IVariantIdentifier[];
     }
 
     export interface ILanguageVariantElementInfo {

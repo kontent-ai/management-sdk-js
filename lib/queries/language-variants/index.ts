@@ -6,4 +6,5 @@ export * from './view-language-variant-query.class';
 export * from './delete-language-variant-query.class';
 export * from './list-language-variants-by-collection-query.class';
 export * from './list-language-variants-by-space-query.class';
-export * from './filter-language-variants-query.class';
+export * from './filter-items-with-variants-query.class';
+export * from './bulk-get-items-with-variants-query.class';

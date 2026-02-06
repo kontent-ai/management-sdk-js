@@ -883,13 +883,28 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
-    async filterLanguageVariantsAsync(
+    async filterItemsWithVariantsAsync(
         url: string,
-        data: LanguageVariantModels.IFilterLanguageVariantsData,
+        data: LanguageVariantModels.IFilterItemsWithVariantsData,
         config: IContentManagementQueryConfig
-    ): Promise<LanguageVariantResponses.FilterLanguageVariantsResponse> {
-        return languageVariantMapper.mapFilterLanguageVariantsResponse(
-            await this.postResponseAsync<LanguageVariantContracts.IFilterLanguageVariantsResponseContract>(
+    ): Promise<LanguageVariantResponses.FilterItemsWithVariantsResponse> {
+        return languageVariantMapper.mapFilterItemsWithVariantsResponse(
+            await this.postResponseAsync<LanguageVariantContracts.IFilterItemsWithVariantsResponseContract>(
+                url,
+                data,
+                {},
+                config
+            )
+        );
+    }
+
+    async bulkGetItemsWithVariantsAsync(
+        url: string,
+        data: LanguageVariantModels.IBulkGetItemsWithVariantsData,
+        config: IContentManagementQueryConfig
+    ): Promise<LanguageVariantResponses.BulkGetItemsWithVariantsResponse> {
+        return languageVariantMapper.mapBulkGetItemsWithVariantsResponse(
+            await this.postResponseAsync<LanguageVariantContracts.IBulkGetItemsWithVariantsResponseContract>(
                 url,
                 data,
                 {},

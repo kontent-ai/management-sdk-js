@@ -1,0 +1,24 @@
+{
+  "variants": [
+    {
+      "item": {
+        "id": "4b628214-e4fe-4fe0-b1ff-955df33e1515"
+      },
+      "language": {
+        "id": "00000000-0000-0000-0000-000000000000"
+      }
+    },
+    {
+      "item": {
+        "id": "6a8b4d04-7d3e-4d3c-8b9a-4c7e8f9a1b2c"
+      },
+      "language": {
+        "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+      }
+    }
+  ],
+  "pagination": {
+    "continuation_token": "eyJwYWdlX3NpemUiOjUwfQ==",
+    "next_page": "https://manage.kontent.ai/v2/projects/abc/items-with-variant/filter"
+  }
+}

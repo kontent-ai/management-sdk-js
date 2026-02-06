@@ -4,16 +4,15 @@ import { BaseResponses } from '../base-responses';
 
 export namespace LanguageVariantResponses {
 
-
-    export class FilterLanguageVariantsResponse extends BaseResponses.BaseContentManagementListResponse<
-        LanguageVariantContracts.IFilterLanguageVariantsResponseContract,
-        LanguageVariantContracts.IFilterLanguageVariantsResponseDataContract
+    export class FilterItemsWithVariantsResponse extends BaseResponses.BaseContentManagementListResponse<
+        LanguageVariantContracts.IFilterItemsWithVariantsResponseContract,
+        LanguageVariantContracts.IFilterItemsWithVariantsResultContract
     > {
         constructor(
             debug: BaseResponses.IContentManagementResponseDebug,
-            rawData: LanguageVariantContracts.IFilterLanguageVariantsResponseContract,
+            rawData: LanguageVariantContracts.IFilterItemsWithVariantsResponseContract,
             data: {
-                items: LanguageVariantContracts.IFilterLanguageVariantsResponseDataContract[];
+                items: LanguageVariantContracts.IFilterItemsWithVariantsResultContract[];
                 pagination: SharedModels.Pagination;
             }
         ) {
@@ -21,11 +20,38 @@ export namespace LanguageVariantResponses {
         }
     }
 
-    export class ListAllFilterLanguageVariantsResponse extends BaseResponses.ContentManagementListAllResponse<FilterLanguageVariantsResponse, LanguageVariantModels.ContentItemLanguageVariant> {
+    export class ListAllFilterItemsWithVariantsResponse extends BaseResponses.ContentManagementListAllResponse<FilterItemsWithVariantsResponse, LanguageVariantContracts.IFilterItemsWithVariantsResultContract> {
         constructor(
             data: {
-                items: LanguageVariantModels.ContentItemLanguageVariant[],
-                responses: FilterLanguageVariantsResponse[]
+                items: LanguageVariantContracts.IFilterItemsWithVariantsResultContract[];
+                responses: FilterItemsWithVariantsResponse[];
+            }
+        ) {
+            super(data);
+        }
+    }
+
+    export class BulkGetItemsWithVariantsResponse extends BaseResponses.BaseContentManagementListResponse<
+        LanguageVariantContracts.IBulkGetItemsWithVariantsResponseContract,
+        LanguageVariantContracts.IContentItemWithVariantContract
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: LanguageVariantContracts.IBulkGetItemsWithVariantsResponseContract,
+            data: {
+                items: LanguageVariantContracts.IContentItemWithVariantContract[];
+                pagination: SharedModels.Pagination;
+            }
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class ListAllBulkGetItemsWithVariantsResponse extends BaseResponses.ContentManagementListAllResponse<BulkGetItemsWithVariantsResponse, LanguageVariantContracts.IContentItemWithVariantContract> {
+        constructor(
+            data: {
+                items: LanguageVariantContracts.IContentItemWithVariantContract[];
+                responses: BulkGetItemsWithVariantsResponse[];
             }
         ) {
             super(data);

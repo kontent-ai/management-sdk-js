@@ -1,0 +1,87 @@
+{
+  "data": [
+    {
+      "item": {
+        "id": "4b628214-e4fe-4fe0-b1ff-955df33e1515",
+        "name": "Sample Article",
+        "codename": "sample_article",
+        "type": {
+          "id": "ba5cd79d-6d4b-5bed-a681-6aa3a366c8f7"
+        },
+        "collection": {
+          "id": "00000000-0000-0000-0000-000000000000"
+        },
+        "spaces": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000"
+          }
+        ],
+        "sitemap_locations": [],
+        "last_modified": "2024-01-15T10:30:00.000Z"
+      },
+      "variant": {
+        "item": {
+          "id": "4b628214-e4fe-4fe0-b1ff-955df33e1515"
+        },
+        "language": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "codename": "en-US"
+        },
+        "elements": [
+          {
+            "element": {
+              "id": "ba7c8840-bcbc-5e3b-b292-24d0d7f4c394"
+            },
+            "value": "Sample Article Title"
+          }
+        ],
+        "workflow": {
+          "workflow_identifier": {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "codename": "default"
+          },
+          "step_identifier": {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "codename": "draft"
+          }
+        },
+        "schedule": {
+          "publish_time": null,
+          "publish_display_timezone": null,
+          "unpublish_time": null,
+          "unpublish_display_timezone": null
+        },
+        "due_date": {
+          "value": null
+        },
+        "contributors": [],
+        "last_modified": "2024-01-15T10:30:00.000Z"
+      }
+    },
+    {
+      "item": {
+        "id": "6a8b4d04-7d3e-4d3c-8b9a-4c7e8f9a1b2c",
+        "name": "Another Article",
+        "codename": "another_article",
+        "type": {
+          "id": "ba5cd79d-6d4b-5bed-a681-6aa3a366c8f7"
+        },
+        "collection": {
+          "id": "00000000-0000-0000-0000-000000000000"
+        },
+        "spaces": [
+          {
+            "id": "00000000-0000-0000-0000-000000000000"
+          }
+        ],
+        "sitemap_locations": [],
+        "external_id": "ext_another_article",
+        "last_modified": "2024-01-16T14:45:00.000Z"
+      }
+    }
+  ],
+  "pagination": {
+    "continuation_token": null,
+    "next_page": null
+  }
+}

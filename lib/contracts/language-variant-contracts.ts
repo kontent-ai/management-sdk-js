@@ -46,14 +46,24 @@ export namespace LanguageVariantContracts {
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IFilterLanguageVariantsResponseContract {
-        data: IFilterLanguageVariantsResponseDataContract[];
+    export interface IFilterItemsWithVariantsResponseContract {
+        variants: IFilterItemsWithVariantsResultContract[];
         pagination: SharedContracts.IPaginationModelContract;
     }
 
-    export interface IFilterLanguageVariantsResponseDataContract {
-        item: ContentItemContracts.IContentItemModelContract,
-        variant: ILanguageVariantModelContract,
+    export interface IFilterItemsWithVariantsResultContract {
+        item: SharedContracts.IIdReferenceContract;
+        language: SharedContracts.IIdReferenceContract;
+    }
+
+    export interface IBulkGetItemsWithVariantsResponseContract {
+        data: IContentItemWithVariantContract[];
+        pagination: SharedContracts.IPaginationModelContract;
+    }
+
+    export interface IContentItemWithVariantContract {
+        item: ContentItemContracts.IContentItemModelContract;
+        variant?: ILanguageVariantModelContract;
     }
 
     export interface IListLanguageVariantsBySpaceResponseContract {

@@ -56,10 +56,23 @@ export class LanguageVariantMapper extends BaseMapper {
         );
     }
 
-    mapFilterLanguageVariantsResponse(
-        response: IResponse<LanguageVariantContracts.IFilterLanguageVariantsResponseContract>
-    ): LanguageVariantResponses.FilterLanguageVariantsResponse {
-        return new LanguageVariantResponses.FilterLanguageVariantsResponse(
+    mapFilterItemsWithVariantsResponse(
+        response: IResponse<LanguageVariantContracts.IFilterItemsWithVariantsResponseContract>
+    ): LanguageVariantResponses.FilterItemsWithVariantsResponse {
+        return new LanguageVariantResponses.FilterItemsWithVariantsResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            {
+                items: response.data.variants,
+                pagination: super.mapPagination(response.data.pagination)
+            }
+        );
+    }
+
+    mapBulkGetItemsWithVariantsResponse(
+        response: IResponse<LanguageVariantContracts.IBulkGetItemsWithVariantsResponseContract>
+    ): LanguageVariantResponses.BulkGetItemsWithVariantsResponse {
+        return new LanguageVariantResponses.BulkGetItemsWithVariantsResponse(
             super.mapResponseDebug(response),
             response.data,
             {
@@ -68,7 +81,6 @@ export class LanguageVariantMapper extends BaseMapper {
             }
         );
     }
-
 
     mapLanguageVariantsBySpaceResponse(
         response: IResponse<LanguageVariantContracts.IListLanguageVariantsBySpaceResponseContract>
