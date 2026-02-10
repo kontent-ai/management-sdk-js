@@ -5,6 +5,7 @@ import { LanguageVariantContracts, SharedContracts } from '../../contracts';
 export namespace LanguageVariantModels {
 
     export type FilterLanguageVariantsCompletionStatus = 'unfinished' | 'ready' | 'not_translated' | 'all_done';
+    export type FilterLanguageVariantsPublishingState = 'published' | 'unpublished' | 'not_published_yet';
     export type FilterLanguageVariantsOrderBy = 'last_modified' | 'name' | 'due_date';
     export type FilterLanguageVariantsOrderDirection = 'asc' | 'desc';
 
@@ -18,6 +19,9 @@ export namespace LanguageVariantModels {
             completion_statuses?: FilterLanguageVariantsCompletionStatus[];
             workflow_steps?: SharedContracts.IRequestWorkflowStepsReferenceContract[];
             taxonomy_groups?: SharedContracts.ITaxonomyGroupReferenceContract[];
+            spaces?: SharedContracts.IReferenceObjectContract[];
+            collections?: SharedContracts.IReferenceObjectContract[];
+            publishing_states?: FilterLanguageVariantsPublishingState[];
         };
         order?: {
             by?: FilterLanguageVariantsOrderBy;

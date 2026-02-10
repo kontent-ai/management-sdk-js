@@ -64,3 +64,119 @@ describe('Filter items with variants', () => {
         expect(response.data.pagination.continuationToken).toEqual(responseJson.pagination.continuation_token);
     });
 });
+
+describe('Filter items with variants using spaces filter', () => {
+    let response: LanguageVariantResponses.FilterItemsWithVariantsResponse;
+
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .filterItemsWithVariants()
+            .withData({
+                filters: {
+                    spaces: [
+                        { id: '5a5e5a5e-5a5e-5a5e-5a5e-5a5e5a5e5a5e' },
+                        { codename: 'my-space' }
+                    ]
+                }
+            })
+            .toPromise();
+    });
+
+    it(`response should be instance of FilterItemsWithVariantsResponse class`, () => {
+        expect(response).toEqual(jasmine.any(LanguageVariantResponses.FilterItemsWithVariantsResponse));
+    });
+
+    it(`response should contain data`, () => {
+        expect(response.data).toBeDefined();
+        expect(response.data.items).toBeDefined();
+    });
+});
+
+describe('Filter items with variants using collections filter', () => {
+    let response: LanguageVariantResponses.FilterItemsWithVariantsResponse;
+
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .filterItemsWithVariants()
+            .withData({
+                filters: {
+                    collections: [
+                        { id: '6b6f6b6f-6b6f-6b6f-6b6f-6b6f6b6f6b6f' },
+                        { codename: 'my-collection' },
+                        { external_id: 'my-external-collection' }
+                    ]
+                }
+            })
+            .toPromise();
+    });
+
+    it(`response should be instance of FilterItemsWithVariantsResponse class`, () => {
+        expect(response).toEqual(jasmine.any(LanguageVariantResponses.FilterItemsWithVariantsResponse));
+    });
+
+    it(`response should contain data`, () => {
+        expect(response.data).toBeDefined();
+        expect(response.data.items).toBeDefined();
+    });
+});
+
+describe('Filter items with variants using publishing states filter', () => {
+    let response: LanguageVariantResponses.FilterItemsWithVariantsResponse;
+
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .filterItemsWithVariants()
+            .withData({
+                filters: {
+                    publishing_states: ['published', 'unpublished', 'not_published_yet']
+                }
+            })
+            .toPromise();
+    });
+
+    it(`response should be instance of FilterItemsWithVariantsResponse class`, () => {
+        expect(response).toEqual(jasmine.any(LanguageVariantResponses.FilterItemsWithVariantsResponse));
+    });
+
+    it(`response should contain data`, () => {
+        expect(response.data).toBeDefined();
+        expect(response.data.items).toBeDefined();
+    });
+});
+
+describe('Filter items with variants using all new filters combined', () => {
+    let response: LanguageVariantResponses.FilterItemsWithVariantsResponse;
+
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .filterItemsWithVariants()
+            .withData({
+                filters: {
+                    search_phrase: 'test',
+                    language: { codename: 'en-US' },
+                    spaces: [{ codename: 'my-space' }],
+                    collections: [{ id: '6b6f6b6f-6b6f-6b6f-6b6f-6b6f6b6f6b6f' }],
+                    publishing_states: ['published']
+                },
+                order: {
+                    by: 'name',
+                    direction: 'asc'
+                }
+            })
+            .toPromise();
+    });
+
+    it(`response should be instance of FilterItemsWithVariantsResponse class`, () => {
+        expect(response).toEqual(jasmine.any(LanguageVariantResponses.FilterItemsWithVariantsResponse));
+    });
+
+    it(`response should contain data`, () => {
+        expect(response.data).toBeDefined();
+        expect(response.data.items).toBeDefined();
+    });
+
+    it(`item properties should be mapped`, () => {
+        expect(response.data.items.length).toEqual(responseJson.variants.length);
+        expect(response.data.pagination).toEqual(jasmine.any(SharedModels.Pagination));
+    });
+});
