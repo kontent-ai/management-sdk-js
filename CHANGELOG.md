@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.2.0...v8.3.0) (2026-02-12)
+
+
+### Features
+
+* Add spaces, collections, and publishing states filters to items-with-variant filter endpoint ([#180](https://github.com/kontent-ai/management-sdk-js/issues/180)) ([94d5ef5](https://github.com/kontent-ai/management-sdk-js/commit/94d5ef5e07eb564a66d49a58cf80167140e89f94))
+
 ## [8.2.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.1.5...v8.2.0) (2026-02-06)
 
 * Replace `early access` language variants endpoints with new ones
