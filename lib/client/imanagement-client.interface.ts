@@ -725,16 +725,19 @@ export interface IManagementClient<TCancelToken> {
 
     /**
      * Activates Web Spotlight
+     * @deprecated Web Spotlight has been discontinued and this method will be removed in a future version.
      */
     activateWebSpotlight(): DataQuery<ActivateWebSpotlightQuery, WebSpotlightModels.IActivateWebSpotlightData>;
 
     /**
      * Deactivates Web Spotlight
+     * @deprecated Web Spotlight has been discontinued and this method will be removed in a future version.
      */
     deactivateWebSpotlight(): DeactivateWebSpotlightQuery;
 
     /**
      * Checks Web Spotlight status
+     * @deprecated Web Spotlight has been discontinued and this method will be removed in a future version.
      */
     checkWebSpotlightStatus(): CheckWebSpotlightStatusQuery;
 

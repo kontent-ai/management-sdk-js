@@ -1257,6 +1257,9 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
+    /**
+     * @deprecated Web Spotlight has been discontinued and this method will be removed in a future version.
+     */
     activateWebSpotlight(): DataQuery<ActivateWebSpotlightQuery, WebSpotlightModels.IActivateWebSpotlightData> {
         return new DataQuery<ActivateWebSpotlightQuery, WebSpotlightModels.IActivateWebSpotlightData>(
             this.config,
@@ -1265,10 +1268,16 @@ export class ManagementClient implements IManagementClient<CancelToken> {
         );
     }
 
+    /**
+     * @deprecated Web Spotlight has been discontinued and this method will be removed in a future version.
+     */
     deactivateWebSpotlight(): DeactivateWebSpotlightQuery {
         return new DeactivateWebSpotlightQuery(this.config, this.queryService);
     }
 
+    /**
+     * @deprecated Web Spotlight has been discontinued and this method will be removed in a future version.
+     */
     checkWebSpotlightStatus(): CheckWebSpotlightStatusQuery {
         return new CheckWebSpotlightStatusQuery(this.config, this.queryService);
     }
