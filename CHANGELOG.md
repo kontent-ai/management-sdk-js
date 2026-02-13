@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.3.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.3.0...v8.3.1) (2026-02-13)
+
+
+### Bug Fixes
+
+* updates deps & karma tests ([f710456](https://github.com/kontent-ai/management-sdk-js/commit/f7104567f7246ee29d7ad3e49be4d9010db3c0a1))
+
 ## [8.3.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.2.0...v8.3.0) (2026-02-12)
 
 
