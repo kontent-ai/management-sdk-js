@@ -137,6 +137,8 @@ import {
     SpaceIdentifierQuery,
     GetPreviewConfigurationQuery,
     ModifyPreviewConfigurationQuery,
+    GetLivePreviewConfigurationQuery,
+    ChangeLivePreviewConfigurationQuery,
     ActivateWebSpotlightQuery,
     DeactivateWebSpotlightQuery,
     CheckWebSpotlightStatusQuery,
@@ -1157,6 +1159,21 @@ export class ManagementClient implements IManagementClient<CancelToken> {
             this.config,
             this.queryService,
             (config, queryService, data) => new ModifyPreviewConfigurationQuery(config, queryService, data)
+        );
+    }
+
+    getLivePreviewConfiguration(): GetLivePreviewConfigurationQuery {
+        return new GetLivePreviewConfigurationQuery(this.config, this.queryService);
+    }
+
+    changeLivePreviewConfiguration(): DataQuery<
+        ChangeLivePreviewConfigurationQuery,
+        PreviewModels.IChangeLivePreviewConfigurationData
+    > {
+        return new DataQuery<ChangeLivePreviewConfigurationQuery, PreviewModels.IChangeLivePreviewConfigurationData>(
+            this.config,
+            this.queryService,
+            (config, queryService, data) => new ChangeLivePreviewConfigurationQuery(config, queryService, data)
         );
     }
 

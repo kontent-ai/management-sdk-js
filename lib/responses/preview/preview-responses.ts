@@ -28,4 +28,30 @@ export namespace PreviewResponses {
             super(debug, rawData, data);
         }
     }
+
+    export class LivePreviewConfigurationResponse extends BaseResponses.BaseContentManagementResponse<
+        PreviewContracts.ILivePreviewConfigurationContract,
+        PreviewModels.LivePreviewConfiguration
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: PreviewContracts.ILivePreviewConfigurationContract,
+            data: PreviewModels.LivePreviewConfiguration
+        ) {
+            super(debug, rawData, data);
+        }
+    }
+
+    export class ChangeLivePreviewConfigurationResponse extends BaseResponses.BaseContentManagementResponse<
+        PreviewContracts.ILivePreviewConfigurationContract,
+        PreviewModels.LivePreviewConfiguration
+    > {
+        constructor(
+            debug: BaseResponses.IContentManagementResponseDebug,
+            rawData: PreviewContracts.ILivePreviewConfigurationContract,
+            data: PreviewModels.LivePreviewConfiguration
+        ) {
+            super(debug, rawData, data);
+        }
+    }
 }

@@ -26,6 +26,35 @@ export class PreviewMapper extends BaseMapper {
         );
     }
 
+    mapLivePreviewConfigurationResponse(
+        response: IResponse<PreviewContracts.ILivePreviewConfigurationContract>
+    ): PreviewResponses.LivePreviewConfigurationResponse {
+        return new PreviewResponses.LivePreviewConfigurationResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapLivePreviewConfiguration(response.data)
+        );
+    }
+
+    mapChangeLivePreviewConfigurationResponse(
+        response: IResponse<PreviewContracts.ILivePreviewConfigurationContract>
+    ): PreviewResponses.ChangeLivePreviewConfigurationResponse {
+        return new PreviewResponses.ChangeLivePreviewConfigurationResponse(
+            super.mapResponseDebug(response),
+            response.data,
+            this.mapLivePreviewConfiguration(response.data)
+        );
+    }
+
+    private mapLivePreviewConfiguration(
+        rawItem: PreviewContracts.ILivePreviewConfigurationContract
+    ): PreviewModels.LivePreviewConfiguration {
+        return new PreviewModels.LivePreviewConfiguration({
+            status: rawItem.status,
+            _raw: rawItem
+        });
+    }
+
     private mapPreviewConfiguration(
         rawItem: PreviewContracts.IPreviewConfigurationContract
     ): PreviewModels.PreviewConfiguration {

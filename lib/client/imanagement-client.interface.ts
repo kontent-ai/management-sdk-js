@@ -132,6 +132,8 @@ import {
     ListEnvironmentValidationIssuesQuery,
     GetPreviewConfigurationQuery,
     ModifyPreviewConfigurationQuery,
+    GetLivePreviewConfigurationQuery,
+    ChangeLivePreviewConfigurationQuery,
     ActivateWebSpotlightQuery,
     DeactivateWebSpotlightQuery,
     CheckWebSpotlightStatusQuery,
@@ -721,6 +723,19 @@ export interface IManagementClient<TCancelToken> {
     modifyPreviewConfiguration(): DataQuery<
         ModifyPreviewConfigurationQuery,
         PreviewModels.IModifyPreviewConfigurationData
+    >;
+
+    /**
+     * Gets live preview configuration
+     */
+    getLivePreviewConfiguration(): GetLivePreviewConfigurationQuery;
+
+    /**
+     * Changes live preview configuration
+     */
+    changeLivePreviewConfiguration(): DataQuery<
+        ChangeLivePreviewConfigurationQuery,
+        PreviewModels.IChangeLivePreviewConfigurationData
     >;
 
     /**
