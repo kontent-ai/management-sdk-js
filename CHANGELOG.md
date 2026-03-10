@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.3.1...v8.4.0) (2026-03-10)
+
+
+### Features
+
+* Add live preview endpoints ([#181](https://github.com/kontent-ai/management-sdk-js/issues/181)) ([1e52eaf](https://github.com/kontent-ai/management-sdk-js/commit/1e52eaf7741c901a53b636a17312b4a954eae6f2))
+
 ### [8.3.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.3.0...v8.3.1) (2026-02-13)
 
 
