@@ -26,4 +26,8 @@ export namespace PreviewContracts {
         space_domains: IPreviewSpaceDomainContract[];
         preview_url_patterns: IPreviewUrlPatternsContract[];
     }
+
+    export interface ILivePreviewConfigurationContract {
+        status: string;
+    }
 }

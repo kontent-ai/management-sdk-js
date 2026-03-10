@@ -1093,6 +1093,25 @@ export class ManagementQueryService extends BaseManagementQueryService<any> {
         );
     }
 
+    async getLivePreviewConfigurationAsync(
+        url: string,
+        config: IContentManagementQueryConfig
+    ): Promise<PreviewResponses.LivePreviewConfigurationResponse> {
+        return previewMapper.mapLivePreviewConfigurationResponse(
+            await this.getResponseAsync<PreviewContracts.ILivePreviewConfigurationContract>(url, {}, config)
+        );
+    }
+
+    async changeLivePreviewConfigurationAsync(
+        url: string,
+        config: IContentManagementQueryConfig,
+        data: PreviewModels.IChangeLivePreviewConfigurationData
+    ): Promise<PreviewResponses.ChangeLivePreviewConfigurationResponse> {
+        return previewMapper.mapChangeLivePreviewConfigurationResponse(
+            await this.putResponseAsync<PreviewContracts.ILivePreviewConfigurationContract>(url, data, {}, config)
+        );
+    }
+
     async setCollectionsAsync(
         url: string,
         config: IContentManagementQueryConfig,

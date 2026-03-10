@@ -43,6 +43,25 @@ export namespace PreviewModels {
         }
     }
 
+    export class LivePreviewConfiguration
+        implements SharedModels.IBaseModel<PreviewContracts.ILivePreviewConfigurationContract>
+    {
+        public status: string;
+        public _raw: PreviewContracts.ILivePreviewConfigurationContract;
+
+        constructor(data: {
+            status: string;
+            _raw: PreviewContracts.ILivePreviewConfigurationContract;
+        }) {
+            this.status = data.status;
+            this._raw = data._raw;
+        }
+    }
+
+    export interface IChangeLivePreviewConfigurationData {
+        status: string;
+    }
+
     export interface IModifyPreviewConfigurationData {
         space_domains: {
             space: {

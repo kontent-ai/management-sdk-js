@@ -401,6 +401,14 @@ export class ContentManagementApiEndpoints {
         return `${this.getEnvironmentsPath()}/preview-configuration`;
     }
 
+    getLivePreviewConfiguration(): string {
+        return `${this.getEnvironmentsPath()}/live-preview-configuration`;
+    }
+
+    changeLivePreviewConfiguration(): string {
+        return `${this.getEnvironmentsPath()}/live-preview-configuration`;
+    }
+
     inviteProjectUser(): string {
         return `${this.getEnvironmentsPath()}/users`;
     }
