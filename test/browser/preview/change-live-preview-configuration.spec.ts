@@ -17,7 +17,9 @@ describe('Change live preview configuration', () => {
     it(`url should be correct`, () => {
         const url = cmClient
             .changeLivePreviewConfiguration()
-            .withData({} as any)
+            .withData({
+                status: 'enabled'
+            })
             .getUrl();
 
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/live-preview-configuration`);
