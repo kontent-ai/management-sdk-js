@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [8.4.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.4.0...v8.4.1) (2026-04-08)
 
+* Adds ability to filter by components types
+
 ## [8.4.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.3.1...v8.4.0) (2026-03-10)
 
 
