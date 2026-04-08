@@ -144,6 +144,33 @@ describe('Filter items with variants using publishing states filter', () => {
     });
 });
 
+describe('Filter items with variants using component types filter', () => {
+    let response: LanguageVariantResponses.FilterItemsWithVariantsResponse;
+
+    beforeAll(async () => {
+        response = await getTestClientWithJson(responseJson)
+            .filterItemsWithVariants()
+            .withData({
+                filters: {
+                    component_types: [
+                        { id: '7c7c7c7c-7c7c-7c7c-7c7c-7c7c7c7c7c7c' },
+                        { codename: 'my-component-type' }
+                    ]
+                }
+            })
+            .toPromise();
+    });
+
+    it(`response should be instance of FilterItemsWithVariantsResponse class`, () => {
+        expect(response).toEqual(jasmine.any(LanguageVariantResponses.FilterItemsWithVariantsResponse));
+    });
+
+    it(`response should contain data`, () => {
+        expect(response.data).toBeDefined();
+        expect(response.data.items).toBeDefined();
+    });
+});
+
 describe('Filter items with variants using all new filters combined', () => {
     let response: LanguageVariantResponses.FilterItemsWithVariantsResponse;
 
