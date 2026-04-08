@@ -22,6 +22,7 @@ export namespace LanguageVariantModels {
             spaces?: SharedContracts.IReferenceObjectContract[];
             collections?: SharedContracts.IReferenceObjectContract[];
             publishing_states?: FilterLanguageVariantsPublishingState[];
+            component_types?: SharedContracts.IReferenceObjectContract[];
         };
         order?: {
             by?: FilterLanguageVariantsOrderBy;
