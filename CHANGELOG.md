@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.5.0](https://github.com/kontent-ai/management-sdk-js/compare/v8.4.1...v8.5.0) (2026-04-14)
+
+
+### Features
+
+* Add component_types filter to items-with-variant filter endpoint ([272812d](https://github.com/kontent-ai/management-sdk-js/commit/272812d763ac4afc60e630dea6266cc040df7c11))
+
+
+### Bug Fixes
+
+* updates deps ([ea6b310](https://github.com/kontent-ai/management-sdk-js/commit/ea6b310238753583997658bbfd140ecffc3ee5fb))
+
 ### [8.4.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.4.0...v8.4.1) (2026-04-08)
 
 * Adds ability to filter by components types
