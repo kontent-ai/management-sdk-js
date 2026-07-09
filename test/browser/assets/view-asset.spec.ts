@@ -23,6 +23,12 @@ describe('View assets', () => {
         );
     });
 
+    it(`should reject path-traversal identifier values`, () => {
+        expect(() => cmClient.viewAsset().byAssetId('../../users').getUrl()).toThrowError(/identifier value/);
+        expect(() => cmClient.viewAsset().byAssetExternalId('..\\spaces').getUrl()).toThrowError(/identifier value/);
+        expect(() => cmClient.viewAsset().byAssetCodename('a/b').getUrl()).toThrowError(/identifier value/);
+    });
+
     it(`response should be instance of ViewAssetResponse class`, () => {
         expect(response).toEqual(jasmine.any(AssetResponses.ViewAssetResponse));
     });

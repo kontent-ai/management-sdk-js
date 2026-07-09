@@ -1,4 +1,5 @@
 import { Identifiers } from './identifiers';
+import { assertValidUrlPathSegment } from './shared/url-segment.utils';
 
 export class ContentManagementApiEndpoints {
     private readonly environmentId?: string;
@@ -191,7 +192,7 @@ export class ContentManagementApiEndpoints {
     }
 
     uploadBinaryFile(filename: string): string {
-        return `${this.getEnvironmentsPath()}/files/${filename}`;
+        return `${this.getEnvironmentsPath()}/files/${assertValidUrlPathSegment(filename, 'filename')}`;
     }
 
     listAssets(): string {

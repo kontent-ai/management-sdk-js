@@ -48,6 +48,38 @@ describe('Upload binary file', () => {
         expect(url).toEqual(`https://manage.kontent.ai/v2/projects/${testEnvironmentId}/files/name%20with%20spaces`);
     });
 
+    it(`should reject path-traversal filenames`, () => {
+        const traversalFilenames = ['../webhooks-vnext', '..\\spaces', 'x?admin=1', 'a/b', '#fragment', '..'];
+
+        traversalFilenames.forEach((filename) => {
+            expect(() =>
+                cmClient
+                    .uploadBinaryFile()
+                    .withData({
+                        binaryData: 'c',
+                        contentLength: 9,
+                        contentType: 'x',
+                        filename: filename
+                    })
+                    .getUrl()
+            ).toThrowError(/filename/);
+        });
+    });
+
+    it(`should reject empty filename`, () => {
+        expect(() =>
+            cmClient
+                .uploadBinaryFile()
+                .withData({
+                    binaryData: 'c',
+                    contentLength: 9,
+                    contentType: 'x',
+                    filename: '   '
+                })
+                .getUrl()
+        ).toThrowError(/filename/);
+    });
+
     it(`response should be instance of UploadBinaryFileResponse class`, () => {
         expect(response).toEqual(jasmine.any(AssetResponses.UploadBinaryFileResponse));
     });

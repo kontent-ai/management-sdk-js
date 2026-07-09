@@ -1,3 +1,5 @@
+import { assertValidUrlPathSegment } from './shared/url-segment.utils';
+
 export namespace Identifiers {
     export enum TaskIdentifierEnum {
         InternalId = 'internalId'
@@ -86,13 +88,13 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === AssetIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === AssetIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === AssetIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -106,13 +108,13 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === TaxonomyIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === TaxonomyIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === TaxonomyIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -126,10 +128,10 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === CustomAppIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === CustomAppIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -143,13 +145,13 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === ContentTypeIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === ContentTypeIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === ContentTypeIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -163,10 +165,10 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === RenditionIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === RenditionIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -180,13 +182,13 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === CollectionIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === CollectionIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === CollectionIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -200,10 +202,10 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === WorkflowIdentifierEnum.Id) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === WorkflowIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -217,7 +219,7 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === TaskIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
 
             throw Error(`Unsupported identifier '${this.identifier}'`);
@@ -232,13 +234,13 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === ContentItemIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === ContentItemIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === ContentItemIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -252,14 +254,14 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === LanguageIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
 
             if (this.identifier === LanguageIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === LanguageIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -273,7 +275,7 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === WebhookIdentifierEnum.Id) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -287,7 +289,7 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === EnvironmentIdentifierEnum.Id) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -301,10 +303,10 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === UserIdentifierEnum.Id) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === UserIdentifierEnum.Email) {
-                return `email/${this.value}`;
+                return `email/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -318,10 +320,10 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === RoleIdentifierEnum.Id) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === RoleIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
@@ -335,13 +337,13 @@ export namespace Identifiers {
 
         getParamValue(): string {
             if (this.identifier === SpaceIdentifierEnum.Codename) {
-                return `codename/${this.value}`;
+                return `codename/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === SpaceIdentifierEnum.InternalId) {
-                return `${this.value}`;
+                return `${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             if (this.identifier === SpaceIdentifierEnum.ExternalId) {
-                return `external-id/${this.value}`;
+                return `external-id/${assertValidUrlPathSegment(this.value, 'identifier value')}`;
             }
             throw Error(`Unsupported identifier '${this.identifier}'`);
         }
