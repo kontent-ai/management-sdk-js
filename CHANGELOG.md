@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.5.3](https://github.com/kontent-ai/management-sdk-js/compare/v8.5.2...v8.5.3) (2026-07-09)
+
+
+### Bug Fixes
+
+* prevents forbidden sequences from being used in url queries ([a669d29](https://github.com/kontent-ai/management-sdk-js/commit/a669d29616902e73cb7bab927a3320f24235e727))
+
 ### [8.5.2](https://github.com/kontent-ai/management-sdk-js/compare/v8.5.1...v8.5.2) (2026-07-03)
 
 ### [8.5.1](https://github.com/kontent-ai/management-sdk-js/compare/v8.5.0...v8.5.1) (2026-05-14)
