@@ -135,6 +135,7 @@ export class LanguageVariantMapper extends BaseMapper {
             lastModified: new Date(rawVariant.last_modified),
             dueDate: this.mapDueDate(rawVariant.due_date),
             schedule: this.mapSchedule(rawVariant.schedule),
+            agentMetadata: this.mapAgentMetadata(rawVariant.agent_metadata),
             workflow: {
                 workflowIdentifier: super.mapReference(rawVariant.workflow.workflow_identifier),
                 stepIdentifier: super.mapReference(rawVariant.workflow.step_identifier)
@@ -155,12 +156,28 @@ export class LanguageVariantMapper extends BaseMapper {
             schedule: this.mapSchedule(rawVariant.schedule),
             note: rawVariant.note,
             contributors: rawVariant.contributors,
+            agentMetadata: this.mapAgentMetadata(rawVariant.agent_metadata),
             workflow: {
                 workflowIdentifier: super.mapReference(rawVariant.workflow.workflow_identifier),
                 stepIdentifier: super.mapReference(rawVariant.workflow.step_identifier)
             },
             _raw: rawVariant
         });
+    }
+
+    private mapAgentMetadata(
+        agentMetadataRaw?: LanguageVariantContracts.ILanguageVariantAgentMetadataContract
+    ): LanguageVariantModels.ILanguageVariantAgentMetadata | undefined {
+        if (!agentMetadataRaw) {
+            return undefined;
+        }
+
+        return {
+            editability: {
+                isEditable: agentMetadataRaw.editability.is_editable,
+                guidance: agentMetadataRaw.editability.guidance
+            }
+        };
     }
 
     private mapDueDate(

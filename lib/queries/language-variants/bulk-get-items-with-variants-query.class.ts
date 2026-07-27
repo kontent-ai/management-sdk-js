@@ -20,6 +20,10 @@ export class BulkGetItemsWithVariantsQuery extends BaseListingQuery<
         return this.queryService.bulkGetItemsWithVariantsAsync(this.getUrl(), this.data, this.queryConfig);
     }
 
+    withAgentMetadata(): this {
+        return this.withHeader(LanguageVariantModels.agentMetadataHeader);
+    }
+
     protected getAction(): string {
         return this.apiEndpoints.bulkGetItemsWithVariants();
     }

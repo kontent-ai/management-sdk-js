@@ -151,6 +151,30 @@ const response = await client
     .toPromise();
 ```
 
+### AI agent metadata
+
+AI agents can request guidance metadata with `withAgentMetadata()`. It sends the `X-KC-Agent-Metadata: true` header and the Management API includes an `agent_metadata` object on every language variant in the response. Its `editability` part states whether the variant can be updated directly; when it cannot, `guidance` describes in plain text the operation that has to be performed first (e.g. creating a new version of a published variant), so the agent can read it and act on it.
+
+`withAgentMetadata()` is available on the view language variant query (including `published()`, where the guidance points the agent at the current version of the variant instead), the list language variants queries (of item, by collection, by space, of content type) and the bulk-get query.
+
+```typescript
+const response = await client
+    .viewLanguageVariant()
+    .byItemCodename('itemCodename')
+    .byLanguageCodename('languageCodename')
+    .withAgentMetadata()
+    .toPromise();
+
+// undefined unless requested via withAgentMetadata()
+const editability = response.data.agentMetadata?.editability;
+
+if (editability && !editability.isEditable) {
+    // editability.guidance describes what to do first, e.g.
+    // "The variant is published and cannot be updated directly. Create a new version
+    //  of the variant first, then update the new version."
+}
+```
+
 ### Handling API Management Errors
 
 See the [error section in Management API reference](https://kontent.ai/learn/reference/management-api-v2#section/Guidelines-on-handling-changes) for information about status codes and error messages.

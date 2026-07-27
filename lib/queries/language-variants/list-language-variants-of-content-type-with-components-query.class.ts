@@ -1,7 +1,7 @@
 
 
 import { IManagementClientConfig } from '../../config';
-import { Identifiers } from '../../models';
+import { Identifiers, LanguageVariantModels } from '../../models';
 import { LanguageVariantResponses } from '../../responses';
 import { ManagementQueryService } from '../../services';
 import { BaseListingQuery } from '../base-listing-query';
@@ -20,6 +20,10 @@ export class ListLanguageVariantsOfContentTypeWithComponentsQuery extends BaseLi
 
     toPromise(): Promise<LanguageVariantResponses.ListLanguageVariantsOfContentTypeWithComponentsResponse> {
         return this.queryService.listLanguageVariantsOfContentTypeWithComponentsAsync(this.getUrl(), this.queryConfig);
+    }
+
+    withAgentMetadata(): this {
+        return this.withHeader(LanguageVariantModels.agentMetadataHeader);
     }
 
     protected getAction(): string {

@@ -1,8 +1,12 @@
+import { IHeader } from '@kontent-ai/core-sdk';
+
 import { ElementModels } from '../elements/elements.models';
 import { SharedModels } from '../shared/shared-models';
 import { LanguageVariantContracts, SharedContracts } from '../../contracts';
 
 export namespace LanguageVariantModels {
+
+    export const agentMetadataHeader: IHeader = { header: 'X-KC-Agent-Metadata', value: 'true' };
 
     export type FilterLanguageVariantsCompletionStatus = 'unfinished' | 'ready' | 'not_translated' | 'all_done';
     export type FilterLanguageVariantsPublishingState = 'published' | 'unpublished' | 'not_published_yet';
@@ -56,6 +60,15 @@ export namespace LanguageVariantModels {
         value: string | null;
     }
 
+    export interface ILanguageVariantAgentMetadata {
+        editability: ILanguageVariantEditability;
+    }
+
+    export interface ILanguageVariantEditability {
+        isEditable: boolean;
+        guidance: string;
+    }
+
     export class ContentItemLanguageVariant
         implements SharedModels.IBaseModel<LanguageVariantContracts.ILanguageVariantModelContract> {
         public item!: SharedModels.ReferenceObject;
@@ -70,6 +83,7 @@ export namespace LanguageVariantModels {
         public dueDate!: ILanguageVariantDueDate;
         public note?: string | null;
         public contributors!: SharedContracts.UserReferenceContract[];
+        public agentMetadata?: ILanguageVariantAgentMetadata;
         public _raw!: LanguageVariantContracts.ILanguageVariantModelContract;
 
         constructor(data: {
@@ -81,6 +95,7 @@ export namespace LanguageVariantModels {
             dueDate: ILanguageVariantDueDate;
             note?: string | null;
             contributors: SharedContracts.UserReferenceContract[];
+            agentMetadata?: ILanguageVariantAgentMetadata;
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;
@@ -98,6 +113,7 @@ export namespace LanguageVariantModels {
         public lastModified!: Date;
         public schedule!: ILanguageVariantSchedule;
         public dueDate!: ILanguageVariantDueDate;
+        public agentMetadata?: ILanguageVariantAgentMetadata;
         public workflow!: {
             workflowIdentifier: SharedModels.ReferenceObject;
             stepIdentifier: SharedModels.ReferenceObject;
@@ -112,6 +128,7 @@ export namespace LanguageVariantModels {
             lastModified: Date;
             schedule: ILanguageVariantSchedule;
             dueDate: ILanguageVariantDueDate;
+            agentMetadata?: ILanguageVariantAgentMetadata;
             workflow: {
                 workflowIdentifier: SharedModels.ReferenceObject;
                 stepIdentifier: SharedModels.ReferenceObject;

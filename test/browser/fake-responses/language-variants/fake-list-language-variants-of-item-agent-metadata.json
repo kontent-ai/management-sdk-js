@@ -1,0 +1,80 @@
+[
+    {
+        "elements": [
+            {
+                "element": {
+                    "id": "85d5efc6-f47e-2fde-a6f5-0950fe89ecd1"
+                },
+                "value": "On Roasts"
+            }
+        ],
+        "workflow_step": {
+            "id": "c199950d-99f0-4983-b711-6c4c91624b22"
+        },
+        "workflow": {
+            "workflow_identifier": { "id": "00000000-0000-0000-0000-000000000000" },
+            "step_identifier": { "id": "c199950d-99f0-4983-b711-6c4c91624b22" }
+        },
+        "item": {
+            "id": "f4b3fc05-e988-4dae-9ac1-a94aba566474"
+        },
+        "language": {
+            "id": "00000000-0000-0000-0000-000000000000"
+        },
+        "last_modified": "2019-03-27T13:21:11.38Z",
+        "due_date": {
+            "value": null
+        },
+        "schedule": {
+            "publish_time": null,
+            "publish_display_timezone": null,
+            "unpublish_time": null,
+            "unpublish_display_timezone": null
+        },
+        "agent_metadata": {
+            "editability": {
+                "is_editable": false,
+                "guidance": "The variant is published and cannot be updated directly. Create a new version of the variant first, then update the new version."
+            }
+        }
+    },
+    {
+        "elements": [
+            {
+                "element": {
+                    "id": "85d5efc6-f47e-2fde-a6f5-0950fe89ecd1"
+                },
+                "value": "En Asados"
+            }
+        ],
+        "workflow_step": {
+            "id": "eee6db3b-545a-4785-8e86-e3772c8756f9"
+        },
+        "workflow": {
+            "workflow_identifier": { "id": "00000000-0000-0000-0000-000000000000" },
+            "step_identifier": { "id": "eee6db3b-545a-4785-8e86-e3772c8756f9" }
+        },
+        "item": {
+            "id": "f4b3fc05-e988-4dae-9ac1-a94aba566474"
+        },
+        "language": {
+            "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+        },
+        "last_modified": "2019-03-27T13:21:11.38Z",
+        "due_date": {
+            "value": null
+        },
+        "schedule": {
+            "publish_time": null,
+            "publish_display_timezone": null,
+            "unpublish_time": null,
+            "unpublish_display_timezone": null
+        },
+        "agent_metadata": {
+            "editability": {
+                "is_editable": true,
+                "guidance": "The variant is in an editable workflow step and can be updated directly."
+            }
+        }
+    }
+]

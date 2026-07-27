@@ -1,0 +1,112 @@
+{
+    "variants": [
+        {
+            "elements": [
+                {
+                    "element": {
+                        "id": "49150275-064b-5314-be6e-b93e1d7661e1"
+                    },
+                    "value": "<p>Content in rich text on level 1</p>\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\"></object>",
+                    "components": [
+                        {
+                            "id": "382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d",
+                            "type": {
+                                "id": "f4cb13df-d61d-572e-8f3b-3afe7e3a7ea1"
+                            },
+                            "elements": [
+                                {
+                                    "element": {
+                                        "id": "0b9173d6-1c94-5fb0-a010-86eef9013fd4"
+                                    },
+                                    "value": "<p>Component on level 2</p>",
+                                    "components": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "workflow_step": {
+                "id": "dc87d7cf-424b-4b89-9519-c9f79a3458b7"
+            },
+            "workflow": {
+                "workflow_identifier": {
+                    "id": "00000000-0000-0000-0000-000000000000"
+                },
+                "step_identifier": {
+                    "id": "c199950d-99f0-4983-b711-6c4c91624b22"
+                }
+            },
+            "item": {
+                "id": "0276f15b-1104-46d8-8e04-29326c58c332"
+            },
+            "language": {
+                "id": "00000000-0000-0000-0000-000000000000"
+            },
+            "last_modified": "2019-11-11T12:56:15.5964Z",
+            "due_date": {
+                "value": "2024-02-26T06:04:00.7069564Z"
+            },
+            "schedule": {
+                "publish_time": null,
+                "publish_display_timezone": null,
+                "unpublish_time": null,
+                "unpublish_display_timezone": null
+            },
+            "agent_metadata": {
+                "editability": {
+                    "is_editable": true,
+                    "guidance": "The variant can be updated directly."
+                }
+            }
+        },
+        {
+            "elements": [
+                {
+                    "element": {
+                        "id": "49150275-064b-5314-be6e-b93e1d7661e1"
+                    },
+                    "value": "<p>Published content in rich text</p>",
+                    "components": []
+                }
+            ],
+            "workflow_step": {
+                "id": "c199950d-99f0-4983-b711-6c4c91624b22"
+            },
+            "workflow": {
+                "workflow_identifier": {
+                    "id": "00000000-0000-0000-0000-000000000000"
+                },
+                "step_identifier": {
+                    "id": "eee6db3c-fa3e-4a17-8ae7-e7e5a2d1d9a4"
+                }
+            },
+            "item": {
+                "id": "3a2b8c1d-4e5f-4a6b-9c7d-8e9f0a1b2c3d"
+            },
+            "language": {
+                "id": "d1f95fde-af02-b3b5-bd9b-f76ed4e5e35a"
+            },
+            "last_modified": "2019-11-12T09:12:44.1234Z",
+            "due_date": {
+                "value": null
+            },
+            "schedule": {
+                "publish_time": null,
+                "publish_display_timezone": null,
+                "unpublish_time": null,
+                "unpublish_display_timezone": null
+            },
+            "agent_metadata": {
+                "editability": {
+                    "is_editable": false,
+                    "guidance": "The variant is published and cannot be updated directly. Create a new version of the variant first, then update the new version."
+                }
+            }
+        }
+    ],
+    "pagination": {
+        "continuation_token": null,
+        "next_page": null
+    }
+}

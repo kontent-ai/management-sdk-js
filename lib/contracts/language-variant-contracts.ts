@@ -15,6 +15,18 @@ export namespace LanguageVariantContracts {
         contributors: SharedContracts.UserReferenceContract[];
         workflow_step: SharedContracts.IIdReferenceContract;
         note?: string | null;
+
+        /** Only returned when the request opts in via 'withAgentMetadata()'. */
+        agent_metadata?: ILanguageVariantAgentMetadataContract;
+    }
+
+    export interface ILanguageVariantAgentMetadataContract {
+        editability: ILanguageVariantEditabilityContract;
+    }
+
+    export interface ILanguageVariantEditabilityContract {
+        is_editable: boolean;
+        guidance: string;
     }
 
     export interface ILanguageVariantModelsContract {
@@ -25,6 +37,9 @@ export namespace LanguageVariantContracts {
         workflow: ILanguageVariantWorkflowContract;
         schedule: ILanguageVariantSchedule;
         due_date: ILanguageVariantDueDate;
+
+        /** Only returned when the request opts in via 'withAgentMetadata()'. */
+        agent_metadata?: ILanguageVariantAgentMetadataContract;
     }
 
     export interface IListLanguageVariantsOfItemResponseContract extends ILanguageVariantModelContract { }

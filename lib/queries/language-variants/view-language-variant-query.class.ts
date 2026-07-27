@@ -1,5 +1,5 @@
 import { IManagementClientConfig } from '../../config';
-import { Identifiers } from '../../models';
+import { Identifiers, LanguageVariantModels } from '../../models';
 import { LanguageVariantResponses } from '../../responses';
 import { ManagementQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
@@ -23,6 +23,10 @@ export class ViewLanguageVariantQuery extends BaseQuery<LanguageVariantResponses
     published(): this {
         this.fetchPublishedVersion = true;
         return this;
+    }
+
+    withAgentMetadata(): this {
+        return this.withHeader(LanguageVariantModels.agentMetadataHeader);
     }
 
     protected getAction(): string {
