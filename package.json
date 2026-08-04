@@ -60,7 +60,7 @@
         "clean": "tsx clean.ts"
     },
     "dependencies": {
-        "@kontent-ai/core-sdk": "10.12.8",
+        "@kontent-ai/core-sdk": "10.12.9",
         "mime": "3.0.0"
     },
     "devDependencies": {
