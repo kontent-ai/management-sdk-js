@@ -570,7 +570,11 @@ export interface IManagementClient<TCancelToken> {
     setCollections(): DataQuery<SetCollectionsQuery, CollectionModels.ISetCollectionData[]>;
 
     /**
-     * Helper methods that uploads file from url, creates binary file & asset in one go
+     * Helper methods that uploads file from url, creates binary file & asset in one go.
+     *
+     * Note: `fileUrl` is fetched directly by the SDK from within your own application's runtime
+     * (not proxied through Kontent.ai), following HTTP redirects without re-validating the
+     * destination of each redirect. Do not pass unvalidated end-user input as `fileUrl`.
      */
     uploadAssetFromUrl(): DataQuery<UploadAssetFromUrlQuery, AssetModels.IUploadAssetFromUrlRequestData>;
 

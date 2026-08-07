@@ -207,6 +207,12 @@ export abstract class BaseManagementQueryService<TCancelToken> {
         }
     }
 
+    /**
+     * Performs an HTTP GET against a fully caller-controlled url and returns the raw binary data.
+     * The request is made from within the SDK consumer's own runtime (not from Kontent.ai
+     * infrastructure), sends no Authorization header to `url`, and follows HTTP redirects
+     * without re-validating the destination of each redirect.
+     */
     protected async getBinaryDataFromUrlAsync(url: string): Promise<ArrayBuffer> {
         // temp fix for repository not validating url
         url = url.replace('#', '%23');
